@@ -9,6 +9,7 @@ import {
   CartesianGrid,
   ResponsiveContainer,
 } from "recharts";
+import Image from "next/image";
 
 const data = [
   { name: "Jan", value: 65 },
@@ -71,11 +72,13 @@ export default function DataVisuals() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="relative h-[400px]"
           >
-            <img
-              src="https://images.unsplash.com/photo-1503235930437-8c6293ba41f5"
+            <Image
+              src="https://images.pexels.com/photos/7567434/pexels-photo-7567434.jpeg"
               alt="Data visualization"
-              className="rounded-lg shadow-xl h-full object-cover"
+              fill
+              className="rounded-lg shadow-xl object-cover"
             />
           </motion.div>
         </div>

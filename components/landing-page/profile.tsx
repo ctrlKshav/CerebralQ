@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
+import Image from "next/image";
 
 const features = [
   {
@@ -31,11 +32,13 @@ export default function Profile() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
+            className="relative h-[400px]"
           >
-            <img
-              src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca"
+            <Image
+              src="https://images.pexels.com/photos/7439135/pexels-photo-7439135.jpeg"
               alt="Profile Analytics"
-              className="rounded-lg shadow-xl"
+              fill
+              className="rounded-lg shadow-xl object-cover"
             />
           </motion.div>
 
