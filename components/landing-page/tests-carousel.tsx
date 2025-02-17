@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import Carousel from "@/components/ui/carousel";
-import { slideData } from "@/app/data/testCarousel";
+import { slideData } from "@/data/testCarousel";
 
 export function TestsCarousel() {
   

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import Image from "next/image"
-import { features } from "@/app/data/features"
+import { features } from "@/data/features"
 
 export default function Features() {
   return (
