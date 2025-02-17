@@ -3,24 +3,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle } from "lucide-react";
 import Image from "next/image";
-
-const features = [
-  {
-    title: "Personalized Insights",
-    description: "See your personality traits unfold.",
-    icon: CheckCircle,
-  },
-  {
-    title: "Visual Breakdown",
-    description: "Interactive charts & graphs.",
-    icon: CheckCircle,
-  },
-  {
-    title: "Famous Personalities",
-    description: "Compare with well-known figures.",
-    icon: CheckCircle,
-  },
-];
+import { features } from "@/app/data/profile";
 
 export default function Profile() {
   return (
