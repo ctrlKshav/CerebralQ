@@ -1,6 +1,6 @@
 import Hero from "@/components/landing-page/hero";
 import DataVisuals from "@/components/landing-page/data-visuals";
-import Profile from "@/components/landing-page/profile";
+import Features from "@/components/landing-page/features";
 import Footer from "@/components/landing-page/footer";
 import { TestsCarousel } from "@/components/landing-page/tests-carousel";
 
@@ -9,7 +9,7 @@ export default async function Home() {
     <>
       <Hero />
       <TestsCarousel />
-      <Profile />
+      <Features />
       <DataVisuals />
       <Footer />
     </>
