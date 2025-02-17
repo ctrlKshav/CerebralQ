@@ -23,7 +23,7 @@ const features = [
 
 export default function Profile() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -46,10 +46,10 @@ export default function Profile() {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl font-bold text-gray-900">
+              <h2 className="text-3xl font-bold text-foreground">
                 Discover Your Persona
               </h2>
-              <p className="mt-4 text-lg text-gray-600">
+              <p className="mt-4 text-lg text-muted-foreground">
                 Every test you take adds another piece to your profile, shaping a unique digital persona.
               </p>
             </motion.div>
@@ -67,8 +67,8 @@ export default function Profile() {
                     <CardContent className="p-6 flex items-start space-x-4">
                       <feature.icon className="h-6 w-6 text-primary flex-shrink-0" />
                       <div>
-                        <h3 className="font-semibold text-gray-900">{feature.title}</h3>
-                        <p className="text-gray-600">{feature.description}</p>
+                        <h3 className="font-semibold text-foreground">{feature.title}</h3>
+                        <p className="text-muted-foreground">{feature.description}</p>
                       </div>
                     </CardContent>
                   </Card>

@@ -20,7 +20,7 @@ const data = [
 
 export default function DataVisuals() {
   return (
-    <section className="py-24 bg-gray-50">
+    <section className="py-24 bg-muted/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,10 +29,10 @@ export default function DataVisuals() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <h2 className="text-3xl font-bold text-gray-900">
+          <h2 className="text-3xl font-bold text-foreground">
             See Yourself Clearly
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
             Your profile isn't just stats—it's an interactive experience with easy-to-read charts, comparisons, and breakdowns.
           </p>
         </motion.div>
@@ -46,17 +46,17 @@ export default function DataVisuals() {
           >
             <Card>
               <CardContent className="p-6">
-                <h3 className="text-xl font-semibold mb-4">Personality Growth</h3>
+                <h3 className="text-xl font-semibold text-foreground mb-4">Personality Growth</h3>
                 <div className="h-[300px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={data}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
+                      <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
+                      <XAxis dataKey="name" className="text-muted-foreground" />
+                      <YAxis className="text-muted-foreground" />
                       <Line
                         type="monotone"
                         dataKey="value"
-                        stroke="hsl(250, 84%, 54%)"
+                        className="stroke-primary"
                         strokeWidth={2}
                       />
                     </LineChart>

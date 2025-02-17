@@ -1,6 +1,7 @@
-import Hero from "@/components/hero";
-import DataVisuals from "@/components/landing-page/data-visual";
-import Profile from "@/components/profile";
+import Hero from "@/components/landing-page/hero";
+import DataVisuals from "@/components/landing-page/data-visuals";
+import Profile from "@/components/landing-page/profile";
+import Footer from "@/components/landing-page/footer";
 
 export default async function Home() {
   return (
@@ -8,6 +9,7 @@ export default async function Home() {
       <Hero />
       <Profile />
       <DataVisuals />
+      <Footer />
     </>
   );
 }
