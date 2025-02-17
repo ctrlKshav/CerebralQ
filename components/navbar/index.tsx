@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
           <div className="hidden lg:flex items-center space-x-4">
             <div className="hidden sm:block">
               <Button variant={"default"} className="text-base">
-                <Link href="/contact">Get in Touch</Link>
+                <Link href="/">Get Started</Link>
               </Button>
             </div>
           </div>
@@ -165,7 +165,7 @@ const Navbar: React.FC = () => {
                 {/* Sticky Bottom Auth Buttons */}
                 <div className="sticky bottom-0 left-0 right-0 p-4 border-t bg-white">
                   <Button variant="default" className="w-full text-base" onClick={() => setIsSheetOpen(false)}>
-                    <Link href="/contact">Get in Touch</Link>
+                    <Link href="/">Get Started</Link>
                   </Button>
                 </div>
               </SheetContent>
