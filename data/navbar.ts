@@ -16,11 +16,13 @@ export const assessmentItems = [
     href: "/assessments/cognitive",
   },
   {
-    title: "Analytics",
-    description: "View your comprehensive test results and insights",
-    icon: (className = "h-6 w-6 text-primary") => React.createElement(BarChart2, { className }),
-    href: "/profile/analytics",
-  },
+    title: "Career Tests",
+    description: "Explore your career options with career aptitude tests",
+    icon: (className = "h-6 w-6 text-primary") => React.createElement(BarChart2, { className
+    }),
+    href: "/assessments/career",
+    },
+  
 ];
 
 export const communityItems = [
