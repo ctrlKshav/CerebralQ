@@ -3,6 +3,7 @@ import { UserCircle, Brain, BarChart2, Leaf, Network } from "lucide-react";
 
 export const assessmentItems = [
   {
+    id: "personality-tests",
     title: "Personality Tests",
     description:
       "Discover your personality type with MBTI and Big Five assessments",
@@ -10,6 +11,7 @@ export const assessmentItems = [
     href: "/tests/personality",
   },
   {
+    id: "cognitive-tests",
     title: "Cognitive Tests",
     description: "Measure your cognitive abilities with IQ and aptitude tests",
     icon: (className = "h-6 w-6 text-primary") => React.createElement(Brain, { className }),
@@ -27,6 +29,7 @@ export const assessmentItems = [
 
 export const communityItems = [
   {
+    id: "leaderboard",
     title: "Leaderboard",
     description: "View the top performers in the Cerebral Quotient community",
     icon: (className = "h-6 w-6 text-primary") =>
@@ -34,6 +37,7 @@ export const communityItems = [
     href: "/community/leaderboard",
   },
   {
+    id: "connections",
     title: "Connections",
     description:
       "Connect with other members of the Cerebral Quotient community",
