@@ -7,8 +7,9 @@ import UserProgress from "./(components)/UserProgress"
 import RelatedTests from "./(components)/RelatedTests"
 import ActionArea from "./(components)/ActionArea"
 import { getTestData } from "@/lib/supabase"
+import Navbar from "@/components/navbar"
 
-export default async function TestPage({ params }: { params: { testId: string } }) {
+export default async function TestInfoPage({ params }: { params: { testId: string } }) {
   const testData = await getTestData(params.testId)
 
   if (!testData) {
@@ -16,6 +17,8 @@ export default async function TestPage({ params }: { params: { testId: string } 
   }
 
   return (
+    <>
+    <Navbar />
     <div className="container mx-auto px-4 py-8 mt-16">
       <TestHeader test={testData} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
@@ -31,6 +34,7 @@ export default async function TestPage({ params }: { params: { testId: string } 
         </div>
       </div>
     </div>
+    </>
   )
 }
 

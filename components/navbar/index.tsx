@@ -27,7 +27,7 @@ import { MobileMenuSection } from "./mobile-menu/MobileMenuSection";
 import { assessmentItems, communityItems } from "@/data/navbar";
 import { MobileMenuItem } from "./mobile-menu/MobileMenuItem";
 
-const Navbar = (props: {className: string}) => {
+const Navbar = (props: {className?: string}) => {
   // ... (previous state and scroll handling code remains the same)
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
