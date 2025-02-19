@@ -88,7 +88,7 @@ const Navbar = (props: {className: string}) => {
                 {/* Assessments Menu */}
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="h-auto p-2 bg-transparent">
-                    <Link href="/assessments">
+                    <Link href="/tests">
                       <span className="flex items-center text-base">
                         Assessments
                       </span>
