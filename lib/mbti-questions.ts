@@ -157,6 +157,46 @@ export const questions: Question[] = [
     dimension: 'T-F',
     section: 3
   },
+  {
+    id: 't-f-3',
+    text: "When making decisions, I prioritize...",
+    type: 'binary',
+    icon: createElement(Brain, { size: 24, className: "text-purple-500" }),
+    options: [
+      {
+        value: 'T',
+        label: 'Logic',
+        description: 'Objective analysis and facts'
+      },
+      {
+        value: 'F',
+        label: 'Values',
+        description: 'Personal and others\' feelings'
+      }
+    ],
+    dimension: 'T-F',
+    section: 3
+  },
+  {
+    id: 't-f-4',
+    text: "When making decisions, I prioritize...",
+    type: 'binary',
+    icon: createElement(Brain, { size: 24, className: "text-purple-500" }),
+    options: [
+      {
+        value: 'T',
+        label: 'Logic',
+        description: 'Objective analysis and facts'
+      },
+      {
+        value: 'F',
+        label: 'Values',
+        description: 'Personal and others\' feelings'
+      }
+    ],
+    dimension: 'T-F',
+    section: 3
+  },
 
   // Section 4: Lifestyle Approach
   {
