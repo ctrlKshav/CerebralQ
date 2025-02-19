@@ -6,16 +6,34 @@ interface ProgressTrackerProps {
   currentSection: number;
   totalSections: number;
   onSectionClick: (sectionId: number) => void;
+  variant?: 'full' | 'compact';
 }
 
 export function ProgressTracker({ 
   currentSection, 
   totalSections,
-  onSectionClick 
+  onSectionClick,
+  variant = 'full'
 }: ProgressTrackerProps) {
   const progress = (currentSection / totalSections) * 100;
 
-  return (
+  return variant === 'compact' ? (
+    <div className="flex justify-between items-center gap-2">
+      {Array.from({ length: totalSections }).map((_, index) => (
+        <button
+          key={index}
+          onClick={() => onSectionClick(index + 1)}
+          className={`h-2 flex-1 rounded-full transition-all ${
+            index + 1 === currentSection
+              ? 'bg-primary'
+              : index + 1 < currentSection
+              ? 'bg-primary/40'
+              : 'bg-gray-200 dark:bg-gray-700'
+          }`}
+        />
+      ))}
+    </div>
+  ) : (
     <div className="flex-1">
       <div className="mb-4">
         <Progress 
