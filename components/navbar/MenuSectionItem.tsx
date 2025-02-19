@@ -17,8 +17,8 @@ export const MenuSectionItem: React.FC<MenuSectionItemProps> = ({
         )}
         {...props}
       >
-        <div className="flex items-center gap-2">
-          {icon()}
+        <div className="flex items-center gap-2 group">
+          {icon("text-primary group-hover:text-background")}
           <div className="text-base font-medium leading-none">{title}</div>
         </div>
         {children && (
