@@ -64,8 +64,8 @@ export const sections: Section[] = [
     title: "Energy Restoration",
     description: "How do you recharge?",
     dimension: 'E-I'
-  }
-];
+  },
+]
 
 export const questions: Question[] = [
   // Section 1: Energy Orientation
@@ -159,41 +159,17 @@ export const questions: Question[] = [
   },
   {
     id: 't-f-3',
-    text: "When making decisions, I prioritize...",
-    type: 'binary',
-    icon: createElement(Brain, { size: 24, className: "text-purple-500" }),
-    options: [
-      {
-        value: 'T',
-        label: 'Logic',
-        description: 'Objective analysis and facts'
-      },
-      {
-        value: 'F',
-        label: 'Values',
-        description: 'Personal and others\' feelings'
-      }
-    ],
+    text: "I prefer working in teams over working alone",
+    type: 'likert',
+    icon: createElement(Users, { size: 24, className: "text-blue-500" }),
     dimension: 'T-F',
     section: 3
   },
   {
     id: 't-f-4',
-    text: "When making decisions, I prioritize...",
-    type: 'binary',
-    icon: createElement(Brain, { size: 24, className: "text-purple-500" }),
-    options: [
-      {
-        value: 'T',
-        label: 'Logic',
-        description: 'Objective analysis and facts'
-      },
-      {
-        value: 'F',
-        label: 'Values',
-        description: 'Personal and others\' feelings'
-      }
-    ],
+    text: "I prefer to plan my day in advance",
+    type: 'likert',
+    icon: createElement(Smile, { size: 24, className: "text-yellow-500" }),
     dimension: 'T-F',
     section: 3
   },
