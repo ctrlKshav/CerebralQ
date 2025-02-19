@@ -23,7 +23,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { MenuSection } from "./MenuSection";
-import { MobileSection } from "./mobile-menu/MobileMenuSection";
+import { MobileMenuSection } from "./mobile-menu/MobileMenuSection";
 import { assessmentItems, communityItems } from "@/data/navbar";
 import { MobileMenuItem } from "./mobile-menu/MobileMenuItem";
 
@@ -167,7 +167,7 @@ const Navbar = () => {
                     <div className="space-y-2 p-4">
                       {/* Mobile Assessment Items */}
                       <div className="space-y-2 pb-4 border-b">
-                        <MobileSection
+                        <MobileMenuSection
                           title="Assessments"
                           data={assessmentItems}
                           setIsSheetOpen={setIsSheetOpen}
@@ -176,7 +176,7 @@ const Navbar = () => {
 
                       {/* Mobile Community Items */}
                       <div className="space-y-2 pb-4 border-b">
-                        <MobileSection
+                        <MobileMenuSection
                           title="Community"
                           data={communityItems}
                           setIsSheetOpen={setIsSheetOpen}

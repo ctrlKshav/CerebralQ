@@ -8,7 +8,7 @@ export interface MenuSectionItemProps{
   };
 
 
-export interface MobileSectionProps {
+export interface MobileMenuSectionType {
   title: string
   data: any
   isSheetOpen?: boolean

@@ -2,11 +2,11 @@
 import React, { useState } from "react"
 import { ChevronDown, MapPinPlus } from "lucide-react"
 import { MobileItem } from "@/components/navbar/mobile-menu/MobileMenuSectionItem"
-import { MobileSectionProps } from "@/types/navbarTypes"
+import { MobileMenuSectionType } from "@/types/navbarTypes"
 import  Link  from "next/link"
 import { cn } from "@/lib/utils"
 
-export const MobileSection: React.FC<MobileSectionProps> = ({title, data, setIsSheetOpen}) => {
+export const MobileMenuSection: React.FC<MobileMenuSectionType> = ({title, data, setIsSheetOpen}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false)
 
   const items = [...data]
