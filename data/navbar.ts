@@ -8,21 +8,21 @@ export const assessmentItems = [
     description:
       "Discover your personality type with MBTI and Big Five assessments",
     icon: (className = "h-6 w-6 text-primary") => React.createElement(UserCircle, { className }),
-    href: "/tests/personality",
+    href: "/tests/test-info/personality",
   },
   {
     id: "cognitive-tests",
     title: "Cognitive Tests",
     description: "Measure your cognitive abilities with IQ and aptitude tests",
     icon: (className = "h-6 w-6 text-primary") => React.createElement(Brain, { className }),
-    href: "/tests/cognitive",
+    href: "/tests/test-info/cognitive",
   },
   {
     title: "Career Tests",
     description: "Explore your career options with career aptitude tests",
     icon: (className = "h-6 w-6 text-primary") => React.createElement(BarChart2, { className
     }),
-    href: "/tests/career",
+    href: "/tests/test-info/career",
     },
   
 ];
