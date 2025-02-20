@@ -19,7 +19,7 @@ export function LikertScale({ name }: LikertScaleProps) {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 text-base md:text-lg">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 text-base md:text-lg">
         {options.map((option) => {
           const isSelected = selectedValue === option.value;
           return (

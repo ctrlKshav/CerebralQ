@@ -49,6 +49,7 @@ export default function MBTITest() {
       setCurrentSectionId(prev => prev + 1);
     }
     saveProgress(methods.getValues());
+    console.log(methods.getValues());
   };
 
   const handlePrev = () => {
