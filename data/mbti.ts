@@ -11,7 +11,7 @@ export interface TestQuestion {
   text: string;
   type: 'binary' | 'likert';
   icon?: string; // now questions can have an icon too
-  iconColor?: string; // new property for icon color
+  iconColor?: string; // now uses Tailwind CSS classes instead of hex
   options?: Array<{
     value: string;
     label: string;
@@ -67,7 +67,8 @@ export const testData: TestData[] = [
         "id": "1",
         "text": "At a party do you:",
         "type": "binary",
-        "icon": "Users",  // added question icon
+        "icon": "Users",
+        "iconColor": "text-orange-500",
         "options": [
           { "value": "E", "label": "Interact with many, including strangers" },
           { "value": "I", "label": "Interact with a few, known to you" }
@@ -79,7 +80,8 @@ export const testData: TestData[] = [
         "id": "2",
         "text": "Are you more:",
         "type": "binary",
-        "icon": "Calendar", // added question icon
+        "icon": "Clipboard",
+        "iconColor": "text-blue-500",
         "options": [
           { "value": "S", "label": "Realistic than speculative" },
           { "value": "N", "label": "Speculative than realistic" }
@@ -91,7 +93,8 @@ export const testData: TestData[] = [
         "id": "3",
         "text": "Is it worse to:",
         "type": "binary",
-        "icon": "AlertTriangle", // added question icon
+        "icon": "AlertTriangle",
+        "iconColor": "text-purple-500",
         "options": [
           { "value": "S", "label": "Have your \"head in the clouds\"" },
           { "value": "N", "label": "Be \"in a rut\"" }
@@ -103,7 +106,8 @@ export const testData: TestData[] = [
         "id": "4",
         "text": "Are you more impressed by:",
         "type": "binary",
-        "icon": "Star", // added question icon
+        "icon": "Award",
+        "iconColor": "text-green-500",
         "options": [
           { "value": "T", "label": "Principles" },
           { "value": "F", "label": "Emotions" }
@@ -115,7 +119,8 @@ export const testData: TestData[] = [
         "id": "5",
         "text": "Are you more drawn toward the:",
         "type": "binary",
-        "icon": "Heart", // added question icon
+        "icon": "Heart",
+        "iconColor": "text-red-500",
         "options": [
           { "value": "T", "label": "Convincing" },
           { "value": "F", "label": "Touching" }
@@ -127,7 +132,8 @@ export const testData: TestData[] = [
         "id": "6",
         "text": "Do you prefer to work:",
         "type": "binary",
-        "icon": "Clock", // added question icon
+        "icon": "Clock",
+        "iconColor": "text-yellow-500",
         "options": [
           { "value": "J", "label": "To deadlines" },
           { "value": "P", "label": "Just \"whenever\"" }
@@ -139,7 +145,8 @@ export const testData: TestData[] = [
         "id": "7",
         "text": "Do you tend to choose:",
         "type": "binary",
-        "icon": "Zap", // added question icon
+        "icon": "Crosshair",
+        "iconColor": "text-teal-500",
         "options": [
           { "value": "J", "label": "Rather carefully" },
           { "value": "P", "label": "Somewhat impulsively" }
@@ -149,12 +156,13 @@ export const testData: TestData[] = [
       },
       {
         "id": "8",
-        "text": "At parties do you:",
+        "text": "After socializing, do you:",
         "type": "binary",
-        "icon": "Users", // added question icon
+        "icon": "Battery",
+        "iconColor": "text-blue-900",
         "options": [
-          { "value": "E", "label": "Stay late, with increasing energy" },
-          { "value": "I", "label": "Leave early with decreased energy" }
+          { "value": "E", "label": "Feel energized and want more" },
+          { "value": "I", "label": "Need quiet time to recharge" }
         ],
         "dimension": "E-I",
         "section": 1
@@ -163,7 +171,8 @@ export const testData: TestData[] = [
         "id": "9",
         "text": "Are you more attracted to:",
         "type": "binary",
-        "icon": "Image", // added question icon
+        "icon": "Anchor",
+        "iconColor": "text-gray-500",
         "options": [
           { "value": "S", "label": "Sensible people" },
           { "value": "N", "label": "Imaginative people" }
@@ -175,7 +184,8 @@ export const testData: TestData[] = [
         "id": "10",
         "text": "Are you more interested in:",
         "type": "binary",
-        "icon": "Activity", // added question icon
+        "icon": "Map",
+        "iconColor": "text-purple-700",
         "options": [
           { "value": "S", "label": "What is actual" },
           { "value": "N", "label": "What is possible" }
@@ -183,12 +193,12 @@ export const testData: TestData[] = [
         "dimension": "S-N",
         "section": 2
       },
-      // New likert scale questions
       {
         "id": "11",
         "text": "I feel energized when engaging in social activities.",
         "type": "likert",
-        "icon": "⚡",
+        "icon": "Zap",
+        "iconColor": "text-orange-400",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -203,7 +213,8 @@ export const testData: TestData[] = [
         "id": "12",
         "text": "I rely on facts and details more than abstract ideas.",
         "type": "likert",
-        "icon": "📊",
+        "icon": "FileText",
+        "iconColor": "text-blue-600",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -218,7 +229,8 @@ export const testData: TestData[] = [
         "id": "13",
         "text": "I make decisions based on logic rather than emotions.",
         "type": "likert",
-        "icon": "🧠",
+        "icon": "GitBranch",
+        "iconColor": "text-green-600",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -233,13 +245,66 @@ export const testData: TestData[] = [
         "id": "14",
         "text": "I prefer to plan things in advance rather than being spontaneous.",
         "type": "likert",
-        "icon": "📅",
+        "icon": "Calendar",
+        "iconColor": "text-yellow-600",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
           { "value": "3", "label": "Neutral" },
           { "value": "4", "label": "Agree" },
           { "value": "5", "label": "Strongly Agree" }
+        ],
+        "dimension": "J-P",
+        "section": 4
+      },
+      {
+        "id": "15",
+        "text": "When meeting new people, I tend to:",
+        "type": "binary",
+        "icon": "Coffee", 
+        "iconColor": "text-orange-600",
+        "options": [
+          { "value": "E", "label": "Initiate conversations easily" },
+          { "value": "I", "label": "Wait for others to approach me" }
+        ],
+        "dimension": "E-I",
+        "section": 1
+      },
+      {
+        "id": "16",
+        "text": "I prefer explanations that are:",
+        "type": "binary",
+        "icon": "Book",
+        "iconColor": "text-blue-500",
+        "options": [
+          { "value": "S", "label": "Concrete and literal" },
+          { "value": "N", "label": "Figurative and metaphorical" }
+        ],
+        "dimension": "S-N",
+        "section": 2
+      },
+      {
+        "id": "17",
+        "text": "When making an important decision, I prioritize:",
+        "type": "binary",
+        "icon": "Filter",
+        "iconColor": "text-green-500",
+        "options": [
+          { "value": "T", "label": "Objective criteria and facts" },
+          { "value": "F", "label": "How it affects people involved" }
+        ],
+        "dimension": "T-F",
+        "section": 3
+      },
+      {
+        "id": "18",
+        "text": "I prefer environments that are:",
+        "type": "binary",
+        "icon": "Home",
+        "iconColor": "text-orange-400",
+        "options": [
+          { "value": "J", "label": "Organized and structured" },
+          { "value": "P", "label": "Flexible and adaptable" }
         ],
         "dimension": "J-P",
         "section": 4
