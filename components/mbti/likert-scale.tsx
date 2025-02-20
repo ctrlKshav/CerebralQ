@@ -40,7 +40,7 @@ export function LikertScale({ name }: LikertScaleProps) {
                   type="radio"
                   value={option.value}
                   {...register(name)}
-                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                  className="text-xl mr-2 cursor-pointer"
                 />
                 <span className={`block text-sm font-medium mb-1
                   ${isSelected 
@@ -50,14 +50,7 @@ export function LikertScale({ name }: LikertScaleProps) {
                 >
                   {option.label}
                 </span>
-                <span className={`block text-2xl font-bold
-                  ${isSelected 
-                    ? 'text-purple-600 dark:text-purple-400' 
-                    : 'text-gray-400 dark:text-gray-600'
-                  }`}
-                >
-                  {option.value}
-                </span>
+                
               </label>
             </motion.div>
           );

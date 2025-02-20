@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { mbtiResponseSchema, type MBTIResponse } from "@/shared/schema";
-import { questions, sections } from "@/lib/mbti-questions";
+import { testData } from "@/data/mbti";
 import { saveProgress, loadProgress } from "@/lib/mbti-storage";
 import { ProgressTracker } from "@/components/mbti/progress-tracker";
 import { QuestionCard } from "@/components/mbti/question-card";
@@ -14,7 +14,10 @@ import { X, Menu } from "lucide-react";
 export default function MBTITest() {
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const sectionQuestions = questions.filter(q => q.section === currentSectionId);
+  const currentTest = testData[0];
+  const sectionQuestions = currentTest.questions.filter(
+    q => q.section === currentSectionId
+  );
 
   const methods = useForm<MBTIResponse>({
     resolver: zodResolver(mbtiResponseSchema),
@@ -30,7 +33,7 @@ export default function MBTITest() {
       methods.reset(savedProgress);
       const lastAnsweredSection = Math.max(
         ...Object.keys(savedProgress.answers)
-          .map(key => questions.find(q => q.id === key)?.section || 1)
+          .map(key => currentTest.questions.find(q => q.id === key)?.section || 1)
       );
       setCurrentSectionId(lastAnsweredSection);
     }
@@ -42,7 +45,7 @@ export default function MBTITest() {
   };
 
   const handleNext = () => {
-    if (currentSectionId < sections.length) {
+    if (currentSectionId < currentTest.sections.length) {
       setCurrentSectionId(prev => prev + 1);
     }
     saveProgress(methods.getValues());
@@ -59,7 +62,7 @@ export default function MBTITest() {
     setIsSidebarOpen(false);
   };
 
-  const currentStepText = `Step ${currentSectionId} of ${sections.length}`;
+  const currentStepText = `Step ${currentSectionId} of ${currentTest.sections.length}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
@@ -69,12 +72,12 @@ export default function MBTITest() {
           <div className="hidden md:block w-80 fixed top-16 left-0 bottom-0 shadow-sm border-r backdrop-blur-sm">
             <div className="h-full flex flex-col">
               <div className="p-6">
-                <span className="font-bold text-xl">MBTI Test</span>
+                <span className="font-bold text-xl">{currentTest.test_name}</span>
               </div>
               <div className="flex-1 overflow-y-auto px-6 pb-6">
                 <ProgressTracker
                   currentSection={currentSectionId}
-                  totalSections={sections.length}
+                  sections={currentTest.sections}
                   onSectionClick={handleSectionClick}
                 />
               </div>
@@ -82,9 +85,9 @@ export default function MBTITest() {
           </div>
           
           {/* Mobile Topbar */}
-          <div className="md:hidden fixed top-0 left-0 right-0 z-10  dark:bg-gray-800/50 backdrop-blur-sm p-4 flex justify-between items-center">
+          <div className="md:hidden fixed top-0 left-0 right-0 z-10 dark:bg-gray-800/50 backdrop-blur-sm p-4 flex justify-between items-center">
             <div>
-              <span className="font-bold text-xl">MBTI Test</span>
+              <span className="font-bold text-xl">{currentTest.test_name}</span>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 {currentStepText}
               </div>
@@ -114,14 +117,11 @@ export default function MBTITest() {
                 </div>
                 <ProgressTracker
                   currentSection={currentSectionId}
-                  totalSections={sections.length}
+                  sections={currentTest.sections}
                   onSectionClick={handleSectionClick}
                 />
               </div>
-              <div 
-                className="flex-1" 
-                onClick={() => setIsSidebarOpen(false)}
-              />
+              <div className="flex-1" onClick={() => setIsSidebarOpen(false)} />
             </div>
           )}
 
@@ -154,10 +154,11 @@ export default function MBTITest() {
               <div className="fixed bottom-0 left-0 right-0 md:left-80 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-sm">
                 <div className="max-w-3xl mx-auto px-8 pb-6">
                   <FormNavigation
+                    onSubmit={onSubmit}
                     onNext={handleNext}
                     onPrev={handlePrev}
                     isFirstStep={currentSectionId === 1}
-                    isLastStep={currentSectionId === sections.length}
+                    isLastStep={currentSectionId === currentTest.sections.length}
                   />
                 </div>
               </div>
