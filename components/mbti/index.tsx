@@ -22,8 +22,10 @@ export default function MBTITest() {
   const methods = useForm<MBTIResponse>({
     resolver: zodResolver(mbtiResponseSchema),
     defaultValues: {
+      id: 0, // provide a default id
       answers: {},
-      result: undefined,
+      result: "", // default empty result
+      createdAt: new Date().toISOString(), // set default createdAt
     },
   });
 
