@@ -10,6 +10,7 @@ import { ProgressTracker } from "@/components/mbti/progress-tracker";
 import { QuestionCard } from "@/components/mbti/question-card";
 import { FormNavigation } from "@/components/mbti/form-navigation";
 import { X, Menu } from "lucide-react";
+import { calculateMBTI } from "@/lib/calculate-mbti";
 
 export default function MBTITest() {
   const [currentSectionId, setCurrentSectionId] = useState(1);
@@ -43,7 +44,10 @@ export default function MBTITest() {
 
   const onSubmit = (data: MBTIResponse) => {
     saveProgress(data);
+    // Calculate personality type result based on answers and questions.
+    const personalityResult = calculateMBTI(data.answers, currentTest.questions);
     console.log("Form submitted:", data);
+    console.log("Personality Type:", personalityResult);
   };
 
   const handleNext = () => {
