@@ -10,7 +10,7 @@ export interface TestQuestion {
   id: string;
   text: string;
   type: 'binary' | 'likert';
-  icon?: string; // now questions can have an icon too
+  icon: string; // now questions can have an icon too
   iconColor?: string; // now uses Tailwind CSS classes instead of hex
   options?: Array<{
     value: string;
