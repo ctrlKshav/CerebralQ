@@ -1,4 +1,5 @@
-import { notFound } from "next/navigation"
+"use client";
+import { notFound, useParams } from "next/navigation"
 import TestHeader from "./(components)/TestHeader"
 import OverviewCard from "./(components)/OverviewCard"
 import DiscoverySection from "./(components)/DiscoverySection"
@@ -9,8 +10,9 @@ import ActionArea from "./(components)/ActionArea"
 import { getTestData } from "@/lib/supabase"
 import Navbar from "@/components/navbar"
 
-export default async function TestInfoPage({ params }: { params: { testId: string } }) {
-  const testData = await getTestData(params.testId)
+export default  function TestInfoPage() {
+  const params = useParams();
+  const testData = getTestData(params.testId as string);
 
   if (!testData) {
     notFound()

@@ -37,7 +37,7 @@ const sampleTestData = {
   is_premium: false,
 }
 
-export async function getTestData(testId: string) {
+export  function getTestData(testId: string) {
   // In a real implementation, fetch data from Supabase
   return sampleTestData
 }
