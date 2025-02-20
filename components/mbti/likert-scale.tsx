@@ -19,7 +19,7 @@ export function LikertScale({ name }: LikertScaleProps) {
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {options.map((option) => {
           const isSelected = selectedValue === option.value;
           return (
@@ -35,14 +35,14 @@ export function LikertScale({ name }: LikertScaleProps) {
                 }
               `}
             >
-              <label className="block p-4 text-center cursor-pointer">
+              <label className="p-4 text-center cursor-pointer flex md:flex md:items-center md:justify-center">
                 <input
                   type="radio"
                   value={option.value}
                   {...register(name)}
                   className="text-xl mr-2 cursor-pointer"
                 />
-                <span className={`block text-sm font-medium mb-1
+                <span className={`block text-sm font-medium mb-1 md:mb-0
                   ${isSelected 
                     ? 'text-purple-600 dark:text-purple-400' 
                     : 'text-gray-700 dark:text-gray-300'
