@@ -18,8 +18,8 @@ export function LikertScale({ name }: LikertScaleProps) {
   const selectedValue = watch(name);
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+    <div className="space-y-6">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-6 text-base md:text-lg">
         {options.map((option) => {
           const isSelected = selectedValue === option.value;
           return (
@@ -28,29 +28,29 @@ export function LikertScale({ name }: LikertScaleProps) {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={`
-                relative rounded-lg cursor-pointer
+                relative rounded-lg cursor-pointer p-4
                 ${isSelected 
                   ? 'bg-purple-50 dark:bg-purple-900/20 ring-2 ring-purple-500' 
                   : 'hover:bg-gray-50 dark:hover:bg-gray-800/50'
                 }
               `}
             >
-              <label className="p-4 text-center cursor-pointer flex md:flex md:items-center md:justify-center">
+              <label className="flex items-center justify-start gap-2 text-center cursor-pointer">
                 <input
                   type="radio"
                   value={option.value}
                   {...register(name)}
-                  className="text-xl mr-2 cursor-pointer"
+                  className="form-radio"
                 />
-                <span className={`block text-sm font-medium mb-1 md:mb-0
-                  ${isSelected 
-                    ? 'text-purple-600 dark:text-purple-400' 
-                    : 'text-gray-700 dark:text-gray-300'
+                <span
+                  className={`font-semibold ${
+                    isSelected 
+                      ? 'text-purple-600 dark:text-purple-400' 
+                      : 'text-gray-700 dark:text-gray-300'
                   }`}
                 >
                   {option.label}
                 </span>
-                
               </label>
             </motion.div>
           );
