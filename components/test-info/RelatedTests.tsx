@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from "next/link"
+import { TestData } from "@/lib/supabase"
 
-export default function RelatedTests({ relatedTests }) {
+export default function RelatedTests({ relatedTests }: { relatedTests: TestData["complementary_tests"] }) {
   return (
     <Card>
       <CardHeader>

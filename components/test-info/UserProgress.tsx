@@ -3,14 +3,14 @@
 import { useEffect, useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { getUserProgress } from "@/lib/supabase"
+import { getUserProgress, UserProgressInterface } from "@/lib/supabase"
 
-export default function UserProgress({ testId }) {
-  const [progress, setProgress] = useState(null)
+export default function UserProgress({ testId }: { testId: string }) {
+  const [progress, setProgress] = useState<UserProgressInterface | null>(null)
 
   useEffect(() => {
     async function fetchProgress() {
-      const data = await getUserProgress(testId)
+      const data = getUserProgress(testId)
       setProgress(data)
     }
     fetchProgress()

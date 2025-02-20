@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import Image from "next/image"
+import { TestData } from "@/lib/supabase"
 
-export default function DiscoverySection({ test }) {
+export default function DiscoverySection({ test }: { test: TestData }) {
   return (
     <Card className="mb-8">
       <CardHeader>

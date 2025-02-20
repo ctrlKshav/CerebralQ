@@ -1,6 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { TestData } from "@/lib/supabase"
 
-export default function TestDetails({ test }) {
+export default function TestDetails({ test }: { test: TestData }) {
   return (
     <Accordion type="single" collapsible className="mb-8">
       <AccordionItem value="scoring">

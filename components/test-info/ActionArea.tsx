@@ -5,8 +5,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { BookmarkIcon } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import { TestData } from "@/lib/supabase";
 
-export default function ActionArea({ test }) {
+export default function ActionArea({ test }: { test: TestData }) {
   const [saved, setSaved] = useState(false);
 
   const handleSave = () => {

@@ -1,7 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
+import { TestData } from "@/lib/supabase"
 
-export default function OverviewCard({ test }) {
+export default function OverviewCard({ test }: { test: TestData }) {
   return (
     <Card className="mb-8">
       <CardHeader>

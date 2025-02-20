@@ -9,7 +9,7 @@ const sampleTestData = {
     category: "Personality",
     num_questions: 93,
     time_estimate_minutes: 45,
-    difficulty_level: "Medium",
+    engagement_level: "intensive",
     scoring_method:
       "The MBTI uses a series of questions to determine preferences across four dichotomies: Extraversion/Introversion, Sensing/Intuition, Thinking/Feeling, and Judging/Perceiving.",
     result_type: "16 personality types",

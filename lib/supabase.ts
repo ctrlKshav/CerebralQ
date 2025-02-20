@@ -1,4 +1,36 @@
-const sampleTestData = {
+export interface TestData {
+  id: string;
+  name: string;
+  short_code: string;
+  description: string;
+  category: string;
+  num_questions: number;
+  time_estimate_minutes: number;
+  engagement_level: string;
+  scoring_method: string;
+  result_type: string;
+  result_schema: Record<string, unknown>;
+  scientific_validity_score: number;
+  reliability_score: number;
+  key_insights: string[];
+  result_interpretation: string;
+  scientific_background: string;
+  recommended_age_range?: string;
+  complementary_tests: {
+    id: string;
+    name: string;
+    description: string;
+  }[];
+  is_premium: boolean;
+}
+
+export interface UserProgressInterface {
+  score: string;
+  timestamp: string;
+  validity: string;
+}
+
+const sampleTestData: TestData = {
   id: "mbti-1",
   name: "Myers-Briggs Type Indicator (MBTI)",
   short_code: "MBTI",
@@ -7,7 +39,7 @@ const sampleTestData = {
   category: "Personality",
   num_questions: 93,
   time_estimate_minutes: 45,
-  difficulty_level: "Medium",
+  engagement_level: "Intensive",
   scoring_method:
     "The MBTI uses a series of questions to determine preferences across four dichotomies: Extraversion/Introversion, Sensing/Intuition, Thinking/Feeling, and Judging/Perceiving.",
   result_type: "16 personality types",
@@ -37,12 +69,12 @@ const sampleTestData = {
   is_premium: false,
 }
 
-export  function getTestData(testId: string) {
+export function getTestData(testId: string): TestData {
   // In a real implementation, fetch data from Supabase
   return sampleTestData
 }
 
-export async function getUserProgress(testId: string) {
+export function getUserProgress(testId: string): UserProgressInterface {
   // Mock user progress data
   return {
     score: "INTJ",
