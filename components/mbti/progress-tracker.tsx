@@ -30,7 +30,7 @@ export function ProgressTracker({
       {Array.from({ length: totalSections }).map((_, index) => (
         <button
           key={index}
-          onClick={() => onSectionClick(index + 1)}
+          // onClick={() => onSectionClick(index + 1)}
           className={`h-2 flex-1 rounded-full transition-all ${
             index + 1 === currentSection
               ? 'bg-primary'
@@ -57,9 +57,9 @@ export function ProgressTracker({
         {sections.map((section) => {
           const SectionIcon = (Icons as any)[section.icon];
           return (
-            <button
+            <div
               key={section.id}
-              onClick={() => onSectionClick(section.id)}
+              
               className={`w-full text-left px-4 py-3 rounded-lg transition-colors
                 ${currentSection > section.id
                   ? 'text-purple-600 dark:text-purple-400 hover:bg-purple-50 dark:hover:bg-purple-900/20' 
@@ -75,7 +75,7 @@ export function ProgressTracker({
               <div className="text-sm text-gray-500 dark:text-gray-400">
                 {section.description}
               </div>
-            </button>
+            </div>
           );
         })}
       </div>
