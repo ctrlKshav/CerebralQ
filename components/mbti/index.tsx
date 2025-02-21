@@ -76,7 +76,7 @@ export default function MBTITest() {
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
           {/* Desktop Sidebar */}
-          <div className="hidden md:block w-80 fixed top-16 left-0 bottom-0 shadow-sm border-r backdrop-blur-sm">
+          <div className="hidden md:block w-80 fixed top-4 left-0 bottom-0 shadow-sm border-r backdrop-blur-sm">
             <div className="h-full flex flex-col">
               <div className="p-6">
                 <span className="font-bold text-xl">{currentTest.test_name}</span>
@@ -133,7 +133,7 @@ export default function MBTITest() {
           )}
 
           {/* Main Content */}
-          <div className="flex-1 md:ml-80 mt-16 md:mt-16">
+          <div className="flex-1 md:ml-80">
             <div className="min-h-screen relative">
               <div className="p-8 pb-32">
                 <div className="max-w-3xl mx-auto">
