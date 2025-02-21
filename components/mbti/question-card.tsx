@@ -1,29 +1,14 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { LikertScale } from "./likert-scale";
-import { BinaryChoice } from "./binary-choice";
 import * as Icons from "lucide-react";
+import { TestQuestion } from "@/types/tests/mbti";
 
 interface QuestionCardProps {
-  question: {
-    id: string;
-    text: string;
-    description?: string;
-    type: 'likert' | 'binary';
-    icon: string; // icon name
-    iconColor?: string; // optional icon color
-    options?: Array<{
-      value: string;
-      label: string;
-      description?: string;
-    }>;
-    dimension: string;
-    section: number;
-  };
+  question: TestQuestion;
   name: string;
 }
 
 export function QuestionCard({ question, name }: QuestionCardProps) {
-  // Look up the icon; use iconColor if provided, else fallback to default color.
   const IconComponent = question.icon ? (Icons as any)[question.icon] : null;
   const iconClass = question.iconColor || "text-blue-500";
 
@@ -41,11 +26,8 @@ export function QuestionCard({ question, name }: QuestionCardProps) {
         )}
       </CardHeader>
       <CardContent>
-        {question.type === 'likert' ? (
-          <LikertScale name={name} />
-        ) : (
-          <BinaryChoice name={name} options={question.options} />
-        )}
+        {/* Always render LikertScale for MBTI questions */}
+        <LikertScale name={name} />
       </CardContent>
     </Card>
   );

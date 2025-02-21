@@ -1,32 +1,4 @@
-﻿export interface TestSection {
-  id: number;
-  title: string;
-  description: string;
-  dimension: string;
-  icon: string; // section icon
-}
-
-export interface TestQuestion {
-  id: string;
-  text: string;
-  type: 'binary' | 'likert';
-  icon: string; // now questions can have an icon too
-  iconColor?: string; // now uses Tailwind CSS classes instead of hex
-  options?: Array<{
-    value: string;
-    label: string;
-    description?: string;
-  }>;
-  dimension: string;
-  section: number;
-}
-
-export interface TestData {
-  id: number;
-  test_name: string;
-  sections: TestSection[];
-  questions: TestQuestion[];
-}
+﻿import { TestData, TestSection, TestQuestion } from "@/types/tests/mbti";
 
 export const testData: TestData[] = [
   {
@@ -65,130 +37,160 @@ export const testData: TestData[] = [
     "questions": [
       {
         "id": "1",
-        "text": "At a party do you:",
-        "type": "binary",
+        "text": "I prefer interacting with many people, including strangers, at parties",
+        "type": "likert",
         "icon": "Users",
         "iconColor": "text-orange-500",
         "options": [
-          { "value": "E", "label": "Interact with many, including strangers" },
-          { "value": "I", "label": "Interact with a few, known to you" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "E-I",
         "section": 1
       },
       {
         "id": "2",
-        "text": "Are you more:",
-        "type": "binary",
+        "text": "I tend to be more realistic than speculative",
+        "type": "likert",
         "icon": "Clipboard",
         "iconColor": "text-blue-500",
         "options": [
-          { "value": "S", "label": "Realistic than speculative" },
-          { "value": "N", "label": "Speculative than realistic" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "S-N",
         "section": 2
       },
       {
         "id": "3",
-        "text": "Is it worse to:",
-        "type": "binary",
+        "text": "I consider having my \"head in the clouds\" to be worse than being \"in a rut\"",
+        "type": "likert",
         "icon": "AlertTriangle",
         "iconColor": "text-purple-500",
         "options": [
-          { "value": "S", "label": "Have your \"head in the clouds\"" },
-          { "value": "N", "label": "Be \"in a rut\"" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "S-N",
         "section": 2
       },
       {
         "id": "4",
-        "text": "Are you more impressed by:",
-        "type": "binary",
+        "text": "I am more impressed by principles than emotions",
+        "type": "likert",
         "icon": "Award",
         "iconColor": "text-green-500",
         "options": [
-          { "value": "T", "label": "Principles" },
-          { "value": "F", "label": "Emotions" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "T-F",
         "section": 3
       },
       {
         "id": "5",
-        "text": "Are you more drawn toward the:",
-        "type": "binary",
+        "text": "I am more drawn toward the convincing than the touching",
+        "type": "likert",
         "icon": "Heart",
         "iconColor": "text-red-500",
         "options": [
-          { "value": "T", "label": "Convincing" },
-          { "value": "F", "label": "Touching" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "T-F",
         "section": 3
       },
       {
         "id": "6",
-        "text": "Do you prefer to work:",
-        "type": "binary",
+        "text": "I prefer to work to deadlines rather than just \"whenever\"",
+        "type": "likert",
         "icon": "Clock",
         "iconColor": "text-yellow-500",
         "options": [
-          { "value": "J", "label": "To deadlines" },
-          { "value": "P", "label": "Just \"whenever\"" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "J-P",
         "section": 4
       },
       {
         "id": "7",
-        "text": "Do you tend to choose:",
-        "type": "binary",
+        "text": "I tend to choose rather carefully than somewhat impulsively",
+        "type": "likert",
         "icon": "Crosshair",
         "iconColor": "text-teal-500",
         "options": [
-          { "value": "J", "label": "Rather carefully" },
-          { "value": "P", "label": "Somewhat impulsively" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "J-P",
         "section": 4
       },
       {
         "id": "8",
-        "text": "After socializing, do you:",
-        "type": "binary",
+        "text": "After socializing, I feel energized and want more",
+        "type": "likert",
         "icon": "Battery",
         "iconColor": "text-blue-900",
         "options": [
-          { "value": "E", "label": "Feel energized and want more" },
-          { "value": "I", "label": "Need quiet time to recharge" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "E-I",
         "section": 1
       },
       {
         "id": "9",
-        "text": "Are you more attracted to:",
-        "type": "binary",
+        "text": "I am more attracted to sensible people than imaginative people",
+        "type": "likert",
         "icon": "Anchor",
         "iconColor": "text-gray-500",
         "options": [
-          { "value": "S", "label": "Sensible people" },
-          { "value": "N", "label": "Imaginative people" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "S-N",
         "section": 2
       },
       {
         "id": "10",
-        "text": "Are you more interested in:",
-        "type": "binary",
+        "text": "I am more interested in what is actual than what is possible",
+        "type": "likert",
         "icon": "Map",
         "iconColor": "text-purple-700",
         "options": [
-          { "value": "S", "label": "What is actual" },
-          { "value": "N", "label": "What is possible" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "S-N",
         "section": 2
@@ -259,52 +261,64 @@ export const testData: TestData[] = [
       },
       {
         "id": "15",
-        "text": "When meeting new people, I tend to:",
-        "type": "binary",
-        "icon": "Coffee", 
+        "text": "I find it easy to initiate conversations with new people",
+        "type": "likert",
+        "icon": "Coffee",
         "iconColor": "text-orange-600",
         "options": [
-          { "value": "E", "label": "Initiate conversations easily" },
-          { "value": "I", "label": "Wait for others to approach me" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "E-I",
         "section": 1
       },
       {
         "id": "16",
-        "text": "I prefer explanations that are:",
-        "type": "binary",
+        "text": "I prefer concrete and literal explanations",
+        "type": "likert",
         "icon": "Book",
         "iconColor": "text-blue-500",
         "options": [
-          { "value": "S", "label": "Concrete and literal" },
-          { "value": "N", "label": "Figurative and metaphorical" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "S-N",
         "section": 2
       },
       {
         "id": "17",
-        "text": "When making an important decision, I prioritize:",
-        "type": "binary",
+        "text": "I prioritize objective criteria and facts when making important decisions",
+        "type": "likert",
         "icon": "Filter",
         "iconColor": "text-green-500",
         "options": [
-          { "value": "T", "label": "Objective criteria and facts" },
-          { "value": "F", "label": "How it affects people involved" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "T-F",
         "section": 3
       },
       {
         "id": "18",
-        "text": "I prefer environments that are:",
-        "type": "binary",
+        "text": "I prefer organized and structured environments",
+        "type": "likert",
         "icon": "Home",
         "iconColor": "text-orange-400",
         "options": [
-          { "value": "J", "label": "Organized and structured" },
-          { "value": "P", "label": "Flexible and adaptable" }
+          { "value": "1", "label": "Strongly Disagree" },
+          { "value": "2", "label": "Disagree" },
+          { "value": "3", "label": "Neutral" },
+          { "value": "4", "label": "Agree" },
+          { "value": "5", "label": "Strongly Agree" }
         ],
         "dimension": "J-P",
         "section": 4
