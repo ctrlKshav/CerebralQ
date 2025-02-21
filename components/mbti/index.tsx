@@ -133,10 +133,10 @@ export default function MBTITest() {
           )}
 
           {/* Main Content */}
-          <div className="flex-1 md:ml-80">
+          <div className="flex-1 md:ml-80 mt-16 md:mt-0">
             <div className="min-h-screen relative">
               <div className="p-8 pb-32">
-                <div className="max-w-3xl mx-auto">
+                <div className="max-w-4xl mx-auto">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentSectionId}
