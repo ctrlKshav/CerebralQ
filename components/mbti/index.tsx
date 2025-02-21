@@ -16,9 +16,8 @@ export default function MBTITest() {
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const currentTest = testData[0];
-  const sectionQuestions = currentTest.questions.filter(
-    q => q.section === currentSectionId
-  );
+  const sectionQuestions = currentTest.questions
+    .filter(q => q.section === currentSectionId)
 
   const methods = useForm<MBTIResponse>({
     resolver: zodResolver(mbtiResponseSchema),
@@ -180,7 +179,7 @@ export default function MBTITest() {
           <div className="flex-1 md:ml-80 mt-16 md:mt-0">
             <div className="min-h-screen relative">
               <div className="p-8 pb-32">
-                <div className="max-w-4xl mx-auto">
+                <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center">
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={currentSectionId}
@@ -188,7 +187,7 @@ export default function MBTITest() {
                       animate={{ opacity: 1, x: 0 }}
                       exit={{ opacity: 0, x: -20 }}
                       transition={{ duration: 0.3 }}
-                      className="space-y-6"
+                      className="w-full"
                     >
                       {sectionQuestions.map((question) => (
                         <QuestionCard

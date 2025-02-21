@@ -39,7 +39,7 @@ export function LikertScale({ name }: LikertScaleProps) {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 text-base md:text-lg">
+      <div className="grid grid-cols-1 lg:grid-cols-5 text-xl">
         {options.map((option) => {
           const isSelected = selectedValue === option.value;
           return (
@@ -48,16 +48,16 @@ export function LikertScale({ name }: LikertScaleProps) {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={`
-                relative rounded-lg cursor-pointer p-4                
+                relative rounded-lg cursor-pointer p-6                
               `}
             >
-              <label className="flex items-center justify-start gap-2 text-center cursor-pointer">
+              <label className="grid grid-cols-5 items-center gap-2">
                 <input
                   type="radio"
                   value={option.value}
                   {...register(name)}
                   onChange={handleChange}
-                  className="form-radio"
+                  className="form-control h-6 w-6"
                 />
                 <span
                   className={`font-semibold ${
