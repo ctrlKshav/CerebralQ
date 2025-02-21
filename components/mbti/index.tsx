@@ -51,25 +51,54 @@ export default function MBTITest() {
   };
 
   const handleNext = () => {
+    // Check if all questions in current section are answered
+    const currentSectionQuestions = currentTest.questions.filter(
+      q => q.section === currentSectionId
+    );
+    
+    const unansweredQuestions = currentSectionQuestions.filter(
+      question => !methods.getValues().answers[question.id]
+    );
+
+    if (unansweredQuestions.length > 0) {
+      unansweredQuestions.forEach(question => {
+        methods.setError(`answers.${question.id}`, {
+          type: 'required',
+          message: 'Please answer this question'
+        });
+      });
+      return;
+    }
+
+    // Clear any existing errors before moving to next section
+    methods.clearErrors();
+
     if (currentSectionId < currentTest.sections.length) {
       setCurrentSectionId(prev => prev + 1);
     }
     saveProgress(methods.getValues());
-    console.log(methods.getValues());
   };
 
   const handlePrev = () => {
+    // Clear any errors when going back
+    methods.clearErrors();
     if (currentSectionId > 1) {
       setCurrentSectionId(prev => prev - 1);
     }
   };
 
   const handleSectionClick = (sectionId: number) => {
+    // Clear any errors when using section navigation
+    methods.clearErrors();
     setCurrentSectionId(sectionId);
     setIsSidebarOpen(false);
   };
 
   const currentStepText = `Step ${currentSectionId} of ${currentTest.sections.length}`;
+
+  // Remove the watch effect that was clearing errors
+  // We only want to clear errors on specific user actions now
+  const answers = methods.watch('answers');
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">

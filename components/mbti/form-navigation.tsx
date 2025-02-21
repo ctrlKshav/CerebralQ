@@ -19,44 +19,60 @@ export function FormNavigation({
   isFirstStep, 
   isLastStep 
 }: FormNavigationProps) {
-  const methods = useFormContext();
-  return (
-    <div className="flex justify-between">
-      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-        <Button
-          type="button"
-          variant="outline"
-          onClick={onPrev}
-          disabled={isFirstStep}
-          className="gap-2"
-        >
-          <ArrowLeft className="h-4 w-4" />
-          Previous
-        </Button>
-      </motion.div>
+  const { formState: { errors }, trigger } = useFormContext();
+  
+  // Only show errors that were triggered by the Next button
+  const currentErrors = Object.keys(errors.answers || {}).length > 0;
 
-      {isLastStep ? (
-        // Render submit button without motion wrapper when complete
-        <Button
-          type="submit"
-          variant={"default"}
-          className="gap-2"
-        >
-          Complete
-        </Button>
-      ) : (
+  const handleNextClick = async () => {
+    // This will prevent immediate validation on mount
+    onNext();
+  };
+
+  return (
+    <div className="flex flex-col gap-4">
+      {currentErrors && (
+        <div className="text-sm text-red-500 text-center">
+          Please answer all questions before proceeding
+        </div>
+      )}
+      <div className="flex justify-between">
         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
           <Button
             type="button"
-            onClick={onNext}
+            variant="outline"
+            onClick={onPrev}
+            disabled={isFirstStep}
+            className="gap-2"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            Previous
+          </Button>
+        </motion.div>
+
+        {isLastStep ? (
+          // Render submit button without motion wrapper when complete
+          <Button
+            type="submit"
             variant={"default"}
             className="gap-2"
           >
-            Next
-            <ArrowRight className="h-4 w-4" />
+            Complete
           </Button>
-        </motion.div>
-      )}
+        ) : (
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              type="button"
+              onClick={handleNextClick}
+              variant={"default"}
+              className="gap-2"
+            >
+              Next
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </motion.div>
+        )}
+      </div>
     </div>
   );
 }

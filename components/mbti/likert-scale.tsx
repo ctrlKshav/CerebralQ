@@ -14,8 +14,13 @@ interface LikertScaleProps {
 }
 
 export function LikertScale({ name }: LikertScaleProps) {
-  const { register, watch } = useFormContext();
+  const { register, watch, clearErrors } = useFormContext();
   const selectedValue = watch(name);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    clearErrors(name);
+    register(name).onChange(e);
+  };
 
   return (
     <div className="space-y-6">
@@ -40,6 +45,7 @@ export function LikertScale({ name }: LikertScaleProps) {
                   type="radio"
                   value={option.value}
                   {...register(name)}
+                  onChange={handleChange}
                   className="form-radio"
                 />
                 <span
