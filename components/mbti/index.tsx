@@ -30,17 +30,17 @@ export default function MBTITest() {
     },
   });
 
-  useEffect(() => {
-    const savedProgress = loadProgress();
-    if (savedProgress) {
-      methods.reset(savedProgress);
-      const lastAnsweredSection = Math.max(
-        ...Object.keys(savedProgress.answers)
-          .map(key => currentTest.questions.find(q => q.id === key)?.section || 1)
-      );
-      setCurrentSectionId(lastAnsweredSection);
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedProgress = loadProgress();
+  //   if (savedProgress) {
+  //     methods.reset(savedProgress);
+  //     const lastAnsweredSection = Math.max(
+  //       ...Object.keys(savedProgress.answers)
+  //         .map(key => currentTest.questions.find(q => q.id === key)?.section || 1)
+  //     );
+  //     setCurrentSectionId(lastAnsweredSection);
+  //   }
+  // }, []);
 
   const onSubmit = async (data: MBTIResponse) => {
     const currentSectionQuestions = currentTest.questions.filter(

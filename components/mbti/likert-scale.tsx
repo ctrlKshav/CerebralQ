@@ -20,6 +20,21 @@ export function LikertScale({ name }: LikertScaleProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearErrors(name);
     register(name).onChange(e);
+    
+    // Find the current question card container
+    const currentCard = e.currentTarget.closest('.question-card');
+    // Find the next question card
+    const nextCard = currentCard?.nextElementSibling;
+    
+    // If there's a next question, scroll to it
+    if (nextCard) {
+      setTimeout(() => {
+        nextCard.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }, 50);
+    }
   };
 
   return (
