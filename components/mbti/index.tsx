@@ -42,9 +42,24 @@ export default function MBTITest() {
     }
   }, []);
 
-  const onSubmit = (data: MBTIResponse) => {
+  const onSubmit = async (data: MBTIResponse) => {
+    const currentSectionQuestions = currentTest.questions.filter(
+      q => q.section === currentSectionId
+    );
+    const unansweredQuestions = currentSectionQuestions.filter(
+      question => !methods.getValues().answers[question.id]
+    );
+    if (unansweredQuestions.length > 0) {
+      unansweredQuestions.forEach(question => {
+        methods.setError(`answers.${question.id}`, {
+          type: 'required',
+          message: 'Please answer this question'
+        });
+      });
+      return;
+    }
+    methods.clearErrors();
     saveProgress(data);
-    // Calculate personality type result based on answers and questions.
     const personalityResult = calculateMBTI(data.answers, currentTest.questions);
     console.log("Form submitted:", data);
     console.log("Personality Type:", personalityResult);
