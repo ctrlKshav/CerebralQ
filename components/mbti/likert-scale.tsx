@@ -33,11 +33,7 @@ export function LikertScale({ name }: LikertScaleProps) {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               className={`
-                relative rounded-lg cursor-pointer p-4
-                ${isSelected 
-                  ? 'bg-purple-50 dark:bg-purple-900/20 ring-2 ring-purple-500' 
-                  : 'hover:bg-gray-50 dark:hover:bg-gray-800/50'
-                }
+                relative rounded-lg cursor-pointer p-4                
               `}
             >
               <label className="flex items-center justify-start gap-2 text-center cursor-pointer">
