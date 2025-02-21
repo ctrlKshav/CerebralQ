@@ -13,7 +13,7 @@ export interface TestQuestion {
   type: 'likert';
   icon: string;
   iconColor?: string;
-  options: Array<{
+  options?: Array<{
     value: string;
     label: string;
     description?: string;
