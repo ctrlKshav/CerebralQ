@@ -21,7 +21,7 @@ export function FormNavigation({
 }: FormNavigationProps) {
   const methods = useFormContext();
   return (
-    <div className="flex justify-between mt-8">
+    <div className="flex justify-between">
       <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
         <Button
           type="button"
@@ -39,7 +39,8 @@ export function FormNavigation({
         // Render submit button without motion wrapper when complete
         <Button
           type="submit"
-          className="gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+          variant={"default"}
+          className="gap-2"
         >
           Complete
         </Button>
@@ -48,7 +49,8 @@ export function FormNavigation({
           <Button
             type="button"
             onClick={onNext}
-            className="gap-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700"
+            variant={"default"}
+            className="gap-2"
           >
             Next
             <ArrowRight className="h-4 w-4" />
