@@ -11,6 +11,8 @@ import { QuestionCard } from "@/components/mbti/question-card";
 import { FormNavigation } from "@/components/mbti/form-navigation";
 import { X, Menu } from "lucide-react";
 import { calculateMBTI } from "@/lib/calculate-mbti";
+import { smoothScrollToTop } from "@/lib/utils";
+import { TestForm } from "./test-form";
 
 export default function MBTITest() {
   const [currentSectionId, setCurrentSectionId] = useState(1);
@@ -29,6 +31,10 @@ export default function MBTITest() {
     },
   });
 
+  // useEffect(() => {
+  //   window.scrollTo(0,0)
+  // }, [currentSectionId])
+  
   // useEffect(() => {
   //   const savedProgress = loadProgress();
   //   if (savedProgress) {
@@ -89,8 +95,11 @@ export default function MBTITest() {
 
     if (currentSectionId < currentTest.sections.length) {
       setCurrentSectionId(prev => prev + 1);
+      smoothScrollToTop();
     }
+    
     saveProgress(methods.getValues());
+    
   };
 
   const handlePrev = () => {
@@ -98,6 +107,7 @@ export default function MBTITest() {
     methods.clearErrors();
     if (currentSectionId > 1) {
       setCurrentSectionId(prev => prev - 1);
+      smoothScrollToTop();
     }
   };
 
@@ -176,44 +186,14 @@ export default function MBTITest() {
           )}
 
           {/* Main Content */}
-          <div className="flex-1 md:ml-80 mt-16 md:mt-0">
-            <div className="min-h-screen relative">
-              <div className="p-8 pb-32">
-                <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center">
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={currentSectionId}
-                      initial={{ opacity: 0, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -20 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-full"
-                    >
-                      {sectionQuestions.map((question) => (
-                        <QuestionCard
-                          key={question.id}
-                          question={question}
-                          name={`answers.${question.id}`}
-                        />
-                      ))}
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
-              {/* Fixed Bottom Navigation */}
-              <div className="fixed bottom-0 left-0 right-0 md:left-80 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-sm">
-                <div className="max-w-3xl mx-auto px-8 py-6">
-                  <FormNavigation
-                    onSubmit={onSubmit}
-                    onNext={handleNext}
-                    onPrev={handlePrev}
-                    isFirstStep={currentSectionId === 1}
-                    isLastStep={currentSectionId === currentTest.sections.length}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+          <TestForm
+            currentSectionId={currentSectionId}
+            questions={currentTest.questions}
+            sections={currentTest.sections}
+            onNext={handleNext}
+            onPrev={handlePrev}
+            onSubmit={onSubmit}
+          />
         </form>
       </FormProvider>
     </div>

@@ -1,0 +1,67 @@
+﻿import { motion, AnimatePresence } from "framer-motion";
+import { QuestionCard } from "./question-card";
+import { FormNavigation } from "./form-navigation";
+import { TestQuestion, TestSection } from "@/types/tests/mbti";
+import { MBTIResponse } from "@/shared/schema";
+import { useEffect } from "react";
+
+interface TestFormProps {
+  currentSectionId: number;
+  questions: TestQuestion[];
+  sections: TestSection[];
+  onNext: () => void;
+  onPrev: () => void;
+  onSubmit: (data: MBTIResponse) => void;
+}
+
+export function TestForm({
+  currentSectionId,
+  questions,
+  sections,
+  onNext,
+  onPrev,
+  onSubmit
+}: TestFormProps) {
+  const sectionQuestions = questions.filter(q => q.section === currentSectionId);
+
+  return (
+    <div className="flex-1 md:ml-80 mt-16 md:mt-0">
+      <div className="min-h-screen relative">
+        <div className="p-8 pb-32">
+          <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSectionId}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="w-full"
+              >
+                {sectionQuestions.map((question) => (
+                  <QuestionCard
+                    key={question.id}
+                    question={question}
+                    name={`answers.${question.id}`}
+                  />
+                ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+        {/* Fixed Bottom Navigation */}
+        <div className="fixed bottom-0 left-0 right-0 md:left-80 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-sm">
+          <div className="max-w-3xl mx-auto px-8 py-6">
+            <FormNavigation
+              onSubmit={onSubmit}
+              onNext={onNext}
+              onPrev={onPrev}
+              isFirstStep={currentSectionId === 1}
+              isLastStep={currentSectionId === sections.length}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
