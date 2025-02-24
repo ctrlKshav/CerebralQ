@@ -1,13 +1,13 @@
-﻿'use client';
+﻿"use client";
 
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { 
-  Brain, 
-  Timer, 
-  Users, 
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import {
+  Brain,
+  Timer,
+  Users,
   Zap,
   Target,
   Award,
@@ -15,25 +15,31 @@ import {
   History,
   BarChart,
   FileSpreadsheet,
-  ArrowRight
-} from 'lucide-react';
+  ArrowRight,
+  ArrowDown,
+} from "lucide-react";
+import Link from "next/link";
 
 const MBTI_TEST = {
-  name: 'Myers-Briggs Type Indicator',
-  short_code: 'MBTI',
+  name: "Myers-Briggs Type Indicator",
+  short_code: "MBTI",
   description:
-    'Understand your personality type and discover how you think, make decisions, and interact with the world around you.',
+    "Understand your personality type and discover how you think, make decisions, and interact with the world around you.",
   features: [
-    { icon: Timer, label: '12 mins', color: 'bg-blue-100 text-blue-700' },
-    { icon: Users, label: '2M+ people tested', color: 'bg-purple-100 text-purple-700' },
-    { icon: Zap, label: '96% accuracy', color: 'bg-amber-100 text-amber-700' },
+    { icon: Timer, label: "12 mins", color: "bg-blue-100 text-blue-700" },
+    {
+      icon: Users,
+      label: "2M+ people tested",
+      color: "bg-purple-100 text-purple-700",
+    },
+    { icon: Zap, label: "96% accuracy", color: "bg-amber-100 text-amber-700" },
   ],
-  category: 'personality',
+  category: "personality",
   citations: [
     "https://pubmed.ncbi.nlm.nih.gov/12345678/",
     "Myers, I. B., & McCaulley, M. H. (1985). Manual: A guide to the development and use of the Myers-Briggs Type Indicator. Consulting Psychologists Press.",
   ],
-  difficulty_level: 'intermediate',
+  difficulty_level: "intermediate",
   num_questions: 60,
   time_estimate_minutes: 12,
   validity_period_days: 365,
@@ -43,84 +49,85 @@ const MBTI_TEST = {
   scientific_validity_score: 78,
   past_results: [
     {
-      type: 'INTJ',
-      date: '2024-03-15',
+      type: "INTJ",
+      date: "2024-03-15",
       scores: {
         introversion: 76,
         intuition: 82,
         thinking: 65,
-        judging: 58
+        judging: 58,
       },
-      label: 'The Architect',
-      description: 'Imaginative and strategic thinkers with a plan for everything'
-    }
+      label: "The Architect",
+      description:
+        "Imaginative and strategic thinkers with a plan for everything",
+    },
   ],
   complementary_tests: [
     {
-      name: 'Big Five Personality',
-      description: 'Measure five core personality dimensions',
-      shortCode: 'big5-neo',
+      name: "Big Five Personality",
+      description: "Measure five core personality dimensions",
+      shortCode: "big5-neo",
       icon: Target,
     },
     {
-      name: 'DISC Assessment',
-      description: 'Understand your behavioral style',
-      shortCode: 'disc',
+      name: "DISC Assessment",
+      description: "Understand your behavioral style",
+      shortCode: "disc",
       icon: Award,
     },
     {
-      name: 'HEXACO',
-      description: 'Explore six personality dimensions',
-      shortCode: 'hexaco',
+      name: "HEXACO",
+      description: "Explore six personality dimensions",
+      shortCode: "hexaco",
       icon: BookOpen,
-    }
+    },
   ],
   personality_dimensions: [
     {
-      title: 'Mind',
-      description: 'How you interact with the world and direct your energy',
-      types: ['Extrovert (E)', 'Introvert (I)'],
+      title: "Mind",
+      description: "How you interact with the world and direct your energy",
+      types: ["Extrovert (E)", "Introvert (I)"],
     },
     {
-      title: 'Information',
-      description: 'How you process and gather information',
-      types: ['Sensing (S)', 'Intuition (N)'],
+      title: "Information",
+      description: "How you process and gather information",
+      types: ["Sensing (S)", "Intuition (N)"],
     },
     {
-      title: 'Decisions',
-      description: 'How you make decisions and cope with emotions',
-      types: ['Thinking (T)', 'Feeling (F)'],
+      title: "Decisions",
+      description: "How you make decisions and cope with emotions",
+      types: ["Thinking (T)", "Feeling (F)"],
     },
     {
-      title: 'Structure',
-      description: 'How you approach work, planning and decision-making',
-      types: ['Judging (J)', 'Perceiving (P)'],
+      title: "Structure",
+      description: "How you approach work, planning and decision-making",
+      types: ["Judging (J)", "Perceiving (P)"],
     },
   ],
   test_benefits: [
     {
       icon: Brain,
-      title: 'Career Success',
-      description: 'Find your ideal career path and work environment',
+      title: "Career Success",
+      description: "Find your ideal career path and work environment",
     },
     {
       icon: Users,
-      title: 'Better Relationships',
-      description: 'Transform how you connect with others',
+      title: "Better Relationships",
+      description: "Transform how you connect with others",
     },
     {
       icon: Target,
-      title: 'Personal Growth',
-      description: 'Unlock your true potential and strengths',
+      title: "Personal Growth",
+      description: "Unlock your true potential and strengths",
     },
   ],
 };
 
 const DifficultyBadge = ({ level }: { level: string }) => {
   const colors = {
-    beginner: 'bg-green-100 text-green-800',
-    intermediate: 'bg-yellow-100 text-yellow-800',
-    advanced: 'bg-red-100 text-red-800',
+    beginner: "bg-green-100 text-green-800",
+    intermediate: "bg-yellow-100 text-yellow-800",
+    advanced: "bg-red-100 text-red-800",
   };
   return (
     <span
@@ -133,8 +140,18 @@ const DifficultyBadge = ({ level }: { level: string }) => {
   );
 };
 
-const FeatureBadge = ({ Icon, label, color }: { Icon: any; label: string; color: string }) => (
-  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full ${color}`}>
+const FeatureBadge = ({
+  Icon,
+  label,
+  color,
+}: {
+  Icon: any;
+  label: string;
+  color: string;
+}) => (
+  <div
+    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full ${color}`}
+  >
     <Icon className="h-4 w-4" />
     <span className="text-sm font-medium">{label}</span>
   </div>
@@ -146,13 +163,15 @@ const ResultTypeBadge = ({ type }: { type: string }) => {
     numerical: "bg-blue-100 text-blue-800",
     category: "bg-green-100 text-green-800",
     "multi-dimensional": "bg-orange-100 text-orange-800",
-  }
+  };
   return (
-    <span className={`px-2 py-1 rounded-full text-sm font-medium ${colors[type as keyof typeof colors]}`}>
+    <span
+      className={`px-2 py-1 rounded-full text-sm font-medium ${colors[type as keyof typeof colors]}`}
+    >
       {type.charAt(0).toUpperCase() + type.slice(1)}
     </span>
-  )
-}
+  );
+};
 export default function TestInformation() {
   return (
     <div className="min-h-screen">
@@ -160,7 +179,8 @@ export default function TestInformation() {
       <section className="py-20 px-4 min-h-screen">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
-            {MBTI_TEST.name} <span className="text-2xl">({MBTI_TEST.short_code})</span>
+            {MBTI_TEST.name}{" "}
+            <span className="text-2xl">({MBTI_TEST.short_code})</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {MBTI_TEST.description}
@@ -180,10 +200,17 @@ export default function TestInformation() {
               Begin Test →
             </Button>
           </div>
+          <button className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            onClick={() => {
+                document.getElementById('test-details-section')?.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            <ArrowDown className="h-6 w-6 text-muted-foreground" />
+          </button>
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 pb-20">
+      <section className="max-w-7xl mx-auto px-4 pb-20" id="test-details-section">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {/* Test Overview Card */}
           <Card>
@@ -195,7 +222,9 @@ export default function TestInformation() {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="flex flex-wrap gap-2">
-                <Badge variant="outline" className="capitalize">Personality</Badge>
+                <Badge variant="outline" className="capitalize">
+                  Personality
+                </Badge>
                 <DifficultyBadge level={MBTI_TEST.difficulty_level} />
                 <ResultTypeBadge type={MBTI_TEST.result_type} />
               </div>
@@ -206,25 +235,36 @@ export default function TestInformation() {
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Duration</span>
-                  <span className="font-medium">{MBTI_TEST.time_estimate_minutes} minutes</span>
+                  <span className="font-medium">
+                    {MBTI_TEST.time_estimate_minutes} minutes
+                  </span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Age Range</span>
-                  <span className="font-medium">{MBTI_TEST.min_age}+ years</span>
+                  <span className="font-medium">
+                    {MBTI_TEST.min_age}+ years
+                  </span>
                 </div>
                 <div className="flex justify-between items-center">
                   <span className="text-muted-foreground">Validity Period</span>
-                  <span className="font-medium">{MBTI_TEST.validity_period_days} days</span>
+                  <span className="font-medium">
+                    {MBTI_TEST.validity_period_days} days
+                  </span>
                 </div>
               </div>
               <div className="space-y-3 pt-2">
                 <h4 className="font-medium">Key Benefits:</h4>
                 <div className="grid gap-2">
                   {MBTI_TEST.test_benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-center gap-2 bg-primary/5 p-2 rounded-lg">
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 bg-primary/5 p-2 rounded-lg"
+                    >
                       <benefit.icon className="h-5 w-5 text-primary shrink-0" />
                       <div className="font-medium">{benefit.title}</div>
-                      <div className="text-sm text-muted-foreground ml-auto">{benefit.description}</div>
+                      <div className="text-sm text-muted-foreground ml-auto">
+                        {benefit.description}
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -244,7 +284,9 @@ export default function TestInformation() {
               {MBTI_TEST.personality_dimensions.map((dimension, index) => (
                 <div key={index} className="space-y-2">
                   <h3 className="font-medium">{dimension.title}</h3>
-                  <p className="text-sm text-muted-foreground">{dimension.description}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {dimension.description}
+                  </p>
                   <div className="flex gap-2">
                     {dimension.types.map((type, i) => (
                       <Badge key={i} variant="secondary">
@@ -272,10 +314,10 @@ export default function TestInformation() {
                     <div className="space-y-1">
                       <div className="text-2xl font-bold">{result.type}</div>
                       <div className="text-sm text-muted-foreground">
-                        {new Date(result.date).toLocaleDateString('en-US', {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
+                        {new Date(result.date).toLocaleDateString("en-US", {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
                         })}
                       </div>
                     </div>
@@ -283,7 +325,9 @@ export default function TestInformation() {
                       {result.label}
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground">{result.description}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {result.description}
+                  </p>
                   <div className="space-y-2">
                     {Object.entries(result.scores).map(([trait, score]) => (
                       <div key={trait} className="space-y-1">
@@ -302,70 +346,80 @@ export default function TestInformation() {
         </div>
 
         {/* Validation Section */}
-      <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {/* Reliability Metrics Card */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BarChart className="h-5 w-5" />
-              Reliability Metrics
-            </CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-medium">Test Consistency</span>
-                <span className="text-sm text-muted-foreground">{MBTI_TEST.reliability_score}%</span>
+        <div className="mt-12 grid gap-6 md:grid-cols-2">
+          {/* Reliability Metrics Card */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BarChart className="h-5 w-5" />
+                Reliability Metrics
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium">Test Consistency</span>
+                  <span className="text-sm text-muted-foreground">
+                    {MBTI_TEST.reliability_score}%
+                  </span>
+                </div>
+                <Progress value={MBTI_TEST.reliability_score} className="h-2" />
               </div>
-              <Progress value={MBTI_TEST.reliability_score} className="h-2" />
-            </div>
-            <div className="space-y-2">
-              <div className="flex justify-between items-center">
-                <span className="text-sm font-medium">Scientific Basis</span>
-                <span className="text-sm text-muted-foreground">{MBTI_TEST.scientific_validity_score}%</span>
+              <div className="space-y-2">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm font-medium">Scientific Basis</span>
+                  <span className="text-sm text-muted-foreground">
+                    {MBTI_TEST.scientific_validity_score}%
+                  </span>
+                </div>
+                <Progress
+                  value={MBTI_TEST.scientific_validity_score}
+                  className="h-2"
+                />
               </div>
-              <Progress value={MBTI_TEST.scientific_validity_score} className="h-2" />
-            </div>
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
 
-        {/* Citations Card */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <BookOpen className="h-5 w-5" />
-              Citations
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <ul className="list-disc pl-5 space-y-2">
-              {MBTI_TEST.citations.map((citation, index) => (
-                <li key={index}>
-                  {citation.startsWith("http") ? (
-                    <a
-                      href={citation}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline"
-                    >
-                      {new URL(citation).hostname}
-                    </a>
-                  ) : (
-                    <span>{citation}</span>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </CardContent>
-        </Card>
-      </div>
+          {/* Citations Card */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <BookOpen className="h-5 w-5" />
+                Citations
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <ul className="list-disc pl-5 space-y-2">
+                {MBTI_TEST.citations.map((citation, index) => (
+                  <li key={index}>
+                    {citation.startsWith("http") ? (
+                      <a
+                        href={citation}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary hover:underline"
+                      >
+                        {new URL(citation).hostname}
+                      </a>
+                    ) : (
+                      <span>{citation}</span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </CardContent>
+          </Card>
+        </div>
 
-          {/* Related Tests Section */}
-          <div className="mt-12">
+        {/* Related Tests Section */}
+        <div className="mt-12">
           <h2 className="text-2xl font-bold mb-6">Recommended Tests</h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {MBTI_TEST.complementary_tests.map((test, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-shadow">
+              <Card
+                key={index}
+                className="group hover:shadow-lg transition-shadow"
+              >
                 <CardContent className="pt-6">
                   <div className="flex items-start gap-4">
                     <div className="p-3 rounded-lg bg-primary/5 text-primary">
@@ -373,8 +427,13 @@ export default function TestInformation() {
                     </div>
                     <div className="flex-1 space-y-2">
                       <h3 className="font-semibold">{test.name}</h3>
-                      <p className="text-sm text-muted-foreground">{test.description}</p>
-                      <Button variant="link" className="p-0 h-auto font-normal text-primary">
+                      <p className="text-sm text-muted-foreground">
+                        {test.description}
+                      </p>
+                      <Button
+                        variant="link"
+                        className="p-0 h-auto font-normal text-primary"
+                      >
                         Take Test
                       </Button>
                     </div>
