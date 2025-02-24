@@ -34,9 +34,14 @@ export function calculateMBTI(
     if (answer === undefined) return;
 
     const dimension = question.dimension;
-    if (question.type === "likert" && typeof answer.selectedScore === "number") {
-      if (answer.selectedScore > 3) dimensions[dimension].right += (answer.selectedScore - 3);
-      else if (answer.selectedScore < 3) dimensions[dimension].left += (3 - answer.selectedScore);
+    // Convert selectedScore from string to number
+    const numericScore = Number(answer.selectedScore);
+    if (question.type === "likert") {
+      if (numericScore > 3) {
+        dimensions[dimension].right += (numericScore - 3);
+      } else if (numericScore < 3) {
+        dimensions[dimension].left += (3 - numericScore);
+      }
     }
   });
 

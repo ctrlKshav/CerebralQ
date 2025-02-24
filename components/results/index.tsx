@@ -1,5 +1,7 @@
 ﻿"use client";
 
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,6 +23,7 @@ import {
   Tooltip,
 } from "recharts";
 
+// Local type definition for a trait
 interface Trait {
   letter: string;
   fullName: string;
@@ -28,74 +31,77 @@ interface Trait {
   description: string;
 }
 
-interface CareerSuggestion {
-  title: string;
-  match: number;
-}
-
-interface SimilarPersonality {
-  name: string;
-  profession: string;
-  image: string;
-}
-
 export default function Results() {
-  const personalityType = "ESTJ";
-  const testId = "CQ-2024-28947";
-  const completionDate = "February 24, 2024";
+  const searchParams = useSearchParams();
+  const [personalityType, setPersonalityType] = useState("");
+  const [testId, setTestId] = useState("");
+  const [completionDate, setCompletionDate] = useState("");
+  const [traits, setTraits] = useState<Trait[]>([]);
+  const [careerSuggestions, setCareerSuggestions] = useState<any[]>([]);
+  const [similarPersonalities, setSimilarPersonalities] = useState<any[]>([]);
 
-  const traits: Trait[] = [
-    {
-      letter: "E",
-      fullName: "Extraversion",
-      score: 78,
-      description:
-        "Gains energy from social interaction and external stimulation",
-    },
-    {
-      letter: "S",
-      fullName: "Sensing",
-      score: 65,
-      description: "Focuses on concrete facts and present realities",
-    },
-    {
-      letter: "T",
-      fullName: "Thinking",
-      score: 82,
-      description: "Makes decisions based on logic and objective analysis",
-    },
-    {
-      letter: "J",
-      fullName: "Judging",
-      score: 71,
-      description: "Prefers structure, planning, and organization",
-    },
-  ];
+  // Local mapping from letter to trait info
+  const traitMapping: Record<string, { fullName: string; description: string }> = {
+    E: { fullName: "Extraversion", description: "Gains energy from social interaction." },
+    I: { fullName: "Introversion", description: "Recharges with solitude." },
+    S: { fullName: "Sensing", description: "Focuses on concrete details." },
+    N: { fullName: "Intuition", description: "Sees the big picture." },
+    T: { fullName: "Thinking", description: "Decisions based on logic." },
+    F: { fullName: "Feeling", description: "Decisions based on values." },
+    J: { fullName: "Judging", description: "Prefers structure and order." },
+    P: { fullName: "Perceiving", description: "Prefers flexibility." },
+  };
 
-  const careerSuggestions: CareerSuggestion[] = [
-    { title: "Project Manager", match: 95 },
-    { title: "Business Analyst", match: 92 },
-    { title: "Operations Director", match: 88 },
-  ];
+  useEffect(() => {
+    const dataParam = searchParams.get("data");
+    if (dataParam) {
+      const data = JSON.parse(dataParam);
+      const { personalityType, traitScores, testId, completionDate } = data;
+      console.log("result1")
+      console.log(traitScores)
+      setTestId(testId);
+      setCompletionDate(completionDate);
+      setPersonalityType(personalityType);
+      const dimensions = ["E-I", "S-N", "T-F", "J-P"];
+      const computedTraits: Trait[] = dimensions.map((dim, index) => {
+        const letter = personalityType[index];
+        const scoreObj = traitScores[dim];
+        const score = scoreObj.dominant === "left" ? scoreObj.leftPercentage : scoreObj.rightPercentage;
+        return {
+          letter,
+          fullName: traitMapping[letter].fullName,
+          score: Math.round(score),
+          description: traitMapping[letter].description,
+        };
+      });
+      setTraits(computedTraits);
 
-  const similarPersonalities: SimilarPersonality[] = [
-    {
-      name: "Margaret Thatcher",
-      profession: "Former Prime Minister",
-      image: "/placeholder.svg?height=80&width=80",
-    },
-    {
-      name: "Jack Welch",
-      profession: "Business Executive",
-      image: "/placeholder.svg?height=80&width=80",
-    },
-  ];
+      // Example static career suggestions and similar personalities
+      setCareerSuggestions([
+        { title: "Project Manager", match: 95 },
+        { title: "Business Analyst", match: 92 },
+        { title: "Operations Director", match: 88 },
+      ]);
+      setSimilarPersonalities([
+        {
+          name: "Margaret Thatcher",
+          profession: "Former Prime Minister",
+          image: "/placeholder.svg?height=80&width=80",
+        },
+        {
+          name: "Jack Welch",
+          profession: "Business Executive",
+          image: "/placeholder.svg?height=80&width=80",
+        },
+      ]);
+    }
+  }, [searchParams.get("data")]);
 
   const chartData = traits.map((trait) => ({
     name: trait.letter,
     score: trait.score,
   }));
-  
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900">
       <main className="container mx-auto px-4 py-8 space-y-8">
@@ -105,9 +111,7 @@ export default function Results() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center space-y-4"
         >
-          <h1 className="text-6xl font-bold tracking-tighter">
-            {personalityType}
-          </h1>
+          <h1 className="text-6xl font-bold tracking-tighter">{personalityType}</h1>
           <div className="text-muted-foreground">
             <p>Test ID: {testId}</p>
             <p>Completed on {completionDate}</p>
@@ -129,8 +133,7 @@ export default function Results() {
           <CardHeader>
             <CardTitle>Your Personality Breakdown</CardTitle>
             <CardDescription>
-              Understanding your psychological preferences in how you perceive
-              the world and make decisions
+              Understanding your psychological preferences in how you perceive the world and make decisions.
             </CardDescription>
           </CardHeader>
           <CardContent className="grid md:grid-cols-2 gap-8">
@@ -148,9 +151,7 @@ export default function Results() {
                       <h3 className="font-semibold">
                         {trait.letter} - {trait.fullName}
                       </h3>
-                      <p className="text-sm text-muted-foreground">
-                        {trait.description}
-                      </p>
+                      <p className="text-sm text-muted-foreground">{trait.description}</p>
                     </div>
                     <span className="text-lg font-bold">{trait.score}%</span>
                   </div>
@@ -165,11 +166,7 @@ export default function Results() {
                   <XAxis dataKey="name" />
                   <YAxis domain={[0, 100]} />
                   <Tooltip />
-                  <Bar
-                    dataKey="score"
-                    fill="hsl(var(--primary))"
-                    radius={[4, 4, 0, 0]}
-                  />
+                  <Bar dataKey="score" fill="hsl(var(--primary))" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -181,7 +178,7 @@ export default function Results() {
           <CardHeader>
             <CardTitle>Career Paths</CardTitle>
             <CardDescription>
-              Recommended career paths based on your personality type
+              Recommended career paths based on your personality type.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -198,9 +195,7 @@ export default function Results() {
                     <div className="font-medium">{career.title}</div>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="text-sm text-muted-foreground">
-                      {career.match}% Match
-                    </span>
+                    <span className="text-sm text-muted-foreground">{career.match}% Match</span>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </div>
                 </motion.div>
@@ -214,7 +209,7 @@ export default function Results() {
           <CardHeader>
             <CardTitle>Notable People with Similar Type</CardTitle>
             <CardDescription>
-              Historical figures and leaders who share your personality type
+              Historical figures and leaders who share your personality type.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -234,9 +229,7 @@ export default function Results() {
                   />
                   <div>
                     <h3 className="font-medium">{person.name}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {person.profession}
-                    </p>
+                    <p className="text-sm text-muted-foreground">{person.profession}</p>
                   </div>
                 </motion.div>
               ))}

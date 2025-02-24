@@ -13,8 +13,10 @@ import { X, Menu } from "lucide-react";
 import { calculateMBTI } from "@/lib/calculate-mbti";
 import { smoothScrollToTop } from "@/lib/utils";
 import { TestForm } from "./test-form";
+import { useRouter } from "next/navigation";
 
 export default function MBTITest() {
+  const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const currentTest = testData[0];
@@ -67,9 +69,21 @@ export default function MBTITest() {
     }
     methods.clearErrors();
     const personalityResult = calculateMBTI(data.answers, currentTest.questions);
-    data.personalityType = personalityResult.personalityType
-    saveProgress(data);
-    console.log("submitted:", data);
+    data.personalityType = personalityResult.personalityType;
+    
+    // Create an object with calculated results to send to results page
+    const resultsData = {
+      personalityType: personalityResult.personalityType,
+      traitScores: personalityResult.traitScores,
+      testId: currentTest.id,
+      completionDate: new Date().toLocaleDateString(), // example date formatting
+      // Optionally include answers if needed: answers: data.answers,
+    };
+    console.log('test1')
+    console.log(resultsData)
+
+    // Use router to push data to results page
+    router.push(`/tests/${currentTest.id}/results?data=${encodeURIComponent(JSON.stringify(resultsData))}`);
   };
 
   const handleNext = () => {
