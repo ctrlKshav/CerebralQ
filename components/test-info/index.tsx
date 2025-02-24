@@ -123,6 +123,23 @@ const MBTI_TEST = {
   ],
 };
 
+const TestTypeBadge = ({ type }: { type: string }) => {
+    const colors = {
+      personality: "bg-green-100 text-green-800",
+      cognitive: "bg-yellow-100 text-yellow-800",
+      language: "bg-red-100 text-red-800",
+    };
+    return (
+      <span
+        className={`px-2 py-1 rounded-full text-sm font-medium ${
+          colors[type as keyof typeof colors]
+        }`}
+      >
+        {type.charAt(0).toUpperCase() + type.slice(1)}
+      </span>
+    );
+  };
+
 const DifficultyBadge = ({ level }: { level: string }) => {
   const colors = {
     beginner: "bg-green-100 text-green-800",
@@ -213,20 +230,18 @@ export default function TestInformation() {
       </section>
 
       <section className="max-w-7xl mx-auto px-4 pb-20" id="test-details-section">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 text-md">
           {/* Test Overview Card */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Brain className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 text-2xl">
+                <Brain className="h-6 w-6" />
                 Test Overview
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-6 text-lg">
               <div className="flex flex-wrap gap-2">
-                <Badge variant="outline" className="capitalize">
-                  Personality
-                </Badge>
+                <TestTypeBadge type={MBTI_TEST.category} />
                 <DifficultyBadge level={MBTI_TEST.difficulty_level} />
                 <ResultTypeBadge type={MBTI_TEST.result_type} />
               </div>
@@ -277,21 +292,21 @@ export default function TestInformation() {
           {/* Personality Dimensions Card */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <FileSpreadsheet className="h-5 w-5" />
-                Explore Your Personality
+              <CardTitle className="flex items-center gap-2 text-2xl">
+                <FileSpreadsheet className="h-6 w-6" />
+                How MBTI Works?
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               {MBTI_TEST.personality_dimensions.map((dimension, index) => (
                 <div key={index} className="space-y-2">
-                  <h3 className="font-medium">{dimension.title}</h3>
-                  <p className="text-sm text-muted-foreground">
+                  <h3 className="font-medium text-xl">{dimension.title}</h3>
+                  <p className="text-md text-muted-foreground">
                     {dimension.description}
                   </p>
                   <div className="flex gap-2">
                     {dimension.types.map((type, i) => (
-                      <Badge key={i} variant="secondary">
+                      <Badge key={i} variant={i === 0 ? "default" : "secondary"}>
                         {type}
                       </Badge>
                     ))}
@@ -304,18 +319,18 @@ export default function TestInformation() {
           {/* Past Results Card */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <History className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 text-2xl">
+                <History className="h-6 w-6" />
                 Your Past Results
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-6">
+            <CardContent className="space-y-8">
               {MBTI_TEST.past_results.map((result, index) => (
-                <div key={index} className="space-y-4">
+                <div key={index} className="space-y-6">
                   <div className="flex items-center justify-between">
-                    <div className="space-y-1">
+                    <div className="space-y-2">
                       <div className="text-2xl font-bold">{result.type}</div>
-                      <div className="text-sm text-muted-foreground">
+                      <div className="text-lg text-muted-foreground">
                         {new Date(result.date).toLocaleDateString("en-US", {
                           year: "numeric",
                           month: "long",
@@ -323,21 +338,21 @@ export default function TestInformation() {
                         })}
                       </div>
                     </div>
-                    <Badge variant="secondary" className="text-lg px-3 py-1">
+                    <Badge variant="secondary" className="text-xl px-4 py-2">
                       {result.label}
                     </Badge>
                   </div>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-lg text-muted-foreground">
                     {result.description}
                   </p>
-                  <div className="space-y-2">
+                  <div className="space-y-4">
                     {Object.entries(result.scores).map(([trait, score]) => (
-                      <div key={trait} className="space-y-1">
-                        <div className="flex justify-between text-sm">
-                          <span className="capitalize">{trait}</span>
+                      <div key={trait} className="space-y-2">
+                        <div className="flex justify-between text-lg">
+                          <span className="capitalize font-medium">{trait}</span>
                           <span>{score}%</span>
                         </div>
-                        <Progress value={score} className="h-1.5" />
+                        <Progress value={score} className="h-2" />
                       </div>
                     ))}
                   </div>
@@ -348,36 +363,33 @@ export default function TestInformation() {
         </div>
 
         {/* Validation Section */}
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-24 grid gap-8 md:grid-cols-2">
           {/* Reliability Metrics Card */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BarChart className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 text-2xl">
+                <BarChart className="h-6 w-6" />
                 Reliability Metrics
               </CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
+            <CardContent className="space-y-6">
+              <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Test Consistency</span>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-lg font-medium">Test Consistency</span>
+                  <span className="text-lg text-muted-foreground">
                     {MBTI_TEST.reliability_score}%
                   </span>
                 </div>
-                <Progress value={MBTI_TEST.reliability_score} className="h-2" />
+                <Progress value={MBTI_TEST.reliability_score} className="h-3" />
               </div>
-              <div className="space-y-2">
+              <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Scientific Basis</span>
-                  <span className="text-sm text-muted-foreground">
+                  <span className="text-lg font-medium">Scientific Basis</span>
+                  <span className="text-lg text-muted-foreground">
                     {MBTI_TEST.scientific_validity_score}%
                   </span>
                 </div>
-                <Progress
-                  value={MBTI_TEST.scientific_validity_score}
-                  className="h-2"
-                />
+                <Progress value={MBTI_TEST.scientific_validity_score} className="h-3" />
               </div>
             </CardContent>
           </Card>
@@ -385,13 +397,13 @@ export default function TestInformation() {
           {/* Citations Card */}
           <Card>
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <BookOpen className="h-5 w-5" />
+              <CardTitle className="flex items-center gap-2 text-2xl">
+                <BookOpen className="h-6 w-6" />
                 Citations
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <ul className="list-disc pl-5 space-y-2">
+              <ul className="list-disc pl-6 space-y-4 text-lg">
                 {MBTI_TEST.citations.map((citation, index) => (
                   <li key={index}>
                     {citation.startsWith("http") ? (
@@ -404,7 +416,7 @@ export default function TestInformation() {
                         {new URL(citation).hostname}
                       </a>
                     ) : (
-                      <span>{citation}</span>
+                      <span className="text-muted-foreground">{citation}</span>
                     )}
                   </li>
                 ))}
@@ -414,29 +426,29 @@ export default function TestInformation() {
         </div>
 
         {/* Related Tests Section */}
-        <div className="mt-12">
-          <h2 className="text-2xl font-bold mb-6">Recommended Tests</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-24">
+          <h2 className="text-3xl font-bold mb-8 text-center">Recommended Tests</h2>
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {MBTI_TEST.complementary_tests.map((test, index) => (
               <Card
                 key={index}
                 className="group hover:shadow-lg transition-shadow"
               >
-                <CardContent className="pt-6">
-                  <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-lg bg-primary/5 text-primary">
-                      <test.icon className="h-6 w-6" />
+                <CardContent className="pt-8 p-6">
+                  <div className="flex items-start gap-6">
+                    <div className="p-4 rounded-lg bg-primary/5 text-primary">
+                      <test.icon className="h-8 w-8" />
                     </div>
-                    <div className="flex-1 space-y-2">
-                      <h3 className="font-semibold">{test.name}</h3>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="flex-1 space-y-3">
+                      <h3 className="text-xl font-semibold">{test.name}</h3>
+                      <p className="text-lg text-muted-foreground">
                         {test.description}
                       </p>
                       <Button
                         variant="link"
-                        className="p-0 h-auto font-normal text-primary"
+                        className="p-0 h-auto font-normal text-lg text-primary"
                       >
-                        Take Test
+                        Take Test →
                       </Button>
                     </div>
                   </div>
