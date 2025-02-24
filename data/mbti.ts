@@ -38,6 +38,7 @@ export const testData: TestData[] = [
       {
         "id": "1",
         "text": "I prefer interacting with many people, including strangers, at parties",
+        "description": "(Temporary Field for Feedback) I feel energized when engaging in social activities.",
         "type": "likert",
         "icon": "Users",
         "iconColor": "text-orange-500",

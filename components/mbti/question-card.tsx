@@ -24,7 +24,7 @@ export function QuestionCard({ question, name }: QuestionCardProps) {
     <Card className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-8
       ${error ? 'ring-2 ring-red-500' : ''}`}>
       <CardHeader className="space-y-3 p-8">
-        <div className="flex items-start gap-4">
+        <div className="flex items-center gap-4">
           {IconComponent && <IconComponent size={32} className={`${iconClass} h-8 w-8 mt-1`} />}
           <h2 className="text-2xl font-semibold leading-tight">{question.text}</h2>
         </div>
