@@ -1,9 +1,9 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { LikertScale } from "./likert-scale";
-import * as Icons from "lucide-react";
 import { TestQuestion } from "@/types/tests/mbti";
 import { useFormContext } from "react-hook-form";
 import { useEffect } from "react";
+import Icon from "@/components/Icon";
 
 interface QuestionCardProps {
   question: TestQuestion;
@@ -12,7 +12,6 @@ interface QuestionCardProps {
 
 export function QuestionCard({ question, name }: QuestionCardProps) {
   const { formState: { errors }, setValue } = useFormContext<{ answers: Record<string, any> }>();
-  const IconComponent = question.icon ? (Icons as any)[question.icon] : null;
   const iconClass = question.iconColor || "text-blue-500";
   const error = errors.answers?.[question.id];
   
@@ -25,7 +24,7 @@ export function QuestionCard({ question, name }: QuestionCardProps) {
       ${error ? 'ring-2 ring-red-500' : ''}`}>
       <CardHeader className="space-y-3 p-8">
         <div className="flex items-center gap-4">
-          {IconComponent && <IconComponent size={32} className={`${iconClass} h-8 w-8 mt-1`} />}
+          {question.icon && <Icon iconName={question.icon} className={iconClass} />}
           <h2 className="text-2xl font-semibold leading-tight">{question.text}</h2>
         </div>
         {question.description && (
@@ -35,8 +34,6 @@ export function QuestionCard({ question, name }: QuestionCardProps) {
         )}
       </CardHeader>
       <CardContent className="p-8 pt-0">
-        
-       
         {/* Likert scale for score */}
         <LikertScale name={`answers.${question.id}.selectedScore`} />
         {error && (
