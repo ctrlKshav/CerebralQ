@@ -11,7 +11,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { Share2, Download, ChevronRight } from "lucide-react";
+import { Share2, Download, ChevronRight, Copy, Link, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import {
   BarChart,
@@ -22,6 +22,14 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+import { shareViaWhatsApp, copyToClipboard, downloadJSON } from "@/utils/share";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { toast } from "sonner"; // Replace the existing toast import
 
 // Local type definition for a trait
 interface Trait {
@@ -100,6 +108,44 @@ export default function Results() {
     score: trait.score,
   }));
 
+  const handleDownload = () => {
+    const downloadData = {
+      personalityType,
+      testId,
+      completionDate,
+      traits,
+      careerSuggestions,
+      similarPersonalities,
+    };
+    downloadJSON(downloadData, `personality-results-${testId}.json`);
+    toast.success("Download Started", {
+      description: "Your results are being downloaded as JSON",
+    });
+  };
+
+  const handleShare = async (method: 'whatsapp' | 'copy') => {
+    const shareUrl = window.location.href;
+    const shareText = `Check out my personality type (${personalityType}) results!`;
+
+    switch (method) {
+      case 'whatsapp':
+        shareViaWhatsApp(shareUrl, shareText);
+        break;
+      case 'copy':
+        const success = await copyToClipboard(shareUrl);
+        if (success) {
+          toast.success("Link Copied!", {
+            description: "The link has been copied to your clipboard",
+          });
+        } else {
+          toast.error("Failed to copy", {
+            description: "Please try again",
+          });
+        }
+        break;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900">
       <main className="container mx-auto px-4 py-8 space-y-8">
@@ -115,11 +161,25 @@ export default function Results() {
             <p>Completed on {completionDate}</p>
           </div>
           <div className="flex justify-center gap-2">
-            <Button variant="outline" size="sm">
-              <Share2 className="w-4 h-4 mr-2" />
-              Share Results
-            </Button>
-            <Button variant="outline" size="sm">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm">
+                  <Share2 className="w-4 h-4 mr-2" />
+                  Share Results
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuItem onClick={() => handleShare('whatsapp')}>
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Share via WhatsApp
+                </DropdownMenuItem>
+                <DropdownMenuItem onClick={() => handleShare('copy')}>
+                  <Link className="w-4 h-4 mr-2" />
+                  Copy Link
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            <Button variant="outline" size="sm" onClick={handleDownload}>
               <Download className="w-4 h-4 mr-2" />
               Download Report
             </Button>
