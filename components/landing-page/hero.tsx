@@ -20,7 +20,7 @@ export default function Header() {
           transition={{ duration: 0.8 }}
           className="container mx-auto px-4 text-center z-10"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-600">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-primary">
             Answer a few questions,
             <br />
             uncover something cool.
