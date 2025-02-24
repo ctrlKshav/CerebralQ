@@ -383,8 +383,10 @@ export default function TestInformation() {
                 )}
               </div>
 
-            <Link href={`/tests/${MBTI_TEST.short_code}/start-test`}>
-                <Button className="w-full text-lg py-6" variant="outline">
+              <Link
+                href={`/tests/${MBTI_TEST.short_code}/start-test`}
+              >
+                <Button className="my-6" variant="outline">
                   Retake Test
                 </Button>
               </Link>
