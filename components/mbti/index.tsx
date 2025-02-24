@@ -26,7 +26,7 @@ export default function MBTITest() {
     defaultValues: {
       id: 0, // provide a default id
       answers: {},
-      result: "", // default empty result
+      personalityType: "", // default empty result
       createdAt: new Date().toISOString(), // set default createdAt
     },
   });
@@ -64,10 +64,10 @@ export default function MBTITest() {
       return;
     }
     methods.clearErrors();
-    saveProgress(data);
     const personalityResult = calculateMBTI(data.answers, currentTest.questions);
+    data.personalityType = personalityResult;
+    saveProgress(data);
     console.log("Form submitted:", data);
-    console.log("Personality Type:", personalityResult);
   };
 
   const handleNext = () => {
