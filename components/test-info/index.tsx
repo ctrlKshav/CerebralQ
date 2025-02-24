@@ -124,21 +124,21 @@ const MBTI_TEST = {
 };
 
 const TestTypeBadge = ({ type }: { type: string }) => {
-    const colors = {
-      personality: "bg-green-100 text-green-800",
-      cognitive: "bg-yellow-100 text-yellow-800",
-      language: "bg-red-100 text-red-800",
-    };
-    return (
-      <span
-        className={`px-2 py-1 rounded-full text-sm font-medium ${
-          colors[type as keyof typeof colors]
-        }`}
-      >
-        {type.charAt(0).toUpperCase() + type.slice(1)}
-      </span>
-    );
+  const colors = {
+    personality: "bg-green-100 text-green-800",
+    cognitive: "bg-yellow-100 text-yellow-800",
+    language: "bg-red-100 text-red-800",
   };
+  return (
+    <span
+      className={`px-2 py-1 rounded-full text-sm font-medium ${
+        colors[type as keyof typeof colors]
+      }`}
+    >
+      {type.charAt(0).toUpperCase() + type.slice(1)}
+    </span>
+  );
+};
 
 const DifficultyBadge = ({ level }: { level: string }) => {
   const colors = {
@@ -214,14 +214,17 @@ export default function TestInformation() {
           </div>
           <div className="pt-4">
             <Link href={`/tests/${MBTI_TEST.short_code}/start-test`}>
-            <Button size="lg" className="text-lg px-8 py-6">
-              Begin Test →
-            </Button>
+              <Button size="lg" className="text-lg px-8 py-6">
+                Begin Test →
+              </Button>
             </Link>
           </div>
-          <button className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+          <button
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
             onClick={() => {
-                document.getElementById('test-details-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              document
+                .getElementById("test-details-section")
+                ?.scrollIntoView({ behavior: "smooth", block: "start" });
             }}
           >
             <ArrowDown className="h-6 w-6 text-muted-foreground" />
@@ -229,8 +232,11 @@ export default function TestInformation() {
         </div>
       </section>
 
-      <section className="max-w-7xl mx-auto px-4 pb-20" id="test-details-section">
-        <div className="grid gap-6 md:grid-cols-2 text-md">
+      <section
+        className="max-w-7xl mx-auto px-4 pb-20"
+        id="test-details-section"
+      >
+        <div className="grid gap-12 md:gap-6 md:grid-cols-2 text-md">
           {/* Test Overview Card */}
           <Card>
             <CardHeader>
@@ -306,7 +312,10 @@ export default function TestInformation() {
                   </p>
                   <div className="flex gap-2">
                     {dimension.types.map((type, i) => (
-                      <Badge key={i} variant={i === 0 ? "default" : "secondary"}>
+                      <Badge
+                        key={i}
+                        variant={i === 0 ? "default" : "secondary"}
+                      >
                         {type}
                       </Badge>
                     ))}
@@ -315,51 +324,72 @@ export default function TestInformation() {
               ))}
             </CardContent>
           </Card>
+        </div>
 
-          {/* Past Results Card */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-2xl">
-                <History className="h-6 w-6" />
-                Your Past Results
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-8">
-              {MBTI_TEST.past_results.map((result, index) => (
-                <div key={index} className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <div className="space-y-2">
-                      <div className="text-2xl font-bold">{result.type}</div>
-                      <div className="text-lg text-muted-foreground">
-                        {new Date(result.date).toLocaleDateString("en-US", {
-                          year: "numeric",
-                          month: "long",
-                          day: "numeric",
-                        })}
-                      </div>
-                    </div>
-                    <Badge variant="secondary" className="text-xl px-4 py-2">
-                      {result.label}
-                    </Badge>
-                  </div>
-                  <p className="text-lg text-muted-foreground">
-                    {result.description}
+        {/* Past Results Section */}
+        <div className="mt-24  rounded-xl p-8">
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            Your Latest Result
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            {/* Image Column */}
+            <div className="relative aspect-square">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary rounded-lg flex items-center justify-center">
+                <div className="text-center space-y-4">
+                  <span className="text-6xl font-bold text-primary-foreground">
+                    {MBTI_TEST.past_results[0].type}
+                  </span>
+                  <p className="text-2xl text-primary-foreground/90">
+                    {MBTI_TEST.past_results[0].label}
                   </p>
-                  <div className="space-y-4">
-                    {Object.entries(result.scores).map(([trait, score]) => (
-                      <div key={trait} className="space-y-2">
-                        <div className="flex justify-between text-lg">
-                          <span className="capitalize font-medium">{trait}</span>
-                          <span>{score}%</span>
-                        </div>
-                        <Progress value={score} className="h-2" />
-                      </div>
-                    ))}
-                  </div>
                 </div>
-              ))}
-            </CardContent>
-          </Card>
+              </div>
+            </div>
+
+            {/* Results Column */}
+            <div className="space-y-8">
+              <div>
+                <h3 className="text-2xl font-semibold mb-2">
+                  {MBTI_TEST.past_results[0].label}
+                </h3>
+                <p className="text-lg text-muted-foreground mb-4">
+                  Test taken on{" "}
+                  {new Date(MBTI_TEST.past_results[0].date).toLocaleDateString(
+                    "en-US",
+                    {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    }
+                  )}
+                </p>
+                <p className="text-lg leading-relaxed">
+                  {MBTI_TEST.past_results[0].description}
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                <h4 className="text-xl font-medium">Personality Breakdown</h4>
+                {Object.entries(MBTI_TEST.past_results[0].scores).map(
+                  ([trait, score]) => (
+                    <div key={trait} className="space-y-2">
+                      <div className="flex justify-between text-lg">
+                        <span className="capitalize font-medium">{trait}</span>
+                        <span>{score}%</span>
+                      </div>
+                      <Progress value={score} className="h-3 bg-primary/20" />
+                    </div>
+                  )
+                )}
+              </div>
+
+            <Link href={`/tests/${MBTI_TEST.short_code}/start-test`}>
+                <Button className="w-full text-lg py-6" variant="outline">
+                  Retake Test
+                </Button>
+              </Link>
+            </div>
+          </div>
         </div>
 
         {/* Validation Section */}
@@ -389,7 +419,10 @@ export default function TestInformation() {
                     {MBTI_TEST.scientific_validity_score}%
                   </span>
                 </div>
-                <Progress value={MBTI_TEST.scientific_validity_score} className="h-3" />
+                <Progress
+                  value={MBTI_TEST.scientific_validity_score}
+                  className="h-3"
+                />
               </div>
             </CardContent>
           </Card>
@@ -427,7 +460,9 @@ export default function TestInformation() {
 
         {/* Related Tests Section */}
         <div className="mt-24">
-          <h2 className="text-3xl font-bold mb-8 text-center">Recommended Tests</h2>
+          <h2 className="text-3xl font-bold mb-8 text-center">
+            Recommended Tests
+          </h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {MBTI_TEST.complementary_tests.map((test, index) => (
               <Card
