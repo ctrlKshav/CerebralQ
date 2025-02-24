@@ -31,7 +31,7 @@ export function LikertScale({ name }: LikertScaleProps) {
       setTimeout(() => {
         nextCard.scrollIntoView({ 
           behavior: 'smooth',
-          block: 'center'
+          block: 'start'
         });
       }, 50);
     }
