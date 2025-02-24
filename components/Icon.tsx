@@ -11,7 +11,7 @@ const Icon: React.FC<IconProps> = ({ iconName, className = 'w-8 h-8 text-primary
 
   if (!IconComponent) return null;
 
-  return <IconComponent className={`${className} hidden lg:block`} />;
+  return <IconComponent className={`${className}`} />;
 };
 
 export default Icon;

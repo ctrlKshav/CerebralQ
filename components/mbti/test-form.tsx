@@ -25,7 +25,7 @@ export function TestForm({
   const sectionQuestions = questions.filter(q => q.section === currentSectionId);
 
   return (
-    <div className="flex-1 md:ml-80 mt-16 md:mt-0">
+    <div className="flex-1 lg:ml-80 mt-16 lg:mt-0">
       <div className="min-h-screen relative">
         <div className="p-8 pb-32">
           <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center">
@@ -50,7 +50,7 @@ export function TestForm({
           </div>
         </div>
         {/* Fixed Bottom Navigation */}
-        <div className="fixed bottom-0 left-0 right-0 md:left-80 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-sm">
+        <div className="fixed bottom-0 left-0 right-0 lg:left-80 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-sm">
           <div className="max-w-3xl mx-auto px-8 py-6">
             <FormNavigation
               onSubmit={onSubmit}
