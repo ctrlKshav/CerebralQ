@@ -24,7 +24,7 @@ const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
   short_code: "MBTI",
   description:
-    "Understand your personality type and discover how you think, make decisions, and interact with the world around you.",
+    "Discover how you’re wired with the MBTI—the world’s most trusted personality framework. Get your 4-letter type (like ENFP or ISTJ) and finally understand why you thrive in chaos, hate small talk, or obsess over to-do lists.",
   features: [
     { icon: Timer, label: "12 mins", color: "bg-blue-100 text-blue-700" },
     {
@@ -196,13 +196,15 @@ export default function TestInformation() {
             ))}
           </div>
           <div className="pt-4">
+            <Link href={`/tests/${MBTI_TEST.short_code}/start-test`}>
             <Button size="lg" className="text-lg px-8 py-6">
               Begin Test →
             </Button>
+            </Link>
           </div>
           <button className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
             onClick={() => {
-                document.getElementById('test-details-section')?.scrollIntoView({ behavior: 'smooth' });
+                document.getElementById('test-details-section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }}
           >
             <ArrowDown className="h-6 w-6 text-muted-foreground" />
