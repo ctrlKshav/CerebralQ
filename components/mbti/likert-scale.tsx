@@ -51,7 +51,7 @@ export function LikertScale({ name }: LikertScaleProps) {
                 relative rounded-lg cursor-pointer            
               `}
             >
-              <label className="flex sm:flex-col items-center justify-start sm:justify-center gap-4 py-4 sm:py-2">
+              <label className="flex lg:flex-col items-center justify-start lg:justify-center gap-4 py-4 sm:py-2">
                 <input
                   type="radio"
                   value={option.value}
