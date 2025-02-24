@@ -1,4 +1,4 @@
-﻿"use client"
+﻿"use client";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
@@ -14,14 +14,16 @@ import { calculateMBTI } from "@/lib/calculate-mbti";
 import { smoothScrollToTop } from "@/lib/utils";
 import { TestForm } from "./test-form";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import Icon from "../Icon";
 
 export default function MBTITest() {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const currentTest = testData[0];
-  const sectionQuestions = currentTest.questions
-    .filter(q => q.section === currentSectionId)
+  const sectionQuestions = currentTest.questions.filter(
+    (q) => q.section === currentSectionId
+  );
 
   const methods = useForm<MBTIResponse>({
     resolver: zodResolver(mbtiResponseSchema),
@@ -36,7 +38,7 @@ export default function MBTITest() {
   // useEffect(() => {
   //   window.scrollTo(0,0)
   // }, [currentSectionId])
-  
+
   // useEffect(() => {
   //   const savedProgress = loadProgress();
   //   if (savedProgress) {
@@ -50,27 +52,30 @@ export default function MBTITest() {
   // }, []);
 
   const onSubmit = async (data: MBTIResponse) => {
-    console.log('hello')
-    console.log(data)
+    console.log("hello");
+    console.log(data);
     const currentSectionQuestions = currentTest.questions.filter(
-      q => q.section === currentSectionId
+      (q) => q.section === currentSectionId
     );
     const unansweredQuestions = currentSectionQuestions.filter(
-      question => !methods.getValues().answers[question.id]?.selectedScore
+      (question) => !methods.getValues().answers[question.id]?.selectedScore
     );
     if (unansweredQuestions.length > 0) {
-      unansweredQuestions.forEach(question => {
+      unansweredQuestions.forEach((question) => {
         methods.setError(`answers.${question.id}.selectedScore`, {
-          type: 'required',
-          message: 'Please answer this question'
+          type: "required",
+          message: "Please answer this question",
         });
       });
       return;
     }
     methods.clearErrors();
-    const personalityResult = calculateMBTI(data.answers, currentTest.questions);
+    const personalityResult = calculateMBTI(
+      data.answers,
+      currentTest.questions
+    );
     data.personalityType = personalityResult.personalityType;
-    
+
     // Create an object with calculated results to send to results page
     const resultsData = {
       personalityType: personalityResult.personalityType,
@@ -79,28 +84,30 @@ export default function MBTITest() {
       completionDate: new Date().toLocaleDateString(), // example date formatting
       // Optionally include answers if needed: answers: data.answers,
     };
-    console.log('test1')
-    console.log(resultsData)
+    console.log("test1");
+    console.log(resultsData);
 
     // Use router to push data to results page
-    router.push(`/tests/${currentTest.id}/results?data=${encodeURIComponent(JSON.stringify(resultsData))}`);
+    router.push(
+      `/tests/${currentTest.id}/results?data=${encodeURIComponent(JSON.stringify(resultsData))}`
+    );
   };
 
   const handleNext = () => {
     // Check if all questions in current section are answered
     const currentSectionQuestions = currentTest.questions.filter(
-      q => q.section === currentSectionId
+      (q) => q.section === currentSectionId
     );
-    
+
     const unansweredQuestions = currentSectionQuestions.filter(
-      question => !methods.getValues().answers[question.id]?.selectedScore
+      (question) => !methods.getValues().answers[question.id]?.selectedScore
     );
 
     if (unansweredQuestions.length > 0) {
-      unansweredQuestions.forEach(question => {
+      unansweredQuestions.forEach((question) => {
         methods.setError(`answers.${question.id}.selectedScore`, {
-          type: 'required',
-          message: 'Please answer this question'
+          type: "required",
+          message: "Please answer this question",
         });
       });
       return;
@@ -110,20 +117,18 @@ export default function MBTITest() {
     methods.clearErrors();
 
     if (currentSectionId < currentTest.sections.length) {
-      setCurrentSectionId(prev => prev + 1);
+      setCurrentSectionId((prev) => prev + 1);
       smoothScrollToTop();
     }
-    
+
     saveProgress(methods.getValues());
-    
-    
   };
 
   const handlePrev = () => {
     // Clear any errors when going back
     methods.clearErrors();
     if (currentSectionId > 1) {
-      setCurrentSectionId(prev => prev - 1);
+      setCurrentSectionId((prev) => prev - 1);
       smoothScrollToTop();
     }
   };
@@ -132,14 +137,13 @@ export default function MBTITest() {
     // Clear any errors when using section navigation
     methods.clearErrors();
     setCurrentSectionId(sectionId);
-    setIsSidebarOpen(false);
   };
 
   const currentStepText = `Step ${currentSectionId} of ${currentTest.sections.length}`;
 
   // Remove the watch effect that was clearing errors
   // We only want to clear errors on specific user actions now
-  const answers = methods.watch('answers');
+  const answers = methods.watch("answers");
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
@@ -149,7 +153,9 @@ export default function MBTITest() {
           <div className="hidden md:block w-80 fixed top-4 left-0 bottom-0 shadow-sm border-r backdrop-blur-sm">
             <div className="h-full flex flex-col">
               <div className="p-6">
-                <span className="font-bold text-xl">{currentTest.test_name}</span>
+                <span className="font-bold text-xl">
+                  {currentTest.test_name}
+                </span>
               </div>
               <div className="flex-1 overflow-y-auto px-6 pb-6">
                 <ProgressTracker
@@ -160,7 +166,7 @@ export default function MBTITest() {
               </div>
             </div>
           </div>
-          
+
           {/* Mobile Topbar */}
           <div className="md:hidden fixed top-0 left-0 right-0 z-10 dark:bg-gray-800/50 backdrop-blur-sm p-4 flex justify-between items-center">
             <div>
@@ -169,38 +175,12 @@ export default function MBTITest() {
                 {currentStepText}
               </div>
             </div>
-            <button 
-              type="button" 
-              onClick={() => setIsSidebarOpen(true)}
-              className="text-gray-700 dark:text-gray-300"
-            >
-              <Menu size={24} />
-            </button>
+            <Link href={"/"} className="">
+              <button className="flex items-center gap-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100">
+                <Icon iconName="Home" className="w-6 h-6 text-primary" />
+              </button>
+            </Link>
           </div>
-          
-          {/* Mobile Sidebar Overlay from Right */}
-          {isSidebarOpen && (
-            <div className="md:hidden fixed inset-0 z-20 bg-black/50 flex justify-end">
-              <div className="w-64 bg-white dark:bg-gray-900 p-4 overflow-y-auto">
-                <div className="flex justify-between items-center mb-4">
-                  <span className="font-bold text-xl">Sections</span>
-                  <button 
-                    type="button" 
-                    onClick={() => setIsSidebarOpen(false)}
-                    className="text-gray-700 dark:text-gray-300"
-                  >
-                    <X size={24} />
-                  </button>
-                </div>
-                <ProgressTracker
-                  currentSection={currentSectionId}
-                  sections={currentTest.sections}
-                  onSectionClick={handleSectionClick}
-                />
-              </div>
-              <div className="flex-1" onClick={() => setIsSidebarOpen(false)} />
-            </div>
-          )}
 
           {/* Main Content */}
           <TestForm
