@@ -48,15 +48,17 @@ export default function MBTITest() {
   // }, []);
 
   const onSubmit = async (data: MBTIResponse) => {
+    console.log('hello')
+    console.log(data)
     const currentSectionQuestions = currentTest.questions.filter(
       q => q.section === currentSectionId
     );
     const unansweredQuestions = currentSectionQuestions.filter(
-      question => !methods.getValues().answers[question.id]
+      question => !methods.getValues().answers[question.id]?.selectedScore
     );
     if (unansweredQuestions.length > 0) {
       unansweredQuestions.forEach(question => {
-        methods.setError(`answers.${question.id}`, {
+        methods.setError(`answers.${question.id}.selectedScore`, {
           type: 'required',
           message: 'Please answer this question'
         });
@@ -65,9 +67,9 @@ export default function MBTITest() {
     }
     methods.clearErrors();
     const personalityResult = calculateMBTI(data.answers, currentTest.questions);
-    data.personalityType = personalityResult;
+    data.personalityType = personalityResult.personalityType
     saveProgress(data);
-    console.log("Form submitted:", data);
+    console.log("submitted:", data);
   };
 
   const handleNext = () => {
@@ -77,12 +79,12 @@ export default function MBTITest() {
     );
     
     const unansweredQuestions = currentSectionQuestions.filter(
-      question => !methods.getValues().answers[question.id]
+      question => !methods.getValues().answers[question.id]?.selectedScore
     );
 
     if (unansweredQuestions.length > 0) {
       unansweredQuestions.forEach(question => {
-        methods.setError(`answers.${question.id}`, {
+        methods.setError(`answers.${question.id}.selectedScore`, {
           type: 'required',
           message: 'Please answer this question'
         });
@@ -99,6 +101,7 @@ export default function MBTITest() {
     }
     
     saveProgress(methods.getValues());
+    
     
   };
 
