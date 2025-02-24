@@ -24,7 +24,7 @@ export function QuestionCard({ question, name }: QuestionCardProps) {
       ${error ? 'ring-2 ring-red-500' : ''}`}>
       <CardHeader className="space-y-3 p-8">
         <div className="flex items-center gap-4">
-          {question.icon && <Icon iconName={question.icon} className={iconClass + " h-8 w-8 hidden lg:block"} />}
+          {question.icon && <Icon iconName={question.icon} className={iconClass + " h-7 w-7 hidden lg:block"} />}
           <h2 className="text-2xl font-semibold leading-tight">{question.text}</h2>
         </div>
         {question.description && (
