@@ -13,7 +13,7 @@ export default function DiscoverySection({ test }: { test: TestData }) {
           <Image
             src="/placeholder.svg?height=400&width=600"
             alt="Result visualization"
-            layout="fill"
+            fill
             objectFit="cover"
             className="rounded-md"
           />
