@@ -85,7 +85,7 @@ export function TestForm({
           </div>
         </div>
         {/* Fixed Bottom Navigation */}
-        <div className="fixed bottom-0 left-0 right-0 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-sm">
+        <div className="fixed bottom-0 left-0 right-0 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-md">
           <div className="max-w-3xl mx-auto px-8 py-6">
             <FormNavigation
               onSubmit={onSubmit}
