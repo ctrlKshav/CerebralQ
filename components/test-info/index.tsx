@@ -54,13 +54,13 @@ const MBTI_TEST = {
   citations: [
     {
       name: " Myers, I. B., & McCaulley, M. H. (1985). Manual: A guide to the development and use of the Myers-Briggs Type Indicator. Consulting Psychologists Press.",
-      link: "https://psycnet.apa.org/record/2013-29682-000"
+      link: "https://psycnet.apa.org/record/2013-29682-000",
     },
     {
       name: " Myers Briggs Type Indicator Score Reliability Across Studies A Meta-Analytic Reliability Generalization Study",
-      link: "https://www.researchgate.net/publication/237444046_Myers-Briggs_Type_Indicator_Score_Reliability_Across_Studies_A_Meta-Analytic_Reliability_Generalization_Study"
-    }
-   ],
+      link: "https://www.researchgate.net/publication/237444046_Myers-Briggs_Type_Indicator_Score_Reliability_Across_Studies_A_Meta-Analytic_Reliability_Generalization_Study",
+    },
+  ],
   difficulty_level: "intermediate",
   num_questions: 60,
   time_estimate_minutes: 12,
@@ -212,34 +212,7 @@ const FeatureBadge = ({
   </div>
 );
 
-// Function to render point indicators
-const renderPointIndicators = (points: number) => {
-  return (
-    <div className="flex space-x-1">
-      {[...Array(10)].map((_, i) => (
-        <div key={i} className="relative">
-          {i < points ? (
-            <div className="h-4 w-4 rounded-full bg-primary flex items-center justify-center" />
-          ) : (
-            <div className="h-4 w-4 rounded-full border border-muted-foreground/30" />
-          )}
-        </div>
-      ))}
-    </div>
-  );
-};
-
 export default function TestInformation() {
-  // Convert percentage to points out of 10
-  const getPointsOutOfTen = (percentage: number) => {
-    return Math.round(percentage / 10);
-  };
-
-  const testConsistencyPoints = getPointsOutOfTen(MBTI_TEST.reliability_score);
-  const scientificValidityPoints = getPointsOutOfTen(
-    MBTI_TEST.scientific_validity_score
-  );
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -439,100 +412,9 @@ export default function TestInformation() {
           </div>
         </div>
 
-        <div className="mt-24 grid gap-8 md:grid-cols-2">
-          {/* Reliability Metrics Card */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-2xl">
-                <Award className="h-6 w-6" />
-                Methodological Quality
-              </CardTitle>
-              <CardDescription>
-                Assessment quality based on psychological research standards
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-8">
-              <TooltipProvider delayDuration={100}>
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="text-lg font-medium">
-                        Test-Retest Consistency
-                      </span>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                        </TooltipTrigger>
-                        <TooltipContent className="max-w-xs">
-                          <p>
-                            Measures how consistently this test produces the
-                            same results when taken by the same person at
-                            different times. Higher scores indicate greater
-                            consistency.
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </div>
-                    <span className="text-lg font-semibold">
-                      {testConsistencyPoints}/10
-                    </span>
-                  </div>
-
-                  <div className="flex items-center">
-                    {renderPointIndicators(testConsistencyPoints)}
-                  </div>
-
-                  <div className="text-sm text-muted-foreground">
-                    {testConsistencyPoints >= 8
-                      ? "Excellent consistency across test sessions"
-                      : testConsistencyPoints >= 6
-                        ? "Good consistency with minor variations"
-                        : "Moderate consistency - results may vary"}
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-2">
-                      <span className="text-lg font-medium">
-                        Research Foundation
-                      </span>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <HelpCircle className="h-4 w-4 text-muted-foreground" />
-                        </TooltipTrigger>
-                        <TooltipContent className="max-w-xs">
-                          <p>
-                            Evaluates the level of empirical evidence and
-                            peer-reviewed research supporting this assessment
-                            methodology.
-                          </p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </div>
-                    <span className="text-lg font-semibold">
-                      {scientificValidityPoints}/10
-                    </span>
-                  </div>
-
-                  <div className="flex items-center">
-                    {renderPointIndicators(scientificValidityPoints)}
-                  </div>
-
-                  <div className="text-sm text-muted-foreground">
-                    {scientificValidityPoints >= 8
-                      ? "Strong research support from multiple studies"
-                      : scientificValidityPoints >= 6
-                        ? "Supported by research with some limitations"
-                        : "Limited research support - interpret with caution"}
-                  </div>
-                </div>
-              </TooltipProvider>
-            </CardContent>
-          </Card>
-
+        <div className="mt-24 grid">
           {/* Citations Card */}
-          <Card>
+          <Card className="max-w-3xl mx-auto w-full">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <BookOpen className="h-6 w-6" />
@@ -545,26 +427,25 @@ export default function TestInformation() {
             <CardContent>
               <ul className="list-disc pl-6 space-y-4 text-lg">
                 {MBTI_TEST.citations.map((citation, index) => (
-                  <li key={index}>
-                   
-                      <a
-                        href={citation.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-primary hover:underline"
-                      >
-                        {new URL(citation.link).hostname}
-                      </a>
-                  
-                      <span className="text-muted-foreground">  {citation.name}</span>
-                
+                  <li key={index} className="flex flex-col gap-1">
+                    <a
+                      href={citation.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-primary hover:underline"
+                    >
+                      {new URL(citation.link).hostname}
+                    </a>
+                    <span className="text-muted-foreground">
+                      {citation.name}
+                    </span>
                   </li>
                 ))}
               </ul>
             </CardContent>
           </Card>
         </div>
-
+        
         {/* Related Tests Section */}
         <div className="mt-24">
           <h2 className="text-3xl font-bold mb-8 text-center">
