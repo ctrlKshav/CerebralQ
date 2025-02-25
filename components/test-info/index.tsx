@@ -32,7 +32,6 @@ const MBTI_TEST = {
       label: "2M+ people tested",
       color: "bg-purple-100 text-purple-700",
     },
-    { icon: Zap, label: "96% accuracy", color: "bg-amber-100 text-amber-700" },
   ],
   category: "personality",
   citations: [
@@ -125,9 +124,9 @@ const MBTI_TEST = {
 
 const TestTypeBadge = ({ type }: { type: string }) => {
   const colors = {
-    personality: "bg-green-100 text-green-800",
-    cognitive: "bg-yellow-100 text-yellow-800",
-    language: "bg-red-100 text-red-800",
+    personality: "bg-green-100 text-black",
+    cognitive: "bg-yellow-100 text-black",
+    language: "bg-red-100 text-black",
   };
   return (
     <span
@@ -142,9 +141,9 @@ const TestTypeBadge = ({ type }: { type: string }) => {
 
 const DifficultyBadge = ({ level }: { level: string }) => {
   const colors = {
-    beginner: "bg-green-100 text-green-800",
-    intermediate: "bg-yellow-100 text-yellow-800",
-    advanced: "bg-red-100 text-red-800",
+    beginner: "bg-green-100 text-black",
+    intermediate: "bg-yellow-100 text-black",
+    advanced: "bg-red-100 text-black",
   };
   return (
     <span
@@ -153,6 +152,22 @@ const DifficultyBadge = ({ level }: { level: string }) => {
       }`}
     >
       {level.charAt(0).toUpperCase() + level.slice(1)}
+    </span>
+  );
+};
+
+const ResultTypeBadge = ({ type }: { type: string }) => {
+  const colors = {
+    type: "bg-purple-100 text-black",
+    numerical: "bg-blue-100 text-black",
+    category: "bg-green-100 text-black",
+    "multi-dimensional": "bg-orange-100 text-black",
+  };
+  return (
+    <span
+      className={`px-2 py-1 rounded-full text-sm font-medium ${colors[type as keyof typeof colors]}`}
+    >
+      {type.charAt(0).toUpperCase() + type.slice(1)}
     </span>
   );
 };
@@ -174,21 +189,6 @@ const FeatureBadge = ({
   </div>
 );
 
-const ResultTypeBadge = ({ type }: { type: string }) => {
-  const colors = {
-    type: "bg-purple-100 text-purple-800",
-    numerical: "bg-blue-100 text-blue-800",
-    category: "bg-green-100 text-green-800",
-    "multi-dimensional": "bg-orange-100 text-orange-800",
-  };
-  return (
-    <span
-      className={`px-2 py-1 rounded-full text-sm font-medium ${colors[type as keyof typeof colors]}`}
-    >
-      {type.charAt(0).toUpperCase() + type.slice(1)}
-    </span>
-  );
-};
 export default function TestInformation() {
   return (
     <div className="min-h-screen">
@@ -314,7 +314,7 @@ export default function TestInformation() {
                     {dimension.types.map((type, i) => (
                       <Badge
                         key={i}
-                        variant={i === 0 ? "default" : "secondary"}
+                        variant={"default"}
                       >
                         {type}
                       </Badge>
