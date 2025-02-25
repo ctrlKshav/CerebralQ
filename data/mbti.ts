@@ -41,7 +41,6 @@ export const testData: TestData[] = [
         "description": "(Temporary Field for Feedback) I feel energized when engaging in social activities.",
         "type": "likert",
         "icon": "Users",
-        "iconColor": "text-orange-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -57,7 +56,6 @@ export const testData: TestData[] = [
         "text": "I tend to be more realistic than speculative.",
         "type": "likert",
         "icon": "Clipboard",
-        "iconColor": "text-blue-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -73,7 +71,6 @@ export const testData: TestData[] = [
         "text": "I consider having my \"head in the clouds\" to be worse than being \"in a rut\".",
         "type": "likert",
         "icon": "AlertTriangle",
-        "iconColor": "text-purple-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -89,7 +86,6 @@ export const testData: TestData[] = [
         "text": "I am more impressed by principles than emotions.",
         "type": "likert",
         "icon": "Award",
-        "iconColor": "text-green-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -105,7 +101,6 @@ export const testData: TestData[] = [
         "text": "I am more drawn toward the convincing than the touching.",
         "type": "likert",
         "icon": "Heart",
-        "iconColor": "text-red-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -121,7 +116,6 @@ export const testData: TestData[] = [
         "text": "I prefer to work to deadlines rather than just \"whenever\".",
         "type": "likert",
         "icon": "Clock",
-        "iconColor": "text-yellow-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -137,7 +131,6 @@ export const testData: TestData[] = [
         "text": "I tend to choose rather carefully than somewhat impulsively.",
         "type": "likert",
         "icon": "Crosshair",
-        "iconColor": "text-teal-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -153,7 +146,6 @@ export const testData: TestData[] = [
         "text": "After socializing, I feel energized and want more.",
         "type": "likert",
         "icon": "Battery",
-        "iconColor": "text-blue-900",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -169,7 +161,6 @@ export const testData: TestData[] = [
         "text": "I am more attracted to sensible people than imaginative people.",
         "type": "likert",
         "icon": "Anchor",
-        "iconColor": "text-gray-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -185,7 +176,6 @@ export const testData: TestData[] = [
         "text": "I am more interested in what is actual than what is possible.",
         "type": "likert",
         "icon": "Map",
-        "iconColor": "text-purple-700",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -201,7 +191,6 @@ export const testData: TestData[] = [
         "text": "I feel energized when engaging in social activities.",
         "type": "likert",
         "icon": "Zap",
-        "iconColor": "text-orange-400",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -217,7 +206,6 @@ export const testData: TestData[] = [
         "text": "I rely on facts and details more than abstract ideas.",
         "type": "likert",
         "icon": "FileText",
-        "iconColor": "text-blue-600",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -233,7 +221,6 @@ export const testData: TestData[] = [
         "text": "I make decisions based on logic rather than emotions.",
         "type": "likert",
         "icon": "GitBranch",
-        "iconColor": "text-green-600",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -249,7 +236,6 @@ export const testData: TestData[] = [
         "text": "I prefer to plan things in advance rather than being spontaneous.",
         "type": "likert",
         "icon": "Calendar",
-        "iconColor": "text-yellow-600",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -265,7 +251,6 @@ export const testData: TestData[] = [
         "text": "I find it easy to initiate conversations with new people.",
         "type": "likert",
         "icon": "Coffee",
-        "iconColor": "text-orange-600",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -281,7 +266,6 @@ export const testData: TestData[] = [
         "text": "I prefer concrete and literal explanations.",
         "type": "likert",
         "icon": "Book",
-        "iconColor": "text-blue-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -297,7 +281,6 @@ export const testData: TestData[] = [
         "text": "I prioritize objective criteria and facts when making important decisions.",
         "type": "likert",
         "icon": "Filter",
-        "iconColor": "text-green-500",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
@@ -313,7 +296,6 @@ export const testData: TestData[] = [
         "text": "I prefer organized and structured environments.",
         "type": "likert",
         "icon": "Home",
-        "iconColor": "text-orange-400",
         "options": [
           { "value": "1", "label": "Strongly Disagree" },
           { "value": "2", "label": "Disagree" },
