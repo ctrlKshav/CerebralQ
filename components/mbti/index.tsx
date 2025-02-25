@@ -2,7 +2,6 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { mbtiResponseSchema, type MBTIResponse } from "@/shared/schema";
 import { testData } from "@/data/mbti";
 import { saveProgress, loadProgress } from "@/lib/mbti-storage";
@@ -30,17 +29,17 @@ export default function MBTITest() {
     },
   });
 
-  // useEffect(() => {
-  //   const savedProgress = loadProgress();
-  //   if (savedProgress) {
-  //     methods.reset(savedProgress);
-  //     const lastAnsweredSection = Math.max(
-  //       ...Object.keys(savedProgress.answers)
-  //         .map(key => currentTest.questions.find(q => q.id === key)?.section || 1)
-  //     );
-  //     setCurrentSectionId(lastAnsweredSection);
-  //   }
-  // }, []);
+  useEffect(() => {
+    const savedProgress = loadProgress();
+    if (savedProgress) {
+      methods.reset(savedProgress);
+      const lastAnsweredSection = Math.max(
+        ...Object.keys(savedProgress.answers)
+          .map(key => currentTest.questions.find(q => q.id === key)?.section || 1)
+      );
+      setCurrentSectionId(lastAnsweredSection);
+    }
+  }, []);
 
   const onSubmit = async (data: MBTIResponse) => {
     // Set completing state to true to show full progress bar
@@ -61,6 +60,7 @@ export default function MBTITest() {
           type: "required",
           message: "Please answer this question",
         });
+        
       });
       return;
     }
@@ -79,35 +79,44 @@ export default function MBTITest() {
       testId: currentTest.id,
       completionDate: new Date().toLocaleDateString(),
     };
-    
-    // Small delay to show the full progress bar before navigating
-    setTimeout(() => {
+    setTimeout(() => 
       router.push(
         `/tests/${currentTest.id}/results?data=${encodeURIComponent(JSON.stringify(resultsData))}`
-      );
-    }, 800); // Increased delay for better visual feedback
+      )
+      , 500)
+  
   };
 
   const handleNext = () => {
-    // Check if all questions in current section are answered
     const currentSectionQuestions = currentTest.questions.filter(
       (q) => q.section === currentSectionId
     );
-
     const unansweredQuestions = currentSectionQuestions.filter(
       (question) => !methods.getValues().answers[question.id]?.selectedScore
     );
 
     if (unansweredQuestions.length > 0) {
-      unansweredQuestions.forEach((question) => {
+      unansweredQuestions.forEach((question, index) => {
+        if (index === 0) {
+          methods.setFocus(`answers.${question.id}`);
+        }
         methods.setError(`answers.${question.id}.selectedScore`, {
           type: "required",
           message: "Please answer this question",
         });
       });
+      
+      // Use requestAnimationFrame to ensure the error card is rendered before scrolling
+      requestAnimationFrame(() => {
+        const firstErrorCard = document.querySelector('.question-card.ring-2');
+        if (firstErrorCard) {
+          firstErrorCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+      
       return;
     }
-
+    
     // Clear any existing errors before moving to next section
     methods.clearErrors();
 
