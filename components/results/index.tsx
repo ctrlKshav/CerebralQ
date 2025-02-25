@@ -57,8 +57,6 @@ export default function Results() {
     if (dataParam) {
       const data = JSON.parse(dataParam);
       const { personalityType, traitScores, testId, completionDate } = data;
-      console.log("result1")
-      console.log(traitScores)
       setTestId(testId);
       setCompletionDate(completionDate);
       setPersonalityType(personalityType);

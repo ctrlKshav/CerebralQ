@@ -28,6 +28,7 @@ export default function MBTITest() {
       createdAt: new Date().toISOString(), // set default createdAt
     },
   });
+  const {formState: {errors}, setFocus} = methods;
 
   useEffect(() => {
     const savedProgress = loadProgress();
@@ -44,28 +45,6 @@ export default function MBTITest() {
   const onSubmit = async (data: MBTIResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
-    
-    // Validate final section questions
-    const currentSectionQuestions = currentTest.questions.filter(
-      (q) => q.section === currentSectionId
-    );
-    const unansweredQuestions = currentSectionQuestions.filter(
-      (question) => !methods.getValues().answers[question.id]?.selectedScore
-    );
-    
-    if (unansweredQuestions.length > 0) {
-      setIsCompleting(false); // Reset if there are validation errors
-      unansweredQuestions.forEach((question) => {
-        methods.setError(`answers.${question.id}.selectedScore`, {
-          type: "required",
-          message: "Please answer this question",
-        });
-        
-      });
-      return;
-    }
-    
-    methods.clearErrors();
     const personalityResult = calculateMBTI(
       data.answers,
       currentTest.questions
@@ -79,27 +58,27 @@ export default function MBTITest() {
       testId: currentTest.id,
       completionDate: new Date().toLocaleDateString(),
     };
+
     setTimeout(() => 
       router.push(
         `/tests/${currentTest.id}/results?data=${encodeURIComponent(JSON.stringify(resultsData))}`
-      )
-      , 500)
-  
+      ), 500)
   };
 
-  const handleNext = () => {
+  const handleNext = async() => {
+    // Get all questions for the current section
     const currentSectionQuestions = currentTest.questions.filter(
       (q) => q.section === currentSectionId
     );
+    
+    // Check if all questions in current section are answered
     const unansweredQuestions = currentSectionQuestions.filter(
       (question) => !methods.getValues().answers[question.id]?.selectedScore
     );
-
+    
+    // If there are unanswered questions, set errors and scroll to first error
     if (unansweredQuestions.length > 0) {
-      unansweredQuestions.forEach((question, index) => {
-        if (index === 0) {
-          methods.setFocus(`answers.${question.id}`);
-        }
+      unansweredQuestions.forEach((question) => {
         methods.setError(`answers.${question.id}.selectedScore`, {
           type: "required",
           message: "Please answer this question",
@@ -113,7 +92,6 @@ export default function MBTITest() {
           firstErrorCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
       });
-      
       return;
     }
     
@@ -137,17 +115,7 @@ export default function MBTITest() {
     }
   };
 
-  const handleSectionClick = (sectionId: number) => {
-    // Clear any errors when using section navigation
-    methods.clearErrors();
-    setCurrentSectionId(sectionId);
-  };
-
   const currentStepText = `Section ${currentSectionId} of ${currentTest.sections.length}`;
-
-  // Remove the watch effect that was clearing errors
-  // We only want to clear errors on specific user actions now
-  const answers = methods.watch("answers");
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">

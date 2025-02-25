@@ -35,12 +35,10 @@ export function LikertScale({ name, onAnswerSelected }: LikertScaleProps) {
     
     // If there's a next question, scroll to it
     if (nextCard) {
-      setTimeout(() => {
         nextCard.scrollIntoView({ 
           behavior: 'smooth',
           block: 'start'
         });
-      }, 50);
     }
   };
 
