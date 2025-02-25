@@ -1,9 +1,21 @@
 ﻿"use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
+import {
+  Tooltip,
+  TooltipProvider,
+  TooltipTrigger,
+  TooltipContent,
+} from "../ui/tooltip";
 import {
   Brain,
   Timer,
@@ -17,6 +29,11 @@ import {
   FileSpreadsheet,
   ArrowRight,
   ArrowDown,
+  HelpCircle,
+  Check,
+  AlertCircle,
+  Circle,
+  CheckCircle2,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -189,7 +206,34 @@ const FeatureBadge = ({
   </div>
 );
 
+// Function to render point indicators
+const renderPointIndicators = (points: number) => {
+  return (
+    <div className="flex space-x-1">
+      {[...Array(10)].map((_, i) => (
+        <div key={i} className="relative">
+          {i < points ? (
+            <div className="h-4 w-4 rounded-full bg-primary flex items-center justify-center" />
+          ) : (
+            <div className="h-4 w-4 rounded-full border border-muted-foreground/30" />
+          )}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 export default function TestInformation() {
+  // Convert percentage to points out of 10
+  const getPointsOutOfTen = (percentage: number) => {
+    return Math.round(percentage / 10);
+  };
+
+  const testConsistencyPoints = getPointsOutOfTen(MBTI_TEST.reliability_score);
+  const scientificValidityPoints = getPointsOutOfTen(
+    MBTI_TEST.scientific_validity_score
+  );
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -312,10 +356,7 @@ export default function TestInformation() {
                   </p>
                   <div className="flex gap-2">
                     {dimension.types.map((type, i) => (
-                      <Badge
-                        key={i}
-                        variant={"default"}
-                      >
+                      <Badge key={i} variant={"default"}>
                         {type}
                       </Badge>
                     ))}
@@ -383,9 +424,7 @@ export default function TestInformation() {
                 )}
               </div>
 
-              <Link
-                href={`/tests/${MBTI_TEST.short_code}/start-test`}
-              >
+              <Link href={`/tests/${MBTI_TEST.short_code}/start-test`}>
                 <Button className="my-6" variant="outline">
                   Retake Test
                 </Button>
@@ -394,38 +433,95 @@ export default function TestInformation() {
           </div>
         </div>
 
-        {/* Validation Section */}
         <div className="mt-24 grid gap-8 md:grid-cols-2">
           {/* Reliability Metrics Card */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
-                <BarChart className="h-6 w-6" />
-                Reliability Metrics
+                <Award className="h-6 w-6" />
+                Methodological Quality
               </CardTitle>
+              <CardDescription>
+                Assessment quality based on psychological research standards
+              </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-6">
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-medium">Test Consistency</span>
-                  <span className="text-lg text-muted-foreground">
-                    {MBTI_TEST.reliability_score}%
-                  </span>
+            <CardContent className="space-y-8">
+              <TooltipProvider delayDuration={100}>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg font-medium">
+                        Test-Retest Consistency
+                      </span>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <p>
+                            Measures how consistently this test produces the
+                            same results when taken by the same person at
+                            different times. Higher scores indicate greater
+                            consistency.
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                    <span className="text-lg font-semibold">
+                      {testConsistencyPoints}/10
+                    </span>
+                  </div>
+
+                  <div className="flex items-center">
+                    {renderPointIndicators(testConsistencyPoints)}
+                  </div>
+
+                  <div className="text-sm text-muted-foreground">
+                    {testConsistencyPoints >= 8
+                      ? "Excellent consistency across test sessions"
+                      : testConsistencyPoints >= 6
+                        ? "Good consistency with minor variations"
+                        : "Moderate consistency - results may vary"}
+                  </div>
                 </div>
-                <Progress value={MBTI_TEST.reliability_score} className="h-3" />
-              </div>
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-lg font-medium">Scientific Basis</span>
-                  <span className="text-lg text-muted-foreground">
-                    {MBTI_TEST.scientific_validity_score}%
-                  </span>
+
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg font-medium">
+                        Research Foundation
+                      </span>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <HelpCircle className="h-4 w-4 text-muted-foreground" />
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs">
+                          <p>
+                            Evaluates the level of empirical evidence and
+                            peer-reviewed research supporting this assessment
+                            methodology.
+                          </p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                    <span className="text-lg font-semibold">
+                      {scientificValidityPoints}/10
+                    </span>
+                  </div>
+
+                  <div className="flex items-center">
+                    {renderPointIndicators(scientificValidityPoints)}
+                  </div>
+
+                  <div className="text-sm text-muted-foreground">
+                    {scientificValidityPoints >= 8
+                      ? "Strong research support from multiple studies"
+                      : scientificValidityPoints >= 6
+                        ? "Supported by research with some limitations"
+                        : "Limited research support - interpret with caution"}
+                  </div>
                 </div>
-                <Progress
-                  value={MBTI_TEST.scientific_validity_score}
-                  className="h-3"
-                />
-              </div>
+              </TooltipProvider>
             </CardContent>
           </Card>
 
@@ -434,8 +530,11 @@ export default function TestInformation() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-2xl">
                 <BookOpen className="h-6 w-6" />
-                Citations
+                Academic Citations
               </CardTitle>
+              <CardDescription>
+                Peer-reviewed sources informing our methodology
+              </CardDescription>
             </CardHeader>
             <CardContent>
               <ul className="list-disc pl-6 space-y-4 text-lg">
