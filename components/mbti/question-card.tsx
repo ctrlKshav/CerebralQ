@@ -13,7 +13,7 @@ interface QuestionCardProps {
 
 export function QuestionCard({ question, name, onAnswerSelected }: QuestionCardProps) {
   const { formState: { errors }, setValue } = useFormContext<{ answers: Record<string, any> }>();
-  const iconClass = question.iconColor || "text-blue-500";
+  const iconClass = question.iconColor || "text-primary";
   const error = errors.answers?.[question.id];
   
   useEffect(() => {
