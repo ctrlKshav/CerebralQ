@@ -1,12 +1,16 @@
-﻿import React from "react";
+﻿"use client";
+import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/Icon";
 import { testData } from "@/data/mbti";
 import CQLogo from "../cq-logo";
 
-export default function MobileTopbar({currentStepText}: {currentStepText: string}) {
-  
+export default function MobileTopbar({
+  currentStepText,
+}: {
+  currentStepText: string;
+}) {
   const currentTest = testData[0];
   return (
     <div>
@@ -20,7 +24,9 @@ export default function MobileTopbar({currentStepText}: {currentStepText: string
             </div>
           </div>
         </div>
-        <CQLogo logoClassName="w-14 h-12" />
+        <Link href="/">
+          <CQLogo className="w-14 h-12" />
+        </Link>
       </div>
     </div>
   );

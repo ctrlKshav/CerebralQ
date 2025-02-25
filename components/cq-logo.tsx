@@ -1,10 +1,22 @@
-﻿import React from "react";
+﻿"use client"
+import React, { useEffect } from "react";
 import Link from "next/link";
+import { useTheme } from "next-themes"; // Make sure this import matches your theme provider
 
-export default function CQLogo({className, logoClassName = "w-12 h-12"}: {className?: string, logoClassName?: string}) {
+export default function CQLogo({
+  className = "w-12 h-12"
+}: {
+  className?: string
+}) {
+  const { theme } = useTheme();
+  
+  // Determine which logo to show based on theme
+  const isLightTheme = theme === "light"
+  const logoSrc = isLightTheme 
+    ? "/CQLogoFinalLightMode.png" 
+    : "/CQLogoFinalDarkMode.png";
+
   return (
-    <Link href={"/"} className={`${className}`}>
-      <img src="/CQ_Logo.png" alt="CerebralQ" className={`${logoClassName}`} />
-    </Link>
+      <img src={logoSrc} alt="CerebralQ" className={`${className}`} />
   );
 }

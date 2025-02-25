@@ -26,6 +26,7 @@ import { MenuSection } from "./MenuSection";
 import { MobileMenuSection } from "./mobile-menu/MobileMenuSection";
 import { assessmentItems, communityItems } from "@/data/navbar";
 import { MobileMenuItem } from "./mobile-menu/MobileMenuItem";
+import CQLogo from "../cq-logo";
 
 const Navbar = (props: {className?: string}) => {
   // ... (previous state and scroll handling code remains the same)
@@ -73,7 +74,7 @@ const Navbar = (props: {className?: string}) => {
           {/* Logo - Left column */}
           <div className="flex items-center ">
             <Link href="/" className="flex items-center space-x-2">
-              <img src="/CQ_Logo.png" alt="Cerebral Quotient Logo" className="w-14 h-12" />
+              <CQLogo className="w-14 h-12" />
               <span className="text-2xl font-semibold hidden sm:block">
                 Cerebral Quotient
               </span>
