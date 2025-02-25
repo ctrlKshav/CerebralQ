@@ -17,6 +17,7 @@ import CQLogo from "../cq-logo";
 export default function MBTITest() {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
+  const [isCompleting, setIsCompleting] = useState(false);
   const currentTest = testData[0];
 
   const methods = useForm<MBTIResponse>({
@@ -42,15 +43,19 @@ export default function MBTITest() {
   // }, []);
 
   const onSubmit = async (data: MBTIResponse) => {
-    console.log("hello");
-    console.log(data);
+    // Set completing state to true to show full progress bar
+    setIsCompleting(true);
+    
+    // Validate final section questions
     const currentSectionQuestions = currentTest.questions.filter(
       (q) => q.section === currentSectionId
     );
     const unansweredQuestions = currentSectionQuestions.filter(
       (question) => !methods.getValues().answers[question.id]?.selectedScore
     );
+    
     if (unansweredQuestions.length > 0) {
+      setIsCompleting(false); // Reset if there are validation errors
       unansweredQuestions.forEach((question) => {
         methods.setError(`answers.${question.id}.selectedScore`, {
           type: "required",
@@ -59,6 +64,7 @@ export default function MBTITest() {
       });
       return;
     }
+    
     methods.clearErrors();
     const personalityResult = calculateMBTI(
       data.answers,
@@ -71,16 +77,15 @@ export default function MBTITest() {
       personalityType: personalityResult.personalityType,
       traitScores: personalityResult.traitScores,
       testId: currentTest.id,
-      completionDate: new Date().toLocaleDateString(), // example date formatting
-      // Optionally include answers if needed: answers: data.answers,
+      completionDate: new Date().toLocaleDateString(),
     };
-    console.log("test1");
-    console.log(resultsData);
-
-    // Use router to push data to results page
-    router.push(
-      `/tests/${currentTest.id}/results?data=${encodeURIComponent(JSON.stringify(resultsData))}`
-    );
+    
+    // Small delay to show the full progress bar before navigating
+    setTimeout(() => {
+      router.push(
+        `/tests/${currentTest.id}/results?data=${encodeURIComponent(JSON.stringify(resultsData))}`
+      );
+    }, 800); // Increased delay for better visual feedback
   };
 
   const handleNext = () => {
@@ -152,6 +157,7 @@ export default function MBTITest() {
             onNext={handleNext}
             onPrev={handlePrev}
             onSubmit={onSubmit}
+            isCompleting={isCompleting}
           />
         </form>
       </FormProvider>

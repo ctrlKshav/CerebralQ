@@ -3,7 +3,8 @@ import { QuestionCard } from "./question-card";
 import { FormNavigation } from "./form-navigation";
 import { TestQuestion, TestSection } from "@/types/tests/mbti";
 import { MBTIResponse } from "@/shared/schema";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useFormContext } from "react-hook-form";
 
 interface TestFormProps {
   currentSectionId: number;
@@ -12,6 +13,7 @@ interface TestFormProps {
   onNext: () => void;
   onPrev: () => void;
   onSubmit: (data: MBTIResponse) => void;
+  isCompleting?: boolean;
 }
 
 export function TestForm({
@@ -20,9 +22,41 @@ export function TestForm({
   sections,
   onNext,
   onPrev,
-  onSubmit
+  onSubmit,
+  isCompleting = false
 }: TestFormProps) {
+  const { watch } = useFormContext();
+  const answers = watch("answers") || {};
+  
   const sectionQuestions = questions.filter(q => q.section === currentSectionId);
+  
+  // Track which questions have been answered
+  const answeredQuestionIds = Object.keys(answers)
+    .filter(id => answers[id]?.selectedScore);
+    
+  // Count questions answered in previous sections
+  const previousAnsweredCount = questions
+    .filter(q => q.section < currentSectionId)
+    .length;
+    
+  // Count questions answered in current section
+  const currentSectionAnsweredCount = sectionQuestions
+    .filter(q => answeredQuestionIds.includes(q.id))
+    .length;
+    
+  // Calculate current question position
+  const currentQuestionCount = previousAnsweredCount + 
+    (currentSectionAnsweredCount < sectionQuestions.length ? 
+      currentSectionAnsweredCount + 1 : // Next unanswered question
+      sectionQuestions.length); // All answered in section
+      
+  const totalQuestions = questions.length;
+  
+  // Handle answer selection to update question count
+  const handleAnswerSelected = (questionId: string) => {
+    // The component will re-render with updated answeredQuestionIds
+    // which will recalculate currentQuestionCount
+  };
 
   return (
     <div className="flex-1 mt-16 lg:mt-0">
@@ -43,6 +77,7 @@ export function TestForm({
                     key={question.id}
                     question={question}
                     name={`answers.${question.id}`}
+                    onAnswerSelected={handleAnswerSelected}
                   />
                 ))}
               </motion.div>
@@ -58,6 +93,11 @@ export function TestForm({
               onPrev={onPrev}
               isFirstStep={currentSectionId === 1}
               isLastStep={currentSectionId === sections.length}
+              currentSectionId={currentSectionId}
+              totalSections={sections.length}
+              currentQuestionCount={currentQuestionCount}
+              totalQuestions={totalQuestions}
+              isCompleting={isCompleting}
             />
           </div>
         </div>

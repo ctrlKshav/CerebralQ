@@ -8,9 +8,10 @@ import Icon from "@/components/Icon";
 interface QuestionCardProps {
   question: TestQuestion;
   name: string;
+  onAnswerSelected?: (questionId: string) => void;
 }
 
-export function QuestionCard({ question, name }: QuestionCardProps) {
+export function QuestionCard({ question, name, onAnswerSelected }: QuestionCardProps) {
   const { formState: { errors }, setValue } = useFormContext<{ answers: Record<string, any> }>();
   const iconClass = question.iconColor || "text-blue-500";
   const error = errors.answers?.[question.id];
@@ -35,7 +36,10 @@ export function QuestionCard({ question, name }: QuestionCardProps) {
       </CardHeader>
       <CardContent className="p-8 pt-0">
         {/* Likert scale for score */}
-        <LikertScale name={`answers.${question.id}.selectedScore`} />
+        <LikertScale 
+          name={`answers.${question.id}.selectedScore`} 
+          onAnswerSelected={onAnswerSelected}
+        />
         {error && (
           <p className="mt-2 text-sm text-red-500">
             {error.message?.toString()}
