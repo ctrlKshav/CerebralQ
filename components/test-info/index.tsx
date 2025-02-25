@@ -52,9 +52,15 @@ const MBTI_TEST = {
   ],
   category: "personality",
   citations: [
-    "https://pubmed.ncbi.nlm.nih.gov/12345678/",
-    "Myers, I. B., & McCaulley, M. H. (1985). Manual: A guide to the development and use of the Myers-Briggs Type Indicator. Consulting Psychologists Press.",
-  ],
+    {
+      name: " Myers, I. B., & McCaulley, M. H. (1985). Manual: A guide to the development and use of the Myers-Briggs Type Indicator. Consulting Psychologists Press.",
+      link: "https://psycnet.apa.org/record/2013-29682-000"
+    },
+    {
+      name: " Myers Briggs Type Indicator Score Reliability Across Studies A Meta-Analytic Reliability Generalization Study",
+      link: "https://www.researchgate.net/publication/237444046_Myers-Briggs_Type_Indicator_Score_Reliability_Across_Studies_A_Meta-Analytic_Reliability_Generalization_Study"
+    }
+   ],
   difficulty_level: "intermediate",
   num_questions: 60,
   time_estimate_minutes: 12,
@@ -540,18 +546,18 @@ export default function TestInformation() {
               <ul className="list-disc pl-6 space-y-4 text-lg">
                 {MBTI_TEST.citations.map((citation, index) => (
                   <li key={index}>
-                    {citation.startsWith("http") ? (
+                   
                       <a
-                        href={citation}
+                        href={citation.link}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-primary hover:underline"
                       >
-                        {new URL(citation).hostname}
+                        {new URL(citation.link).hostname}
                       </a>
-                    ) : (
-                      <span className="text-muted-foreground">{citation}</span>
-                    )}
+                  
+                      <span className="text-muted-foreground">  {citation.name}</span>
+                
                   </li>
                 ))}
               </ul>
