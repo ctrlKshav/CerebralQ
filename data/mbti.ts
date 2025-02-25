@@ -37,7 +37,7 @@ export const testData: TestData[] = [
     "questions": [
       {
         "id": "1",
-        "text": "I prefer interacting with many people, including strangers, at parties",
+        "text": "I prefer interacting with many people, including strangers, at parties.",
         "description": "(Temporary Field for Feedback) I feel energized when engaging in social activities.",
         "type": "likert",
         "icon": "Users",
@@ -54,7 +54,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "2",
-        "text": "I tend to be more realistic than speculative",
+        "text": "I tend to be more realistic than speculative.",
         "type": "likert",
         "icon": "Clipboard",
         "iconColor": "text-blue-500",
@@ -70,7 +70,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "3",
-        "text": "I consider having my \"head in the clouds\" to be worse than being \"in a rut\"",
+        "text": "I consider having my \"head in the clouds\" to be worse than being \"in a rut\".",
         "type": "likert",
         "icon": "AlertTriangle",
         "iconColor": "text-purple-500",
@@ -86,7 +86,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "4",
-        "text": "I am more impressed by principles than emotions",
+        "text": "I am more impressed by principles than emotions.",
         "type": "likert",
         "icon": "Award",
         "iconColor": "text-green-500",
@@ -102,7 +102,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "5",
-        "text": "I am more drawn toward the convincing than the touching",
+        "text": "I am more drawn toward the convincing than the touching.",
         "type": "likert",
         "icon": "Heart",
         "iconColor": "text-red-500",
@@ -118,7 +118,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "6",
-        "text": "I prefer to work to deadlines rather than just \"whenever\"",
+        "text": "I prefer to work to deadlines rather than just \"whenever\".",
         "type": "likert",
         "icon": "Clock",
         "iconColor": "text-yellow-500",
@@ -134,7 +134,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "7",
-        "text": "I tend to choose rather carefully than somewhat impulsively",
+        "text": "I tend to choose rather carefully than somewhat impulsively.",
         "type": "likert",
         "icon": "Crosshair",
         "iconColor": "text-teal-500",
@@ -150,7 +150,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "8",
-        "text": "After socializing, I feel energized and want more",
+        "text": "After socializing, I feel energized and want more.",
         "type": "likert",
         "icon": "Battery",
         "iconColor": "text-blue-900",
@@ -166,7 +166,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "9",
-        "text": "I am more attracted to sensible people than imaginative people",
+        "text": "I am more attracted to sensible people than imaginative people.",
         "type": "likert",
         "icon": "Anchor",
         "iconColor": "text-gray-500",
@@ -182,7 +182,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "10",
-        "text": "I am more interested in what is actual than what is possible",
+        "text": "I am more interested in what is actual than what is possible.",
         "type": "likert",
         "icon": "Map",
         "iconColor": "text-purple-700",
@@ -262,7 +262,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "15",
-        "text": "I find it easy to initiate conversations with new people",
+        "text": "I find it easy to initiate conversations with new people.",
         "type": "likert",
         "icon": "Coffee",
         "iconColor": "text-orange-600",
@@ -278,7 +278,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "16",
-        "text": "I prefer concrete and literal explanations",
+        "text": "I prefer concrete and literal explanations.",
         "type": "likert",
         "icon": "Book",
         "iconColor": "text-blue-500",
@@ -294,7 +294,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "17",
-        "text": "I prioritize objective criteria and facts when making important decisions",
+        "text": "I prioritize objective criteria and facts when making important decisions.",
         "type": "likert",
         "icon": "Filter",
         "iconColor": "text-green-500",
@@ -310,7 +310,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "18",
-        "text": "I prefer organized and structured environments",
+        "text": "I prefer organized and structured environments.",
         "type": "likert",
         "icon": "Home",
         "iconColor": "text-orange-400",
