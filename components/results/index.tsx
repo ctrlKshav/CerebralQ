@@ -15,7 +15,7 @@ import { Share2, Download, ChevronRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import { ResultData } from "@/types/tests/mbti";
 import { Badge } from "@/components/ui/badge";
-import { PersonalityTraits } from "@/components/results/personality-tests";
+import { PersonalityTraits } from "@/components/results/personality-traits";
 import { getCareerSuggestions, getSimilarPersonalities } from "@/lib/mbti/results";
 
 // Define personality type descriptions
