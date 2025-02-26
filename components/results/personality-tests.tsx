@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import type { TraitScores } from "@/types/tests/mbti"
 import { traitDescriptions } from "@/data/traitDescriptions"
+import { useTheme } from "next-themes"
 
 interface PersonalityTraitsProps {
   traitScores: TraitScores
@@ -12,6 +13,9 @@ interface PersonalityTraitsProps {
 
 export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
   const [selectedTrait, setSelectedTrait] = React.useState<keyof TraitScores>("E-I")
+  const { theme, resolvedTheme } = useTheme();
+  const currentTheme = theme === 'system' ? resolvedTheme : theme;
+  const isLightTheme = currentTheme === "light";
 
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
@@ -28,6 +32,7 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
             const typedTrait = trait as keyof TraitScores;
             const description = traitDescriptions[typedTrait];
             const isSelected = selectedTrait === typedTrait;
+            const themedColor = !isLightTheme ? description.lightColor : description.darkColor;
             
             // Calculate the marker position (0-100)
             const markerPosition = score.dominant === "left" 
@@ -66,7 +71,7 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
                     className={`absolute -top-5 whitespace-nowrap text-${textAlignment}`}
                     style={{ 
                       left: `${markerPosition}%`,
-                      color: description.color,
+                      color: themedColor,
                       transform: `translateX(${translateX})`,
                     }}
                   >
@@ -89,22 +94,22 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
                   {/* Custom progress fill that starts from center */}
                   {score.dominant === "left" && deviation > 0 && (
                     <div 
-                      className="absolute top-0 h-full z-0 bg-gradient-to-l rounded-l-full"
+                      className="absolute top-0 h-full z-0  rounded-l-full"
                       style={{
                         right: "50%",
                         width: `${deviation}%`,
-                        backgroundColor: description.color,
+                        backgroundColor: themedColor,
                       }}
                     />
                   )}
                   
                   {score.dominant === "right" && deviation > 0 && (
                     <div 
-                      className="absolute top-0 h-full z-0 bg-gradient-to-r rounded-r-full"
+                      className="absolute top-0 h-full z-0  rounded-r-full"
                       style={{
                         left: "50%",
                         width: `${deviation}%`,
-                        backgroundColor: description.color,
+                        backgroundColor: themedColor,
                       }}
                     />
                   )}
@@ -117,7 +122,7 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
                     )}
                     style={{
                       left: `${markerPosition}%`,
-                      borderColor: description.color,
+                      borderColor: themedColor,
                       transform: `translate(-50%, -50%) scale(${isSelected ? 1.2 : 1})`,
                     }}
                   />
@@ -137,7 +142,7 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
           <div className="space-y-6">
             <div className="space-y-2">
               <span className="text-base text-muted-foreground">{traitDescriptions[selectedTrait].title}</span>
-              <h3 className="text-3xl font-bold" style={{ color: traitDescriptions[selectedTrait].color }}>
+              <h3 className="text-3xl font-bold" style={{ color: traitDescriptions[selectedTrait].lightColor }}>
                 {traitScores[selectedTrait][`${traitScores[selectedTrait].dominant}Percentage`].toFixed(0)}%{" "}
                 {traitScores[selectedTrait].dominant === "left"
                   ? traitDescriptions[selectedTrait].leftLabel
