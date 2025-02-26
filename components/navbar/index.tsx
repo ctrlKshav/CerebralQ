@@ -68,16 +68,13 @@ const Navbar = (props: {className?: string}) => {
 
   return (
     <header className={navbarClasses}>
-      <div className="flex h-16 items-center px-4 max-w-7xl mx-auto">
+      <div className="flex h-24 items-center px-4 max-w-7xl mx-auto">
         {/* Three-column layout */}
         <div className="grid grid-cols-3 items-center w-full">
           {/* Logo - Left column */}
           <div className="flex items-center ">
             <Link href="/" className="flex items-center space-x-2">
-              <CQLogo className="w-14 h-12" />
-              <span className="text-2xl font-semibold hidden sm:block">
-                Cerebral Quotient
-              </span>
+              <CQLogo className="w-36 h-36" />
             </Link>
           </div>
 
@@ -141,7 +138,7 @@ const Navbar = (props: {className?: string}) => {
             </div>
 
             {/* Mobile Menu */}
-            <div className="lg:hidden absolute top-3 right-4">
+            <div className="lg:hidden absolute top-5 right-4">
               <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                 <SheetTrigger asChild>
                   <Button variant="ghost" size="icon">
@@ -154,8 +151,7 @@ const Navbar = (props: {className?: string}) => {
                 >
                   <SheetHeader className="border-b p-4">
                     <SheetTitle className="flex items-center space-x-2">
-                      <Brain className="h-6 w-6" color="blue" />
-                      <span>CQ</span>
+                      Menu
                     </SheetTitle>
                     <VisuallyHidden>
                       <SheetDescription>

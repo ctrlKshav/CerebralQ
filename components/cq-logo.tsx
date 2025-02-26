@@ -9,7 +9,7 @@ export default function CQLogo({
   className?: string
 }) {
   const { theme, resolvedTheme } = useTheme();
-  const [logoSrc, setLogoSrc] = useState("/CQLogoFinalLightMode.png"); // Default for SSR
+  const [logoSrc, setLogoSrc] = useState("/1.svg"); // Default for SSR
   
   useEffect(() => {
     // Update logo when theme changes or on initial client-side render
@@ -17,12 +17,12 @@ export default function CQLogo({
     const isLightTheme = currentTheme === "light";
     
     setLogoSrc(isLightTheme 
-      ? "/CQLogoFinalLightMode.png" 
-      : "/CQLogoFinalDarkMode.png"
+      ? "/1.svg" 
+      : "/1.svg"
     );
   }, [theme, resolvedTheme]);
 
   return (
-    <img src={logoSrc} alt="CerebralQ" className={`${className}`} />
+    <img src={logoSrc} alt="CerebralQ" className={`${className} object-contain`} />
   );
 }
