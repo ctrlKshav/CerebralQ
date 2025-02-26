@@ -56,6 +56,20 @@ export interface TraitDescriptions {
   [key: string]: TraitDescription
 }
 
+interface PersonalityInsight {
+  title: string;
+  icon: string;
+  points: string[];
+}
+
+export interface PersonalityTypeInsights {
+  strengths: PersonalityInsight;
+  challenges: PersonalityInsight;
+  workStyle: PersonalityInsight;
+  relationships: PersonalityInsight;
+  growthAreas: PersonalityInsight;
+}
+
 export interface ResultData {
   personalityType: string;
   personalityDescription: string;
