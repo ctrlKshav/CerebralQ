@@ -34,26 +34,9 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
             const isSelected = selectedTrait === typedTrait;
             const themedColor = !isLightTheme ? description.lightColor : description.darkColor;
             
-            // Calculate the marker position (0-100)
-            const markerPosition = score.dominant === "left" 
-              ? 50 - (score.leftPercentage - 50) 
-              : 50 + (score.rightPercentage - 50);
-            
-            // Determine which percentage to display based on dominant trait
-            const dominantPercentage = score[`${score.dominant}Percentage`];
-            
-            // Calculate the deviation from 50% for proper visualization
-            const deviation = Math.abs(dominantPercentage - 50);
-            
-            // Determine text alignment based on marker position to prevent overflow
-            const textAlignment = markerPosition <= 10 ? "left" 
-                               : markerPosition >= 90 ? "right" 
-                               : "center";
-            
-            // Determine translation based on alignment
-            const translateX = textAlignment === "center" ? "-50%" 
-                            : textAlignment === "left" ? "0" 
-                            : "-100%";
+            // Calculate percentages for left and right traits
+            const leftPercentage = score.leftPercentage;
+            const rightPercentage = score.rightPercentage;
             
             return (
               <div
@@ -64,74 +47,64 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
                 )}
                 onMouseEnter={() => setSelectedTrait(typedTrait)}
               >
-                {/* Position the percentage label above the marker */}
-                <div className="relative h-5">
-                  {/* Label positioned above marker with adjusted alignment */}
-                  <div
-                    className={`absolute -top-5 whitespace-nowrap text-${textAlignment}`}
-                    style={{ 
-                      left: `${markerPosition}%`,
-                      color: themedColor,
-                      transform: `translateX(${translateX})`,
-                    }}
-                  >
-                    <span className="text-base font-semibold">
-                      {dominantPercentage.toFixed(0)}% {score.dominant === "left" ? description.leftLabel : description.rightLabel}
-                    </span>
-                  </div>
+                {/* Trait Labels */}
+                <div className="flex justify-between text-sm font-medium">
+                  <span className="text-muted-foreground">{description.leftLabel}</span>
+                  <span className="text-muted-foreground">{description.rightLabel}</span>
                 </div>
-                
-                {/* Custom progress bar with center point */}
-                <div className="relative h-3 bg-gray-100 dark:bg-gray-800 rounded-full">
-                  {/* Center line with z-index to ensure visibility */}
-                  <div className="absolute top-0 bottom-0 left-1/2 -translate-x-[1px] w-[1px] bg-gray-300 dark:bg-gray-600 z-10" />
-                  
-                  {/* 50% neutral label */}
-                  <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-xs text-gray-400 dark:text-gray-500">
-                    50% neutral
-                  </div>
-                  
-                  {/* Custom progress fill that starts from center */}
-                  {score.dominant === "left" && deviation > 0 && (
-                    <div 
-                      className="absolute top-0 h-full z-0  rounded-l-full"
-                      style={{
-                        right: "50%",
-                        width: `${deviation}%`,
-                        backgroundColor: themedColor,
-                      }}
-                    />
-                  )}
-                  
-                  {score.dominant === "right" && deviation > 0 && (
-                    <div 
-                      className="absolute top-0 h-full z-0  rounded-r-full"
-                      style={{
-                        left: "50%",
-                        width: `${deviation}%`,
-                        backgroundColor: themedColor,
-                      }}
-                    />
-                  )}
-                  
-                  {/* Marker dot with higher z-index to appear above the center line */}
+
+                {/* Bar Chart Container */}
+                <div className="relative h-8 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
+                  {/* Background bars with reduced opacity */}
                   <div
-                    className={cn(
-                      "absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 transition-all duration-300",
-                      "bg-background z-20",
-                    )}
+                    className="absolute top-0 left-0 h-full transition-all duration-300"
                     style={{
-                      left: `${markerPosition}%`,
-                      borderColor: themedColor,
-                      transform: `translate(-50%, -50%) scale(${isSelected ? 1.2 : 1})`,
+                      width: `${leftPercentage}%`,
+                      backgroundColor: themedColor,
+                      opacity: 0.2
                     }}
                   />
-                </div>
-                
-                {/* Labels with extra margin-top to make space for the 50% neutral label */}
-                <div className="flex justify-between text-sm font-medium text-muted-foreground mt-5">
-                  <span>{description.leftLabel}</span>
-                  <span>{description.rightLabel}</span>
+                  <div
+                    className="absolute top-0 right-0 h-full transition-all duration-300"
+                    style={{
+                      width: `${rightPercentage}%`,
+                      backgroundColor: themedColor,
+                      opacity: 0.2
+                    }}
+                  />
+
+                  {/* Active bar for dominant trait */}
+                  <div
+                    className="absolute top-0 h-full transition-all duration-300"
+                    style={{
+                      left: score.dominant === 'left' ? 0 : 'auto',
+                      right: score.dominant === 'right' ? 0 : 'auto',
+                      width: `${score.dominant === 'left' ? leftPercentage : rightPercentage}%`,
+                      backgroundColor: themedColor,
+                    }}
+                  />
+
+                  {/* Percentage Labels - Always visible for both sides */}
+                  <div className="absolute inset-0 flex justify-between items-center px-3">
+                    <span 
+                      className={cn(
+                        "text-sm font-medium text-foreground",
+                        
+                      )}
+                      
+                    >
+                      {Math.round(leftPercentage)}%
+                    </span>
+                    <span 
+                      className={cn(
+                        "text-sm font-medium text-foreground",
+                        
+                      )}
+                      
+                    >
+                      {Math.round(rightPercentage)}%
+                    </span>
+                  </div>
                 </div>
               </div>
             )

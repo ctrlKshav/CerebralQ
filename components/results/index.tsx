@@ -240,7 +240,7 @@ export default function Results() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-50 to-white dark:from-zinc-950 dark:to-zinc-900">
+    <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-8 space-y-8">
         {/* Hero Section */}
         <motion.section
