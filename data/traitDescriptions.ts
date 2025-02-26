@@ -14,7 +14,7 @@ export const traitDescriptions: Record<string, TraitDescription> = {
     rightLabel: "Introversion",
     lightColor: "#4F46E5", // Indigo-600
     darkColor: "#818CF8", // Indigo-400
-    description: "This trait reflects how you interact with the world and where you derive your energy. Extraverts gain energy from social interactions and external activities, while Introverts recharge through solitude and deep internal thought."
+    description: "Where you get your energy. Extraverts thrive in social settings and feel energized around others. Introverts need alone time to recharge and often do their best thinking in solitude."
   },
   "S-N": {
     title: "Information Processing",
@@ -22,7 +22,7 @@ export const traitDescriptions: Record<string, TraitDescription> = {
     rightLabel: "Intuition",
     lightColor: "#10B981", // Emerald-600
     darkColor: "#34D399", // Emerald-400
-    description: "This trait indicates how you process information. Sensing types focus on concrete facts and details observed through their five senses, while Intuitive types prefer abstract concepts, patterns, and possibilities."
+    description: "How you take in the world. Sensing types trust what they can see, touch, and directly experience. Intuitive types read between the lines, spotting patterns and possibilities others might miss."
   },
   "T-F": {
     title: "Decision Making",
@@ -30,7 +30,7 @@ export const traitDescriptions: Record<string, TraitDescription> = {
     rightLabel: "Feeling",
     lightColor: "#F59E0B", // Amber-600
     darkColor: "#FBBF24", // Amber-400
-    description: "This trait shows how you make decisions. Thinking types prioritize logic, consistency, and objective criteria, while Feeling types emphasize values, harmony, and the impact on people when making choices."
+    description: "How you make choices. Thinking types analyze problems logically and value fairness through consistency. Feeling types consider emotional impact and strive for harmony in their decisions."
   },
   "J-P": {
     title: "External Orientation",
@@ -38,7 +38,6 @@ export const traitDescriptions: Record<string, TraitDescription> = {
     rightLabel: "Perceiving",
     lightColor: "#EC4899", // Pink-600
     darkColor: "#F472B6", // Pink-400
-    description: "This trait reflects how you approach structure and planning. Judging types prefer organization, schedules, and closure, while Perceiving types value flexibility, spontaneity, and keeping options open."
+    description: "How you structure your life. Judging types crave order, plans, and closure. Perceiving types prefer staying flexible, adapting on the fly, and keeping their options open."
   }
 };
-
