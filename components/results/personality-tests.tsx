@@ -127,7 +127,7 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
             
             <div className="relative aspect-square w-full max-w-[280px] mx-auto">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%20from%202025-02-26%2012-05-24-GFPCPRCg3E3ewcwwvGkZOwKbJxArKt.png"
+                src="/placeholder.svg"
                 alt="Personality trait illustration"
                 className="w-full h-full object-contain"
               />
