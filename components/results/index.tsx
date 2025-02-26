@@ -258,7 +258,6 @@ export default function Results() {
             {personalityDescription}
           </p>
           <div className="text-sm text-muted-foreground">
-            <p>Test ID: {testId}</p>
             <p>Completed on {completionDate}</p>
           </div>
           <div className="flex justify-center gap-3 pt-2">
