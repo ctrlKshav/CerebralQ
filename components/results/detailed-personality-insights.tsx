@@ -43,7 +43,7 @@ export function DetailedPersonalityInsights({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="p-8 lg:col-span-1 h-fit sticky top-16">
+        <Card className="p-8 lg:col-span-1 h-fit lg:sticky top-16">
           <div className="space-y-6">
             <div className="space-y-2">
               <span className="text-base text-muted-foreground">
