@@ -13,8 +13,7 @@ import {
 } from "@/components/ui/card";
 import { Share2, Download, ChevronRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
-import { TraitScores } from "@/lib/calculate-mbti";
-import { ComparisonChart } from "./comparison-chart";
+import { TraitScores } from "@/types/tests/mbti";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { PersonalityTraits } from "./personality-tests";

@@ -3,7 +3,7 @@
 import * as React from "react"
 import { Card } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
-import type { TraitScores } from "@/lib/calculate-mbti"
+import type { TraitScores } from "@/types/tests/mbti"
 import { traitDescriptions } from "@/data/traitDescriptions"
 
 interface PersonalityTraitsProps {

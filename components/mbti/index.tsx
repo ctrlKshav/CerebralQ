@@ -47,7 +47,6 @@ export default function MBTITest() {
     setIsCompleting(true);
     const personalityResult = calculateMBTI(
       data.answers,
-      currentTest.questions
     );
     data.personalityType = personalityResult.personalityType;
 
