@@ -56,3 +56,12 @@ export interface TraitDescriptions {
   [key: string]: TraitDescription
 }
 
+export interface ResultData {
+  personalityType: string;
+  personalityDescription: string;
+  testId: string;
+  completionDate: string;
+  traitScores: TraitScores | null;
+  careerSuggestions: Array<{ title: string; match: number }>;
+  similarPersonalities: Array<{ name: string; profession: string; image: string }>;
+}

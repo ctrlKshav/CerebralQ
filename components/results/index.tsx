@@ -13,18 +13,10 @@ import {
 } from "@/components/ui/card";
 import { Share2, Download, ChevronRight, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
-import { TraitScores } from "@/types/tests/mbti";
-import { Separator } from "@/components/ui/separator";
+import { ResultData } from "@/types/tests/mbti";
 import { Badge } from "@/components/ui/badge";
-import { PersonalityTraits } from "./personality-tests";
-
-// Local type definition for a trait
-interface Trait {
-  letter: string;
-  fullName: string;
-  score: number;
-  description: string;
-}
+import { PersonalityTraits } from "@/components/results/personality-tests";
+import { getCareerSuggestions, getSimilarPersonalities } from "@/lib/mbti/results";
 
 // Define personality type descriptions
 const personalityDescriptions: Record<string, string> = {
@@ -46,198 +38,53 @@ const personalityDescriptions: Record<string, string> = {
   ESFP: "Spontaneous, energetic entertainers who enjoy life to the fullest. Fun-loving performers who brighten their environments.",
 };
 
+
+
+
 export default function Results() {
   const searchParams = useSearchParams();
-  const [personalityType, setPersonalityType] = useState("");
-  const [personalityDescription, setPersonalityDescription] = useState("");
-  const [testId, setTestId] = useState("");
-  const [completionDate, setCompletionDate] = useState("");
-  const [traits, setTraits] = useState<Trait[]>([]);
-  const [traitScores, setTraitScores] = useState<TraitScores | null>(null);
-  const [careerSuggestions, setCareerSuggestions] = useState<any[]>([]);
-  const [similarPersonalities, setSimilarPersonalities] = useState<any[]>([]);
-
-  // Local mapping from letter to trait info
-  const traitMapping: Record<
-    string,
-    { fullName: string; description: string }
-  > = {
-    E: {
-      fullName: "Extraversion",
-      description:
-        "You gain energy from social interaction and tend to be talkative and expressive. You enjoy being in the spotlight and working with others.",
-    },
-    I: {
-      fullName: "Introversion",
-      description:
-        "You recharge through solitude and prefer deep one-on-one conversations. You think before speaking and enjoy working independently.",
-    },
-    S: {
-      fullName: "Sensing",
-      description:
-        "You focus on concrete facts and details, trust experience over theory, and prefer practical, proven solutions.",
-    },
-    N: {
-      fullName: "Intuition",
-      description:
-        "You see the big picture and patterns, enjoy exploring possibilities and innovations, and are future-oriented.",
-    },
-    T: {
-      fullName: "Thinking",
-      description:
-        "You make decisions based on logic and objective analysis. You value truth over tact and seek clarity and fairness.",
-    },
-    F: {
-      fullName: "Feeling",
-      description:
-        "You make decisions based on values and how they affect people. You seek harmony and consider the human element in all areas of life.",
-    },
-    J: {
-      fullName: "Judging",
-      description:
-        "You prefer structure, planning, and organization. You like to make decisions quickly and work steadily toward goals.",
-    },
-    P: {
-      fullName: "Perceiving",
-      description:
-        "You prefer flexibility, spontaneity, and keeping options open. You adapt easily to change and enjoy exploring possibilities.",
-    },
-  };
+  const [resultData, setResultData] = useState<ResultData>({
+    personalityType: "",
+    personalityDescription: "",
+    testId: "",
+    completionDate: "",
+    traitScores: null,
+    careerSuggestions: [],
+    similarPersonalities: []
+  });
 
   useEffect(() => {
     const dataParam = searchParams.get("data");
     if (dataParam) {
-      const data = JSON.parse(dataParam);
-      const { personalityType, traitScores, testId, completionDate } = data;
-      setTestId(testId);
-      setCompletionDate(completionDate);
-      setPersonalityType(personalityType);
-      setPersonalityDescription(personalityDescriptions[personalityType] || "");
-      setTraitScores(traitScores);
+      try {
+        const data = JSON.parse(dataParam);
+        const { personalityType, traitScores, testId, completionDate } = data;
 
-      const dimensions = ["E-I", "S-N", "T-F", "J-P"];
-      const computedTraits: Trait[] = dimensions.map((dim, index) => {
-        const letter = personalityType[index];
-        const scoreObj = traitScores[dim];
-        const score =
-          scoreObj.dominant === "left"
-            ? scoreObj.leftPercentage
-            : scoreObj.rightPercentage;
-        return {
-          letter,
-          fullName: traitMapping[letter].fullName,
-          score: Math.round(score),
-          description: traitMapping[letter].description,
-        };
-      });
-      setTraits(computedTraits);
-
-      // Career suggestions based on personality type
-      // This would normally come from an API or database
-      setCareerSuggestions(getCareerSuggestions(personalityType));
-      setSimilarPersonalities(getSimilarPersonalities(personalityType));
+        // Set all result data at once
+        setResultData({
+          personalityType,
+          personalityDescription: personalityDescriptions[personalityType] || "",
+          testId,
+          completionDate,
+          traitScores,
+          careerSuggestions: getCareerSuggestions(personalityType),
+          similarPersonalities: getSimilarPersonalities(personalityType)
+        });
+      } catch (error) {
+        console.error("Error parsing result data:", error);
+      }
     }
   }, [searchParams]);
 
-  // Helper function to get career suggestions based on personality type
-  const getCareerSuggestions = (type: string) => {
-    // This would be replaced with real data from an API
-    const careerMap: Record<string, Array<{ title: string; match: number }>> = {
-      INTJ: [
-        { title: "Systems Architect", match: 95 },
-        { title: "Management Consultant", match: 92 },
-        { title: "Scientific Researcher", match: 88 },
-      ],
-      INTP: [
-        { title: "Software Engineer", match: 96 },
-        { title: "Data Scientist", match: 94 },
-        { title: "Professor", match: 89 },
-      ],
-      ENTJ: [
-        { title: "Executive Officer", match: 97 },
-        { title: "Management Consultant", match: 93 },
-        { title: "Business Strategist", match: 90 },
-      ],
-      // Add more types as needed
-      ESFP: [
-        { title: "Event Planner", match: 96 },
-        { title: "Sales Representative", match: 93 },
-        { title: "Tour Guide", match: 91 },
-      ],
-    };
-
-    // Return default suggestions if type not found
-    return (
-      careerMap[type] || [
-        { title: "Project Manager", match: 90 },
-        { title: "Business Analyst", match: 85 },
-        { title: "Human Resources Manager", match: 82 },
-      ]
-    );
-  };
-
-  // Helper function to get similar personalities
-  const getSimilarPersonalities = (type: string) => {
-    // This would be replaced with real data from an API
-    const personalityMap: Record<
-      string,
-      Array<{ name: string; profession: string; image: string }>
-    > = {
-      INTJ: [
-        {
-          name: "Elon Musk",
-          profession: "Entrepreneur & Inventor",
-          image: "/placeholder.svg?height=80&width=80",
-        },
-        {
-          name: "Michelle Obama",
-          profession: "Attorney & Former First Lady",
-          image: "/placeholder.svg?height=80&width=80",
-        },
-      ],
-      INTP: [
-        {
-          name: "Albert Einstein",
-          profession: "Physicist",
-          image: "/placeholder.svg?height=80&width=80",
-        },
-        {
-          name: "Bill Gates",
-          profession: "Business Magnate",
-          image: "/placeholder.svg?height=80&width=80",
-        },
-      ],
-      // Add more types as needed
-      ENTJ: [
-        {
-          name: "Steve Jobs",
-          profession: "Apple Co-founder",
-          image: "/placeholder.svg?height=80&width=80",
-        },
-        {
-          name: "Margaret Thatcher",
-          profession: "Former Prime Minister",
-          image: "/placeholder.svg?height=80&width=80",
-        },
-      ],
-    };
-
-    // Return default if type not found
-    return (
-      personalityMap[type] || [
-        {
-          name: "Famous Person",
-          profession: "Notable Profession",
-          image: "/placeholder.svg?height=80&width=80",
-        },
-        {
-          name: "Historical Figure",
-          profession: "Important Role",
-          image: "/placeholder.svg?height=80&width=80",
-        },
-      ]
-    );
-  };
+  // Destructure properties from resultData for easier access in JSX
+  const {
+    personalityType,
+    personalityDescription,
+    completionDate,
+    traitScores,
+    careerSuggestions,
+    similarPersonalities
+  } = resultData;
 
   return (
     <div className="min-h-screen bg-background">
