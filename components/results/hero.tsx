@@ -32,7 +32,7 @@ export function Hero({
           {personalityType}
         </h1>
         <h2 className="text-2xl font-medium text-primary">
-          "{personalityAlias}"
+          {personalityAlias}
         </h2>
       </div>
       <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
