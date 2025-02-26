@@ -63,9 +63,8 @@ export function DetailedPersonalityInsights({
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
               These insights highlight the key characteristics of the{" "}
-              {personalityAlias} personality type. Recognize these as
-              tendencies rather than absolutes, as individual experiences
-              may vary.
+              {personalityAlias} personality type. Recognize these as tendencies
+              rather than absolutes, as individual experiences may vary.
             </p>
           </div>
         </Card>
@@ -73,12 +72,7 @@ export function DetailedPersonalityInsights({
           {/* Strengths Section */}
           <Card className="p-6 border-l-4 border-l-green-500">
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-green-100 dark:bg-green-900/30 p-2 rounded-full">
-                <Icon
-                  iconName={personalityInsights.strengths.icon}
-                  className="w-5 h-5 text-green-600 dark:text-green-400"
-                />
-              </div>
+              <div className="bg-green-400 dark:bg-green-700 p-2 rounded-full" />
               <h3 className="text-xl font-semibold">
                 {personalityInsights.strengths.title}
               </h3>
@@ -102,12 +96,8 @@ export function DetailedPersonalityInsights({
           {/* Challenges Section */}
           <Card className="p-6 border-l-4 border-l-amber-500">
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-amber-100 dark:bg-amber-900/30 p-2 rounded-full">
-                <Icon
-                  iconName={personalityInsights.challenges.icon}
-                  className="w-5 h-5 text-amber-600 dark:text-amber-400"
-                />
-              </div>
+              <div className="bg-amber-400 dark:bg-amber-700 p-2 rounded-full" />
+
               <h3 className="text-xl font-semibold">
                 {personalityInsights.challenges.title}
               </h3>
@@ -131,12 +121,8 @@ export function DetailedPersonalityInsights({
           {/* Work Style Section */}
           <Card className="p-6 border-l-4 border-l-blue-500">
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-full">
-                <Icon
-                  iconName={personalityInsights.workStyle.icon}
-                  className="w-5 h-5 text-blue-600 dark:text-blue-400"
-                />
-              </div>
+              <div className="bg-blue-400 dark:bg-blue-700 p-2 rounded-full" />
+
               <h3 className="text-xl font-semibold">
                 {personalityInsights.workStyle.title}
               </h3>
@@ -160,62 +146,50 @@ export function DetailedPersonalityInsights({
           {/* Relationship Dynamics Section */}
           <Card className="p-6 border-l-4 border-l-purple-500">
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-purple-100 dark:bg-purple-900/30 p-2 rounded-full">
-                <Icon
-                  iconName={personalityInsights.relationships.icon}
-                  className="w-5 h-5 text-purple-600 dark:text-purple-400"
-                />
-              </div>
+              <div className="bg-purple-400 dark:bg-purple-700 p-2 rounded-full" />
+
               <h3 className="text-xl font-semibold">
                 {personalityInsights.relationships.title}
               </h3>
             </div>
             <ul className="space-y-2 pl-3">
-              {personalityInsights.relationships.points.map(
-                (point, index) => (
-                  <motion.li
-                    key={`relationship-${index}`}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-2"
-                  >
-                    <span className="text-purple-500 mt-1">•</span>
-                    <span>{point}</span>
-                  </motion.li>
-                )
-              )}
+              {personalityInsights.relationships.points.map((point, index) => (
+                <motion.li
+                  key={`relationship-${index}`}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-start gap-2"
+                >
+                  <span className="text-purple-500 mt-1">•</span>
+                  <span>{point}</span>
+                </motion.li>
+              ))}
             </ul>
           </Card>
 
           {/* Growth Areas Section */}
           <Card className="p-6 border-l-4 border-l-teal-500">
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-teal-100 dark:bg-teal-900/30 p-2 rounded-full">
-                <Icon
-                  iconName={personalityInsights.growthAreas.icon}
-                  className="w-5 h-5 text-teal-600 dark:text-teal-400"
-                />
-              </div>
+              <div className="bg-teal-400 dark:bg-teal-700 p-2 rounded-full" />
+
               <h3 className="text-xl font-semibold">
                 {personalityInsights.growthAreas.title}
               </h3>
             </div>
             <ul className="space-y-2 pl-3">
-              {personalityInsights.growthAreas.points.map(
-                (point, index) => (
-                  <motion.li
-                    key={`growth-${index}`}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex items-start gap-2"
-                  >
-                    <span className="text-teal-500 mt-1">•</span>
-                    <span>{point}</span>
-                  </motion.li>
-                )
-              )}
+              {personalityInsights.growthAreas.points.map((point, index) => (
+                <motion.li
+                  key={`growth-${index}`}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-start gap-2"
+                >
+                  <span className="text-teal-500 mt-1">•</span>
+                  <span>{point}</span>
+                </motion.li>
+              ))}
             </ul>
           </Card>
 
