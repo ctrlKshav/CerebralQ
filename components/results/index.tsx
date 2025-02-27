@@ -80,7 +80,7 @@ export default function Results() {
       }
       
       const data = JSON.parse(storedData);
-      
+    
       // Extract required data from localStorage format
       const personalityType = data.personalityType || data.raw_score?.personalityType;
       const traitScores = data.traitScores || data.raw_score?.traitScores;

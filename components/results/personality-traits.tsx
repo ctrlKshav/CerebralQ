@@ -16,6 +16,7 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = theme === 'system' ? resolvedTheme : theme;
   const isLightTheme = currentTheme === "light";
+  console.log(traitScores)
 
   return (
     <div className="w-full max-w-6xl mx-auto p-6">

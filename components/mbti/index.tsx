@@ -71,9 +71,8 @@ export default function MBTITest() {
       raw_score: {
         personalityType: personalityResult.personalityType,
         // Convert traitScores to a plain object that can be serialized to JSON
-        traitScores: personalityResult.personalityType
+        traitScores: personalityResult.traitScores as any
       },
-      taken_at: data.createdAt,
       completion_time_minutes: 15, // Static for now
       validity_status: "valid", // Static for now
       is_public: true,
