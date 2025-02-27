@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { MBTIResponse } from "@/shared/schema";
+import { MBTIResponse } from "@/schema/mbti";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useFormContext } from "react-hook-form";

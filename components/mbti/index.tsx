@@ -2,7 +2,7 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
-import { mbtiResponseSchema, type MBTIResponse } from "@/shared/schema";
+import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
 import { testData } from "@/data/mbti";
 import { saveProgress, loadProgress } from "@/lib/mbti-storage";
 import { calculateMBTI } from "@/lib/calculate-mbti";

@@ -1,4 +1,4 @@
-import type { MBTIResponse } from "@/shared/schema";
+import type { MBTIResponse } from "@/schema/mbti";
 
 const STORAGE_KEY = 'mbti-test-progress';
 

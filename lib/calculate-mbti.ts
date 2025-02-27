@@ -1,4 +1,4 @@
-﻿import { Answers } from "@/shared/schema";
+﻿import { Answers } from "@/schema/mbti";
 import type { TraitScores } from "@/types/tests/mbti";
 import { testData } from "@/data/mbti";
 
