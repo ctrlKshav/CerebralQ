@@ -4,7 +4,7 @@ import React from 'react'
 export default function TakeTestpage() {
   return (
     <div>
-      <MBTITest />
+      <MBTITest/>
     </div>
   )
 }

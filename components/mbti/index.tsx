@@ -1,7 +1,7 @@
 ﻿"use client";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
 import { testData } from "@/data/mbti";
 import { saveProgress, loadProgress } from "@/lib/mbti-storage";
@@ -12,55 +12,137 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import MobileTopbar from "./mobile-topbar";
 import CQLogo from "../cq-logo";
+import {
+  saveTestResults,
+  incrementUserTestCount,
+} from "@/lib/supabase-operations";
+import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
+import { createClient } from "@/utils/supabase/client";
+import { getCurrentUser } from "@/lib/supabase-operations";
+
+// Local storage keys
+const TEST_RESULTS_KEY = "cerebralq_mbti_results";
 
 export default function MBTITest() {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
   const currentTest = testData[0];
+  const supabase = createClient();
+  const [userID, setUserId] = useState<string | null>(null);
 
   const methods = useForm<MBTIResponse>({
     resolver: zodResolver(mbtiResponseSchema),
     defaultValues: {
-      id: currentTest.id, // provide a default id
+      id: currentTest.id,
       answers: {},
       createdAt: new Date().toISOString(), // set default createdAt
     },
   });
 
+  useEffect(() => {
+    const func = async () => {
+      const user = await getCurrentUser();
+      user && setUserId(user.id);
+    };
+    func();
+  }, []);
+
+  // Load saved progress when component mounts
+  useEffect(() => {
+    const savedData = loadProgress();
+    if (savedData) {
+      methods.reset(savedData);
+    }
+
+    // Cleanup function to run when component unmounts
+    return () => {
+      localStorage.removeItem(TEST_RESULTS_KEY);
+    };
+  }, [methods]);
+
   const onSubmit = async (data: MBTIResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
-    const personalityResult = calculateMBTI(
-      data.answers,
-    );
-    
+    const personalityResult = calculateMBTI(data.answers);
 
-    // Create an object with calculated results to send to results page
-    const resultsData = {
-      personalityType: personalityResult.personalityType,
-      traitScores: personalityResult.traitScores,
-      testId: currentTest.id,
-      completionDate: new Date().toLocaleDateString(),
+    // Create a single unified test result object
+    const testResultData = {
+      // Database fields
+      test_type_id: data.id.toString(),
+      user_id: userID || "demo",
+      raw_score: {
+        personalityType: personalityResult.personalityType,
+        traitScores: personalityResult.traitScores,
+      },
+      taken_at: data.createdAt,
+      completion_time_minutes: 15, // Static for now
+      validity_status: "6 months", // Static for now
+      is_public: true,
     };
 
-    setTimeout(() => 
-      router.push(
-        `/tests/${currentTest.id}/results?data=${encodeURIComponent(JSON.stringify(resultsData))}`
-      ), 0)
+    // Store results in local storage
+    localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
+
+    // Store results in local storage
+    localStorage.setItem(
+      TEST_RESULTS_KEY,
+      JSON.stringify({
+        personalityType: personalityResult.personalityType,
+        traitScores: personalityResult.traitScores,
+        testId: currentTest.id,
+        completionDate: new Date().toLocaleDateString(),
+        timestamp: new Date().toISOString(),
+      })
+    );
+
+    // If not a demo user, save to database
+    if (userID) {
+      try {
+        // Prepare data for database insert
+        const testResultData: UserTestHistoryInsert = {
+          test_type_id: currentTest.id.toString(),
+          user_id: userID,
+          raw_score: {
+            answers: data.answers,
+            personalityType: personalityResult.personalityType,
+          },
+          taken_at: new Date().toISOString(),
+          completion_time_minutes: 15, // Estimate
+          validity_status: "6 months",
+          is_public: true,
+        };
+
+        // Save to database
+        await saveTestResults(testResultData);
+        
+      } catch (error) {
+        console.error("Error saving test results:", error);
+        // Continue with local storage results
+      }
+    }
+
+    // Clear form progress data (answers saved during the test)
+    saveProgress(null);
+
+    // Redirect to results page
+    setTimeout(() => {
+      router.push("/mbti/results");
+    }, 0);
+  
   };
 
-  const handleNext = async() => {
+  const handleNext = async () => {
     // Get all questions for the current section
     const currentSectionQuestions = currentTest.questions.filter(
       (q) => q.section === currentSectionId
     );
-    
+
     // Check if all questions in current section are answered
     const unansweredQuestions = currentSectionQuestions.filter(
       (question) => !methods.getValues().answers[question.id]?.selectedScore
     );
-    
+
     // If there are unanswered questions, set errors and scroll to first error
     if (unansweredQuestions.length > 0) {
       unansweredQuestions.forEach((question) => {
@@ -69,17 +151,20 @@ export default function MBTITest() {
           message: "Please answer this question",
         });
       });
-      
+
       // Use requestAnimationFrame to ensure the error card is rendered before scrolling
       requestAnimationFrame(() => {
-        const firstErrorCard = document.querySelector('.question-card.ring-2');
+        const firstErrorCard = document.querySelector(".question-card.ring-2");
         if (firstErrorCard) {
-          firstErrorCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          firstErrorCard.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
         }
       });
       return;
     }
-    
+
     // Clear any existing errors before moving to next section
     methods.clearErrors();
 
@@ -88,6 +173,7 @@ export default function MBTITest() {
       smoothScrollToTop();
     }
 
+    // Save progress as user moves through sections
     saveProgress(methods.getValues());
   };
 

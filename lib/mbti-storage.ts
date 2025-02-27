@@ -1,29 +1,42 @@
 import type { MBTIResponse } from "@/schema/mbti";
 
-const STORAGE_KEY = 'mbti-test-progress';
+// Local storage key for in-progress test
+const PROGRESS_KEY = "cerebralq_mbti_progress";
 
-export function saveProgress(data: MBTIResponse): void {
-  try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  } catch (error) {
-    console.error('Failed to save progress:', error);
+/**
+ * Save in-progress test data to local storage
+ * Pass null to clear the stored progress
+ */
+export function saveProgress(data: MBTIResponse | null): void {
+  if (data === null) {
+    localStorage.removeItem(PROGRESS_KEY);
+  } else {
+    try {
+      localStorage.setItem(PROGRESS_KEY, JSON.stringify(data));
+    } catch (error) {
+      console.error("Error saving test progress:", error);
+    }
   }
 }
 
+/**
+ * Load saved test progress from local storage
+ */
 export function loadProgress(): MBTIResponse | null {
   try {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    return saved ? JSON.parse(saved) : null;
+    const storedData = localStorage.getItem(PROGRESS_KEY);
+    if (!storedData) return null;
+    
+    return JSON.parse(storedData) as MBTIResponse;
   } catch (error) {
-    console.error('Failed to load progress:', error);
+    console.error("Error loading test progress:", error);
     return null;
   }
 }
 
-export function clearProgress(): void {
-  try {
-    localStorage.removeItem(STORAGE_KEY);
-  } catch (error) {
-    console.error('Failed to clear progress:', error);
-  }
+/**
+ * Check if there's any saved progress
+ */
+export function hasProgress(): boolean {
+  return localStorage.getItem(PROGRESS_KEY) !== null;
 }
