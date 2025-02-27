@@ -60,8 +60,6 @@ export default function MBTITest() {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
     const personalityResult = calculateMBTI(data.answers);
-    console.log("hello")
-    console.log(personalityResult.traitScores)
 
     // Create a single unified test result object
     const testResultData = {
