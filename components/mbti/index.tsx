@@ -24,7 +24,6 @@ export default function MBTITest() {
     defaultValues: {
       id: currentTest.id, // provide a default id
       answers: {},
-      personalityType: "", // default empty result
       createdAt: new Date().toISOString(), // set default createdAt
     },
   });
@@ -35,7 +34,7 @@ export default function MBTITest() {
     const personalityResult = calculateMBTI(
       data.answers,
     );
-    data.personalityType = personalityResult.personalityType;
+    
 
     // Create an object with calculated results to send to results page
     const resultsData = {

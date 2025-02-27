@@ -19,7 +19,6 @@ const answerSchema = z.object({
 export const mbtiResponseSchema = z.object({
   id: z.number(),
   answers: z.record(z.string(), answerSchema),
-  personalityType: z.string().optional(),
   createdAt: z.string(),
 });
 
