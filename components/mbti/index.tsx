@@ -14,7 +14,7 @@ import MobileTopbar from "./mobile-topbar";
 import CQLogo from "../cq-logo";
 import {
   saveTestResults,
-  incrementUserTestCount,
+  
 } from "@/lib/supabase-operations";
 import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
 import { createClient } from "@/utils/supabase/client";
@@ -54,11 +54,6 @@ export default function MBTITest() {
     if (savedData) {
       methods.reset(savedData);
     }
-
-    // Cleanup function to run when component unmounts
-    return () => {
-      localStorage.removeItem(TEST_RESULTS_KEY);
-    };
   }, [methods]);
 
   const onSubmit = async (data: MBTIResponse) => {
@@ -127,7 +122,7 @@ export default function MBTITest() {
 
     // Redirect to results page
     setTimeout(() => {
-      router.push("/mbti/results");
+      router.push("/tests/mbti/results");
     }, 0);
   
   };

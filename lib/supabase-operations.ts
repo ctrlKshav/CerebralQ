@@ -201,36 +201,36 @@ export async function getCurrentUser(): Promise<User | null> {
 /**
  * Update the test count for a user
  */
-export async function incrementUserTestCount(userId: string) {
-  const supabase = await createClient();
+// export async function incrementUserTestCount(userId: string) {
+//   const supabase = await createClient();
 
-  // First get the current count
-  const { data: userData, error: fetchError } = await supabase
-    .from("users")
-    .select("tests_taken")
-    .eq("id", userId)
-    .single();
+//   // First get the current count
+//   const { data: userData, error: fetchError } = await supabase
+//     .from("users")
+//     .select("tests_taken")
+//     .eq("id", userId)
+//     .single();
 
-  if (fetchError) {
-    console.error("Error fetching user test count:", fetchError);
-    throw fetchError;
-  }
+//   if (fetchError) {
+//     console.error("Error fetching user test count:", fetchError);
+//     throw fetchError;
+//   }
 
-  const currentCount = userData.tests_taken || 0;
+//   const currentCount = userData.tests_taken || 0;
 
-  // Then update with incremented count
-  const { data, error } = await supabase
-    .from("users")
-    .update({
-      tests_taken: currentCount + 1,
-      last_test_date: new Date().toISOString(),
-    })
-    .eq("id", userId);
+//   // Then update with incremented count
+//   const { data, error } = await supabase
+//     .from("users")
+//     .update({
+//       tests_taken: currentCount + 1,
+//       last_test_date: new Date().toISOString(),
+//     })
+//     .eq("id", userId);
 
-  if (error) {
-    console.error("Error updating user test count:", error);
-    throw error;
-  }
+//   if (error) {
+//     console.error("Error updating user test count:", error);
+//     throw error;
+//   }
 
-  return data;
-}
+//   return data;
+// }
