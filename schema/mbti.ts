@@ -17,7 +17,7 @@ const answerSchema = z.object({
 });
 
 export const mbtiResponseSchema = z.object({
-  id: z.number(),
+  id: z.string(),
   answers: z.record(z.string(), answerSchema),
   createdAt: z.string(),
 });

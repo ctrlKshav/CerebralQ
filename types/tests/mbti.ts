@@ -23,7 +23,7 @@ export interface TestQuestion {
 }
 
 export interface TestData {
-  id: number;
+  id: string;
   test_name: string;
   sections: TestSection[];
   questions: TestQuestion[];

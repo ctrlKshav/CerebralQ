@@ -1,7 +1,7 @@
 ﻿import { TestData } from "@/types/tests/mbti"
 export const testData: TestData[] = [
     {
-      "id": 1,
+      "id": "ecf371b1-f39e-4f37-9c19-4b722f9adfc6",
       "test_name": "MBTI Personality Test",
       "sections": [
         {

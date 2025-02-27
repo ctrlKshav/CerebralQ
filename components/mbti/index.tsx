@@ -60,53 +60,32 @@ export default function MBTITest() {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
     const personalityResult = calculateMBTI(data.answers);
+    console.log("hello")
+    console.log(personalityResult.traitScores)
 
     // Create a single unified test result object
     const testResultData = {
       // Database fields
-      test_type_id: data.id.toString(),
+      test_type_id: data.id,
       user_id: userID || "demo",
       raw_score: {
         personalityType: personalityResult.personalityType,
-        traitScores: personalityResult.traitScores,
+        // Convert traitScores to a plain object that can be serialized to JSON
+        traitScores: personalityResult.personalityType
       },
       taken_at: data.createdAt,
       completion_time_minutes: 15, // Static for now
-      validity_status: "6 months", // Static for now
+      validity_status: "valid", // Static for now
       is_public: true,
     };
 
     // Store results in local storage
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
 
-    // Store results in local storage
-    localStorage.setItem(
-      TEST_RESULTS_KEY,
-      JSON.stringify({
-        personalityType: personalityResult.personalityType,
-        traitScores: personalityResult.traitScores,
-        testId: currentTest.id,
-        completionDate: new Date().toLocaleDateString(),
-        timestamp: new Date().toISOString(),
-      })
-    );
 
     // If not a demo user, save to database
     if (userID) {
       try {
-        // Prepare data for database insert
-        const testResultData: UserTestHistoryInsert = {
-          test_type_id: currentTest.id.toString(),
-          user_id: userID,
-          raw_score: {
-            answers: data.answers,
-            personalityType: personalityResult.personalityType,
-          },
-          taken_at: new Date().toISOString(),
-          completion_time_minutes: 15, // Estimate
-          validity_status: "6 months",
-          is_public: true,
-        };
 
         // Save to database
         await saveTestResults(testResultData);
@@ -118,7 +97,7 @@ export default function MBTITest() {
     }
 
     // Clear form progress data (answers saved during the test)
-    saveProgress(null);
+    // saveProgress(null);
 
     // Redirect to results page
     setTimeout(() => {
