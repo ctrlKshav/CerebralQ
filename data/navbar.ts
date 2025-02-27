@@ -18,6 +18,7 @@ export const assessmentItems = [
     href: "/tests/test-info/cognitive",
   },
   {
+    id: "career-tests",
     title: "Career Tests",
     description: "Explore your career options with career aptitude tests",
     icon: (className = "h-6 w-6 text-primary") => React.createElement(BarChart2, { className
