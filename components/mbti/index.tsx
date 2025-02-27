@@ -1,7 +1,7 @@
 ﻿"use client";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
 import { testData } from "@/data/mbti";
 import { saveProgress, loadProgress } from "@/lib/mbti-storage";
@@ -22,25 +22,12 @@ export default function MBTITest() {
   const methods = useForm<MBTIResponse>({
     resolver: zodResolver(mbtiResponseSchema),
     defaultValues: {
-      id: 0, // provide a default id
+      id: currentTest.id, // provide a default id
       answers: {},
       personalityType: "", // default empty result
       createdAt: new Date().toISOString(), // set default createdAt
     },
   });
-  const {formState: {errors}, setFocus} = methods;
-
-  // useEffect(() => {
-  //   const savedProgress = loadProgress();
-  //   if (savedProgress) {
-  //     methods.reset(savedProgress);
-  //     const lastAnsweredSection = Math.max(
-  //       ...Object.keys(savedProgress.answers)
-  //         .map(key => currentTest.questions.find(q => q.id === key)?.section || 1)
-  //     );
-  //     setCurrentSectionId(lastAnsweredSection);
-  //   }
-  // }, []);
 
   const onSubmit = async (data: MBTIResponse) => {
     // Set completing state to true to show full progress bar
@@ -61,7 +48,7 @@ export default function MBTITest() {
     setTimeout(() => 
       router.push(
         `/tests/${currentTest.id}/results?data=${encodeURIComponent(JSON.stringify(resultsData))}`
-      ), 500)
+      ), 0)
   };
 
   const handleNext = async() => {
