@@ -70,7 +70,7 @@ export const signInAction = async (data: SignInPayload) => {
     return encodedRedirect("error", "/sign-in", error.message);
   }
 
-  return redirect(`/protected/${redirectToPage || ""}`);
+  return redirect(`/${redirectToPage || "/protected"}`);
 };
 
 export const forgotPasswordAction = async (data: ForgotPasswordPayload) => {
