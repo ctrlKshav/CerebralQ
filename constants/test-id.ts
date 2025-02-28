@@ -1,1 +1,0 @@
-﻿export const MBTI_TEST_ID = "ecf371b1-f39e-4f37-9c19-4b722f9adfc6"

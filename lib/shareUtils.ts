@@ -1,9 +1,7 @@
 ﻿"use client";
 import { createClient } from "@/utils/supabase/client";
 import { toast } from "sonner";
-
-// Key for storing the return URL after signup
-const RETURN_URL_KEY = "cerebralq_return_url";
+import { RETURN_URL_KEY } from "@/constants/constants";
 
 /**
  * Handles sharing functionality with authentication check
