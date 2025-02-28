@@ -1,9 +1,9 @@
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Brain, Calendar, ChevronDown } from "lucide-react"
+import { Brain, LineChart, Users, Activity, Star } from "lucide-react"
 import { motion } from "framer-motion"
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import { cn } from "@/lib/utils"
 
 // Import Recharts components
 import { IQProgressRing } from "./charts/iq-progress-ring"
@@ -32,7 +32,16 @@ interface CognitiveMetricsProps {
   }>
 }
 
-export default function CognitiveMetrics({ iqScore, testHistory }: CognitiveMetricsProps) {
+export default function CognitiveMetrics({ iqScore, bigFiveTraits, testHistory }: CognitiveMetricsProps) {
+  // Define cognitive skills with corresponding icons
+  const cognitiveSkills = [
+    { name: "Verbal", value: 92, icon: <Users className="w-5 h-5" /> },
+    { name: "Numerical", value: 88, icon: <Activity className="w-5 h-5" /> },
+    { name: "Abstract", value: 94, icon: <Brain className="w-5 h-5" /> },
+    { name: "Spatial", value: 85, icon: <LineChart className="w-5 h-5" /> },
+    { name: "Memory", value: 90, icon: <Star className="w-5 h-5" /> },
+  ];
+
   return (
     <section className="space-y-6">
       <motion.h2
@@ -74,68 +83,64 @@ export default function CognitiveMetrics({ iqScore, testHistory }: CognitiveMetr
             </CardContent>
           </Card>
         </motion.div>
-      </div>
 
-      {/* Test Timeline */}
-      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
-        <Card>
-          <CardHeader>
-            <CardTitle>Test Timeline</CardTitle>
-            <CardDescription>History of cognitive assessments</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-4">
-              {testHistory.map((test, index) => (
-                <Collapsible key={test.id}>
-                  <div className="relative pl-8 pb-4">
-                    {/* Timeline line */}
-                    {index < testHistory.length - 1 && (
-                      <div className="absolute left-3 top-3 bottom-0 w-0.5 bg-border" />
-                    )}
-
-                    {/* Timeline dot */}
-                    <div className="absolute left-0 top-1.5 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
-                      <Calendar className="h-3 w-3 text-primary" />
+        {/* Cognitive Skills Analysis */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+          <Card className="border-primary/20">
+            <CardHeader className="bg-primary-50 dark:bg-primary/10 pb-2 flex flex-row items-center justify-between">
+              <div>
+                <CardTitle className="flex items-center gap-2">
+                  <Brain className="h-5 w-5 text-primary" />
+                  Cognitive Skills Analysis
+                </CardTitle>
+                <CardDescription>Breakdown of cognitive abilities by domain</CardDescription>
+              </div>
+              <div className="flex items-center gap-1 text-sm">
+                <div className="w-4 h-4 rounded-full bg-gradient-to-r from-primary to-primary-foreground"></div>
+                <span>Percentile Ranking</span>
+              </div>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <div className="grid grid-cols-1 sm:grid-cols-5 gap-8">
+                {cognitiveSkills.map((skill, index) => (
+                  <div key={index} className="flex flex-col items-center">
+                    <div className="relative w-24 h-24">
+                      {/* Background circle */}
+                      <div className="absolute inset-0 rounded-full border-4 border-muted/30" />
+                      
+                      {/* Score circle */}
+                      <svg className="w-full h-full transform -rotate-90">
+                        <circle
+                          cx="48"
+                          cy="48"
+                          r="44"
+                          fill="none"
+                          stroke="currentColor"
+                          strokeWidth="4"
+                          strokeLinecap="round"
+                          className={`text-primary/80`}
+                          strokeDasharray={`${skill.value * 2.75} 400`}
+                        />
+                      </svg>
+                      
+                      {/* Icon and score */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center">
+                        <div className="p-1.5 rounded-full bg-primary/10 mb-1">
+                          {skill.icon}
+                        </div>
+                        <span className="text-lg font-bold">{skill.value}%</span>
+                      </div>
                     </div>
-
-                    <div className="flex items-start justify-between">
-                      <div>
-                        <h4 className="font-medium">{test.type} Assessment</h4>
-                        <p className="text-sm text-muted-foreground">{new Date(test.date).toLocaleDateString()}</p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-sm font-medium">Score: {test.score}</span>
-                        <CollapsibleTrigger className="rounded-full p-1 hover:bg-muted">
-                          <ChevronDown className="h-4 w-4" />
-                          <span className="sr-only">Toggle details</span>
-                        </CollapsibleTrigger>
-                      </div>
-                    </div>
-
-                    <CollapsibleContent>
-                      <div className="mt-2 p-3 bg-muted rounded-md text-sm">
-                        <h5 className="font-medium mb-1">Detailed Results</h5>
-                        <ul className="space-y-1">
-                          {Object.entries(test.details).map(([key, value]) => (
-                            <li key={key} className="flex justify-between">
-                              <span className="text-muted-foreground">{key}:</span>
-                              <span>{value}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </CollapsibleContent>
+                    <span className="mt-2 text-sm font-medium">{skill.name}</span>
                   </div>
-                </Collapsible>
-              ))}
-
-              {testHistory.length === 0 && (
-                <div className="text-center py-8 text-muted-foreground">No test history available</div>
-              )}
-            </div>
-          </CardContent>
-        </Card>
-      </motion.div>
+                ))}
+              </div>
+              
+             
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
     </section>
   )
 }

@@ -4,6 +4,7 @@ import ProfileHeader from "@/components/profile/profile-header";
 import PersonalityShowcase from "@/components/profile/personality-showcase";
 import CognitiveMetrics from "@/components/profile/cognitive-metrics";
 import ComparativeInsights from "@/components/profile/comparative-insights";
+import TestHistory from "@/components/profile/test-history";
 import TestsSummary from "@/components/profile/tests-summary";
 import { getUserProfile, UserProfile } from "@/data/profile";
 import Navbar from "@/components/navbar";
@@ -45,6 +46,8 @@ export default function ProfilePage() {
             bigFiveTraits={userData.raw_score.bigFive}
             testHistory={userData.user_test_history}
           />
+
+          <TestHistory testHistory={userData.user_test_history} />
 
           <ComparativeInsights
             personalityType={userData.raw_score.personalityType}
