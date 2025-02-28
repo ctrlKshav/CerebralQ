@@ -10,19 +10,11 @@ import { personalityDescriptions } from "@/data/mbti/personalityDescriptions"
 interface PersonalityShowcaseProps {
   personalityType: string;
   traitScores: TraitScores;
-  bigFiveTraits: {
-    openness: number
-    conscientiousness: number
-    extraversion: number
-    agreeableness: number
-    neuroticism: number
-  }
 }
 
 export default function PersonalityShowcase({ 
   personalityType, 
   traitScores,
-  bigFiveTraits 
 }: PersonalityShowcaseProps) {
   const typeInfo = personalityDescriptions[personalityType]
 
@@ -54,8 +46,6 @@ export default function PersonalityShowcase({
           {/* Use the PersonalityTraits component */}
           <PersonalityTraits traitScores={traitScores} />
           
-          {/* Big Five Constellation - added as point #3 */}
-          <BigFiveConstellation bigFiveTraits={bigFiveTraits} />
         </div>
       </div>
     </section>

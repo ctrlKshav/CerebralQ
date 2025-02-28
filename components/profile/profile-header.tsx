@@ -1,6 +1,6 @@
 "use client"
 
-import { Calendar, Star, Share2 } from "lucide-react"
+import { Calendar, Share2 } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { toast } from "sonner"
@@ -66,13 +66,9 @@ export default function ProfileHeader({ userData }: ProfileHeaderProps) {
           {/* Stats ribbon */}
           <div className="flex flex-wrap justify-center md:justify-start gap-6 pt-3">
             <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-amber-500" />
-              <span className="text-base font-medium">{userData.tests_taken} Tests</span>
-            </div>
-            <div className="flex items-center gap-2">
               <Calendar className="h-5 w-5 text-blue-500" />
               <span className="text-base font-medium">
-                Last: {new Date(userData.last_test_date).toLocaleDateString()}
+                Last test: {new Date(userData.last_test_date).toLocaleDateString()}
               </span>
             </div>
             <Button 

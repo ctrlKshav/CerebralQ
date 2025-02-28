@@ -1,11 +1,9 @@
 "use client";
-import type { Metadata } from "next";
 import ProfileHeader from "@/components/profile/profile-header";
 import PersonalityShowcase from "@/components/profile/personality-showcase";
-import CognitiveMetrics from "@/components/profile/cognitive-metrics";
-import ComparativeInsights from "@/components/profile/comparative-insights";
 import TestHistory from "@/components/profile/test-history";
 import TestsSummary from "@/components/profile/tests-summary";
+import MBTIInsights from "@/components/profile/mbti-insights";
 import { getUserProfile, UserProfile } from "@/data/profile";
 import Navbar from "@/components/navbar";
 import { useSearchParams } from "next/navigation";
@@ -15,6 +13,7 @@ import LoadingSkeleton from "@/components/loading-skeleton";
 export default function ProfilePage() {
   const params = useSearchParams();
   const [userData, setUserData] = useState<UserProfile | null>(null);
+  
   useEffect(() => {
     const func = async () => {
       const userData = await getUserProfile(params.get("username") || "");
@@ -32,28 +31,22 @@ export default function ProfilePage() {
       <Navbar className="mb-6" />
       <main className="container mx-auto px-4 py-8 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-10">
+          {/* Profile header with basic user information */}
           <ProfileHeader userData={userData} />
           
-          <TestsSummary userData={userData} />
-          
+          {/* Detailed personality analysis */}
           <PersonalityShowcase
             personalityType={userData.raw_score.personalityType}
             traitScores={userData.raw_score.traitScores}
-            bigFiveTraits={userData.raw_score.bigFive}
-          />
-          <CognitiveMetrics
-            iqScore={userData.raw_score.iq}
-            bigFiveTraits={userData.raw_score.bigFive}
-            testHistory={userData.user_test_history}
           />
 
-          <TestHistory testHistory={userData.user_test_history} />
-
-          <ComparativeInsights
+          {/* MBTI-specific insights and comparisons */}
+          <MBTIInsights
             personalityType={userData.raw_score.personalityType}
-            cognitivePercentile={userData.raw_score.cognitivePercentile}
-            globalRanking={userData.raw_score.globalRanking}
           />
+
+          {/* Test history  */}
+          <TestHistory testHistory={userData.user_test_history} />
         </div>
       </main>
     </div>

@@ -9,35 +9,15 @@ export interface UserProfile {
   tests_taken: number
   last_test_date: string
   raw_score: {
-    iq: {
-      score: number
-      percentile: number
-      populationAverage: number
-      history: Array<{ date: string; score: number }>
-    }
     personalityType: string
     traitScores: TraitScores
-    bigFive: {
-      openness: number
-      conscientiousness: number
-      extraversion: number
-      agreeableness: number
-      neuroticism: number
-    }
-    cognitivePercentile: {
-      verbal: number
-      numerical: number
-      abstract: number
-      spatial: number
-      memory: number
-    }
-    globalRanking: number
   }
   user_test_history: Array<{
     id: string
     type: string
     date: string
     score: number
+    personalityType?: string
     details: Record<string, any>
   }>
 }
@@ -50,17 +30,6 @@ const mockUserProfile: UserProfile = {
   tests_taken: 24,
   last_test_date: "2023-12-15",
   raw_score: {
-    iq: {
-      score: 128,
-      percentile: 96,
-      populationAverage: 100,
-      history: [
-        { date: "2023-01-15", score: 122 },
-        { date: "2023-04-22", score: 125 },
-        { date: "2023-08-10", score: 126 },
-        { date: "2023-12-15", score: 128 },
-      ],
-    },
     personalityType: "INFP",
     traitScores: {
       "E-I": {
@@ -91,59 +60,46 @@ const mockUserProfile: UserProfile = {
         rightPercentage: 80,
         dominant: "right"
       }
-    },
-    bigFive: {
-      openness: 0.85,
-      conscientiousness: 0.72,
-      extraversion: 0.45,
-      agreeableness: 0.78,
-      neuroticism: 0.38,
-    },
-    cognitivePercentile: {
-      verbal: 92,
-      numerical: 88,
-      abstract: 94,
-      spatial: 85,
-      memory: 90,
-    },
-    globalRanking: 5,
+    }
   },
   user_test_history: [
     {
       id: "test-001",
-      type: "IQ",
+      type: "MBTI",
       date: "2023-12-15",
-      score: 128,
+      personalityType: "INFP",
+      score: 53,
       details: {
-        "Verbal Reasoning": 130,
-        "Numerical Reasoning": 126,
-        "Abstract Reasoning": 132,
-        "Spatial Reasoning": 124,
+        "Extraversion-Introversion": "I (70%)",
+        "Sensing-Intuition": "N (85%)",
+        "Thinking-Feeling": "F (75%)",
+        "Judging-Perceiving": "P (80%)"
       },
     },
     {
       id: "test-002",
-      type: "Big Five",
-      date: "2023-11-20",
-      score: 0,
+      type: "MBTI",
+      date: "2023-10-05",
+      personalityType: "INFP",
+      score: 53,
       details: {
-        Openness: "85%",
-        Conscientiousness: "72%",
-        Extraversion: "45%",
-        Agreeableness: "78%",
-        Neuroticism: "38%",
+        "Extraversion-Introversion": "I (65%)",
+        "Sensing-Intuition": "N (82%)",
+        "Thinking-Feeling": "F (78%)",
+        "Judging-Perceiving": "P (77%)"
       },
     },
     {
       id: "test-003",
-      type: "Memory",
-      date: "2023-10-05",
-      score: 90,
+      type: "MBTI",
+      date: "2023-08-12",
+      personalityType: "INFJ",
+      score: 53,
       details: {
-        "Working Memory": "92%",
-        "Long-term Memory": "88%",
-        "Visual Memory": "91%",
-        "Auditory Memory": "89%",
+        "Extraversion-Introversion": "I (68%)",
+        "Sensing-Intuition": "N (80%)",
+        "Thinking-Feeling": "F (73%)",
+        "Judging-Perceiving": "J (55%)"
       },
     },
   ],
