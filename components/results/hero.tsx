@@ -4,11 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Share2, Download } from "lucide-react";
 import { motion } from "framer-motion";
+import { PersonalityDescription } from "@/types/tests/mbti";
 
 interface HeroProps {
   personalityType: string;
   personalityAlias: string;
-  personalityDescription: string;
+  personalityDescription: PersonalityDescription;
   completionDate: string;
 }
 
@@ -36,7 +37,7 @@ export function Hero({
         </h2>
       </div>
       <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-        {personalityDescription}
+        {personalityDescription.description}
       </p>
       <div className="text-sm text-muted-foreground">
         <p>Completed on {completionDate}</p>

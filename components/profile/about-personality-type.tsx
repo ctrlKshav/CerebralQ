@@ -5,39 +5,20 @@ import { motion } from "framer-motion"
 
 interface AboutPersonalityTypeProps {
   personalityType: string
-  title: string
+  alias: string
   description: string
-}
-
-// Mock personality type descriptions
-export const personalityDescriptions: Record<string, { title: string; description: string }> = {
-  INFP: {
-    title: "The Mediator",
-    description:
-      "INFPs are imaginative idealists, guided by their own core values and beliefs. They value authenticity and want to be of service to humanity.",
-  },
-  INTJ: {
-    title: "The Architect",
-    description:
-      "INTJs are analytical problem-solvers, eager to improve systems and processes with their innovative ideas.",
-  },
-  ENFJ: {
-    title: "The Protagonist",
-    description: "ENFJs are charismatic and inspiring leaders, able to mesmerize their listeners.",
-  },
-  // Add more as needed
 }
 
 export default function AboutPersonalityType({ 
   personalityType, 
-  title, 
+  alias, 
   description 
 }: AboutPersonalityTypeProps) {
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
       <div className="flex items-center gap-4 mb-6">
         <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary text-primary">
-          <span className="text-lg font-medium">2</span>
+          <span className="text-lg font-medium">1</span>
         </div>
         <h2 className="text-3xl font-semibold text-foreground">Personality Type</h2>
       </div>
@@ -50,7 +31,7 @@ export default function AboutPersonalityType({
         <Card className="border-primary/20">
           <CardHeader>
             <CardTitle className="text-2xl">{personalityType}</CardTitle>
-            <CardDescription className="text-lg">{title}</CardDescription>
+            <CardDescription className="text-lg">{alias}</CardDescription>
           </CardHeader>
           <CardContent>
             <p className="text-lg leading-relaxed">{description}</p>

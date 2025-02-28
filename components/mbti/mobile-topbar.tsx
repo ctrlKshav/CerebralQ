@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import Link from "next/link";
 import Icon from "@/components/Icon";
-import { testData } from "@/data/mbti";
+import { testData } from "@/data/mbti/test";
 import CQLogo from "../cq-logo";
 
 export default function MobileTopbar({

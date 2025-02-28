@@ -3,9 +3,9 @@ import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
-import { testData } from "@/data/mbti";
-import { saveProgress, loadProgress } from "@/lib/mbti-storage";
-import { calculateMBTI } from "@/lib/calculate-mbti";
+import { testData } from "@/data/mbti/test";
+import { saveProgress, loadProgress } from "@/lib/mbtiStorage";
+import { calculateMBTI } from "@/lib/calculateMbti";
 import { smoothScrollToTop } from "@/lib/utils";
 import { TestForm } from "./test-form";
 import { useRouter } from "next/navigation";
@@ -15,10 +15,10 @@ import CQLogo from "../cq-logo";
 import {
   saveTestResults,
   
-} from "@/lib/supabase-operations";
+} from "@/lib/supabaseOperations";
 import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
 import { createClient } from "@/utils/supabase/client";
-import { getCurrentUser } from "@/lib/supabase-operations";
+import { getCurrentUser } from "@/lib/supabaseOperations";
 
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_mbti_results";

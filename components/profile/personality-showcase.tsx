@@ -3,8 +3,9 @@
 import { motion } from "framer-motion"
 import { PersonalityTraits } from "@/components/results/personality-traits"
 import type { TraitScores } from "@/types/tests/mbti"
-import AboutPersonalityType, { personalityDescriptions } from "./about-personality-type"
+import AboutPersonalityType from "./about-personality-type"
 import BigFiveConstellation from "./big-five-constellation"
+import { personalityDescriptions } from "@/data/mbti/personalityDescriptions"
 
 interface PersonalityShowcaseProps {
   personalityType: string;
@@ -23,10 +24,7 @@ export default function PersonalityShowcase({
   traitScores,
   bigFiveTraits 
 }: PersonalityShowcaseProps) {
-  const typeInfo = personalityDescriptions[personalityType] || {
-    title: "Personality Type",
-    description: "A detailed analysis of cognitive preferences and behavioral patterns.",
-  }
+  const typeInfo = personalityDescriptions[personalityType]
 
   return (
     <section className="relative">
@@ -46,15 +44,15 @@ export default function PersonalityShowcase({
         </motion.h2>
 
         <div className="space-y-10">
-          {/* Use the PersonalityTraits component */}
-          <PersonalityTraits traitScores={traitScores} />
 
           {/* About Personality Type Card */}
           <AboutPersonalityType 
             personalityType={personalityType}
-            title={typeInfo.title}
+            alias={typeInfo.alias}
             description={typeInfo.description}
           />
+          {/* Use the PersonalityTraits component */}
+          <PersonalityTraits traitScores={traitScores} />
           
           {/* Big Five Constellation - added as point #3 */}
           <BigFiveConstellation bigFiveTraits={bigFiveTraits} />

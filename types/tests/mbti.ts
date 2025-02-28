@@ -1,4 +1,5 @@
-﻿export interface TestSection {
+﻿
+export interface TestSection {
   id: number;
   title: string;
   description: string;
@@ -72,10 +73,15 @@ export interface PersonalityTypeInsights {
 
 export interface ResultData {
   personalityType: string;
-  personalityDescription: string;
+  personalityDescription: PersonalityDescription;
   testId: string;
   completionDate: string;
   traitScores: TraitScores | null;
   careerSuggestions: Array<{ title: string; match: number }>;
   similarPersonalities: Array<{ name: string; profession: string; image: string }>;
+}
+
+export interface PersonalityDescription {
+  alias: string;
+  description: string;
 }

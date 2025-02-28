@@ -63,6 +63,47 @@ export default function TestsSummary({ userData }: TestsSummaryProps) {
       <h2 className="text-3xl font-bold">Complete Psyche</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+         {/* Personality Type Card */}
+         <motion.div variants={itemVariants} className="md:col-span-1">
+          <Card className="h-full border-primary/20">
+            <CardHeader className="bg-primary-50 dark:bg-primary/10 pb-2">
+              <CardTitle className="flex items-center gap-2">
+                <Users className="h-5 w-5 text-primary" />
+                Personality Type
+              </CardTitle>
+              <CardDescription>Myers-Briggs assessment</CardDescription>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <div className="flex flex-col items-center justify-center">
+                <div className="w-36 h-36 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/10">
+                  <span className="text-4xl font-bold text-primary">{userData.raw_score.personalityType}</span>
+                </div>
+                
+                <div className="mt-6 w-full">
+                  <h4 className="text-sm text-center font-medium mb-2">Dominant Traits</h4>
+                  <div className="space-y-2">
+                    {personalityTraits.map((item, i) => (
+                      <div key={i} className="flex justify-between items-center text-sm">
+                        <span className="font-medium">{item.trait}</span>
+                        <div className="flex items-center gap-2">
+                          <div className="w-24 h-2 bg-muted rounded-full">
+                            <div 
+                              className="h-full bg-primary rounded-full" 
+                              style={{ width: `${item.percentage}%` }} 
+                            />
+                          </div>
+                          <span className="text-xs w-8">{Math.round(item.percentage)}%</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+        
         {/* IQ Score Card */}
         <motion.div variants={itemVariants} className="md:col-span-1">
           <Card className="h-full border-primary/20 overflow-hidden">
@@ -109,47 +150,7 @@ export default function TestsSummary({ userData }: TestsSummaryProps) {
             </CardContent>
           </Card>
         </motion.div>
-        
-        {/* Personality Type Card */}
-        <motion.div variants={itemVariants} className="md:col-span-1">
-          <Card className="h-full border-primary/20">
-            <CardHeader className="bg-primary-50 dark:bg-primary/10 pb-2">
-              <CardTitle className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-primary" />
-                Personality Type
-              </CardTitle>
-              <CardDescription>Myers-Briggs assessment</CardDescription>
-            </CardHeader>
-            <CardContent className="pt-6">
-              <div className="flex flex-col items-center justify-center">
-                <div className="w-36 h-36 rounded-full bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center border border-primary/10">
-                  <span className="text-4xl font-bold text-primary">{userData.raw_score.personalityType}</span>
-                </div>
-                
-                <div className="mt-6 w-full">
-                  <h4 className="text-sm text-center font-medium mb-2">Dominant Traits</h4>
-                  <div className="space-y-2">
-                    {personalityTraits.map((item, i) => (
-                      <div key={i} className="flex justify-between items-center text-sm">
-                        <span className="font-medium">{item.trait}</span>
-                        <div className="flex items-center gap-2">
-                          <div className="w-24 h-2 bg-muted rounded-full">
-                            <div 
-                              className="h-full bg-primary rounded-full" 
-                              style={{ width: `${item.percentage}%` }} 
-                            />
-                          </div>
-                          <span className="text-xs w-8">{Math.round(item.percentage)}%</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-        
+         
         {/* OCEAN (Big Five) Card */}
         <motion.div variants={itemVariants} className="md:col-span-1">
           <Card className="h-full border-primary/20">
