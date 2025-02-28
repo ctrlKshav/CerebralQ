@@ -15,7 +15,7 @@ export default function MobileTopbar({
   return (
     <div>
       {/* Mobile Topbar */}
-      <div className="bg-red-500 lg:hidden fixed top-0 left-0 right-0 z-10 dark:bg-gray-800/50 backdrop-blur-sm px-4 flex justify-between items-center h-24">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-10 dark:bg-gray-800/50 backdrop-blur-sm px-4 flex justify-between items-center h-24">
         <div className="order-2">
           <div className="flex flex-col items-end ">
             <span className="font-bold text-xl">{currentTest.test_name}</span>
