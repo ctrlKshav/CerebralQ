@@ -1,9 +1,8 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Plus, Share2, Sword } from "lucide-react"
+import { Share2 } from "lucide-react"
 import { motion } from "framer-motion"
-import { useState } from "react"
 import { toast } from "sonner"
 
 interface SocialEngagementBarProps {
@@ -13,21 +12,11 @@ interface SocialEngagementBarProps {
 }
 
 export default function SocialEngagementBar({ userData }: SocialEngagementBarProps) {
-  const [isFollowing, setIsFollowing] = useState(false)
-
-  const handleFollow = () => {
-    setIsFollowing(!isFollowing)
-    toast.success(isFollowing ? "Unfollowed successfully" : "Following successfully")
-  }
 
   const handleShare = () => {
     // Copy profile URL to clipboard
     navigator.clipboard.writeText(`https://cq.com/${userData.username}`)
     toast.success("Profile link copied to clipboard")
-  }
-
-  const handleChallenge = () => {
-    toast.success("Challenge sent!")
   }
 
   return (
@@ -48,15 +37,6 @@ export default function SocialEngagementBar({ userData }: SocialEngagementBarPro
             <span className="hidden sm:inline">Share</span>
           </Button>
 
-          <Button variant={isFollowing ? "secondary" : "outline"} size="sm" className="gap-1.5" onClick={handleFollow}>
-            <Plus className="h-4 w-4" />
-            <span>{isFollowing ? "Following" : "Follow"}</span>
-          </Button>
-
-          <Button variant="default" size="sm" className="gap-1.5" onClick={handleChallenge}>
-            <Sword className="h-4 w-4" />
-            <span>Challenge</span>
-          </Button>
         </div>
       </div>
     </motion.div>
