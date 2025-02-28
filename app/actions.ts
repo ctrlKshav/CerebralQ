@@ -9,6 +9,7 @@ export const signUpAction = async (formData: FormData) => {
   const email = formData.get("email")?.toString();
   const password = formData.get("password")?.toString();
   const username = formData.get("username")?.toString();
+  const redirectTo = formData.get("redirect")?.toString();
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
 
@@ -20,11 +21,26 @@ export const signUpAction = async (formData: FormData) => {
     );
   }
 
+   // Check if user already exists
+   const { data: existingUser, error: checkError } = await supabase
+   .from('users')
+   .select('email')
+   .eq('email', email)
+   .maybeSingle();
+
+ if (existingUser) {
+   return encodedRedirect(
+     "error", 
+     "/sign-up", 
+     "A user with this email address already exists. Please use a different email or try logging in."
+   );
+ }
+
   const { error } = await supabase.auth.signUp({
     email,
     password,
     options: {
-      emailRedirectTo: `${origin}/auth/callback`,
+      emailRedirectTo: `${origin}/auth/callback?redirect_to=/${redirectTo || ""}`,
       data: {
         username: username,
       }
@@ -46,6 +62,7 @@ export const signUpAction = async (formData: FormData) => {
 export const signInAction = async (formData: FormData) => {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
+  const redirectTo = formData.get("redirect")?.toString();
   const supabase = await createClient();
 
   const { error } = await supabase.auth.signInWithPassword({
@@ -57,7 +74,7 @@ export const signInAction = async (formData: FormData) => {
     return encodedRedirect("error", "/sign-in", error.message);
   }
 
-  return redirect("/protected");
+  return redirect(redirectTo || "/protected");
 };
 
 export const forgotPasswordAction = async (formData: FormData) => {

@@ -16,7 +16,7 @@ import { SimilarPersonalities } from "@/components/results/similar-personalities
 import { DetailedPersonalityInsights } from "@/components/results/detailed-personality-insights";
 import AboutPersonalityType from "@/components/profile/about-personality-type";
 import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
-
+import { getCurrentUser } from "@/lib/supabaseOperations";
 
 // Local storage key
 const TEST_RESULTS_KEY = "cerebralq_mbti_results";
@@ -33,6 +33,15 @@ export default function Results() {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [userID, setUserId] = useState<string | null>(null);
+
+   useEffect(() => {
+      const func = async () => {
+        const user = await getCurrentUser();
+        user && setUserId(user.id);
+      };
+      func();
+    }, []);
 
   useEffect(() => {
     // Get data from localStorage
@@ -143,6 +152,7 @@ export default function Results() {
           personalityAlias={personalityAlias}
           personalityDescription={personalityDescription}
           completionDate={completionDate}
+          userId={userID}
         />
 
         {/* About Personality Type Card */}
