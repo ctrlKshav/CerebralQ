@@ -23,7 +23,7 @@ export function Hero({
   personalityAlias,
   personalityDescription,
   completionDate,
-  userId
+  userId,
 }: HeroProps) {
   const [username, setUsername] = useState<string | null>(null);
   const isDemoUser = !userId;
@@ -38,24 +38,24 @@ export function Hero({
         }
       }
     };
-    
+
     fetchUser();
   }, [userId]);
 
   const shareResults = async () => {
     const title = `My Personality Type: ${personalityType}`;
     const text = `I'm a ${personalityAlias}! Check out my personality profile on CerebralQ.`;
-    
+
     // If the user is authenticated and has a username, prepare their profile URL for sharing
-    const url = `/tests/mbti/results`
-    
-    
+    const url = isDemoUser ? "/tests/mbti/results" : `${window.origin}/profiles/${username}`;
+
     // Call handleSha re with demo user status and current URL for potential redirect
     await handleShare(title, text, url, isDemoUser);
-    router.push(
-      "/sign-up?info=" +
-        encodeURIComponent("You need an account to share your profile.")
-    );
+    if (isDemoUser)
+      router.push(
+        "/sign-up?info=" +
+          encodeURIComponent("You need an account to share your profile.")
+      );
   };
 
   const downloadReport = () => {
