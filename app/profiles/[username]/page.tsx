@@ -38,6 +38,7 @@ export default function ProfilePage() {
           <PersonalityShowcase
             personalityType={userData.raw_score.personalityType}
             traitScores={userData.raw_score.traitScores}
+            bigFiveTraits={userData.raw_score.bigFive}
           />
           <CognitiveMetrics
             iqScore={userData.raw_score.iq}

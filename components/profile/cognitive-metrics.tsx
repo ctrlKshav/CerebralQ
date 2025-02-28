@@ -3,12 +3,10 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Brain, Calendar, ChevronDown } from "lucide-react"
 import { motion } from "framer-motion"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 
 // Import Recharts components
 import { IQProgressRing } from "./charts/iq-progress-ring"
-import { BigFiveRadarChart } from "./charts/big-five-radar"
 import { TrendSparkline } from "./charts/trend-sparkline"
 
 interface CognitiveMetricsProps {
@@ -34,7 +32,7 @@ interface CognitiveMetricsProps {
   }>
 }
 
-export default function CognitiveMetrics({ iqScore, bigFiveTraits, testHistory }: CognitiveMetricsProps) {
+export default function CognitiveMetrics({ iqScore, testHistory }: CognitiveMetricsProps) {
   return (
     <section className="space-y-6">
       <motion.h2
@@ -71,52 +69,6 @@ export default function CognitiveMetrics({ iqScore, bigFiveTraits, testHistory }
                   <div className="w-full h-24">
                     <TrendSparkline data={iqScore.history} />
                   </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        </motion.div>
-
-        {/* Big 5 Constellation */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-          <Card className="border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Big 5 Constellation</CardTitle>
-              <CardDescription className="text-base">Personality trait dimensions</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="flex flex-col md:flex-row items-center gap-6">
-                <div className="md:w-2/3 h-64 md:h-72">
-                  <BigFiveRadarChart data={bigFiveTraits} />
-                </div>
-
-                <div className="md:w-1/3 grid grid-cols-5 md:grid-cols-1 gap-3 text-center md:text-left">
-                  <TooltipProvider>
-                    {Object.entries({
-                      O: { label: "Openness", value: bigFiveTraits.openness },
-                      C: { label: "Conscientiousness", value: bigFiveTraits.conscientiousness },
-                      E: { label: "Extraversion", value: bigFiveTraits.extraversion },
-                      A: { label: "Agreeableness", value: bigFiveTraits.agreeableness },
-                      N: { label: "Neuroticism", value: bigFiveTraits.neuroticism },
-                    }).map(([key, { label, value }]) => (
-                      <Tooltip key={key}>
-                        <TooltipTrigger asChild>
-                          <div className="flex md:flex-row items-center justify-center md:justify-start gap-3">
-                            <div
-                              className={`w-10 h-10 rounded-full flex items-center justify-center bg-primary/20 text-primary font-medium text-lg`}
-                            >
-                              {key}
-                            </div>
-                            <span className="text-base mt-1">{Math.round(value * 100)}%</span>
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p className="font-medium">{label}</p>
-                          <p className="text-sm text-muted-foreground">Score: {Math.round(value * 100)}%</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    ))}
-                  </TooltipProvider>
                 </div>
               </div>
             </CardContent>

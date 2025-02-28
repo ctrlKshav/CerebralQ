@@ -4,13 +4,25 @@ import { motion } from "framer-motion"
 import { PersonalityTraits } from "@/components/results/personality-traits"
 import type { TraitScores } from "@/types/tests/mbti"
 import AboutPersonalityType, { personalityDescriptions } from "./about-personality-type"
+import BigFiveConstellation from "./big-five-constellation"
 
 interface PersonalityShowcaseProps {
   personalityType: string;
   traitScores: TraitScores;
+  bigFiveTraits: {
+    openness: number
+    conscientiousness: number
+    extraversion: number
+    agreeableness: number
+    neuroticism: number
+  }
 }
 
-export default function PersonalityShowcase({ personalityType, traitScores }: PersonalityShowcaseProps) {
+export default function PersonalityShowcase({ 
+  personalityType, 
+  traitScores,
+  bigFiveTraits 
+}: PersonalityShowcaseProps) {
   const typeInfo = personalityDescriptions[personalityType] || {
     title: "Personality Type",
     description: "A detailed analysis of cognitive preferences and behavioral patterns.",
@@ -33,16 +45,19 @@ export default function PersonalityShowcase({ personalityType, traitScores }: Pe
           Personality Analysis
         </motion.h2>
 
-        <div className="space-y-6">
+        <div className="space-y-10">
           {/* Use the PersonalityTraits component */}
           <PersonalityTraits traitScores={traitScores} />
 
-          {/* About Personality Type Card - now using the extracted component */}
+          {/* About Personality Type Card */}
           <AboutPersonalityType 
             personalityType={personalityType}
             title={typeInfo.title}
             description={typeInfo.description}
           />
+          
+          {/* Big Five Constellation - added as point #3 */}
+          <BigFiveConstellation bigFiveTraits={bigFiveTraits} />
         </div>
       </div>
     </section>
