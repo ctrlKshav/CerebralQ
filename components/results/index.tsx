@@ -38,6 +38,7 @@ export default function Results() {
   useEffect(() => {
     const func = async () => {
       const user = await getCurrentUser();
+      console.log(user)
       user && setUserId(user.id);
     };
     func();
@@ -56,7 +57,12 @@ export default function Results() {
         }
 
         const data = JSON.parse(storedData);
-        await saveTestResults(data);
+        data.user_id = userID;
+        console.log(userID)
+        console.log(data)
+
+        if(userID !== null)
+          await saveTestResults(data);
 
         // Extract required data from localStorage format
         const personalityType =
@@ -97,7 +103,7 @@ export default function Results() {
     };
     func();
 
-  }, []);
+  }, [userID]);
 
   // Destructure properties from resultData for easier access in JSX
   const {
