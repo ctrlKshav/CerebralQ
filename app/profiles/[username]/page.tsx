@@ -32,14 +32,17 @@ export default function ProfilePage() {
         <div className="max-w-7xl mx-auto space-y-10">
           <ProfileHeader userData={userData} />
           
-          <div className="grid lg:grid-cols-2 gap-10">
-            <PersonalityShowcase personalityType={userData.raw_score.personalityType} />
+          
+            <PersonalityShowcase 
+              personalityType={userData.raw_score.personalityType} 
+              traitScores={userData.raw_score.traitScores}
+            />
             <CognitiveMetrics
               iqScore={userData.raw_score.iq}
               bigFiveTraits={userData.raw_score.bigFive}
               testHistory={userData.user_test_history}
             />
-          </div>
+          
           
           <ComparativeInsights
             personalityType={userData.raw_score.personalityType}

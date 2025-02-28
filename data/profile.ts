@@ -1,3 +1,5 @@
+import type { TraitScores } from "@/types/tests/mbti"
+
 // Mock user data for the profile page
 
 export interface UserProfile {
@@ -14,6 +16,7 @@ export interface UserProfile {
       history: Array<{ date: string; score: number }>
     }
     personalityType: string
+    traitScores: TraitScores
     bigFive: {
       openness: number
       conscientiousness: number
@@ -59,6 +62,36 @@ const mockUserProfile: UserProfile = {
       ],
     },
     personalityType: "INFP",
+    traitScores: {
+      "E-I": {
+        left: 30,
+        right: 70,
+        leftPercentage: 30,
+        rightPercentage: 70,
+        dominant: "right"
+      },
+      "S-N": {
+        left: 15,
+        right: 85,
+        leftPercentage: 15,
+        rightPercentage: 85,
+        dominant: "right"
+      },
+      "T-F": {
+        left: 25,
+        right: 75,
+        leftPercentage: 25,
+        rightPercentage: 75,
+        dominant: "right"
+      },
+      "J-P": {
+        left: 20,
+        right: 80,
+        leftPercentage: 20,
+        rightPercentage: 80,
+        dominant: "right"
+      }
+    },
     bigFive: {
       openness: 0.85,
       conscientiousness: 0.72,

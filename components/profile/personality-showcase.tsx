@@ -2,11 +2,12 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
-import { Suspense } from "react"
-import PersonalityTraitsFallback from "./personality-traits-fallback"
+import { PersonalityTraits } from "@/components/results/personality-traits"
+import type { TraitScores } from "@/types/tests/mbti"
 
 interface PersonalityShowcaseProps {
-  personalityType: string
+  personalityType: string;
+  traitScores: TraitScores;
 }
 
 // Mock personality type descriptions
@@ -28,7 +29,7 @@ const personalityDescriptions: Record<string, { title: string; description: stri
   // Add more as needed
 }
 
-export default function PersonalityShowcase({ personalityType }: PersonalityShowcaseProps) {
+export default function PersonalityShowcase({ personalityType, traitScores }: PersonalityShowcaseProps) {
   const typeInfo = personalityDescriptions[personalityType] || {
     title: "Personality Type",
     description: "A detailed analysis of cognitive preferences and behavioral patterns.",
@@ -52,11 +53,14 @@ export default function PersonalityShowcase({ personalityType }: PersonalityShow
         </motion.h2>
 
         <div className="space-y-6">
-          {/* Personality Traits Component (using fallback) */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-            <Suspense fallback={<div className="h-64 w-full bg-muted/50 animate-pulse rounded-lg"></div>}>
-              <PersonalityTraitsFallback personalityType={personalityType} />
-            </Suspense>
+          {/* Use the PersonalityTraits component */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ delay: 0.3 }}
+            className="bg-background rounded-lg shadow-sm"
+          >
+            <PersonalityTraits traitScores={traitScores} />
           </motion.div>
 
           {/* About Personality Type Card */}
