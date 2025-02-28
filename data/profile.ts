@@ -109,6 +109,7 @@ const mockUserProfile: UserProfile = {
 export async function getUserProfile(username: string): Promise<UserProfile> {
   // In a real application, this would fetch data from an API
   // For now, we'll just return the mock data
+  console.log(username)
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(mockUserProfile)
