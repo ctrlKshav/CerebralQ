@@ -36,18 +36,12 @@ export default function Results() {
   const [userID, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    const func = async () => {
-      const user = await getCurrentUser();
-      console.log(user)
-      user && setUserId(user.id);
-    };
-    func();
-  }, []);
-
-  useEffect(() => {
     // Get data from localStorage
     const func = async () => {
       try {
+        const user = await getCurrentUser();
+        console.log(user);
+        user && setUserId(user.id);
         const storedData = localStorage.getItem(TEST_RESULTS_KEY);
 
         if (!storedData) {
@@ -57,12 +51,11 @@ export default function Results() {
         }
 
         const data = JSON.parse(storedData);
-        data.user_id = userID;
-        console.log(userID)
-        console.log(data)
+        data.user_id = user?.id;
+        console.log(userID);
+        console.log(data);
 
-        if(userID !== null)
-          await saveTestResults(data);
+        if (user !== null) await saveTestResults(data);
 
         // Extract required data from localStorage format
         const personalityType =
@@ -102,8 +95,7 @@ export default function Results() {
       }
     };
     func();
-
-  }, [userID]);
+  }, []);
 
   // Destructure properties from resultData for easier access in JSX
   const {
