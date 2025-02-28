@@ -42,9 +42,31 @@ export default function ComparativeInsights({
         Comparative Insights
       </motion.h2>
 
+      {/* Global Ranking - Moved to top for better visibility */}
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ delay: 0.3 }}
+        className="mx-auto max-w-md"
+      >
+        <Card className="border border-primary/20 bg-gradient-to-br from-background to-primary/5">
+          <CardContent className="pt-6">
+            <div className="flex items-center gap-4 justify-center">
+              <div className="bg-primary/20 p-3 rounded-full">
+                <Trophy className="h-6 w-6 text-primary" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-muted-foreground">Global Ranking</p>
+                <p className="text-3xl font-bold">Top {globalRanking}%</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </motion.div>
+
       <div className="grid md:grid-cols-2 gap-6">
         {/* Personality Distribution */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
           <Card>
             <CardHeader>
               <CardTitle>Personality Distribution</CardTitle>
@@ -97,7 +119,7 @@ export default function ComparativeInsights({
         </motion.div>
 
         {/* Cognitive Percentile Matrix */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
           <Card>
             <CardHeader>
               <CardTitle>Cognitive Percentile Matrix</CardTitle>
@@ -119,19 +141,6 @@ export default function ComparativeInsights({
                     </div>
                   </div>
                 ))}
-
-                {/* Global Ranking Badge */}
-                <div className="flex justify-center mt-6">
-                  <div className="bg-primary/10 rounded-lg p-4 flex items-center gap-3">
-                    <div className="bg-primary/20 p-2 rounded-full">
-                      <Trophy className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm font-medium">Global Ranking</p>
-                      <p className="text-2xl font-bold">Top {globalRanking}%</p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </CardContent>
           </Card>
