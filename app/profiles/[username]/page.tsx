@@ -8,6 +8,7 @@ import { getUserProfile, UserProfile } from "@/data/profile"
 import Navbar from "@/components/navbar"
 import { useSearchParams } from "next/navigation"
 import { useState, useEffect } from "react"
+import LoadingSkeleton from "@/components/loading-skeleton"
 
 export default function ProfilePage() {
   const params = useSearchParams()
@@ -21,7 +22,7 @@ export default function ProfilePage() {
   }, [params])
 
   if(userData === null) {
-    return <div>Loading...</div>  
+    return <LoadingSkeleton /> 
   }
 
   return (
