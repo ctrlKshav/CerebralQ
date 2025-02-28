@@ -1,8 +1,10 @@
 "use client"
 
-import { Calendar, Star } from "lucide-react"
+import { Calendar, Star, Share2 } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { toast } from "sonner"
+import { Button } from "@/components/ui/button"
 
 interface ProfileHeaderProps {
   userData: {
@@ -15,6 +17,13 @@ interface ProfileHeaderProps {
 }
 
 export default function ProfileHeader({ userData }: ProfileHeaderProps) {
+  
+  const handleShare = () => {
+    // Copy profile URL to clipboard
+    navigator.clipboard.writeText(`https://cq.com/${userData.username}`)
+    toast.success("Profile link copied to clipboard")
+  }
+
   return (
     <section className="relative">
       {/* Decorative background */}
@@ -66,6 +75,15 @@ export default function ProfileHeader({ userData }: ProfileHeaderProps) {
                 Last: {new Date(userData.last_test_date).toLocaleDateString()}
               </span>
             </div>
+            <Button 
+              variant="outline" 
+              size="sm" 
+              className="flex items-center gap-1.5" 
+              onClick={handleShare}
+            >
+              <Share2 className="h-4 w-4 text-green-500" />
+              <span className="text-sm font-medium">Share Profile</span>
+            </Button>
           </div>
         </div>
       </motion.div>

@@ -3,7 +3,6 @@ import ProfileHeader from "@/components/profile/profile-header"
 import PersonalityShowcase from "@/components/profile/personality-showcase"
 import CognitiveMetrics from "@/components/profile/cognitive-metrics"
 import ComparativeInsights from "@/components/profile/comparative-insights"
-import SocialEngagementBar from "@/components/profile/social-engagement-bar"
 import { getUserProfile } from "@/data/profile"
 
 export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata> {
@@ -37,7 +36,6 @@ export default async function ProfilePage({ params }: { params: { username: stri
           globalRanking={userData.raw_score.globalRanking}
         />
       </main>
-      <SocialEngagementBar userData={userData} />
     </div>
   )
 }
