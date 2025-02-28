@@ -6,9 +6,6 @@ export interface UserProfile {
   bio: string
   tests_taken: number
   last_test_date: string
-  active_streak: number
-  follower_count: number
-  verified: boolean
   raw_score: {
     iq: {
       score: number
@@ -49,9 +46,6 @@ const mockUserProfile: UserProfile = {
   bio: "Cognitive science enthusiast. Exploring the frontiers of human potential through data-driven insights and continuous learning.",
   tests_taken: 24,
   last_test_date: "2023-12-15",
-  active_streak: 7,
-  follower_count: 342,
-  verified: true,
   raw_score: {
     iq: {
       score: 128,

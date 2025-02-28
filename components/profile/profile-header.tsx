@@ -1,8 +1,6 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { Calendar, Flame, Share2, Star, CheckCircle } from "lucide-react"
+import { Calendar, Star } from "lucide-react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 
@@ -13,9 +11,6 @@ interface ProfileHeaderProps {
     bio: string
     tests_taken: number
     last_test_date: string
-    active_streak: number
-    follower_count: number
-    verified: boolean
   }
 }
 
@@ -51,7 +46,6 @@ export default function ProfileHeader({ userData }: ProfileHeaderProps) {
           {/* Username and verified badge */}
           <div className="flex items-center justify-center md:justify-start gap-2">
             <h1 className="text-3xl font-bold">{userData.username}</h1>
-            {userData.verified && <CheckCircle className="h-5 w-5 text-primary" aria-label="Verified profile" />}
           </div>
 
           {/* Bio with fade effect */}
@@ -72,21 +66,6 @@ export default function ProfileHeader({ userData }: ProfileHeaderProps) {
                 Last: {new Date(userData.last_test_date).toLocaleDateString()}
               </span>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Flame className="h-4 w-4 text-orange-500" />
-              <span className="text-sm font-medium">{userData.active_streak} Day Streak</span>
-            </div>
-          </div>
-
-          {/* Social proof */}
-          <div className="flex items-center justify-center md:justify-start gap-4">
-            <Badge variant="outline" className="px-3 py-1">
-              {userData.follower_count.toLocaleString()} Followers
-            </Badge>
-            <Button variant="outline" size="sm" className="gap-1.5">
-              <Share2 className="h-4 w-4" />
-              Share
-            </Button>
           </div>
         </div>
       </motion.div>
