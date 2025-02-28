@@ -3,6 +3,8 @@ import { createClient } from "@/utils/supabase/server";
 import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
 import type { TestType } from "@/types/supabase/test-types";
 import type { User } from "@/types/supabase/users";
+import { UserProfile } from "@/data/profile";
+import { MBTI_TEST_ID } from "@/constants/test-id";
 
 /**
  * Save test results to the user_test_history table
@@ -199,38 +201,82 @@ export async function getCurrentUser(): Promise<User | null> {
 }
 
 /**
- * Update the test count for a user
+ * Get complete user profile by username, including test history and latest MBTI results
  */
-// export async function incrementUserTestCount(userId: string) {
-//   const supabase = await createClient();
-
-//   // First get the current count
-//   const { data: userData, error: fetchError } = await supabase
-//     .from("users")
-//     .select("tests_taken")
-//     .eq("id", userId)
-//     .single();
-
-//   if (fetchError) {
-//     console.error("Error fetching user test count:", fetchError);
-//     throw fetchError;
-//   }
-
-//   const currentCount = userData.tests_taken || 0;
-
-//   // Then update with incremented count
-//   const { data, error } = await supabase
-//     .from("users")
-//     .update({
-//       tests_taken: currentCount + 1,
-//       last_test_date: new Date().toISOString(),
-//     })
-//     .eq("id", userId);
-
-//   if (error) {
-//     console.error("Error updating user test count:", error);
-//     throw error;
-//   }
-
-//   return data;
-// }
+export async function getUserByUsername(username: string): Promise<UserProfile | null> {
+  const supabase = await createClient();
+  
+  // Step 1: Get user data from users table
+  const { data: userData, error: userError } = await supabase
+    .from("users")
+    .select("*")
+    .eq("username", username)
+    .single();
+  
+  if (userError || !userData) {
+    console.error("Error fetching user by username:", userError);
+    return null;
+  }
+  
+  // Step 2: Get user's test history
+  const { data: historyData, error: historyError } = await supabase
+    .from("user_test_history")
+    .select(`
+      *,
+      test_type:test_type_id (
+        name,
+        short_code,
+        description,
+        category
+      )
+    `)
+    .eq("user_id", userData.id)
+    .order("taken_at", { ascending: false });
+  
+  if (historyError) {
+    console.error("Error fetching user test history:", historyError);
+    return null;
+  }
+  
+  // Step 3: Get the latest MBTI test result for the personality type
+  const { data: mbtiResult, error: mbtiError } = await supabase
+    .from("user_test_history")
+    .select("*")
+    .eq("user_id", userData.id)
+    .eq("test_type_id", MBTI_TEST_ID)
+    .order("taken_at", { ascending: false })
+    .limit(1)
+    .single();
+  
+  if (mbtiError && mbtiError.code !== 'PGRST116') { // PGRST116 is the "no rows returned" error code
+    console.error("Error fetching MBTI results:", mbtiError);
+  }
+  
+  // Step 4: Format and return the user profile
+  const userProfile: UserProfile = {
+    username: userData.username || "",
+    profile_image_url: userData.profile_image_url || "/placeholder.svg?height=128&width=128",
+    bio: userData.bio || "",
+    tests_taken: userData.tests_taken || 0,
+    last_test_date: userData.last_test_date || "",
+    raw_score: {
+      personalityType: mbtiResult?.raw_score?.personalityType || "Unknown",
+      traitScores: mbtiResult?.raw_score?.traitScores || {
+        "E-I": { left: 0, right: 0, leftPercentage: 0, rightPercentage: 0, dominant: "right" },
+        "S-N": { left: 0, right: 0, leftPercentage: 0, rightPercentage: 0, dominant: "right" },
+        "T-F": { left: 0, right: 0, leftPercentage: 0, rightPercentage: 0, dominant: "right" },
+        "J-P": { left: 0, right: 0, leftPercentage: 0, rightPercentage: 0, dominant: "right" }
+      }
+    },
+    user_test_history: historyData ? historyData.map(test => ({
+      id: test.id,
+      type: test.test_type?.short_code || "Unknown",
+      date: test.taken_at || "",
+      score: test.percentile || 0,
+      personalityType: test.raw_score?.personalityType,
+      details: test.raw_score?.details || {}
+    })) : []
+  };
+  
+  return userProfile;
+}

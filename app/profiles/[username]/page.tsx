@@ -3,21 +3,25 @@ import ProfileHeader from "@/components/profile/profile-header";
 import PersonalityShowcase from "@/components/profile/personality-showcase";
 import TestHistory from "@/components/profile/test-history";
 import MBTIInsights from "@/components/profile/mbti-insights";
-import { getUserProfile, UserProfile } from "@/data/profile";
+import { UserProfile } from "@/data/profile";
 import Navbar from "@/components/navbar";
 import { useState, useEffect, use } from "react";
 import LoadingSkeleton from "@/components/loading-skeleton";
 
 import {createClient} from "@/utils/supabase/client"
+import { getUserByUsername } from "@/lib/supabaseOperations";
 
 export default function ProfilePage({params}: {params: Promise<{username: string}>}) {
   const [userData, setUserData] = useState<UserProfile | null>(null);
   const supabase = createClient();
   const searchParams = use(params);
+
+  
   
   useEffect(() => {
     const func = async () => {
-      const userData = await getUserProfile(searchParams.username);
+      const userData = await getUserByUsername(searchParams.username);
+      console.log(userData)
       setUserData(userData);
     };
     func();
