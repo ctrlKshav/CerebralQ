@@ -33,17 +33,17 @@ export default function ProfileHeader({ userData }: ProfileHeaderProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="flex flex-col md:flex-row items-center gap-8 p-6 rounded-3xl"
+        className="flex flex-col md:flex-row items-center gap-10 p-8 rounded-3xl"
       >
         {/* Avatar with gradient border */}
         <div className="relative flex-shrink-0">
           <div className="absolute -inset-1 bg-gradient-to-br from-primary to-primary/40 rounded-full blur-sm" />
-          <div className="relative h-32 w-32 rounded-full overflow-hidden border-4 border-background">
+          <div className="relative h-40 w-40 md:h-48 md:w-48 rounded-full overflow-hidden border-4 border-background">
             <Image
-              src={userData.profile_image_url || "/placeholder.svg?height=128&width=128"}
+              src={userData.profile_image_url || "/placeholder.svg?height=192&width=192"}
               alt={`${userData.username}'s profile`}
-              width={128}
-              height={128}
+              width={192}
+              height={192}
               className="object-cover"
               priority
             />
@@ -51,38 +51,38 @@ export default function ProfileHeader({ userData }: ProfileHeaderProps) {
         </div>
 
         {/* Profile info */}
-        <div className="flex-1 space-y-4 text-center md:text-left">
+        <div className="flex-1 space-y-5 text-center md:text-left">
           {/* Username and verified badge */}
           <div className="flex items-center justify-center md:justify-start gap-2">
-            <h1 className="text-3xl font-bold">{userData.username}</h1>
+            <h1 className="text-4xl md:text-5xl font-bold">{userData.username}</h1>
           </div>
 
           {/* Bio with fade effect */}
-          <p className="text-muted-foreground italic max-w-2xl relative overflow-hidden">
+          <p className="text-lg text-muted-foreground italic max-w-3xl relative overflow-hidden">
             {userData.bio}
             <span className="absolute bottom-0 right-0 bg-gradient-to-l from-background to-transparent w-12 h-full" />
           </p>
 
           {/* Stats ribbon */}
-          <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
-            <div className="flex items-center gap-1.5">
-              <Star className="h-4 w-4 text-amber-500" />
-              <span className="text-sm font-medium">{userData.tests_taken} Tests</span>
+          <div className="flex flex-wrap justify-center md:justify-start gap-6 pt-3">
+            <div className="flex items-center gap-2">
+              <Star className="h-5 w-5 text-amber-500" />
+              <span className="text-base font-medium">{userData.tests_taken} Tests</span>
             </div>
-            <div className="flex items-center gap-1.5">
-              <Calendar className="h-4 w-4 text-blue-500" />
-              <span className="text-sm font-medium">
+            <div className="flex items-center gap-2">
+              <Calendar className="h-5 w-5 text-blue-500" />
+              <span className="text-base font-medium">
                 Last: {new Date(userData.last_test_date).toLocaleDateString()}
               </span>
             </div>
             <Button 
               variant="outline" 
-              size="sm" 
-              className="flex items-center gap-1.5" 
+              size="lg" 
+              className="flex items-center gap-2" 
               onClick={handleShare}
             >
-              <Share2 className="h-4 w-4 text-green-500" />
-              <span className="text-sm font-medium">Share Profile</span>
+              <Share2 className="h-5 w-5 text-green-500" />
+              <span className="font-medium">Share Profile</span>
             </Button>
           </div>
         </div>

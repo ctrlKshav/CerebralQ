@@ -46,41 +46,41 @@ export default function PersonalityShowcase({ personalityType }: PersonalityShow
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="text-2xl font-bold text-center"
+          className="text-3xl font-bold"
         >
           Personality Profile
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="space-y-6">
           {/* Personality Traits Component (using fallback) */}
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
             <Suspense fallback={<div className="h-64 w-full bg-muted/50 animate-pulse rounded-lg"></div>}>
               <PersonalityTraitsFallback personalityType={personalityType} />
             </Suspense>
           </motion.div>
 
           {/* About Personality Type Card */}
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }}>
-            <Card className="h-full">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
+            <Card className="border-primary/20">
               <CardHeader>
-                <CardTitle>About {personalityType} Personality</CardTitle>
-                <CardDescription>{typeInfo.title}</CardDescription>
+                <CardTitle className="text-2xl">About {personalityType} Personality</CardTitle>
+                <CardDescription className="text-lg">{typeInfo.title}</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="leading-relaxed">{typeInfo.description}</p>
+                <p className="text-lg leading-relaxed">{typeInfo.description}</p>
 
-                <div className="mt-6 grid grid-cols-2 gap-4">
-                  <div className="bg-primary/10 rounded-lg p-3">
-                    <h4 className="font-medium text-sm">Strengths</h4>
-                    <ul className="mt-2 text-sm space-y-1">
+                <div className="mt-6 grid grid-cols-2 gap-6">
+                  <div className="bg-primary/10 rounded-lg p-4">
+                    <h4 className="font-medium text-base">Strengths</h4>
+                    <ul className="mt-3 text-base space-y-2">
                       <li>Creative thinking</li>
                       <li>Empathetic understanding</li>
                       <li>Value-driven decisions</li>
                     </ul>
                   </div>
-                  <div className="bg-primary/10 rounded-lg p-3">
-                    <h4 className="font-medium text-sm">Growth Areas</h4>
-                    <ul className="mt-2 text-sm space-y-1">
+                  <div className="bg-primary/10 rounded-lg p-4">
+                    <h4 className="font-medium text-base">Growth Areas</h4>
+                    <ul className="mt-3 text-base space-y-2">
                       <li>Practical implementation</li>
                       <li>Handling criticism</li>
                       <li>Setting boundaries</li>

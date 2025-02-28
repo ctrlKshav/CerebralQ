@@ -41,33 +41,37 @@ export default function CognitiveMetrics({ iqScore, bigFiveTraits, testHistory }
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="text-2xl font-bold text-center"
+        className="text-3xl font-bold"
       >
-        Cognitive Metrics Dashboard
+        Cognitive Metrics
       </motion.h2>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {/* IQ Pinnacle Card */}
+      <div className="grid gap-6">
+        {/* IQ Card */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-          <Card>
+          <Card className="border-primary/20">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Brain className="h-5 w-5 text-primary" />
+              <CardTitle className="flex items-center gap-2 text-2xl">
+                <Brain className="h-6 w-6 text-primary" />
                 IQ Pinnacle
               </CardTitle>
-              <CardDescription>Cognitive performance relative to population</CardDescription>
+              <CardDescription className="text-base">Cognitive performance relative to population</CardDescription>
             </CardHeader>
-            <CardContent className="flex flex-col items-center">
-              <div className="w-48 h-48 mb-4">
-                <IQProgressRing score={iqScore.score} percentile={iqScore.percentile} />
-              </div>
+            <CardContent>
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="w-48 h-48">
+                  <IQProgressRing score={iqScore.score} percentile={iqScore.percentile} />
+                </div>
 
-              <div className="text-center mb-4">
-                <p className="text-sm text-muted-foreground">Population Average: {iqScore.populationAverage}</p>
-              </div>
+                <div className="flex-1 space-y-4">
+                  <div className="text-center md:text-left">
+                    <p className="text-base text-muted-foreground">Population Average: {iqScore.populationAverage}</p>
+                  </div>
 
-              <div className="w-full h-16">
-                <TrendSparkline data={iqScore.history} />
+                  <div className="w-full h-24">
+                    <TrendSparkline data={iqScore.history} />
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -75,43 +79,45 @@ export default function CognitiveMetrics({ iqScore, bigFiveTraits, testHistory }
 
         {/* Big 5 Constellation */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-          <Card>
+          <Card className="border-primary/20">
             <CardHeader>
-              <CardTitle>Big 5 Constellation</CardTitle>
-              <CardDescription>Personality trait dimensions</CardDescription>
+              <CardTitle className="text-2xl">Big 5 Constellation</CardTitle>
+              <CardDescription className="text-base">Personality trait dimensions</CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="h-64">
-                <BigFiveRadarChart data={bigFiveTraits} />
-              </div>
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="md:w-2/3 h-64 md:h-72">
+                  <BigFiveRadarChart data={bigFiveTraits} />
+                </div>
 
-              <div className="mt-4 grid grid-cols-5 gap-2 text-center">
-                <TooltipProvider>
-                  {Object.entries({
-                    O: { label: "Openness", value: bigFiveTraits.openness },
-                    C: { label: "Conscientiousness", value: bigFiveTraits.conscientiousness },
-                    E: { label: "Extraversion", value: bigFiveTraits.extraversion },
-                    A: { label: "Agreeableness", value: bigFiveTraits.agreeableness },
-                    N: { label: "Neuroticism", value: bigFiveTraits.neuroticism },
-                  }).map(([key, { label, value }]) => (
-                    <Tooltip key={key}>
-                      <TooltipTrigger asChild>
-                        <div className="flex flex-col items-center">
-                          <div
-                            className={`w-8 h-8 rounded-full flex items-center justify-center bg-primary/20 text-primary font-medium`}
-                          >
-                            {key}
+                <div className="md:w-1/3 grid grid-cols-5 md:grid-cols-1 gap-3 text-center md:text-left">
+                  <TooltipProvider>
+                    {Object.entries({
+                      O: { label: "Openness", value: bigFiveTraits.openness },
+                      C: { label: "Conscientiousness", value: bigFiveTraits.conscientiousness },
+                      E: { label: "Extraversion", value: bigFiveTraits.extraversion },
+                      A: { label: "Agreeableness", value: bigFiveTraits.agreeableness },
+                      N: { label: "Neuroticism", value: bigFiveTraits.neuroticism },
+                    }).map(([key, { label, value }]) => (
+                      <Tooltip key={key}>
+                        <TooltipTrigger asChild>
+                          <div className="flex md:flex-row items-center justify-center md:justify-start gap-3">
+                            <div
+                              className={`w-10 h-10 rounded-full flex items-center justify-center bg-primary/20 text-primary font-medium text-lg`}
+                            >
+                              {key}
+                            </div>
+                            <span className="text-base mt-1">{Math.round(value * 100)}%</span>
                           </div>
-                          <span className="text-xs mt-1">{Math.round(value * 100)}%</span>
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent>
-                        <p>{label}</p>
-                        <p className="text-xs text-muted-foreground">Score: {Math.round(value * 100)}%</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  ))}
-                </TooltipProvider>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p className="font-medium">{label}</p>
+                          <p className="text-sm text-muted-foreground">Score: {Math.round(value * 100)}%</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    ))}
+                  </TooltipProvider>
+                </div>
               </div>
             </CardContent>
           </Card>

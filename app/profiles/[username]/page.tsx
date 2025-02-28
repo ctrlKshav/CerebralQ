@@ -1,40 +1,51 @@
+"use client"
 import type { Metadata } from "next"
 import ProfileHeader from "@/components/profile/profile-header"
 import PersonalityShowcase from "@/components/profile/personality-showcase"
 import CognitiveMetrics from "@/components/profile/cognitive-metrics"
 import ComparativeInsights from "@/components/profile/comparative-insights"
-import { getUserProfile } from "@/data/profile"
+import { getUserProfile, UserProfile } from "@/data/profile"
+import Navbar from "@/components/navbar"
+import { useSearchParams } from "next/navigation"
+import { useState, useEffect } from "react"
 
-export async function generateMetadata({ params }: { params: { username: string } }): Promise<Metadata> {
-  const userData = await getUserProfile(params.username)
+export default function ProfilePage() {
+  const params = useSearchParams()
+  const [userData, setUserData] = useState<UserProfile | null >(null)
+  useEffect(() => {
+    const func = async () => {
+      const userData = await getUserProfile(params.get("username") || "")
+      setUserData(userData)
+    }
+    func()
+  }, [params])
 
-  return {
-    title: `${userData.username} | Cerebral Quotient`,
-    description: `View ${userData.username}'s cognitive profile and personality insights on Cerebral Quotient.`,
-    openGraph: {
-      images: [userData.profile_image_url],
-    },
+  if(userData === null) {
+    return <div>Loading...</div>  
   }
-}
-
-export default async function ProfilePage({ params }: { params: { username: string } }) {
-  const userData = await getUserProfile(params.username)
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="container max-w-4xl mx-auto px-4 py-8 space-y-12">
-        <ProfileHeader userData={userData} />
-        <PersonalityShowcase personalityType={userData.raw_score.personalityType} />
-        <CognitiveMetrics
-          iqScore={userData.raw_score.iq}
-          bigFiveTraits={userData.raw_score.bigFive}
-          testHistory={userData.user_test_history}
-        />
-        <ComparativeInsights
-          personalityType={userData.raw_score.personalityType}
-          cognitivePercentile={userData.raw_score.cognitivePercentile}
-          globalRanking={userData.raw_score.globalRanking}
-        />
+    <div className="min-h-screen bg-background mt-16">
+      <Navbar className="mb-6" />
+      <main className="container mx-auto px-4 py-8 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-10">
+          <ProfileHeader userData={userData} />
+          
+          <div className="grid lg:grid-cols-2 gap-10">
+            <PersonalityShowcase personalityType={userData.raw_score.personalityType} />
+            <CognitiveMetrics
+              iqScore={userData.raw_score.iq}
+              bigFiveTraits={userData.raw_score.bigFive}
+              testHistory={userData.user_test_history}
+            />
+          </div>
+          
+          <ComparativeInsights
+            personalityType={userData.raw_score.personalityType}
+            cognitivePercentile={userData.raw_score.cognitivePercentile}
+            globalRanking={userData.raw_score.globalRanking}
+          />
+        </div>
       </main>
     </div>
   )
