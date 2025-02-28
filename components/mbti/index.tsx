@@ -79,20 +79,6 @@ export default function MBTITest() {
     // Store results in local storage
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
 
-
-    // If not a demo user, save to database
-    if (userID) {
-      try {
-
-        // Save to database
-        await saveTestResults(testResultData);
-        
-      } catch (error) {
-        console.error("Error saving test results:", error);
-        // Continue with local storage results
-      }
-    }
-
     // Clear form progress data (answers saved during the test)
     // saveProgress(null);
 

@@ -47,9 +47,7 @@ export function Hero({
     const text = `I'm a ${personalityAlias}! Check out my personality profile on CerebralQ.`;
     
     // If the user is authenticated and has a username, prepare their profile URL for sharing
-    const url = username 
-      ? `${window.location.origin}/profiles/${username}`
-      : `${window.location.origin}`;
+    const url = `/tests/mbti/results`
     
     
     // Call handleSha re with demo user status and current URL for potential redirect

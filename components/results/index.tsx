@@ -16,7 +16,7 @@ import { SimilarPersonalities } from "@/components/results/similar-personalities
 import { DetailedPersonalityInsights } from "@/components/results/detailed-personality-insights";
 import AboutPersonalityType from "@/components/profile/about-personality-type";
 import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
-import { getCurrentUser } from "@/lib/supabaseOperations";
+import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 
 // Local storage key
 const TEST_RESULTS_KEY = "cerebralq_mbti_results";
@@ -24,7 +24,7 @@ const TEST_RESULTS_KEY = "cerebralq_mbti_results";
 export default function Results() {
   const [resultData, setResultData] = useState<ResultData>({
     personalityType: "",
-    personalityDescription: {alias: "", description: ""},
+    personalityDescription: { alias: "", description: "" },
     testId: "",
     completionDate: "",
     traitScores: null,
@@ -35,63 +35,68 @@ export default function Results() {
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
 
-   useEffect(() => {
-      const func = async () => {
-        const user = await getCurrentUser();
-        user && setUserId(user.id);
-      };
-      func();
-    }, []);
+  useEffect(() => {
+    const func = async () => {
+      const user = await getCurrentUser();
+      user && setUserId(user.id);
+    };
+    func();
+  }, []);
 
   useEffect(() => {
     // Get data from localStorage
-    try {
-      const storedData = localStorage.getItem(TEST_RESULTS_KEY);
+    const func = async () => {
+      try {
+        const storedData = localStorage.getItem(TEST_RESULTS_KEY);
 
-      if (!storedData) {
-        setError("No test results found. Please take the test first.");
+        if (!storedData) {
+          setError("No test results found. Please take the test first.");
+          setLoading(false);
+          return;
+        }
+
+        const data = JSON.parse(storedData);
+        await saveTestResults(data);
+
+        // Extract required data from localStorage format
+        const personalityType =
+          data.personalityType || data.raw_score?.personalityType;
+        const traitScores = data.traitScores || data.raw_score?.traitScores;
+        const testId = data.testId || data.test_type_id;
+        const completionDate =
+          data.completionDate ||
+          (data.timestamp
+            ? new Date(data.timestamp).toLocaleDateString()
+            : data.taken_at
+              ? new Date(data.taken_at).toLocaleDateString()
+              : new Date().toLocaleDateString());
+
+        if (!personalityType) {
+          setError("Invalid test result data. Please retake the test.");
+          setLoading(false);
+          return;
+        }
+
+        // Set all result data at once
+        setResultData({
+          personalityType,
+          personalityDescription: personalityDescriptions[personalityType],
+          testId,
+          completionDate,
+          traitScores,
+          careerSuggestions: getCareerSuggestions(personalityType),
+          similarPersonalities: getSimilarPersonalities(personalityType),
+        });
+
         setLoading(false);
-        return;
-      }
-
-      const data = JSON.parse(storedData);
-
-      // Extract required data from localStorage format
-      const personalityType =
-        data.personalityType || data.raw_score?.personalityType;
-      const traitScores = data.traitScores || data.raw_score?.traitScores;
-      const testId = data.testId || data.test_type_id;
-      const completionDate =
-        data.completionDate ||
-        (data.timestamp
-          ? new Date(data.timestamp).toLocaleDateString()
-          : data.taken_at
-            ? new Date(data.taken_at).toLocaleDateString()
-            : new Date().toLocaleDateString());
-
-      if (!personalityType) {
-        setError("Invalid test result data. Please retake the test.");
+      } catch (error) {
+        console.error("Error parsing result data:", error);
+        setError("Failed to load test results. Please retake the test.");
         setLoading(false);
-        return;
       }
+    };
+    func();
 
-      // Set all result data at once
-      setResultData({
-        personalityType,
-        personalityDescription: personalityDescriptions[personalityType] ,
-        testId,
-        completionDate,
-        traitScores,
-        careerSuggestions: getCareerSuggestions(personalityType),
-        similarPersonalities: getSimilarPersonalities(personalityType),
-      });
-
-      setLoading(false);
-    } catch (error) {
-      console.error("Error parsing result data:", error);
-      setError("Failed to load test results. Please retake the test.");
-      setLoading(false);
-    }
   }, []);
 
   // Destructure properties from resultData for easier access in JSX
@@ -111,9 +116,10 @@ export default function Results() {
   const personalityInsights = getPersonalityInsights(personalityType);
 
   const typeInfo = personalityDescriptions[personalityType] || {
-      title: "Personality Type",
-      description: "A detailed analysis of cognitive preferences and behavioral patterns.",
-    }
+    title: "Personality Type",
+    description:
+      "A detailed analysis of cognitive preferences and behavioral patterns.",
+  };
 
   if (loading) {
     return (
