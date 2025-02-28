@@ -4,6 +4,7 @@ import ProfileHeader from "@/components/profile/profile-header";
 import PersonalityShowcase from "@/components/profile/personality-showcase";
 import CognitiveMetrics from "@/components/profile/cognitive-metrics";
 import ComparativeInsights from "@/components/profile/comparative-insights";
+import TestsSummary from "@/components/profile/tests-summary";
 import { getUserProfile, UserProfile } from "@/data/profile";
 import Navbar from "@/components/navbar";
 import { useSearchParams } from "next/navigation";
@@ -31,7 +32,9 @@ export default function ProfilePage() {
       <main className="container mx-auto px-4 py-8 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-10">
           <ProfileHeader userData={userData} />
-
+          
+          <TestsSummary userData={userData} />
+          
           <PersonalityShowcase
             personalityType={userData.raw_score.personalityType}
             traitScores={userData.raw_score.traitScores}
