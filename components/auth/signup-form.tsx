@@ -1,4 +1,4 @@
-﻿"use client"
+﻿"use client";
 import type React from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import { signUpAction } from "@/app/actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
+import { useState } from "react";
 
 export function SignupForm({
   className,
@@ -23,14 +24,18 @@ export function SignupForm({
   } = useForm<SignUpSchema>({
     resolver: zodResolver(signupSchema),
   });
+  const [error, setError] = useState<string | null>(null);
 
   const onSubmit = async (data: SignUpSchema) => {
-    const signUpData = {
-      ...data,
-      redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
-    };
-
-    return await signUpAction(signUpData);
+    try {
+      const signUpData = {
+        ...data,
+        redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
+      };
+      await signUpAction(signUpData);
+    } catch (error) {
+      setError(error instanceof Error ? error.message : "An error occurred");
+    }
   };
 
   return (
@@ -54,7 +59,9 @@ export function SignupForm({
                   {...register("username")}
                 />
                 {errors.username && (
-                  <p className="text-sm text-red-500">{errors.username.message}</p>
+                  <p className="text-sm text-red-500">
+                    {errors.username.message}
+                  </p>
                 )}
               </div>
               <div className="grid gap-2">
@@ -77,18 +84,22 @@ export function SignupForm({
                   {...register("password")}
                 />
                 {errors.password && (
-                  <p className="text-sm text-red-500">{errors.password.message}</p>
+                  <p className="text-sm text-red-500">
+                    {errors.password.message}
+                  </p>
                 )}
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="confirmPassword">Confirm Password</Label>
-                <Input 
-                  id="confirmPassword" 
+                <Input
+                  id="confirmPassword"
                   type="password"
-                  {...register("confirmPassword")} 
+                  {...register("confirmPassword")}
                 />
                 {errors.confirmPassword && (
-                  <p className="text-sm text-red-500">{errors.confirmPassword.message}</p>
+                  <p className="text-sm text-red-500">
+                    {errors.confirmPassword.message}
+                  </p>
                 )}
               </div>
               <Button type="submit" className="w-full" disabled={isSubmitting}>
