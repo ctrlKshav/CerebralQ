@@ -11,6 +11,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { signinSchema, SignInSchema } from "@/schema/auth-pages"
 import { FormMessage } from "@/components/form-message"
 import { useState } from "react"
+import { signInAction } from "@/app/actions"
 
 export function SigninForm({ className, ...props }: React.ComponentProps<"div">) {
   const [error, setError] = useState<string | null>(null);
@@ -25,9 +26,8 @@ export function SigninForm({ className, ...props }: React.ComponentProps<"div">)
   
   const onSubmit = async (data: SignInSchema) => {
     try {
-      // Replace with your actual sign in action
-      // await signInAction(data);
-      console.log("Form submitted:", data);
+      
+      await signInAction(data);
     } catch (error) {
       setError(error instanceof Error ? error.message : "An error occurred");
     }
