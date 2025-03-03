@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { PersonalityDescription } from "@/types/tests/mbti";
 import { handleShare } from "@/lib/shareUtils";
 import { useEffect, useState } from "react";
-import { getCurrentUser } from "@/lib/supabaseOperations";
+import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { useRouter } from "next/navigation";
 
 interface HeroProps {
@@ -16,6 +16,7 @@ interface HeroProps {
   personalityDescription: PersonalityDescription;
   completionDate: string;
   userId: string | null;
+  rawTestData: any; // Raw test data from localStorage
 }
 
 export function Hero({
@@ -24,8 +25,10 @@ export function Hero({
   personalityDescription,
   completionDate,
   userId,
+  rawTestData,
 }: HeroProps) {
   const [username, setUsername] = useState<string | null>(null);
+  const [isSharing, setIsSharing] = useState(false);
   const isDemoUser = !userId;
   const router = useRouter();
 
@@ -43,19 +46,45 @@ export function Hero({
   }, [userId]);
 
   const shareResults = async () => {
-    const title = `My Personality Type: ${personalityType}`;
-    const text = `I'm a ${personalityAlias}! Check out my personality profile on CerebralQ.`;
-
-    // If the user is authenticated and has a username, prepare their profile URL for sharing
-    const url = isDemoUser ? "/tests/mbti/results" : `${window.origin}/profiles/${username}`;
-
-    // Call handleSha re with demo user status and current URL for potential redirect
-    await handleShare(title, text, url, isDemoUser);
-    if (isDemoUser)
-      router.push(
-        "/sign-up?info=" +
-          encodeURIComponent("You need an account to share your profile.")
-      );
+    try {
+      setIsSharing(true);
+      
+      // First save results to Supabase if user is authenticated
+      if (userId && rawTestData) {
+        // Make sure we use the correct user ID (not the demo ID)
+        const testData = {
+          ...rawTestData,
+          user_id: userId
+        };
+        
+        // Save to Supabase
+        await saveTestResults(testData);
+      }
+      
+      // Then handle sharing
+      const title = `My Personality Type: ${personalityType}`;
+      const text = `I'm a ${personalityAlias}! Check out my personality profile on CerebralQ.`;
+      
+      // Determine share URL based on user status
+      const url = isDemoUser ? 
+        "/tests/mbti/results" : 
+        `${window.origin}/profiles/${username}`;
+      
+      // Use the existing share function
+      await handleShare(title, text, url, isDemoUser);
+      
+      // Redirect demo users to sign up
+      if (isDemoUser) {
+        router.push(
+          "/sign-up?info=" +
+            encodeURIComponent("You need an account to share your profile.")
+        );
+      }
+    } catch (error) {
+      console.error("Error sharing results:", error);
+    } finally {
+      setIsSharing(false);
+    }
   };
 
   const downloadReport = () => {
@@ -87,9 +116,14 @@ export function Hero({
         <p>Completed on {completionDate}</p>
       </div>
       <div className="flex justify-center gap-3 pt-2">
-        <Button variant="outline" size="sm" onClick={shareResults}>
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={shareResults}
+          disabled={isSharing}
+        >
           <Share2 className="w-4 h-4 mr-2" />
-          {isDemoUser ? "Save & Share" : "Share Results"}
+          {isSharing ? "Processing..." : isDemoUser ? "Save & Share" : "Share Results"}
         </Button>
         <Button variant="outline" size="sm" onClick={downloadReport}>
           <Download className="w-4 h-4 mr-2" />

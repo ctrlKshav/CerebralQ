@@ -16,7 +16,7 @@ import { SimilarPersonalities } from "@/components/results/similar-personalities
 import { DetailedPersonalityInsights } from "@/components/results/detailed-personality-insights";
 import AboutPersonalityType from "@/components/profile/about-personality-type";
 import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
-import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
+import { getCurrentUser } from "@/lib/supabaseOperations";
 
 // Local storage key
 const TEST_RESULTS_KEY = "cerebralq_mbti_results";
@@ -34,13 +34,13 @@ export default function Results() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
+  const [rawTestData, setRawTestData] = useState<any>(null);
 
   useEffect(() => {
     // Get data from localStorage
     const func = async () => {
       try {
         const user = await getCurrentUser();
-        console.log(user);
         user && setUserId(user.id);
         const storedData = localStorage.getItem(TEST_RESULTS_KEY);
 
@@ -51,11 +51,12 @@ export default function Results() {
         }
 
         const data = JSON.parse(storedData);
-        data.user_id = user?.id;
-        console.log(userID);
-        console.log(data);
-
-        if (user !== null) await saveTestResults(data);
+        
+        // Store the raw data for passing to Hero component
+        setRawTestData({
+          ...data,
+          user_id: user?.id || "demo",
+        });
 
         // Extract required data from localStorage format
         const personalityType =
@@ -150,13 +151,14 @@ export default function Results() {
   return (
     <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-8 space-y-8">
-        {/* Hero Section */}
+        {/* Hero Section - Pass full raw data */}
         <Hero
           personalityType={personalityType}
           personalityAlias={personalityAlias}
           personalityDescription={personalityDescription}
           completionDate={completionDate}
           userId={userID}
+          rawTestData={rawTestData}
         />
 
         {/* About Personality Type Card */}
