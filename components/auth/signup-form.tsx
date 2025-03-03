@@ -10,6 +10,7 @@ import { RETURN_URL_KEY } from "@/constants/constants";
 import { signUpAction } from "@/app/actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import Link from "next/link";
 
 export function SignupForm({
   className,
@@ -50,9 +51,11 @@ export function SignupForm({
                   id="username"
                   type="text"
                   placeholder="johndoe"
-                  required
                   {...register("username")}
                 />
+                {errors.username && (
+                  <p className="text-sm text-red-500">{errors.username.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="email">Email</Label>
@@ -60,31 +63,42 @@ export function SignupForm({
                   id="email"
                   type="email"
                   placeholder="m@example.com"
-                  required
                   {...register("email")}
                 />
+                {errors.email && (
+                  <p className="text-sm text-red-500">{errors.email.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
                   type="password"
-                  required
                   {...register("password")}
                 />
+                {errors.password && (
+                  <p className="text-sm text-red-500">{errors.password.message}</p>
+                )}
               </div>
               <div className="grid gap-2">
                 <Label htmlFor="confirmPassword">Confirm Password</Label>
-                <Input id="confirmPassword" type="password" required />
+                <Input 
+                  id="confirmPassword" 
+                  type="password"
+                  {...register("confirmPassword")} 
+                />
+                {errors.confirmPassword && (
+                  <p className="text-sm text-red-500">{errors.confirmPassword.message}</p>
+                )}
               </div>
-              <Button type="submit" className="w-full">
-                Sign Up
+              <Button type="submit" className="w-full" disabled={isSubmitting}>
+                {isSubmitting ? "Signing Up..." : "Sign Up"}
               </Button>
               <div className="text-center text-sm">
                 Already have an account?{" "}
-                <a href="/sign-in" className="underline underline-offset-4">
+                <Link href="/sign-in" className="underline underline-offset-4">
                   Log in
-                </a>
+                </Link>
               </div>
             </div>
           </form>
