@@ -22,5 +22,15 @@ export interface MobileMenuItemProps {
   children?: ReactNode
   isSheetOpen: boolean
   setIsSheetOpen: (isSheetOpen: boolean) => void
+  icon?: ReactNode
+}
+
+export interface UserMenuProps {
+  user?: {
+    name?: string;
+    email?: string;
+    avatarUrl?: string;
+  };
+  onSignOut: () => Promise<void>;
 }
 

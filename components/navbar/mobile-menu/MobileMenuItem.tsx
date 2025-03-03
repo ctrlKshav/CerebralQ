@@ -1,23 +1,32 @@
 ﻿// components/navbar/MobileMenuItem.tsx
 import React from "react";
-import { MobileMenuItemProps } from "@/types/navbarTypes";
 import Link from "next/link";
-import { UserCircle } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { MobileMenuItemProps } from "@/types/navbarTypes";
 
 export const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
   title,
   href,
-  setIsSheetOpen,
   className,
-}) => (
-  <>
+  children,
+  isSheetOpen,
+  setIsSheetOpen,
+  icon,
+}) => {
+  return (
     <Link
-      href="/profile"
-      className="flex items-center space-x-3 p-2 rounded-lg hover:bg-accent"
+      href={href}
       onClick={() => setIsSheetOpen(false)}
+      className={cn(
+        "block py-2 hover:text-primary text-base",
+        className
+      )}
     >
-      <UserCircle className="w-6 h-6 text-primary" />
-      <span>{title}</span>
+      <div className="flex items-center space-x-2">
+        {icon && icon}
+        <span>{title}</span>
+      </div>
+      {children}
     </Link>
-  </>
-);
+  );
+};
