@@ -74,8 +74,7 @@ export function Hero({
   };
 
   const downloadReport = () => {
-    // Placeholder for download functionality
-    console.log("Download report functionality will be implemented later");
+    window.print();
   };
 
   return (
