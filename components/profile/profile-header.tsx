@@ -5,6 +5,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { toast } from "sonner"
 import { Button } from "@/components/ui/button"
+import { handleShare } from "@/lib/shareUtils"
 
 interface ProfileHeaderProps {
   userData: {
@@ -19,10 +20,12 @@ interface ProfileHeaderProps {
 
 export default function ProfileHeader({ userData, isOwner }: ProfileHeaderProps) {
   
-  const handleShare = () => {
-    // Copy profile URL to clipboard
-    navigator.clipboard.writeText(`https://cq.com/${userData.username}`)
-    toast.success("Profile link copied to clipboard")
+  const handleProfileShare = async () => {
+    const title = `${userData.username}'s Profile`;
+    const text = `Check out ${userData.username}'s personality profile on CerebralQ!`;
+    const url = `${window.origin}/profiles/${userData.username}`;
+    
+    await handleShare(title, text, url, false);
   }
 
   return (
@@ -79,7 +82,7 @@ export default function ProfileHeader({ userData, isOwner }: ProfileHeaderProps)
                 variant="outline" 
                 size="lg" 
                 className="flex items-center gap-2" 
-                onClick={handleShare}
+                onClick={handleProfileShare}
               >
                 <Share2 className="h-5 w-5 text-green-500" />
                 <span className="font-medium">Share Profile</span>
