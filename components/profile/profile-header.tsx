@@ -40,13 +40,16 @@ export default function ProfileHeader({ userData, isAuthenticated }: ProfileHead
         <div className="relative flex-shrink-0">
           <div className="absolute -inset-1 bg-gradient-to-br from-primary to-primary/40 rounded-full blur-sm" />
           <div className="relative h-40 w-40 md:h-48 md:w-48 rounded-full overflow-hidden border-4 border-background">
-            <Image
-              src={userData.profile_image_url || "/placeholder.svg?height=192&width=192"}
-              alt={`${userData.username}'s profile`}
-              width={192}
-              height={192}
-              priority
-            />
+            <div className="h-full w-full relative">
+              <Image
+                src={userData.profile_image_url || "/placeholder.svg?height=192&width=192"}
+                alt={`${userData.username}'s profile`}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 160px, 192px"
+              />
+            </div>
           </div>
         </div>
 
