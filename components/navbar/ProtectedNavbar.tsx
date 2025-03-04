@@ -1,6 +1,6 @@
 ﻿"use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, LogOut, Settings, User as UserIcon} from "lucide-react";
+import { Menu, LogOut, Settings, User as UserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -38,6 +38,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "@supabase/supabase-js";
+import LogoutButton from "@/components/logout-button";
 
 interface ProtectedNavbarProps {
   className?: string;
@@ -45,11 +46,17 @@ interface ProtectedNavbarProps {
   username?: string | null;
 }
 
-const ProtectedNavbar = ({ className, user, username }: ProtectedNavbarProps) => {
+const ProtectedNavbar = ({
+  className,
+  user,
+  username,
+}: ProtectedNavbarProps) => {
   const router = useRouter();
   const supabase = createClient();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(null);
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
+    null
+  );
   const [isAtTop, setIsAtTop] = useState(true);
   const prevScrollY = useRef(0);
 
@@ -75,23 +82,18 @@ const ProtectedNavbar = ({ className, user, username }: ProtectedNavbarProps) =>
     "fixed top-0 left-0 right-0 w-full transition-all duration-300 z-50",
     {
       "bg-white/0 backdrop-blur-none": isAtTop,
-      "bg-white/50 backdrop-blur-md shadow-sm": !isAtTop && scrollDirection === "down",
+      "bg-white/50 backdrop-blur-md shadow-sm":
+        !isAtTop && scrollDirection === "down",
       "-translate-y-full": scrollDirection === "up" && !isAtTop,
     },
     `${className}`
   );
-  
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    router.push('/');
-    router.refresh();
-  };
 
   const getUserInitials = () => {
     if (username) {
       return username.substring(0, 2).toUpperCase();
     }
-    return 'CQ';
+    return "CQ";
   };
 
   return (
@@ -160,18 +162,26 @@ const ProtectedNavbar = ({ className, user, username }: ProtectedNavbarProps) =>
             <div className="hidden lg:flex items-center space-x-4">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="relative h-10 w-10 rounded-full">
+                  <Button
+                    variant="ghost"
+                    className="relative h-10 w-10 rounded-full"
+                  >
                     <Avatar className="h-10 w-10">
-                      <AvatarImage src={user?.user_metadata?.avatarUrl} alt={username || ""} />
+                      <AvatarImage
+                        src={user?.user_metadata?.avatarUrl}
+                        alt={username || ""}
+                      />
                       <AvatarFallback>{getUserInitials()}</AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56" align="end" forceMount>
                   <div className="flex flex-col space-y-1 p-2">
-                    <p className="text-sm font-medium leading-none">{username || 'User'}</p>
+                    <p className="text-sm font-medium leading-none">
+                      {username || "User"}
+                    </p>
                     <p className="text-xs leading-none text-muted-foreground">
-                      {user.email || ''}
+                      {user.email || ""}
                     </p>
                   </div>
                   <DropdownMenuSeparator />
@@ -188,9 +198,8 @@ const ProtectedNavbar = ({ className, user, username }: ProtectedNavbarProps) =>
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={handleSignOut}>
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
+                  <DropdownMenuItem>
+                    <LogoutButton />
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -223,13 +232,18 @@ const ProtectedNavbar = ({ className, user, username }: ProtectedNavbarProps) =>
                   <div className="p-4 border-b">
                     <div className="flex items-center space-x-3">
                       <Avatar className="h-10 w-10">
-                        <AvatarImage src={user?.user_metadata?.avatarUrl} alt={username || ""} />
+                        <AvatarImage
+                          src={user?.user_metadata?.avatarUrl}
+                          alt={username || ""}
+                        />
                         <AvatarFallback>{getUserInitials()}</AvatarFallback>
                       </Avatar>
                       <div>
-                        <p className="text-sm font-medium">{username || 'User'}</p>
+                        <p className="text-sm font-medium">
+                          {username || "User"}
+                        </p>
                         <p className="text-xs text-muted-foreground truncate max-w-[200px]">
-                          {user.email || ''}
+                          {user.email || ""}
                         </p>
                       </div>
                     </div>
@@ -239,14 +253,14 @@ const ProtectedNavbar = ({ className, user, username }: ProtectedNavbarProps) =>
                     <div className="space-y-2 p-4">
                       {/* Mobile Navigation */}
                       <div className="space-y-2 pb-4 border-b">
-                        <MobileMenuItem 
-                          href="/dashboard" 
+                        <MobileMenuItem
+                          href="/dashboard"
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
-                          title="Dashboard" 
+                          title="Dashboard"
                         />
                       </div>
-                      
+
                       {/* Mobile Assessment Items */}
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuSection
@@ -270,13 +284,13 @@ const ProtectedNavbar = ({ className, user, username }: ProtectedNavbarProps) =>
                           href="/profile"
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
-                          title="Profile" 
+                          title="Profile"
                         />
                         <MobileMenuItem
                           href="/settings"
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
-                          title="Settings" 
+                          title="Settings"
                         />
                       </div>
                     </div>
@@ -284,14 +298,7 @@ const ProtectedNavbar = ({ className, user, username }: ProtectedNavbarProps) =>
 
                   {/* Mobile Logout Button */}
                   <div className="sticky bottom-0 left-0 right-0 p-4 border-t bg-white">
-                    <Button
-                      variant="outline"
-                      className="w-full text-base flex items-center"
-                      onClick={handleSignOut}
-                    >
-                      <LogOut className="mr-2 h-4 w-4" />
-                      Log out
-                    </Button>
+                    <LogoutButton />
                   </div>
                 </SheetContent>
               </Sheet>

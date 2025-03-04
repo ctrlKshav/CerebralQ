@@ -119,5 +119,5 @@ export const resetPasswordAction = async (data: ResetPasswordPayload) => {
 export const signOutAction = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  return redirect("/sign-in");
+  return redirect("/");
 };

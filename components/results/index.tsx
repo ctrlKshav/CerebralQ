@@ -16,10 +16,9 @@ import { SimilarPersonalities } from "@/components/results/similar-personalities
 import { DetailedPersonalityInsights } from "@/components/results/detailed-personality-insights";
 import AboutPersonalityType from "@/components/profile/about-personality-type";
 import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
-import { getCurrentUser } from "@/lib/supabaseOperations";
+import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
+import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/constants/constants";
 
-// Local storage key
-const TEST_RESULTS_KEY = "cerebralq_mbti_results";
 
 export default function Results() {
   const [resultData, setResultData] = useState<ResultData>({
@@ -34,14 +33,17 @@ export default function Results() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
-  const [rawTestData, setRawTestData] = useState<any>(null);
 
   useEffect(() => {
-    // Get data from localStorage
-    const func = async () => {
+    // Get data from localStorage and handle saving to database
+    const loadResultsAndSaveToDatabase = async () => {
       try {
+        // Get the current user
         const user = await getCurrentUser();
-        user && setUserId(user.id);
+        const userId = user?.id || null;
+        setUserId(userId);
+
+        // Get stored test results
         const storedData = localStorage.getItem(TEST_RESULTS_KEY);
 
         if (!storedData) {
@@ -52,12 +54,6 @@ export default function Results() {
 
         const data = JSON.parse(storedData);
         
-        // Store the raw data for passing to Hero component
-        setRawTestData({
-          ...data,
-          user_id: user?.id || "demo",
-        });
-
         // Extract required data from localStorage format
         const personalityType =
           data.personalityType || data.raw_score?.personalityType;
@@ -88,6 +84,35 @@ export default function Results() {
           similarPersonalities: getSimilarPersonalities(personalityType),
         });
 
+        // Save results to database if user is logged in
+        if (userId && testId) {
+          // Generate a unique key for this test result to prevent duplicates
+          const testKey = `${userId}_${testId}`;
+          
+          // Check if we've already saved this result
+          const savedResults = JSON.parse(localStorage.getItem(SAVED_RESULTS_KEY) || '{}');
+          
+          // If result hasn't been saved yet, save it
+          if (!savedResults[testKey]) {
+            try {
+              // Prepare test data with correct user ID
+              const testData = {
+                ...data,
+                user_id: userId
+              };
+              
+              // Save to Supabase
+              await saveTestResults(testData);
+              
+              // Mark as saved in localStorage
+              savedResults[testKey] = true;
+              localStorage.setItem(SAVED_RESULTS_KEY, JSON.stringify(savedResults));
+            } catch (error) {
+              console.error("Error saving test results:", error);
+            }
+          }
+        }
+
         setLoading(false);
       } catch (error) {
         console.error("Error parsing result data:", error);
@@ -95,7 +120,8 @@ export default function Results() {
         setLoading(false);
       }
     };
-    func();
+
+    loadResultsAndSaveToDatabase();
   }, []);
 
   // Destructure properties from resultData for easier access in JSX
@@ -158,7 +184,6 @@ export default function Results() {
           personalityDescription={personalityDescription}
           completionDate={completionDate}
           userId={userID}
-          rawTestData={rawTestData}
         />
 
         {/* About Personality Type Card */}

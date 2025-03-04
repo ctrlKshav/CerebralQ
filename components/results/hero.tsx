@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { PersonalityDescription } from "@/types/tests/mbti";
 import { handleShare } from "@/lib/shareUtils";
 import { useEffect, useState } from "react";
-import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
+import { getCurrentUser } from "@/lib/supabaseOperations";
 import { useRouter } from "next/navigation";
 
 interface HeroProps {
@@ -16,7 +16,6 @@ interface HeroProps {
   personalityDescription: PersonalityDescription;
   completionDate: string;
   userId: string | null;
-  rawTestData: any; // Raw test data from localStorage
 }
 
 export function Hero({
@@ -25,7 +24,6 @@ export function Hero({
   personalityDescription,
   completionDate,
   userId,
-  rawTestData,
 }: HeroProps) {
   const [username, setUsername] = useState<string | null>(null);
   const [isSharing, setIsSharing] = useState(false);
@@ -49,19 +47,7 @@ export function Hero({
     try {
       setIsSharing(true);
       
-      // First save results to Supabase if user is authenticated
-      if (userId && rawTestData) {
-        // Make sure we use the correct user ID (not the demo ID)
-        const testData = {
-          ...rawTestData,
-          user_id: userId
-        };
-        
-        // Save to Supabase
-        await saveTestResults(testData);
-      }
-      
-      // Then handle sharing
+      // Handle sharing without saving to database (now handled in Results component)
       const title = `My Personality Type: ${personalityType}`;
       const text = `I'm a ${personalityAlias}! Check out my personality profile on CerebralQ.`;
       
