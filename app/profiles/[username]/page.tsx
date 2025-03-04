@@ -113,7 +113,7 @@ export default function ProfilePage({
   // All good - show full profile
   return (
     <div className="min-h-screen bg-background mt-16">
-      {user ? <ProtectedNavbar user={user} /> : <Navbar className="mb-6" />}
+      {user ? <Navbar user={user} username={viewerUsername} /> : <Navbar className="mb-6" />}
       <main className="container mx-auto px-4 py-8 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-10">
           {/* Profile header with basic user information */}
