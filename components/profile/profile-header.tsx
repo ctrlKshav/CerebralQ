@@ -14,10 +14,10 @@ interface ProfileHeaderProps {
     tests_taken: number
     last_test_date: string
   }
-  isAuthenticated?: boolean
+  isOwner: boolean
 }
 
-export default function ProfileHeader({ userData, isAuthenticated }: ProfileHeaderProps) {
+export default function ProfileHeader({ userData, isOwner }: ProfileHeaderProps) {
   
   const handleShare = () => {
     // Copy profile URL to clipboard
@@ -74,7 +74,7 @@ export default function ProfileHeader({ userData, isAuthenticated }: ProfileHead
                 Last test: {new Date(userData.last_test_date).toLocaleDateString()}
               </span>
             </div>
-            {isAuthenticated && (
+            {isOwner && (
               <Button 
                 variant="outline" 
                 size="lg" 

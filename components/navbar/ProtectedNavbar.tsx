@@ -1,6 +1,6 @@
 ﻿"use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, LogOut, Settings, User } from "lucide-react";
+import { Menu, LogOut, Settings, User as UserIcon} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -37,14 +37,11 @@ import CQLogo from "../cq-logo";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { User } from "@supabase/supabase-js";
 
 interface ProtectedNavbarProps {
   className?: string;
-  user?: {
-    name?: string;
-    email?: string;
-    avatarUrl?: string;
-  };
+  user: User;
 }
 
 const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
@@ -54,6 +51,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(null);
   const [isAtTop, setIsAtTop] = useState(true);
   const prevScrollY = useRef(0);
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,6 +71,18 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const { data } = await supabase
+        .from('users')
+        .select('username')
+        .eq('id', user.id)
+        .single();
+      setUsername(data?.username ?? null);
+    };
+    fetchUserData();
+  }, [user.id]);
+
   const navbarClasses = cn(
     "fixed top-0 left-0 right-0 w-full transition-all duration-300 z-50",
     {
@@ -90,10 +100,10 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
   };
 
   const getUserInitials = () => {
-    if (user?.name) {
-      return user.name.split(' ').map(n => n[0]).join('').toUpperCase();
+    if (username) {
+      return username.substring(0, 2).toUpperCase();
     }
-    return user?.email?.substring(0, 2).toUpperCase() || 'CQ';
+    return 'CQ';
   };
 
   return (
@@ -164,22 +174,22 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                     <Avatar className="h-10 w-10">
-                      <AvatarImage src={user?.avatarUrl} alt={user?.name || ""} />
+                      <AvatarImage src={user?.user_metadata?.avatarUrl} alt={username || ""} />
                       <AvatarFallback>{getUserInitials()}</AvatarFallback>
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="w-56" align="end" forceMount>
                   <div className="flex flex-col space-y-1 p-2">
-                    <p className="text-sm font-medium leading-none">{user?.name || 'User'}</p>
+                    <p className="text-sm font-medium leading-none">{username || 'User'}</p>
                     <p className="text-xs leading-none text-muted-foreground">
-                      {user?.email || ''}
+                      {user.email || ''}
                     </p>
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
                     <Link href="/profile">
-                      <User className="mr-2 h-4 w-4" />
+                      <UserIcon className="mr-2 h-4 w-4" />
                       <span>Profile</span>
                     </Link>
                   </DropdownMenuItem>
@@ -225,13 +235,13 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
                   <div className="p-4 border-b">
                     <div className="flex items-center space-x-3">
                       <Avatar className="h-10 w-10">
-                        <AvatarImage src={user?.avatarUrl} alt={user?.name || ""} />
+                        <AvatarImage src={user?.user_metadata?.avatarUrl} alt={username || ""} />
                         <AvatarFallback>{getUserInitials()}</AvatarFallback>
                       </Avatar>
                       <div>
-                        <p className="text-sm font-medium">{user?.name || 'User'}</p>
+                        <p className="text-sm font-medium">{username || 'User'}</p>
                         <p className="text-xs text-muted-foreground truncate max-w-[200px]">
-                          {user?.email || ''}
+                          {user.email || ''}
                         </p>
                       </div>
                     </div>

@@ -29,13 +29,14 @@ export default function ProfilePage({
   const [error, setError] = useState<string | null>(null);
   const supabase = createClient();
   const searchParams = use(params);
-  const username = searchParams.username;
+  const profileUsername = searchParams.username;
   const [user, setUser] = useState<User | null>(null);
+  const [viewerUsername, setViewerUsername] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const userData = await getUserByUsername(username);
+        const userData = await getUserByUsername(profileUsername);
         setUserData(userData);
       } catch (err) {
         console.error("Error fetching profile:", err);
@@ -46,14 +47,22 @@ export default function ProfilePage({
     };
 
     fetchProfileData();
-  }, [username]);
+  }, [profileUsername]);
 
   useEffect(() => {
-    const func = async () => {
-      const {data: {user}} = await supabase.auth.getUser();
-      setUser(user);
+    const getUser = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUser(user);
+        const { data: userData } = await supabase
+          .from('users')
+          .select('username')
+          .eq('id', user.id)
+          .single();
+        setViewerUsername(userData?.username ?? null);
+      }
     }
-    func();
+    getUser();
   }, []);
 
   // Show loading state
@@ -71,7 +80,7 @@ export default function ProfilePage({
     return (
       <>
         <Navbar className="mb-16" />
-        <UserNotFoundFallback username={username} />
+        <UserNotFoundFallback username={profileUsername} />
       </>
     );
   }
@@ -81,7 +90,7 @@ export default function ProfilePage({
     return (
       <>
         <Navbar className="mb-16" />
-        <NoTestsFallback username={username} />
+        <NoTestsFallback username={profileUsername} />
       </>
     );
   }
@@ -97,7 +106,7 @@ export default function ProfilePage({
     return (
       <>
         <Navbar className="mb-16" />
-        <IncompleteDataFallback username={username} />
+        <IncompleteDataFallback username={profileUsername} />
       </>
     );
   }
@@ -109,7 +118,10 @@ export default function ProfilePage({
       <main className="container mx-auto px-4 py-8 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-10">
           {/* Profile header with basic user information */}
-          <ProfileHeader userData={userData} isAuthenticated={!!user} />
+          <ProfileHeader 
+            userData={userData} 
+            isOwner={viewerUsername === profileUsername} 
+          />
 
           {/* Detailed personality analysis */}
           <PersonalityShowcase
