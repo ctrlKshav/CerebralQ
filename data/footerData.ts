@@ -1,46 +1,58 @@
-﻿import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
+﻿import { Facebook, Twitter, Linkedin, Instagram, Github, Mail } from "lucide-react";
 
 export const socialLinks = [
-  { icon: Facebook, label: "Facebook", link: "/" },
-  { icon: Twitter, label: "Twitter", link: "/" },
-  { icon: Linkedin, label: "LinkedIn", link: "/" },
-  { icon: Instagram, label: "Instagram", link: "/" },
+  {
+    icon: Twitter,
+    href: "https://twitter.com/cerebralquotient",
+    label: "Twitter"
+  },
+  {
+    icon: Github,
+    href: "https://github.com/cerebralquotient",
+    label: "GitHub"
+  },
+  {
+    icon: Mail,
+    href: "mailto:contact@cerebralquotient.com",
+    label: "Email"
+  }
 ] as const;
 
-export const productLinks = [
+export const testLinks = [
   {
-    name: "Zeon",
-    href: "https://gozeon.com/",
+    name: "MBTI Assessment",
+    href: "/tests/mbti"
   },
   {
-    name: "Resume AI Pro",
-    href: "https://resume-site-c4e.vercel.app/",
+    name: "Big Five Personality",
+    href: "/tests/ocean"
   },
   {
-    name: "Curattor",
-    href: "https://zeon-8qz.pages.dev"
+    name: "IQ Test",
+    href: "/tests/iq"
   },
   {
-    name: "All Products",
-    href: "/products",
-  },
+    name: "Career Aptitude",
+    href: "/tests/career-aptitude"
+  }
 ] as const;
 
 export const companyLinks = [
   {
     name: "About Us",
-    href: "#about-us",
+    href: "/about"
   },
   {
     name: "Blog",
-    href: "https://c4e.in/",
+    href: "/blog"
   },
   {
-    name: "Community",
-    href: "/coming-soon",
+    name: "Careers",
+    href: "/careers"
   },
   {
     name: "Contact",
-    href: "/contact",
-  },
+    href: "/contact"
+  }
 ] as const;
+

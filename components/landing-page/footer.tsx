@@ -1,27 +1,11 @@
 ﻿import React from "react";
-import { Brain, Twitter, Github, Mail, Copyright } from "lucide-react";
+import { Brain } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
+import CQLogo from "@/components/cq-logo";
+import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
 
 export default function Footer() {
-  const socialLinks = [
-    {
-      icon: <Twitter className="h-5 w-5" />,
-      href: "https://twitter.com/cerebralquotient",
-      label: "Twitter",
-    },
-    {
-      icon: <Github className="h-5 w-5" />,
-      href: "https://github.com/cerebralquotient",
-      label: "GitHub",
-    },
-    {
-      icon: <Mail className="h-5 w-5" />,
-      href: "mailto:contact@cerebralquotient.com",
-      label: "Email",
-    },
-  ];
-
   return (
     <footer className="bg-card text-card-foreground border-t">
       <div className="container mx-auto px-4 py-12">
@@ -29,8 +13,7 @@ export default function Footer() {
           {/* Brand Section */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <Brain className="h-6 w-6 text-primary" />
-              <span className="font-semibold text-lg">Cerebral Quotient</span>
+              <CQLogo className="h-16 w-16" />
             </div>
             <p className="text-muted-foreground text-sm">
               Discover yourself through scientifically validated personality
@@ -38,16 +21,19 @@ export default function Footer() {
             </p>
             <div className="flex flex-col space-y-4">
               <div className="flex space-x-4">
-                {socialLinks.map((link, index) => (
-                  <a
-                    key={index}
-                    href={link.href}
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                    aria-label={link.label}
-                  >
-                    {link.icon}
-                  </a>
-                ))}
+                {socialLinks.map((link, index) => {
+                  const Icon = link.icon;
+                  return (
+                    <a
+                      key={index}
+                      href={link.href}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                      aria-label={link.label}
+                    >
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -56,18 +42,13 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-base">Tests</h3>
             <ul className="space-y-3">
-              {[
-                "MBTI Assessment",
-                "Big Five Personality",
-                "IQ Test",
-                "Career Aptitude",
-              ].map((item) => (
-                <li key={item}>
+              {testLinks.map((link) => (
+                <li key={link.name}>
                   <a
-                    href="#"
+                    href={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {item}
+                    {link.name}
                   </a>
                 </li>
               ))}
@@ -78,13 +59,13 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-base">Company</h3>
             <ul className="space-y-3">
-              {["About Us", "Blog", "Careers", "Contact"].map((item) => (
-                <li key={item}>
+              {companyLinks.map((link) => (
+                <li key={link.name}>
                   <a
-                    href="#"
+                    href={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {item}
+                    {link.name}
                   </a>
                 </li>
               ))}
