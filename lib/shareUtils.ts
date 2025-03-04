@@ -14,12 +14,12 @@ export async function handleShare(
   isDemoUser: boolean
 ) {
   if (isDemoUser) {
-
     // Store the current results page URL to redirect back after signup
     localStorage.setItem(RETURN_URL_KEY, url);
     return ;
-    
   }
+
+  const link = `${window.location.origin}/${url}`;
 
   // For authenticated users, use Web Share API if available
   if (navigator.share) {
@@ -27,7 +27,7 @@ export async function handleShare(
       await navigator.share({
         title,
         text,
-        url,
+        url: link,
       });
       toast.success("Shared successfully!", {
         description: "Your profile has been shared.",
@@ -37,11 +37,11 @@ export async function handleShare(
       console.error("Error sharing:", error);
 
       // Fallback to copying to clipboard
-      copyToClipboard(url);
+      copyToClipboard(link);
     }
   } else {
     // Fallback for browsers without Web Share API
-    copyToClipboard(url);
+    copyToClipboard(link);
   }
 }
 

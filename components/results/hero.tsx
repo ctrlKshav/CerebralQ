@@ -53,8 +53,8 @@ export function Hero({
       
       // Determine share URL based on user status
       const url = isDemoUser ? 
-        `${window.origin}/tests/mbti/results` : 
-        `${window.origin}/profiles/${username}`;
+        `tests/mbti/results` : 
+        `profiles/${username}`;
       
       // Use the existing share function
       await handleShare(title, text, url, isDemoUser);
