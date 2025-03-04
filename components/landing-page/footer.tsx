@@ -1,24 +1,25 @@
 ﻿import React from "react";
 import { Brain, Twitter, Github, Mail, Copyright } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import Image from "next/image";
 
 export default function Footer() {
   const socialLinks = [
     {
       icon: <Twitter className="h-5 w-5" />,
       href: "https://twitter.com/cerebralquotient",
-      label: "Twitter"
+      label: "Twitter",
     },
     {
       icon: <Github className="h-5 w-5" />,
       href: "https://github.com/cerebralquotient",
-      label: "GitHub"
+      label: "GitHub",
     },
     {
       icon: <Mail className="h-5 w-5" />,
       href: "mailto:contact@cerebralquotient.com",
-      label: "Email"
-    }
+      label: "Email",
+    },
   ];
 
   return (
@@ -55,7 +56,12 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-base">Tests</h3>
             <ul className="space-y-3">
-              {["MBTI Assessment", "Big Five Personality", "IQ Test", "Career Aptitude"].map((item) => (
+              {[
+                "MBTI Assessment",
+                "Big Five Personality",
+                "IQ Test",
+                "Career Aptitude",
+              ].map((item) => (
                 <li key={item}>
                   <a
                     href="#"
@@ -85,28 +91,40 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Legal Section */}
+          {/* Supported by C4E Section  */}
           <div className="space-y-4">
-            <h3 className="font-semibold text-base">Legal</h3>
-            <ul className="space-y-3">
-              {["Privacy Policy", "Terms of Service", "Cookie Policy", "GDPR"].map((item) => (
-                <li key={item}>
-                  <a
-                    href="#"
-                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <h3 className="font-semibold text-base">Supported by</h3>
+            <div className="flex items-center">
+              <a
+                href="https://c4e.in"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="C4E Website"
+              >
+                <Image
+                  src="/C4E-logo.png"
+                  alt="C4E Logo"
+                  width={80}
+                  height={40}
+                  className="object-contain"
+                />
+              </a>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              The C4E Collective crafts smart marketing and communication
+              strategies for individuals, startups, and businesses.
+            </p>
           </div>
         </div>
 
         <Separator className="my-8" />
-        
+
         <div className="text-sm text-muted-foreground text-center">
-          <p>&copy; {new Date().getFullYear()} Cerebral Quotient. All rights reserved.</p>
+          <p>
+            &copy; {new Date().getFullYear()} Cerebral Quotient. All rights
+            reserved.
+          </p>
         </div>
       </div>
     </footer>
