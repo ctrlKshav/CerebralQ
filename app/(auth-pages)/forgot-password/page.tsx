@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { forgotPasswordAction } from "@/app/actions";
 import { FormMessage } from "@/components/form-message";
@@ -9,36 +9,32 @@ import Link from "next/link";
 import { SmtpMessage } from "../smtp-message";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { forgotPasswordSchema, ForgotPasswordSchema } from "@/schema/auth-pages";
+import {
+  forgotPasswordSchema,
+  ForgotPasswordSchema,
+} from "@/schema/auth-pages";
 import { useState } from "react";
 
 export default function ForgotPassword() {
-  const [message, setMessage] = useState<{type: string, text: string} | null>(null);
-  
+  const [message, setMessage] = useState<{ type: string; text: string } | null>(
+    null
+  );
+
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting }
+    formState: { errors, isSubmitting },
   } = useForm<ForgotPasswordSchema>({
-    resolver: zodResolver(forgotPasswordSchema)
+    resolver: zodResolver(forgotPasswordSchema),
   });
 
   const onSubmit = async (data: ForgotPasswordSchema) => {
-    try {
-      const response = await forgotPasswordAction(data);
-      setMessage({ type: "success", text: "Password reset email sent" });
-      // Handle success (you might want to redirect or show a success message)
-    } catch (error) {
-      setMessage({ 
-        type: "error", 
-        text: error instanceof Error ? error.message : "Failed to send reset email" 
-      });
-    }
+    const response = await forgotPasswordAction(data);
   };
 
   return (
     <>
-      <form 
+      <form
         className="flex-1 flex flex-col w-full gap-2 text-foreground [&>input]:mb-6 min-w-64 max-w-64 mx-auto"
         onSubmit={handleSubmit(onSubmit)}
       >
@@ -53,10 +49,10 @@ export default function ForgotPassword() {
         </div>
         <div className="flex flex-col gap-2 [&>input]:mb-3 mt-8">
           <Label htmlFor="email">Email</Label>
-          <Input 
-            id="email" 
-            placeholder="you@example.com" 
-            {...register("email")} 
+          <Input
+            id="email"
+            placeholder="you@example.com"
+            {...register("email")}
           />
           {errors.email && (
             <p className="text-sm text-red-500">{errors.email.message}</p>
@@ -65,7 +61,9 @@ export default function ForgotPassword() {
             {isSubmitting ? "Processing..." : "Reset Password"}
           </Button>
           {message && (
-            <div className={`text-sm ${message.type === "error" ? "text-red-500" : "text-green-500"}`}>
+            <div
+              className={`text-sm ${message.type === "error" ? "text-red-500" : "text-green-500"}`}
+            >
               {message.text}
             </div>
           )}

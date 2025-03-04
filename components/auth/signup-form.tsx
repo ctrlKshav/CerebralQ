@@ -27,15 +27,11 @@ export function SignupForm({
   const [error, setError] = useState<string | null>(null);
 
   const onSubmit = async (data: SignUpSchema) => {
-    try {
-      const signUpData = {
-        ...data,
-        redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
-      };
-      await signUpAction(signUpData);
-    } catch (error) {
-      setError(error instanceof Error ? error.message : "An error occurred");
-    }
+    const signUpData = {
+      ...data,
+      redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
+    };
+    await signUpAction(signUpData);
   };
 
   return (

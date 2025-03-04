@@ -29,15 +29,13 @@ export function SigninForm({
   });
 
   const onSubmit = async (data: SignInSchema) => {
-    try {
+    
       const signUpData = {
         ...data,
         redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
       };
       await signInAction(signUpData);
-    } catch (error) {
-      setError(error instanceof Error ? error.message : "An error occurred");
-    }
+    
   };
 
   return (
