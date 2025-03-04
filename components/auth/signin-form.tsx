@@ -53,11 +53,11 @@ export function SigninForm({
   }, [searchParams]);
 
   const onSubmit = async (data: SignInSchema) => {
-    const signUpData = {
+    const signInData = {
       ...data,
       redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
     };
-    await signInAction(signUpData);
+    await signInAction(signInData);
   };
 
   return (
