@@ -31,7 +31,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { MenuSection } from "./MenuSection";
 import { MobileMenuSection } from "./mobile-menu/MobileMenuSection";
-import { assessmentItems, communityItems } from "@/data/navbar";
+import { assessmentItems, protectedCommunityItems } from "@/data/navbar";
 import { MobileMenuItem } from "./mobile-menu/MobileMenuItem";
 import CQLogo from "../cq-logo";
 import { createClient } from "@/utils/supabase/client";
@@ -136,7 +136,7 @@ const ProtectedNavbar = ({
                     </Link>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <MenuSection data={communityItems} />
+                    <MenuSection data={protectedCommunityItems} />
                   </NavigationMenuContent>
                 </NavigationMenuItem>
 
@@ -151,6 +151,7 @@ const ProtectedNavbar = ({
                     Dashboard
                   </NavigationMenuLink>
                 </NavigationMenuItem>
+
               </NavigationMenuList>
               <NavigationMenuViewport className="origin-top-center" />
             </NavigationMenu>
@@ -274,7 +275,7 @@ const ProtectedNavbar = ({
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuSection
                           title="Community"
-                          data={communityItems}
+                          data={protectedCommunityItems}
                           setIsSheetOpen={setIsSheetOpen}
                         />
                       </div>

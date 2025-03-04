@@ -31,7 +31,9 @@ import CQLogo from "../cq-logo";
 const UnprotectedNavbar = (props: { className?: string }) => {
   // ...existing code from the current navbar component...
   const [isSheetOpen, setIsSheetOpen] = useState(false);
-  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(null);
+  const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
+    null
+  );
   const [isAtTop, setIsAtTop] = useState(true);
   const prevScrollY = useRef(0);
 
@@ -58,7 +60,8 @@ const UnprotectedNavbar = (props: { className?: string }) => {
     "fixed top-0 left-0 right-0 w-full transition-all duration-300 z-50",
     {
       "bg-white/0 backdrop-blur-none": isAtTop,
-      "bg-white/50 backdrop-blur-md shadow-sm": !isAtTop && scrollDirection === "down",
+      "bg-white/50 backdrop-blur-md shadow-sm":
+        !isAtTop && scrollDirection === "down",
       "-translate-y-full": scrollDirection === "up" && !isAtTop,
     },
     `${props.className}`
@@ -105,6 +108,18 @@ const UnprotectedNavbar = (props: { className?: string }) => {
                   <NavigationMenuContent>
                     <MenuSection data={communityItems} />
                   </NavigationMenuContent>
+                </NavigationMenuItem>
+
+                {/* Blog */}
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    className={cn(
+                      "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-background focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
+                    )}
+                    href={`/blog`}
+                  >
+                    Blog
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
               <NavigationMenuViewport className="origin-top-center" />

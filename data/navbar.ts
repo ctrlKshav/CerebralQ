@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { UserCircle, Brain, BarChart2, Leaf, Network } from "lucide-react";
+import { UserCircle, Brain, BarChart2, Leaf, Network, Newspaper } from "lucide-react";
 
 export const assessmentItems = [
   {
@@ -45,5 +45,34 @@ export const communityItems = [
     icon: (className = "h-6 w-6 text-primary") =>
       React.createElement(Network, { className }),
     href: "/community/connections",
+  },
+];
+
+export const protectedCommunityItems = [
+  {
+    id: "leaderboard",
+    title: "Leaderboard",
+    description: "View the top performers in the Cerebral Quotient community",
+    icon: (className = "h-6 w-6 text-primary") =>
+      React.createElement(Leaf, { className }),
+    href: "/community/leaderboard",
+  },
+  {
+    id: "connections",
+    title: "Connections",
+    description:
+      "Connect with other members of the Cerebral Quotient community",
+    icon: (className = "h-6 w-6 text-primary") =>
+      React.createElement(Network, { className }),
+    href: "/community/connections",
+  },
+  {
+    id: "blog",
+    title: "Blog",
+    description:
+      "Dive into articles on personality tests, IQ assessments, and psychological insights.",
+    icon: (className = "h-6 w-6 text-primary") =>
+      React.createElement(Newspaper, { className }),
+    href: "/blog",
   },
 ];
