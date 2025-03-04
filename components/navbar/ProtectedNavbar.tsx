@@ -146,7 +146,7 @@ const ProtectedNavbar = ({
                     className={cn(
                       "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-background focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
                     )}
-                    href="/dashboard"
+                    href={`/profiles/${username}`}
                   >
                     Dashboard
                   </NavigationMenuLink>
@@ -254,7 +254,7 @@ const ProtectedNavbar = ({
                       {/* Mobile Navigation */}
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuItem
-                          href="/dashboard"
+                          href={`/profiles/${username}`}
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
                           title="Dashboard"
