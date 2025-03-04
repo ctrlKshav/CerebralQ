@@ -11,12 +11,20 @@ import { signUpAction } from "@/app/actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { toast } from "sonner";
+import { AuthPagesFormMessage } from "@/components/form-message";
+import { parseAuthMessage } from "@/lib/utils";
+
+interface SignupFormProps extends React.ComponentProps<"div"> {
+  searchParams: URLSearchParams;
+}
 
 export function SignupForm({
   className,
+  searchParams,
   ...props
-}: React.ComponentProps<"div">) {
+}: SignupFormProps) {
   const {
     register,
     handleSubmit,
@@ -24,7 +32,24 @@ export function SignupForm({
   } = useForm<SignUpSchema>({
     resolver: zodResolver(signupSchema),
   });
-  const [error, setError] = useState<string | null>(null);
+  const [authMessage, setAuthMessage] = useState<{type: string, message: string} | null>(null);
+
+  // Parse and display message from URL search params
+  useEffect(() => {
+    const message = parseAuthMessage(searchParams);
+    
+    if (message) {
+      setAuthMessage(message);
+      // Show toast based on message type
+      if (message.type === 'success') {
+        toast.success(message.message);
+      } else if (message.type === 'error') {
+        toast.error(message.message);
+      } else if (message.type === 'info') {
+        toast.info(message.message);
+      }
+    }
+  }, [searchParams]);
 
   const onSubmit = async (data: SignUpSchema) => {
     const signUpData = {
@@ -118,6 +143,15 @@ export function SignupForm({
           </div>
         </CardContent>
       </Card>
+      
+      {/* Display form message if exists */}
+      {authMessage && (
+        <AuthPagesFormMessage 
+          authActionResultType={authMessage.type} 
+          authActionResultMessage={authMessage.message} 
+        />
+      )}
+      
       <div className="space-y-4 text-center">
         <div className="text-balance text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
           By signing up, you agree to our <a href="#">Terms of Service</a> and{" "}

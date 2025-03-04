@@ -1,7 +1,7 @@
 "use client";
 
 import { forgotPasswordAction } from "@/app/actions";
-import { FormMessage } from "@/components/form-message";
+import { AuthPagesFormMessage } from "@/components/form-message";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -12,12 +12,14 @@ import {
   forgotPasswordSchema,
   ForgotPasswordSchema,
 } from "@/schema/auth-pages";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
+import { toast } from "sonner";
+import { parseAuthMessage } from "@/lib/utils";
 
 export default function ForgotPassword() {
-  const [message, setMessage] = useState<{ type: string; text: string } | null>(
-    null
-  );
+  const [authMessage, setAuthMessage] = useState<{type: string, message: string} | null>(null);
+  const searchParams = useSearchParams();
 
   const {
     register,
@@ -27,8 +29,29 @@ export default function ForgotPassword() {
     resolver: zodResolver(forgotPasswordSchema),
   });
 
+  // Parse and display message from URL search params
+  useEffect(() => {
+    const message = parseAuthMessage(searchParams);
+    
+    if (message) {
+      setAuthMessage(message);
+      // Show toast based on message type
+      if (message.type === 'success') {
+        toast.success(message.message);
+      } else if (message.type === 'error') {
+        toast.error(message.message);
+      } else if (message.type === 'info') {
+        toast.info(message.message);
+      }
+    }
+  }, [searchParams]);
+
   const onSubmit = async (data: ForgotPasswordSchema) => {
-    const response = await forgotPasswordAction(data);
+    try {
+      await forgotPasswordAction(data);
+    } catch (error) {
+      toast.error("Failed to process your request. Please try again.");
+    }
   };
 
   return (
@@ -59,15 +82,18 @@ export default function ForgotPassword() {
           <Button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Processing..." : "Reset Password"}
           </Button>
-          {message && (
-            <div
-              className={`text-sm ${message.type === "error" ? "text-red-500" : "text-green-500"}`}
-            >
-              {message.text}
-            </div>
-          )}
         </div>
       </form>
+
+      {/* Display form message if exists */}
+      {authMessage && (
+        <div className="mt-4 max-w-64 mx-auto">
+          <AuthPagesFormMessage 
+            authActionResultType={authMessage.type} 
+            authActionResultMessage={authMessage.message} 
+          />
+        </div>
+      )}
     </>
   );
 }

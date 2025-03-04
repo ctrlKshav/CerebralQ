@@ -1,20 +1,13 @@
-import { signUpAction } from "@/app/actions";
-import { FormMessage, Message } from "@/components/form-message";
-import { SubmitButton } from "@/components/submit-button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import Link from "next/link";
+"use client"
 import { SignupForm } from "@/components/auth/signup-form";
+import { useSearchParams } from "next/navigation";
 
-export default async function Signup(props: {
-  searchParams: Promise<Message>;
-}) {
-  const searchParams = await props.searchParams;
-
+export default function Signup(){
+  const searchParams = useSearchParams();
   return (
     <div className="flex min-h-svh flex-col items-center justify-center bg-muted p-6 md:p-10">
       <div className="w-full max-w-sm md:max-w-3xl">
-        <SignupForm />
+        <SignupForm searchParams={searchParams} />
       </div>
     </div>
   );

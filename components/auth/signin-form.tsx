@@ -9,16 +9,23 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signinSchema, SignInSchema } from "@/schema/auth-pages";
-import { FormMessage } from "@/components/form-message";
-import { useState } from "react";
+import { AuthPagesFormMessage } from "@/components/form-message";
+import { useState, useEffect } from "react";
 import { signInAction } from "@/app/actions";
 import { RETURN_URL_KEY } from "@/constants/constants";
+import { toast } from "sonner";
+import { parseAuthMessage } from "@/lib/utils";
+
+interface SigninFormProps extends React.ComponentProps<"div"> {
+  searchParams: URLSearchParams
+}
 
 export function SigninForm({
   className,
+  searchParams ,
   ...props
-}: React.ComponentProps<"div">) {
-  const [error, setError] = useState<string | null>(null);
+}: SigninFormProps) {
+  const [authMessage, setAuthMessage] = useState<{type: string, message: string} | null>(null);
 
   const {
     register,
@@ -28,14 +35,29 @@ export function SigninForm({
     resolver: zodResolver(signinSchema),
   });
 
+  // Parse and display message from URL search params
+  useEffect(() => {
+    const message = parseAuthMessage(searchParams);
+    
+    if (message) {
+      setAuthMessage(message);
+      // Show toast based on message type
+      if (message.type === 'success') {
+        toast.success(message.message);
+      } else if (message.type === 'error') {
+        toast.error(message.message);
+      } else if (message.type === 'info') {
+        toast.info(message.message);
+      }
+    }
+  }, [searchParams]);
+
   const onSubmit = async (data: SignInSchema) => {
-    
-      const signUpData = {
-        ...data,
-        redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
-      };
-      await signInAction(signUpData);
-    
+    const signUpData = {
+      ...data,
+      redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
+    };
+    await signInAction(signUpData);
   };
 
   return (
@@ -85,8 +107,6 @@ export function SigninForm({
                 )}
               </div>
 
-              {error && <p className="text-sm text-red-500">{error}</p>}
-
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Logging in..." : "Login"}
               </Button>
@@ -107,6 +127,14 @@ export function SigninForm({
           </div>
         </CardContent>
       </Card>
+
+      {/* Display form message if exists */}
+      {authMessage && (
+        <AuthPagesFormMessage 
+          authActionResultType={authMessage.type} 
+          authActionResultMessage={authMessage.message} 
+        />
+      )}
 
       <div className="space-y-4 text-center">
         <div className="text-balance text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
