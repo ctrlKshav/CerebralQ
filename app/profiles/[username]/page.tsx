@@ -32,6 +32,26 @@ export default function ProfilePage({
   const profileUsername = searchParams.username;
   const [user, setUser] = useState<User | null>(null);
   const [viewerUsername, setViewerUsername] = useState<string | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  // Separate useEffect for auth data to clearly segregate concerns
+  useEffect(() => {
+    const getAuthUser = async () => {
+      setAuthLoading(true);
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        setUser(user);
+        const { data: userData } = await supabase
+          .from('users')
+          .select('username')
+          .eq('id', user.id)
+          .single();
+        setViewerUsername(userData?.username ?? null);
+      }
+      setAuthLoading(false);
+    }
+    getAuthUser();
+  }, []);
 
   useEffect(() => {
     const fetchProfileData = async () => {
@@ -49,37 +69,16 @@ export default function ProfilePage({
     fetchProfileData();
   }, [profileUsername]);
 
-  useEffect(() => {
-    const getUser = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        setUser(user);
-        const { data: userData } = await supabase
-          .from('users')
-          .select('username')
-          .eq('id', user.id)
-          .single();
-        setViewerUsername(userData?.username ?? null);
-      }
-    }
-    getUser();
-  }, []);
-
-  // Show loading state
-  if (loading) {
-    return (
-      <>
-        <Navbar className="mb-16" />
-        <LoadingSkeleton />
-      </>
-    );
+  // Show loading state for everything
+  if (loading || authLoading) {
+    return <LoadingSkeleton />;
   }
 
   // Case 1: User doesn't exist
   if (!userData) {
     return (
       <>
-        <Navbar className="mb-16" />
+        <Navbar user={user} username={viewerUsername} className="mb-16" />
         <UserNotFoundFallback username={profileUsername} />
       </>
     );
@@ -89,7 +88,7 @@ export default function ProfilePage({
   if (userData.user_test_history.length === 0) {
     return (
       <>
-        <Navbar className="mb-16" />
+        <Navbar user={user} username={viewerUsername} className="mb-16" />
         <NoTestsFallback username={profileUsername} />
       </>
     );
@@ -105,7 +104,7 @@ export default function ProfilePage({
   if (!hasValidPersonalityData) {
     return (
       <>
-        <Navbar className="mb-16" />
+        <Navbar user={user} username={viewerUsername} className="mb-16" />
         <IncompleteDataFallback username={profileUsername} />
       </>
     );

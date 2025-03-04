@@ -42,16 +42,16 @@ import { User } from "@supabase/supabase-js";
 interface ProtectedNavbarProps {
   className?: string;
   user: User;
+  username?: string | null;
 }
 
-const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
+const ProtectedNavbar = ({ className, user, username }: ProtectedNavbarProps) => {
   const router = useRouter();
   const supabase = createClient();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(null);
   const [isAtTop, setIsAtTop] = useState(true);
   const prevScrollY = useRef(0);
-  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,18 +70,6 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const { data } = await supabase
-        .from('users')
-        .select('username')
-        .eq('id', user.id)
-        .single();
-      setUsername(data?.username ?? null);
-    };
-    fetchUserData();
-  }, [user.id]);
 
   const navbarClasses = cn(
     "fixed top-0 left-0 right-0 w-full transition-all duration-300 z-50",
