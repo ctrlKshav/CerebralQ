@@ -14,9 +14,10 @@ interface ProfileHeaderProps {
     tests_taken: number
     last_test_date: string
   }
+  isAuthenticated?: boolean
 }
 
-export default function ProfileHeader({ userData }: ProfileHeaderProps) {
+export default function ProfileHeader({ userData, isAuthenticated }: ProfileHeaderProps) {
   
   const handleShare = () => {
     // Copy profile URL to clipboard
@@ -44,7 +45,6 @@ export default function ProfileHeader({ userData }: ProfileHeaderProps) {
               alt={`${userData.username}'s profile`}
               width={192}
               height={192}
-              className="object-cover"
               priority
             />
           </div>
@@ -71,15 +71,17 @@ export default function ProfileHeader({ userData }: ProfileHeaderProps) {
                 Last test: {new Date(userData.last_test_date).toLocaleDateString()}
               </span>
             </div>
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="flex items-center gap-2" 
-              onClick={handleShare}
-            >
-              <Share2 className="h-5 w-5 text-green-500" />
-              <span className="font-medium">Share Profile</span>
-            </Button>
+            {isAuthenticated && (
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="flex items-center gap-2" 
+                onClick={handleShare}
+              >
+                <Share2 className="h-5 w-5 text-green-500" />
+                <span className="font-medium">Share Profile</span>
+              </Button>
+            )}
           </div>
         </div>
       </motion.div>

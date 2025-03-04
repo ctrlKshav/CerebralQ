@@ -109,7 +109,7 @@ export default function ProfilePage({
       <main className="container mx-auto px-4 py-8 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-10">
           {/* Profile header with basic user information */}
-          <ProfileHeader userData={userData} />
+          <ProfileHeader userData={userData} isAuthenticated={!!user} />
 
           {/* Detailed personality analysis */}
           <PersonalityShowcase
