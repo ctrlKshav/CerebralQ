@@ -1,6 +1,6 @@
 ﻿"use client"
 
-import { UserProfile } from "@/data/profile"
+import { UserProfile } from "@/types/supabase/user-profile"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users } from "lucide-react"
 import { motion } from "framer-motion"
