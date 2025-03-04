@@ -19,22 +19,7 @@ export const signUpAction = async (data: SignUpPayload) => {
     );
   }
 
-  // Check if user already exists
-  const { data: existingUser, error: checkError } = await supabase
-    .from('profiles')
-    .select('email')
-    .eq('email', email)
-    .maybeSingle();
-
-  if (existingUser) {
-    return encodedRedirect(
-      "error", 
-      "/sign-up", 
-      "A user with this email address already exists. Please use a different email or try logging in."
-    );
-  }
-
-  const { error } = await supabase.auth.signUp({
+  const {data: fetchedData, error} = await supabase.auth.signUp({
     email,
     password,
     options: {
@@ -49,7 +34,14 @@ export const signUpAction = async (data: SignUpPayload) => {
   if (error) {
     return encodedRedirect("error", "/sign-up", error.message);
   }
-  
+  else if (fetchedData.user?.identities?.length === 0) {
+    return encodedRedirect(
+      "error", 
+      "/sign-up", 
+      "A user with this email address already exists. Please use a different email or try logging in."
+    );
+  }
+
   return encodedRedirect(
     "success",
     "/sign-up",
