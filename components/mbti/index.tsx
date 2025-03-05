@@ -49,12 +49,12 @@ export default function MBTITest() {
   }, []);
 
   // // Load saved progress when component mounts
-  // useEffect(() => {
-  //   const savedData = loadProgress();
-  //   if (savedData) {
-  //     methods.reset(savedData);
-  //   }
-  // }, [methods]);
+  useEffect(() => {
+    const savedData = loadProgress();
+    if (savedData) {
+      methods.reset(savedData);
+    }
+  }, [methods]);
 
   const onSubmit = async (data: MBTIResponse) => {
     // Set completing state to true to show full progress bar
