@@ -179,6 +179,16 @@ const UnprotectedNavbar = (props: { className?: string }) => {
                           setIsSheetOpen={setIsSheetOpen}
                         />
                       </div>
+
+                      {/* Mobile Blog Item */}
+                      <div className="space-y-2 pb-4 border-b">
+                        <MobileMenuItem
+                          href="/blog"
+                          isSheetOpen={isSheetOpen}
+                          setIsSheetOpen={setIsSheetOpen}
+                          title="Blog"
+                        />
+                      </div>
                     </div>
                   </div>
 

@@ -151,7 +151,6 @@ const ProtectedNavbar = ({
                     Dashboard
                   </NavigationMenuLink>
                 </NavigationMenuItem>
-
               </NavigationMenuList>
               <NavigationMenuViewport className="origin-top-center" />
             </NavigationMenu>
@@ -252,16 +251,6 @@ const ProtectedNavbar = ({
 
                   <div className="flex-grow overflow-y-auto">
                     <div className="space-y-2 p-4">
-                      {/* Mobile Navigation */}
-                      <div className="space-y-2 pb-4 border-b">
-                        <MobileMenuItem
-                          href={`/profiles/${username}`}
-                          isSheetOpen={isSheetOpen}
-                          setIsSheetOpen={setIsSheetOpen}
-                          title="Dashboard"
-                        />
-                      </div>
-
                       {/* Mobile Assessment Items */}
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuSection
@@ -292,6 +281,12 @@ const ProtectedNavbar = ({
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
                           title="Settings"
+                        />
+                        <MobileMenuItem
+                          href={`/profiles/${username}`}
+                          isSheetOpen={isSheetOpen}
+                          setIsSheetOpen={setIsSheetOpen}
+                          title="Dashboard"
                         />
                       </div>
                     </div>
