@@ -1,3 +1,0 @@
-﻿{
-  "rewrites": [{ "source": "/blog", "destination": "https://cerebralquotient.com" }]
-}
