@@ -8,7 +8,7 @@ import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
 import { usePathname } from "next/navigation";
 
 
-const restrictedPaths = ["start-test",
+const restrictedPaths = ["/start-test",
   "/sign-in",
   "/sign-up",
   "/forgot-password",
