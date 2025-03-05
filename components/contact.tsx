@@ -119,15 +119,6 @@ export default function Contact() {
             </div>
             <div className="space-y-2">
               <label
-                htmlFor="website"
-                className="text-sm font-medium text-foreground"
-              >
-                Website
-              </label>
-              <Input id="website" placeholder="Your website" />
-            </div>
-            <div className="space-y-2">
-              <label
                 htmlFor="message"
                 className="text-sm font-medium text-foreground"
               >
