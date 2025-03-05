@@ -16,6 +16,7 @@ import { saveTestResults } from "@/lib/supabaseOperations";
 import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabaseOperations";
+import { PROGRESS_KEY } from "@/lib/constants";
 
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_mbti_results";
@@ -50,25 +51,21 @@ export default function MBTITest() {
     const savedData = loadProgress();
     if (savedData) {
       methods.reset(savedData);
-      const previousSectionId = savedData.currentSectionId
-      if(previousSectionId && previousSectionId > 0)
-        setCurrentSectionId(previousSectionId);
-      window.scrollTo({
-        top:document.body.scrollHeight,
-        behavior: "smooth"
-      })
+      const previousSectionId = savedData.currentSectionId;
+      if (previousSectionId && previousSectionId > 0) {
+        window.scrollTo({
+          top: document.body.scrollHeight,
+          behavior: "smooth",
+        });
+      }
+      setCurrentSectionId(previousSectionId);
     }
   }, [methods]);
 
   const onSubmit = async (data: MBTIResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
-
-    const localStorageData = {
-      ...methods.getValues(),
-      currentSectionId: currentSectionId,
-    };
-    saveProgress(localStorageData);
+    localStorage.removeItem(PROGRESS_KEY);
 
     const personalityResult = calculateMBTI(data.answers);
 
