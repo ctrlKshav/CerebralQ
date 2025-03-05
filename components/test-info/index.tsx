@@ -131,11 +131,7 @@ export default function TestInformation() {
         // Get current authenticated user
         const { data: { user }, error: userError } = await supabase.auth.getUser();
         
-        if (userError) {
-          console.error("Error fetching user:", userError);
-          setLoading(false);
-          return;
-        }
+        if(userError) return setLoading(false)
         
         setUser(user);
         
