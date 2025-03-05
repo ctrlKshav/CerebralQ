@@ -53,9 +53,10 @@ export default function Contact() {
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
-                    href={social.link}
+                    href={social.href}
                     className="text-primary hover:text-muted-foreground"
                     aria-label={social.label}
+                    target="_blank"
                   >
                     {React.createElement(social.icon, { size: 24 })}
                   </a>

@@ -1,15 +1,10 @@
-﻿import { Facebook, Twitter, Linkedin, Instagram, Github, Mail } from "lucide-react";
+﻿import { Twitter, Mail } from "lucide-react";
 
 export const socialLinks = [
   {
     icon: Twitter,
     href: "https://twitter.com/cerebralquotient",
     label: "Twitter"
-  },
-  {
-    icon: Github,
-    href: "https://github.com/cerebralquotient",
-    label: "GitHub"
   },
   {
     icon: Mail,

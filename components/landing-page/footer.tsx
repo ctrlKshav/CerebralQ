@@ -27,6 +27,7 @@ export default function Footer() {
                     <a
                       key={index}
                       href={link.href}
+                      target={"_blank"}
                       className="text-muted-foreground hover:text-primary transition-colors"
                       aria-label={link.label}
                     >
@@ -46,6 +47,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
+                    target={"_blank"}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
@@ -63,6 +65,7 @@ export default function Footer() {
                 <li key={link.name}>
                   <a
                     href={link.href}
+                    target={"_blank"}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}

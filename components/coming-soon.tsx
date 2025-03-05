@@ -19,6 +19,11 @@ export default function ComingSoon() {
             Return Home
           </Button>
         </Link>
+        <Link href="/contact">
+          <Button className="text-lg px-6 py-3">
+            Contact Us
+          </Button>
+        </Link>
       </div>
     </div>
   )
