@@ -35,7 +35,7 @@ function ContactCard({ icon: Icon, title, content }: ContactCardProps) {
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-card px-6 md:px-12 py-20">
+    <div className="min-h-screen bg-gradient-to-br from-background to-card px-6 md:px-12 py-10">
       <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12">
         {/* Left Column - Contact Info */}
         <div className="space-y-6">

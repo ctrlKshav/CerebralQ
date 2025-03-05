@@ -1,10 +1,14 @@
-﻿import Contact from '@/components/contact'
-import React from 'react'
+﻿import Contact from "@/components/contact";
+import Navbar from "@/components/navbar";
+import React from "react";
 
 export default function ContactPage() {
   return (
-    <div>
-      <Contact />
-    </div>
-  )
+    <>
+      <Navbar />
+      <div className="mt-24">
+        <Contact />
+      </div>
+    </>
+  );
 }
