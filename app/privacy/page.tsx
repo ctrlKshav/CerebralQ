@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { LegalDocuments } from "@/components/LegalDocuments";
+import { LegalDocuments } from "@/components/privacy-policy/LegalDocuments";
 
 export default function Page() {
   return (
