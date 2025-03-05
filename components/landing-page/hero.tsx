@@ -20,12 +20,12 @@ export default function Header() {
           transition={{ duration: 0.8 }}
           className="container mx-auto px-4 text-center z-10"
         >
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-primary">
+          <h1 className="text-5xl md:text-6xl font-bold mb-8 bg-clip-text text-primary">
             Answer a few questions,
             <br />
             uncover something cool.
           </h1>
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-2xl mx-auto">
             Discover yourself with tests like MBTI, Big Five, and IQ—all in one
             place.
           </p>
