@@ -97,10 +97,15 @@ export default function ProfileHeader({
                 <span className="font-medium">Share Profile</span>
               </Button>
             ) : (
-              <Link href="/tests/mbti/"
-              className="flex items-center gap-2">
-                <ClipboardCheck className="h-5 w-5 text-green-500" />
-                <span className="font-medium">Take Test</span>
+              <Link href="/tests/mbti/">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="flex items-center gap-2"
+                >
+                  <ClipboardCheck className="h-5 w-5 text-green-500" />
+                  <span className="font-medium">Take Test</span>
+                </Button>
               </Link>
             )}
           </div>
