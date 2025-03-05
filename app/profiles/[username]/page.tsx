@@ -132,7 +132,7 @@ export default function ProfilePage({
           <MBTIInsights personalityType={userData.raw_score.personalityType} />
 
           {/* Test history  */}
-          <TestHistory testHistory={userData.user_test_history} />
+          <TestHistory fullTestHistory={userData.user_test_history} />
         </div>
       </main>
     </div>

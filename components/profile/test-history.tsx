@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 
 interface TestHistoryProps {
-  testHistory: Array<{
+  fullTestHistory: Array<{
     id: string
     type: string
     date: string
@@ -15,7 +15,8 @@ interface TestHistoryProps {
   }>
 }
 
-export default function TestHistory({ testHistory }: TestHistoryProps) {
+export default function TestHistory({ fullTestHistory }: TestHistoryProps) {
+  const testHistory = fullTestHistory.slice(0,3)
   return (
     <section className="space-y-6">
       <motion.h2
