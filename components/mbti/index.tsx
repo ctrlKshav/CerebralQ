@@ -59,6 +59,8 @@ export default function MBTITest() {
   const onSubmit = async (data: MBTIResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
+    saveProgress(methods.getValues());
+    
     const personalityResult = calculateMBTI(data.answers);
 
     // Create a single unified test result object
@@ -78,9 +80,6 @@ export default function MBTITest() {
 
     // Store results in local storage
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
-
-    // Clear form progress data (answers saved during the test)
-    // saveProgress(null);
 
     // Redirect to results page
     setTimeout(() => {
