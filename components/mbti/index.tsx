@@ -12,10 +12,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import MobileTopbar from "./mobile-topbar";
 import CQLogo from "../cq-logo";
-import {
-  saveTestResults,
-  
-} from "@/lib/supabaseOperations";
+import { saveTestResults } from "@/lib/supabaseOperations";
 import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabaseOperations";
@@ -53,14 +50,24 @@ export default function MBTITest() {
     const savedData = loadProgress();
     if (savedData) {
       methods.reset(savedData);
+      setCurrentSectionId(savedData.currentSectionId);
+      window.scrollTo({
+        top:document.body.scrollHeight,
+        behavior: "smooth"
+      })
     }
   }, [methods]);
 
   const onSubmit = async (data: MBTIResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
-    saveProgress(methods.getValues());
-    
+
+    const localStorageData = {
+      ...methods.getValues(),
+      currentSectionId: currentSectionId,
+    };
+    saveProgress(localStorageData);
+
     const personalityResult = calculateMBTI(data.answers);
 
     // Create a single unified test result object
@@ -71,7 +78,7 @@ export default function MBTITest() {
       raw_score: {
         personalityType: personalityResult.personalityType,
         // Convert traitScores to a plain object that can be serialized to JSON
-        traitScores: personalityResult.traitScores as any
+        traitScores: personalityResult.traitScores as any,
       },
       completion_time_minutes: 15, // Static for now
       validity_status: "valid", // Static for now
@@ -85,7 +92,6 @@ export default function MBTITest() {
     setTimeout(() => {
       router.push("/tests/mbti/results");
     }, 0);
-  
   };
 
   const handleNext = async () => {
@@ -129,8 +135,11 @@ export default function MBTITest() {
       smoothScrollToTop();
     }
 
-    // Save progress as user moves through sections
-    saveProgress(methods.getValues());
+    const localStorageData = {
+      ...methods.getValues(),
+      currentSectionId: currentSectionId,
+    };
+    saveProgress(localStorageData);
   };
 
   const handlePrev = () => {
