@@ -7,9 +7,18 @@ import CQLogo from "@/components/cq-logo";
 import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
 import { usePathname } from "next/navigation";
 
+
+const restrictedPaths = ["start-test",
+  "/sign-in",
+  "/sign-up",
+  "/forgot-password",
+  "/reset-password",
+];
+
 export default function Footer() {
   const pathName = usePathname();
-  if (pathName?.includes("/start-test")) return null;
+  if(restrictedPaths.includes(pathName))
+    return null
   return (
     <footer className="bg-card text-card-foreground border-t">
       <div className="container mx-auto px-4 py-12">
