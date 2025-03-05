@@ -37,8 +37,7 @@ export const testData: TestData[] = [
     "questions": [
       {
         "id": "1",
-        "text": "I prefer interacting with many people, including strangers, at parties.",
-        "description": "(Temporary Field for Feedback) I feel energized when engaging in social activities.",
+        "text": "I prefer spending time alone rather than interacting with many people at parties.",
         "type": "likert",
         "icon": "Users",
         "options": [
@@ -53,7 +52,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "2",
-        "text": "I tend to be more realistic than speculative.",
+        "text": "I tend to be more speculative than realistic.",
         "type": "likert",
         "icon": "Clipboard",
         "options": [
@@ -68,7 +67,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "3",
-        "text": "I consider having my \"head in the clouds\" to be worse than being \"in a rut\".",
+        "text": "I prefer exploring possibilities and concepts rather than focusing on established facts.",
         "type": "likert",
         "icon": "AlertTriangle",
         "options": [
@@ -83,7 +82,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "4",
-        "text": "I am more impressed by principles than emotions.",
+        "text": "I am more impressed by emotions than principles.",
         "type": "likert",
         "icon": "Award",
         "options": [
@@ -98,7 +97,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "5",
-        "text": "I am more drawn toward the convincing than the touching.",
+        "text": "I am more drawn toward the touching than the convincing.",
         "type": "likert",
         "icon": "Heart",
         "options": [
@@ -113,7 +112,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "6",
-        "text": "I prefer to work to deadlines rather than just \"whenever\".",
+        "text": "I prefer to work flexibly rather than to strict deadlines.",
         "type": "likert",
         "icon": "Clock",
         "options": [
@@ -128,7 +127,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "7",
-        "text": "I tend to choose rather carefully than somewhat impulsively.",
+        "text": "I tend to make decisions somewhat impulsively rather than after careful consideration.",
         "type": "likert",
         "icon": "Crosshair",
         "options": [
@@ -143,7 +142,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "8",
-        "text": "After socializing, I feel energized and want more.",
+        "text": "After socializing, I need quiet time alone to recharge.",
         "type": "likert",
         "icon": "Battery",
         "options": [
@@ -158,7 +157,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "9",
-        "text": "I am more attracted to sensible people than imaginative people.",
+        "text": "I am more attracted to imaginative people than sensible people.",
         "type": "likert",
         "icon": "Anchor",
         "options": [
@@ -173,7 +172,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "10",
-        "text": "I am more interested in what is actual than what is possible.",
+        "text": "I am more interested in what is possible than what is actual.",
         "type": "likert",
         "icon": "Map",
         "options": [
@@ -188,7 +187,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "11",
-        "text": "I feel energized when engaging in social activities.",
+        "text": "I need quiet time to myself after social events.",
         "type": "likert",
         "icon": "Zap",
         "options": [
@@ -203,7 +202,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "12",
-        "text": "I rely on facts and details more than abstract ideas.",
+        "text": "I rely on abstract ideas more than facts and details.",
         "type": "likert",
         "icon": "FileText",
         "options": [
@@ -218,7 +217,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "13",
-        "text": "I make decisions based on logic rather than emotions.",
+        "text": "I make decisions based on emotions rather than logic.",
         "type": "likert",
         "icon": "GitBranch",
         "options": [
@@ -233,7 +232,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "14",
-        "text": "I prefer to plan things in advance rather than being spontaneous.",
+        "text": "I prefer being spontaneous rather than planning things in advance.",
         "type": "likert",
         "icon": "Calendar",
         "options": [
@@ -248,7 +247,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "15",
-        "text": "I find it easy to initiate conversations with new people.",
+        "text": "I find it difficult to initiate conversations with new people.",
         "type": "likert",
         "icon": "Coffee",
         "options": [
@@ -263,7 +262,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "16",
-        "text": "I prefer concrete and literal explanations.",
+        "text": "I prefer metaphorical and conceptual explanations over concrete and literal ones.",
         "type": "likert",
         "icon": "Book",
         "options": [
@@ -278,7 +277,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "17",
-        "text": "I prioritize objective criteria and facts when making important decisions.",
+        "text": "I prioritize personal values and harmony over objective criteria when making decisions.",
         "type": "likert",
         "icon": "Filter",
         "options": [
@@ -293,7 +292,7 @@ export const testData: TestData[] = [
       },
       {
         "id": "18",
-        "text": "I prefer organized and structured environments.",
+        "text": "I prefer flexible and adaptable environments over organized and structured ones.",
         "type": "likert",
         "icon": "Home",
         "options": [
