@@ -1,11 +1,15 @@
-﻿import React from "react";
+﻿"use client"
+import React from "react";
 import { Brain } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import CQLogo from "@/components/cq-logo";
 import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathName = usePathname();
+  if (pathName?.includes("/start-test")) return null;
   return (
     <footer className="bg-card text-card-foreground border-t">
       <div className="container mx-auto px-4 py-12">
