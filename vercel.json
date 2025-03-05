@@ -1,8 +1,8 @@
 ﻿{
-    "rewrites": [
-      {
-        "source": "/blog",
-        "destination": "https://cerebralquotient.com"
-      }
-    ]
-  }
+  "rewrites": [
+    {
+      "source": "/blog",
+      "destination": "https://cerebralquotient.com"
+    }
+  ]
+}
