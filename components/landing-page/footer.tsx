@@ -1,4 +1,4 @@
-﻿"use client"
+﻿"use client";
 import React from "react";
 import { Brain } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -6,9 +6,10 @@ import Image from "next/image";
 import CQLogo from "@/components/cq-logo";
 import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
-
-const restrictedPaths = ["start-test",
+const restrictedPaths = [
+  "start-test",
   "sign-in",
   "sign-up",
   "forgot-password",
@@ -22,15 +23,17 @@ export default function Footer() {
       return null;
     }
   }
-  
+
   return (
     <footer className="bg-card text-card-foreground border-t">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand Section */}
           <div className="space-y-6">
-            <div className="flex items-center space-x-2">
-              <CQLogo className="h-16 w-16" />
+            <div className="flex items-center">
+              <Link href="/" className="flex items-center space-x-2">
+                <CQLogo className="w-24 h-24" />
+              </Link>
             </div>
             <p className="text-muted-foreground text-sm">
               Discover yourself through scientifically validated personality
