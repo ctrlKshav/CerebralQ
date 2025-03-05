@@ -1,47 +1,32 @@
 ﻿"use client";
 
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Progress } from "@/components/ui/progress";
-import {
-  Tooltip,
-  TooltipProvider,
-  TooltipTrigger,
-  TooltipContent,
-} from "../ui/tooltip";
-import {
-  Brain,
-  Timer,
-  Users,
-  Zap,
-  Target,
-  Award,
-  BookOpen,
-  History,
-  BarChart,
-  FileSpreadsheet,
-  ArrowRight,
-  ArrowDown,
-  HelpCircle,
-  Check,
-  AlertCircle,
-  Circle,
-  CheckCircle2,
-} from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import Link from "next/link";
+import { createClient } from "@/utils/supabase/client";
+import { useEffect, useState } from "react";
+import { Brain, Timer, Users, Target, Award, BookOpen } from "lucide-react";
+import { User } from "@supabase/supabase-js";
+import { MBTIRawScore, FormattedTestResult } from "@/types/supabase/user-test-history";
+import {
+  TestTypeBadge,
+  DifficultyBadge,
+  ResultTypeBadge,
+  FeatureBadge,
+  TestOverviewCard,
+  TestDimensionsCard,
+  TestResultSection,
+  TestCitationsCard,
+  TestRecommendationsSection,
+} from "./test-components";
+import { MBTI_TEST_ID } from "@/lib/constants";
+import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
 
 const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
   short_code: "MBTI",
   description:
-    "Discover how you’re wired with the MBTI—the world’s most trusted personality framework. Get your 4-letter type (like ENFP or ISTJ) and finally understand why you thrive in chaos, hate small talk, or obsess over to-do lists.",
+    "Discover how you're wired with the MBTI—the world's most trusted personality framework. Get your 4-letter type (like ENFP or ISTJ) and finally understand why you thrive in chaos, hate small talk, or obsess over to-do lists.",
   features: [
     { icon: Timer, label: "12 mins", color: "bg-blue-100 text-blue-700" },
     {
@@ -69,41 +54,6 @@ const MBTI_TEST = {
   result_type: "type",
   reliability_score: 85,
   scientific_validity_score: 78,
-  past_results: [
-    {
-      type: "INTJ",
-      date: "2024-03-15",
-      scores: {
-        introversion: 76,
-        intuition: 82,
-        thinking: 65,
-        judging: 58,
-      },
-      label: "The Architect",
-      description:
-        "Imaginative and strategic thinkers with a plan for everything",
-    },
-  ],
-  complementary_tests: [
-    {
-      name: "Big Five Personality",
-      description: "Measure five core personality dimensions",
-      shortCode: "big5-neo",
-      icon: Target,
-    },
-    {
-      name: "DISC Assessment",
-      description: "Understand your behavioral style",
-      shortCode: "disc",
-      icon: Award,
-    },
-    {
-      name: "HEXACO",
-      description: "Explore six personality dimensions",
-      shortCode: "hexaco",
-      icon: BookOpen,
-    },
-  ],
   personality_dimensions: [
     {
       title: "Mind",
@@ -126,6 +76,26 @@ const MBTI_TEST = {
       types: ["Judging (J)", "Perceiving (P)"],
     },
   ],
+  complementary_tests: [
+    {
+      name: "Big Five Personality",
+      description: "Measure five core personality dimensions",
+      shortCode: "big5-neo",
+      icon: Target,
+    },
+    {
+      name: "DISC Assessment",
+      description: "Understand your behavioral style",
+      shortCode: "disc",
+      icon: Award,
+    },
+    {
+      name: "HEXACO",
+      description: "Explore six personality dimensions",
+      shortCode: "hexaco",
+      icon: BookOpen,
+    },
+  ],
   test_benefits: [
     {
       icon: Brain,
@@ -145,74 +115,81 @@ const MBTI_TEST = {
   ],
 };
 
-const TestTypeBadge = ({ type }: { type: string }) => {
-  const colors = {
-    personality: "bg-green-100 text-black",
-    cognitive: "bg-yellow-100 text-black",
-    language: "bg-red-100 text-black",
-  };
-  return (
-    <span
-      className={`px-2 py-1 rounded-full text-sm font-medium ${
-        colors[type as keyof typeof colors]
-      }`}
-    >
-      {type.charAt(0).toUpperCase() + type.slice(1)}
-    </span>
-  );
-};
-
-const DifficultyBadge = ({ level }: { level: string }) => {
-  const colors = {
-    beginner: "bg-green-100 text-black",
-    intermediate: "bg-yellow-100 text-black",
-    advanced: "bg-red-100 text-black",
-  };
-  return (
-    <span
-      className={`px-2 py-1 rounded-full text-sm font-medium ${
-        colors[level as keyof typeof colors]
-      }`}
-    >
-      {level.charAt(0).toUpperCase() + level.slice(1)}
-    </span>
-  );
-};
-
-const ResultTypeBadge = ({ type }: { type: string }) => {
-  const colors = {
-    type: "bg-purple-100 text-black",
-    numerical: "bg-blue-100 text-black",
-    category: "bg-green-100 text-black",
-    "multi-dimensional": "bg-orange-100 text-black",
-  };
-  return (
-    <span
-      className={`px-2 py-1 rounded-full text-sm font-medium ${colors[type as keyof typeof colors]}`}
-    >
-      {type.charAt(0).toUpperCase() + type.slice(1)}
-    </span>
-  );
-};
-
-const FeatureBadge = ({
-  Icon,
-  label,
-  color,
-}: {
-  Icon: any;
-  label: string;
-  color: string;
-}) => (
-  <div
-    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full ${color}`}
-  >
-    <Icon className="h-4 w-4" />
-    <span className="text-sm font-medium">{label}</span>
-  </div>
-);
 
 export default function TestInformation() {
+  const supabase = createClient();
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [latestResult, setLatestResult] = useState<FormattedTestResult | null>(null);
+
+  useEffect(() => {
+    // Check if user is authenticated and fetch their latest test result
+    async function fetchUserAndTestData() {
+      try {
+        setLoading(true);
+        
+        // Get current authenticated user
+        const { data: { user }, error: userError } = await supabase.auth.getUser();
+        
+        if (userError) {
+          console.error("Error fetching user:", userError);
+          setLoading(false);
+          return;
+        }
+        
+        setUser(user);
+        
+        // If user is authenticated, fetch their latest test result
+        if (user) {
+          // Get the most recent MBTI test result
+          const { data: testData, error: testError } = await supabase
+            .from("user_test_history")
+            .select(`
+              *,
+              test_type:test_type_id (
+                name,
+                short_code,
+                description,
+                category
+              )
+            `)
+            .eq("user_id", user.id)
+            .eq("test_type_id", MBTI_TEST_ID) // Using MBTI test ID from constants
+            .order("taken_at", { ascending: false })
+            .limit(1)
+            .single();
+          
+          if (testError && testError.code !== 'PGRST116') { // PGRST116 means no rows returned
+            console.error("Error fetching test data:", testError);
+          }
+          
+          if (testData) {
+            // Format the test result for display
+            const mbtiResult = testData.raw_score as MBTIRawScore;
+            const personalityType = mbtiResult?.personalityType || "Unknown";
+          
+            setLatestResult({
+              id: testData.id,
+              type: testData.test_type?.short_code || "MBTI",
+              personalityType: personalityType,
+              label: personalityDescriptions[personalityType].alias || "Unknown",
+              description: personalityDescriptions[personalityType].description || "Unknown",
+              date: testData.taken_at || new Date().toISOString(),
+              traitScores: mbtiResult?.traitScores,
+              details: testData.raw_score
+            });
+          }
+        }
+      } catch (error) {
+        console.error("Unexpected error:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    
+    fetchUserAndTestData();
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -261,225 +238,24 @@ export default function TestInformation() {
       >
         <div className="grid gap-12 md:gap-6 md:grid-cols-2 text-md">
           {/* Test Overview Card */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-2xl">
-                <Brain className="h-6 w-6" />
-                Test Overview
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-6 text-lg">
-              <div className="flex flex-wrap gap-2">
-                <TestTypeBadge type={MBTI_TEST.category} />
-                <DifficultyBadge level={MBTI_TEST.difficulty_level} />
-                <ResultTypeBadge type={MBTI_TEST.result_type} />
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Questions</span>
-                  <span className="font-medium">{MBTI_TEST.num_questions}</span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Duration</span>
-                  <span className="font-medium">
-                    {MBTI_TEST.time_estimate_minutes} minutes
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Age Range</span>
-                  <span className="font-medium">
-                    {MBTI_TEST.min_age}+ years
-                  </span>
-                </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-muted-foreground">Validity Period</span>
-                  <span className="font-medium">
-                    {MBTI_TEST.validity_period_days} days
-                  </span>
-                </div>
-              </div>
-              <div className="space-y-3 pt-2">
-                <h4 className="font-medium">Key Benefits:</h4>
-                <div className="grid gap-2">
-                  {MBTI_TEST.test_benefits.map((benefit, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center gap-2 bg-primary/5 p-2 rounded-lg"
-                    >
-                      <benefit.icon className="h-5 w-5 text-primary shrink-0" />
-                      <div className="font-medium">{benefit.title}</div>
-                      <div className="text-sm text-muted-foreground ml-auto">
-                        {benefit.description}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+          <TestOverviewCard testData={MBTI_TEST} />
 
           {/* Personality Dimensions Card */}
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-2xl">
-                <FileSpreadsheet className="h-6 w-6" />
-                How MBTI Works?
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              {MBTI_TEST.personality_dimensions.map((dimension, index) => (
-                <div key={index} className="space-y-2">
-                  <h3 className="font-medium text-xl">{dimension.title}</h3>
-                  <p className="text-md text-muted-foreground">
-                    {dimension.description}
-                  </p>
-                  <div className="flex gap-2">
-                    {dimension.types.map((type, i) => (
-                      <Badge key={i} variant={"default"}>
-                        {type}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </CardContent>
-          </Card>
+          <TestDimensionsCard dimensions={MBTI_TEST.personality_dimensions} />
         </div>
 
-        {/* Past Results Section */}
-        <div className="mt-24  rounded-xl p-8">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Your Latest Result
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            {/* Image Column */}
-            <div className="relative aspect-square">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary rounded-lg flex items-center justify-center">
-                <div className="text-center space-y-4">
-                  <span className="text-6xl font-bold text-primary-foreground">
-                    {MBTI_TEST.past_results[0].type}
-                  </span>
-                  <p className="text-2xl text-primary-foreground/90">
-                    {MBTI_TEST.past_results[0].label}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Results Column */}
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-2xl font-semibold mb-2">
-                  {MBTI_TEST.past_results[0].label}
-                </h3>
-                <p className="text-lg text-muted-foreground mb-4">
-                  Test taken on{" "}
-                  {new Date(MBTI_TEST.past_results[0].date).toLocaleDateString(
-                    "en-US",
-                    {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    }
-                  )}
-                </p>
-                <p className="text-lg leading-relaxed">
-                  {MBTI_TEST.past_results[0].description}
-                </p>
-              </div>
-
-              <div className="space-y-6">
-                <h4 className="text-xl font-medium">Personality Breakdown</h4>
-                {Object.entries(MBTI_TEST.past_results[0].scores).map(
-                  ([trait, score]) => (
-                    <div key={trait} className="space-y-2">
-                      <div className="flex justify-between text-lg">
-                        <span className="capitalize font-medium">{trait}</span>
-                        <span>{score}%</span>
-                      </div>
-                      <Progress value={score} className="h-3 bg-primary/20" />
-                    </div>
-                  )
-                )}
-              </div>
-
-              <Link href={`/tests/${MBTI_TEST.short_code}/start-test`}>
-                <Button className="my-6" variant="outline">
-                  Retake Test
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
+        {/* Past Results Section - Only show if user is logged in and has results */}
+        {user && latestResult && !loading && (
+          <TestResultSection result={latestResult} testShortCode={MBTI_TEST.short_code} />
+        )}
 
         <div className="mt-24 grid">
           {/* Citations Card */}
-          <Card className="max-w-3xl mx-auto w-full">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-2xl">
-                <BookOpen className="h-6 w-6" />
-                Academic Citations
-              </CardTitle>
-              <CardDescription>
-                Peer-reviewed sources informing our methodology
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ul className="list-disc pl-6 space-y-4 text-lg">
-                {MBTI_TEST.citations.map((citation, index) => (
-                  <li key={index} className="flex flex-col gap-1">
-                    <a
-                      href={citation.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline"
-                    >
-                      {new URL(citation.link).hostname}
-                    </a>
-                    <span className="text-muted-foreground">
-                      {citation.name}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
+          <TestCitationsCard citations={MBTI_TEST.citations} />
         </div>
         
         {/* Related Tests Section */}
-        <div className="mt-24">
-          <h2 className="text-3xl font-bold mb-8 text-center">
-            Recommended Tests
-          </h2>
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {MBTI_TEST.complementary_tests.map((test, index) => (
-              <Card
-                key={index}
-                className="group hover:shadow-lg transition-shadow"
-              >
-                <CardContent className="pt-8 p-6">
-                  <div className="flex items-start gap-6">
-                    <div className="p-4 rounded-lg bg-primary/5 text-primary">
-                      <test.icon className="h-8 w-8" />
-                    </div>
-                    <div className="flex-1 space-y-3">
-                      <h3 className="text-xl font-semibold">{test.name}</h3>
-                      <p className="text-lg text-muted-foreground">
-                        {test.description}
-                      </p>
-                      <Button
-                        variant="link"
-                        className="p-0 h-auto font-normal text-lg text-primary"
-                      >
-                        Take Test →
-                      </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
+        <TestRecommendationsSection recommendations={MBTI_TEST.complementary_tests} />
       </section>
     </div>
   );

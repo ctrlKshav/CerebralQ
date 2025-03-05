@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { signupSchema, SignUpSchema } from "@/schema/auth-pages";
-import { RETURN_URL_KEY } from "@/constants/constants";
+import { RETURN_URL_KEY } from "@/lib/constants";
 import { signUpAction } from "@/app/actions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";

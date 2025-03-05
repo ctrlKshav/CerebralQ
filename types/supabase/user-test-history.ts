@@ -1,4 +1,5 @@
-﻿import { Json } from './supabase';
+﻿import { PersonalityDescription } from '../tests/mbti';
+import { Json } from './supabase';
 
 export interface UserTestHistory {
   completion_time_minutes: number | null;
@@ -60,4 +61,56 @@ export interface UserTestHistoryRelationships {
     referencedRelation: "users";
     referencedColumns: ["id"];
   };
+}
+
+export interface MBTITraitScore {
+  left: number;
+  right: number;
+  leftPercentage: number;
+  rightPercentage: number;
+  dominant: "left" | "right";
+}
+
+export interface MBTIRawScore {
+  personalityType: string;
+  traitScores: {
+    "E-I": MBTITraitScore;
+    "S-N": MBTITraitScore;
+    "T-F": MBTITraitScore;
+    "J-P": MBTITraitScore;
+  };
+}
+
+export interface TestHistoryWithTestType extends UserTestHistory {
+  test_type: {
+    name: string;
+    short_code: string;
+    description: string | null;
+    category: string;
+    result_schema?: Json;
+  };
+}
+
+export interface FormattedTestResult {
+  id: string;
+  type: string;
+  personalityType?: string;
+  label?: string;
+  description?: string;
+  date: string;
+  score?: number;
+  traitScores?: {
+    [key: string]: MBTITraitScore;
+  };
+  details?: any;
+}
+
+export interface MBTIPersonalityResult {
+  type: string;
+  label: string;
+  description: string;
+  strengths: string[];
+  weaknesses: string[];
+  compatibleTypes: string[];
+  careers: string[];
 }

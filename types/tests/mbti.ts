@@ -1,5 +1,4 @@
-﻿
-export interface TestSection {
+﻿export interface TestSection {
   id: number;
   title: string;
   description: string;
@@ -84,4 +83,90 @@ export interface ResultData {
 export interface PersonalityDescription {
   alias: string;
   description: string;
+}
+
+/**
+ * Types related to MBTI personality test
+ */
+
+export interface MBTIResults {
+  personalityType: string;
+  traitScores: TraitScores;
+}
+
+export interface MBTIPersonalityType {
+  code: string;
+  alias: string;
+  description: string;
+  traits: {
+    mind: "E" | "I"; // Extroverted or Introverted
+    energy: "S" | "N"; // Sensing or Intuition
+    nature: "T" | "F"; // Thinking or Feeling
+    tactics: "J" | "P"; // Judging or Perceiving
+  };
+  strengths: string[];
+  weaknesses: string[];
+  careerSuggestions: string[];
+  compatibleTypes: string[];
+}
+
+/**
+ * Represents the characteristic dimensions measured by the MBTI
+ */
+export interface MBTITestDimension {
+  title: string;
+  description: string;
+  leftPole: {
+    letter: string;
+    name: string;
+    traits: string[];
+  };
+  rightPole: {
+    letter: string;
+    name: string;
+    traits: string[];
+  };
+}
+
+/**
+ * Complete test metadata with MBTI specific fields
+ */
+export interface MBTITestData {
+  id: string;
+  name: string;
+  shortCode: string;
+  description: string;
+  numQuestions: number;
+  timeEstimateMinutes: number;
+  validityPeriodDays: number;
+  dimensions: MBTITestDimension[];
+  categories: {
+    primary: string;
+    secondary: string[];
+  };
+  scientificValidity: {
+    reliabilityScore: number;
+    validityScore: number;
+  };
+}
+
+/**
+ * Question format for MBTI tests
+ */
+export interface MBTIQuestion {
+  id: string;
+  text: string;
+  dimension: "E-I" | "S-N" | "T-F" | "J-P";
+  direction: "left" | "right";
+  weight: number;
+}
+
+/**
+ * User's answer to an MBTI question
+ */
+export interface MBTIAnswer {
+  questionId: string;
+  score: number; // Typically 1-5 representing strongly disagree to strongly agree
+  dimension: "E-I" | "S-N" | "T-F" | "J-P";
+  direction: "left" | "right";
 }

@@ -4,7 +4,7 @@ import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
 import type { TestType } from "@/types/supabase/test-types";
 import type { User } from "@/types/supabase/users";
 import { UserProfile } from "@/types/supabase/user-profile";
-import { MBTI_TEST_ID } from "@/constants/constants";
+import { MBTI_TEST_ID } from "@/lib/constants";
 
 /**
  * Save test results to the user_test_history table

@@ -1,7 +1,7 @@
 ﻿"use client";
 import { createClient } from "@/utils/supabase/client";
 import { toast } from "sonner";
-import { RETURN_URL_KEY } from "@/constants/constants";
+import { RETURN_URL_KEY } from "@/lib/constants";
 
 /**
  * Handles sharing functionality with authentication check

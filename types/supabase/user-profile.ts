@@ -1,4 +1,5 @@
 ﻿import { TraitScores } from "@/types/tests/mbti"
+import { MBTIRawScore } from './user-test-history';
 
 export interface UserProfile {
   username: string
@@ -6,16 +7,15 @@ export interface UserProfile {
   bio: string
   tests_taken: number
   last_test_date: string
-  raw_score: {
-    personalityType: string
-    traitScores: TraitScores
-  }
-  user_test_history: Array<{
-    id: string
-    type: string
-    date: string
-    score: number
-    personalityType?: string
-    details: Record<string, any>
-  }>
+  raw_score: MBTIRawScore
+  user_test_history: UserTestHistorySummary[]
+}
+
+export interface UserTestHistorySummary {
+  id: string
+  type: string
+  date: string
+  score?: number
+  personalityType?: string
+  details?: any
 }

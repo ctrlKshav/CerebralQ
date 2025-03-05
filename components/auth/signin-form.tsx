@@ -12,7 +12,7 @@ import { signinSchema, SignInSchema } from "@/schema/auth-pages";
 import { AuthPagesFormMessage } from "@/components/form-message";
 import { useState, useEffect } from "react";
 import { signInAction } from "@/app/actions";
-import { RETURN_URL_KEY } from "@/constants/constants";
+import { RETURN_URL_KEY } from "@/lib/constants";
 import { toast } from "sonner";
 import { parseAuthMessage } from "@/lib/utils";
 

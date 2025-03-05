@@ -17,7 +17,7 @@ import { DetailedPersonalityInsights } from "@/components/results/detailed-perso
 import AboutPersonalityType from "@/components/profile/about-personality-type";
 import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
-import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/constants/constants";
+import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 
 
 export default function Results() {
