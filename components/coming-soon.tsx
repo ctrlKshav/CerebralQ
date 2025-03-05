@@ -1,30 +1,37 @@
 ﻿import React from 'react'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Clock } from 'lucide-react'
 import Link from 'next/link'
 
 export default function ComingSoon() {
   return (
-    <div className="min-h-screen animate-gradient-slow py-8 px-4 sm:px-8 md:px-16">
-      <div className="mx-auto max-w-2xl text-center mt-28">
-        <Clock className="w-24 h-24 mx-auto mb-8 text-primary animate-pulse" />
-        <h1 className="text-5xl font-bold text-foreground drop-shadow-glow-primary mb-6">
-          Coming Soon
-        </h1>
-        <p className="text-xl text-foreground mb-12">
-          We're working hard to bring you something amazing. This feature will be available soon!
-        </p>
-        <Link href="/">
-          <Button className="text-lg px-6 py-3">
-            Return Home
-          </Button>
-        </Link>
-        <Link href="/contact">
-          <Button className="text-lg px-6 py-3">
-            Contact Us
-          </Button>
-        </Link>
-      </div>
+    <div className="min-h-screen animate-gradient-slow py-8 px-4 sm:px-8 md:px-16 flex items-center justify-center">
+      <Card className="w-full max-w-2xl border-none bg-background/60 backdrop-blur-sm">
+        <CardHeader className="text-center pb-2">
+          <Clock className="w-24 h-24 mx-auto mb-6 text-primary animate-pulse" />
+          <h1 className="text-4xl sm:text-5xl font-bold text-foreground drop-shadow-glow-primary">
+            Feature in Development
+          </h1>
+        </CardHeader>
+        <CardContent className="text-center pb-6">
+          <p className="text-xl text-foreground">
+            Our team is actively working on this exciting feature. We're putting the final touches to ensure the best experience for you. Check back soon!
+          </p>
+        </CardContent>
+        <CardFooter className="flex flex-col sm:flex-row gap-8 sm:gap-4 justify-center pt-2">
+          <Link href="/" className="w-full sm:w-auto">
+            <Button size="lg" className="w-full">
+              Return to Home
+            </Button>
+          </Link>
+          <Link href="/contact" className="w-full sm:w-auto">
+            <Button variant="outline" size="lg" className="w-full">
+              Share Feedback With Us
+            </Button>
+          </Link>
+        </CardFooter>
+      </Card>
     </div>
   )
 }
