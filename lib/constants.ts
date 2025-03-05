@@ -2,3 +2,4 @@
 export const RETURN_URL_KEY = "cerebralq_return_url";
 export const TEST_RESULTS_KEY = "cerebralq_mbti_results";
 export const SAVED_RESULTS_KEY = "cerebralq_saved_results";
+export const PROGRESS_KEY = "cerebralq_mbti_progress";

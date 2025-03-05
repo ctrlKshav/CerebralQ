@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { signOutAction } from "@/app/actions";
 import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
-import { SAVED_RESULTS_KEY, TEST_RESULTS_KEY, RETURN_URL_KEY } from "@/lib/constants";
+import { SAVED_RESULTS_KEY, TEST_RESULTS_KEY, RETURN_URL_KEY, PROGRESS_KEY } from "@/lib/constants";
 
 export default function LogoutButton() {
 
@@ -12,6 +12,7 @@ export default function LogoutButton() {
     localStorage.removeItem(SAVED_RESULTS_KEY);
     localStorage.removeItem(TEST_RESULTS_KEY);
     localStorage.removeItem(RETURN_URL_KEY);
+    localStorage.removeItem(PROGRESS_KEY);
 
     // Call the server action to handle the actual logout
     await signOutAction();

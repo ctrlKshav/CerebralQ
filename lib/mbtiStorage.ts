@@ -1,7 +1,5 @@
 import type { MBTIResponse } from "@/schema/mbti";
-
-// Local storage key for in-progress test
-const PROGRESS_KEY = "cerebralq_mbti_progress";
+import { PROGRESS_KEY } from "./constants";
 
 /**
  * Save in-progress test data to local storage
