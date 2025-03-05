@@ -183,7 +183,7 @@ const UnprotectedNavbar = (props: { className?: string }) => {
                   </div>
 
                   {/* Mobile Auth Buttons */}
-                  <div className="sticky bottom-0 left-0 right-0 p-4 border-t bg-white space-y-2">
+                  <div className="sticky bottom-0 left-0 right-0 p-4 py-8 border-t space-y-2">
                     <Button
                       variant="outline"
                       className="w-full text-base"
