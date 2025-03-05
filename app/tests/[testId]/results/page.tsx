@@ -27,11 +27,11 @@ export default function ResultsPage() {
     <div className="">
       <Link 
         href="/" 
-        className={`fixed top-0 left-2 sm:top-0 sm:left-10 z-50 transition-opacity  ${
-          isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed top-0 left-2 sm:top-0 sm:left-10 z-50 transition-opacity duration-100 ${
+          isVisible ? "opacity-100" : "opacity-0 pointer-events-none sm:opacity-100"
         }`}
       >
-        <CQLogo className="w-24 h-24" />
+        <CQLogo className="w-24 h-24 sm:w-36 sm:h-36" />
       </Link>
       <div className="">
         <Results />
