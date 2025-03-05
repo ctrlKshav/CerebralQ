@@ -298,7 +298,7 @@ const ProtectedNavbar = ({
                   </div>
 
                   {/* Mobile Logout Button */}
-                  <div className="sticky bottom-0 left-0 right-0 p-4 border-t bg-white">
+                  <div className="sticky bottom-0 left-0 right-0 px-4 py-8 border-t">
                     <LogoutButton />
                   </div>
                 </SheetContent>
