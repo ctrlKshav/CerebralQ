@@ -50,7 +50,9 @@ export default function MBTITest() {
     const savedData = loadProgress();
     if (savedData) {
       methods.reset(savedData);
-      setCurrentSectionId(savedData.currentSectionId);
+      const previousSectionId = savedData.currentSectionId
+      if(previousSectionId && previousSectionId > 0)
+        setCurrentSectionId(previousSectionId);
       window.scrollTo({
         top:document.body.scrollHeight,
         behavior: "smooth"
