@@ -3,12 +3,12 @@
 export const socialLinks = [
   {
     icon: Twitter,
-    href: "https://twitter.com/cerebralquotient",
+    href: "/",
     label: "Twitter"
   },
   {
     icon: Mail,
-    href: "mailto:contact@cerebralquotient.com",
+    href: "/",
     label: "Email"
   }
 ] as const;
