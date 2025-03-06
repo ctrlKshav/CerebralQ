@@ -6,7 +6,7 @@
   },
   {
     "source": "/blog/:slug*",
-    "destination": "https://wp.cerebralquotient.com/blog/:slug*"
+    "destination": "https://wp.cerebralquotient.com/blog/:slug*/"
   }
   ]
  }
