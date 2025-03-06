@@ -2,7 +2,7 @@
   "rewrites": [
   {
     "source": "/blog",
-    "destination": "https://wp.cerebralquotient.com/blog"
+    "destination": "https://wp.cerebralquotient.com/blog/"
   },
   {
     "source": "/blog/",
