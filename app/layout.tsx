@@ -6,8 +6,8 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import Footer from "@/components/landing-page/footer";
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
+const defaultUrl = process.env.NODE_ENV === "production"
+  ? `https://${process.env.WEBSITE_URL}`
   : "http://localhost:3000";
 
 export const metadata = {
