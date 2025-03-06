@@ -53,9 +53,17 @@ export default function MBTITest() {
       methods.reset(savedData);
       const previousSectionId = savedData.currentSectionId;
       if (previousSectionId && previousSectionId > 0) {
-        window.scrollTo({
-          top: document.body.scrollHeight,
-          behavior: "smooth",
+        requestAnimationFrame(() => {
+          // Find all question cards for the current section
+          const questionCards = document.querySelectorAll(".question-card");
+          // If there are question cards, scroll to the last one
+          if (questionCards.length > 0) {
+            const lastQuestionCard = questionCards[questionCards.length - 1];
+            lastQuestionCard.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          }
         });
       }
       setCurrentSectionId(previousSectionId);
