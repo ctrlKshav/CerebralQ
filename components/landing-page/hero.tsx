@@ -26,7 +26,9 @@ export default function Header() {
             uncover something cool.
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-2xl mx-auto">
-            Discover yourself with tests like MBTI, Big Five, and IQ—all in one
+            Discover yourself with tests like MBTI, Big Five, and IQ
+            <br />
+            all in one
             place.
           </p>
           <Link href={"/tests/1"}>
