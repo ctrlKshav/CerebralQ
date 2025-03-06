@@ -5,12 +5,8 @@
     "destination": "https://wp.cerebralquotient.com/blog/"
   },
   {
-    "source": "/blog/",
-    "destination": "https://wp.cerebralquotient.com/blog/"
-  },
-  {
-    "source": "/blog/:slug*",
-    "destination": "https://wp.cerebralquotient.com/blog/:slug*"
+    "source": "/blog/:slug",
+    "destination": "https://wp.cerebralquotient.com/blog/:slug"
   }
   ]
  }
