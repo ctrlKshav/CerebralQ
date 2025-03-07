@@ -193,7 +193,7 @@ export default function TestInformation({ testId }: { testId: string }) {
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
             {MBTI_TEST.name}{" "}
-            <span className="text-2xl">({MBTI_TEST.short_code})</span>
+            <span className="text-2xl">({MBTI_TEST.short_code.toUpperCase()})</span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {MBTI_TEST.description}
