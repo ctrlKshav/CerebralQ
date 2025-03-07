@@ -190,21 +190,24 @@ export default function Results() {
           personalityType={personalityType}
           alias={typeInfo.alias}
           description={typeInfo.description}
+          sectionNumber={1}
         />
 
         {/* Personality Traits */}
-        {traitScores && <PersonalityTraits traitScores={traitScores} />}
+        {traitScores && <PersonalityTraits traitScores={traitScores} sectionNumber={2} />}
 
         {/* Career Suggestions */}
         <CareerSuggestions
           personalityType={personalityType}
           careerSuggestions={careerSuggestions}
+          sectionNumber={3}
         />
 
         {/* Similar Personalities */}
         <SimilarPersonalities
           personalityType={personalityType}
           similarPersonalities={similarPersonalities}
+          sectionNumber={4}
         />
 
         {/* Detailed Personality Insights */}
@@ -212,6 +215,7 @@ export default function Results() {
           personalityType={personalityType}
           personalityAlias={personalityAlias}
           personalityInsights={personalityInsights}
+          sectionNumber={5}
         />
       </main>
     </div>

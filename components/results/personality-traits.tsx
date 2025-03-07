@@ -9,9 +9,10 @@ import { useTheme } from "next-themes"
 
 interface PersonalityTraitsProps {
   traitScores: TraitScores
+  sectionNumber: number
 }
 
-export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
+export function PersonalityTraits({ traitScores, sectionNumber }: PersonalityTraitsProps) {
   const [selectedTrait, setSelectedTrait] = React.useState<keyof TraitScores>("E-I")
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = theme === 'system' ? resolvedTheme : theme;
@@ -21,7 +22,7 @@ export function PersonalityTraits({ traitScores }: PersonalityTraitsProps) {
     <div className="w-full max-w-6xl mx-auto p-6">
       <div className="flex items-center gap-4 mb-10">
         <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary text-primary">
-          <span className="text-lg font-medium">2</span>
+          <span className="text-lg font-medium">{sectionNumber}</span>
         </div>
         <h2 className="text-3xl font-semibold text-foreground">Personality Traits</h2>
       </div>

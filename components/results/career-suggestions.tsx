@@ -13,17 +13,19 @@ interface Career {
 interface CareerSuggestionsProps {
   personalityType: string;
   careerSuggestions: Career[];
+  sectionNumber: number;
 }
 
 export function CareerSuggestions({
   personalityType,
   careerSuggestions,
+  sectionNumber
 }: CareerSuggestionsProps) {
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
       <div className="flex items-center gap-4 mb-10">
         <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary text-primary">
-          <span className="text-lg font-medium">3</span>
+          <span className="text-lg font-medium">{sectionNumber}</span>
         </div>
         <h2 className="text-3xl font-semibold text-foreground">
           Career Recommendations

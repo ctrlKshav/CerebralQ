@@ -5,37 +5,31 @@ import { Card } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import Icon from "@/components/Icon";
+import { PersonalityTypeInsights } from "@/types/tests/mbti";
 
 interface InsightCategory {
   title: string;
-  icon: string;
+  icon: string[];
   points: string[];
 }
-
-interface PersonalityInsights {
-  strengths: InsightCategory;
-  challenges: InsightCategory;
-  workStyle: InsightCategory;
-  relationships: InsightCategory;
-  growthAreas: InsightCategory;
-}
-
 interface DetailedPersonalityInsightsProps {
   personalityType: string;
   personalityAlias: string;
-  personalityInsights: PersonalityInsights;
+  personalityInsights: PersonalityTypeInsights;
+  sectionNumber: number;
 }
 
 export function DetailedPersonalityInsights({
   personalityType,
   personalityAlias,
   personalityInsights,
+  sectionNumber
 }: DetailedPersonalityInsightsProps) {
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
       <div className="flex items-center gap-4 mb-10">
         <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary text-primary">
-          <span className="text-lg font-medium">5</span>
+          <span className="text-lg font-medium">{sectionNumber}</span>
         </div>
         <h2 className="text-3xl font-semibold text-foreground">
           Detailed Insights

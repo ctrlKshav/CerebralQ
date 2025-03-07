@@ -7,18 +7,20 @@ interface AboutPersonalityTypeProps {
   personalityType: string
   alias: string
   description: string
+  sectionNumber: number
 }
 
 export default function AboutPersonalityType({ 
   personalityType, 
   alias, 
-  description 
+  description,
+  sectionNumber
 }: AboutPersonalityTypeProps) {
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
       <div className="flex items-center gap-4 mb-6">
         <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary text-primary">
-          <span className="text-lg font-medium">1</span>
+          <span className="text-lg font-medium">{sectionNumber}</span>
         </div>
         <h2 className="text-3xl font-semibold text-foreground">Personality Type</h2>
       </div>
