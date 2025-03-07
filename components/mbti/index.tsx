@@ -14,7 +14,7 @@ import MobileTopbar from "./mobile-topbar";
 import CQLogo from "../cq-logo";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabaseOperations";
-import { PROGRESS_KEY } from "@/lib/constants";
+import { PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_mbti_results";
@@ -92,6 +92,7 @@ export default function MBTITest() {
 
     // Store results in local storage
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
+    localStorage.setItem(SAVED_RESULTS_KEY, "false");
 
     // Redirect to results page
     setTimeout(() => {
