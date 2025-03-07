@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 
 export function UserNotFoundFallback({ username }: { username: string }) {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-3xl">
+    <div className="container mx-auto px-4 py-12 max-w-3xl mt-24">
       <Card className="p-8 text-center">
         <div className="w-24 h-24 bg-muted rounded-full mx-auto flex items-center justify-center mb-6">
           <span className="text-4xl text-muted-foreground">?</span>
@@ -29,7 +29,7 @@ export function UserNotFoundFallback({ username }: { username: string }) {
 
 export function NoTestsFallback({ username }: { username: string }) {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-24">
       <div className="max-w-3xl mx-auto">
         {/* Basic profile header */}
         <div className="text-center mb-12">
@@ -61,7 +61,7 @@ export function NoTestsFallback({ username }: { username: string }) {
 
 export function IncompleteDataFallback({ username }: { username: string }) {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 mt-24">
       <div className="max-w-3xl mx-auto">
         {/* Basic profile header */}
         <div className="text-center mb-12">

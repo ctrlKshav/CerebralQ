@@ -77,7 +77,7 @@ export default function ProfilePage({
   if (!userData) {
     return (
       <>
-        <Navbar user={user} username={viewerUsername} className="mb-16" />
+        <Navbar user={user} username={viewerUsername}  />
         <UserNotFoundFallback username={profileUsername} />
       </>
     );
@@ -87,7 +87,7 @@ export default function ProfilePage({
   if (userData.user_test_history.length === 0) {
     return (
       <>
-        <Navbar user={user} username={viewerUsername} className="mb-16" />
+        <Navbar user={user} username={viewerUsername}  />
         <NoTestsFallback username={profileUsername} />
       </>
     );
@@ -103,7 +103,7 @@ export default function ProfilePage({
   if (!hasValidPersonalityData) {
     return (
       <>
-        <Navbar user={user} username={viewerUsername} className="mb-16" />
+        <Navbar user={user} username={viewerUsername}  />
         <IncompleteDataFallback username={profileUsername} />
       </>
     );
@@ -112,8 +112,8 @@ export default function ProfilePage({
   // All good - show full profile
   return (
     <div className="min-h-screen bg-background ">
-      {user ? <Navbar user={user} username={viewerUsername} className="mb-16" /> : <Navbar className="mb-16" />}
-      <main className="container mt-16 mx-auto px-4 py-8 lg:px-8">
+      {user ? <Navbar user={user} username={viewerUsername} /> : <Navbar  />}
+      <main className="container mt-24 mx-auto px-4 py-8 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-10">
           {/* Profile header with basic user information */}
           <ProfileHeader 
