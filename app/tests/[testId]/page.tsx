@@ -1,3 +1,4 @@
+"use client"
 import Navbar from "@/components/navbar";
 import TestInformation from "@/components/test-info";
 import React from "react";
