@@ -1,5 +1,10 @@
 ﻿import { MBTI_TEST_ID } from "@/lib/constants"
 import { TestData } from "@/types/tests/mbti"
+
+export const getTestName = () => {
+  return testData[0].id;
+}
+
 export const testData: TestData[] = [
   {
     "id": MBTI_TEST_ID,

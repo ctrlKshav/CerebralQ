@@ -1,6 +1,6 @@
 ﻿import { Answers } from "@/schema/mbti";
 import type { TraitScores } from "@/types/tests/mbti";
-import { testData } from "@/data/mbti/test";
+import { testData } from "@/data/mbti/testQuestionsFull";
 
 export type MBTIResult = {
   personalityType: string;

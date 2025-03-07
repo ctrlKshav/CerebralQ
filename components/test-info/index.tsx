@@ -20,7 +20,7 @@ import {
   TestRecommendationsSection,
 } from "./test-components";
 import { MBTI_TEST_ID } from "@/lib/constants";
-import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
+import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 
 const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",

@@ -5,7 +5,7 @@ import { PersonalityTraits } from "@/components/results/personality-traits";
 import type { TraitScores } from "@/types/tests/mbti";
 import AboutPersonalityType from "./about-personality-type";
 import BigFiveConstellation from "./big-five-constellation";
-import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
+import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 
 interface PersonalityShowcaseProps {
   personalityType: string;

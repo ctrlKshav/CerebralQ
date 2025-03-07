@@ -6,7 +6,7 @@ import {
   getCareerSuggestions,
   getSimilarPersonalities,
 } from "@/lib/mbti/results";
-import { getPersonalityInsights } from "@/data/mbti/test";
+import { getPersonalityInsights } from "@/data/mbti/personalityInformation";
 
 // Import our components
 import { Hero } from "@/components/results/hero";
@@ -15,7 +15,7 @@ import { CareerSuggestions } from "@/components/results/career-suggestions";
 import { SimilarPersonalities } from "@/components/results/similar-personalities";
 import { DetailedPersonalityInsights } from "@/components/results/detailed-personality-insights";
 import AboutPersonalityType from "@/components/profile/about-personality-type";
-import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
+import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 

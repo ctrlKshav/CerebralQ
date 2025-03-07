@@ -17,7 +17,6 @@ import {
   IncompleteDataFallback,
 } from "@/components/profile/profile-fallbacks";
 import { User } from "@supabase/supabase-js";
-import ProtectedNavbar from "@/components/navbar/ProtectedNavbar";
 
 export default function ProfilePage({
   params,

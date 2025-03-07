@@ -3,7 +3,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
-import { testData } from "@/data/mbti/fullTest";
+import { testData } from "@/data/mbti/testQuestionsFull";
 import { saveProgress, loadProgress } from "@/lib/mbtiStorage";
 import { calculateMBTI } from "@/lib/calculateMbti";
 import { smoothScrollToTop } from "@/lib/utils";
@@ -12,8 +12,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import MobileTopbar from "./mobile-topbar";
 import CQLogo from "../cq-logo";
-import { saveTestResults } from "@/lib/supabaseOperations";
-import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabaseOperations";
 import { PROGRESS_KEY } from "@/lib/constants";
@@ -165,7 +163,7 @@ export default function MBTITest() {
       <Link href="/" className="hidden lg:block fixed z-50  left-8  ">
         <CQLogo className="w-36 h-36" />
       </Link>
-      <MobileTopbar currentStepText={currentStepText} />
+      <MobileTopbar currentStepText={currentStepText} testName={testData[0].test_name} />
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
