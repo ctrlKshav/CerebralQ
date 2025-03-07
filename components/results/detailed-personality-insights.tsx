@@ -193,10 +193,10 @@ export function DetailedPersonalityInsights({
             </ul>
           </Card>
 
-          <Button variant="link" className="w-full text-muted-foreground">
+          {/* <Button variant="link" className="w-full text-muted-foreground">
             <ExternalLink className="w-3 h-3 mr-1" />
             Discover more about {personalityType} psychology
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
