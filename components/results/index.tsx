@@ -197,25 +197,25 @@ export default function Results() {
         {traitScores && <PersonalityTraits traitScores={traitScores} sectionNumber={2} />}
 
         {/* Career Suggestions */}
-        <CareerSuggestions
+        {/* <CareerSuggestions
           personalityType={personalityType}
           careerSuggestions={careerSuggestions}
           sectionNumber={3}
-        />
+        /> */}
 
         {/* Similar Personalities */}
-        <SimilarPersonalities
+        {/* <SimilarPersonalities
           personalityType={personalityType}
           similarPersonalities={similarPersonalities}
           sectionNumber={4}
-        />
+        /> */}
 
         {/* Detailed Personality Insights */}
         <DetailedPersonalityInsights
           personalityType={personalityType}
           personalityAlias={personalityAlias}
           personalityInsights={personalityInsights}
-          sectionNumber={5}
+          sectionNumber={3}
         />
       </main>
     </div>
