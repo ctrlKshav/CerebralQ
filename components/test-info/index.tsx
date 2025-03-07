@@ -208,7 +208,7 @@ export default function TestInformation({ testId }: { testId: string }) {
               />
             ))}
           </div>
-          <div className="pt-4">
+          <div className="pt-4 ">
             <Link href={`/tests/${MBTI_TEST.short_code}/start-test`}>
               <Button size="lg" className="text-lg px-8 py-6">
                 Begin Test →
@@ -216,7 +216,7 @@ export default function TestInformation({ testId }: { testId: string }) {
             </Link>
           </div>
           <button
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
             onClick={() => {
               document
                 .getElementById("test-details-section")
