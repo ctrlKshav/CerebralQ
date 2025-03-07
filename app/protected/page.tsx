@@ -30,7 +30,7 @@ export default async function ProtectedPage() {
     <div>
       <Navbar user={user} username={username} />
       <div className="mt-24">
-        <TestInformation /> 
+        <TestInformation testId="mbti" /> 
       </div>
     </div>
   );

@@ -1,22 +1,22 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { PersonalityTraits } from "@/components/results/personality-traits"
-import type { TraitScores } from "@/types/tests/mbti"
-import AboutPersonalityType from "./about-personality-type"
-import BigFiveConstellation from "./big-five-constellation"
-import { personalityDescriptions } from "@/data/mbti/personalityDescriptions"
+import { motion } from "framer-motion";
+import { PersonalityTraits } from "@/components/results/personality-traits";
+import type { TraitScores } from "@/types/tests/mbti";
+import AboutPersonalityType from "./about-personality-type";
+import BigFiveConstellation from "./big-five-constellation";
+import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
 
 interface PersonalityShowcaseProps {
   personalityType: string;
   traitScores: TraitScores;
 }
 
-export default function PersonalityShowcase({ 
-  personalityType, 
+export default function PersonalityShowcase({
+  personalityType,
   traitScores,
 }: PersonalityShowcaseProps) {
-  const typeInfo = personalityDescriptions[personalityType]
+  const typeInfo = personalityDescriptions[personalityType];
 
   return (
     <section className="relative">
@@ -36,19 +36,17 @@ export default function PersonalityShowcase({
         </motion.h2>
 
         <div className="space-y-10">
-
           {/* About Personality Type Card */}
-          <AboutPersonalityType 
+          <AboutPersonalityType
             personalityType={personalityType}
             alias={typeInfo.alias}
             description={typeInfo.description}
+            sectionNumber={1}
           />
           {/* Use the PersonalityTraits component */}
-          <PersonalityTraits traitScores={traitScores} />
-          
+          <PersonalityTraits traitScores={traitScores} sectionNumber={2} />
         </div>
       </div>
     </section>
-  )
+  );
 }
-
