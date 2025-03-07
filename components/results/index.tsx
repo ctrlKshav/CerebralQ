@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ResultData } from "@/types/tests/mbti";
 import {
   getCareerSuggestions,
@@ -18,6 +18,7 @@ import AboutPersonalityType from "@/components/profile/about-personality-type";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
+import { usePDF } from "react-to-pdf";
 
 
 export default function Results() {
@@ -33,6 +34,8 @@ export default function Results() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
+  const ref = useRef(null);
+  const { toPDF, targetRef } = usePDF({filename: `${resultData.personalityType}_personality_report.pdf`});
 
   useEffect(() => {
     // Get data from localStorage and handle saving to database
@@ -174,7 +177,7 @@ export default function Results() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" ref={targetRef}>
       <main className="container mx-auto px-4 py-8 space-y-8">
         {/* Hero Section - Pass full raw data */}
         <Hero
@@ -183,6 +186,7 @@ export default function Results() {
           personalityDescription={personalityDescription}
           completionDate={completionDate}
           userId={userID}
+          toPDF={toPDF}
         />
 
         {/* About Personality Type Card */}

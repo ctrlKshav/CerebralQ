@@ -16,6 +16,7 @@ interface HeroProps {
   personalityDescription: PersonalityDescription;
   completionDate: string;
   userId: string | null;
+  toPDF: () => void;
 }
 
 export function Hero({
@@ -24,6 +25,7 @@ export function Hero({
   personalityDescription,
   completionDate,
   userId,
+  toPDF
 }: HeroProps) {
   const [username, setUsername] = useState<string | null>(null);
   const [isSharing, setIsSharing] = useState(false);
@@ -74,7 +76,7 @@ export function Hero({
   };
 
   const downloadReport = () => {
-    window.print();
+    toPDF();
   };
 
   return (
