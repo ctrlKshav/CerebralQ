@@ -24,7 +24,7 @@ import { personalityDescriptions } from "@/data/mbti/personalityDescriptions";
 
 const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
-  short_code: "MBTI",
+  short_code: "mbti",
   description:
     "Discover how you're wired with the MBTI—the world's most trusted personality framework. Get your 4-letter type (like ENFP or ISTJ) and finally understand why you thrive in chaos, hate small talk, or obsess over to-do lists.",
   features: [
@@ -116,7 +116,7 @@ const MBTI_TEST = {
 };
 
 
-export default function TestInformation() {
+export default function TestInformation({ testId }: { testId: string }) {
   const supabase = createClient();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);

@@ -9,7 +9,7 @@ export default async function Home() {
     <>
       <Navbar className="" />
       <Hero />
-      <TestsCarousel />
+      {/* <TestsCarousel /> */}
       <Features />
       <DataVisuals />
     </>
