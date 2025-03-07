@@ -8,7 +8,7 @@ export const socialLinks = [
   },
   {
     icon: Mail,
-    href: "/",
+    href: "/contact",
     label: "Email"
   }
 ] as const;
