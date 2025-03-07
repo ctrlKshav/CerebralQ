@@ -1,7 +1,21 @@
-﻿import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+﻿import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Brain, Timer, Users, Target, Award, BookOpen, FileSpreadsheet } from "lucide-react";
+import {
+  Brain,
+  Timer,
+  Users,
+  Target,
+  Award,
+  BookOpen,
+  FileSpreadsheet,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
@@ -66,7 +80,9 @@ export const FeatureBadge = ({
   label: string;
   color: string;
 }) => (
-  <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full ${color}`}>
+  <div
+    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full ${color}`}
+  >
     <Icon className="h-4 w-4" />
     <span className="text-sm font-medium">{label}</span>
   </div>
@@ -93,7 +109,9 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
         </div>
         <div className="flex justify-between items-center">
           <span className="text-muted-foreground">Duration</span>
-          <span className="font-medium">{testData.time_estimate_minutes} minutes</span>
+          <span className="font-medium">
+            {testData.time_estimate_minutes} minutes
+          </span>
         </div>
         <div className="flex justify-between items-center">
           <span className="text-muted-foreground">Age Range</span>
@@ -101,17 +119,24 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
         </div>
         <div className="flex justify-between items-center">
           <span className="text-muted-foreground">Validity Period</span>
-          <span className="font-medium">{testData.validity_period_days} days</span>
+          <span className="font-medium">
+            {testData.validity_period_days} days
+          </span>
         </div>
       </div>
       <div className="space-y-3 pt-2">
         <h4 className="font-medium">Key Benefits:</h4>
         <div className="grid gap-2">
           {testData.test_benefits.map((benefit: any, index: number) => (
-            <div key={index} className="flex items-center gap-2 bg-primary/5 p-2 rounded-lg">
+            <div
+              key={index}
+              className="flex items-center gap-2 bg-primary/5 p-2 rounded-lg"
+            >
               <benefit.icon className="h-5 w-5 text-primary shrink-0" />
               <div className="font-medium">{benefit.title}</div>
-              <div className="text-sm text-muted-foreground ml-auto">{benefit.description}</div>
+              <div className="text-sm text-muted-foreground ml-auto">
+                {benefit.description}
+              </div>
             </div>
           ))}
         </div>
@@ -132,7 +157,9 @@ export const TestDimensionsCard = ({ dimensions }: { dimensions: any[] }) => (
       {dimensions.map((dimension, index) => (
         <div key={index} className="space-y-2">
           <h3 className="font-medium text-xl">{dimension.title}</h3>
-          <p className="text-md text-muted-foreground">{dimension.description}</p>
+          <p className="text-md text-muted-foreground">
+            {dimension.description}
+          </p>
           <div className="flex gap-2">
             {dimension.types.map((type: string, i: number) => (
               <Badge key={i} variant={"default"}>
@@ -146,12 +173,12 @@ export const TestDimensionsCard = ({ dimensions }: { dimensions: any[] }) => (
   </Card>
 );
 
-export const TestResultSection = ({ 
-  result, 
-  testShortCode 
-}: { 
-  result: any,
-  testShortCode: string
+export const TestResultSection = ({
+  result,
+  testShortCode,
+}: {
+  result: any;
+  testShortCode: string;
 }) => (
   <div className="mt-24 rounded-xl p-8">
     <h2 className="text-3xl font-bold mb-8 text-center">Your Latest Result</h2>
@@ -188,18 +215,29 @@ export const TestResultSection = ({
         {result.traitScores && (
           <div className="space-y-6">
             <h4 className="text-xl font-medium">Personality Breakdown</h4>
-            {Object.entries(result.traitScores).map(([trait, score]: [string, any]) => (
-              <div key={trait} className="space-y-2">
-                <div className="flex justify-between text-lg">
-                  <span className="capitalize font-medium">{trait}</span>
-                  <span>{score.dominant === "left" ? score.leftPercentage.toFixed(0) : score.rightPercentage.toFixed(0)}%</span>
+            {Object.entries(result.traitScores).map(
+              ([trait, score]: [string, any]) => (
+                <div key={trait} className="space-y-2">
+                  <div className="flex justify-between text-lg">
+                    <span className="capitalize font-medium">{trait}</span>
+                    <span>
+                      {score.dominant === "left"
+                        ? score.leftPercentage.toFixed(0)
+                        : score.rightPercentage.toFixed(0)}
+                      %
+                    </span>
+                  </div>
+                  <Progress
+                    value={
+                      score.dominant === "left"
+                        ? score.leftPercentage.toFixed(0)
+                        : score.rightPercentage.toFixed(0)
+                    }
+                    className="h-3 bg-primary/20"
+                  />
                 </div>
-                <Progress 
-                  value={score.dominant === "left" ? score.leftPercentage.toFixed(0) : score.rightPercentage.toFixed(0)} 
-                  className="h-3 bg-primary/20" 
-                />
-              </div>
-            ))}
+              )
+            )}
           </div>
         )}
 
@@ -220,7 +258,9 @@ export const TestCitationsCard = ({ citations }: { citations: any[] }) => (
         <BookOpen className="h-6 w-6" />
         Academic Citations
       </CardTitle>
-      <CardDescription>Peer-reviewed sources informing our methodology</CardDescription>
+      <CardDescription>
+        Peer-reviewed sources informing our methodology
+      </CardDescription>
     </CardHeader>
     <CardContent>
       <ul className="list-disc pl-6 space-y-4 text-lg">
@@ -242,7 +282,11 @@ export const TestCitationsCard = ({ citations }: { citations: any[] }) => (
   </Card>
 );
 
-export const TestRecommendationsSection = ({ recommendations }: { recommendations: any[] }) => (
+export const TestRecommendationsSection = ({
+  recommendations,
+}: {
+  recommendations: any[];
+}) => (
   <div className="mt-24">
     <h2 className="text-3xl font-bold mb-8 text-center">Recommended Tests</h2>
     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -255,10 +299,17 @@ export const TestRecommendationsSection = ({ recommendations }: { recommendation
               </div>
               <div className="flex-1 space-y-3">
                 <h3 className="text-xl font-semibold">{test.name}</h3>
-                <p className="text-lg text-muted-foreground">{test.description}</p>
-                <Button variant="link" className="p-0 h-auto font-normal text-lg text-primary">
-                  Take Test →
-                </Button>
+                <p className="text-lg text-muted-foreground">
+                  {test.description}
+                </p>
+                <Link
+                  href={"/coming-soon"}
+                  className=""
+                >
+                  <Button variant="link" className="">
+                    Take Test →
+                  </Button>
+                </Link>
               </div>
             </div>
           </CardContent>
