@@ -60,7 +60,7 @@ const UnprotectedNavbar = (props: { className?: string }) => {
     "fixed top-0 left-0 right-0 w-full transition-all duration-300 z-50",
     {
       "bg-white/0 backdrop-blur-none": isAtTop,
-      "bg-white/50 backdrop-blur-md shadow-sm":
+      "bg-background/20 backdrop-blur-md shadow-sm":
         !isAtTop && scrollDirection === "down",
       "-translate-y-full": scrollDirection === "up" && !isAtTop,
     },
