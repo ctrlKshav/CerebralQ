@@ -3,7 +3,7 @@
   title: string;
   description: string;
   dimension: string;
-  icon: string;
+  icon?: string;
 }
 
 export interface TestQuestion {
@@ -11,7 +11,7 @@ export interface TestQuestion {
   text: string;
   description?: string;
   type: 'likert';
-  icon: string;
+  icon?: string;
   iconColor?: string;
   options?: Array<{
     value: string;
