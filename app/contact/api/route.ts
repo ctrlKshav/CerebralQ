@@ -20,7 +20,7 @@ export async function POST(request: Request) {
     // Send email using Resend with simple HTML template
     const { data, error } = await resend.emails.send({
       from: 'Cerebral Quotient <updates@contact.cerebralquotient.com>',
-      to: ['keshavm9978@gmail.com'],
+      to: ['keshavm9978@gmail.com', 'cerebralquotient@gmail.com'],
       subject: `New contact form submission on cerebralquotient.com from ${name}`,
       react: EmailTemplate({ name, email, message }),
       replyTo: email,
