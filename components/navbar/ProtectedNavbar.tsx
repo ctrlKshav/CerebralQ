@@ -175,29 +175,23 @@ const ProtectedNavbar = ({
                     </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuContent className="w-56 " align="end" forceMount>
                   <div className="flex flex-col space-y-1 p-2">
-                    <p className="text-sm font-medium leading-none">
+                    <p className="text-lg font-medium leading-none">
                       {username || "User"}
                     </p>
-                    <p className="text-xs leading-none text-muted-foreground">
+                    <p className="text-sm leading-none text-muted-foreground">
                       {user.email || ""}
                     </p>
                   </div>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem asChild>
-                    <Link href="/profile">
+                  <DropdownMenuItem asChild className="text-md">
+                    <Link href="/account">
                       <UserIcon className="mr-2 h-4 w-4" />
-                      <span>Profile</span>
+                      <span>Account</span>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href="/settings">
-                      <Settings className="mr-2 h-4 w-4" />
-                      <span>Settings</span>
-                    </Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuSeparator />
+                 
                   <DropdownMenuItem>
                     <LogoutButton />
                   </DropdownMenuItem>
