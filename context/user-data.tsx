@@ -1,5 +1,6 @@
 ﻿"use client"
 
+import LoadingSkeleton from "@/components/loading-skeleton";
 import { getCurrentUser } from "@/lib/supabaseOperations";
 import { User } from "@/types/supabase/users";
 import { createClient } from "@/utils/supabase/client";
@@ -43,6 +44,9 @@ export function UserDataContextProvider({
     func();
 
   }, []);
+
+  if(userData == null)
+    return <LoadingSkeleton />  
   
   return (
     <UserDataContext.Provider value={{ userData, setUserData }}>
