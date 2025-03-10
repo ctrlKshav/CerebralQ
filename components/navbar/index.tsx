@@ -6,13 +6,12 @@ import UnprotectedNavbar from "./UnprotectedNavbar";
 interface NavbarProps {
   className?: string;
   user?: User | null;
-  username?: string | null;
 }
 
-const Navbar = ({ className, user, username }: NavbarProps) => {
+const Navbar = ({ className, user }: NavbarProps) => {
   // Simply render the appropriate navbar based on whether user data exists
   if (user) {
-    return <ProtectedNavbar className={className} user={user} username={username} />;
+    return <ProtectedNavbar className={className} user={user}/>;
   }
 
   return <UnprotectedNavbar className={className} />;

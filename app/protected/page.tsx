@@ -14,7 +14,7 @@ export default async function ProtectedPage() {
 
   return (
     <div>
-      <Navbar user={userData} username={userData?.username} />
+      <Navbar user={userData}/>
       <div className="mt-24">
         <TestInformation testId="mbti" /> 
       </div>
