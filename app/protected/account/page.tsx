@@ -29,7 +29,9 @@ export default function Page() {
 
       <Link 
         href="/" 
-        className={`fixed top-2 right-4 xl:left-4 z-50`}
+        className={`fixed top-2 right-4 xl:left-4 z-50 transition-opacity duration-100 ${
+          isVisible ? "opacity-100" : "opacity-0 pointer-events-none xl:opacity-100"
+        }`}
       >
         <CQLogo className="w-24 sm:w-36 h-24 sm:h-36" />
       </Link>
