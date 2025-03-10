@@ -1,19 +1,26 @@
 ﻿"use client";
 
-import { useState } from "react";
+import { useContext } from "react";
 import { UserHeader } from "@/components/account/UserHeader";
 import { ProfileProgress } from "@/components/account/ProfileProgress";
 import { AccountDetails } from "@/components/account/AccountDetails";
-import { CognitiveStats } from "@/components/account/CognitiveStats";
+import { CognitiveMetrics } from "@/components/account/CognitiveMetrics";
 import { AssessmentProgress } from "@/components/account/AssessmentProgress";
 import { initialData } from "@/data/account";
+import { UserDataContext } from "@/context/user-data";
 
 export default function Account() {
-  const [userData, setUserData] = useState(initialData);
+  const userDataContext = useContext(UserDataContext);
 
-  const handleBioUpdate = (newBio: string) => {
-    setUserData((prev) => ({ ...prev, bio: newBio }));
-  };
+  if(userDataContext === null) {
+    return null;
+  }
+
+  const {userData, setUserData} = userDataContext
+
+  if(userData === null) {
+    return null;
+  }
 
   return (
     <main className="min-h-screen bg-background p-6 md:p-8">
@@ -24,21 +31,18 @@ export default function Account() {
           bio={userData.bio}
           rank={userData.rank}
           isInsider={userData.is_insider}
-          onEditBio={handleBioUpdate}
         />
 
         <AccountDetails
           email={userData.email}
-          memberSince={userData.member_since}
-          connectedFriends={userData.connected_friends}
-          isVerified={userData.is_verified}
+          created_at={userData.created_at}
         />
 
         <ProfileProgress />
 
-        <CognitiveStats stats={userData.cognitive_stats} />
+        <CognitiveMetrics {...userData} />
 
-        <AssessmentProgress tests_taken={userData.tests_taken} last_test_date={userData.last_test_date} />
+        <AssessmentProgress tests_taken={userData.tests_taken ?? undefined} last_test_date={userData.last_test_date ?? undefined} />
       </div>
     </main>
   );

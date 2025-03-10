@@ -1,5 +1,5 @@
 ﻿"use client";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/types/supabase/users";
 import ProtectedNavbar from "./ProtectedNavbar";
 import UnprotectedNavbar from "./UnprotectedNavbar";
 

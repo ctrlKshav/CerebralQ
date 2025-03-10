@@ -1,5 +1,5 @@
 ﻿"use client"
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import CQLogo from "@/components/cq-logo";
 import Link from "next/link";
 import Account from "@/components/account";
