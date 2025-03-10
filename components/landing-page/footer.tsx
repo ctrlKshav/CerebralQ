@@ -7,14 +7,7 @@ import CQLogo from "@/components/cq-logo";
 import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-
-const restrictedPaths = [
-  "start-test",
-  "sign-in",
-  "sign-up",
-  "forgot-password",
-  "reset-password",
-];
+import { restrictedPaths } from "@/data/footerData";
 
 export default function Footer() {
   const pathName = usePathname();
