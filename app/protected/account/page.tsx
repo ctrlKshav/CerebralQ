@@ -29,7 +29,7 @@ export default function Page() {
 
       <Link 
         href="/" 
-        className={`fixed top-2 right-4 xl:left-4 z-50 transition-opacity duration-100 ${
+        className={`fixed top-0 right-4 xl:left-4 z-50 transition-opacity duration-100 ${
           isVisible ? "opacity-100" : "opacity-0 pointer-events-none xl:opacity-100"
         }`}
       >
