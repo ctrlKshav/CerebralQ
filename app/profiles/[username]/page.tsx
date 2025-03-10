@@ -16,7 +16,8 @@ import {
   NoTestsFallback,
   IncompleteDataFallback,
 } from "@/components/profile/profile-fallbacks";
-import { User } from "@supabase/supabase-js";
+import { getCurrentUser } from "@/lib/supabaseOperations";
+import { User } from "@/types/supabase/users";
 
 export default function ProfilePage({
   params,
@@ -32,23 +33,18 @@ export default function ProfilePage({
   const [user, setUser] = useState<User | null>(null);
   const [viewerUsername, setViewerUsername] = useState<string | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
+  const router = useRouter();
 
   // Separate useEffect for auth data to clearly segregate concerns
   useEffect(() => {
     const getAuthUser = async () => {
       setAuthLoading(true);
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user) {
-        setUser(user);
-        const { data: userData } = await supabase
-          .from('users')
-          .select('username')
-          .eq('id', user.id)
-          .single();
-        setViewerUsername(userData?.username ?? null);
-      }
+      const data = await getCurrentUser();
+      if (data === null) return router.push("/sign-in");
+      setUser(data);
+      setViewerUsername(data.username);
       setAuthLoading(false);
-    }
+    };
     getAuthUser();
   }, []);
 
@@ -77,7 +73,7 @@ export default function ProfilePage({
   if (!userData) {
     return (
       <>
-        <Navbar user={user} username={viewerUsername}  />
+        <Navbar user={user} username={viewerUsername} />
         <UserNotFoundFallback username={profileUsername} />
       </>
     );
@@ -87,7 +83,7 @@ export default function ProfilePage({
   if (userData.user_test_history.length === 0) {
     return (
       <>
-        <Navbar user={user} username={viewerUsername}  />
+        <Navbar user={user} username={viewerUsername} />
         <NoTestsFallback username={profileUsername} />
       </>
     );
@@ -103,7 +99,7 @@ export default function ProfilePage({
   if (!hasValidPersonalityData) {
     return (
       <>
-        <Navbar user={user} username={viewerUsername}  />
+        <Navbar user={user} username={viewerUsername} />
         <IncompleteDataFallback username={profileUsername} />
       </>
     );
@@ -112,13 +108,13 @@ export default function ProfilePage({
   // All good - show full profile
   return (
     <div className="min-h-screen bg-background ">
-      {user ? <Navbar user={user} username={viewerUsername} /> : <Navbar  />}
+      {user ? <Navbar user={user} username={viewerUsername} /> : <Navbar />}
       <main className="container mt-24 mx-auto px-4 py-8 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-10">
           {/* Profile header with basic user information */}
-          <ProfileHeader 
-            userData={userData} 
-            isOwner={viewerUsername === profileUsername} 
+          <ProfileHeader
+            userData={userData}
+            isOwner={viewerUsername === profileUsername}
           />
 
           {/* Detailed personality analysis */}
