@@ -4,10 +4,10 @@ import { Brain } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import CQLogo from "@/components/cq-logo";
-import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
+import { socialLinks, testLinks, companyLinks } from "@/data/footer";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { restrictedPaths } from "@/data/footerData";
+import { restrictedPaths } from "@/data/footer";
 
 export default function Footer() {
   const pathName = usePathname();
