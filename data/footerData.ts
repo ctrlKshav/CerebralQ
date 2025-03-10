@@ -1,5 +1,14 @@
 ﻿import { Twitter, Mail } from "lucide-react";
 
+export const restrictedPaths = [
+  "start-test",
+  "sign-in",
+  "sign-up",
+  "forgot-password",
+  "reset-password",
+  "account"
+];
+
 export const socialLinks = [
   {
     icon: Twitter,
