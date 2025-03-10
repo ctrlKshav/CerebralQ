@@ -38,7 +38,6 @@ export default function ProfilePage({
     const getAuthUser = async () => {
       setAuthLoading(true);
       const data = await getCurrentUser();
-      if (data === null) return router.push("/sign-in");
       setViewingUserData(data);
       setAuthLoading(false);
     };
