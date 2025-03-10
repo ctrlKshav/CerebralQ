@@ -3,16 +3,16 @@
 import { Trophy, Award, Clock, Star } from "lucide-react";
 
 interface AssessmentProgressProps {
-  tests_taken: number;
-  last_test_date: string;
+  tests_taken?: number;
+  last_test_date?: string;
 }
 
 export function AssessmentProgress({
-  tests_taken,
+  tests_taken = 0,
   last_test_date,
 }: AssessmentProgressProps) {
   const totalTests = 20;
-  const progress = (tests_taken / totalTests) * 100;
+  const progress = ((tests_taken || 0) / totalTests) * 100;
   const levels = [
     { milestone: 5, title: "Novice Explorer", color: "from-blue-500" },
     { milestone: 10, title: "Cognitive Adept", color: "from-purple-500" },
@@ -21,12 +21,12 @@ export function AssessmentProgress({
   ];
 
   const currentLevel = levels.reduce((acc, level) => {
-    if (tests_taken >= level.milestone) return level;
+    if ((tests_taken || 0) >= level.milestone) return level;
     return acc;
   }, levels[0]);
 
   const nextLevel =
-    levels.find((level) => level.milestone > tests_taken) ||
+    levels.find((level) => level.milestone > (tests_taken || 0)) ||
     levels[levels.length - 1];
 
   return (
@@ -54,11 +54,14 @@ export function AssessmentProgress({
             <span className="text-sm">Last Assessment</span>
           </div>
           <p className="text-lg text-foreground">
-            {new Date(last_test_date).toLocaleDateString("en-US", {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })}
+            {last_test_date ? 
+              new Date(last_test_date).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              }) : 
+              "No assessments yet"
+            }
           </p>
         </div>
       </div>
@@ -67,7 +70,7 @@ export function AssessmentProgress({
         <div className="flex mb-2 items-center justify-between">
           <div className="flex items-center">
             <span className="text-3xl font-bold text-primary mr-2">
-              {tests_taken}
+              {tests_taken || 0}
             </span>
             <span className="text-sm text-muted-foreground">tests completed</span>
           </div>
@@ -88,9 +91,9 @@ export function AssessmentProgress({
 
         <p className="text-xs text-muted-foreground mt-4 flex items-center gap-2">
           <Star className="h-3 w-3 text-primary" />
-          {tests_taken >= totalTests
+          {(tests_taken || 0) >= totalTests
             ? "Congratulations! You've reached Elite Analyst status!"
-            : `${totalTests - tests_taken} more tests until Elite Analyst`}
+            : `${totalTests - (tests_taken || 0)} more tests until Elite Analyst`}
         </p>
       </div>
     </div>

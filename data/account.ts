@@ -22,10 +22,3 @@
   connected_friends: 34,
 };
 
-export type CongitiveStatsType = {
-    iq_score: number;
-    personality_type: string;
-    memory_percentile: number;
-    processing_speed: number;
-    emotional_eq: number;
-}

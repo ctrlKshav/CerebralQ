@@ -6,21 +6,20 @@ import { Edit2, User } from "lucide-react";
 import { UserBadges } from "../account/UserBadges";
 
 interface UserHeaderProps {
-  username: string;
-  profileImage: string;
-  bio: string;
-  rank: string;
-  isInsider: boolean;
-  onEditBio: (newBio: string) => void;
+  username?: string | null;
+  profileImage?: string | null;
+  bio?: string | null;
+  rank?: string | null;
+  isInsider?: boolean | null;
 }
 
-export function UserHeader({ username, profileImage, bio, rank, isInsider, onEditBio }: UserHeaderProps) {
+export function UserHeader({ username, profileImage, bio, rank, isInsider }: UserHeaderProps) {
   return (
     <div className="bg-card/80 dark:bg-card/30 rounded-xl p-8 backdrop-blur-sm border border-border shadow-sm">
       <div className="flex flex-col md:flex-row items-start gap-8">
         <div className="relative group">
           <Avatar className="h-32 w-32 ring-4 ring-primary/50 ring-offset-4 ring-offset-background">
-            <AvatarImage src={profileImage} alt={username} />
+            <AvatarImage src={profileImage || ""} alt={username || "Avatar"} />
             <AvatarFallback>
               <User className="h-16 w-16" />
             </AvatarFallback>

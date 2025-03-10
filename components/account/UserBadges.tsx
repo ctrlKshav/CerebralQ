@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Brain, Star, Shield } from "lucide-react";
 
 interface UserBadgesProps {
-  rank: string;
-  isInsider: boolean;
+  rank?: string | null;
+  isInsider?: boolean | null;
 }
 
 export function UserBadges({ rank, isInsider }: UserBadgesProps) {

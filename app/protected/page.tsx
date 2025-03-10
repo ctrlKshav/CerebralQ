@@ -5,30 +5,21 @@ import { createClient } from "@/utils/supabase/server";
 import { InfoIcon } from "lucide-react";
 import { redirect } from "next/navigation";
 import LoadingSkeleton from "@/components/loading-skeleton";
+import { useContext } from "react";
+import { UserDataContext, useUserData } from "@/context/user-data";
 
 export default async function ProtectedPage() {
-  const supabase = await createClient();
+  const userDataContext = useUserData();
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user) {
-    return redirect("/sign-in");
+  if(userDataContext === null) {
+    return null;
   }
-  
-  // Fetch user data including username
-  const { data: userData } = await supabase
-    .from('users')
-    .select('username')
-    .eq('id', user.id)
-    .single();
-    
-  const username = userData?.username ?? null;
+
+  const {userData, setUserData} = userDataContext
 
   return (
     <div>
-      <Navbar user={user} username={username} />
+      <Navbar user={userData} username={userData?.username} />
       <div className="mt-24">
         <TestInformation testId="mbti" /> 
       </div>
