@@ -1,6 +1,6 @@
 ﻿"use client";
 import React, { useState, useEffect, useRef } from "react";
-import { Menu, LogOut, Settings, User as UserIcon } from "lucide-react";
+import { Menu, LogOut, User as UserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -268,12 +268,7 @@ const ProtectedNavbar = ({
                           setIsSheetOpen={setIsSheetOpen}
                           title="Account"
                         />
-                        <MobileMenuItem
-                          href="/settings"
-                          isSheetOpen={isSheetOpen}
-                          setIsSheetOpen={setIsSheetOpen}
-                          title="Settings"
-                        />
+                        
                         <MobileMenuItem
                           href={`/profiles/${user.username}`}
                           isSheetOpen={isSheetOpen}
