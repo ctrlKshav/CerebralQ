@@ -185,15 +185,15 @@ export const TestResultSection = ({
 }) => (
   <div className="mt-24 rounded-xl p-8">
     <h2 className="text-3xl font-bold mb-8 text-center">Your Latest Result</h2>
-    <div className="grid md:grid-cols-2 gap-8 items-center">
+    <div className="grid md:grid-cols-2 gap-8 items-start">
       {/* Image Column */}
       <div className="relative aspect-square">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary rounded-lg flex items-center justify-center">
           <div className="text-center space-y-4">
-            <span className="text-6xl font-bold text-primary-foreground">
+            <span className="text-6xl font-bold text-white">
               {result.personalityType || result.type}
             </span>
-            <p className="text-2xl text-primary-foreground/90">
+            <p className="text-2xl text-white/90">
               {result.label}
             </p>
           </div>
@@ -245,7 +245,7 @@ export const TestResultSection = ({
         )}
 
         <Link href={`/tests/${testShortCode}/start-test`}>
-          <Button className="my-6" variant="outline">
+          <Button className="my-6" variant="default">
             Retake Test
           </Button>
         </Link>
