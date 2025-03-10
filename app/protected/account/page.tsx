@@ -1,45 +1,42 @@
-﻿"use client";
-
-import { useState } from "react";
-import { UserHeader } from "@/components/account/UserHeader";
-import { ProfileProgress } from "@/components/account/ProfileProgress";
-import { AccountDetails } from "@/components/account/AccountDetails";
-import { CognitiveStats } from "@/components/account/CognitiveStats";
-import { AssessmentProgress } from "@/components/account/AssessmentProgress";
-import { initialData } from "@/data/account";
+﻿"use client"
+import { useEffect, useState } from "react";
+import Results from "@/components/results";
+import CQLogo from "@/components/cq-logo";
+import Link from "next/link";
+import Account from "@/components/account";
 
 export default function Page() {
-  const [userData, setUserData] = useState(initialData);
-
-  const handleBioUpdate = (newBio: string) => {
-    setUserData((prev) => ({ ...prev, bio: newBio }));
-  };
-
+  const [isVisible, setIsVisible] = useState(true);
+  
+  useEffect(() => {
+    const toggleVisibility = () => {
+      // Hide logo when scrolled down more than 100px
+      if (window.scrollY > 100) {
+        setIsVisible(false);
+      } else {
+        setIsVisible(true);
+      }
+    };
+    
+    window.addEventListener("scroll", toggleVisibility);
+    
+    // Clean up event listener
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+  
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 p-6 md:p-8">
-      <div className="max-w-5xl mx-auto space-y-6">
-        <UserHeader
-          username={userData.username}
-          profileImage={userData.profile_image_url}
-          bio={userData.bio}
-          rank={userData.rank}
-          isInsider={userData.is_insider}
-          onEditBio={handleBioUpdate}
-        />
+    <div className="">
 
-        <AccountDetails
-          email={userData.email}
-          memberSince={userData.member_since}
-          connectedFriends={userData.connected_friends}
-          isVerified={userData.is_verified}
-        />
-
-        <ProfileProgress />
-
-        <CognitiveStats stats={userData.cognitive_stats} />
-
-        <AssessmentProgress tests_taken={userData.tests_taken} last_test_date={userData.last_test_date} />
+      <Link 
+        href="/" 
+        className={`fixed top-2 right-4 xl:left-4 z-50`}
+      >
+        <CQLogo className="w-24 sm:w-36 h-24 sm:h-36" />
+      </Link>
+      
+      <div className="">
+        <Account />
       </div>
-    </main>
+    </div>
   );
 }
