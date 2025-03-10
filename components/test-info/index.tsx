@@ -56,23 +56,23 @@ const MBTI_TEST = {
   scientific_validity_score: 78,
   personality_dimensions: [
     {
-      title: "Mind",
-      description: "How you interact with the world and direct your energy",
+      title: "How Do You Recharge? (Mind)",
+      description: "Are you energized by people and action (Extrovert, E), or do you love your own space and deep thoughts (Introvert, I)?",
       types: ["Extrovert (E)", "Introvert (I)"],
     },
     {
-      title: "Information",
-      description: "How you process and gather information",
+      title: "How Do You See the World? (Information)",
+      description: "Do you focus on the here-and-now details (Sensing, S), or do you dream about what could be (Intuition, N)?",
       types: ["Sensing (S)", "Intuition (N)"],
     },
     {
-      title: "Decisions",
-      description: "How you make decisions and cope with emotions",
+      title: "How Do You Decide? (Decisions)",
+      description: "Do you lead with logic and facts (Thinking, T), or do you follow your heart and values (Feeling, F)?",
       types: ["Thinking (T)", "Feeling (F)"],
     },
     {
-      title: "Structure",
-      description: "How you approach work, planning and decision-making",
+      title: "How Do You Roll? (Structure)",
+      description: "Do you love plans and structure (Judging, J), or do you go with the flow (Perceiving, P)?",
       types: ["Judging (J)", "Perceiving (P)"],
     },
   ],

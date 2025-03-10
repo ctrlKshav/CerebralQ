@@ -150,12 +150,15 @@ export const TestDimensionsCard = ({ dimensions }: { dimensions: any[] }) => (
     <CardHeader>
       <CardTitle className="flex items-center gap-2 text-2xl">
         <FileSpreadsheet className="h-6 w-6" />
-        How MBTI Works?
+        What Makes You, You?
       </CardTitle>
+      <CardDescription>
+      The MBTI looks at four parts of your personality to uncover your unique type. Let’s break it down:
+      </CardDescription>
     </CardHeader>
     <CardContent className="space-y-4">
       {dimensions.map((dimension, index) => (
-        <div key={index} className="space-y-2">
+        <div key={index} className="space-y-3">
           <h3 className="font-medium text-xl">{dimension.title}</h3>
           <p className="text-md text-muted-foreground">
             {dimension.description}
