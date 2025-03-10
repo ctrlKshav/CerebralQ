@@ -38,11 +38,11 @@ const MBTI_TEST = {
   category: "personality",
   citations: [
     {
-      name: " Myers, I. B., & McCaulley, M. H. (1985). Manual: A guide to the development and use of the Myers-Briggs Type Indicator. Consulting Psychologists Press.",
+      name: "The Myers-Briggs Type Indicator: Manual (1962): A guide to the development and use of the Myers-Briggs Type Indicator. Consulting Psychologists Press.",
       link: "https://psycnet.apa.org/record/2013-29682-000",
     },
     {
-      name: " Myers Briggs Type Indicator Score Reliability Across Studies A Meta-Analytic Reliability Generalization Study",
+      name: "Myers-Briggs Type Indicator Score Reliability Across Studies: A Meta-Analytic Reliability Generalization Study: ",
       link: "https://www.researchgate.net/publication/237444046_Myers-Briggs_Type_Indicator_Score_Reliability_Across_Studies_A_Meta-Analytic_Reliability_Generalization_Study",
     },
   ],
