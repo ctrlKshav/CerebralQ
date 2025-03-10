@@ -1,12 +1,7 @@
-import ProtectedNavbar from "@/components/navbar/ProtectedNavbar";
+"use client"
 import Navbar from "@/components/navbar";
 import TestInformation from "@/components/test-info";
-import { createClient } from "@/utils/supabase/server";
-import { InfoIcon } from "lucide-react";
-import { redirect } from "next/navigation";
-import LoadingSkeleton from "@/components/loading-skeleton";
-import { useContext } from "react";
-import { UserDataContext, useUserData } from "@/context/user-data";
+import { useUserData } from "@/context/user-data";
 
 export default async function ProtectedPage() {
   const userDataContext = useUserData();
