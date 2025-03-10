@@ -2,15 +2,11 @@
   "rewrites": [
     {
       "source": "/blog",
-      "destination": "https://wp.cerebralquotient.com/blog/"
+      "destination": "https://wp.cerebralquotient.com/"
     },
     {
       "source": "/blog/:slug*",
-      "destination": "https://wp.cerebralquotient.com/blog/:slug*/"
-    },
-    {
-      "source": "/blog(.*)",
-      "destination": "https://wp.cerebralquotient.com$1"
+      "destination": "https://wp.cerebralquotient.com/:slug*/"
     }
   ]
 }
