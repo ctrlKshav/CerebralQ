@@ -27,7 +27,7 @@ export default function ResultsPage() {
     <div className="">
       <Link 
         href="/" 
-        className={`fixed top-0 left-2 sm:top-0 sm:left-10 z-50 transition-opacity duration-100 ${
+        className={`inline w-fit fixed top-0 left-2 sm:top-0 sm:left-10 z-50 transition-opacity duration-100 ${
           isVisible ? "opacity-100" : "opacity-0 pointer-events-none sm:opacity-100"
         }`}
       >
