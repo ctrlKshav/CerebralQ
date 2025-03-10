@@ -251,7 +251,7 @@ export default function TestInformation({ testId }: { testId: string }) {
         </div>
         
         {/* Related Tests Section */}
-        <TestRecommendationsSection recommendations={MBTI_TEST.complementary_tests} />
+        {/* <TestRecommendationsSection recommendations={MBTI_TEST.complementary_tests} /> */}
       </section>
     </div>
   );
