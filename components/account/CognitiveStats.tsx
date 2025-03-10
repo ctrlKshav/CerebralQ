@@ -1,9 +1,8 @@
 ﻿import React from "react";
 import { Brain, Zap, Activity, BrainCog } from "lucide-react";
-import { initialData } from "@/app/protected/account/page";
+import { CongitiveStatsType } from "@/data/account";
 
-
-export function CognitiveStats({ stats }: { stats: typeof initialData.cognitive_stats }) {
+export function CognitiveStats({ stats }: { stats: CongitiveStatsType }) {
     return (
       <div className="bg-slate-900/30 rounded-xl p-6 backdrop-blur-sm border border-slate-800/50 hover:bg-slate-900/40 transition-all">
         <div className="flex items-center gap-2 mb-6">
