@@ -29,7 +29,6 @@ import { MobileMenuItem } from "./mobile-menu/MobileMenuItem";
 import CQLogo from "../cq-logo";
 
 const UnprotectedNavbar = (props: { className?: string }) => {
-  // ...existing code from the current navbar component...
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
     null
@@ -37,7 +36,6 @@ const UnprotectedNavbar = (props: { className?: string }) => {
   const [isAtTop, setIsAtTop] = useState(true);
   const prevScrollY = useRef(0);
 
-  // ...existing scroll handling useEffect...
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -69,7 +67,6 @@ const UnprotectedNavbar = (props: { className?: string }) => {
 
   return (
     <header className={navbarClasses}>
-      {/* ...existing header content... */}
       <div className="flex h-24 items-center px-4 max-w-7xl mx-auto">
         <div className="grid grid-cols-3 items-center w-full">
           {/* Logo - Left column */}
@@ -83,12 +80,12 @@ const UnprotectedNavbar = (props: { className?: string }) => {
           <div className="hidden lg:flex justify-center">
             <NavigationMenu>
               <NavigationMenuList>
-                {/* Blog */}
+                {/* Newsletter Link */}
                 <NavigationMenuItem>
                   Newsletter coming soon! Click&nbsp;
                   <NavigationMenuLink
                    className="underline"
-                    href={`/sign-up`}
+                    href={`/sign-up?source=newsletter`}
                   >
                     here
                   </NavigationMenuLink>
@@ -135,32 +132,11 @@ const UnprotectedNavbar = (props: { className?: string }) => {
 
                   <div className="flex-grow overflow-y-auto">
                     <div className="space-y-2 p-4">
-                      {/* Mobile Assessment Items */}
+                      {/* Mobile Newsletter Link */}
                       <div className="space-y-2 pb-4 border-b">
-                        <MobileMenuSection
-                          title="Assessments"
-                          data={assessmentItems}
-                          setIsSheetOpen={setIsSheetOpen}
-                        />
-                      </div>
-
-                      {/* Mobile Community Items */}
-                      <div className="space-y-2 pb-4 border-b">
-                        <MobileMenuSection
-                          title="Community"
-                          data={communityItems}
-                          setIsSheetOpen={setIsSheetOpen}
-                        />
-                      </div>
-
-                      {/* Mobile Blog Item */}
-                      <div className="space-y-2 pb-4 border-b">
-                        <MobileMenuItem
-                          href="/blog"
-                          isSheetOpen={isSheetOpen}
-                          setIsSheetOpen={setIsSheetOpen}
-                          title="Blog"
-                        />
+                        <div className="p-3">
+                          Newsletter coming soon! <Link href="/sign-up?source=newsletter" className="underline" onClick={() => setIsSheetOpen(false)}>Sign up here</Link>
+                        </div>
                       </div>
                     </div>
                   </div>

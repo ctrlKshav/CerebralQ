@@ -4,11 +4,9 @@ import { Menu, LogOut, Settings, User as UserIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
   NavigationMenuLink,
+  NavigationMenuItem,
   NavigationMenuList,
-  NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import {
@@ -112,44 +110,9 @@ const ProtectedNavbar = ({
           <div className="hidden lg:flex justify-center">
             <NavigationMenu>
               <NavigationMenuList>
-                {/* Assessments Menu */}
+                {/* Newsletter Link */}
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="h-auto p-2 bg-transparent">
-                    <Link href="/tests">
-                      <span className="flex items-center text-base">
-                        Assessments
-                      </span>
-                    </Link>
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <MenuSection data={assessmentItems} />
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                {/* Community */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="h-auto p-2 bg-transparent">
-                    <Link href="/community">
-                      <span className="flex items-center text-base">
-                        Community
-                      </span>
-                    </Link>
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <MenuSection data={protectedCommunityItems} />
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                {/* Dashboard */}
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    className={cn(
-                      "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
-                    )}
-                    href={`/profiles/${username}`}
-                  >
-                    Dashboard
-                  </NavigationMenuLink>
+                 Hello, {username}!
                 </NavigationMenuItem>
               </NavigationMenuList>
               <NavigationMenuViewport className="origin-top-center" />
@@ -191,12 +154,7 @@ const ProtectedNavbar = ({
                       <span>Profile</span>
                     </Link>
                   </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <Link href="/settings">
-                      <Settings className="mr-2 h-4 w-4" />
-                      <span>Settings</span>
-                    </Link>
-                  </DropdownMenuItem>
+                 
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <LogoutButton />
@@ -251,43 +209,16 @@ const ProtectedNavbar = ({
 
                   <div className="flex-grow overflow-y-auto">
                     <div className="space-y-2 p-4">
-                      {/* Mobile Assessment Items */}
-                      <div className="space-y-2 pb-4 border-b">
-                        <MobileMenuSection
-                          title="Assessments"
-                          data={assessmentItems}
-                          setIsSheetOpen={setIsSheetOpen}
-                        />
-                      </div>
-
-                      {/* Mobile Community Items */}
-                      <div className="space-y-2 pb-4 border-b">
-                        <MobileMenuSection
-                          title="Community"
-                          data={protectedCommunityItems}
-                          setIsSheetOpen={setIsSheetOpen}
-                        />
-                      </div>
+                      
 
                       <div className="space-y-2 pb-4 border-b">
-                        <MobileMenuItem
-                          href="/profile"
-                          isSheetOpen={isSheetOpen}
-                          setIsSheetOpen={setIsSheetOpen}
-                          title="Profile"
-                        />
-                        <MobileMenuItem
-                          href="/settings"
-                          isSheetOpen={isSheetOpen}
-                          setIsSheetOpen={setIsSheetOpen}
-                          title="Settings"
-                        />
                         <MobileMenuItem
                           href={`/profiles/${username}`}
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
                           title="Dashboard"
                         />
+                        
                       </div>
                     </div>
                   </div>

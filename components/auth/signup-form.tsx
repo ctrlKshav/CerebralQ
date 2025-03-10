@@ -33,6 +33,10 @@ export function SignupForm({
     resolver: zodResolver(signupSchema),
   });
   const [authMessage, setAuthMessage] = useState<{type: string, message: string} | null>(null);
+  
+  // Check if user came from newsletter link
+  const source = searchParams.get('source');
+  const isNewsletterSignup = source === 'newsletter';
 
   // Parse and display message from URL search params
   useEffect(() => {
@@ -66,9 +70,14 @@ export function SignupForm({
           <form className="p-6 md:p-8" onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">Create an account</h1>
+                <h1 className="text-2xl font-bold">
+                  {isNewsletterSignup ? "Join Our Newsletter" : "Create an account"}
+                </h1>
                 <p className="text-balance text-muted-foreground">
-                  Sign up for your Cerebral Quotient account
+                  {isNewsletterSignup 
+                    ? "Sign up to receive updates and insights"
+                    : "Sign up for your Cerebral Quotient account"
+                  }
                 </p>
               </div>
               <div className="grid gap-2">
@@ -124,7 +133,7 @@ export function SignupForm({
                 )}
               </div>
               <Button type="submit" className="w-full" disabled={isSubmitting}>
-                {isSubmitting ? "Signing Up..." : "Sign Up"}
+                {isSubmitting ? "Signing Up..." : isNewsletterSignup ? "Subscribe" : "Sign Up"}
               </Button>
               <div className="text-center text-sm">
                 Already have an account?{" "}
@@ -136,8 +145,8 @@ export function SignupForm({
           </form>
           <div className="relative hidden bg-muted md:block">
             <img
-              src="/placeholder.svg"
-              alt="Image"
+              src={isNewsletterSignup ? "/newsletter-image.svg" : "/placeholder.svg"}
+              alt={isNewsletterSignup ? "Newsletter Signup" : "Account Creation"}
               className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
             />
           </div>
