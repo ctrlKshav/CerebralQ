@@ -2,7 +2,6 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Shield, Mail, Users, Calendar } from "lucide-react";
-import { format } from "date-fns";
 
 interface AccountDetailsProps {
   email: string;
@@ -31,7 +30,11 @@ export function AccountDetails({ email, memberSince, connectedFriends, isVerifie
             <span>Member Since</span>
           </div>
           <p className="text-foreground font-medium">
-            {format(new Date(memberSince), "MMMM yyyy")}
+            {new Date(memberSince).toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
           </p>
         </div>
 
