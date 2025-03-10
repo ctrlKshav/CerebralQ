@@ -6,7 +6,6 @@ import Navbar from "@/components/navbar";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
-  redirect("/tests/mbti")
   return (
     <>
       <Navbar className="" />
