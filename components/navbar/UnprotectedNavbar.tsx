@@ -83,43 +83,16 @@ const UnprotectedNavbar = (props: { className?: string }) => {
           <div className="hidden lg:flex justify-center">
             <NavigationMenu>
               <NavigationMenuList>
-                {/* ...existing navigation menu items... */}
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="h-auto p-2 bg-transparent">
-                    <Link href="/tests">
-                      <span className="flex items-center text-base">
-                        Assessments
-                      </span>
-                    </Link>
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <MenuSection data={assessmentItems} />
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="h-auto p-2 bg-transparent">
-                    <Link href="/community">
-                      <span className="flex items-center text-base">
-                        Community
-                      </span>
-                    </Link>
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <MenuSection data={communityItems} />
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-
                 {/* Blog */}
                 <NavigationMenuItem>
+                  Newsletter coming soon! Click&nbsp;
                   <NavigationMenuLink
-                    className={cn(
-                      "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
-                    )}
-                    href={`/blog`}
+                   className="underline"
+                    href={`/sign-up`}
                   >
-                    Blog
+                    here
                   </NavigationMenuLink>
+                  &nbsp;to sign up
                 </NavigationMenuItem>
               </NavigationMenuList>
               <NavigationMenuViewport className="origin-top-center" />
