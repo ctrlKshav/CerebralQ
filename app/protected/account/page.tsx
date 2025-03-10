@@ -1,6 +1,5 @@
 ﻿"use client"
 import { useEffect, useState } from "react";
-import Results from "@/components/results";
 import CQLogo from "@/components/cq-logo";
 import Link from "next/link";
 import Account from "@/components/account";
@@ -25,8 +24,7 @@ export default function Page() {
   }, []);
   
   return (
-    <div className="">
-
+    <div className="min-h-screen bg-background">
       <Link 
         href="/" 
         className={`fixed top-0 right-4 xl:left-4 z-50 transition-opacity duration-100 ${
@@ -36,7 +34,7 @@ export default function Page() {
         <CQLogo className="w-24 sm:w-36 h-24 sm:h-36" />
       </Link>
       
-      <div className="">
+      <div className="relative">
         <Account />
       </div>
     </div>
