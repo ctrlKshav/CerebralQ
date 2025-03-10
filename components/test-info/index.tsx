@@ -26,7 +26,7 @@ const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
   short_code: "mbti",
   description:
-    "Discover how you're wired with the MBTI—the world's most trusted personality framework. Get your 4-letter type (like ENFP or ISTJ) and finally understand why you thrive in chaos, hate small talk, or obsess over to-do lists.",
+    "You are about to go on a self-discovery journey. With MBTI—the world’s most beloved personality tool — let’s find out who you really are. Get your unique 4-letter type (like ENFP or ISTJ) and start to see why you light up in chaos, shy away from small talk, or love checking off those to-do lists. Ready?",
   features: [
     { icon: Timer, label: "12 mins", color: "bg-blue-100 text-blue-700" },
     {
