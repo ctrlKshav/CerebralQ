@@ -1,28 +1,15 @@
 ﻿"use client";
 import React from "react";
-import { Brain } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
 import CQLogo from "@/components/cq-logo";
 import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
-import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-const restrictedPaths = [
-  "start-test",
-  "sign-in",
-  "sign-up",
-  "forgot-password",
-  "reset-password",
-];
+
 
 export default function Footer() {
-  const pathName = usePathname();
-  for (const path of restrictedPaths) {
-    if (pathName.includes(path)) {
-      return null;
-    }
-  }
+  
 
   return (
     <footer className="bg-card text-card-foreground border-t">
@@ -114,8 +101,7 @@ export default function Footer() {
               </a>
             </div>
             <p className="text-sm text-muted-foreground">
-              The C4E Collective crafts smart marketing and communication
-              strategies for individuals, startups, and businesses.
+              C4E is a collective of dreamers and doers.
             </p>
           </div>
         </div>

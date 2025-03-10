@@ -1,16 +1,11 @@
-﻿import { Twitter, Mail } from "lucide-react";
+﻿import { Instagram, Mail } from "lucide-react";
 
 export const socialLinks = [
   {
-    icon: Twitter,
-    href: "/",
-    label: "Twitter"
+    icon: Instagram,
+    href: "https://www.instagram.com/cerebralquotient",
+    label: "Instagram"
   },
-  {
-    icon: Mail,
-    href: "/contact",
-    label: "Email"
-  }
 ] as const;
 
 export const testLinks = [
@@ -18,36 +13,24 @@ export const testLinks = [
     name: "MBTI Assessment",
     href: "/tests/mbti"
   },
-  {
-    name: "Big Five Personality",
-    href: "/tests/ocean"
-  },
-  {
-    name: "IQ Test",
-    href: "/tests/iq"
-  },
-  {
-    name: "Career Aptitude",
-    href: "/tests/career-aptitude"
-  }
+  
 ] as const;
 
 export const companyLinks = [
-  {
-    name: "About Us",
-    href: "/about"
-  },
+
   {
     name: "Blog",
-    href: "/blog"
+    href: "https://wp.cerebralquotient.com/"
   },
-  {
-    name: "Careers",
-    href: "/careers"
-  },
+  
   {
     name: "Contact",
     href: "/contact"
+  },
+  {
+    name: "Newsletter",
+    href: "/sign-up?source=newsletter"
   }
+
 ] as const;
 
