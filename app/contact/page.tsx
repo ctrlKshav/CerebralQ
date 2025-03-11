@@ -1,4 +1,4 @@
-﻿import Contact from "@/components/contact/contact";
+﻿import Contact from "@/components/contact";
 import Navbar from "@/components/navbar";
 import React from "react";
 

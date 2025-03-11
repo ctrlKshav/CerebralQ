@@ -24,6 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
+import { ContactInfo } from "./contact-info";
 
 // Form schema using zod
 const formSchema = z.object({
@@ -91,56 +92,7 @@ export default function Contact() {
     <div className="min-h-screen bg-gradient-to-br from-background to-card px-6 md:px-12 py-10">
       <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-12">
         {/* Left Column - Contact Info */}
-        <div className="space-y-6">
-          <div>
-            <h2 className="text-3xl font-bold text-foreground">Contact Us</h2>
-            <p className="text-muted-foreground">
-              We'd love to hear from you. Reach out to us anytime.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <ContactCard
-              icon={PhoneIcon}
-              title="Phone"
-              content="+91 9999999999"
-            />
-            <ContactCard
-              icon={MailIcon}
-              title="Email"
-              content="team@c4elabs.com"
-            />
-            <ContactCard
-              icon={MapPinIcon}
-              title="Address"
-              content="Makarba, Ahmedabad"
-            />
-          </div>
-          <div className="mt-4">
-            <h3 className="text-foreground font-medium text-lg mb-3">
-              Connect With Us
-            </h3>
-            <div className="flex flex-wrap gap-3">
-              <button
-                className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-opacity-80 transition"
-                aria-label="Share"
-              >
-                <Share2Icon size={20} />
-              </button>
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-opacity-80 transition"
-                  aria-label={social.label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {React.createElement(social.icon, { size: 20 })}
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
+        <ContactInfo />
 
         {/* Right Column - Contact Form */}
         <div className="p-8 bg-card rounded-2xl shadow-lg border-2">
