@@ -19,7 +19,7 @@ export function UserNotFoundFallback({ username }: { username: string }) {
             <Link href="/">Return to Homepage</Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link href="/tests">Explore Tests</Link>
+            <Link href="/tests/mbti">Explore Tests</Link>
           </Button>
         </div>
       </Card>
@@ -51,7 +51,7 @@ export function NoTestsFallback({ username }: { username: string }) {
             {username} hasn't taken any personality tests yet. Check back later or take a test yourself!
           </p>
           <Button asChild>
-            <Link href="/tests">Take a Personality Test</Link>
+            <Link href="/tests/mbti">Take a Personality Test</Link>
           </Button>
         </Card>
       </div>
@@ -84,7 +84,7 @@ export function IncompleteDataFallback({ username }: { username: string }) {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild>
-              <Link href="/tests">Take a Test</Link>
+              <Link href="/tests/mbti">Take a Test</Link>
             </Button>
             <Button variant="outline" asChild>
               <Link href="/">Return to Homepage</Link>
