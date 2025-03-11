@@ -84,7 +84,7 @@ const UnprotectedNavbar = (props: { className?: string }) => {
                 <NavigationMenuItem>
                   Newsletter coming soon! Click&nbsp;
                   <NavigationMenuLink
-                   className="underline"
+                    className="underline"
                     href={`/sign-up?source=newsletter`}
                   >
                     here
@@ -133,11 +133,20 @@ const UnprotectedNavbar = (props: { className?: string }) => {
                   <div className="flex-grow overflow-y-auto">
                     <div className="space-y-2 p-4">
                       {/* Mobile Newsletter Link */}
-                      <div className="space-y-2 pb-4 border-b">
-                        <div className="p-3">
-                          Newsletter coming soon! <Link href="/sign-up?source=newsletter" className="underline" onClick={() => setIsSheetOpen(false)}>Sign up here</Link>
-                        </div>
-                      </div>
+
+                      <MobileMenuItem
+                        href={`/sign-up?source=newsletter`}
+                        isSheetOpen={isSheetOpen}
+                        setIsSheetOpen={setIsSheetOpen}
+                        title="Newsletter"
+                      />
+
+                      <MobileMenuItem
+                        href={`/blog`}
+                        isSheetOpen={isSheetOpen}
+                        setIsSheetOpen={setIsSheetOpen}
+                        title="Blog"
+                      />
                     </div>
                   </div>
 
