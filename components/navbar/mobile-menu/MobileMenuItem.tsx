@@ -13,6 +13,7 @@ export const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
   setIsSheetOpen,
   icon,
 }) => {
+  const Icon = icon;
   return (
     <Link
       href={href}
@@ -23,7 +24,7 @@ export const MobileMenuItem: React.FC<MobileMenuItemProps> = ({
       )}
     >
       <div className="flex items-center space-x-2">
-        {icon && icon}
+        {Icon && <Icon />}
         <span>{title}</span>
       </div>
       {children}

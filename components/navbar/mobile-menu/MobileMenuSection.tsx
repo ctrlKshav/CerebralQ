@@ -29,7 +29,7 @@ export const MobileMenuSection: React.FC<MobileMenuSectionType> = ({title, data,
               key={item.id} 
               title={item.title} 
               href={item.link ?? "/"} 
-              icon={item.icon()}
+              icon={item.icon}
             />
           ))}
         </div>

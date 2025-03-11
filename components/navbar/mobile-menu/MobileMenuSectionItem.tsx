@@ -5,6 +5,7 @@ import Link from "next/link"
 
 export const MobileItem: React.FC<MenuSectionItemProps> = (
   ({ title, href, icon, children, ...props }) => {
+    const Icon = icon;
   return (
     <Link
       href={href} 
@@ -13,7 +14,7 @@ export const MobileItem: React.FC<MenuSectionItemProps> = (
       rel={href.startsWith('http') ? "noopener noreferrer" : undefined}
     >
       <div className="flex items-center gap-2">
-        {icon}
+        {Icon && <Icon className="w-5 h-5 text-primary" />}
         <div className="font-medium text-base leading-none">
           {title}
         </div>

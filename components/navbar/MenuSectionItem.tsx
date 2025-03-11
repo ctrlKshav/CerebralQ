@@ -9,6 +9,7 @@ export const MenuSectionItem: React.FC<MenuSectionItemProps> = ({
   icon,
   ...props
 }) => {
+  const Icon = icon;
   return (
     <li>
       <NavigationMenuLink
@@ -18,8 +19,10 @@ export const MenuSectionItem: React.FC<MenuSectionItemProps> = ({
         {...props}
       >
         <div className="flex items-center gap-2 group">
-          {icon("text-primary group-hover:text-white")}
-          <div className="text-base font-medium leading-none group-hover:text-white">{title}</div>
+          {Icon && <Icon className="text-primary group-hover:text-white" />}
+          <div className="text-base font-medium leading-none group-hover:text-white">
+            {title}
+          </div>
         </div>
         {children && (
           <p className="line-clamp-2 text-base leading-snug text-muted-foreground group-hover:text-white">
