@@ -9,15 +9,18 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import {
   Brain,
-  Timer,
-  Users,
-  Target,
-  Award,
   BookOpen,
+  InfoIcon,
   FileSpreadsheet,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export const TestTypeBadge = ({ type }: { type: string }) => {
   const colors = {
@@ -118,7 +121,22 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
           <span className="font-medium">{testData.min_age}+ years</span>
         </div>
         <div className="flex justify-between items-center">
-          <span className="text-muted-foreground">Validity Period</span>
+          <span className="text-muted-foreground flex items-center gap-1.5">
+            Validity Period
+            <TooltipProvider delayDuration={100}>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <InfoIcon className="h-4 w-4 cursor-help text-muted-foreground" />
+                </TooltipTrigger>
+                <TooltipContent side="right" className="max-w-xs p-3 text-white">
+                  <p>
+                    Sign up for an account and we'll send you a reminder before
+                    your test results expire!
+                  </p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </span>
           <span className="font-medium">
             {testData.validity_period_days} days
           </span>
@@ -153,7 +171,8 @@ export const TestDimensionsCard = ({ dimensions }: { dimensions: any[] }) => (
         What Makes You, You?
       </CardTitle>
       <CardDescription>
-      The MBTI looks at four parts of your personality to uncover your unique type. Let’s break it down:
+        The MBTI looks at four parts of your personality to uncover your unique
+        type. Let’s break it down:
       </CardDescription>
     </CardHeader>
     <CardContent className="space-y-4">
@@ -193,9 +212,7 @@ export const TestResultSection = ({
             <span className="text-6xl font-bold text-white">
               {result.personalityType || result.type}
             </span>
-            <p className="text-2xl text-white/90">
-              {result.label}
-            </p>
+            <p className="text-2xl text-white/90">{result.label}</p>
           </div>
         </div>
       </div>
@@ -305,10 +322,7 @@ export const TestRecommendationsSection = ({
                 <p className="text-lg text-muted-foreground">
                   {test.description}
                 </p>
-                <Link
-                  href={"/coming-soon"}
-                  className=""
-                >
+                <Link href={"/coming-soon"} className="">
                   <Button variant="link" className="">
                     Take Test →
                   </Button>
