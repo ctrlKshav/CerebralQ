@@ -110,9 +110,26 @@ const ProtectedNavbar = ({
           <div className="hidden lg:flex justify-center">
             <NavigationMenu>
               <NavigationMenuList>
-                {/* Newsletter Link */}
                 <NavigationMenuItem>
-                 Hello, {username}!
+                  <NavigationMenuLink
+                    className={cn(
+                      "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
+                    )}
+                    href={`/blog`}
+                  >
+                    Blog
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    className={cn(
+                      "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
+                    )}
+                    href={`/profiles/${username}`}
+                  >
+                    Dashboard
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
               <NavigationMenuViewport className="origin-top-center" />
@@ -149,12 +166,12 @@ const ProtectedNavbar = ({
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href="/profile">
+                    <Link href={`/profiles/${username}`}>
                       <UserIcon className="mr-2 h-4 w-4" />
                       <span>Profile</span>
                     </Link>
                   </DropdownMenuItem>
-                 
+
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
                     <LogoutButton />
@@ -209,8 +226,6 @@ const ProtectedNavbar = ({
 
                   <div className="flex-grow overflow-y-auto">
                     <div className="space-y-2 p-4">
-                      
-
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuItem
                           href={`/profiles/${username}`}
@@ -218,7 +233,14 @@ const ProtectedNavbar = ({
                           setIsSheetOpen={setIsSheetOpen}
                           title="Dashboard"
                         />
-                        
+
+                        <MobileMenuItem
+                          href={`/blog`}
+                          isSheetOpen={isSheetOpen}
+                          setIsSheetOpen={setIsSheetOpen}
+                          title="Blog"
+                        />
+
                       </div>
                     </div>
                   </div>
