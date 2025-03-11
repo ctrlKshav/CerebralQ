@@ -145,7 +145,13 @@ export function SignupForm({
             </div>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <Image src="/signup1_book.jpeg" alt="Cerebral Quotient" layout="fill" objectFit="cover" />
+            <Image 
+              src={isNewsletterSignup ? "/signup2_nl_storyboard.jpeg" : "/signup1_book.jpeg"} 
+              alt={isNewsletterSignup ? "Cerebral Quotient Newsletter" : "Cerebral Quotient"} 
+              layout="fill" 
+              objectFit="cover" 
+              priority={true}
+            />
           </div>
         </CardContent>
       </Card>
