@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { AuthPagesFormMessage } from "@/components/form-message";
 import { parseAuthMessage } from "@/lib/utils";
+import Image from "next/image";
 
 interface SignupFormProps extends React.ComponentProps<"div"> {
   searchParams: URLSearchParams;
@@ -144,11 +145,7 @@ export function SignupForm({
             </div>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <img
-              src={isNewsletterSignup ? "/newsletter-image.svg" : "/placeholder.svg"}
-              alt={isNewsletterSignup ? "Newsletter Signup" : "Account Creation"}
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-            />
+            <Image src="/signup1_book.jpeg" alt="Cerebral Quotient" layout="fill" objectFit="cover" />
           </div>
         </CardContent>
       </Card>

@@ -15,6 +15,7 @@ import { signInAction } from "@/app/actions";
 import { RETURN_URL_KEY } from "@/lib/constants";
 import { toast } from "sonner";
 import { parseAuthMessage } from "@/lib/utils";
+import Image from "next/image";
 
 interface SigninFormProps extends React.ComponentProps<"div"> {
   searchParams: URLSearchParams
@@ -119,11 +120,7 @@ export function SigninForm({
             </div>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <img
-              src="/placeholder.svg"
-              alt="Image"
-              className="absolute inset-0 h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
-            />
+            <Image src="/signin1_glasses.png" alt="Cerebral Quotient " layout="fill" objectFit="cover" />
           </div>
         </CardContent>
       </Card>
