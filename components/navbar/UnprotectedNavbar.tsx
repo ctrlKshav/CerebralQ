@@ -89,7 +89,7 @@ const UnprotectedNavbar = (props: { className?: string }) => {
                   >
                     here
                   </NavigationMenuLink>
-                  &nbsp;to sign up
+                  &nbsp;to sign up.
                 </NavigationMenuItem>
               </NavigationMenuList>
               <NavigationMenuViewport className="origin-top-center" />

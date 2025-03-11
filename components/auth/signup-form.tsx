@@ -72,12 +72,12 @@ export function SignupForm({
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
                 <h1 className="text-2xl font-bold">
-                  {isNewsletterSignup ? "Join Our Newsletter" : "Create an account"}
+                  {isNewsletterSignup ? "Join Our Newsletter." : "Create an account."}
                 </h1>
                 <p className="text-balance text-muted-foreground">
                   {isNewsletterSignup 
-                    ? "Sign up to receive updates and insights"
-                    : "Sign up for your Cerebral Quotient account"
+                    ? "Sign up to receive updates and insights."
+                    : "Sign up for your Cerebral Quotient account."
                   }
                 </p>
               </div>
