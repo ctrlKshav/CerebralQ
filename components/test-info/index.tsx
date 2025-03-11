@@ -229,7 +229,7 @@ export default function TestInformation({ testId }: { testId: string }) {
       </section>
 
       <section
-        className="max-w-7xl mx-auto px-4 pb-20"
+        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
         id="test-details-section"
       >
         <div className="grid gap-12 md:gap-6 md:grid-cols-2 text-md">
