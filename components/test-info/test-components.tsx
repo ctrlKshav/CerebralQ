@@ -7,12 +7,7 @@
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import {
-  Brain,
-  BookOpen,
-  InfoIcon,
-  FileSpreadsheet,
-} from "lucide-react";
+import { Brain, BookOpen, InfoIcon, FileSpreadsheet } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -128,7 +123,10 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
                 <TooltipTrigger asChild>
                   <InfoIcon className="h-4 w-4 cursor-help text-muted-foreground" />
                 </TooltipTrigger>
-                <TooltipContent side="right" className="max-w-xs p-3 text-white">
+                <TooltipContent
+                  side="right"
+                  className="max-w-xs p-3 text-white"
+                >
                   <p>
                     Sign up for an account and we'll send you a reminder before
                     your test results expire!
@@ -234,7 +232,7 @@ export const TestResultSection = ({
 
         {result.traitScores && (
           <div className="space-y-6">
-            <h4 className="text-xl font-medium">Personality Breakdown</h4>
+            <h4 className="text-xl font-medium"> Your Unique {result.personalityType} Blueprint</h4>
             {Object.entries(result.traitScores).map(
               ([trait, score]: [string, any]) => (
                 <div key={trait} className="space-y-2">
@@ -261,7 +259,10 @@ export const TestResultSection = ({
           </div>
         )}
 
-        <Link href={`/tests/${testShortCode}/start-test`} className="self-center">
+        <Link
+          href={`/tests/${testShortCode}/start-test`}
+          className="self-center"
+        >
           <Button className="my-6" variant="default">
             Retake Test
           </Button>
