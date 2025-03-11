@@ -105,7 +105,7 @@ export default function ProfilePage({
   return (
     <div className="min-h-screen bg-background ">
       {viewingUserData ? (
-        <Navbar user={viewingUserData}  />
+        <Navbar user={viewingUserData} />
       ) : (
         <Navbar />
       )}
@@ -122,7 +122,7 @@ export default function ProfilePage({
             personalityType={profileUserData.raw_score.personalityType}
             traitScores={profileUserData.raw_score.traitScores}
           />
-
+          
           {/* MBTI-specific insights and comparisons */}
           <MBTIInsights personalityType={profileUserData.raw_score.personalityType} />
 

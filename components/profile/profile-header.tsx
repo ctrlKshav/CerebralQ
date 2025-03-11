@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { handleShare } from "@/lib/shareUtils";
 import Link from "next/link";
+import InsiderBadge from "@/components/insider-badge";
 
 interface ProfileHeaderProps {
   userData: {
@@ -15,6 +16,7 @@ interface ProfileHeaderProps {
     bio: string;
     tests_taken: number;
     last_test_date: string;
+    is_insider?: boolean;
   };
   isOwner: boolean;
 }
@@ -64,11 +66,12 @@ export default function ProfileHeader({
 
         {/* Profile info */}
         <div className="flex-1 space-y-5 text-center md:text-left">
-          {/* Username and verified badge */}
-          <div className="flex items-center justify-center md:justify-start gap-2">
+          {/* Username, verified badge and insider badge */}
+          <div className="flex flex-wrap items-center justify-center md:justify-start gap-2">
             <h1 className="text-4xl md:text-5xl font-bold">
               {userData.username}
             </h1>
+            {userData.is_insider && <InsiderBadge size="lg" className="ml-2" />}
           </div>
 
           {/* Bio with fade effect */}

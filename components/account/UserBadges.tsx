@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Brain, Star, Shield } from "lucide-react";
+import InsiderBadge from "@/components/insider-badge";
 
 interface UserBadgesProps {
   rank?: string | null;
@@ -16,10 +17,7 @@ export function UserBadges({ rank, isInsider }: UserBadgesProps) {
         {rank}
       </Badge>
       {isInsider && (
-        <Badge variant="outline" className="text-sm font-normal bg-purple-500/10 dark:bg-purple-500/20 text-purple-700 dark:text-purple-300 border-purple-200 dark:border-purple-800">
-          <Shield className="w-3 h-3 mr-1" />
-          C4E Insider
-        </Badge>
+        <InsiderBadge />
       )}
     </div>
   );
