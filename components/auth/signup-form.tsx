@@ -37,15 +37,15 @@ export function SignupForm({
   // Parse and display message from URL search params
   useEffect(() => {
     const message = parseAuthMessage(searchParams);
-    
+
     if (message) {
       setAuthMessage(message);
       // Show toast based on message type
-      if (message.type === 'success') {
+      if (message.type === "success") {
         toast.success(message.message);
-      } else if (message.type === 'error') {
+      } else if (message.type === "error") {
         toast.error(message.message);
-      } else if (message.type === 'info') {
+      } else if (message.type === "info") {
         toast.info(message.message);
       }
     }
@@ -123,6 +123,20 @@ export function SignupForm({
                   </p>
                 )}
               </div>
+
+              <div className="grid gap-2">
+                <Label htmlFor="confirmPassword">Referral Code (Optional)</Label>
+                <Input
+                  id="referralCode"
+                  type="text"
+                  {...register("referralCode")}
+                />
+                {errors.referralCode && (
+                  <p className="text-sm text-red-500">
+                    {errors.referralCode.message}
+                  </p>
+                )}
+              </div>
               <Button type="submit" className="w-full" disabled={isSubmitting}>
                 {isSubmitting ? "Signing Up..." : "Sign Up"}
               </Button>
@@ -143,19 +157,19 @@ export function SignupForm({
           </div>
         </CardContent>
       </Card>
-      
+
       {/* Display form message if exists */}
       {authMessage && (
-        <AuthPagesFormMessage 
-          authActionResultType={authMessage.type} 
-          authActionResultMessage={authMessage.message} 
+        <AuthPagesFormMessage
+          authActionResultType={authMessage.type}
+          authActionResultMessage={authMessage.message}
         />
       )}
-      
+
       <div className="space-y-4 text-center">
         <div className="text-balance text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
-          By signing up, you agree to our <Link href="/privacy">Terms of Service</Link> and{" "}
-
+          By signing up, you agree to our{" "}
+          <Link href="/privacy">Terms of Service</Link> and{" "}
           <Link href="/privacy">Privacy Policy</Link>
         </div>
         <Button variant="outline" className="mx-auto" asChild>

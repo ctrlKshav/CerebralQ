@@ -11,7 +11,7 @@ import {
   Share2Icon,
   LucideIcon,
 } from "lucide-react";
-import { socialLinks } from "@/data/footerData";
+import { socialLinks } from "@/data/footer";
 
 type ContactCardProps = {
   icon: LucideIcon;
