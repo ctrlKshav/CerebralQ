@@ -115,17 +115,6 @@ const ProtectedNavbar = ({
                     className={cn(
                       "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
                     )}
-                    href={`/blog`}
-                  >
-                    Blog
-                  </NavigationMenuLink>
-                </NavigationMenuItem>
-
-                <NavigationMenuItem>
-                  <NavigationMenuLink
-                    className={cn(
-                      "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
-                    )}
                     href={`/profiles/${username}`}
                   >
                     Dashboard
@@ -233,14 +222,6 @@ const ProtectedNavbar = ({
                           setIsSheetOpen={setIsSheetOpen}
                           title="Dashboard"
                         />
-
-                        <MobileMenuItem
-                          href={`/blog`}
-                          isSheetOpen={isSheetOpen}
-                          setIsSheetOpen={setIsSheetOpen}
-                          title="Blog"
-                        />
-
                       </div>
                     </div>
                   </div>
