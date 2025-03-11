@@ -7,9 +7,10 @@ import { redirect } from "next/navigation";
 import { ForgotPasswordPayload, ResetPasswordPayload, SignInPayload, SignUpPayload } from "@/lib/authActionsPayload";
 
 export const signUpAction = async (data: SignUpPayload) => {
-  const {username, email, password, redirect: redirectToPage } = data;
+  const {username, email, password, redirect: redirectToPage, referralCode } = data;
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
+  const is_insider = referralCode === (process.env.SECRET_INSIDER_CODE || "NotSet");
 
   if (!email || !password) {
     return encodedRedirect(
@@ -27,6 +28,7 @@ export const signUpAction = async (data: SignUpPayload) => {
       data: {
         email,
         username,
+        is_insider,
       },
     },
   });
