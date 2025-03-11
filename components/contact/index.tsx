@@ -1,4 +1,4 @@
-﻿"use client"
+﻿"use client";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -30,7 +30,9 @@ import { ContactInfo } from "./contact-info";
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
   email: z.string().email({ message: "Please enter a valid email address." }),
-  message: z.string().min(3, { message: "Message must be at least 3 characters." }),
+  message: z
+    .string()
+    .min(3, { message: "Message must be at least 3 characters." }),
 });
 
 type ContactCardProps = {
@@ -72,18 +74,18 @@ export default function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-      
+
       if (!response.ok) {
         throw new Error("Failed to send message");
       }
-      
+
       toast.success("Message sent successfully!", {
-        description: "We'll get back to you as soon as possible."
+        description: "We'll get back to you as soon as possible.",
       });
       form.reset();
     } catch (error) {
       toast.error("Error sending message", {
-        description: "Please try again later."
+        description: "Please try again later.",
       });
     }
   }
@@ -119,7 +121,11 @@ export default function Contact() {
                     <FormItem className="space-y-2">
                       <FormLabel>Email *</FormLabel>
                       <FormControl>
-                        <Input type="email" placeholder="Your email" {...field} />
+                        <Input
+                          type="email"
+                          placeholder="Your email"
+                          {...field}
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -133,17 +139,21 @@ export default function Contact() {
                   <FormItem className="space-y-2">
                     <FormLabel>Message *</FormLabel>
                     <FormControl>
-                      <Textarea 
-                        placeholder="Your message" 
+                      <Textarea
+                        placeholder="Your message"
                         className="min-h-[150px]"
-                        {...field} 
+                        {...field}
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type="submit" className="w-full" disabled={form.formState.isSubmitting}>
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={form.formState.isSubmitting}
+              >
                 {form.formState.isSubmitting ? "Sending..." : "Submit"}
               </Button>
             </form>

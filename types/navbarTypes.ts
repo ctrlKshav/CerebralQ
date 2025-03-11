@@ -1,9 +1,10 @@
 ﻿import type { ReactNode } from "react"
+import { LucideIcon } from "lucide-react"
 
 export interface MenuSectionItemProps{
     title: string
     href: string
-    icon?: any
+    icon?: LucideIcon
     children?: ReactNode
   };
 
@@ -22,7 +23,7 @@ export interface MobileMenuItemProps {
   children?: ReactNode
   isSheetOpen: boolean
   setIsSheetOpen: (isSheetOpen: boolean) => void
-  icon?: ReactNode
+  icon?: LucideIcon
 }
 
 export interface UserMenuProps {
