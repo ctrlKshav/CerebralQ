@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar";
 import TestInformation from "@/components/test-info";
 import { useUserData } from "@/context/user-data";
 
-export default async function ProtectedPage() {
+export default function ProtectedPage() {
   const userDataContext = useUserData();
 
   if(userDataContext === null) {
