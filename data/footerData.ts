@@ -20,7 +20,7 @@ export const companyLinks = [
 
   {
     name: "Blog",
-    href: "https://wp.cerebralquotient.com/"
+    href: "/blog"
   },
   
   {
