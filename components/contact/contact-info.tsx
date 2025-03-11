@@ -61,31 +61,26 @@ export function SocialLinks() {
   };
 
   return (
-    <div className="mt-4">
-      <h3 className="text-foreground font-medium text-lg mb-3">
-        Connect With Us
-      </h3>
-      <div className="flex flex-wrap gap-3">
-        <button
+    <div className="flex flex-wrap gap-3">
+      <button
+        className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-opacity-80 transition"
+        aria-label="Share"
+        onClick={handleShare}
+      >
+        <Share2Icon size={20} />
+      </button>
+      {socialLinks.map((social, index) => (
+        <a
+          key={index}
+          href={social.href}
           className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-opacity-80 transition"
-          aria-label="Share"
-          onClick={handleShare}
+          aria-label={social.label}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          <Share2Icon size={20} />
-        </button>
-        {socialLinks.map((social, index) => (
-          <a
-            key={index}
-            href={social.href}
-            className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-opacity-80 transition"
-            aria-label={social.label}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {React.createElement(social.icon, { size: 20 })}
-          </a>
-        ))}
-      </div>
+          {React.createElement(social.icon, { size: 20 })}
+        </a>
+      ))}
     </div>
   );
 }
@@ -105,7 +100,14 @@ export function ContactInfo() {
           title="Email"
           content="cerebralquotient@gmail.com"
         />
-        
+
+        <ContactCard icon={PhoneIcon} title="Phone" content="+91 83560 43314" />
+
+        <ContactCard
+          icon={MapPinIcon}
+          title="Address"
+          content="Makarba, Ahmedabad, India"
+        />
       </div>
       <SocialLinks />
     </div>
