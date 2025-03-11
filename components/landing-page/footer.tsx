@@ -6,11 +6,7 @@ import CQLogo from "@/components/cq-logo";
 import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
 import Link from "next/link";
 
-
-
 export default function Footer() {
-  
-
   return (
     <footer className="bg-card text-card-foreground border-t">
       <div className="container mx-auto px-4 py-12">
@@ -34,11 +30,12 @@ export default function Footer() {
                     <a
                       key={index}
                       href={link.href}
-                      target={"_blank"}
-                      className="text-muted-foreground hover:text-primary transition-colors"
+                      className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white hover:bg-opacity-80 transition"
                       aria-label={link.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <Icon className="h-5 w-5" />
+                      <Icon className="h-4 w-4" />
                     </a>
                   );
                 })}
