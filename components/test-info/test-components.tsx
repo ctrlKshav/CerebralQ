@@ -218,7 +218,7 @@ export const TestResultSection = ({
       </div>
 
       {/* Results Column */}
-      <div className="space-y-8">
+      <div className="space-y-8 flex flex-col ">
         <div>
           <h3 className="text-2xl font-semibold mb-2">{result.label}</h3>
           <p className="text-lg text-muted-foreground mb-4">
@@ -261,7 +261,7 @@ export const TestResultSection = ({
           </div>
         )}
 
-        <Link href={`/tests/${testShortCode}/start-test`}>
+        <Link href={`/tests/${testShortCode}/start-test`} className="self-center">
           <Button className="my-6" variant="default">
             Retake Test
           </Button>
