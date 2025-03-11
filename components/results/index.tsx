@@ -90,10 +90,10 @@ export default function Results() {
           const testKey = `${userId}_${testId}`;
           
           // Check if we've already saved this result
-          const savedResults = JSON.parse(localStorage.getItem(SAVED_RESULTS_KEY) || '{}');
+          const savedResults = JSON.parse(localStorage.getItem(SAVED_RESULTS_KEY) || "false");
           
           // If result hasn't been saved yet, save it
-          if (!savedResults[testKey]) {
+          if (!savedResults) {
             try {
               // Prepare test data with correct user ID
               const testData = {
@@ -105,8 +105,7 @@ export default function Results() {
               await saveTestResults(testData);
               
               // Mark as saved in localStorage
-              savedResults[testKey] = true;
-              localStorage.setItem(SAVED_RESULTS_KEY, JSON.stringify(savedResults));
+              localStorage.setItem(SAVED_RESULTS_KEY, "true");
             } catch (error) {
               console.error("Error saving test results:", error);
             }
