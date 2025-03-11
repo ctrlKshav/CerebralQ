@@ -105,8 +105,8 @@ export function ContactInfo() {
 
         <ContactCard
           icon={MapPinIcon}
-          title="Address"
-          content="Makarba, Ahmedabad, India"
+          title="Address (Remote based but can say hi at)"
+          content="A/505, TBP, Makarba, Ahmedabad, India"
         />
       </div>
       <SocialLinks />
