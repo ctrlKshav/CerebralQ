@@ -89,6 +89,34 @@ export function SignupForm({
                 </p>
               </div>
               <div className="grid gap-2">
+                <Label htmlFor="firstname">First Name</Label>
+                <Input
+                  id="firstname"
+                  type="text"
+                  placeholder="John"
+                  {...register("firstname")}
+                />
+                {errors.firstname && (
+                  <p className="text-sm text-red-500">
+                    {errors.firstname.message}
+                  </p>
+                )}
+              </div>
+              <div className="grid gap-2">
+                <Label htmlFor="lastname">Last Name</Label>
+                <Input
+                  id="lastname"
+                  type="text"
+                  placeholder="Doe"
+                  {...register("lastname")}
+                />
+                {errors.lastname && (
+                  <p className="text-sm text-red-500">
+                    {errors.lastname.message}
+                  </p>
+                )}
+              </div>
+              <div className="grid gap-2">
                 <Label htmlFor="username">Username</Label>
                 <Input
                   id="username"

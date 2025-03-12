@@ -1,6 +1,8 @@
 ﻿import {z} from "zod";
 
 const signupSchema = z.object({
+  firstname: z.string().min(3, { message: "First name is required" }),
+  lastname: z.string().min(3, { message: "Last name is required" }),
   username: z.string().min(3, { message: "Username must be at least 3 characters long" }),
   email: z.string().email({ message: "Invalid email address" }),
   password: z.string().min(6, { message: "Password must be at least 6 characters long" }),
