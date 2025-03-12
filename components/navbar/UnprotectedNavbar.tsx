@@ -87,7 +87,7 @@ const UnprotectedNavbar = (props: { className?: string }) => {
                     href="/sign-up?source=newsletter"
                   >
                     Newsletter coming soon ! Click{" "}
-                    <span className="underline">here</span> to sign up
+                    <span className="underline font-bold">here</span> to sign up.
                   </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
