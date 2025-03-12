@@ -23,7 +23,7 @@
   export const personalityDatabase: Record<string, PersonalityInfo> = {
     "INFP": {
       alias: "The Mediator",
-      description: "INFPs are imaginative idealists, guided by their own core values and beliefs. They value creativity, empathy, and personal authenticity. To a Mediator, life's possibilities are both endless and magical. They see potential for good in even the worst of people and events, and are capable of finding connections where others can't.",
+      description: "   Hey, you're an INFP - The Mediator!  \n  You're a poetic, kind-hearted soul always eager to help a good cause, diving into life with imagination and altruism. You thrive on creativity and making a difference.  \n  Sound like you?  \n",
       compatibleTypes: ["ENFJ", "ENTJ", "INFJ", "INTJ"],
       careerFields: ["Writer", "Counselor", "Artist", "Designer"],
       strengths: ["Empathy", "Creativity", "Idealism", "Adaptability"],
@@ -44,7 +44,7 @@
     },
     "INFJ": {
       alias: "The Advocate",
-      description: "INFJs are visionaries and idealists who ooze creative imagination and brilliant ideas. They have a different perspective of the world that allows them to see possibilities and connections that others often miss. They are deep and complex, showing interest in meaningful connections and helping others reach their potential.",
+      description: "\n      Hey, you're an INFJ - The Advocate!  \n  You're a quiet visionary who inspires and tires less idealists, diving into causes with deep compassion and insight. You thrive on helping others and dreaming of a better world.  \n  Sound like you?  \n",
       compatibleTypes: ["ENFP", "ENTP", "INFP", "INTJ"],
       careerFields: ["Psychologist", "Nonprofit Leader", "Author", "Spiritual Guide"],
       strengths: ["Insight", "Compassion", "Vision", "Determination"],
@@ -65,7 +65,7 @@
     },
     "INTP": {
       alias: "The Thinker",
-      description: "INTPs are innovative inventors with an unquenchable thirst for knowledge. They are logical and objective, valuing precision in their thoughts and language. They love theoretical and abstract concepts and excel at finding logical inconsistencies in arguments or systems. Their cerebral nature drives them to constantly question and analyze everything around them.",
+      description: "  Hey, you're an INTP - The Logician!  \n  You're an innovative thinker with an unquenchable thirst for knowledge, diving into theories with curiosity and insight. You thrive on intellectual challenges and exploration.  \n  Sound like you?  \n",
       compatibleTypes: ["ENTJ", "ENFJ", "INTJ", "INFP"],
       careerFields: ["Philosopher", "Software Developer", "Researcher", "Mathematician"],
       strengths: ["Logic", "Curiosity", "Innovation", "Objectivity"],
@@ -86,7 +86,7 @@
     },
     "INTJ": {
       alias: "The Architect",
-      description: "INTJs are analytical problem-solvers who thrive on complex challenges. They are strategic thinkers with a natural talent for analyzing the past and present to predict future outcomes. They value knowledge, competence, and structure, often working methodically toward well-defined goals. Their drive for improvement leads them to constantly refine systems and processes.",
+      description: "\n      Hey, you're an INTJ - The Architect!  \n  You're an imaginative strategist with a plan for everything, diving into ideas with visionary thinking and determination. You thrive on innovation and deep insight.  \n  Sound like you?  \n",
       compatibleTypes: ["ENFP", "ENTP", "INFP", "INTP"],
       careerFields: ["Scientist", "Engineer", "Strategist", "Analyst"],
       strengths: ["Strategic thinking", "Independence", "Determination", "Knowledge-seeking"],
@@ -107,7 +107,7 @@
     },
     "ENFP": {
       alias: "The Campaigner",
-      description: "ENFPs are enthusiastic, creative, and sociable free spirits who can find potential and possibilities in anything. They have an infectious enthusiasm that draws others to them. They are perceptive about people and situations and can connect disparate ideas to form novel solutions. Driven by their values and desire to help others, they make supportive friends and inspiring leaders.",
+      description: "\n      Hey, you're an ENFP - The Campaigner!  \n  You're an enthusiastic, creative spirit who dives into life with passion, always finding a reason to smile. You thrive on social connections and bold ideas.  \n  Sound like you?  \n",
       compatibleTypes: ["INFJ", "INTJ", "ENFJ", "ENTJ"],
       careerFields: ["Entrepreneur", "Actor", "Marketing Specialist", "Journalist"],
       strengths: ["Enthusiasm", "Creativity", "Sociability", "Open-mindedness"],
@@ -128,7 +128,7 @@
     },
     "ENFJ": {
       alias: "The Protagonist",
-      description: "ENFJs are charismatic and inspiring leaders who thrive on helping others grow. They are warm, altruistic, and highly attuned to the emotions and needs of those around them. With a natural ability to connect with people, they often serve as catalysts for positive change, motivating others with their vision and empathy.",
+      description: "\n      Hey, you're an ENFJ - The Protagonist!  \n  You're a charismatic leader who inspires others, diving into life with charm and empathy. You thrive on motivating people and making a positive impact.  \n  Sound like you?  \n",
       compatibleTypes: ["INFP", "ISFP", "INTP", "ISTP"],
       careerFields: ["Teacher", "Coach", "HR Manager", "Therapist"],
       strengths: ["Leadership", "Communication", "Empathy", "Reliability"],
@@ -149,7 +149,7 @@
     },
     "ENTP": {
       alias: "The Debater",
-      description: "ENTPs are quick-witted and curious innovators who love intellectual sparring. They thrive on exploring new ideas, challenging conventions, and debating possibilities. Their versatility and resourcefulness make them adept at solving problems in creative, unconventional ways, often with a dash of humor.",
+      description: "\n      Hey, you're an ENTP - The Debater!  \n  You're a smart, curious thinker who challenges ideas, diving into discussions with wit and adaptability. You thrive on intellectual exploration and innovation.  \n  Sound like you?  \n",
       compatibleTypes: ["INFJ", "INTJ", "ENFP", "ENTJ"],
       careerFields: ["Lawyer", "Inventor", "Consultant", "Comedian"],
       strengths: ["Quick thinking", "Originality", "Confidence", "Versatility"],
@@ -170,7 +170,7 @@
     },
     "ENTJ": {
       alias: "The Commander",
-      description: "ENTJs are bold and decisive leaders who excel at organizing people and resources to achieve ambitious goals. They are strategic, confident, and driven by a desire for efficiency and success. With a natural ability to see the big picture, they thrive in environments where they can implement their vision and lead others to excellence.",
+      description: "\n      Hey, you're an ENTJ - The Commander!  \n  You're a bold leader who always finds a way, diving into challenges with strong vision and determination. You thrive on taking charge and making things happen.  \n  Sound like you?  \n",
       compatibleTypes: ["INTP", "INFP", "ENTP", "ENFJ"],
       careerFields: ["CEO", "Military Leader", "Project Manager", "Entrepreneur"],
       strengths: ["Leadership", "Efficiency", "Vision", "Decisiveness"],
@@ -191,7 +191,7 @@
     },
     "ISFP": {
       alias: "The Adventurer",
-      description: "ISFPs are gentle and artistic souls who live in the moment and express themselves through action and creativity. They value individuality and beauty, often finding joy in sensory experiences and hands-on pursuits. Flexible and spontaneous, they bring warmth and authenticity to everything they do.",
+      description: "  Hey, you're an ISFP - The Adventurer!  \n  You're a flexible explorer who's always ready to experience something new, diving into life with creativity and a free spirit. You thrive on artistic expression and spontaneity.  \n  Sound like you?  \n",
       compatibleTypes: ["ENFJ", "ESFJ", "ESTJ", "ENTJ"],
       careerFields: ["Musician", "Chef", "Photographer", "Craftsman"],
       strengths: ["Artistic talent", "Flexibility", "Empathy", "Present-focus"],
@@ -212,7 +212,7 @@
     },
     "ISFJ": {
       alias: "The Defender",
-      description: "ISFJs are nurturing and dependable individuals who prioritize the well-being of others. They are detail-oriented and practical, with a strong sense of duty and tradition. Known for their loyalty and attentiveness, they excel at creating stable, supportive environments for those they care about.",
+      description: " Hey, you're an ISFJ - The Defender!  \n  You're a warm protector who cares deeply, always ready to defend those you love with kindness and reliability. You thrive on helping others and keeping things harmonious.  \n  Sound like you?  \n",
       compatibleTypes: ["ESFP", "ESTP", "ENFJ", "ENTJ"],
       careerFields: ["Nurse", "Librarian", "Social Worker", "Administrator"],
       strengths: ["Loyalty", "Detail-orientation", "Compassion", "Reliability"],
@@ -233,7 +233,7 @@
     },
     "ISTP": {
       alias: "The Virtuoso",
-      description: "ISTPs are practical and resourceful problem-solvers who excel at working with their hands and adapting to the moment. They are curious and independent, with a keen ability to analyze and fix things. Their calm demeanor and love for action make them thrive in dynamic, hands-on environments.",
+      description: "    Hey, you're an ISTP - The Virtuoso!  \n  You're a bold experimenter who masters all kinds of tools, diving into projects with practical skill and curiosity. You thrive on flexibility and hands-on problem-solving.  \n  Sound like you?  \n",
       compatibleTypes: ["ENFJ", "ESFJ", "ENTJ", "ESTJ"],
       careerFields: ["Mechanic", "Pilot", "Athlete", "Technician"],
       strengths: ["Practicality", "Adaptability", "Problem-solving", "Calmness"],
@@ -254,7 +254,7 @@
     },
     "ISTJ": {
       alias: "The Logistician",
-      description: "ISTJs are responsible and methodical individuals who value order, tradition, and reliability. They are detail-oriented and practical, with a strong sense of duty that drives them to uphold standards and complete tasks thoroughly. Their grounded nature makes them pillars of stability in any setting.",
+      description: "Hey, you're an ISTJ - The Logician!  \n  You're a practical mind who loves structure, organizing details with precision and reliability. You thrive on duty and tradition, preferring a solid plan over uncertainty.  \n  Sound like you?  \n",
       compatibleTypes: ["ESFP", "ESTP", "ISFJ", "ENFJ"],
       careerFields: ["Accountant", "Inspector", "Manager", "Law Enforcement"],
       strengths: ["Responsibility", "Organization", "Integrity", "Practicality"],
@@ -275,7 +275,7 @@
     },
     "ESFP": {
       alias: "The Entertainer",
-      description: "ESFPs are lively and spontaneous individuals who bring energy and joy to every moment. They are sociable and observant, with a talent for connecting with others and living in the present. Their enthusiasm and love for sensory experiences make them natural performers and adventurers.",
+      description: "\n      Hey, you're an ESFP - The Entertainer!  \n  You're a spontaneous, energetic soul who dives into life with charm, always ready to explore new experiences. You thrive on bringing joy and never being bored.  \n  Sound like you?  \n",
       compatibleTypes: ["ISFJ", "ISTJ", "ENFP", "ENTP"],
       careerFields: ["Performer", "Event Planner", "Salesperson", "Designer"],
       strengths: ["Spontaneity", "Energy", "Sociability", "Optimism"],
@@ -296,7 +296,7 @@
     },
     "ESFJ": {
       alias: "The Consul",
-      description: "ESFJs are warm and conscientious individuals who thrive on creating harmony and supporting others. They are sociable and detail-oriented, with a strong sense of duty and a knack for organizing people and events. Their caring nature makes them natural caregivers and community builders.",
+      description: "\n      Hey, you're an ESFJ - The Consul!  \n  You're a social caregiver who brings people together, diving into life with warmth and helpfulness. You thrive on harmony and supporting those around you.  \n  Sound like you?  \n",
       compatibleTypes: ["ISFP", "ISTP", "ENFJ", "ENTJ"],
       careerFields: ["Teacher", "Nurse", "Event Coordinator", "Customer Service"],
       strengths: ["Warmth", "Cooperation", "Duty", "Sociability"],
@@ -317,7 +317,7 @@
     },
     "ESTP": {
       alias: "The Entrepreneur",
-      description: "ESTPs are bold and energetic risk-takers who thrive on action and immediate results. They are observant and practical, with a talent for navigating challenges in the moment. Their charisma and adaptability make them adept at seizing opportunities and inspiring others to join the ride.",
+      description: "\n      Hey, you're an ESTP - The Entrepreneur!  \n  You're a natural thrill-seeker who dives into the moment, solving problems with quick thinking and hands-on flair. You thrive on spontaneity and adaptability, preferring real-world action over endless debates.  \n  Sound like you?  \n",
       compatibleTypes: ["ISFJ", "ISTJ", "ENFJ", "ENTP"],
       careerFields: ["Salesperson", "Athlete", "Trader", "Emergency Responder"],
       strengths: ["Boldness", "Practicality", "Sociability", "Adaptability"],
@@ -338,7 +338,7 @@
     },
     "ESTJ": {
       alias: "The Executive",
-      description: "ESTJs are organized and decisive leaders who excel at managing people and systems. They are practical and grounded, with a strong sense of responsibility and a dedication to upholding standards. Their no-nonsense approach and focus on efficiency make them natural administrators and enforcers of order.",
+      description: "\n      Hey, you're an ESTJ - The Executive!  \n  You're a confident leader who excels at managing people, diving into tasks with efficiency and authority. You thrive on structure and getting things done.  \n  Sound like you?  \n",
       compatibleTypes: ["ISFP", "ISTP", "INTP", "ENFJ"],
       careerFields: ["Manager", "Judge", "Supervisor", "Business Owner"],
       strengths: ["Orderliness", "Leadership", "Reliability", "Decisiveness"],
