@@ -10,7 +10,7 @@ export interface TestQuestion {
   id: string;
   text: string;
   description?: string;
-  type: 'likert';
+  type: "likert";
   icon?: string;
   iconColor?: string;
   options?: Array<{
@@ -30,30 +30,30 @@ export interface TestData {
 }
 
 export interface TraitScore {
-  left: number
-  right: number
-  leftPercentage: number
-  rightPercentage: number
-  dominant: "left" | "right"
+  left: number;
+  right: number;
+  leftPercentage: number;
+  rightPercentage: number;
+  dominant: "left" | "right";
 }
 
 export interface TraitScores {
-  "E-I": TraitScore
-  "S-N": TraitScore
-  "T-F": TraitScore
-  "J-P": TraitScore
+  "E-I": TraitScore;
+  "S-N": TraitScore;
+  "T-F": TraitScore;
+  "J-P": TraitScore;
 }
 
 export interface TraitDescription {
-  title: string
-  leftLabel: string
-  rightLabel: string
-  description: string
-  color: string
+  title: string;
+  leftLabel: string;
+  rightLabel: string;
+  description: string;
+  color: string;
 }
 
 export interface TraitDescriptions {
-  [key: string]: TraitDescription
+  [key: string]: TraitDescription;
 }
 
 interface PersonalityInsight {
@@ -63,11 +63,31 @@ interface PersonalityInsight {
 }
 
 export interface PersonalityTypeInsights {
-  strengths: PersonalityInsight;
-  challenges: PersonalityInsight;
-  workStyle: PersonalityInsight;
-  relationships: PersonalityInsight;
-  growthAreas: PersonalityInsight;
+  strengths: {
+    title: string;
+    icon: string;
+    points: string[];
+  };
+  challenges: {
+    title: string;
+    icon: string;
+    points: string[];
+  };
+  workStyle: {
+    title: string;
+    icon: string;
+    points: string[];
+  };
+  relationships: {
+    title: string;
+    icon: string;
+    points: string[];
+  };
+  growthAreas: {
+    title: string;
+    icon: string;
+    points: string[];
+  };
 }
 
 export interface ResultData {
@@ -77,7 +97,11 @@ export interface ResultData {
   completionDate: string;
   traitScores: TraitScores | null;
   careerSuggestions: Array<{ title: string; match: number }>;
-  similarPersonalities: Array<{ name: string; profession: string; image: string }>;
+  similarPersonalities: Array<{
+    name: string;
+    profession: string;
+    image: string;
+  }>;
 }
 
 export interface PersonalityDescription {
