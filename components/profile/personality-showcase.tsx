@@ -5,7 +5,7 @@ import { PersonalityTraits } from "@/components/results/personality-traits";
 import type { TraitScores } from "@/types/tests/mbti";
 import AboutPersonalityType from "./about-personality-type";
 import BigFiveConstellation from "./big-five-constellation";
-import { personalityDescriptions } from "@/data/mbti/personalityInformation";
+import { personalityDatabase } from "@/data/mbti/personalityDatabase";
 
 interface PersonalityShowcaseProps {
   personalityType: string;
@@ -16,8 +16,6 @@ export default function PersonalityShowcase({
   personalityType,
   traitScores,
 }: PersonalityShowcaseProps) {
-  const typeInfo = personalityDescriptions[personalityType];
-
   return (
     <section className="relative">
       {/* Decorative background pattern */}
@@ -39,8 +37,6 @@ export default function PersonalityShowcase({
           {/* About Personality Type Card */}
           <AboutPersonalityType
             personalityType={personalityType}
-            alias={typeInfo.alias}
-            description={typeInfo.description}
             sectionNumber={1}
           />
           {/* Use the PersonalityTraits component */}

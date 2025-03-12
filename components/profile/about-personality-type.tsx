@@ -2,20 +2,23 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
+import { personalityDatabase } from "@/data/mbti/personalityDatabase"
 
 interface AboutPersonalityTypeProps {
   personalityType: string
-  alias: string
-  description: string
   sectionNumber: number
 }
 
 export default function AboutPersonalityType({ 
   personalityType, 
-  alias, 
-  description,
   sectionNumber
 }: AboutPersonalityTypeProps) {
+  const personalityInfo = personalityDatabase[personalityType];
+  
+  if (!personalityInfo) {
+    return <div>Personality type not found</div>;
+  }
+  
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
       <div className="flex items-center gap-4 mb-6">
@@ -33,26 +36,26 @@ export default function AboutPersonalityType({
         <Card className="border-primary/20">
           <CardHeader>
             <CardTitle className="text-2xl">{personalityType}</CardTitle>
-            <CardDescription className="text-lg">{alias}</CardDescription>
+            <CardDescription className="text-lg">{personalityInfo.alias}</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-lg leading-relaxed">{description}</p>
+            <p className="text-lg leading-relaxed">{personalityInfo.description}</p>
 
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div className="bg-primary/10 rounded-lg p-4">
                 <h4 className="font-bold text-md">Strengths</h4>
                 <ul className="mt-3 text-base space-y-2">
-                  <li>Creative thinking</li>
-                  <li>Empathetic understanding</li>
-                  <li>Value-driven decisions</li>
+                  {personalityInfo.strengths.map((strength, index) => (
+                    <li key={index}>{strength}</li>
+                  ))}
                 </ul>
               </div>
               <div className="bg-primary/10 rounded-lg p-4">
                 <h4 className="font-bold text-md">Growth Areas</h4>
                 <ul className="mt-3 text-base space-y-2">
-                  <li>Practical implementation</li>
-                  <li>Handling criticism</li>
-                  <li>Setting boundaries</li>
+                  {personalityInfo.challenges.map((challenge, index) => (
+                    <li key={index}>{challenge}</li>
+                  ))}
                 </ul>
               </div>
             </div>

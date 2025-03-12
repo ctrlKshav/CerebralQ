@@ -3,150 +3,11 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, Sparkles, LucideIcon, Briefcase, Heart, Brain } from "lucide-react"
 import { motion } from "framer-motion"
+import { personalityDatabase } from "@/data/mbti/personalityDatabase"
 
 interface MBTIInsightsProps {
   personalityType: string
 }
-
-interface PersonalityInfo {
-  alias: string;
-  compatibleTypes: string[];
-  careerFields: string[];
-  strengths: string[];
-  challenges: string[];
-  percentage: number; // population percentage
-}
-
-const personalityDatabase: Record<string, PersonalityInfo> = {
-  "INFP": {
-    alias: "The Mediator",
-    compatibleTypes: ["ENFJ", "ENTJ", "INFJ", "INTJ"],
-    careerFields: ["Writer", "Counselor", "Artist", "Designer"],
-    strengths: ["Empathy", "Creativity", "Idealism", "Adaptability"],
-    challenges: ["Perfectionism", "Taking criticism", "Practical matters", "Overthinking"],
-    percentage: 4.4
-  },
-  "INFJ": {
-    alias: "The Advocate",
-    compatibleTypes: ["ENFP", "ENTP", "INFP", "INTJ"],
-    careerFields: ["Psychologist", "Nonprofit Leader", "Author", "Spiritual Guide"],
-    strengths: ["Insight", "Compassion", "Vision", "Determination"],
-    challenges: ["Burnout", "Over-sensitivity", "Perfectionism", "Privacy"],
-    percentage: 1.5
-  },
-  "INTP": {
-    alias: "The Thinker",
-    compatibleTypes: ["ENTJ", "ENFJ", "INTJ", "INFP"],
-    careerFields: ["Philosopher", "Software Developer", "Researcher", "Mathematician"],
-    strengths: ["Logic", "Curiosity", "Innovation", "Objectivity"],
-    challenges: ["Social engagement", "Procrastination", "Emotional expression", "Routine"],
-    percentage: 3.3
-  },
-  "INTJ": {
-    alias: "The Architect",
-    compatibleTypes: ["ENFP", "ENTP", "INFP", "INTP"],
-    careerFields: ["Scientist", "Engineer", "Strategist", "Analyst"],
-    strengths: ["Strategic thinking", "Independence", "Determination", "Knowledge-seeking"],
-    challenges: ["Social situations", "Emotional expression", "Patience with others", "Flexibility"],
-    percentage: 2.1
-  },
-  "ENFP": {
-    alias: "The Campaigner",
-    compatibleTypes: ["INFJ", "INTJ", "ENFJ", "ENTJ"],
-    careerFields: ["Entrepreneur", "Actor", "Marketing Specialist", "Journalist"],
-    strengths: ["Enthusiasm", "Creativity", "Sociability", "Open-mindedness"],
-    challenges: ["Focus", "Follow-through", "Over-sensitivity", "Organization"],
-    percentage: 8.1
-  },
-  "ENFJ": {
-    alias: "The Protagonist",
-    compatibleTypes: ["INFP", "ISFP", "INTP", "ISTP"],
-    careerFields: ["Teacher", "Coach", "HR Manager", "Therapist"],
-    strengths: ["Leadership", "Communication", "Empathy", "Reliability"],
-    challenges: ["People-pleasing", "Overextending", "Criticism sensitivity", "Idealism"],
-    percentage: 2.5
-  },
-  "ENTP": {
-    alias: "The Debater",
-    compatibleTypes: ["INFJ", "INTJ", "ENFP", "ENTJ"],
-    careerFields: ["Lawyer", "Inventor", "Consultant", "Comedian"],
-    strengths: ["Quick thinking", "Originality", "Confidence", "Versatility"],
-    challenges: ["Consistency", "Authority", "Sensitivity", "Follow-through"],
-    percentage: 3.2
-  },
-  "ENTJ": {
-    alias: "The Commander",
-    compatibleTypes: ["INTP", "INFP", "ENTP", "ENFJ"],
-    careerFields: ["CEO", "Military Leader", "Project Manager", "Entrepreneur"],
-    strengths: ["Leadership", "Efficiency", "Vision", "Decisiveness"],
-    challenges: ["Empathy", "Patience", "Work-life balance", "Stubbornness"],
-    percentage: 1.8
-  },
-  "ISFP": {
-    alias: "The Adventurer",
-    compatibleTypes: ["ENFJ", "ESFJ", "ESTJ", "ENTJ"],
-    careerFields: ["Musician", "Chef", "Photographer", "Craftsman"],
-    strengths: ["Artistic talent", "Flexibility", "Empathy", "Present-focus"],
-    challenges: ["Planning", "Criticism", "Assertiveness", "Long-term goals"],
-    percentage: 8.8
-  },
-  "ISFJ": {
-    alias: "The Defender",
-    compatibleTypes: ["ESFP", "ESTP", "ENFJ", "ENTJ"],
-    careerFields: ["Nurse", "Librarian", "Social Worker", "Administrator"],
-    strengths: ["Loyalty", "Detail-orientation", "Compassion", "Reliability"],
-    challenges: ["Change", "Assertiveness", "Overworking", "Conflict"],
-    percentage: 13.8
-  },
-  "ISTP": {
-    alias: "The Virtuoso",
-    compatibleTypes: ["ENFJ", "ESFJ", "ENTJ", "ESTJ"],
-    careerFields: ["Mechanic", "Pilot", "Athlete", "Technician"],
-    strengths: ["Practicality", "Adaptability", "Problem-solving", "Calmness"],
-    challenges: ["Emotional connection", "Long-term planning", "Rules", "Commitment"],
-    percentage: 5.4
-  },
-  "ISTJ": {
-    alias: "The Logistician",
-    compatibleTypes: ["ESFP", "ESTP", "ISFJ", "ENFJ"],
-    careerFields: ["Accountant", "Inspector", "Manager", "Law Enforcement"],
-    strengths: ["Responsibility", "Organization", "Integrity", "Practicality"],
-    challenges: ["Flexibility", "Emotional expression", "Change", "Creativity"],
-    percentage: 11.6
-  },
-  "ESFP": {
-    alias: "The Entertainer",
-    compatibleTypes: ["ISFJ", "ISTJ", "ENFP", "ENTP"],
-    careerFields: ["Performer", "Event Planner", "Salesperson", "Designer"],
-    strengths: ["Spontaneity", "Energy", "Sociability", "Optimism"],
-    challenges: ["Planning", "Focus", "Criticism", "Depth"],
-    percentage: 8.5
-  },
-  "ESFJ": {
-    alias: "The Consul",
-    compatibleTypes: ["ISFP", "ISTP", "ENFJ", "ENTJ"],
-    careerFields: ["Teacher", "Nurse", "Event Coordinator", "Customer Service"],
-    strengths: ["Warmth", "Cooperation", "Duty", "Sociability"],
-    challenges: ["Change", "Criticism", "Independence", "Over-sensitivity"],
-    percentage: 12.3
-  },
-  "ESTP": {
-    alias: "The Entrepreneur",
-    compatibleTypes: ["ISFJ", "ISTJ", "ENFJ", "ENTP"],
-    careerFields: ["Salesperson", "Athlete", "Trader", "Emergency Responder"],
-    strengths: ["Boldness", "Practicality", "Sociability", "Adaptability"],
-    challenges: ["Patience", "Planning", "Sensitivity", "Rules"],
-    percentage: 4.3
-  },
-  "ESTJ": {
-    alias: "The Executive",
-    compatibleTypes: ["ISFP", "ISTP", "INTP", "ENFJ"],
-    careerFields: ["Manager", "Judge", "Supervisor", "Business Owner"],
-    strengths: ["Orderliness", "Leadership", "Reliability", "Decisiveness"],
-    challenges: ["Flexibility", "Empathy", "Relaxation", "Innovation"],
-    percentage: 8.7
-  }
-};
 
 interface InsightCardProps {
   title: string;
@@ -177,20 +38,20 @@ const InsightCard = ({ title, items, icon: Icon, iconColor }: InsightCardProps) 
 );
 
 export default function MBTIInsights({ personalityType }: MBTIInsightsProps) {
-  // Get personality info from database or use default
-  const personalityInfo = personalityDatabase[personalityType] || personalityDatabase["default"];
+  // Get personality info from database
+  const personalityInfo = personalityDatabase[personalityType];
   
-  // Mock personality distribution data for comparison
-  const personalityDistribution = {
-    "INFP": 4.4,
-    "INTJ": 2.1,
-    "ENFJ": 2.5,
-    "ISFP": 8.8,
-    "ESFJ": 12.3,
-    "ISTJ": 11.6,
-    "ESTJ": 8.7,
-    "ENFP": 8.1,
-  };
+  if (!personalityInfo) {
+    return <div>Personality type not found</div>;
+  }
+  
+  // Personality distribution data from database
+  const personalityDistribution: Record<string, number> = {};
+  
+  // Add all personality types to distribution
+  Object.entries(personalityDatabase).forEach(([type, info]) => {
+    personalityDistribution[type] = info.percentage;
+  });
   
   return (
     <section className="space-y-8">
@@ -215,8 +76,7 @@ export default function MBTIInsights({ personalityType }: MBTIInsightsProps) {
               <div className="flex items-center justify-between">
                 <span className="font-medium text-lg">{personalityType}</span>
                 <span className="text-base">
-                  {personalityDistribution[personalityType as keyof typeof personalityDistribution] || personalityInfo.percentage}% of
-                  population
+                  {personalityInfo.percentage}% of population
                 </span>
               </div>
 
@@ -224,7 +84,7 @@ export default function MBTIInsights({ personalityType }: MBTIInsightsProps) {
                 <div
                   className="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full"
                   style={{
-                    width: `${personalityDistribution[personalityType as keyof typeof personalityDistribution] || personalityInfo.percentage}%`,
+                    width: `${personalityInfo.percentage}%`,
                   }}
                 />
               </div>
