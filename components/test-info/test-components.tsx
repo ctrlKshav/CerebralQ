@@ -23,6 +23,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import Image from "next/image";
+import { traitDescriptions } from "@/data/mbti/traitDescriptions";
 
 export const TestTypeBadge = ({ type }: { type: string }) => {
   const colors = {
@@ -303,70 +304,6 @@ export const TestResultSection = ({
   </div>
 );
 
-// MBTI trait explanations
-const traitExplanations = {
-  "E-I": {
-    title: "Energy Source",
-    left: {
-      letter: "E",
-      name: "Extraversion",
-      description:
-        "You're energized by social interaction and external activities. You tend to think out loud, enjoy group work, and have a wide social circle.",
-    },
-    right: {
-      letter: "I",
-      name: "Introversion",
-      description:
-        "You recharge through solitude and reflection. You prefer deep one-on-one conversations, think before speaking, and value your private mental space.",
-    },
-  },
-  "S-N": {
-    title: "Information Processing",
-    left: {
-      letter: "S",
-      name: "Sensing",
-      description:
-        "You focus on concrete facts and details. You trust direct experience, value practical solutions, and prefer to work with established methods.",
-    },
-    right: {
-      letter: "N",
-      name: "Intuition",
-      description:
-        "You look for patterns and possibilities. You're comfortable with abstract concepts, enjoy innovating, and often think about future implications.",
-    },
-  },
-  "T-F": {
-    title: "Decision Making",
-    left: {
-      letter: "T",
-      name: "Thinking",
-      description:
-        "You make decisions based on logic and objective analysis. You value fairness through equality and tend to remain detached when solving problems.",
-    },
-    right: {
-      letter: "F",
-      name: "Feeling",
-      description:
-        "You consider people and special circumstances when making decisions. You value harmony in relationships and consider the personal impact of choices.",
-    },
-  },
-  "J-P": {
-    title: "Lifestyle Preference",
-    left: {
-      letter: "J",
-      name: "Judging",
-      description:
-        "You prefer structure and planning. You like to have things settled, work steadily toward deadlines, and find comfort in order and organization.",
-    },
-    right: {
-      letter: "P",
-      name: "Perceiving",
-      description:
-        "You prefer flexibility and spontaneity. You adapt easily to new information, work in bursts of energy, and enjoy keeping your options open.",
-    },
-  },
-};
-
 // Make the trait explanation more compact
 export const TraitExplanation = ({
   traitKey,
@@ -375,8 +312,7 @@ export const TraitExplanation = ({
   traitKey: string;
   score: any;
 }) => {
-  const traitInfo =
-    traitExplanations[traitKey as keyof typeof traitExplanations];
+  const traitInfo = traitDescriptions[traitKey as keyof typeof traitDescriptions];
   const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
 
   return (
