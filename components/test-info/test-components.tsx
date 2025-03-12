@@ -93,23 +93,25 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
           <TestTypeBadge type={testData.category} />
           <DifficultyBadge level={testData.difficulty_level} />
         </div>
-        
+
         <div className="grid grid-cols-2 gap-4">
           <div className="bg-primary/5 p-3 rounded-lg">
             <div className="text-sm text-muted-foreground">Questions</div>
             <div className="font-medium text-lg">{testData.num_questions}</div>
           </div>
-          
+
           <div className="bg-primary/5 p-3 rounded-lg">
             <div className="text-sm text-muted-foreground">Duration</div>
-            <div className="font-medium text-lg">{testData.time_estimate_minutes} minutes</div>
+            <div className="font-medium text-lg">
+              {testData.time_estimate_minutes} minutes
+            </div>
           </div>
-          
+
           <div className="bg-primary/5 p-3 rounded-lg">
             <div className="text-sm text-muted-foreground">Age Range</div>
             <div className="font-medium text-lg">{testData.min_age}+ years</div>
           </div>
-          
+
           <div className="bg-primary/5 p-3 rounded-lg">
             <div className="text-sm text-muted-foreground flex items-center gap-1.5">
               Validity Period
@@ -118,17 +120,28 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
                   <TooltipTrigger asChild>
                     <InfoIcon className="h-4 w-4 cursor-help text-muted-foreground" />
                   </TooltipTrigger>
-                  <TooltipContent side="right" className="max-w-xs p-3 text-white">
-                    <p>Sign up for an account and we'll send you a reminder before your test results expire!</p>
+                  <TooltipContent
+                    side="right"
+                    className="max-w-xs p-3 text-white"
+                  >
+                    <p>
+                      <Link href={"/sign-up"} className="font-bold underline">
+                        Create an account{" "}
+                      </Link>
+                      and we'll send you a reminder before your test results
+                      expire!
+                    </p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>
             </div>
-            <div className="font-medium text-lg">{testData.validity_period_days} days</div>
+            <div className="font-medium text-lg">
+              {testData.validity_period_days} days
+            </div>
           </div>
         </div>
       </div>
-      
+
       <div className="space-y-4">
         <h4 className="font-medium text-lg border-b pb-1">Key Benefits</h4>
         <div className="space-y-3">
@@ -142,7 +155,9 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
               </div>
               <div className="flex-1">
                 <div className="font-medium">{benefit.title}</div>
-                <div className="text-sm text-muted-foreground">{benefit.description}</div>
+                <div className="text-sm text-muted-foreground">
+                  {benefit.description}
+                </div>
               </div>
             </div>
           ))}
@@ -243,7 +258,10 @@ export const TestResultSection = ({
               </h4>
             </div>
 
-            <div className="flex-grow overflow-y-auto space-y-6 pb-4" style={{ minHeight: "450px" }}>
+            <div
+              className="flex-grow overflow-y-auto space-y-6 pb-4"
+              style={{ minHeight: "450px" }}
+            >
               {Object.entries(result.traitScores).map(
                 ([trait, score]: [string, any]) => (
                   <div key={trait} className="space-y-2">
@@ -273,7 +291,11 @@ export const TestResultSection = ({
 
             <div className="mt-auto pt-4 border-t border-border">
               <Link href={`/`} className="block w-full sm:w-auto">
-                <Button size="sm" variant="default" className="w-full sm:w-auto">
+                <Button
+                  size="sm"
+                  variant="default"
+                  className="w-full sm:w-auto"
+                >
                   Retake Test
                 </Button>
               </Link>
@@ -293,7 +315,8 @@ export const TraitExplanation = ({
   traitKey: string;
   score: any;
 }) => {
-  const traitInfo = traitDescriptions[traitKey as keyof typeof traitDescriptions];
+  const traitInfo =
+    traitDescriptions[traitKey as keyof typeof traitDescriptions];
   const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
 
   return (
