@@ -4,7 +4,7 @@ import { PersonalityDescription } from "@/types/tests/mbti";
 export const personalityDescriptions: Record<string, PersonalityDescription> = {
   INFP: {
     alias: "The Mediator",
-    description: `   Hey, you’re an INFP - The Mediator!  
+    description: ` 
   You’re a poetic, kind-hearted soul always eager to help a good cause, diving into life with imagination and altruism. You thrive on creativity and making a difference.  
   Sound like you?  
 
@@ -12,37 +12,34 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   },
   INFJ: {
     alias: "The Advocate",
-    description: `
-      Hey, you’re an INFJ - The Advocate!  
-  You’re a quiet visionary who inspires and tires less idealists, diving into causes with deep compassion and insight. You thrive on helping others and dreaming of a better world.  
+    description: `  You’re a quiet visionary who inspires and tires less idealists, diving into causes with deep compassion and insight. You thrive on helping others and dreaming of a better world.  
   Sound like you?  
 `,
   },
   INTJ: {
     alias: "The Architect",
     description: `
-      Hey, you’re an INTJ - The Architect!  
   You’re an imaginative strategist with a plan for everything, diving into ideas with visionary thinking and determination. You thrive on innovation and deep insight.  
   Sound like you?  
 `,
   },
   INTP: {
     alias: "The Logician",
-    description: `  Hey, you’re an INTP - The Logician!  
+    description: `
   You’re an innovative thinker with an unquenchable thirst for knowledge, diving into theories with curiosity and insight. You thrive on intellectual challenges and exploration.  
   Sound like you?  
 `,
   },
   ISFP: {
     alias: "The Adventurer",
-    description: `  Hey, you’re an ISFP - The Adventurer!  
+    description: `
   You’re a flexible explorer who’s always ready to experience something new, diving into life with creativity and a free spirit. You thrive on artistic expression and spontaneity.  
   Sound like you?  
 `,
   },
   ISFJ: {
     alias: "The Defender",
-    description: ` Hey, you’re an ISFJ - The Defender!  
+    description: `
   You’re a warm protector who cares deeply, always ready to defend those you love with kindness and reliability. You thrive on helping others and keeping things harmonious.  
   Sound like you?  
 
@@ -50,14 +47,14 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   },
   ISTJ: {
     alias: "The Logistician",
-    description: `Hey, you’re an ISTJ - The Logician!  
+    description: `
   You’re a practical mind who loves structure, organizing details with precision and reliability. You thrive on duty and tradition, preferring a solid plan over uncertainty.  
   Sound like you?  
 `,
   },
   ISTP: {
     alias: "The Virtuoso",
-    description: `    Hey, you’re an ISTP - The Virtuoso!  
+    description: `
   You’re a bold experimenter who masters all kinds of tools, diving into projects with practical skill and curiosity. You thrive on flexibility and hands-on problem-solving.  
   Sound like you?  
 
@@ -66,7 +63,6 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   ENFP: {
     alias: "The Campaigner",
     description: `
-      Hey, you’re an ENFP - The Campaigner!  
   You’re an enthusiastic, creative spirit who dives into life with passion, always finding a reason to smile. You thrive on social connections and bold ideas.  
   Sound like you?  
 `,
@@ -74,7 +70,6 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   ENFJ: {
     alias: "The Protagonist",
     description: `
-      Hey, you’re an ENFJ - The Protagonist!  
   You’re a charismatic leader who inspires others, diving into life with charm and empathy. You thrive on motivating people and making a positive impact.  
   Sound like you?  
 `,
@@ -82,7 +77,6 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   ENTJ: {
     alias: "The Commander",
     description: `
-      Hey, you’re an ENTJ - The Commander!  
   You’re a bold leader who always finds a way, diving into challenges with strong vision and determination. You thrive on taking charge and making things happen.  
   Sound like you?  
 `,
@@ -90,7 +84,6 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   ENTP: {
     alias: "The Debater",
     description: `
-      Hey, you’re an ENTP - The Debater!  
   You’re a smart, curious thinker who challenges ideas, diving into discussions with wit and adaptability. You thrive on intellectual exploration and innovation.  
   Sound like you?  
 `,
@@ -98,7 +91,6 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   ESFP: {
     alias: "The Entertainer",
     description: `
-      Hey, you’re an ESFP - The Entertainer!  
   You’re a spontaneous, energetic soul who dives into life with charm, always ready to explore new experiences. You thrive on bringing joy and never being bored.  
   Sound like you?  
 `,
@@ -106,7 +98,6 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   ESFJ: {
     alias: "The Consul",
     description: `
-      Hey, you’re an ESFJ - The Consul!  
   You’re a social caregiver who brings people together, diving into life with warmth and helpfulness. You thrive on harmony and supporting those around you.  
   Sound like you?  
 `,
@@ -114,7 +105,6 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   ESTJ: {
     alias: "The Executive",
     description: `
-      Hey, you’re an ESTJ - The Executive!  
   You’re a confident leader who excels at managing people, diving into tasks with efficiency and authority. You thrive on structure and getting things done.  
   Sound like you?  
 `,
@@ -122,7 +112,6 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   ESTP: {
     alias: "The Entrepreneur",
     description: `
-      Hey, you’re an ESTP - The Entrepreneur!  
   You’re a natural thrill-seeker who dives into the moment, solving problems with quick thinking and hands-on flair. You thrive on spontaneity and adaptability, preferring real-world action over endless debates.  
   Sound like you?  
 `,
