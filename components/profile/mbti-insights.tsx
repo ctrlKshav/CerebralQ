@@ -17,7 +17,6 @@ interface PersonalityInfo {
   percentage: number; // population percentage
 }
 
-// Mock database of MBTI personality types with additional information
 const personalityDatabase: Record<string, PersonalityInfo> = {
   "INFP": {
     alias: "The Mediator",
@@ -27,6 +26,22 @@ const personalityDatabase: Record<string, PersonalityInfo> = {
     challenges: ["Perfectionism", "Taking criticism", "Practical matters", "Overthinking"],
     percentage: 4.4
   },
+  "INFJ": {
+    alias: "The Advocate",
+    compatibleTypes: ["ENFP", "ENTP", "INFP", "INTJ"],
+    careerFields: ["Psychologist", "Nonprofit Leader", "Author", "Spiritual Guide"],
+    strengths: ["Insight", "Compassion", "Vision", "Determination"],
+    challenges: ["Burnout", "Over-sensitivity", "Perfectionism", "Privacy"],
+    percentage: 1.5
+  },
+  "INTP": {
+    alias: "The Thinker",
+    compatibleTypes: ["ENTJ", "ENFJ", "INTJ", "INFP"],
+    careerFields: ["Philosopher", "Software Developer", "Researcher", "Mathematician"],
+    strengths: ["Logic", "Curiosity", "Innovation", "Objectivity"],
+    challenges: ["Social engagement", "Procrastination", "Emotional expression", "Routine"],
+    percentage: 3.3
+  },
   "INTJ": {
     alias: "The Architect",
     compatibleTypes: ["ENFP", "ENTP", "INFP", "INTP"],
@@ -34,6 +49,14 @@ const personalityDatabase: Record<string, PersonalityInfo> = {
     strengths: ["Strategic thinking", "Independence", "Determination", "Knowledge-seeking"],
     challenges: ["Social situations", "Emotional expression", "Patience with others", "Flexibility"],
     percentage: 2.1
+  },
+  "ENFP": {
+    alias: "The Campaigner",
+    compatibleTypes: ["INFJ", "INTJ", "ENFJ", "ENTJ"],
+    careerFields: ["Entrepreneur", "Actor", "Marketing Specialist", "Journalist"],
+    strengths: ["Enthusiasm", "Creativity", "Sociability", "Open-mindedness"],
+    challenges: ["Focus", "Follow-through", "Over-sensitivity", "Organization"],
+    percentage: 8.1
   },
   "ENFJ": {
     alias: "The Protagonist",
@@ -43,16 +66,87 @@ const personalityDatabase: Record<string, PersonalityInfo> = {
     challenges: ["People-pleasing", "Overextending", "Criticism sensitivity", "Idealism"],
     percentage: 2.5
   },
-  // Default case for other types
-  "default": {
-    alias: "The Explorer",
-    compatibleTypes: ["INFP", "ENFJ", "INFJ", "ENFP"],
-    careerFields: ["Entrepreneur", "Consultant", "Researcher", "Creative Professional"],
-    strengths: ["Adaptability", "Problem-solving", "Creativity", "Independence"],
-    challenges: ["Structure", "Routine", "Details", "Long-term commitments"],
-    percentage: 3.0
+  "ENTP": {
+    alias: "The Debater",
+    compatibleTypes: ["INFJ", "INTJ", "ENFP", "ENTJ"],
+    careerFields: ["Lawyer", "Inventor", "Consultant", "Comedian"],
+    strengths: ["Quick thinking", "Originality", "Confidence", "Versatility"],
+    challenges: ["Consistency", "Authority", "Sensitivity", "Follow-through"],
+    percentage: 3.2
+  },
+  "ENTJ": {
+    alias: "The Commander",
+    compatibleTypes: ["INTP", "INFP", "ENTP", "ENFJ"],
+    careerFields: ["CEO", "Military Leader", "Project Manager", "Entrepreneur"],
+    strengths: ["Leadership", "Efficiency", "Vision", "Decisiveness"],
+    challenges: ["Empathy", "Patience", "Work-life balance", "Stubbornness"],
+    percentage: 1.8
+  },
+  "ISFP": {
+    alias: "The Adventurer",
+    compatibleTypes: ["ENFJ", "ESFJ", "ESTJ", "ENTJ"],
+    careerFields: ["Musician", "Chef", "Photographer", "Craftsman"],
+    strengths: ["Artistic talent", "Flexibility", "Empathy", "Present-focus"],
+    challenges: ["Planning", "Criticism", "Assertiveness", "Long-term goals"],
+    percentage: 8.8
+  },
+  "ISFJ": {
+    alias: "The Defender",
+    compatibleTypes: ["ESFP", "ESTP", "ENFJ", "ENTJ"],
+    careerFields: ["Nurse", "Librarian", "Social Worker", "Administrator"],
+    strengths: ["Loyalty", "Detail-orientation", "Compassion", "Reliability"],
+    challenges: ["Change", "Assertiveness", "Overworking", "Conflict"],
+    percentage: 13.8
+  },
+  "ISTP": {
+    alias: "The Virtuoso",
+    compatibleTypes: ["ENFJ", "ESFJ", "ENTJ", "ESTJ"],
+    careerFields: ["Mechanic", "Pilot", "Athlete", "Technician"],
+    strengths: ["Practicality", "Adaptability", "Problem-solving", "Calmness"],
+    challenges: ["Emotional connection", "Long-term planning", "Rules", "Commitment"],
+    percentage: 5.4
+  },
+  "ISTJ": {
+    alias: "The Logistician",
+    compatibleTypes: ["ESFP", "ESTP", "ISFJ", "ENFJ"],
+    careerFields: ["Accountant", "Inspector", "Manager", "Law Enforcement"],
+    strengths: ["Responsibility", "Organization", "Integrity", "Practicality"],
+    challenges: ["Flexibility", "Emotional expression", "Change", "Creativity"],
+    percentage: 11.6
+  },
+  "ESFP": {
+    alias: "The Entertainer",
+    compatibleTypes: ["ISFJ", "ISTJ", "ENFP", "ENTP"],
+    careerFields: ["Performer", "Event Planner", "Salesperson", "Designer"],
+    strengths: ["Spontaneity", "Energy", "Sociability", "Optimism"],
+    challenges: ["Planning", "Focus", "Criticism", "Depth"],
+    percentage: 8.5
+  },
+  "ESFJ": {
+    alias: "The Consul",
+    compatibleTypes: ["ISFP", "ISTP", "ENFJ", "ENTJ"],
+    careerFields: ["Teacher", "Nurse", "Event Coordinator", "Customer Service"],
+    strengths: ["Warmth", "Cooperation", "Duty", "Sociability"],
+    challenges: ["Change", "Criticism", "Independence", "Over-sensitivity"],
+    percentage: 12.3
+  },
+  "ESTP": {
+    alias: "The Entrepreneur",
+    compatibleTypes: ["ISFJ", "ISTJ", "ENFJ", "ENTP"],
+    careerFields: ["Salesperson", "Athlete", "Trader", "Emergency Responder"],
+    strengths: ["Boldness", "Practicality", "Sociability", "Adaptability"],
+    challenges: ["Patience", "Planning", "Sensitivity", "Rules"],
+    percentage: 4.3
+  },
+  "ESTJ": {
+    alias: "The Executive",
+    compatibleTypes: ["ISFP", "ISTP", "INTP", "ENFJ"],
+    careerFields: ["Manager", "Judge", "Supervisor", "Business Owner"],
+    strengths: ["Orderliness", "Leadership", "Reliability", "Decisiveness"],
+    challenges: ["Flexibility", "Empathy", "Relaxation", "Innovation"],
+    percentage: 8.7
   }
-}
+};
 
 interface InsightCardProps {
   title: string;
