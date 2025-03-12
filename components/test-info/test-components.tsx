@@ -59,24 +59,6 @@ export const DifficultyBadge = ({ level }: { level: string }) => {
   );
 };
 
-export const ResultTypeBadge = ({ type }: { type: string }) => {
-  const colors = {
-    type: "bg-purple-100 text-black",
-    numerical: "bg-blue-100 text-black",
-    category: "bg-green-100 text-black",
-    "multi-dimensional": "bg-orange-100 text-black",
-  };
-  return (
-    <span
-      className={`px-2 py-1 rounded-full text-sm font-medium ${
-        colors[type as keyof typeof colors] || "bg-gray-100 text-black"
-      }`}
-    >
-      {type.charAt(0).toUpperCase() + type.slice(1)}
-    </span>
-  );
-};
-
 export const FeatureBadge = ({
   Icon,
   label,
@@ -110,7 +92,6 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
         <div className="flex flex-wrap gap-2">
           <TestTypeBadge type={testData.category} />
           <DifficultyBadge level={testData.difficulty_level} />
-          <ResultTypeBadge type={testData.result_type} />
         </div>
         
         <div className="grid grid-cols-2 gap-4">

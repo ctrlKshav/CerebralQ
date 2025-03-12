@@ -9,9 +9,6 @@ import { Brain, Timer, Users, Target, Award, BookOpen } from "lucide-react";
 import { User } from "@supabase/supabase-js";
 import { MBTIRawScore, FormattedTestResult } from "@/types/supabase/user-test-history";
 import {
-  TestTypeBadge,
-  DifficultyBadge,
-  ResultTypeBadge,
   FeatureBadge,
   TestOverviewCard,
   TestDimensionsCard,
