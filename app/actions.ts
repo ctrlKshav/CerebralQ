@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import { ForgotPasswordPayload, ResetPasswordPayload, SignInPayload, SignUpPayload } from "@/lib/authActionsPayload";
 
 export const signUpAction = async (data: SignUpPayload) => {
-  const {username, email, password, redirect: redirectToPage } = data;
+  const { firstname, lastname, username, email, password, redirect: redirectToPage } = data;
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
 
@@ -26,7 +26,9 @@ export const signUpAction = async (data: SignUpPayload) => {
       emailRedirectTo: `${origin}/auth/callback?redirect_to=/${redirectToPage || "protected"}`,
       data: {
         email,
-        username,
+        firstname,
+        lastname,
+        username
       },
     },
   });
