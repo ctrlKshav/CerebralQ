@@ -109,7 +109,7 @@ export function PersonalityTraits({
         </Card>
 
         <Card className="p-8 flex flex-col">
-          <div className="space-y-6 flex flex-col h-full">
+          <div className="space-y-6 flex flex-col h-full ">
             <div className="space-y-2">
               <span className="text-base text-muted-foreground">
                 {traitDescriptions[selectedTrait].title}
@@ -128,7 +128,7 @@ export function PersonalityTraits({
               </h3>
             </div>
 
-            <div className="mt-4 p-4 bg-primary/5 rounded-lg flex-grow">
+            <div className="mt-4 p-4 bg-primary/5 rounded-lg flex-grow ">
               {(() => {
                 const traitKey = selectedTrait;
                 const score = traitScores[traitKey];
@@ -161,7 +161,7 @@ export function PersonalityTraits({
               })()}
             </div>
 
-            <div className="relative aspect-square w-full max-w-[280px] mx-auto mt-4">
+            <div className="relative aspect-square w-full max-h-[280px] mx-auto mt-4">
               <Image
                 src="/ENTJ.jpeg"
                 alt={`${traitDescriptions[selectedTrait].title} trait illustration`}
