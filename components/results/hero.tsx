@@ -46,19 +46,17 @@ export function Hero({
   const shareResults = async () => {
     try {
       setIsSharing(true);
-      
+
       // Handle sharing without saving to database (now handled in Results component)
       const title = `My Personality Type: ${personalityType}`;
       const text = `I'm a ${personalityAlias}! Check out my personality profile on CerebralQ.`;
-      
+
       // Determine share URL based on user status
-      const url = isDemoUser ? 
-        `results` : 
-        `profiles/${username}`;
-      
+      const url = isDemoUser ? `results` : `profiles/${username}`;
+
       // Use the existing share function
       await handleShare(title, text, url, isDemoUser);
-      
+
       // Redirect demo users to sign up
       if (isDemoUser) {
         router.push(
@@ -87,8 +85,9 @@ export function Hero({
         Your Personality Type
       </Badge>
       <div className="space-y-2">
-        <h1 className="text-6xl font-bold tracking-tighter">
-          {personalityType}
+        <h1 className="text-5xl  tracking-tight">
+          Hey, you're an{" "}
+          <span className="font-bold text-6xl">{personalityType}</span>
         </h1>
         <h2 className="text-2xl font-medium text-primary">
           {personalityAlias}
@@ -101,14 +100,18 @@ export function Hero({
         <p>Completed on {completionDate}</p>
       </div>
       <div className="flex justify-center gap-3 pt-2">
-        <Button 
-          variant="outline" 
-          size="sm" 
+        <Button
+          variant="outline"
+          size="sm"
           onClick={shareResults}
           disabled={isSharing}
         >
           <Share2 className="w-4 h-4 mr-2" />
-          {isSharing ? "Processing..." : isDemoUser ? "Save & Share" : "Share Results"}
+          {isSharing
+            ? "Processing..."
+            : isDemoUser
+              ? "Save & Share"
+              : "Share Results"}
         </Button>
         <Button variant="outline" size="sm" onClick={downloadReport}>
           <Download className="w-4 h-4 mr-2" />
