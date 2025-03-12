@@ -94,71 +94,73 @@ export const FeatureBadge = ({
 );
 
 export const TestOverviewCard = ({ testData }: { testData: any }) => (
-  <Card>
+  <Card className="h-full flex flex-col">
     <CardHeader>
       <CardTitle className="flex items-center gap-2 text-2xl">
         <Brain className="h-6 w-6" />
         Test Overview
       </CardTitle>
+      <CardDescription>
+        A comprehensive overview of the {testData.name} assessment
+      </CardDescription>
     </CardHeader>
-    <CardContent className="space-y-6 text-lg">
-      <div className="flex flex-wrap gap-2">
-        <TestTypeBadge type={testData.category} />
-        <DifficultyBadge level={testData.difficulty_level} />
-        <ResultTypeBadge type={testData.result_type} />
-      </div>
-      <div className="space-y-2">
-        <div className="flex justify-between items-center">
-          <span className="text-muted-foreground">Questions</span>
-          <span className="font-medium">{testData.num_questions}</span>
+    <CardContent className="space-y-6 flex-grow flex flex-col justify-between">
+      <div className="space-y-6">
+        <div className="flex flex-wrap gap-2">
+          <TestTypeBadge type={testData.category} />
+          <DifficultyBadge level={testData.difficulty_level} />
+          <ResultTypeBadge type={testData.result_type} />
         </div>
-        <div className="flex justify-between items-center">
-          <span className="text-muted-foreground">Duration</span>
-          <span className="font-medium">
-            {testData.time_estimate_minutes} minutes
-          </span>
-        </div>
-        <div className="flex justify-between items-center">
-          <span className="text-muted-foreground">Age Range</span>
-          <span className="font-medium">{testData.min_age}+ years</span>
-        </div>
-        <div className="flex justify-between items-center">
-          <span className="text-muted-foreground flex items-center gap-1.5">
-            Validity Period
-            <TooltipProvider delayDuration={100}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <InfoIcon className="h-4 w-4 cursor-help text-muted-foreground" />
-                </TooltipTrigger>
-                <TooltipContent
-                  side="right"
-                  className="max-w-xs p-3 text-white"
-                >
-                  <p>
-                    Sign up for an account and we'll send you a reminder before
-                    your test results expire!
-                  </p>
-                </TooltipContent>
-              </Tooltip>
-            </TooltipProvider>
-          </span>
-          <span className="font-medium">
-            {testData.validity_period_days} days
-          </span>
+        
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-primary/5 p-3 rounded-lg">
+            <div className="text-sm text-muted-foreground">Questions</div>
+            <div className="font-medium text-lg">{testData.num_questions}</div>
+          </div>
+          
+          <div className="bg-primary/5 p-3 rounded-lg">
+            <div className="text-sm text-muted-foreground">Duration</div>
+            <div className="font-medium text-lg">{testData.time_estimate_minutes} minutes</div>
+          </div>
+          
+          <div className="bg-primary/5 p-3 rounded-lg">
+            <div className="text-sm text-muted-foreground">Age Range</div>
+            <div className="font-medium text-lg">{testData.min_age}+ years</div>
+          </div>
+          
+          <div className="bg-primary/5 p-3 rounded-lg">
+            <div className="text-sm text-muted-foreground flex items-center gap-1.5">
+              Validity Period
+              <TooltipProvider delayDuration={100}>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <InfoIcon className="h-4 w-4 cursor-help text-muted-foreground" />
+                  </TooltipTrigger>
+                  <TooltipContent side="right" className="max-w-xs p-3 text-white">
+                    <p>Sign up for an account and we'll send you a reminder before your test results expire!</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+            </div>
+            <div className="font-medium text-lg">{testData.validity_period_days} days</div>
+          </div>
         </div>
       </div>
-      <div className="space-y-3 pt-2">
-        <h4 className="font-medium">Key Benefits:</h4>
-        <div className="grid gap-2">
+      
+      <div className="space-y-4">
+        <h4 className="font-medium text-lg border-b pb-1">Key Benefits</h4>
+        <div className="space-y-3">
           {testData.test_benefits.map((benefit: any, index: number) => (
             <div
               key={index}
-              className="flex items-center gap-2 bg-primary/5 p-2 rounded-lg"
+              className="flex items-start gap-3 bg-primary/5 p-3 rounded-lg"
             >
-              <benefit.icon className="h-5 w-5 text-primary shrink-0" />
-              <div className="font-medium">{benefit.title}</div>
-              <div className="text-sm text-muted-foreground ml-auto">
-                {benefit.description}
+              <div className="p-2 bg-background rounded-md">
+                <benefit.icon className="h-5 w-5 text-primary" />
+              </div>
+              <div className="flex-1">
+                <div className="font-medium">{benefit.title}</div>
+                <div className="text-sm text-muted-foreground">{benefit.description}</div>
               </div>
             </div>
           ))}
