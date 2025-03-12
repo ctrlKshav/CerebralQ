@@ -16,6 +16,7 @@ import { RETURN_URL_KEY } from "@/lib/constants";
 import { toast } from "sonner";
 import { parseAuthMessage } from "@/lib/utils";
 import Image from "next/image";
+import { Eye, EyeOff } from "lucide-react";
 
 interface SigninFormProps extends React.ComponentProps<"div"> {
   searchParams: URLSearchParams
@@ -27,6 +28,7 @@ export function SigninForm({
   ...props
 }: SigninFormProps) {
   const [authMessage, setAuthMessage] = useState<{type: string, message: string} | null>(null);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -96,11 +98,27 @@ export function SigninForm({
                     Forgot your password?
                   </Link>
                 </div>
-                <Input
-                  id="password"
-                  type="password"
-                  {...register("password")}
-                />
+                <div className="relative">
+                  <Input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    {...register("password")}
+                  />
+                  <button 
+                    type="button"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-800 dark:text-gray-100 dark:hover:text-gray-300 focus:outline-none transition-colors"
+                    onClick={() => setShowPassword(!showPassword)}
+                  >
+                    {showPassword ? (
+                      <EyeOff className="w-5 h-5" />
+                    ) : (
+                      <Eye className="w-5 h-5" />
+                    )}
+                    <span className="sr-only">
+                      {showPassword ? "Hide password" : "Show password"}
+                    </span>
+                  </button>
+                </div>
                 {errors.password && (
                   <p className="text-sm text-red-500">
                     {errors.password.message}
