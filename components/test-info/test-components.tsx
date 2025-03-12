@@ -7,7 +7,7 @@
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Brain, BookOpen, InfoIcon, FileSpreadsheet } from "lucide-react";
+import { Brain, BookOpen, InfoIcon, FileSpreadsheet, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
@@ -200,26 +200,21 @@ export const TestResultSection = ({
   result: any;
   testShortCode: string;
 }) => (
-  <div className="mt-24 rounded-xl p-8">
-    <h2 className="text-3xl font-bold mb-8 text-center">Your Latest Result</h2>
-    <div className="grid md:grid-cols-2 gap-8 items-start">
-      {/* Image Column */}
-      <div className="relative aspect-square">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary rounded-lg flex items-center justify-center">
-          <div className="text-center space-y-4">
-            <span className="text-6xl font-bold text-white">
+  <div className="mt-16 rounded-xl p-6">
+    <h2 className="text-3xl font-bold mb-16 text-center">Your Latest Result</h2>
+    
+    <div className="flex flex-col lg:flex-row gap-6 ">
+      {/* Left Column - Type, Alias, Date, Description, Image */}
+      <div className="lg:w-2/5 flex flex-col text-center">
+        <div className="space-y-4 flex-grow">
+          <div className=" mb-4">
+            <span className="text-5xl font-bold text-primary">
               {result.personalityType || result.type}
             </span>
-            <p className="text-2xl text-white/90">{result.label}</p>
+            <p className="text-xl mt-1">{result.label}</p>
           </div>
-        </div>
-      </div>
-
-      {/* Results Column */}
-      <div className="space-y-8 flex flex-col ">
-        <div>
-          <h3 className="text-2xl font-semibold mb-2">{result.label}</h3>
-          <p className="text-lg text-muted-foreground mb-4">
+          
+          <p className="text-sm text-muted-foreground">
             Test taken on{" "}
             {new Date(result.date).toLocaleDateString("en-US", {
               year: "numeric",
@@ -227,50 +222,144 @@ export const TestResultSection = ({
               day: "numeric",
             })}
           </p>
-          <p className="text-lg leading-relaxed">{result.description}</p>
+          
+          <p className="text-sm md:text-base leading-relaxed">{result.description}</p>
         </div>
+        
+        {/* Placeholder Image */}
+        <div className="aspect-square bg-gradient-to-br from-primary/20 to-primary/40 rounded-lg flex items-center justify-center mt-4">
+          <img 
+            src="https://placehold.co/400x400/e2e8f0/1e293b?text=Personality+Profile" 
+            alt="Personality Profile Visualization" 
+            className="rounded-lg w-full h-full object-cover"
+          />
+        </div>
+      </div>
 
+      {/* Right Column - Trait Scores */}
+      <div className="lg:w-3/5 px-6  flex flex-col">
         {result.traitScores && (
-          <div className="space-y-6">
-            <h4 className="text-xl font-medium"> Your Unique {result.personalityType} Blueprint</h4>
-            {Object.entries(result.traitScores).map(
-              ([trait, score]: [string, any]) => (
-                <div key={trait} className="space-y-2">
-                  <div className="flex justify-between text-lg">
-                    <span className="capitalize font-medium">{trait}</span>
-                    <span>
-                      {score.dominant === "left"
-                        ? score.leftPercentage.toFixed(0)
-                        : score.rightPercentage.toFixed(0)}
-                      %
-                    </span>
+          <div className="flex flex-col h-full">
+            <div className="mb-4">
+              <h4 className="text-xl font-medium border-b pb-1">Your {result.personalityType || "INTJ"} Blueprint</h4>
+            </div>
+            
+            <div className="flex-grow overflow-y-auto space-y-6">
+              {Object.entries(result.traitScores).map(
+                ([trait, score]: [string, any]) => (
+                  <div key={trait} className="space-y-2">
+                    <div className="flex justify-between text-md">
+                      <span className="capitalize font-medium">{trait}</span>
+                      <span>
+                        {score.dominant === "left"
+                          ? score.leftPercentage.toFixed(0)
+                          : score.rightPercentage.toFixed(0)}
+                        %
+                      </span>
+                    </div>
+                    <Progress
+                      value={
+                        score.dominant === "left"
+                          ? score.leftPercentage.toFixed(0)
+                          : score.rightPercentage.toFixed(0)
+                      }
+                      className="h-2 bg-primary/20"
+                    />
+                    
+                    <TraitExplanation traitKey={trait} score={score} />
                   </div>
-                  <Progress
-                    value={
-                      score.dominant === "left"
-                        ? score.leftPercentage.toFixed(0)
-                        : score.rightPercentage.toFixed(0)
-                    }
-                    className="h-3 bg-primary/20"
-                  />
-                </div>
-              )
-            )}
+                )
+              )}
+            </div>
+            
+            <div className="mt-auto pt-4 ">
+              <Link href={`/tests/${testShortCode}`} className="">
+                <Button size="sm" variant="default" className="">
+                  Retake Test
+                </Button>
+              </Link>
+            </div>
           </div>
         )}
-
-        <Link
-          href={`/tests/${testShortCode}/start-test`}
-          className="self-center"
-        >
-          <Button className="my-6" variant="default">
-            Retake Test
-          </Button>
-        </Link>
       </div>
     </div>
   </div>
 );
+
+// MBTI trait explanations
+const traitExplanations = {
+  "E-I": {
+    title: "Energy Source",
+    left: {
+      letter: "E",
+      name: "Extraversion",
+      description: "You're energized by social interaction and external activities. You tend to think out loud, enjoy group work, and have a wide social circle."
+    },
+    right: {
+      letter: "I",
+      name: "Introversion",
+      description: "You recharge through solitude and reflection. You prefer deep one-on-one conversations, think before speaking, and value your private mental space."
+    }
+  },
+  "S-N": {
+    title: "Information Processing",
+    left: {
+      letter: "S",
+      name: "Sensing",
+      description: "You focus on concrete facts and details. You trust direct experience, value practical solutions, and prefer to work with established methods."
+    },
+    right: {
+      letter: "N",
+      name: "Intuition",
+      description: "You look for patterns and possibilities. You're comfortable with abstract concepts, enjoy innovating, and often think about future implications."
+    }
+  },
+  "T-F": {
+    title: "Decision Making",
+    left: {
+      letter: "T",
+      name: "Thinking",
+      description: "You make decisions based on logic and objective analysis. You value fairness through equality and tend to remain detached when solving problems."
+    },
+    right: {
+      letter: "F",
+      name: "Feeling",
+      description: "You consider people and special circumstances when making decisions. You value harmony in relationships and consider the personal impact of choices."
+    }
+  },
+  "J-P": {
+    title: "Lifestyle Preference",
+    left: {
+      letter: "J",
+      name: "Judging",
+      description: "You prefer structure and planning. You like to have things settled, work steadily toward deadlines, and find comfort in order and organization."
+    },
+    right: {
+      letter: "P",
+      name: "Perceiving",
+      description: "You prefer flexibility and spontaneity. You adapt easily to new information, work in bursts of energy, and enjoy keeping your options open."
+    }
+  }
+};
+
+// Make the trait explanation more compact
+export const TraitExplanation = ({ traitKey, score }: { traitKey: string; score: any }) => {
+  const traitInfo = traitExplanations[traitKey as keyof typeof traitExplanations];
+  const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
+  
+  return (
+    <div className="mt-2 p-3 bg-primary/5 rounded-lg">
+      <div className="flex items-center gap-2">
+        <Badge variant="outline" className="text-sm py-0.5 px-2 font-semibold">
+          {dominant.letter}
+        </Badge>
+        <h5 className="text-sm font-medium">{dominant.name}</h5>
+        <span className="ml-auto text-xs text-muted-foreground">{traitInfo.title}</span>
+      </div>
+      <p className="text-xs md:text-sm mt-1">{dominant.description}</p>
+    </div>
+  );
+};
 
 export const TestCitationsCard = ({ citations }: { citations: any[] }) => (
   <Card className="max-w-3xl mx-auto w-full">
