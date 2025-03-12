@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { PersonalityTypeInsights } from "@/types/tests/mbti";
+import { ChevronRight } from "lucide-react";
 
 interface InsightCategory {
   title: string;
@@ -34,8 +35,8 @@ export function DetailedPersonalityInsights({
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="p-8 lg:col-span-1 h-fit lg:sticky top-24">
+      <div className="flex gap-12">
+        <Card className="p-8 lg:col-span-1 h-fit lg:sticky top-24 w-1/2">
           <div className="space-y-6">
             <div className="space-y-2">
               <span className="text-base text-muted-foreground">
@@ -46,7 +47,7 @@ export function DetailedPersonalityInsights({
               </h3>
             </div>
 
-            <div className="relative aspect-square w-full max-w-[280px] mx-auto mt-4">
+            <div className="relative aspect-square w-full max-w-[280px]  mt-4">
               <Image
                 src="/ENTJ.jpeg"
                 alt={`Personality trait illustration`}
@@ -59,142 +60,127 @@ export function DetailedPersonalityInsights({
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
               These insights highlight the key characteristics of the{" "}
-              {personalityAlias} personality type. Recognize these as tendencies
+              {personalityType} personality type. Recognize these as tendencies
               rather than absolutes, as individual experiences may vary.
             </p>
           </div>
         </Card>
-        <div className="lg:col-span-2 space-y-6">
-          {/* Strengths Section */}
-          <Card className="p-6 border-l-4 border-l-green-500">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="bg-green-400 dark:bg-green-700 p-2 rounded-full" />
-              <h3 className="text-xl font-semibold">
-                {personalityInsights.strengths.title}
-              </h3>
-            </div>
-            <ul className="space-y-2 pl-3">
-              {personalityInsights.strengths.points.map((point, index) => (
-                <motion.li
-                  key={`strength-${index}`}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-2"
-                >
-                  <span className="text-green-500 mt-1">•</span>
-                  <span>{point}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </Card>
+          <div className="grid grid-cols-2  gap-4 ">
+            <InsightSectionCard
+              section={personalityInsights.strengths}
+              sectionType="strengths"
+            />
+            
+            <InsightSectionCard
+              section={personalityInsights.challenges}
+              sectionType="challenges"
+            />
+            
+            <InsightSectionCard
+              section={personalityInsights.workStyle}
+              sectionType="workStyle"
+            />
+            
+            <InsightSectionCard
+              section={personalityInsights.relationships}
+              sectionType="relationships"
+            />
+            
+            <InsightSectionCard
+              section={personalityInsights.growthAreas}
+              sectionType="growthAreas"
+            />
+          </div>
 
-          {/* Challenges Section */}
-          <Card className="p-6 border-l-4 border-l-amber-500">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="bg-amber-400 dark:bg-amber-700 p-2 rounded-full" />
-
-              <h3 className="text-xl font-semibold">
-                {personalityInsights.challenges.title}
-              </h3>
-            </div>
-            <ul className="space-y-2 pl-3">
-              {personalityInsights.challenges.points.map((point, index) => (
-                <motion.li
-                  key={`challenge-${index}`}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-2"
-                >
-                  <span className="text-amber-500 mt-1">•</span>
-                  <span>{point}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </Card>
-
-          {/* Work Style Section */}
-          <Card className="p-6 border-l-4 border-l-blue-500">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="bg-blue-400 dark:bg-blue-700 p-2 rounded-full" />
-
-              <h3 className="text-xl font-semibold">
-                {personalityInsights.workStyle.title}
-              </h3>
-            </div>
-            <ul className="space-y-2 pl-3">
-              {personalityInsights.workStyle.points.map((point, index) => (
-                <motion.li
-                  key={`work-${index}`}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-2"
-                >
-                  <span className="text-blue-500 mt-1">•</span>
-                  <span>{point}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </Card>
-
-          {/* Relationship Dynamics Section */}
-          <Card className="p-6 border-l-4 border-l-purple-500">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="bg-purple-400 dark:bg-purple-700 p-2 rounded-full" />
-
-              <h3 className="text-xl font-semibold">
-                {personalityInsights.relationships.title}
-              </h3>
-            </div>
-            <ul className="space-y-2 pl-3">
-              {personalityInsights.relationships.points.map((point, index) => (
-                <motion.li
-                  key={`relationship-${index}`}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-2"
-                >
-                  <span className="text-purple-500 mt-1">•</span>
-                  <span>{point}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </Card>
-
-          {/* Growth Areas Section */}
-          <Card className="p-6 border-l-4 border-l-teal-500">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="bg-teal-400 dark:bg-teal-700 p-2 rounded-full" />
-
-              <h3 className="text-xl font-semibold">
-                {personalityInsights.growthAreas.title}
-              </h3>
-            </div>
-            <ul className="space-y-2 pl-3">
-              {personalityInsights.growthAreas.points.map((point, index) => (
-                <motion.li
-                  key={`growth-${index}`}
-                  initial={{ opacity: 0, x: -10 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-start gap-2"
-                >
-                  <span className="text-teal-500 mt-1">•</span>
-                  <span>{point}</span>
-                </motion.li>
-              ))}
-            </ul>
-          </Card>
-
-          {/* <Button variant="link" className="w-full text-muted-foreground">
-            <ExternalLink className="w-3 h-3 mr-1" />
-            Discover more about {personalityType} psychology
-          </Button> */}
+          {/* Commented button remains the same */}
         </div>
-      </div>
     </div>
   );
 }
+
+
+
+// Define types for our insight section data
+interface InsightSection {
+  title: string;
+  points: string[];
+}
+
+// Define the color combinations for each section type
+type SectionType = 'strengths' | 'challenges' | 'workStyle' | 'relationships' | 'growthAreas';
+
+interface SectionColors {
+  border: string;
+  icon: string;
+  bullet: string;
+  dark: string;
+}
+
+const sectionColors: Record<SectionType, SectionColors> = {
+  strengths: {
+    border: "border-l-green-500",
+    icon: "bg-green-400",
+    bullet: "text-green-500",
+    dark: "dark:bg-green-700"
+  },
+  challenges: {
+    border: "border-l-amber-500",
+    icon: "bg-amber-400",
+    bullet: "text-amber-500",
+    dark: "dark:bg-amber-700"
+  },
+  workStyle: {
+    border: "border-l-blue-500",
+    icon: "bg-blue-400",
+    bullet: "text-blue-500",
+    dark: "dark:bg-blue-700"
+  },
+  relationships: {
+    border: "border-l-purple-500",
+    icon: "bg-purple-400",
+    bullet: "text-purple-500",
+    dark: "dark:bg-purple-700"
+  },
+  growthAreas: {
+    border: "border-l-teal-500",
+    icon: "bg-teal-400",
+    bullet: "text-teal-500",
+    dark: "dark:bg-teal-700"
+  }
+};
+
+interface InsightSectionCardProps {
+  section: InsightSection;
+  sectionType: SectionType;
+}
+
+// Reusable component for each insight section
+const InsightSectionCard: React.FC<InsightSectionCardProps> = ({
+  section,
+  sectionType
+}) => {
+  const colors = sectionColors[sectionType];
+  
+  return (
+    <Card className={`p-6 border-l-4 ${colors.border}`}>
+      <div className="flex items-center gap-3 mb-4">
+        <div className={`${colors.icon} ${colors.dark} p-2 rounded-full`} />
+        <h3 className="text-xl font-semibold">{section.title}</h3>
+      </div>
+      <div className="space-y-4 ml-2">
+        {section.points.map((point, index) => (
+          <motion.div
+            key={`insight-${index}`}
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }} 
+            transition={{ delay: index * 0.1 }}
+            className="flex items-start gap-2"
+          >
+            <ChevronRight className={`h-5 w-5 ${colors.bullet} shrink-0 mt-0.5`} />
+            <p>{point}</p>
+          </motion.div>
+        ))}
+      </div>
+    </Card>
+  );
+};
