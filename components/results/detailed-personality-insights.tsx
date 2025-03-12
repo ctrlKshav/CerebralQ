@@ -1,10 +1,8 @@
 ﻿"use client";
 
-import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import { Card } from "@/components/ui/card";
-import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
-import Icon from "@/components/Icon";
 import { PersonalityTypeInsights } from "@/types/tests/mbti";
 
 interface InsightCategory {
@@ -23,7 +21,7 @@ export function DetailedPersonalityInsights({
   personalityType,
   personalityAlias,
   personalityInsights,
-  sectionNumber
+  sectionNumber,
 }: DetailedPersonalityInsightsProps) {
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
@@ -37,7 +35,7 @@ export function DetailedPersonalityInsights({
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <Card className="p-8 lg:col-span-1 h-fit lg:sticky top-16">
+        <Card className="p-8 lg:col-span-1 h-fit lg:sticky top-24">
           <div className="space-y-6">
             <div className="space-y-2">
               <span className="text-base text-muted-foreground">
@@ -48,11 +46,15 @@ export function DetailedPersonalityInsights({
               </h3>
             </div>
 
-            <div className="relative aspect-square w-full max-w-[200px] mx-auto">
-              <img
-                src="/placeholder.svg"
-                alt="Personality insights illustration"
-                className="w-full h-full object-contain"
+            <div className="relative aspect-square w-full max-w-[280px] mx-auto mt-4">
+              <Image
+                src="/ENTJ.jpeg"
+                alt={`Personality trait illustration`}
+                fill
+                sizes="(max-width: 768px) 280px, (max-width: 1200px) 250px, 280px"
+                className="object-cover"
+                quality={85}
+                priority={false}
               />
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
