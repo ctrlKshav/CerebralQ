@@ -1,18 +1,16 @@
-import Hero from "@/components/landing-page/hero";
-import DataVisuals from "@/components/landing-page/data-visuals";
-import Features from "@/components/landing-page/features";
-import { TestsCarousel } from "@/components/landing-page/tests-carousel";
+"use client"
 import Navbar from "@/components/navbar";
-import { redirect } from "next/navigation";
+import TestInformation from "@/components/test-info";
+import React from "react";
 
-export default async function Home() {
+export default function TestInformationPage() {
+  
   return (
     <>
-      <Navbar className="" />
-      <Hero />
-      {/* <TestsCarousel /> */}
-      <Features />
-      <DataVisuals />
+      <Navbar />
+      <div className="mt-16">
+        <TestInformation testId={"mbti"} />
+      </div>
     </>
   );
 }

@@ -162,7 +162,7 @@ export default function Results() {
         <div className="text-center max-w-md mx-auto p-6  rounded-lg shadow-lg">
           <h2 className="text-2xl font-bold  mb-4">No Results Available</h2>
           <a
-            href="/tests/mbti/"
+            href="/"
             className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90"
           >
             Take the Test

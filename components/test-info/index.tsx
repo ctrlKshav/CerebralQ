@@ -209,7 +209,7 @@ export default function TestInformation({ testId }: { testId: string }) {
             ))}
           </div>
           <div className="pt-4 ">
-            <Link href={`/tests/${MBTI_TEST.short_code}/start-test`}>
+            <Link href={`/start-test`}>
               <Button size="lg" className="text-lg px-8 py-6">
                 Begin Test →
               </Button>

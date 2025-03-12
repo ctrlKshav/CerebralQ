@@ -21,7 +21,7 @@ export const socialLinks = [
 export const testLinks = [
   {
     name: "MBTI Assessment",
-    href: "/tests/mbti",
+    href: "/",
   },
 ] as const;
 

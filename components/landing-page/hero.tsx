@@ -31,7 +31,7 @@ export default function Header() {
             all in one
             place.
           </p>
-          <Link href={"/tests/mbti"}>
+          <Link href={"/"}>
             <Button size="lg" className="group">
               Start Exploring
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />

@@ -96,7 +96,7 @@ export default function MBTITest() {
 
     // Redirect to results page
     setTimeout(() => {
-      router.push("/tests/mbti/results");
+      router.push("/results");
     }, 0);
   };
 

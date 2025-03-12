@@ -97,7 +97,7 @@ export default function ProfileHeader({
                 <span className="font-medium">Share Profile</span>
               </Button>
             ) : (
-              <Link href="/tests/mbti/">
+              <Link href="/">
                 <Button
                   variant="outline"
                   size="lg"
