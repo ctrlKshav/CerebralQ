@@ -39,7 +39,7 @@ const MBTI_TEST = {
       link: "https://psycnet.apa.org/record/2013-29682-000",
     },
     {
-      name: "Myers-Briggs Type Indicator Score Reliability Across Studies: A Meta-Analytic Reliability Generalization Study: ",
+      name: "Myers-Briggs Type Indicator Score Reliability Across Studies: A Meta-Analytic Reliability Generalization Study. ",
       link: "https://www.researchgate.net/publication/237444046_Myers-Briggs_Type_Indicator_Score_Reliability_Across_Studies_A_Meta-Analytic_Reliability_Generalization_Study",
     },
   ],
