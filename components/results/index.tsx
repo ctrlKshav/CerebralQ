@@ -187,8 +187,6 @@ export default function Results() {
         {/* About Personality Type Card */}
         <AboutPersonalityType
           personalityType={personalityType}
-          alias={typeInfo.alias}
-          description={typeInfo.description}
           sectionNumber={1}
         />
 
