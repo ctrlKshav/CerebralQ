@@ -7,8 +7,7 @@ import type { TraitScores } from "@/types/tests/mbti";
 import { traitDescriptions } from "@/data/mbti/traitDescriptions";
 import { useTheme } from "next-themes";
 import { Badge } from "@/components/ui/badge";
-
-// Importing trait explanations is no longer needed as we're using traitDescriptions
+import Image from "next/image";
 
 interface PersonalityTraitsProps {
   traitScores: TraitScores;
@@ -46,7 +45,6 @@ export function PersonalityTraits({
               ? description.lightColor
               : description.darkColor;
 
-            // Calculate percentages for left and right traits
             const leftPercentage = score.leftPercentage;
             const rightPercentage = score.rightPercentage;
 
@@ -59,7 +57,6 @@ export function PersonalityTraits({
                 )}
                 onMouseEnter={() => setSelectedTrait(typedTrait)}
               >
-                {/* Trait Labels */}
                 <div className="flex justify-between text-sm font-medium">
                   <span className="text-muted-foreground">
                     {description.leftLabel}
@@ -69,9 +66,7 @@ export function PersonalityTraits({
                   </span>
                 </div>
 
-                {/* Bar Chart Container */}
                 <div className="relative h-8 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden">
-                  {/* Background bars with reduced opacity */}
                   <div
                     className="absolute top-0 left-0 h-full transition-all duration-300"
                     style={{
@@ -89,7 +84,6 @@ export function PersonalityTraits({
                     }}
                   />
 
-                  {/* Active bar for dominant trait */}
                   <div
                     className="absolute top-0 h-full transition-all duration-300"
                     style={{
@@ -100,7 +94,6 @@ export function PersonalityTraits({
                     }}
                   />
 
-                  {/* Percentage Labels - Always visible for both sides */}
                   <div className="absolute inset-0 flex justify-between items-center px-3">
                     <span className="text-sm font-medium text-foreground">
                       {Math.round(leftPercentage)}%
@@ -135,7 +128,6 @@ export function PersonalityTraits({
               </h3>
             </div>
 
-            {/* Enhanced trait explanation section */}
             <div className="mt-4 p-4 bg-primary/5 rounded-lg flex-grow">
               {(() => {
                 const traitKey = selectedTrait;
@@ -170,10 +162,14 @@ export function PersonalityTraits({
             </div>
 
             <div className="relative aspect-square w-full max-w-[280px] mx-auto mt-4">
-              <img
-                src="/placeholder.svg"
-                alt="Personality trait illustration"
-                className="w-full h-full object-contain"
+              <Image
+                src="/ENTJ.jpeg"
+                alt={`${traitDescriptions[selectedTrait].title} trait illustration`}
+                fill
+                sizes="(max-width: 768px) 280px, (max-width: 1200px) 250px, 280px"
+                className="object-cover"
+                quality={85}
+                priority={false}
               />
             </div>
           </div>
