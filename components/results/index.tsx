@@ -18,7 +18,13 @@ import AboutPersonalityType from "@/components/profile/about-personality-type";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
+import dynamic from "next/dynamic";
 
+// Dynamically import PDF library-related components
+const PDFPreloader = dynamic(() => import("@/components/pdf/PDFPreloader"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function Results() {
   const [resultData, setResultData] = useState<ResultData>({
@@ -33,6 +39,8 @@ export default function Results() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
+  const [isPdfPreloaded, setIsPdfPreloaded] = useState(false);
+  const [showingAllSections, setShowingAllSections] = useState(false);
 
   useEffect(() => {
     // Get data from localStorage and handle saving to database
@@ -145,6 +153,16 @@ export default function Results() {
       "A detailed analysis of cognitive preferences and behavioral patterns.",
   };
 
+  // Function to preload PDF renderer when needed
+  const handlePreloadPDF = () => {
+    setIsPdfPreloaded(true);
+  };
+
+  // Function to show all sections
+  const handleShowAllSections = () => {
+    setShowingAllSections(true);
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
@@ -175,13 +193,14 @@ export default function Results() {
   return (
     <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-8 space-y-8">
-        {/* Hero Section - Pass full raw data */}
-        <Hero
-          personalityType={personalityType}
-          personalityAlias={personalityAlias}
-          personalityDescription={personalityDescription}
-          completionDate={completionDate}
-          userId={userID}
+        {/* Load PDF libraries when needed */}
+        {isPdfPreloaded && <PDFPreloader />}
+        
+        {/* Hero Section */}
+        <Hero 
+          resultData={resultData} 
+          userId={userID} 
+          onPdfButtonHover={handlePreloadPDF}
         />
 
         {/* About Personality Type Card */}
@@ -193,20 +212,6 @@ export default function Results() {
         {/* Personality Traits */}
         {traitScores && <PersonalityTraits traitScores={traitScores} sectionNumber={2} />}
 
-        {/* Career Suggestions */}
-        {/* <CareerSuggestions
-          personalityType={personalityType}
-          careerSuggestions={careerSuggestions}
-          sectionNumber={3}
-        /> */}
-
-        {/* Similar Personalities */}
-        {/* <SimilarPersonalities
-          personalityType={personalityType}
-          similarPersonalities={similarPersonalities}
-          sectionNumber={4}
-        /> */}
-
         {/* Detailed Personality Insights */}
         <DetailedPersonalityInsights
           personalityType={personalityType}
@@ -214,6 +219,34 @@ export default function Results() {
           personalityInsights={personalityInsights}
           sectionNumber={3}
         />
+        
+        {/* Additional sections or button to show them */}
+        {!showingAllSections ? (
+          <div className="flex justify-center py-6">
+            <button
+              onClick={handleShowAllSections}
+              className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
+            >
+              View Complete Analysis
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* Career Suggestions */}
+            <CareerSuggestions
+              personalityType={personalityType}
+              careerSuggestions={careerSuggestions}
+              sectionNumber={4}
+            />
+
+            {/* Similar Personalities */}
+            <SimilarPersonalities
+              personalityType={personalityType}
+              similarPersonalities={similarPersonalities}
+              sectionNumber={5}
+            />
+          </>
+        )}
       </main>
     </div>
   );

@@ -7,7 +7,10 @@ import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import { Brain, Timer, Users, Target, Award, BookOpen } from "lucide-react";
 import { User } from "@supabase/supabase-js";
-import { MBTIRawScore, FormattedTestResult } from "@/types/supabase/user-test-history";
+import {
+  MBTIRawScore,
+  FormattedTestResult,
+} from "@/types/supabase/user-test-history";
 import {
   FeatureBadge,
   TestOverviewCard,
@@ -55,22 +58,26 @@ const MBTI_TEST = {
   personality_dimensions: [
     {
       title: "How Do You Recharge? (Mind)",
-      description: "Are you energized by people and action (Extrovert, E), or do you love your own space and deep thoughts (Introvert, I)?",
+      description:
+        "Are you energized by people and action (Extrovert, E), or do you love your own space and deep thoughts (Introvert, I)?",
       types: ["Extrovert (E)", "Introvert (I)"],
     },
     {
       title: "How Do You See the World? (Information)",
-      description: "Do you focus on the here-and-now details (Sensing, S), or do you dream about what could be (Intuition, N)?",
+      description:
+        "Do you focus on the here-and-now details (Sensing, S), or do you dream about what could be (Intuition, N)?",
       types: ["Sensing (S)", "Intuition (N)"],
     },
     {
       title: "How Do You Decide? (Decisions)",
-      description: "Do you lead with logic and facts (Thinking, T), or do you follow your heart and values (Feeling, F)?",
+      description:
+        "Do you lead with logic and facts (Thinking, T), or do you follow your heart and values (Feeling, F)?",
       types: ["Thinking (T)", "Feeling (F)"],
     },
     {
       title: "How Do You Roll? (Structure)",
-      description: "Do you love plans and structure (Judging, J), or do you go with the flow (Perceiving, P)?",
+      description:
+        "Do you love plans and structure (Judging, J), or do you go with the flow (Perceiving, P)?",
       types: ["Judging (J)", "Perceiving (P)"],
     },
   ],
@@ -113,32 +120,37 @@ const MBTI_TEST = {
   ],
 };
 
-
 export default function TestInformation({ testId }: { testId: string }) {
   const supabase = createClient();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
-  const [latestResult, setLatestResult] = useState<FormattedTestResult | null>(null);
+  const [latestResult, setLatestResult] = useState<FormattedTestResult | null>(
+    null
+  );
 
   useEffect(() => {
     // Check if user is authenticated and fetch their latest test result
     async function fetchUserAndTestData() {
       try {
         setLoading(true);
-        
+
         // Get current authenticated user
-        const { data: { user }, error: userError } = await supabase.auth.getUser();
-        
-        if(userError) return setLoading(false)
-        
+        const {
+          data: { user },
+          error: userError,
+        } = await supabase.auth.getUser();
+
+        if (userError) return setLoading(false);
+
         setUser(user);
-        
+
         // If user is authenticated, fetch their latest test result
         if (user) {
           // Get the most recent MBTI test result
           const { data: testData, error: testError } = await supabase
             .from("user_test_history")
-            .select(`
+            .select(
+              `
               *,
               test_type:test_type_id (
                 name,
@@ -146,32 +158,37 @@ export default function TestInformation({ testId }: { testId: string }) {
                 description,
                 category
               )
-            `)
+            `
+            )
             .eq("user_id", user.id)
             .eq("test_type_id", MBTI_TEST_ID) // Using MBTI test ID from constants
             .order("taken_at", { ascending: false })
             .limit(1)
             .single();
-          
-          if (testError && testError.code !== 'PGRST116') { // PGRST116 means no rows returned
+
+          if (testError && testError.code !== "PGRST116") {
+            // PGRST116 means no rows returned
             console.error("Error fetching test data:", testError);
           }
-          
+
           if (testData) {
             // Format the test result for display
             const orderedTraitScores = getOrderedMBTITraitsObject(testData.raw_score.traitScores);
             const mbtiResult = {traitScores: orderedTraitScores, personalityType: testData.raw_score.personalityType} as MBTIRawScore;
             const personalityType = mbtiResult?.personalityType || "Unknown";
-          
+
             setLatestResult({
               id: testData.id,
               type: testData.test_type?.short_code || "MBTI",
               personalityType: personalityType,
-              label: personalityDescriptions[personalityType].alias || "Unknown",
-              description: personalityDescriptions[personalityType].description || "Unknown",
+              label:
+                personalityDescriptions[personalityType].alias || "Unknown",
+              description:
+                personalityDescriptions[personalityType].description ||
+                "Unknown",
               date: testData.taken_at || new Date().toISOString(),
               traitScores: mbtiResult?.traitScores,
-              details: testData.raw_score
+              details: testData.raw_score,
             });
           }
         }
@@ -181,7 +198,7 @@ export default function TestInformation({ testId }: { testId: string }) {
         setLoading(false);
       }
     }
-    
+
     fetchUserAndTestData();
   }, []);
 
@@ -192,7 +209,9 @@ export default function TestInformation({ testId }: { testId: string }) {
         <div className="mb-12 max-w-4xl mx-auto text-center space-y-10">
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
             {MBTI_TEST.name}{" "}
-            <span className="text-2xl">({MBTI_TEST.short_code.toUpperCase()})</span>
+            <span className="text-2xl">
+              ({MBTI_TEST.short_code.toUpperCase()})
+            </span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             {MBTI_TEST.description}
@@ -241,14 +260,17 @@ export default function TestInformation({ testId }: { testId: string }) {
 
         {/* Past Results Section - Only show if user is logged in and has results */}
         {user && latestResult && !loading && (
-          <TestResultSection result={latestResult} testShortCode={MBTI_TEST.short_code} />
+          <TestResultSection
+            result={latestResult}
+            testShortCode={MBTI_TEST.short_code}
+          />
         )}
 
         <div className="mt-24 grid">
           {/* Citations Card */}
           <TestCitationsCard citations={MBTI_TEST.citations} />
         </div>
-        
+
         {/* Related Tests Section */}
         {/* <TestRecommendationsSection recommendations={MBTI_TEST.complementary_tests} /> */}
       </section>
