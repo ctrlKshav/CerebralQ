@@ -18,13 +18,6 @@ import AboutPersonalityType from "@/components/profile/about-personality-type";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-import dynamic from "next/dynamic";
-
-// Dynamically import PDF library-related components
-const PDFPreloader = dynamic(() => import("@/components/pdf/PDFPreloader"), {
-  ssr: false,
-  loading: () => null,
-});
 
 export default function Results() {
   const [resultData, setResultData] = useState<ResultData>({
@@ -195,8 +188,7 @@ export default function Results() {
   return (
     <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-8 space-y-8">
-        {/* Load PDF libraries when needed */}
-        {isPdfPreloaded && <PDFPreloader />}
+        
 
         {/* Hero Section */}
         <Hero
