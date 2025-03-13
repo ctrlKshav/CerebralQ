@@ -39,4 +39,8 @@ export const companyLinks = [
     name: "Newsletter",
     href: "/sign-up?source=newsletter",
   },
+  {
+    name: "Team",
+    href: "/team"
+  }
 ] as const;
