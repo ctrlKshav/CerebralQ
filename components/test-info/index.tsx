@@ -186,8 +186,8 @@ export default function TestInformation({ testId }: { testId: string }) {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 px-4 min-h-screen">
-        <div className="max-w-4xl mx-auto text-center space-y-8">
+      <section className="py-20 px-4 min-h-screen sm:flex sm:flex-col sm:justify-center">
+        <div className="max-w-4xl mx-auto text-center space-y-10">
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
             {MBTI_TEST.name}{" "}
             <span className="text-2xl">({MBTI_TEST.short_code.toUpperCase()})</span>
@@ -213,7 +213,7 @@ export default function TestInformation({ testId }: { testId: string }) {
             </Link>
           </div>
           <button
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block"
+            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block lg:hidden"
             onClick={() => {
               document
                 .getElementById("test-details-section")
