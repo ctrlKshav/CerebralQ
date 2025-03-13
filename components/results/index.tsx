@@ -61,7 +61,7 @@ export default function Results() {
         }
 
         const data = JSON.parse(storedData);
-        
+
         // Extract required data from localStorage format
         const personalityType =
           data.personalityType || data.raw_score?.personalityType;
@@ -96,22 +96,24 @@ export default function Results() {
         if (userId && testId) {
           // Generate a unique key for this test result to prevent duplicates
           const testKey = `${userId}_${testId}`;
-          
+
           // Check if we've already saved this result
-          const savedResults = JSON.parse(localStorage.getItem(SAVED_RESULTS_KEY) || "false");
-          
+          const savedResults = JSON.parse(
+            localStorage.getItem(SAVED_RESULTS_KEY) || "false"
+          );
+
           // If result hasn't been saved yet, save it
           if (!savedResults) {
             try {
               // Prepare test data with correct user ID
               const testData = {
                 ...data,
-                user_id: userId
+                user_id: userId,
               };
-              
+
               // Save to Supabase
               await saveTestResults(testData);
-              
+
               // Mark as saved in localStorage
               localStorage.setItem(SAVED_RESULTS_KEY, "true");
             } catch (error) {
@@ -195,11 +197,11 @@ export default function Results() {
       <main className="container mx-auto px-4 py-8 space-y-8">
         {/* Load PDF libraries when needed */}
         {isPdfPreloaded && <PDFPreloader />}
-        
+
         {/* Hero Section */}
-        <Hero 
-          resultData={resultData} 
-          userId={userID} 
+        <Hero
+          resultData={resultData}
+          userId={userID}
           onPdfButtonHover={handlePreloadPDF}
         />
 
@@ -210,16 +212,24 @@ export default function Results() {
         />
 
         {/* Personality Traits */}
-        {traitScores && <PersonalityTraits traitScores={traitScores} sectionNumber={2} />}
+        {traitScores && (
+          <PersonalityTraits traitScores={traitScores} sectionNumber={2} />
+        )}
 
-        {/* Detailed Personality Insights */}
-        <DetailedPersonalityInsights
+        {/* Career Suggestions */}
+        <CareerSuggestions
           personalityType={personalityType}
-          personalityAlias={personalityAlias}
-          personalityInsights={personalityInsights}
+          careerSuggestions={careerSuggestions}
           sectionNumber={3}
         />
-        
+
+        {/* Similar Personalities */}
+        <SimilarPersonalities
+          personalityType={personalityType}
+          similarPersonalities={similarPersonalities}
+          sectionNumber={4}
+        />
+
         {/* Additional sections or button to show them */}
         {!showingAllSections ? (
           <div className="flex justify-center py-6">
@@ -227,22 +237,16 @@ export default function Results() {
               onClick={handleShowAllSections}
               className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
             >
-              View Complete Analysis
+              View Detailed Analysis
             </button>
           </div>
         ) : (
           <>
-            {/* Career Suggestions */}
-            <CareerSuggestions
+            {/* Detailed Personality Insights */}
+            <DetailedPersonalityInsights
               personalityType={personalityType}
-              careerSuggestions={careerSuggestions}
-              sectionNumber={4}
-            />
-
-            {/* Similar Personalities */}
-            <SimilarPersonalities
-              personalityType={personalityType}
-              similarPersonalities={similarPersonalities}
+              personalityAlias={personalityAlias}
+              personalityInsights={personalityInsights}
               sectionNumber={5}
             />
           </>
