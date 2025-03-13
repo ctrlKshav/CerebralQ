@@ -2,33 +2,36 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Share2, Download } from "lucide-react";
+import { Share2 } from "lucide-react";
 import { motion } from "framer-motion";
-import { PersonalityDescription } from "@/types/tests/mbti";
+import { ResultData } from "@/types/tests/mbti";
 import { handleShare } from "@/lib/shareUtils";
 import { useEffect, useState } from "react";
 import { getCurrentUser } from "@/lib/supabaseOperations";
 import { useRouter } from "next/navigation";
+import { PDFGenerator } from "@/components/pdf/PDFGenerator";
 
 interface HeroProps {
-  personalityType: string;
-  personalityAlias: string;
-  personalityDescription: PersonalityDescription;
-  completionDate: string;
+  resultData: ResultData;
   userId: string | null;
+  onPdfButtonHover?: () => void;
 }
 
-export function Hero({
-  personalityType,
-  personalityAlias,
-  personalityDescription,
-  completionDate,
-  userId,
-}: HeroProps) {
+export function Hero({ resultData, userId, onPdfButtonHover }: HeroProps) {
   const [username, setUsername] = useState<string | null>(null);
   const [isSharing, setIsSharing] = useState(false);
   const isDemoUser = !userId;
   const router = useRouter();
+
+  // Extract properties from resultData for the component
+  const {
+    personalityType,
+    personalityDescription,
+    completionDate,
+  } = resultData;
+  
+  // Get personalityAlias from personalityDescription
+  const personalityAlias = personalityDescription.alias;
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -71,10 +74,6 @@ export function Hero({
     }
   };
 
-  const downloadReport = () => {
-    window.print();
-  };
-
   return (
     <motion.section
       initial={{ opacity: 0, y: 20 }}
@@ -85,7 +84,7 @@ export function Hero({
         Your Personality Type
       </Badge>
       <div className="space-y-2">
-        <h1 className="text-5xl  tracking-tight">
+        <h1 className="text-5xl tracking-tight">
           Hey, you're an{" "}
           <span className="font-bold text-6xl">{personalityType}</span>
         </h1>
@@ -113,10 +112,12 @@ export function Hero({
               ? "Save & Share"
               : "Share Results"}
         </Button>
-        <Button variant="outline" size="sm" onClick={downloadReport}>
-          <Download className="w-4 h-4 mr-2" />
-          Download Report
-        </Button>
+        <div onMouseEnter={onPdfButtonHover}>
+          <PDFGenerator 
+            resultData={resultData} 
+            fileName={`${personalityType}-personality-report.pdf`} 
+          />
+        </div>
       </div>
     </motion.section>
   );
