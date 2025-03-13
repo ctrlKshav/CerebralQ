@@ -9,9 +9,10 @@ export default function TeamPage() {
       <Navbar />
       <main className="min-h-screen bg-background">
         <TeamHero
-          title="The People Behind the Magic"
-          description="Meet our passionate team of creators, innovators, and problem solvers. Together, we're building the future of technology, one pixel at a time."
+          title="The CQ Crew"
+          description="A group of builders, thinkers, and problem-solvers making cool things happen. We turn ideas into reality."
         />
+
         <TeamGrid members={teamMembers} />
       </main>
     </div>
