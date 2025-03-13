@@ -90,13 +90,7 @@ export function CareerSuggestions({
             </motion.div>
           ))}
 
-          <Button
-            variant="link"
-            className="w-full mt-4 text-muted-foreground"
-          >
-            <ExternalLink className="w-3 h-3 mr-1" />
-            Explore more careers for {personalityType} types
-          </Button>
+        
         </Card>
       </div>
     </div>
