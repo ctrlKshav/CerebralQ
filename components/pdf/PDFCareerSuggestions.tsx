@@ -11,17 +11,18 @@ interface PDFCareerSuggestionsProps {
   careerSuggestions: Career[];
   sectionNumber: number;
   isDarkMode?: boolean;
+  isCompact?: boolean; // New prop for compact display
 }
 
 // Create styles with theme variants
-const createStyles = (isDarkMode = false) => StyleSheet.create({
+const createStyles = (isDarkMode = false, isCompact = false) => StyleSheet.create({
   container: {
-    margin: 10,
+    margin: isCompact ? 5 : 10,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: isCompact ? 10 : 20,
   },
   sectionNumber: {
     width: 24,
@@ -40,7 +41,7 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
     color: isDarkMode ? '#ffffff' : '#000000',
   },
   cardHeader: {
-    marginBottom: 15,
+    marginBottom: isCompact ? 8 : 15,
   },
   cardTitle: {
     fontSize: 10,
@@ -48,15 +49,15 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
     marginBottom: 2,
   },
   cardHeading: {
-    fontSize: 16,
+    fontSize: isCompact ? 14 : 16,
     fontFamily: 'Helvetica-Bold',
     color: isDarkMode ? '#60a5fa' : '#0070f3',
-    marginBottom: 10,
+    marginBottom: isCompact ? 5 : 10,
   },
   description: {
     fontSize: 10,
     color: isDarkMode ? '#a1a1aa' : '#666666',
-    marginBottom: 15,
+    marginBottom: isCompact ? 8 : 15,
     lineHeight: 1.4,
   },
   careerGrid: {
@@ -66,8 +67,8 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
   },
   careerItem: {
     width: '48%',
-    marginBottom: 12,
-    padding: 10,
+    marginBottom: isCompact ? 6 : 12,
+    padding: isCompact ? 6 : 10,
     borderWidth: 1,
     borderColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
     borderRadius: 6,
@@ -77,10 +78,10 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 8,
+    marginBottom: isCompact ? 4 : 8,
   },
   careerTitle: {
-    fontSize: 10,
+    fontSize: isCompact ? 9 : 10,
     fontFamily: 'Helvetica-Bold',
     color: isDarkMode ? '#e4e4e7' : '#000000',
     maxWidth: '75%',
@@ -109,12 +110,12 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
   careerCategory: {
     fontSize: 8,
     color: isDarkMode ? '#a1a1aa' : '#666666',
-    marginTop: 6,
+    marginTop: isCompact ? 3 : 6,
   },
   divider: {
     borderBottomWidth: 1,
     borderBottomColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
-    marginVertical: 12,
+    marginVertical: isCompact ? 8 : 12,
   },
 });
 
@@ -122,9 +123,10 @@ export const PDFCareerSuggestions: React.FC<PDFCareerSuggestionsProps> = ({
   personalityType,
   careerSuggestions,
   sectionNumber,
-  isDarkMode = false
+  isDarkMode = false,
+  isCompact = false
 }) => {
-  const styles = createStyles(isDarkMode);
+  const styles = createStyles(isDarkMode, isCompact);
 
   // Group careers by industry/category for more organized display
   const getCareerCategory = (career: Career): string => {
@@ -155,17 +157,25 @@ export const PDFCareerSuggestions: React.FC<PDFCareerSuggestionsProps> = ({
         <Text style={styles.cardHeading}>Career Paths for {personalityType}</Text>
       </View>
       
-      <Text style={styles.description}>
-        These career paths tend to leverage your natural strengths and
-        align with your personality preferences. Consider these
-        options when planning your professional development.
-      </Text>
+      {!isCompact && (
+        <Text style={styles.description}>
+          These career paths tend to leverage your natural strengths and
+          align with your personality preferences. Consider these
+          options when planning your professional development.
+        </Text>
+      )}
+      
+      {isCompact && (
+        <Text style={styles.description}>
+          Top career recommendations that align with your {personalityType} personality type.
+        </Text>
+      )}
 
       {Object.entries(categorizedCareers).map(([category, careers], categoryIndex) => (
         <View key={category}>
           {categoryIndex > 0 && <View style={styles.divider} />}
           
-          <Text style={[styles.cardTitle, { marginVertical: 10 }]}>{category}</Text>
+          <Text style={[styles.cardTitle, { marginVertical: isCompact ? 5 : 10 }]}>{category}</Text>
           
           <View style={styles.careerGrid}>
             {careers.map((career) => (
@@ -179,9 +189,11 @@ export const PDFCareerSuggestions: React.FC<PDFCareerSuggestionsProps> = ({
                 <View style={styles.progressBar}>
                   <View style={[styles.progressFill, { width: `${career.match}%` }]} />
                 </View>
-                <Text style={styles.careerCategory}>
-                  {category === "Excellent Match" ? "⭐️ Highly Recommended" : ""}
-                </Text>
+                {!isCompact && category === "Excellent Match" && (
+                  <Text style={styles.careerCategory}>
+                    ⭐️ Highly Recommended
+                  </Text>
+                )}
               </View>
             ))}
           </View>

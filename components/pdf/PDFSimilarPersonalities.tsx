@@ -12,17 +12,18 @@ interface PDFSimilarPersonalitiesProps {
   similarPersonalities: Person[];
   sectionNumber: number;
   isDarkMode?: boolean;
+  isCompact?: boolean; // New prop for compact display
 }
 
 // Create styles with theme variants
-const createStyles = (isDarkMode = false) => StyleSheet.create({
+const createStyles = (isDarkMode = false, isCompact = false) => StyleSheet.create({
   container: {
-    margin: 10,
+    margin: isCompact ? 5 : 10,
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: isCompact ? 10 : 20,
   },
   sectionNumber: {
     width: 24,
@@ -41,7 +42,7 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
     color: isDarkMode ? '#ffffff' : '#000000',
   },
   cardHeader: {
-    marginBottom: 15,
+    marginBottom: isCompact ? 8 : 15,
   },
   cardTitle: {
     fontSize: 10,
@@ -49,15 +50,15 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
     marginBottom: 2,
   },
   cardHeading: {
-    fontSize: 16,
+    fontSize: isCompact ? 14 : 16,
     fontFamily: 'Helvetica-Bold',
     color: isDarkMode ? '#a78bfa' : '#7c3aed',
-    marginBottom: 10,
+    marginBottom: isCompact ? 5 : 10,
   },
   description: {
     fontSize: 10,
     color: isDarkMode ? '#a1a1aa' : '#666666',
-    marginBottom: 15,
+    marginBottom: isCompact ? 10 : 15,
     lineHeight: 1.4,
   },
   personalitiesWrapper: {
@@ -69,24 +70,24 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
     width: '48%',
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 12,
-    padding: 8,
+    marginBottom: isCompact ? 6 : 12,
+    padding: isCompact ? 6 : 8,
     borderWidth: 1,
     borderColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
     borderRadius: 6,
     backgroundColor: isDarkMode ? '#27272a' : '#ffffff',
   },
   imagePlaceholder: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
+    width: isCompact ? 30 : 40,
+    height: isCompact ? 30 : 40,
+    borderRadius: isCompact ? 15 : 20,
     backgroundColor: isDarkMode ? '#4b5563' : '#e5e5e5',
-    marginRight: 10,
+    marginRight: isCompact ? 6 : 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
   placeholderText: {
-    fontSize: 16,
+    fontSize: isCompact ? 12 : 16,
     fontFamily: 'Helvetica-Bold',
     color: isDarkMode ? '#a1a1aa' : '#9ca3af',
   },
@@ -94,22 +95,22 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
     flex: 1,
   },
   personName: {
-    fontSize: 10,
+    fontSize: isCompact ? 9 : 10,
     fontFamily: 'Helvetica-Bold',
     color: isDarkMode ? '#e4e4e7' : '#000000',
-    marginBottom: 2,
+    marginBottom: isCompact ? 1 : 2,
   },
   profession: {
-    fontSize: 8,
+    fontSize: isCompact ? 7 : 8,
     color: isDarkMode ? '#a1a1aa' : '#666666',
   },
   categoryLabel: {
     width: '100%',
-    fontSize: 12,
+    fontSize: 11,
     fontFamily: 'Helvetica-Bold',
     color: isDarkMode ? '#d1d5db' : '#374151',
-    marginTop: 10,
-    marginBottom: 8,
+    marginTop: isCompact ? 5 : 10,
+    marginBottom: isCompact ? 4 : 8,
   }
 });
 
@@ -117,10 +118,50 @@ export const PDFSimilarPersonalities: React.FC<PDFSimilarPersonalitiesProps> = (
   personalityType,
   similarPersonalities,
   sectionNumber,
-  isDarkMode = false
+  isDarkMode = false,
+  isCompact = false
 }) => {
-  const styles = createStyles(isDarkMode);
+  const styles = createStyles(isDarkMode, isCompact);
 
+  // Get the first letter of the person's name for the placeholder
+  const getInitial = (name: string) => name.charAt(0);
+
+  // For compact view, show all personalities without categories
+  if (isCompact) {
+    return (
+      <View style={styles.container} wrap={false}>
+        <View style={styles.header}>
+          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
+          <Text style={styles.sectionTitle}>Similar Personalities</Text>
+        </View>
+
+        <View style={styles.cardHeader}>
+          <Text style={styles.cardTitle}>Notable People</Text>
+          <Text style={styles.cardHeading}>Who Shares Your Type</Text>
+        </View>
+        
+        <Text style={styles.description}>
+          Notable figures who share your {personalityType} personality traits and approach to life.
+        </Text>
+
+        <View style={styles.personalitiesWrapper}>
+          {similarPersonalities.map((person) => (
+            <View key={person.name} style={styles.personalityItem}>
+              <View style={styles.imagePlaceholder}>
+                <Text style={styles.placeholderText}>{getInitial(person.name)}</Text>
+              </View>
+              <View style={styles.personInfo}>
+                <Text style={styles.personName}>{person.name}</Text>
+                <Text style={styles.profession}>{person.profession}</Text>
+              </View>
+            </View>
+          ))}
+        </View>
+      </View>
+    );
+  }
+
+  // Regular view with categories
   // Group personalities by profession for better organization
   const personalitiesByCategory: Record<string, Person[]> = {};
   
@@ -132,9 +173,6 @@ export const PDFSimilarPersonalities: React.FC<PDFSimilarPersonalitiesProps> = (
     }
     personalitiesByCategory[category].push(person);
   });
-
-  // Get the first letter of the person's name for the placeholder
-  const getInitial = (name: string) => name.charAt(0);
 
   return (
     <View style={styles.container} wrap={false}>
