@@ -20,7 +20,7 @@ interface SimilarPersonalitiesProps {
 export function SimilarPersonalities({
   personalityType,
   similarPersonalities,
-  sectionNumber
+  sectionNumber,
 }: SimilarPersonalitiesProps) {
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
@@ -53,9 +53,9 @@ export function SimilarPersonalities({
               />
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
-              These notable figures are believed to share your{" "}
-              {personalityType} personality type. Examining their strengths
-              and approaches may provide insights into your own potential.
+              These notable figures are believed to share your {personalityType}{" "}
+              personality type. Examining their strengths and approaches may
+              provide insights into your own potential.
             </p>
           </div>
         </Card>
@@ -83,11 +83,6 @@ export function SimilarPersonalities({
                 </div>
               </motion.div>
             ))}
-
-            <Button variant="link" className="w-full text-muted-foreground">
-              <ExternalLink className="w-3 h-3 mr-1" />
-              Discover more {personalityType} personalities
-            </Button>
           </div>
         </Card>
       </div>
