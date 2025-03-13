@@ -100,192 +100,192 @@ export const getSimilarPersonalities = (type: string) => {
       {
         name: "Elon Musk",
         profession: "Entrepreneur & Inventor",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Michelle Obama",
         profession: "Attorney & Former First Lady",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     INTP: [
       {
         name: "Albert Einstein",
         profession: "Physicist",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Bill Gates",
         profession: "Business Magnate",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ENTJ: [
       {
         name: "Steve Jobs",
         profession: "Apple Co-founder",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Margaret Thatcher",
         profession: "Former Prime Minister",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ESFP: [
       {
         name: "Marilyn Monroe",
         profession: "Actress",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Will Smith",
         profession: "Actor & Musician",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ISTJ: [
       {
         name: "George Washington",
         profession: "First U.S. President",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Angela Merkel",
         profession: "Former German Chancellor",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ISFJ: [
       {
         name: "Mother Teresa",
         profession: "Missionary",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Kate Middleton",
         profession: "Duchess of Cambridge",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     INFJ: [
       {
         name: "Martin Luther King Jr.",
         profession: "Civil Rights Leader",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Oprah Winfrey",
         profession: "Talk Show Host & Philanthropist",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     INFP: [
       {
         name: "J.K. Rowling",
         profession: "Author",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Johnny Depp",
         profession: "Actor",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ISTP: [
       {
         name: "Clint Eastwood",
         profession: "Actor & Director",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Amelia Earhart",
         profession: "Aviator",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ISFP: [
       {
         name: "Bob Dylan",
         profession: "Musician",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Princess Diana",
         profession: "Royal Humanitarian",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ESTP: [
       {
         name: "Donald Trump",
         profession: "Businessman & Former President",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Madonna",
         profession: "Singer & Performer",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ENFP: [
       {
         name: "Robin Williams",
         profession: "Comedian & Actor",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Ellen DeGeneres",
         profession: "TV Host & Comedian",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ENTP: [
       {
         name: "Thomas Edison",
         profession: "Inventor",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Tina Fey",
         profession: "Comedian & Writer",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ESTJ: [
       {
         name: "Henry Ford",
         profession: "Industrialist",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Martha Stewart",
         profession: "Businesswoman & TV Personality",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ESFJ: [
       {
         name: "Taylor Swift",
         profession: "Singer-Songwriter",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Hugh Jackman",
         profession: "Actor",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
     ENFJ: [
       {
         name: "Barack Obama",
         profession: "Former U.S. President",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Maya Angelou",
         profession: "Poet & Civil Rights Activist",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ],
   };
@@ -295,12 +295,12 @@ export const getSimilarPersonalities = (type: string) => {
       {
         name: "Famous Person",
         profession: "Notable Profession",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
       {
         name: "Historical Figure",
         profession: "Important Role",
-        image: "/placeholder.svg?height=80&width=80",
+        image: "/similar-personalities-avatar.svg",
       },
     ]
   );
