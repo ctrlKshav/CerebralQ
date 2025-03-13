@@ -126,54 +126,6 @@ export const PDFSimilarPersonalities: React.FC<PDFSimilarPersonalitiesProps> = (
   // Get the first letter of the person's name for the placeholder
   const getInitial = (name: string) => name.charAt(0);
 
-  // For compact view, show all personalities without categories
-  if (isCompact) {
-    return (
-      <View style={styles.container} wrap={false}>
-        <View style={styles.header}>
-          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>Similar Personalities</Text>
-        </View>
-
-        <View style={styles.cardHeader}>
-          <Text style={styles.cardTitle}>Notable People</Text>
-          <Text style={styles.cardHeading}>Who Shares Your Type</Text>
-        </View>
-        
-        <Text style={styles.description}>
-          Notable figures who share your {personalityType} personality traits and approach to life.
-        </Text>
-
-        <View style={styles.personalitiesWrapper}>
-          {similarPersonalities.map((person) => (
-            <View key={person.name} style={styles.personalityItem}>
-              <View style={styles.imagePlaceholder}>
-                <Text style={styles.placeholderText}>{getInitial(person.name)}</Text>
-              </View>
-              <View style={styles.personInfo}>
-                <Text style={styles.personName}>{person.name}</Text>
-                <Text style={styles.profession}>{person.profession}</Text>
-              </View>
-            </View>
-          ))}
-        </View>
-      </View>
-    );
-  }
-
-  // Regular view with categories
-  // Group personalities by profession for better organization
-  const personalitiesByCategory: Record<string, Person[]> = {};
-  
-  similarPersonalities.forEach(person => {
-    // Extract general category from profession (simplified)
-    const category = person.profession.split(',')[0].trim();
-    if (!personalitiesByCategory[category]) {
-      personalitiesByCategory[category] = [];
-    }
-    personalitiesByCategory[category].push(person);
-  });
-
   return (
     <View style={styles.container} wrap={false}>
       <View style={styles.header}>
@@ -187,28 +139,26 @@ export const PDFSimilarPersonalities: React.FC<PDFSimilarPersonalitiesProps> = (
       </View>
       
       <Text style={styles.description}>
-        These notable figures are believed to share your {personalityType} personality type. 
-        Examining their strengths and approaches may provide insights into your own potential.
+        {isCompact 
+          ? `Notable figures who share your ${personalityType} personality traits and approach to life.`
+          : `These notable figures are believed to share your ${personalityType} personality type. 
+             Examining their strengths and approaches may provide insights into your own potential.`
+        }
       </Text>
 
-      {Object.entries(personalitiesByCategory).map(([category, persons]) => (
-        <View key={category} wrap={false}>
-          <Text style={styles.categoryLabel}>{category}</Text>
-          <View style={styles.personalitiesWrapper}>
-            {persons.map((person) => (
-              <View key={person.name} style={styles.personalityItem}>
-                <View style={styles.imagePlaceholder}>
-                  <Text style={styles.placeholderText}>{getInitial(person.name)}</Text>
-                </View>
-                <View style={styles.personInfo}>
-                  <Text style={styles.personName}>{person.name}</Text>
-                  <Text style={styles.profession}>{person.profession}</Text>
-                </View>
-              </View>
-            ))}
+      <View style={styles.personalitiesWrapper}>
+        {similarPersonalities.map((person) => (
+          <View key={person.name} style={styles.personalityItem}>
+            <View style={styles.imagePlaceholder}>
+              <Text style={styles.placeholderText}>{getInitial(person.name)}</Text>
+            </View>
+            <View style={styles.personInfo}>
+              <Text style={styles.personName}>{person.name}</Text>
+              <Text style={styles.profession}>{person.profession}</Text>
+            </View>
           </View>
-        </View>
-      ))}
+        ))}
+      </View>
     </View>
   );
 };
