@@ -18,7 +18,7 @@ const createStyles = (isDarkMode = false) => StyleSheet.create({
     color: isDarkMode ? '#e4e4e7' : '#000000',
   },
   section: {
-    marginBottom: 30,
+    marginBottom: 20, // Reduced margin between sections
   },
   footer: {
     position: 'absolute',
@@ -71,7 +71,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           />
         </View>
         
-        {/* About Personality Type Section */}
         <View style={styles.section}>
           <PDFAboutPersonalityType
             personalityType={personalityType}
@@ -87,7 +86,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
       
       {/* Second Page: Detailed Traits */}
       <Page size="A4" style={styles.page}>
-        {/* Personality Traits Section */}
         {traitScores && (
           <View style={styles.section}>
             <PDFPersonalityTraits 
@@ -103,25 +101,27 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         </Text>
       </Page>
       
-      {/* Third Page: Careers and Similar Personalities */}
+      {/* Third Page: Combined Career Suggestions and Similar Personalities */}
       <Page size="A4" style={styles.page}>
-        {/* Career Suggestions */}
+        {/* Career Suggestions - with compact prop to make it more space-efficient */}
         <View style={styles.section}>
           <PDFCareerSuggestions
             personalityType={personalityType}
-            careerSuggestions={careerSuggestions}
+            careerSuggestions={careerSuggestions.slice(0, 6)} // Limit to top 6 career suggestions
             sectionNumber={3}
             isDarkMode={isDarkMode}
+            isCompact={true} // New prop for more compact display
           />
         </View>
         
-        {/* Similar Personalities */}
+        {/* Similar Personalities - also with compact prop */}
         <View style={styles.section}>
           <PDFSimilarPersonalities
             personalityType={personalityType}
-            similarPersonalities={similarPersonalities}
+            similarPersonalities={similarPersonalities.slice(0, 6)} // Limit to top 6 personalities
             sectionNumber={4}
             isDarkMode={isDarkMode}
+            isCompact={true} // New prop for more compact display
           />
         </View>
         
@@ -130,9 +130,8 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         </Text>
       </Page>
       
-      {/* Fourth Page: Detailed Personality Insights (now consolidated into one section) */}
+      {/* Fourth Page: Detailed Personality Insights */}
       <Page size="A4" style={styles.page}>
-        {/* Consolidated detailed insights */}
         <View style={styles.section}>
           <PDFDetailedPersonalityInsights
             personalityType={personalityType}
