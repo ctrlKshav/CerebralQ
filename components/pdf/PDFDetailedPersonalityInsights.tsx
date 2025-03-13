@@ -2,8 +2,8 @@
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
 import { PersonalityTypeInsights } from "@/types/tests/mbti";
 
-// Create styles
-const styles = StyleSheet.create({
+// Create styles with theme variants
+const createStyles = (isDarkMode = false) => StyleSheet.create({
   container: {
     margin: 10,
   },
@@ -17,8 +17,8 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: "#0070f3",
-    color: "#0070f3",
+    borderColor: isDarkMode ? '#60a5fa' : "#0070f3",
+    color: isDarkMode ? '#60a5fa' : "#0070f3",
     textAlign: "center",
     fontFamily: "Helvetica-Bold",
     marginRight: 10,
@@ -26,10 +26,11 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontFamily: "Helvetica-Bold",
+    color: isDarkMode ? '#ffffff' : '#000000',
   },
   subtitle: {
     fontSize: 11,
-    color: "#666666",
+    color: isDarkMode ? '#a1a1aa' : "#666666",
     marginBottom: 15,
     lineHeight: 1.5,
   },
@@ -39,13 +40,13 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 16,
     fontFamily: "Helvetica-Bold",
-    color: "#0070f3",
+    color: isDarkMode ? '#60a5fa' : "#0070f3",
     marginBottom: 8,
   },
   insightSection: {
     marginBottom: 20,
     padding: 12,
-    backgroundColor: "#fafafa",
+    backgroundColor: isDarkMode ? '#27272a' : "#fafafa",
     borderRadius: 6,
     borderLeftWidth: 4,
   },
@@ -63,6 +64,7 @@ const styles = StyleSheet.create({
   insightTitle: {
     fontSize: 14,
     fontFamily: "Helvetica-Bold",
+    color: isDarkMode ? '#e4e4e7' : '#000000',
   },
   insightPoint: {
     flexDirection: "row",
@@ -73,48 +75,50 @@ const styles = StyleSheet.create({
     fontSize: 11,
     marginRight: 6,
     width: 10,
+    color: isDarkMode ? '#a1a1aa' : '#666666',
   },
   pointText: {
     fontSize: 10,
     flex: 1,
     lineHeight: 1.5,
+    color: isDarkMode ? '#d4d4d8' : '#444444',
   },
   // Color styles for different sections
   strengthsSection: {
-    borderLeftColor: "#4ade80",
+    borderLeftColor: isDarkMode ? "#4ade80" : "#4ade80",
   },
   strengthsIcon: {
-    backgroundColor: "#4ade80",
+    backgroundColor: isDarkMode ? "#4ade80" : "#4ade80",
   },
   challengesSection: {
-    borderLeftColor: "#fbbf24",
+    borderLeftColor: isDarkMode ? "#fbbf24" : "#fbbf24",
   },
   challengesIcon: {
-    backgroundColor: "#fbbf24",
+    backgroundColor: isDarkMode ? "#fbbf24" : "#fbbf24",
   },
   workStyleSection: {
-    borderLeftColor: "#60a5fa",
+    borderLeftColor: isDarkMode ? "#60a5fa" : "#60a5fa",
   },
   workStyleIcon: {
-    backgroundColor: "#60a5fa",
+    backgroundColor: isDarkMode ? "#60a5fa" : "#60a5fa",
   },
   relationshipsSection: {
-    borderLeftColor: "#a78bfa",
+    borderLeftColor: isDarkMode ? "#a78bfa" : "#a78bfa",
   },
   relationshipsIcon: {
-    backgroundColor: "#a78bfa",
+    backgroundColor: isDarkMode ? "#a78bfa" : "#a78bfa",
   },
   growthAreasSection: {
-    borderLeftColor: "#2dd4bf",
+    borderLeftColor: isDarkMode ? "#2dd4bf" : "#2dd4bf",
   },
   growthAreasIcon: {
-    backgroundColor: "#2dd4bf",
+    backgroundColor: isDarkMode ? "#2dd4bf" : "#2dd4bf",
   },
   pageBreak: {
     marginTop: 30,
     marginBottom: 30,
     borderTopWidth: 1,
-    borderTopColor: "#e5e5e5",
+    borderTopColor: isDarkMode ? '#3f3f46' : "#e5e5e5",
     paddingTop: 30,
   },
 });
@@ -124,10 +128,11 @@ interface PDFDetailedPersonalityInsightsProps {
   personalityAlias: string;
   personalityInsights: PersonalityTypeInsights;
   sectionNumber: number;
+  isDarkMode?: boolean;
 }
 
 // Helper function to get section styles
-const getSectionStyles = (sectionType: string) => {
+const getSectionStyles = (styles: any, sectionType: string) => {
   switch (sectionType) {
     case "strengths":
       return {
@@ -169,7 +174,31 @@ export const PDFDetailedPersonalityInsights: React.FC<
   personalityAlias,
   personalityInsights,
   sectionNumber,
+  isDarkMode = false
 }) => {
+  const styles = createStyles(isDarkMode);
+  
+  // Helper function to render an insight section
+  const renderInsightSection = (sectionType: string, section: { title: string; points: string[] }) => {
+    const sectionStyles = getSectionStyles(styles, sectionType);
+
+    return (
+      <View wrap={false} style={[styles.insightSection, sectionStyles.section]}>
+        <View style={styles.insightHeader}>
+          <View style={[styles.insightIcon, sectionStyles.icon]} />
+          <Text style={styles.insightTitle}>{section.title}</Text>
+        </View>
+
+        {section.points.map((point, index) => (
+          <View key={`point-${index}`} style={styles.insightPoint}>
+            <Text style={styles.bulletPoint}>→</Text>
+            <Text style={styles.pointText}>{point}</Text>
+          </View>
+        ))}
+      </View>
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -202,30 +231,6 @@ export const PDFDetailedPersonalityInsights: React.FC<
         )}
         {renderInsightSection("growthAreas", personalityInsights.growthAreas)}
       </View>
-    </View>
-  );
-};
-
-// Helper function to render an insight section
-const renderInsightSection = (
-  sectionType: string,
-  section: { title: string; points: string[] }
-) => {
-  const sectionStyles = getSectionStyles(sectionType);
-
-  return (
-    <View wrap={false} style={[styles.insightSection, sectionStyles.section]}>
-      <View style={styles.insightHeader}>
-        <View style={[styles.insightIcon, sectionStyles.icon]} />
-        <Text style={styles.insightTitle}>{section.title}</Text>
-      </View>
-
-      {section.points.map((point, index) => (
-        <View key={`point-${index}`} style={styles.insightPoint}>
-          <Text style={styles.bulletPoint}>→</Text>
-          <Text style={styles.pointText}>{point}</Text>
-        </View>
-      ))}
     </View>
   );
 };

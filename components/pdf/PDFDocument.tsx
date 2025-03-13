@@ -9,12 +9,13 @@ import { PDFAboutPersonalityType } from '@/components/pdf/PDFAboutPersonalityTyp
 import { ResultData } from '@/types/tests/mbti';
 import { getPersonalityInsights } from '@/data/mbti/personalityInformation';
 
-// Create styles
-const styles = StyleSheet.create({
+// Create styles with theme variants
+const createStyles = (isDarkMode = false) => StyleSheet.create({
   page: {
     padding: 30,
     fontFamily: 'Helvetica',
-    backgroundColor: '#ffffff',
+    backgroundColor: isDarkMode ? '#18181b' : '#ffffff',
+    color: isDarkMode ? '#e4e4e7' : '#000000',
   },
   section: {
     marginBottom: 30,
@@ -26,19 +27,21 @@ const styles = StyleSheet.create({
     right: 0,
     textAlign: 'center',
     fontSize: 10,
-    color: '#999999',
+    color: isDarkMode ? '#71717a' : '#999999',
   },
-  pageNumber: {
-    fontSize: 10,
-    color: '#999999',
-  }
 });
 
 interface PDFDocumentProps {
   resultData: ResultData;
+  isDarkMode?: boolean;
 }
 
-export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({ resultData }) => {
+export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({ 
+  resultData,
+  isDarkMode = false 
+}) => {
+  const styles = createStyles(isDarkMode);
+  
   const {
     personalityType,
     personalityDescription,
@@ -64,6 +67,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({ resultData }) =
             personalityAlias={personalityAlias}
             personalityDescription={personalityDescription}
             completionDate={completionDate}
+            isDarkMode={isDarkMode}
           />
         </View>
         
@@ -72,6 +76,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({ resultData }) =
           <PDFAboutPersonalityType
             personalityType={personalityType}
             sectionNumber={1}
+            isDarkMode={isDarkMode}
           />
         </View>
         
@@ -87,7 +92,8 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({ resultData }) =
           <View style={styles.section}>
             <PDFPersonalityTraits 
               traitScores={traitScores} 
-              sectionNumber={2} 
+              sectionNumber={2}
+              isDarkMode={isDarkMode}
             />
           </View>
         )}
@@ -105,6 +111,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({ resultData }) =
             personalityType={personalityType}
             careerSuggestions={careerSuggestions}
             sectionNumber={3}
+            isDarkMode={isDarkMode}
           />
         </View>
         
@@ -114,6 +121,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({ resultData }) =
             personalityType={personalityType}
             similarPersonalities={similarPersonalities}
             sectionNumber={4}
+            isDarkMode={isDarkMode}
           />
         </View>
         
@@ -131,6 +139,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({ resultData }) =
             personalityAlias={personalityAlias}
             personalityInsights={personalityInsights}
             sectionNumber={5}
+            isDarkMode={isDarkMode}
           />
         </View>
         

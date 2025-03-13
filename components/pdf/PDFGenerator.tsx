@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Download } from 'lucide-react';
 import { PDFResultsDocument } from '@/components/pdf/PDFDocument';
 import { ResultData } from '@/types/tests/mbti';
+import { useTheme } from 'next-themes';
 
 interface PDFGeneratorProps {
   resultData: ResultData;
@@ -16,6 +17,10 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
 }) => {
   // Using client-side rendering for PDFDownloadLink
   const [isClient, setIsClient] = useState(false);
+  const { theme, resolvedTheme } = useTheme();
+  
+  // Determine if dark mode is active
+  const isDarkMode = theme === 'dark' || (theme === 'system' && resolvedTheme === 'dark');
   
   useEffect(() => {
     setIsClient(true);
@@ -32,7 +37,7 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
 
   return (
     <PDFDownloadLink
-      document={<PDFResultsDocument resultData={resultData} />}
+      document={<PDFResultsDocument resultData={resultData} isDarkMode={isDarkMode} />}
       fileName={fileName}
     >
       {({ loading, error }) => (

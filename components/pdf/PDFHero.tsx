@@ -2,8 +2,8 @@
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import { PersonalityDescription } from '@/types/tests/mbti';
 
-// Create styles
-const styles = StyleSheet.create({
+// Create styles with theme variants
+const createStyles = (isDarkMode = false) => StyleSheet.create({
   container: {
     textAlign: 'center',
     marginBottom: 20
@@ -11,31 +11,33 @@ const styles = StyleSheet.create({
   badge: {
     alignSelf: 'center',
     padding: 6,
-    backgroundColor: '#f4f4f4',
+    backgroundColor: isDarkMode ? '#27272a' : '#f4f4f4',
     borderRadius: 4,
     marginBottom: 10,
   },
   badgeText: {
     fontSize: 10,
-    color: '#666666',
+    color: isDarkMode ? '#a1a1aa' : '#666666',
   },
   heading: {
     fontSize: 24,
     marginBottom: 5,
+    color: isDarkMode ? '#ffffff' : '#000000',
   },
   personalityType: {
     fontFamily: 'Helvetica-Bold',
     fontSize: 32,
+    color: isDarkMode ? '#ffffff' : '#000000',
   },
   subtitle: {
     fontSize: 16,
-    color: '#0070f3',
+    color: isDarkMode ? '#60a5fa' : '#0070f3',
     fontFamily: 'Helvetica-Bold',
     marginBottom: 10,
   },
   description: {
     fontSize: 12,
-    color: '#666666',
+    color: isDarkMode ? '#a1a1aa' : '#666666',
     marginBottom: 10,
     maxWidth: 500,
     alignSelf: 'center',
@@ -44,7 +46,7 @@ const styles = StyleSheet.create({
   },
   completionDate: {
     fontSize: 10,
-    color: '#999999',
+    color: isDarkMode ? '#71717a' : '#999999',
     marginBottom: 10,
   },
 });
@@ -54,6 +56,7 @@ interface PDFHeroProps {
   personalityAlias: string;
   personalityDescription: PersonalityDescription;
   completionDate: string;
+  isDarkMode?: boolean;
 }
 
 export const PDFHero: React.FC<PDFHeroProps> = ({
@@ -61,7 +64,10 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
   personalityAlias,
   personalityDescription,
   completionDate,
+  isDarkMode = false,
 }) => {
+  const styles = createStyles(isDarkMode);
+  
   return (
     <View style={styles.container}>
       <View style={styles.badge}>
