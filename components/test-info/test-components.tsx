@@ -118,7 +118,7 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
               <TooltipProvider delayDuration={100}>
                 <Tooltip>
                   <TooltipTrigger asChild>
-                    <InfoIcon className="h-4 w-4 cursor-help text-muted-foreground" />
+                    <InfoIcon className="h-4 w-4 text-muted-foreground" />
                   </TooltipTrigger>
                   <TooltipContent
                     side="right"
