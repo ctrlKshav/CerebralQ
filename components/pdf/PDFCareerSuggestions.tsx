@@ -128,23 +128,6 @@ export const PDFCareerSuggestions: React.FC<PDFCareerSuggestionsProps> = ({
 }) => {
   const styles = createStyles(isDarkMode, isCompact);
 
-  // Group careers by industry/category for more organized display
-  const getCareerCategory = (career: Career): string => {
-    // This is a simplified version - in a real app you might have actual categories
-    if (career.match > 85) return "Excellent Match";
-    if (career.match > 75) return "Strong Match";
-    return "Good Match";
-  };
-
-  const categorizedCareers: Record<string, Career[]> = {};
-  careerSuggestions.forEach(career => {
-    const category = getCareerCategory(career);
-    if (!categorizedCareers[category]) {
-      categorizedCareers[category] = [];
-    }
-    categorizedCareers[category].push(career);
-  });
-
   return (
     <View style={styles.container} wrap={false}>
       <View style={styles.header}>
@@ -171,34 +154,26 @@ export const PDFCareerSuggestions: React.FC<PDFCareerSuggestionsProps> = ({
         </Text>
       )}
 
-      {Object.entries(categorizedCareers).map(([category, careers], categoryIndex) => (
-        <View key={category}>
-          {categoryIndex > 0 && <View style={styles.divider} />}
-          
-          <Text style={[styles.cardTitle, { marginVertical: isCompact ? 5 : 10 }]}>{category}</Text>
-          
-          <View style={styles.careerGrid}>
-            {careers.map((career) => (
-              <View key={career.title} style={styles.careerItem}>
-                <View style={styles.careerHeader}>
-                  <Text style={styles.careerTitle}>{career.title}</Text>
-                  <View style={styles.matchContainer}>
-                    <Text style={styles.matchPercentage}>{career.match}%</Text>
-                  </View>
-                </View>
-                <View style={styles.progressBar}>
-                  <View style={[styles.progressFill, { width: `${career.match}%` }]} />
-                </View>
-                {!isCompact && category === "Excellent Match" && (
-                  <Text style={styles.careerCategory}>
-                    ⭐️ Highly Recommended
-                  </Text>
-                )}
+      <View style={styles.careerGrid}>
+        {careerSuggestions.map((career) => (
+          <View key={career.title} style={styles.careerItem}>
+            <View style={styles.careerHeader}>
+              <Text style={styles.careerTitle}>{career.title}</Text>
+              <View style={styles.matchContainer}>
+                <Text style={styles.matchPercentage}>{career.match}%</Text>
               </View>
-            ))}
+            </View>
+            <View style={styles.progressBar}>
+              <View style={[styles.progressFill, { width: `${career.match}%` }]} />
+            </View>
+            {!isCompact && career.match > 85 && (
+              <Text style={styles.careerCategory}>
+                ⭐️ Highly Recommended
+              </Text>
+            )}
           </View>
-        </View>
-      ))}
+        ))}
+      </View>
     </View>
   );
 };
