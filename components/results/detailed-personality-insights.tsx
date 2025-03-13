@@ -35,8 +35,8 @@ export function DetailedPersonalityInsights({
         </h2>
       </div>
 
-      <div className="flex gap-12">
-        <Card className="p-8 lg:col-span-1 h-fit lg:sticky top-24 w-1/2">
+      <div className="flex flex-col sm:flex-row gap-12">
+        <Card className="p-8 lg:col-span-1 h-fit lg:sticky top-24 sm:w-1/2">
           <div className="space-y-6">
             <div className="space-y-2">
               <span className="text-base text-muted-foreground">
@@ -65,7 +65,7 @@ export function DetailedPersonalityInsights({
             </p>
           </div>
         </Card>
-          <div className="grid grid-cols-2  gap-4 ">
+          <div className="grid grid-cols-1 md:grid-cols-2  gap-4 ">
             <InsightSectionCard
               section={personalityInsights.strengths}
               sectionType="strengths"

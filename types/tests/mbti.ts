@@ -96,12 +96,8 @@ export interface ResultData {
   testId: string;
   completionDate: string;
   traitScores: TraitScores | null;
-  careerSuggestions: Array<{ title: string; match: number }>;
-  similarPersonalities: Array<{
-    name: string;
-    profession: string;
-    image: string;
-  }>;
+  careerSuggestions: { title: string; match: number }[];
+  similarPersonalities: { name: string; profession: string; image: string }[];
 }
 
 export interface PersonalityDescription {
