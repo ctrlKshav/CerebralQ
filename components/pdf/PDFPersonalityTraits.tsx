@@ -3,8 +3,8 @@ import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import type { TraitScores } from '@/types/tests/mbti';
 import { traitDescriptions } from '@/data/mbti/traitDescriptions';
 
-// Create styles
-const styles = StyleSheet.create({
+// Create styles with theme variants
+const createStyles = (isDarkMode = false) => StyleSheet.create({
   container: {
     margin: 10,
   },
@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#0070f3',
-    color: '#0070f3',
+    borderColor: isDarkMode ? '#60a5fa' : '#0070f3',
+    color: isDarkMode ? '#60a5fa' : '#0070f3',
     textAlign: 'center',
     fontFamily: 'Helvetica-Bold',
     marginRight: 10,
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontFamily: 'Helvetica-Bold',
+    color: isDarkMode ? '#ffffff' : '#000000',
   },
   traitContainer: {
     marginBottom: 15,
@@ -38,11 +39,11 @@ const styles = StyleSheet.create({
   },
   label: {
     fontSize: 9,
-    color: '#666666',
+    color: isDarkMode ? '#a1a1aa' : '#666666',
   },
   barContainer: {
     height: 16,
-    backgroundColor: '#f4f4f4',
+    backgroundColor: isDarkMode ? '#3f3f46' : '#f4f4f4',
     borderRadius: 8,
     position: 'relative',
   },
@@ -79,18 +80,18 @@ const styles = StyleSheet.create({
   traitDescription: {
     marginTop: 15,
     padding: 10,
-    backgroundColor: '#f9f9f9',
+    backgroundColor: isDarkMode ? '#27272a' : '#f9f9f9',
     borderRadius: 8,
   },
   traitTitle: {
     fontSize: 14,
     fontFamily: 'Helvetica-Bold',
-    color: '#0070f3',
+    color: isDarkMode ? '#60a5fa' : '#0070f3',
     marginBottom: 5,
   },
   traitText: {
     fontSize: 10,
-    color: '#444444',
+    color: isDarkMode ? '#d4d4d8' : '#444444',
     lineHeight: 1.4,
   },
 });
@@ -98,12 +99,16 @@ const styles = StyleSheet.create({
 interface PDFPersonalityTraitsProps {
   traitScores: TraitScores;
   sectionNumber: number;
+  isDarkMode?: boolean;
 }
 
 export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
   traitScores,
   sectionNumber,
+  isDarkMode = false,
 }) => {
+  const styles = createStyles(isDarkMode);
+  
   return (
     <View style={styles.container}>
       <View style={styles.headerRow}>

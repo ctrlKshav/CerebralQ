@@ -10,10 +10,11 @@ interface PDFCareerSuggestionsProps {
   personalityType: string;
   careerSuggestions: Career[];
   sectionNumber: number;
+  isDarkMode?: boolean;
 }
 
-// Create styles
-const styles = StyleSheet.create({
+// Create styles with theme variants
+const createStyles = (isDarkMode = false) => StyleSheet.create({
   container: {
     margin: 10,
   },
@@ -27,8 +28,8 @@ const styles = StyleSheet.create({
     height: 24,
     borderRadius: 12,
     borderWidth: 1,
-    borderColor: '#0070f3',
-    color: '#0070f3',
+    borderColor: isDarkMode ? '#60a5fa' : '#0070f3',
+    color: isDarkMode ? '#60a5fa' : '#0070f3',
     textAlign: 'center',
     fontFamily: 'Helvetica-Bold',
     marginRight: 10,
@@ -36,77 +37,114 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontFamily: 'Helvetica-Bold',
+    color: isDarkMode ? '#ffffff' : '#000000',
   },
   cardHeader: {
     marginBottom: 15,
   },
   cardTitle: {
     fontSize: 10,
-    color: '#666666',
+    color: isDarkMode ? '#a1a1aa' : '#666666',
     marginBottom: 2,
   },
   cardHeading: {
     fontSize: 16,
     fontFamily: 'Helvetica-Bold',
-    color: '#0070f3',
+    color: isDarkMode ? '#60a5fa' : '#0070f3',
     marginBottom: 10,
   },
   description: {
     fontSize: 10,
-    color: '#666666',
+    color: isDarkMode ? '#a1a1aa' : '#666666',
     marginBottom: 15,
     lineHeight: 1.4,
   },
+  careerGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+  },
   careerItem: {
+    width: '48%',
     marginBottom: 12,
-    padding: 8,
+    padding: 10,
     borderWidth: 1,
-    borderColor: '#e5e5e5',
+    borderColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
     borderRadius: 6,
+    backgroundColor: isDarkMode ? '#27272a' : '#ffffff',
   },
   careerHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 5,
+    marginBottom: 8,
   },
   careerTitle: {
-    fontSize: 12,
+    fontSize: 10,
     fontFamily: 'Helvetica-Bold',
+    color: isDarkMode ? '#e4e4e7' : '#000000',
+    maxWidth: '75%',
   },
   matchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    backgroundColor: isDarkMode ? '#374151' : '#f5f5f5',
+    paddingVertical: 2,
+    paddingHorizontal: 6,
+    borderRadius: 10,
   },
   matchPercentage: {
-    fontSize: 12,
+    fontSize: 9,
     fontFamily: 'Helvetica-Bold',
-    color: '#0070f3',
-    marginRight: 2,
-  },
-  matchText: {
-    fontSize: 8,
-    color: '#666666',
+    color: isDarkMode ? '#60a5fa' : '#0070f3',
   },
   progressBar: {
-    height: 6,
-    backgroundColor: '#e5e5e5',
-    borderRadius: 3,
+    height: 4,
+    backgroundColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
+    borderRadius: 2,
   },
   progressFill: {
     height: '100%',
-    backgroundColor: '#0070f3',
-    borderRadius: 3,
+    backgroundColor: isDarkMode ? '#60a5fa' : '#0070f3',
+    borderRadius: 2,
+  },
+  careerCategory: {
+    fontSize: 8,
+    color: isDarkMode ? '#a1a1aa' : '#666666',
+    marginTop: 6,
+  },
+  divider: {
+    borderBottomWidth: 1,
+    borderBottomColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
+    marginVertical: 12,
   },
 });
 
 export const PDFCareerSuggestions: React.FC<PDFCareerSuggestionsProps> = ({
   personalityType,
   careerSuggestions,
-  sectionNumber
+  sectionNumber,
+  isDarkMode = false
 }) => {
+  const styles = createStyles(isDarkMode);
+
+  // Group careers by industry/category for more organized display
+  const getCareerCategory = (career: Career): string => {
+    // This is a simplified version - in a real app you might have actual categories
+    if (career.match > 85) return "Excellent Match";
+    if (career.match > 75) return "Strong Match";
+    return "Good Match";
+  };
+
+  const categorizedCareers: Record<string, Career[]> = {};
+  careerSuggestions.forEach(career => {
+    const category = getCareerCategory(career);
+    if (!categorizedCareers[category]) {
+      categorizedCareers[category] = [];
+    }
+    categorizedCareers[category].push(career);
+  });
+
   return (
-    <View style={styles.container}>
+    <View style={styles.container} wrap={false}>
       <View style={styles.header}>
         <Text style={styles.sectionNumber}>{sectionNumber}</Text>
         <Text style={styles.sectionTitle}>Career Recommendations</Text>
@@ -123,17 +161,29 @@ export const PDFCareerSuggestions: React.FC<PDFCareerSuggestionsProps> = ({
         options when planning your professional development.
       </Text>
 
-      {careerSuggestions.map((career) => (
-        <View key={career.title} style={styles.careerItem}>
-          <View style={styles.careerHeader}>
-            <Text style={styles.careerTitle}>{career.title}</Text>
-            <View style={styles.matchContainer}>
-              <Text style={styles.matchPercentage}>{career.match}%</Text>
-              <Text style={styles.matchText}>Match</Text>
-            </View>
-          </View>
-          <View style={styles.progressBar}>
-            <View style={[styles.progressFill, { width: `${career.match}%` }]} />
+      {Object.entries(categorizedCareers).map(([category, careers], categoryIndex) => (
+        <View key={category}>
+          {categoryIndex > 0 && <View style={styles.divider} />}
+          
+          <Text style={[styles.cardTitle, { marginVertical: 10 }]}>{category}</Text>
+          
+          <View style={styles.careerGrid}>
+            {careers.map((career) => (
+              <View key={career.title} style={styles.careerItem}>
+                <View style={styles.careerHeader}>
+                  <Text style={styles.careerTitle}>{career.title}</Text>
+                  <View style={styles.matchContainer}>
+                    <Text style={styles.matchPercentage}>{career.match}%</Text>
+                  </View>
+                </View>
+                <View style={styles.progressBar}>
+                  <View style={[styles.progressFill, { width: `${career.match}%` }]} />
+                </View>
+                <Text style={styles.careerCategory}>
+                  {category === "Excellent Match" ? "⭐️ Highly Recommended" : ""}
+                </Text>
+              </View>
+            ))}
           </View>
         </View>
       ))}
