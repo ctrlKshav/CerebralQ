@@ -86,7 +86,7 @@ const UnprotectedNavbar = (props: { className?: string }) => {
                     className="h-auto w-max rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
                     href="/sign-up?source=newsletter"
                   >
-                    Newsletter coming soon ! Click{" "}
+                    Newsletter coming soon! Click{" "}
                     <span className="font-bold">here</span> to sign up.
                   </NavigationMenuLink>
                 </NavigationMenuItem>
