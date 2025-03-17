@@ -126,8 +126,9 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
                   >
                     <p>
                       <Link href={"/sign-up"} className="font-bold underline">
-                        Create an account{" "}
+                        Create an account
                       </Link>
+                      {" "}
                       and we'll send you a reminder before your test results
                       expire!
                     </p>
