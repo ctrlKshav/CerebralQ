@@ -20,7 +20,7 @@ export default function ProfileHeader({
 }: ProfileHeaderProps) {
   const handleProfileShare = async () => {
     const title = `${userData.username}'s Profile`;
-    const text = `I'm ${userData.raw_score.personalityType}! Check out my personality profile on CerebralQuotient.`;
+    const text = `I'm an ${userData.raw_score.personalityType}! Check out my personality profile on CerebralQuotient.`;
     const url = `profiles/${userData.username}`;
 
     await handleShare(title, text, url, false);
