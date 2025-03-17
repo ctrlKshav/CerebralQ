@@ -72,18 +72,20 @@ const createStyles = (isDarkMode = false) => {
         flexDirection: "row",
         marginBottom: 6,
         paddingLeft: 4,
+        alignItems: "center", // Center items vertically
       },
       bulletPoint: {
-        fontSize: 11,
+        fontSize: 12,
         marginRight: 6,
         width: 10,
-        color: theme.mutedForeground,
+        // color is now applied dynamically n the component
+        fontFamily: "Helvetica-Bold", // Make bullet point bolder
       },
       pointText: {
-        fontSize: 10,
-        flex: 1,
+        paddingTop:4,
+        fontSize:8,
         lineHeight: 1.5,
-        color: theme.cardForeground,
+        color: theme.cardForeground,        
       },
       // Color styles for different sections
       strengthsSection: {
@@ -190,6 +192,9 @@ export const PDFDetailedPersonalityInsights: React.FC<
     section: { title: string; points: string[] }
   ) => {
     const sectionStyles = getSectionStyles(styles, sectionType);
+    
+    // Get the section color (same as icon background color)
+    const sectionColor = sectionStyles.icon.backgroundColor;
 
     return (
       <View wrap={false} style={[styles.insightSection, sectionStyles.section]}>
@@ -200,7 +205,7 @@ export const PDFDetailedPersonalityInsights: React.FC<
 
         {section.points.map((point, index) => (
           <View key={`point-${index}`} style={styles.insightPoint}>
-            <Text style={styles.bulletPoint}>→</Text>
+            <Text style={[styles.bulletPoint, { color: sectionColor }]}>›</Text>
             <Text style={styles.pointText}>{point}</Text>
           </View>
         ))}
