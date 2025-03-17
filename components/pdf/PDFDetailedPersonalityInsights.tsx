@@ -1,13 +1,13 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
 import { PersonalityTypeInsights } from "@/types/tests/mbti";
-import { createBaseStyles, getThemeColors } from './PDFTheme';
+import { createBaseStyles, getThemeColors } from "./PDFTheme";
 
 // Create styles with theme variants
 const createStyles = (isDarkMode = false) => {
   const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
-  
+
   return {
     ...StyleSheet.create({
       container: {
@@ -34,11 +34,23 @@ const createStyles = (isDarkMode = false) => {
         marginBottom: 8,
       },
       insightSection: {
-        marginBottom: 20,
-        padding: 12,
+        marginBottom: 30, // Increased spacing between sections
+        padding: 15, // Slightly more padding inside sections
         backgroundColor: theme.card,
         borderRadius: 6,
         borderLeftWidth: 4,
+        // Add a subtle bottom border for additional separation
+        borderBottomWidth: 1,
+        borderBottomColor: theme.border,
+        borderTopWidth: 1,
+        borderTopColor: theme.border,
+      },
+      // Section separator
+      sectionSeparator: {
+        height: 1,
+        backgroundColor: theme.border,
+        marginVertical: 15, // Space above and below separator
+        opacity: 0.6, // Make it subtle
       },
       insightHeader: {
         flexDirection: "row",
@@ -115,7 +127,7 @@ const createStyles = (isDarkMode = false) => {
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
   };
-}
+};
 
 interface PDFDetailedPersonalityInsightsProps {
   personalityType: string;
@@ -168,12 +180,15 @@ export const PDFDetailedPersonalityInsights: React.FC<
   personalityAlias,
   personalityInsights,
   sectionNumber,
-  isDarkMode = false
+  isDarkMode = false,
 }) => {
   const styles = createStyles(isDarkMode);
-  
+
   // Helper function to render an insight section
-  const renderInsightSection = (sectionType: string, section: { title: string; points: string[] }) => {
+  const renderInsightSection = (
+    sectionType: string,
+    section: { title: string; points: string[] }
+  ) => {
     const sectionStyles = getSectionStyles(styles, sectionType);
 
     return (
