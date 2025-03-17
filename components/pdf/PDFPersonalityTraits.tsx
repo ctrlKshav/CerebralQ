@@ -39,6 +39,8 @@ const createStyles = (isDarkMode = false) => {
         borderRadius: 8,
         position: 'relative',
         overflow: 'hidden',
+        marginTop: 5, 
+        marginBottom: 5,
       },
       leftBar: {
         position: 'absolute',

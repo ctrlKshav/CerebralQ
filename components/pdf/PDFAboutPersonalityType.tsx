@@ -96,10 +96,7 @@ const createStyles = (isDarkMode = false) => {
       challengesText: {
         color: theme.foreground,
       },
-      sectionDivider: {
-        borderRightWidth: 1,
-        borderRightColor: theme.border,
-      }
+     
     }),
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
@@ -142,7 +139,7 @@ export const PDFAboutPersonalityType: React.FC<PDFAboutPersonalityTypeProps> = (
         {/* Side-by-side Strengths and Growth Areas */}
         <View style={styles.row}>
           {/* Strengths column */}
-          <View style={[styles.column, styles.sectionDivider]}>
+          <View style={[styles.column]}>
             <Text style={[styles.sectionLabel, styles.strengthsLabel]}>Strengths</Text>
             <View style={styles.bulletList}>
               {personalityInfo.strengths.map((strength, index) => (
