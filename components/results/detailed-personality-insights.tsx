@@ -65,40 +65,40 @@ export function DetailedPersonalityInsights({
             </p>
           </div>
         </Card>
-          <div className="grid grid-cols-1 md:grid-cols-2  gap-4 ">
-            <InsightSectionCard
-              section={personalityInsights.strengths}
-              sectionType="strengths"
-            />
-            
-            <InsightSectionCard
-              section={personalityInsights.challenges}
-              sectionType="challenges"
-            />
-            
-            <InsightSectionCard
-              section={personalityInsights.workStyle}
-              sectionType="workStyle"
-            />
-            
-            <InsightSectionCard
-              section={personalityInsights.relationships}
-              sectionType="relationships"
-            />
-            
+        <div className="grid grid-cols-1 lg:grid-cols-2  gap-4 ">
+          <InsightSectionCard
+            section={personalityInsights.strengths}
+            sectionType="strengths"
+          />
+
+          <InsightSectionCard
+            section={personalityInsights.challenges}
+            sectionType="challenges"
+          />
+
+          <InsightSectionCard
+            section={personalityInsights.workStyle}
+            sectionType="workStyle"
+          />
+
+          <InsightSectionCard
+            section={personalityInsights.relationships}
+            sectionType="relationships"
+          />
+
+          <div className="lg:col-span-2">
             <InsightSectionCard
               section={personalityInsights.growthAreas}
               sectionType="growthAreas"
             />
           </div>
-
-          {/* Commented button remains the same */}
         </div>
+
+        {/* Commented button remains the same */}
+      </div>
     </div>
   );
 }
-
-
 
 // Define types for our insight section data
 interface InsightSection {
@@ -107,7 +107,12 @@ interface InsightSection {
 }
 
 // Define the color combinations for each section type
-type SectionType = 'strengths' | 'challenges' | 'workStyle' | 'relationships' | 'growthAreas';
+type SectionType =
+  | "strengths"
+  | "challenges"
+  | "workStyle"
+  | "relationships"
+  | "growthAreas";
 
 interface SectionColors {
   border: string;
@@ -121,32 +126,32 @@ const sectionColors: Record<SectionType, SectionColors> = {
     border: "border-l-green-500",
     icon: "bg-green-400",
     bullet: "text-green-500",
-    dark: "dark:bg-green-700"
+    dark: "dark:bg-green-700",
   },
   challenges: {
     border: "border-l-amber-500",
     icon: "bg-amber-400",
     bullet: "text-amber-500",
-    dark: "dark:bg-amber-700"
+    dark: "dark:bg-amber-700",
   },
   workStyle: {
     border: "border-l-blue-500",
     icon: "bg-blue-400",
     bullet: "text-blue-500",
-    dark: "dark:bg-blue-700"
+    dark: "dark:bg-blue-700",
   },
   relationships: {
     border: "border-l-purple-500",
     icon: "bg-purple-400",
     bullet: "text-purple-500",
-    dark: "dark:bg-purple-700"
+    dark: "dark:bg-purple-700",
   },
   growthAreas: {
     border: "border-l-teal-500",
     icon: "bg-teal-400",
     bullet: "text-teal-500",
-    dark: "dark:bg-teal-700"
-  }
+    dark: "dark:bg-teal-700",
+  },
 };
 
 interface InsightSectionCardProps {
@@ -157,12 +162,12 @@ interface InsightSectionCardProps {
 // Reusable component for each insight section
 const InsightSectionCard: React.FC<InsightSectionCardProps> = ({
   section,
-  sectionType
+  sectionType,
 }) => {
   const colors = sectionColors[sectionType];
-  
+
   return (
-    <Card className={`p-6 border-l-4 ${colors.border}`}>
+    <Card className={`p-6 border-l-4 ${colors.border} `}>
       <div className="flex items-center gap-3 mb-4">
         <div className={`${colors.icon} ${colors.dark} p-2 rounded-full`} />
         <h3 className="text-xl font-semibold">{section.title}</h3>
@@ -172,11 +177,13 @@ const InsightSectionCard: React.FC<InsightSectionCardProps> = ({
           <motion.div
             key={`insight-${index}`}
             initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }} 
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: index * 0.1 }}
             className="flex items-start gap-2"
           >
-            <ChevronRight className={`h-5 w-5 ${colors.bullet} shrink-0 mt-0.5`} />
+            <ChevronRight
+              className={`h-5 w-5 ${colors.bullet} shrink-0 mt-0.5`}
+            />
             <p>{point}</p>
           </motion.div>
         ))}
