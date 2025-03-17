@@ -49,7 +49,7 @@ export function Hero({
 
       // Handle sharing without saving to database (now handled in Results component)
       const title = `My Personality Type: ${personalityType}`;
-      const text = `I'm a ${personalityAlias}! Check out my personality profile on CerebralQ.`;
+      const text = `I'm ${personalityAlias}! Check out my personality profile on CerebralQuotient.`;
 
       // Determine share URL based on user status
       const url = isDemoUser ? `results` : `profiles/${username}`;
