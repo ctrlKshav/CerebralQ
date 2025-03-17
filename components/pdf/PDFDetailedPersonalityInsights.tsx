@@ -83,7 +83,7 @@ const createStyles = (isDarkMode = false) => {
       },
       pointText: {
         paddingTop:4,
-        fontSize:8,
+        fontSize:10,
         lineHeight: 1.5,
         color: theme.cardForeground,        
       },
