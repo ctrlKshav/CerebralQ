@@ -17,13 +17,14 @@ import {
   IncompleteDataFallback,
 } from "@/components/profile/profile-fallbacks";
 import { User } from "@supabase/supabase-js";
+import { UserProfile } from "@/types/supabase/user-profile";
 
 export default function ProfilePage({
   params,
 }: {
   params: Promise<{ username: string }>;
 }) {
-  const [userData, setUserData] = useState<any | null>(null);
+  const [userData, setUserData] = useState<UserProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const supabase = createClient();

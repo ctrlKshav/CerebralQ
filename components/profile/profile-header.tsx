@@ -7,16 +7,10 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { handleShare } from "@/lib/shareUtils";
 import Link from "next/link";
+import { UserProfile } from "@/types/supabase/user-profile";
 
 interface ProfileHeaderProps {
-  userData: {
-    username: string;
-    profile_image_url: string;
-    bio: string;
-    tests_taken: number;
-    last_test_date: string;
-    personalityType: string;
-  };
+  userData: UserProfile;
   isOwner: boolean;
 }
 
@@ -26,7 +20,7 @@ export default function ProfileHeader({
 }: ProfileHeaderProps) {
   const handleProfileShare = async () => {
     const title = `${userData.username}'s Profile`;
-    const text = `I'm ${userData.personalityType}! Check out my personality profile on CerebralQuotient.`;
+    const text = `I'm ${userData.raw_score.personalityType}! Check out my personality profile on CerebralQuotient.`;
     const url = `profiles/${userData.username}`;
 
     await handleShare(title, text, url, false);

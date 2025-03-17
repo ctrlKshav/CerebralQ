@@ -14,16 +14,10 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
+import { UserTestHistorySummary } from "@/types/supabase/user-profile";
 
 interface TestHistoryProps {
-  fullTestHistory: Array<{
-    id: string;
-    type: string;
-    personalityType?: string;
-    date: string;
-    score: number;
-    details: Record<string, any>;
-  }>;
+  fullTestHistory: UserTestHistorySummary[];
 }
 
 export default function TestHistory({ fullTestHistory }: TestHistoryProps) {
