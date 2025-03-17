@@ -6,6 +6,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import Footer from "@/components/landing-page/footer";
 import { TouchProvider } from "@/components/ui/tooltip-hybrid";
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 const defaultUrl =
   process.env.NODE_ENV === "production"
