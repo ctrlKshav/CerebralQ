@@ -34,7 +34,7 @@ const createStyles = (isDarkMode = false) => {
         marginBottom: 8,
       },
       insightSection: {
-        marginBottom: 30, // Increased spacing between sections
+        marginBottom: 20, // Increased spacing between sections
         padding: 15, // Slightly more padding inside sections
         backgroundColor: theme.card,
         borderRadius: 6,
