@@ -18,6 +18,7 @@ import {
 } from "./test-components";
 import { MBTI_TEST_ID } from "@/lib/constants";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
+import { getOrderedMBTITraitsObject } from "@/lib/utils";
 
 const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
@@ -158,7 +159,8 @@ export default function TestInformation({ testId }: { testId: string }) {
           
           if (testData) {
             // Format the test result for display
-            const mbtiResult = testData.raw_score as MBTIRawScore;
+            const orderedTraitScores = getOrderedMBTITraitsObject(testData.raw_score);
+            const mbtiResult = {traitScores: orderedTraitScores, personalityType: testData.raw_score.personalityType} as MBTIRawScore;
             const personalityType = mbtiResult?.personalityType || "Unknown";
           
             setLatestResult({

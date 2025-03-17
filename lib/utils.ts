@@ -1,13 +1,14 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
+import { MBTIRawScore, MBTITraitScore } from "@/types/supabase/user-test-history";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export function smoothScrollToTop(delay: number = 400) {
   setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, delay);
 }
 
@@ -17,31 +18,74 @@ export function smoothScrollToTop(delay: number = 400) {
  */
 export function parseAuthMessage(searchParams: URLSearchParams) {
   // Check for error message
-  const errorMessage = searchParams.get('error');
+  const errorMessage = searchParams.get("error");
   if (errorMessage) {
     return {
-      type: 'error',
-      message: decodeURIComponent(errorMessage)
+      type: "error",
+      message: decodeURIComponent(errorMessage),
     };
   }
-  
+
   // Check for success message
-  const successMessage = searchParams.get('success');
+  const successMessage = searchParams.get("success");
   if (successMessage) {
     return {
-      type: 'success',
-      message: decodeURIComponent(successMessage)
+      type: "success",
+      message: decodeURIComponent(successMessage),
     };
   }
-  
+
   // Check for info message
-  const infoMessage = searchParams.get('info');
+  const infoMessage = searchParams.get("info");
   if (infoMessage) {
     return {
-      type: 'info',
-      message: decodeURIComponent(infoMessage)
+      type: "info",
+      message: decodeURIComponent(infoMessage),
     };
   }
-  
+
   return null;
+}
+
+/**
+ * The standard MBTI trait order
+ */
+export const MBTI_TRAIT_ORDER = ["E-I", "S-N", "T-F", "J-P"] as const;
+
+/**
+ * Returns MBTI trait scores in the standard order (E-I, S-N, T-F, J-P)
+ * as an object with traits in the correct order
+ *
+ * @param traitScores - Object containing MBTI trait scores
+ * @returns Object with trait scores in standard MBTI order
+ */
+export function getOrderedMBTITraitsObject(
+  traitScores: { [key: string]: MBTITraitScore } | undefined
+): MBTIRawScore["traitScores"] {
+  const defaultTraitScore: MBTITraitScore = {
+    left: 0,
+    right: 0,
+    leftPercentage: 50,
+    rightPercentage: 50,
+    dominant: "right",
+  };
+
+  // If no trait scores provided, return default values for all traits
+  if (!traitScores) {
+    return {
+      "E-I": defaultTraitScore,
+      "S-N": defaultTraitScore,
+      "T-F": defaultTraitScore,
+      "J-P": defaultTraitScore,
+    };
+  }
+
+  // Create a new object with traits in the standard order
+  // Always include all four traits, using defaults if any are missing
+  return {
+    "E-I": traitScores["E-I"] || defaultTraitScore,
+    "S-N": traitScores["S-N"] || defaultTraitScore,
+    "T-F": traitScores["T-F"] || defaultTraitScore,
+    "J-P": traitScores["J-P"] || defaultTraitScore,
+  };
 }

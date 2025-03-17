@@ -5,6 +5,7 @@ import type { TestType } from "@/types/supabase/test-types";
 import type { User } from "@/types/supabase/users";
 import { UserProfile } from "@/types/supabase/user-profile";
 import { MBTI_TEST_ID } from "@/lib/constants";
+import { getOrderedMBTITraitsObject } from "@/lib/utils";
 
 /**
  * Save test results to the user_test_history table
@@ -303,7 +304,7 @@ export async function getUserByUsername(username: string): Promise<UserProfile |
       last_test_date: userData.last_test_date || "",
       raw_score: {
         personalityType: mbtiResult?.raw_score?.personalityType || "Unknown",
-        traitScores: mbtiResult?.raw_score?.traitScores || {
+        traitScores: getOrderedMBTITraitsObject(mbtiResult?.raw_score.traitScores) || {
           "E-I": { left: 0, right: 0, leftPercentage: 50, rightPercentage: 50, dominant: "right" },
           "S-N": { left: 0, right: 0, leftPercentage: 50, rightPercentage: 50, dominant: "right" },
           "T-F": { left: 0, right: 0, leftPercentage: 50, rightPercentage: 50, dominant: "right" },
