@@ -14,10 +14,9 @@ import { PDFGenerator } from "@/components/pdf/PDFGenerator";
 interface HeroProps {
   resultData: ResultData;
   userId: string | null;
-  onPdfButtonHover?: () => void;
 }
 
-export function Hero({ resultData, userId, onPdfButtonHover }: HeroProps) {
+export function Hero({ resultData, userId }: HeroProps) {
   const [username, setUsername] = useState<string | null>(null);
   const [isSharing, setIsSharing] = useState(false);
   const isDemoUser = !userId;
@@ -112,7 +111,7 @@ export function Hero({ resultData, userId, onPdfButtonHover }: HeroProps) {
               ? "Save & Share"
               : "Share Results"}
         </Button>
-        <div onMouseEnter={onPdfButtonHover}>
+        <div>
           <PDFGenerator 
             resultData={resultData} 
             fileName={`${personalityType}-personality-report.pdf`} 

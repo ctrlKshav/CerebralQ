@@ -32,7 +32,7 @@ export default function Results() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
-  const [isPdfPreloaded, setIsPdfPreloaded] = useState(false);
+  
   const [showingAllSections, setShowingAllSections] = useState(false);
 
   useEffect(() => {
@@ -148,10 +148,6 @@ export default function Results() {
       "A detailed analysis of cognitive preferences and behavioral patterns.",
   };
 
-  // Function to preload PDF renderer when needed
-  const handlePreloadPDF = () => {
-    setIsPdfPreloaded(true);
-  };
 
   // Function to show all sections
   const handleShowAllSections = () => {
@@ -194,7 +190,6 @@ export default function Results() {
         <Hero
           resultData={resultData}
           userId={userID}
-          onPdfButtonHover={handlePreloadPDF}
         />
 
         {/* About Personality Type Card */}
