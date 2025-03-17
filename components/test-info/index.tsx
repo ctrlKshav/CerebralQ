@@ -162,7 +162,6 @@ export default function TestInformation({ testId }: { testId: string }) {
             const orderedTraitScores = getOrderedMBTITraitsObject(testData.raw_score.traitScores);
             const mbtiResult = {traitScores: orderedTraitScores, personalityType: testData.raw_score.personalityType} as MBTIRawScore;
             const personalityType = mbtiResult?.personalityType || "Unknown";
-            console.log(mbtiResult)
           
             setLatestResult({
               id: testData.id,
