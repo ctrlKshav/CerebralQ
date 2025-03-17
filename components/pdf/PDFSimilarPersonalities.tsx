@@ -52,7 +52,7 @@ const createStyles = (isDarkMode = false, isCompact = false) => {
         lineHeight: 1.4,
       },
       personalitiesWrapper: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
       },

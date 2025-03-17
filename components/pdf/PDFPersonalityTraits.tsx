@@ -20,8 +20,8 @@ const createStyles = (isDarkMode = false) => {
         marginBottom: 20,
       },
       traitContainer: {
-        marginTop: 25,
-        marginBottom: 25,
+        marginTop: 20,
+        marginBottom: 20,
       },
       labelRow: {
         flexDirection: 'row',

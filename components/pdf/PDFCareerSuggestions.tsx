@@ -51,7 +51,7 @@ const createStyles = (isDarkMode = false, isCompact = false) => {
         lineHeight: 1.4,
       },
       careerGrid: {
-        flexDirection: 'row',
+        flexDirection: 'column',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
       },
@@ -160,11 +160,7 @@ export const PDFCareerSuggestions: React.FC<PDFCareerSuggestionsProps> = ({
             <View style={styles.progressBar}>
               <View style={[styles.progressFill, { width: `${career.match}%` }]} />
             </View>
-            {!isCompact && career.match > 85 && (
-              <Text style={styles.careerCategory}>
-                ⭐️ Highly Recommended
-              </Text>
-            )}
+           
           </View>
         ))}
       </View>

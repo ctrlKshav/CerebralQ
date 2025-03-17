@@ -111,7 +111,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
             careerSuggestions={careerSuggestions.slice(0, 6)} // Limit to top 6 career suggestions
             sectionNumber={3}
             isDarkMode={isDarkMode}
-            isCompact={true} // New prop for more compact display
           />
         </View>
         
@@ -122,7 +121,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
             similarPersonalities={similarPersonalities.slice(0, 6)} // Limit to top 6 personalities
             sectionNumber={4}
             isDarkMode={isDarkMode}
-            isCompact={true} // New prop for more compact display
           />
         </View>
         
