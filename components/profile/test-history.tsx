@@ -46,7 +46,7 @@ export default function TestHistory({ fullTestHistory }: TestHistoryProps) {
           <CardContent>
             <div className="space-y-4">
               {testHistory.map((test, index) => (
-                <div className="relative pl-8 pb-4">
+                <div className="relative pl-8 pb-4" key={test.id}>
                   {/* Timeline line */}
                   {index < testHistory.length - 1 && (
                     <div className="absolute left-3 top-3 bottom-0 w-0.5 bg-border" />
