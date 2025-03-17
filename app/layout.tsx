@@ -32,6 +32,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
+      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID || ""} />
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
