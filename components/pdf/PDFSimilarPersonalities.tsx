@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { createBaseStyles, getThemeColors } from './PDFTheme';
 
 interface Person {
   name: string;
@@ -16,103 +17,96 @@ interface PDFSimilarPersonalitiesProps {
 }
 
 // Create styles with theme variants
-const createStyles = (isDarkMode = false, isCompact = false) => StyleSheet.create({
-  container: {
-    margin: isCompact ? 5 : 10,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: isCompact ? 10 : 20,
-  },
-  sectionNumber: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: isDarkMode ? '#a78bfa' : '#7c3aed',
-    color: isDarkMode ? '#a78bfa' : '#7c3aed',
-    textAlign: 'center',
-    fontFamily: 'Helvetica-Bold',
-    marginRight: 10,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#ffffff' : '#000000',
-  },
-  cardHeader: {
-    marginBottom: isCompact ? 8 : 15,
-  },
-  cardTitle: {
-    fontSize: 10,
-    color: isDarkMode ? '#a1a1aa' : '#666666',
-    marginBottom: 2,
-  },
-  cardHeading: {
-    fontSize: isCompact ? 14 : 16,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#a78bfa' : '#7c3aed',
-    marginBottom: isCompact ? 5 : 10,
-  },
-  description: {
-    fontSize: 10,
-    color: isDarkMode ? '#a1a1aa' : '#666666',
-    marginBottom: isCompact ? 10 : 15,
-    lineHeight: 1.4,
-  },
-  personalitiesWrapper: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  personalityItem: {
-    width: '48%',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: isCompact ? 6 : 12,
-    padding: isCompact ? 6 : 8,
-    borderWidth: 1,
-    borderColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
-    borderRadius: 6,
-    backgroundColor: isDarkMode ? '#27272a' : '#ffffff',
-  },
-  imagePlaceholder: {
-    width: isCompact ? 30 : 40,
-    height: isCompact ? 30 : 40,
-    borderRadius: isCompact ? 15 : 20,
-    backgroundColor: isDarkMode ? '#4b5563' : '#e5e5e5',
-    marginRight: isCompact ? 6 : 10,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  placeholderText: {
-    fontSize: isCompact ? 12 : 16,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#a1a1aa' : '#9ca3af',
-  },
-  personInfo: {
-    flex: 1,
-  },
-  personName: {
-    fontSize: isCompact ? 9 : 10,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#e4e4e7' : '#000000',
-    marginBottom: isCompact ? 1 : 2,
-  },
-  profession: {
-    fontSize: isCompact ? 7 : 8,
-    color: isDarkMode ? '#a1a1aa' : '#666666',
-  },
-  categoryLabel: {
-    width: '100%',
-    fontSize: 11,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#d1d5db' : '#374151',
-    marginTop: isCompact ? 5 : 10,
-    marginBottom: isCompact ? 4 : 8,
-  }
-});
+const createStyles = (isDarkMode = false, isCompact = false) => {
+  const baseStyles = createBaseStyles(isDarkMode);
+  const theme = getThemeColors(isDarkMode);
+  
+  return {
+    ...StyleSheet.create({
+      container: {
+        margin: isCompact ? 5 : 10,
+      },
+      header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: isCompact ? 10 : 20,
+      },
+      cardHeader: {
+        marginBottom: isCompact ? 8 : 15,
+      },
+      cardTitle: {
+        fontSize: 10,
+        color: theme.mutedForeground,
+        marginBottom: 2,
+      },
+      cardHeading: {
+        fontSize: isCompact ? 14 : 16,
+        fontFamily: 'Helvetica-Bold',
+        color: theme.primary,
+        marginBottom: isCompact ? 5 : 10,
+      },
+      description: {
+        fontSize: 10,
+        color: theme.mutedForeground,
+        marginBottom: isCompact ? 10 : 15,
+        lineHeight: 1.4,
+      },
+      personalitiesWrapper: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+      },
+      personalityItem: {
+        width: '48%',
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: isCompact ? 6 : 12,
+        padding: isCompact ? 6 : 8,
+        borderWidth: 1,
+        borderColor: theme.border,
+        borderRadius: 6,
+        backgroundColor: theme.card,
+      },
+      imagePlaceholder: {
+        width: isCompact ? 30 : 40,
+        height: isCompact ? 30 : 40,
+        borderRadius: isCompact ? 15 : 20,
+        backgroundColor: theme.muted,
+        marginRight: isCompact ? 6 : 10,
+        alignItems: 'center',
+        justifyContent: 'center',
+      },
+      placeholderText: {
+        fontSize: isCompact ? 12 : 16,
+        fontFamily: 'Helvetica-Bold',
+        color: theme.mutedForeground,
+      },
+      personInfo: {
+        flex: 1,
+      },
+      personName: {
+        fontSize: isCompact ? 9 : 10,
+        fontFamily: 'Helvetica-Bold',
+        color: theme.foreground,
+        marginBottom: isCompact ? 1 : 2,
+      },
+      profession: {
+        fontSize: isCompact ? 7 : 8,
+        color: theme.mutedForeground,
+      },
+      categoryLabel: {
+        width: '100%',
+        fontSize: 11,
+        fontFamily: 'Helvetica-Bold',
+        color: theme.foreground,
+        marginTop: isCompact ? 5 : 10,
+        marginBottom: isCompact ? 4 : 8,
+      }
+    }),
+    sectionNumber: baseStyles.sectionNumber,
+    sectionTitle: baseStyles.sectionTitle,
+  };
+};
 
 export const PDFSimilarPersonalities: React.FC<PDFSimilarPersonalitiesProps> = ({
   personalityType,

@@ -1,116 +1,110 @@
 ﻿import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import { personalityDatabase } from '@/data/mbti/personalityDatabase';
+import { createBaseStyles, getThemeColors } from './PDFTheme';
 
 // Create styles with theme variants
-const createStyles = (isDarkMode = false) => StyleSheet.create({
-  container: {
-    margin: 10,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  sectionNumber: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: isDarkMode ? '#60a5fa' : '#0070f3',
-    color: isDarkMode ? '#60a5fa' : '#0070f3',
-    textAlign: 'center',
-    fontFamily: 'Helvetica-Bold',
-    marginRight: 10,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#ffffff' : '#000000',
-  },
-  card: {
-    padding: 15,
-    marginBottom: 20,
-    backgroundColor: isDarkMode ? '#27272a' : '#fafafa',
-    borderRadius: 8,
-    borderWidth: 1,
-    borderColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
-  },
-  cardHeader: {
-    paddingBottom: 10,
-    marginBottom: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
-  },
-  personalityType: {
-    fontSize: 16,
-    fontFamily: 'Helvetica-Bold',
-    marginBottom: 4,
-    color: isDarkMode ? '#ffffff' : '#000000',
-  },
-  personalityAlias: {
-    fontSize: 12,
-    color: isDarkMode ? '#a1a1aa' : '#666666',
-    marginBottom: 10,
-  },
-  description: {
-    fontSize: 11,
-    color: isDarkMode ? '#d4d4d8' : '#333333',
-    lineHeight: 1.5,
-    marginBottom: 15,
-  },
-  row: {
-    flexDirection: 'row',
-    marginTop: 10,
-  },
-  column: {
-    flex: 1,
-    paddingHorizontal: 5,
-  },
-  sectionLabel: {
-    fontSize: 13,
-    fontFamily: 'Helvetica-Bold',
-    marginBottom: 8,
-  },
-  bulletList: {
-    marginLeft: 5,
-  },
-  bulletPoint: {
-    flexDirection: 'row',
-    marginBottom: 4,
-  },
-  bullet: {
-    fontSize: 9,
-    marginRight: 5,
-  },
-  bulletText: {
-    fontSize: 10,
-    lineHeight: 1.4,
-    flex: 1,
-  },
-  strengthsLabel: {
-    color: isDarkMode ? '#4ade80' : '#10b981',
-  },
-  strengthsBullet: {
-    color: isDarkMode ? '#4ade80' : '#10b981',
-  },
-  strengthsText: {
-    color: isDarkMode ? '#d4d4d8' : '#444444',
-  },
-  challengesLabel: {
-    color: isDarkMode ? '#fbbf24' : '#f59e0b',
-  },
-  challengesBullet: {
-    color: isDarkMode ? '#fbbf24' : '#f59e0b',
-  },
-  challengesText: {
-    color: isDarkMode ? '#d4d4d8' : '#444444',
-  },
-  sectionDivider: {
-    borderRightWidth: isDarkMode ? 1 : 0,
-    borderRightColor: isDarkMode ? '#3f3f46' : 'transparent',
-  }
-});
+const createStyles = (isDarkMode = false) => {
+  const baseStyles = createBaseStyles(isDarkMode);
+  const theme = getThemeColors(isDarkMode);
+  
+  return {
+    ...StyleSheet.create({
+      container: {
+        margin: 10,
+      },
+      header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 20,
+      },
+      card: {
+        padding: 15,
+        marginBottom: 20,
+        backgroundColor: theme.card,
+        borderRadius: 8,
+        borderWidth: 1,
+        borderColor: theme.border,
+      },
+      cardHeader: {
+        paddingBottom: 10,
+        marginBottom: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: theme.border,
+      },
+      personalityType: {
+        fontSize: 16,
+        fontFamily: 'Helvetica-Bold',
+        marginBottom: 4,
+        color: theme.foreground,
+      },
+      personalityAlias: {
+        fontSize: 12,
+        color: theme.mutedForeground,
+        marginBottom: 10,
+      },
+      description: {
+        fontSize: 11,
+        color: theme.foreground,
+        lineHeight: 1.5,
+        marginBottom: 15,
+      },
+      row: {
+        flexDirection: 'row',
+        marginTop: 10,
+      },
+      column: {
+        flex: 1,
+        paddingHorizontal: 5,
+      },
+      sectionLabel: {
+        fontSize: 13,
+        fontFamily: 'Helvetica-Bold',
+        marginBottom: 8,
+      },
+      bulletList: {
+        marginLeft: 5,
+      },
+      bulletPoint: {
+        flexDirection: 'row',
+        marginBottom: 4,
+      },
+      bullet: {
+        fontSize: 9,
+        marginRight: 5,
+      },
+      bulletText: {
+        fontSize: 10,
+        lineHeight: 1.4,
+        flex: 1,
+      },
+      strengthsLabel: {
+        color: theme.chart2,
+      },
+      strengthsBullet: {
+        color: theme.chart2,
+      },
+      strengthsText: {
+        color: theme.foreground,
+      },
+      challengesLabel: {
+        color: theme.chart4,
+      },
+      challengesBullet: {
+        color: theme.chart4,
+      },
+      challengesText: {
+        color: theme.foreground,
+      },
+      sectionDivider: {
+        borderRightWidth: 1,
+        borderRightColor: theme.border,
+      }
+    }),
+    sectionNumber: baseStyles.sectionNumber,
+    sectionTitle: baseStyles.sectionTitle,
+  };
+};
 
 interface PDFAboutPersonalityTypeProps {
   personalityType: string;

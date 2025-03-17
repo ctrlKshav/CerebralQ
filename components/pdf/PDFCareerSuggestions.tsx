@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
+import { createBaseStyles, getThemeColors } from './PDFTheme';
 
 interface Career {
   title: string;
@@ -15,109 +16,102 @@ interface PDFCareerSuggestionsProps {
 }
 
 // Create styles with theme variants
-const createStyles = (isDarkMode = false, isCompact = false) => StyleSheet.create({
-  container: {
-    margin: isCompact ? 5 : 10,
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: isCompact ? 10 : 20,
-  },
-  sectionNumber: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: isDarkMode ? '#60a5fa' : '#0070f3',
-    color: isDarkMode ? '#60a5fa' : '#0070f3',
-    textAlign: 'center',
-    fontFamily: 'Helvetica-Bold',
-    marginRight: 10,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#ffffff' : '#000000',
-  },
-  cardHeader: {
-    marginBottom: isCompact ? 8 : 15,
-  },
-  cardTitle: {
-    fontSize: 10,
-    color: isDarkMode ? '#a1a1aa' : '#666666',
-    marginBottom: 2,
-  },
-  cardHeading: {
-    fontSize: isCompact ? 14 : 16,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#60a5fa' : '#0070f3',
-    marginBottom: isCompact ? 5 : 10,
-  },
-  description: {
-    fontSize: 10,
-    color: isDarkMode ? '#a1a1aa' : '#666666',
-    marginBottom: isCompact ? 8 : 15,
-    lineHeight: 1.4,
-  },
-  careerGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  careerItem: {
-    width: '48%',
-    marginBottom: isCompact ? 6 : 12,
-    padding: isCompact ? 6 : 10,
-    borderWidth: 1,
-    borderColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
-    borderRadius: 6,
-    backgroundColor: isDarkMode ? '#27272a' : '#ffffff',
-  },
-  careerHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: isCompact ? 4 : 8,
-  },
-  careerTitle: {
-    fontSize: isCompact ? 9 : 10,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#e4e4e7' : '#000000',
-    maxWidth: '75%',
-  },
-  matchContainer: {
-    backgroundColor: isDarkMode ? '#374151' : '#f5f5f5',
-    paddingVertical: 2,
-    paddingHorizontal: 6,
-    borderRadius: 10,
-  },
-  matchPercentage: {
-    fontSize: 9,
-    fontFamily: 'Helvetica-Bold',
-    color: isDarkMode ? '#60a5fa' : '#0070f3',
-  },
-  progressBar: {
-    height: 4,
-    backgroundColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
-    borderRadius: 2,
-  },
-  progressFill: {
-    height: '100%',
-    backgroundColor: isDarkMode ? '#60a5fa' : '#0070f3',
-    borderRadius: 2,
-  },
-  careerCategory: {
-    fontSize: 8,
-    color: isDarkMode ? '#a1a1aa' : '#666666',
-    marginTop: isCompact ? 3 : 6,
-  },
-  divider: {
-    borderBottomWidth: 1,
-    borderBottomColor: isDarkMode ? '#3f3f46' : '#e5e5e5',
-    marginVertical: isCompact ? 8 : 12,
-  },
-});
+const createStyles = (isDarkMode = false, isCompact = false) => {
+  const baseStyles = createBaseStyles(isDarkMode);
+  const theme = getThemeColors(isDarkMode);
+  
+  return {
+    ...StyleSheet.create({
+      container: {
+        margin: isCompact ? 5 : 10,
+      },
+      header: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: isCompact ? 10 : 20,
+      },
+      cardHeader: {
+        marginBottom: isCompact ? 8 : 15,
+      },
+      cardTitle: {
+        fontSize: 10,
+        color: theme.mutedForeground,
+        marginBottom: 2,
+      },
+      cardHeading: {
+        fontSize: isCompact ? 14 : 16,
+        fontFamily: 'Helvetica-Bold',
+        color: theme.primary,
+        marginBottom: isCompact ? 5 : 10,
+      },
+      description: {
+        fontSize: 10,
+        color: theme.mutedForeground,
+        marginBottom: isCompact ? 8 : 15,
+        lineHeight: 1.4,
+      },
+      careerGrid: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+      },
+      careerItem: {
+        width: '48%',
+        marginBottom: isCompact ? 6 : 12,
+        padding: isCompact ? 6 : 10,
+        borderWidth: 1,
+        borderColor: theme.border,
+        borderRadius: 6,
+        backgroundColor: theme.card,
+      },
+      careerHeader: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: isCompact ? 4 : 8,
+      },
+      careerTitle: {
+        fontSize: isCompact ? 9 : 10,
+        fontFamily: 'Helvetica-Bold',
+        color: theme.foreground,
+        maxWidth: '75%',
+      },
+      matchContainer: {
+        backgroundColor: theme.muted,
+        paddingVertical: 2,
+        paddingHorizontal: 6,
+        borderRadius: 10,
+      },
+      matchPercentage: {
+        fontSize: 9,
+        fontFamily: 'Helvetica-Bold',
+        color: theme.primary,
+      },
+      progressBar: {
+        height: 4,
+        backgroundColor: theme.muted,
+        borderRadius: 2,
+      },
+      progressFill: {
+        height: '100%',
+        backgroundColor: theme.primary,
+        borderRadius: 2,
+      },
+      careerCategory: {
+        fontSize: 8,
+        color: theme.mutedForeground,
+        marginTop: isCompact ? 3 : 6,
+      },
+      divider: {
+        borderBottomWidth: 1,
+        borderBottomColor: theme.border,
+        marginVertical: isCompact ? 8 : 12,
+      },
+    }),
+    sectionNumber: baseStyles.sectionNumber,
+    sectionTitle: baseStyles.sectionTitle,
+  };
+};
 
 export const PDFCareerSuggestions: React.FC<PDFCareerSuggestionsProps> = ({
   personalityType,

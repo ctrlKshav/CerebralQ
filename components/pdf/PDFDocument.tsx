@@ -8,28 +8,29 @@ import { PDFDetailedPersonalityInsights } from '@/components/pdf/PDFDetailedPers
 import { PDFAboutPersonalityType } from '@/components/pdf/PDFAboutPersonalityType';
 import { ResultData } from '@/types/tests/mbti';
 import { getPersonalityInsights } from '@/data/mbti/personalityInformation';
+import { createBaseStyles, getThemeColors } from './PDFTheme';
 
 // Create styles with theme variants
-const createStyles = (isDarkMode = false) => StyleSheet.create({
-  page: {
-    padding: 30,
-    fontFamily: 'Helvetica',
-    backgroundColor: isDarkMode ? '#18181b' : '#ffffff',
-    color: isDarkMode ? '#e4e4e7' : '#000000',
-  },
-  section: {
-    marginBottom: 20, // Reduced margin between sections
-  },
-  footer: {
-    position: 'absolute',
-    bottom: 30,
-    left: 0,
-    right: 0,
-    textAlign: 'center',
-    fontSize: 10,
-    color: isDarkMode ? '#71717a' : '#999999',
-  },
-});
+const createStyles = (isDarkMode = false) => {
+  const baseStyles = createBaseStyles(isDarkMode);
+  const theme = getThemeColors(isDarkMode);
+  
+  return StyleSheet.create({
+    page: baseStyles.page,
+    section: {
+      marginBottom: 20,
+    },
+    footer: {
+      position: 'absolute',
+      bottom: 30,
+      left: 0,
+      right: 0,
+      textAlign: 'center',
+      fontSize: 10,
+      color: theme.mutedForeground,
+    },
+  });
+};
 
 interface PDFDocumentProps {
   resultData: ResultData;

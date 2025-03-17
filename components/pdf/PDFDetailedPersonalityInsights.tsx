@@ -1,127 +1,121 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
 import { PersonalityTypeInsights } from "@/types/tests/mbti";
+import { createBaseStyles, getThemeColors } from './PDFTheme';
 
 // Create styles with theme variants
-const createStyles = (isDarkMode = false) => StyleSheet.create({
-  container: {
-    margin: 10,
-  },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
-  },
-  sectionNumber: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: isDarkMode ? '#60a5fa' : "#0070f3",
-    color: isDarkMode ? '#60a5fa' : "#0070f3",
-    textAlign: "center",
-    fontFamily: "Helvetica-Bold",
-    marginRight: 10,
-  },
-  sectionTitle: {
-    fontSize: 18,
-    fontFamily: "Helvetica-Bold",
-    color: isDarkMode ? '#ffffff' : '#000000',
-  },
-  subtitle: {
-    fontSize: 11,
-    color: isDarkMode ? '#a1a1aa' : "#666666",
-    marginBottom: 15,
-    lineHeight: 1.5,
-  },
-  cardHeader: {
-    marginBottom: 15,
-  },
-  cardTitle: {
-    fontSize: 16,
-    fontFamily: "Helvetica-Bold",
-    color: isDarkMode ? '#60a5fa' : "#0070f3",
-    marginBottom: 8,
-  },
-  insightSection: {
-    marginBottom: 20,
-    padding: 12,
-    backgroundColor: isDarkMode ? '#27272a' : "#fafafa",
-    borderRadius: 6,
-    borderLeftWidth: 4,
-  },
-  insightHeader: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 12,
-  },
-  insightIcon: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    marginRight: 8,
-  },
-  insightTitle: {
-    fontSize: 14,
-    fontFamily: "Helvetica-Bold",
-    color: isDarkMode ? '#e4e4e7' : '#000000',
-  },
-  insightPoint: {
-    flexDirection: "row",
-    marginBottom: 6,
-    paddingLeft: 4,
-  },
-  bulletPoint: {
-    fontSize: 11,
-    marginRight: 6,
-    width: 10,
-    color: isDarkMode ? '#a1a1aa' : '#666666',
-  },
-  pointText: {
-    fontSize: 10,
-    flex: 1,
-    lineHeight: 1.5,
-    color: isDarkMode ? '#d4d4d8' : '#444444',
-  },
-  // Color styles for different sections
-  strengthsSection: {
-    borderLeftColor: isDarkMode ? "#4ade80" : "#4ade80",
-  },
-  strengthsIcon: {
-    backgroundColor: isDarkMode ? "#4ade80" : "#4ade80",
-  },
-  challengesSection: {
-    borderLeftColor: isDarkMode ? "#fbbf24" : "#fbbf24",
-  },
-  challengesIcon: {
-    backgroundColor: isDarkMode ? "#fbbf24" : "#fbbf24",
-  },
-  workStyleSection: {
-    borderLeftColor: isDarkMode ? "#60a5fa" : "#60a5fa",
-  },
-  workStyleIcon: {
-    backgroundColor: isDarkMode ? "#60a5fa" : "#60a5fa",
-  },
-  relationshipsSection: {
-    borderLeftColor: isDarkMode ? "#a78bfa" : "#a78bfa",
-  },
-  relationshipsIcon: {
-    backgroundColor: isDarkMode ? "#a78bfa" : "#a78bfa",
-  },
-  growthAreasSection: {
-    borderLeftColor: isDarkMode ? "#2dd4bf" : "#2dd4bf",
-  },
-  growthAreasIcon: {
-    backgroundColor: isDarkMode ? "#2dd4bf" : "#2dd4bf",
-  },
-  pageBreak: {
-    marginTop: 30,
-    marginBottom: 30,
-    borderTopWidth: 1,
-    borderTopColor: isDarkMode ? '#3f3f46' : "#e5e5e5",
-    paddingTop: 30,
-  },
-});
+const createStyles = (isDarkMode = false) => {
+  const baseStyles = createBaseStyles(isDarkMode);
+  const theme = getThemeColors(isDarkMode);
+  
+  return {
+    ...StyleSheet.create({
+      container: {
+        margin: 10,
+      },
+      header: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 20,
+      },
+      subtitle: {
+        fontSize: 11,
+        color: theme.mutedForeground,
+        marginBottom: 15,
+        lineHeight: 1.5,
+      },
+      cardHeader: {
+        marginBottom: 15,
+      },
+      cardTitle: {
+        fontSize: 16,
+        fontFamily: "Helvetica-Bold",
+        color: theme.primary,
+        marginBottom: 8,
+      },
+      insightSection: {
+        marginBottom: 20,
+        padding: 12,
+        backgroundColor: theme.card,
+        borderRadius: 6,
+        borderLeftWidth: 4,
+      },
+      insightHeader: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 12,
+      },
+      insightIcon: {
+        width: 12,
+        height: 12,
+        borderRadius: 6,
+        marginRight: 8,
+      },
+      insightTitle: {
+        fontSize: 14,
+        fontFamily: "Helvetica-Bold",
+        color: theme.foreground,
+      },
+      insightPoint: {
+        flexDirection: "row",
+        marginBottom: 6,
+        paddingLeft: 4,
+      },
+      bulletPoint: {
+        fontSize: 11,
+        marginRight: 6,
+        width: 10,
+        color: theme.mutedForeground,
+      },
+      pointText: {
+        fontSize: 10,
+        flex: 1,
+        lineHeight: 1.5,
+        color: theme.cardForeground,
+      },
+      // Color styles for different sections
+      strengthsSection: {
+        borderLeftColor: theme.chart2,
+      },
+      strengthsIcon: {
+        backgroundColor: theme.chart2,
+      },
+      challengesSection: {
+        borderLeftColor: theme.chart4,
+      },
+      challengesIcon: {
+        backgroundColor: theme.chart4,
+      },
+      workStyleSection: {
+        borderLeftColor: theme.chart1,
+      },
+      workStyleIcon: {
+        backgroundColor: theme.chart1,
+      },
+      relationshipsSection: {
+        borderLeftColor: theme.chart5,
+      },
+      relationshipsIcon: {
+        backgroundColor: theme.chart5,
+      },
+      growthAreasSection: {
+        borderLeftColor: theme.chart3,
+      },
+      growthAreasIcon: {
+        backgroundColor: theme.chart3,
+      },
+      pageBreak: {
+        marginTop: 30,
+        marginBottom: 30,
+        borderTopWidth: 1,
+        borderTopColor: theme.border,
+        paddingTop: 30,
+      },
+    }),
+    sectionNumber: baseStyles.sectionNumber,
+    sectionTitle: baseStyles.sectionTitle,
+  };
+}
 
 interface PDFDetailedPersonalityInsightsProps {
   personalityType: string;
