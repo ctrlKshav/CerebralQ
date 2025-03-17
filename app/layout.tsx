@@ -34,6 +34,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={geistSans.className} suppressHydrationWarning>
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID || ""} />
+
+      {/* Hotjar */}
       <Script id="hotjar-script" strategy="afterInteractive">
         {`
             (function(h,o,t,j,a,r){
@@ -46,6 +48,16 @@ export default function RootLayout({
             })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
           `}
       </Script>
+
+      {/* Clarity */}
+      <Script id="clarity-script" strategy="afterInteractive">
+        {`  (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "${process.env.CLARITY_ID}");`}
+      </Script>
+
       <body className="bg-background text-foreground">
         <ThemeProvider
           attribute="class"
