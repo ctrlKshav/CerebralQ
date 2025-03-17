@@ -17,11 +17,11 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+  HybridTooltip,
+  HybridTooltipContent,
+  HybridTooltipTrigger,
+} from "@/components/ui/tooltip-hybrid";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import Image from "next/image";
 import { traitDescriptions } from "@/data/mbti/traitDescriptions";
 
@@ -116,24 +116,23 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
             <div className="text-sm text-muted-foreground flex items-center gap-1.5">
               Validity Period
               <TooltipProvider delayDuration={100}>
-                <Tooltip>
-                  <TooltipTrigger asChild>
+                <HybridTooltip>
+                  <HybridTooltipTrigger asChild>
                     <InfoIcon className="h-4 w-4 text-muted-foreground" />
-                  </TooltipTrigger>
-                  <TooltipContent
+                  </HybridTooltipTrigger>
+                  <HybridTooltipContent
                     side="right"
                     className="max-w-xs p-3 text-white"
                   >
                     <p>
                       <Link href={"/sign-up"} className="font-bold underline">
                         Create an account
-                      </Link>
-                      {" "}
+                      </Link>{" "}
                       and we'll send you a reminder before your test results
                       expire!
                     </p>
-                  </TooltipContent>
-                </Tooltip>
+                  </HybridTooltipContent>
+                </HybridTooltip>
               </TooltipProvider>
             </div>
             <div className="font-medium text-lg">
