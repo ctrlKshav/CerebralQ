@@ -153,7 +153,7 @@ const ProtectedNavbar = ({
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href={`/profiles/${user.username}`}>
+                    <Link href={`/protected/account`}>
                       <UserIcon className="mr-2 h-4 w-4" />
                       <span>Profile</span>
                     </Link>
@@ -215,7 +215,7 @@ const ProtectedNavbar = ({
                     <div className="space-y-2 p-4">
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuItem
-                          href={`/profiles/${user.username}`}
+                          href={`/protected/account`}
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
                           title="Dashboard"
