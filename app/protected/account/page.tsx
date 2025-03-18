@@ -1,41 +1,27 @@
-﻿"use client"
-import { useEffect, useState, useContext } from "react";
-import CQLogo from "@/components/cq-logo";
-import Link from "next/link";
+﻿"use client";
+import { useContext } from "react";
+import { UserDataContext } from "@/context/user-data";
 import Account from "@/components/account";
+import Navbar from "@/components/navbar";
 
 export default function Page() {
-  const [isVisible, setIsVisible] = useState(true);
-  
-  useEffect(() => {
-    const toggleVisibility = () => {
-      // Hide logo when scrolled down more than 100px
-      if (window.scrollY > 100) {
-        setIsVisible(false);
-      } else {
-        setIsVisible(true);
-      }
-    };
-    
-    window.addEventListener("scroll", toggleVisibility);
-    
-    // Clean up event listener
-    return () => window.removeEventListener("scroll", toggleVisibility);
-  }, []);
-  
+  const userDataContext = useContext(UserDataContext);
+
+  if (userDataContext === null) {
+    return null;
+  }
+
+  const { userData, setUserData } = userDataContext;
+
+  if (userData === null) {
+    return null;
+  }
+
   return (
-    <div className="min-h-screen bg-background">
-      <Link 
-        href="/" 
-        className={`inline w-fit fixed top-0 right-4 xl:left-8 z-50 transition-opacity duration-100 ${
-          isVisible ? "opacity-100" : "opacity-0 pointer-events-none xl:opacity-100"
-        }`}
-      >
-        <CQLogo className="w-24 h-24 md:w-28 md:h-28" />
-      </Link>
-      
-      <div className="relative">
-        <Account />
+    <div className="">
+      <Navbar user={userData} />
+      <div className="mt-24">
+        <Account userData={userData} />
       </div>
     </div>
   );
