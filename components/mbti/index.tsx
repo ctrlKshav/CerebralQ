@@ -162,7 +162,7 @@ export default function MBTITest() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       <Link href="/" className="hidden lg:block fixed z-50  left-8  ">
-        <CQLogo className="w-36 h-36" />
+        <CQLogo className="w-28 h-28" />
       </Link>
       <MobileTopbar currentStepText={currentStepText} testName={testData[0].test_name} />
 
