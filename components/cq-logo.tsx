@@ -17,8 +17,8 @@ export default function CQLogo({
     const isLightTheme = currentTheme === "light";
     
     setLogoSrc(isLightTheme 
-      ? "/1.svg" 
-      : "/2.svg"
+      ? "/logoLight.png" 
+      : "/logoDark.png"
     );
   }, [theme, resolvedTheme]);
 

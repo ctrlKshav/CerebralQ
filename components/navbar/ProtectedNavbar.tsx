@@ -102,7 +102,7 @@ const ProtectedNavbar = ({
           {/* Logo - Left column */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <CQLogo className="w-36 h-36" />
+              <CQLogo className="w-28 h-28" />
             </Link>
           </div>
 
