@@ -5,6 +5,7 @@ import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { ForgotPasswordPayload, ResetPasswordPayload, SignInPayload, SignUpPayload } from "@/lib/authActionsPayload";
+import { checkUsernameExists } from "@/lib/supabaseOperations";
 
 export const signUpAction = async (data: SignUpPayload) => {
   const { firstname, lastname, username, email, password, redirect: redirectToPage } = data;
@@ -16,6 +17,15 @@ export const signUpAction = async (data: SignUpPayload) => {
       "error",
       "/sign-up",
       "Email and password are required",
+    );
+  }
+
+  const usernameExists = await checkUsernameExists(username);
+  if(usernameExists) {
+    return encodedRedirect(
+      "error",
+      "/sign-up",
+      "Username already exists. Please choose a different username.",
     );
   }
 

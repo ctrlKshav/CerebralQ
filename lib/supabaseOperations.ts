@@ -326,3 +326,25 @@ export async function getUserByUsername(username: string): Promise<UserProfile |
     return null;
   }
 }
+
+/**
+ * Check if a username already exists in the users table
+ * @param username The username to check
+ * @returns Boolean indicating if the username exists
+ * @throws Error if the database query fails
+ */
+export async function checkUsernameExists(username: string): Promise<boolean> {
+  const supabase = await createClient();
+  
+  const { data, error, count } = await supabase
+    .from("users")
+    .select("*", { count: 'exact', head: true })
+    .eq("username", username);
+  
+  if (error) {
+    console.error("Error checking if username exists:", error);
+    throw error;
+  }
+  
+  return count !== null && count > 0;
+}
