@@ -20,6 +20,7 @@ export default function Account({ userData }: { userData: User }) {
           bio={userData.bio}
           rank={userData.rank}
           isInsider={userData.is_insider}
+          userId={userData.id}
         />
 
         <AccountDetails
