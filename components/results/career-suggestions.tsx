@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Career {
   title: string;
@@ -19,7 +20,7 @@ interface CareerSuggestionsProps {
 export function CareerSuggestions({
   personalityType,
   careerSuggestions,
-  sectionNumber
+  sectionNumber,
 }: CareerSuggestionsProps) {
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
@@ -44,17 +45,20 @@ export function CareerSuggestions({
               </h3>
             </div>
 
-            <div className="relative aspect-square w-full max-w-[280px] mx-auto">
-              <img
-                src="/placeholder.svg"
-                alt="Career illustration"
-                className="w-full h-full object-contain"
+            <div className="relative aspect-square w-full mx-auto">
+              <Image
+                src="/career_paths.jpeg"
+                alt="Famous personalities illustration"
+                fill
+                sizes="(max-width: 768px) 280px, (max-width: 1200px) 250px, 280px"
+                className="object-contain"
+                priority
               />
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
               These career paths tend to leverage your natural strengths and
-              align with your personality preferences. Consider these
-              options when planning your professional development.
+              align with your personality preferences. Consider these options
+              when planning your professional development.
             </p>
           </div>
         </Card>
@@ -74,9 +78,7 @@ export function CareerSuggestions({
                   <span className="font-semibold text-primary">
                     {career.match}%
                   </span>
-                  <span className="text-sm text-muted-foreground">
-                    Match
-                  </span>
+                  <span className="text-sm text-muted-foreground">Match</span>
                 </div>
               </div>
               <div className="mt-2">
@@ -89,8 +91,6 @@ export function CareerSuggestions({
               </div>
             </motion.div>
           ))}
-
-        
         </Card>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface Person {
   name: string;
@@ -45,11 +46,14 @@ export function SimilarPersonalities({
               </h3>
             </div>
 
-            <div className="relative aspect-square w-full max-w-[280px] mx-auto">
-              <img
-                src="/placeholder.svg"
+            <div className="relative aspect-square w-full mx-auto">
+              <Image
+                src="/similar_personalities.jpeg"
                 alt="Famous personalities illustration"
-                className="w-full h-full object-contain"
+                fill
+                sizes="(max-width: 768px) 280px, (max-width: 1200px) 250px, 280px"
+                className="object-contain"
+                priority
               />
             </div>
             <p className="text-base text-muted-foreground leading-relaxed">
@@ -70,11 +74,15 @@ export function SimilarPersonalities({
                 transition={{ delay: index * 0.1 }}
                 className="flex items-center gap-4 p-4 rounded-lg border hover:bg-muted/20 transition-colors"
               >
-                <img
-                  src={person.image || "/placeholder.svg"}
-                  alt={person.name}
-                  className="w-16 h-16 rounded-full object-cover"
-                />
+                <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
+                  <Image
+                    src={person.image || "/placeholder.svg"}
+                    alt={`${person.name} portrait`}
+                    fill
+                    sizes="64px"
+                    className="object-cover"
+                  />
+                </div>
                 <div>
                   <h3 className="font-medium text-lg">{person.name}</h3>
                   <p className="text-sm text-muted-foreground">
