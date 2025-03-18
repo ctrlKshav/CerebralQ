@@ -56,25 +56,10 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
         const formData = new FormData();
         formData.append('avatar', avatarFile);
 
-        // Create a mock progress simulation
-        const progressInterval = setInterval(() => {
-          setUploadProgress((prev) => {
-            const nextProgress = prev + 10;
-            if (nextProgress >= 90) {
-              clearInterval(progressInterval);
-              return 90;
-            }
-            return nextProgress;
-          });
-        }, 300);
-
         const response = await fetch('/protected/account/api', {
           method: 'POST',
           body: formData,
         });
-
-        clearInterval(progressInterval);
-        setUploadProgress(100);
 
         if (!response.ok) {
           const errorData = await response.json();
