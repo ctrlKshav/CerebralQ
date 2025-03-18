@@ -1,5 +1,6 @@
 ﻿import { TraitScores } from "@/types/tests/mbti"
 import { MBTIRawScore } from './user-test-history';
+import {User} from "@/types/supabase/users"
 
 export interface UserProfile {
   username: string
@@ -19,3 +20,6 @@ export interface UserTestHistorySummary {
   personalityType?: string
   details?: any
 }
+
+export type CognitiveMetricsType = Pick<User, 'mbti_personality_type' | 'ocean_type' | 'iq'>
+
