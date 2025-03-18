@@ -1,6 +1,5 @@
 ﻿import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
-import { cookies } from 'next/headers';
 import { nanoid } from 'nanoid';
 
 export async function POST(request: NextRequest) {
@@ -66,17 +65,26 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Get the public URL for the file
-    const { data: { publicUrl } } = supabase.storage
+    // Generate a signed URL for the file since the bucket is private
+    const { data, error: signedUrlError } = await supabase.storage
       .from('user-images')
-      .getPublicUrl(filePath);
+      .createSignedUrl(filePath, 60 * 60 * 24 * 365); // 1 year expiry
 
-      console.log(publicUrl)
+    if (signedUrlError || !data) {
+      console.error('Error creating signed URL:', signedUrlError);
+      return NextResponse.json(
+        { error: 'Failed to create access URL' },
+        { status: 500 }
+      );
+    }
+
+    const signedUrl = data.signedUrl;
+    console.log(signedUrl);
 
     // Update the user profile with the new avatar URL
     const { data: userData, error: updateError } = await supabase
       .from('users')
-      .update({ profile_image_url: publicUrl })
+      .update({ profile_image_url: signedUrl })
       .eq('id', user.id)
       .select()
       .single();
@@ -89,7 +97,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    return NextResponse.json({ url: publicUrl });
+    return NextResponse.json({ url: signedUrl });
   } catch (error) {
     console.error('Unexpected error during file upload:', error);
     return NextResponse.json(

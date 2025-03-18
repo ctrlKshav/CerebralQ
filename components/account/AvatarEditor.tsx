@@ -68,7 +68,7 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
           });
         }, 300);
 
-        const response = await fetch('/api/upload-avatar', {
+        const response = await fetch('/protected/account/api', {
           method: 'POST',
           body: formData,
         });
