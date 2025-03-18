@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, use } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { getUserByUsername } from "@/lib/supabaseOperations";
+import { getCurrentUser, getUserByUsername } from "@/lib/supabaseOperations";
 import { useRouter } from "next/navigation";
 
 // Components
@@ -16,7 +16,7 @@ import {
   NoTestsFallback,
   IncompleteDataFallback,
 } from "@/components/profile/profile-fallbacks";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/types/supabase/users";
 import { UserProfile } from "@/types/supabase/user-profile";
 
 export default function ProfilePage({
@@ -38,7 +38,7 @@ export default function ProfilePage({
   useEffect(() => {
     const getAuthUser = async () => {
       setAuthLoading(true);
-      const { data: { user } } = await supabase.auth.getUser();
+      const user = await getCurrentUser();
       if (user) {
         setUser(user);
         const { data: userData } = await supabase
@@ -78,7 +78,7 @@ export default function ProfilePage({
   if (!userData) {
     return (
       <>
-        <Navbar user={user} username={viewerUsername}  />
+        <Navbar user={user}  />
         <UserNotFoundFallback username={profileUsername} />
       </>
     );
@@ -88,7 +88,7 @@ export default function ProfilePage({
   if (userData.user_test_history.length === 0) {
     return (
       <>
-        <Navbar user={user} username={viewerUsername}  />
+        <Navbar user={user}/>
         <NoTestsFallback username={profileUsername}  profileImageUrl={userData.profile_image_url} bio={userData.bio} />
       </>
     );
@@ -104,7 +104,7 @@ export default function ProfilePage({
   if (!hasValidPersonalityData) {
     return (
       <>
-        <Navbar user={user} username={viewerUsername}  />
+        <Navbar user={user} />
         <IncompleteDataFallback username={profileUsername} profileImageUrl={userData.profile_image_url} bio={userData.bio}  />
       </>
     );
@@ -113,7 +113,7 @@ export default function ProfilePage({
   // All good - show full profile
   return (
     <div className="min-h-screen bg-background ">
-      {user ? <Navbar user={user} username={viewerUsername} /> : <Navbar  />}
+      {user ? <Navbar user={user} /> : <Navbar  />}
       <main className="container mt-24 mx-auto px-4 py-8 lg:px-8">
         <div className="max-w-7xl mx-auto space-y-10">
           {/* Profile header with basic user information */}

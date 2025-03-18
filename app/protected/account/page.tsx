@@ -27,11 +27,11 @@ export default function Page() {
     <div className="min-h-screen bg-background">
       <Link 
         href="/" 
-        className={`inline w-fit fixed top-0 right-4 xl:left-4 z-50 transition-opacity duration-100 ${
+        className={`inline w-fit fixed top-0 right-4 xl:left-8 z-50 transition-opacity duration-100 ${
           isVisible ? "opacity-100" : "opacity-0 pointer-events-none xl:opacity-100"
         }`}
       >
-        <CQLogo className="w-24 sm:w-36 h-24 sm:h-36" />
+        <CQLogo className="w-24 h-24 md:w-28 md:h-28" />
       </Link>
       
       <div className="relative">

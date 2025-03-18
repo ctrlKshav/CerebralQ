@@ -35,19 +35,17 @@ import CQLogo from "../cq-logo";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { User } from "@supabase/supabase-js";
+import { User } from "@/types/supabase/users";
 import LogoutButton from "@/components/logout-button";
 
 interface ProtectedNavbarProps {
   className?: string;
   user: User;
-  username?: string | null;
 }
 
 const ProtectedNavbar = ({
   className,
   user,
-  username,
 }: ProtectedNavbarProps) => {
   const router = useRouter();
   const supabase = createClient();
@@ -88,8 +86,8 @@ const ProtectedNavbar = ({
   );
 
   const getUserInitials = () => {
-    if (username) {
-      return username.substring(0, 2).toUpperCase();
+    if (user.username) {
+      return user.username.substring(0, 2).toUpperCase();
     }
     return "CQ";
   };
@@ -115,7 +113,7 @@ const ProtectedNavbar = ({
                     className={cn(
                       "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
                     )}
-                    href={`/profiles/${username}`}
+                    href={`/profiles/${user.username}`}
                   >
                     Dashboard
                   </NavigationMenuLink>
@@ -137,8 +135,8 @@ const ProtectedNavbar = ({
                   >
                     <Avatar className="h-10 w-10">
                       <AvatarImage
-                        src={user?.user_metadata?.avatarUrl}
-                        alt={username || ""}
+                        src={user?.profile_image_url || "/placeholder.svg"}
+                        alt={user.username || ""}
                       />
                       <AvatarFallback>{getUserInitials()}</AvatarFallback>
                     </Avatar>
@@ -147,7 +145,7 @@ const ProtectedNavbar = ({
                 <DropdownMenuContent className="w-56" align="end" forceMount>
                   <div className="flex flex-col space-y-1 p-2">
                     <p className="text-sm font-medium leading-none">
-                      {username || "User"}
+                      {user.username || "User"}
                     </p>
                     <p className="text-xs leading-none text-muted-foreground">
                       {user.email || ""}
@@ -155,7 +153,7 @@ const ProtectedNavbar = ({
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href={`/profiles/${username}`}>
+                    <Link href={`/profiles/${user.username}`}>
                       <UserIcon className="mr-2 h-4 w-4" />
                       <span>Profile</span>
                     </Link>
@@ -197,14 +195,14 @@ const ProtectedNavbar = ({
                     <div className="flex items-center space-x-3">
                       <Avatar className="h-10 w-10">
                         <AvatarImage
-                          src={user?.user_metadata?.avatarUrl}
-                          alt={username || ""}
+                          src={user?.profile_image_url || "/placeholder.svg"}
+                          alt={user.username || ""}
                         />
                         <AvatarFallback>{getUserInitials()}</AvatarFallback>
                       </Avatar>
                       <div>
                         <p className="text-sm font-medium">
-                          {username || "User"}
+                          {user.username || "User"}
                         </p>
                         <p className="text-xs text-muted-foreground truncate max-w-[200px]">
                           {user.email || ""}
@@ -217,7 +215,7 @@ const ProtectedNavbar = ({
                     <div className="space-y-2 p-4">
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuItem
-                          href={`/profiles/${username}`}
+                          href={`/profiles/${user.username}`}
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
                           title="Dashboard"
