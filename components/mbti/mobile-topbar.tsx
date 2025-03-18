@@ -24,7 +24,7 @@ export default function MobileTopbar({
           </div>
         </div>
         <Link href="/" className="order-1 ">
-          <CQLogo className="w-28 h-24 object-cover" />
+          <CQLogo className="w-24 h-24 sm:w-28 sm:h-28" />
         </Link>
       </div>
     </div>
