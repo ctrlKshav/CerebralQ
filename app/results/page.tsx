@@ -2,24 +2,16 @@
 import Navbar from "@/components/navbar";
 import { createClient } from "@/utils/supabase/server";
 import { Redirect } from "next";
+import { getCurrentUser } from "@/lib/supabaseOperations";
 
 export default async function ResultsPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  
 
+  const user = await getCurrentUser();
 
-  // Fetch user data including username
-  const { data: userData } = await supabase
-    .from("users")
-    .select("username")
-    .eq("id", user?.id)
-    .single();
-    
   return (
     <div className="">
-      {user ? <Navbar user={user} username={userData?.username} /> : <Navbar />}
+      {user ? <Navbar user={user} /> : <Navbar />}
       <div className="mt-24">
         <Results />
       </div>
