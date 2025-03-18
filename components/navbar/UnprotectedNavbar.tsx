@@ -72,7 +72,7 @@ const UnprotectedNavbar = (props: { className?: string }) => {
           {/* Logo - Left column */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
-              <CQLogo className="w-28 h-28" />
+              <CQLogo className="w-24 h-24 sm:w-28 sm:h-28" />
             </Link>
           </div>
 
