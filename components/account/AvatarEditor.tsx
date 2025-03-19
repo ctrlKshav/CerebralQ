@@ -15,6 +15,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
 interface AvatarEditorProps {
   profileImage?: string | null;
@@ -214,14 +216,14 @@ export function AvatarEditor({
                           Drag and drop your image here
                         </p>
                         <p className="text-sm text-muted-foreground mb-2">or</p>
-                        <label
+                        <Label
                           htmlFor="avatar-upload"
                           className="cursor-pointer"
                         >
                           <div className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors">
                             Select from computer
                           </div>
-                          <input
+                          <Input
                             id="avatar-upload"
                             type="file"
                             accept="image/*"
@@ -229,7 +231,7 @@ export function AvatarEditor({
                             onChange={handleFileChange}
                             aria-label="Upload profile picture"
                           />
-                        </label>
+                        </Label>
                         <p className="text-xs text-muted-foreground mt-2">
                           Supported formats: JPEG, PNG, GIF (max 5MB)
                         </p>
