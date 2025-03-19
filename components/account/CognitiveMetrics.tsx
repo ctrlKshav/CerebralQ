@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { Brain, Zap, Activity, BrainCog } from "lucide-react";
+import { Brain, Zap, Activity, BrainCog, User } from "lucide-react";
 import { CognitiveMetricsType } from "@/types/supabase/user-profile";
 
 export function CognitiveMetrics({
@@ -9,16 +9,16 @@ export function CognitiveMetrics({
 }: CognitiveMetricsType) {
   return (
     <div className="bg-card/80 dark:bg-card/30 rounded-xl p-6 backdrop-blur-sm border border-border shadow-sm hover:bg-accent/10 dark:hover:bg-card/40 transition-all">
-      <div className="flex items-center gap-2 mb-6">
-        <Brain className="h-5 w-5 text-primary" />
-        <h3 className="text-lg font-semibold text-foreground">
+      <div className="flex items-start gap-2 mb-6">
+        <Brain className="h-7 w-7 text-primary" />
+        <h3 className="text-xl font-semibold text-foreground">
           Cognitive Profile
         </h3>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        <div className="space-y-2">
+        {/* <div className="space-y-2">
           <div className="flex items-center gap-2 text-muted-foreground">
-            <Zap className="h-6 w-6 text-yellow-500" />
+            <Zap className="h-5 w-5 text-yellow-500" />
             <span className="text-lg">IQ Score</span>
           </div>
           <div className="flex items-center gap-2">
@@ -33,11 +33,11 @@ export function CognitiveMetrics({
               )}
             </span>
           </div>
-        </div>
+        </div> */}
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-muted-foreground">
-            <BrainCog className="h-6 w-6 text-purple-500" />
-            <span className="text-lg">Personality</span>
+            <User className="h-5 w-5 text-purple-500" />
+            <span className="text-lg">Personality Type</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-xl font-bold text-purple-600 dark:text-purple-500">
@@ -45,9 +45,9 @@ export function CognitiveMetrics({
             </span>
           </div>
         </div>
-        <div className="space-y-2">
+        {/* <div className="space-y-2">
           <div className="flex items-center gap-2 text-muted-foreground">
-            <Activity className="h-6 w-6 text-emerald-500" />
+            <Activity className="h-5 w-5 text-emerald-500" />
             <span className="text-lg">OCEAN Profile</span>
           </div>
           {ocean_type ? (
@@ -120,7 +120,7 @@ export function CognitiveMetrics({
               </span>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

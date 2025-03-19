@@ -28,11 +28,11 @@ export default function Account({ userData }: { userData: User }) {
           created_at={userData.created_at}
         />
 
-        <ProfileProgress />
+        {/* <ProfileProgress /> */}
 
-        <CognitiveMetrics mbti_personality_type={userData.mbti_personality_type} iq={userData.iq} ocean_type={userData.ocean_type} />
+        {/* <CognitiveMetrics mbti_personality_type={userData.mbti_personality_type} iq={userData.iq} ocean_type={userData.ocean_type} /> */}
 
-        <AssessmentProgress tests_taken={userData.tests_taken ?? undefined} last_test_date={userData.last_test_date ?? undefined} />
+        {/* <AssessmentProgress tests_taken={userData.tests_taken ?? undefined} last_test_date={userData.last_test_date ?? undefined} /> */}
       </div>
     </main>
   );

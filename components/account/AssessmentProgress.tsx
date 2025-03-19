@@ -31,17 +31,17 @@ export function AssessmentProgress({
 
   return (
     <div className="bg-card/80 dark:bg-card/30 rounded-xl p-6 backdrop-blur-sm border border-border shadow-sm hover:bg-accent/10 dark:hover:bg-card/40 transition-all">
-      <div className="flex items-center gap-2 mb-6">
-        <Trophy className="h-5 w-5 text-primary" />
-        <h3 className="text-lg font-semibold text-foreground">
+      <div className="flex items-start gap-2 mb-6">
+        <Trophy className="h-7 w-7 text-primary" />
+        <h3 className="text-xl font-semibold text-foreground">
           Assessment Journey
         </h3>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         <div className="space-y-2">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Award className="h-4 w-4" />
+          <div className="flex items-start gap-2 text-muted-foreground">
+            <Award className="h-5 w-5" />
             <span className="text-sm">Current Level</span>
           </div>
           <p className="text-2xl font-bold bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
@@ -50,7 +50,7 @@ export function AssessmentProgress({
         </div>
         <div className="space-y-2">
           <div className="flex items-center gap-2 text-muted-foreground">
-            <Clock className="h-4 w-4" />
+            <Clock className="h-5 w-5" />
             <span className="text-sm">Last Assessment</span>
           </div>
           <p className="text-lg text-foreground">

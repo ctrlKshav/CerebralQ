@@ -16,9 +16,9 @@ export function ProfileProgress() {
   return (
     <div className="bg-card/80 dark:bg-card/30 rounded-xl p-6 backdrop-blur-sm border border-border shadow-sm">
       <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-2">
-          <CheckCircle2 className="h-5 w-5 text-emerald-500" />
-          <h3 className="text-lg font-semibold text-foreground">Profile Completion</h3>
+        <div className="flex  items-center gap-2">
+          <CheckCircle2 className="h-7 w-7 text-emerald-500" />
+          <h3 className="text-xl font-semibold text-foreground">Profile Completion</h3>
         </div>
         <span className="text-sm text-muted-foreground">{completedSteps}/{steps.length} Complete</span>
       </div>
