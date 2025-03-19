@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     // Use a consistent filename for each user (no nanoid needed)
     const fileExtension = file.name.split(".").pop();
     const fileName = `${user.id}.${fileExtension}`;
-    const filePath = `avatars/${fileName}`;
+    const filePath = `user-avatars/${fileName}`;
 
     // Upload the file to Supabase Storage with upsert: true
     const { data: uploadData, error: uploadError } = await supabase.storage
