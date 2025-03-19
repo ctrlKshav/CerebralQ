@@ -74,7 +74,8 @@ export function AvatarEditor({
         toast.success("Your profile image has been updated successfully.");
       } else if (editedAvatarUrl !== profileImage) {
         // If using a pre-defined avatar URL
-        await updateUserProfile(userId, { profile_image_url: editedAvatarUrl });
+        const avatarURL = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${editedAvatarUrl}`;
+        await updateUserProfile(userId, { profile_image_url: avatarURL });
         setIsAvatarDialogOpen(false);
         toast.success("Your profile image has been updated successfully.");
       } else {
@@ -253,10 +254,20 @@ export function AvatarEditor({
                   {avatarOptions.map((avatar, index) => (
                     <div
                       key={index}
-                      className={`cursor-pointer rounded-lg p-2 transition-all hover:bg-accent ${editedAvatarUrl === avatar ? "ring-2 ring-primary bg-accent" : ""}`}
+                      className={`cursor-pointer rounded-lg p-2 transition-all hover:bg-accent ${
+                        editedAvatarUrl === avatar ||
+                        editedAvatarUrl ===
+                          `${process.env.NEXT_PUBLIC_WEBSITE_URL}${avatar}`
+                          ? "ring-2 ring-primary bg-accent"
+                          : ""
+                      }`}
                       onClick={() => selectAvatar(avatar)}
                       role="option"
-                      aria-selected={editedAvatarUrl === avatar}
+                      aria-selected={
+                        editedAvatarUrl === avatar ||
+                        editedAvatarUrl ===
+                          `${process.env.NEXT_PUBLIC_WEBSITE_URL}${avatar}`
+                      }
                       aria-label={`Avatar option ${index + 1}`}
                     >
                       <Avatar className="h-16 w-16 mx-auto">
