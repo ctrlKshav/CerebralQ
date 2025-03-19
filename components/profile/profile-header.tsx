@@ -1,10 +1,10 @@
 "use client";
 
 import { Calendar, ClipboardCheck, Share2 } from "lucide-react";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { handleShare } from "@/lib/shareUtils";
 import Link from "next/link";
 import { UserProfile } from "@/types/supabase/user-profile";
@@ -28,7 +28,7 @@ export default function ProfileHeader({
 
   return (
     <section className="relative">
-      {/* Decorative background */}
+      {/* Simple background */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-background rounded-3xl -z-10" />
 
       <motion.div
@@ -37,24 +37,17 @@ export default function ProfileHeader({
         transition={{ duration: 0.5 }}
         className="flex flex-col md:flex-row items-center gap-10 p-8 rounded-3xl"
       >
-        {/* Avatar with gradient border */}
-        <div className="relative flex-shrink-0">
-          <div className="absolute -inset-1 bg-gradient-to-br from-primary to-primary/40 rounded-full blur-sm" />
-          <div className="relative h-40 w-40 md:h-48 md:w-48 rounded-full overflow-hidden border-4 border-background">
-            <div className="h-full w-full relative">
-              <Image
-                src={
-                  userData.profile_image_url ||
-                  "/placeholder.svg?height=192&width=192"
-                }
-                alt={`${userData.username}'s profile`}
-                fill
-                className="object-cover"
-                priority
-                sizes="(max-width: 768px) 160px, 192px"
-              />
-            </div>
-          </div>
+        {/* Avatar */}
+        <div className="flex-shrink-0">
+          <Avatar className="h-40 w-40 md:h-48 md:w-48 border-4 border-background">
+            <AvatarImage 
+              src={userData.profile_image_url || "/placeholder.svg"}
+              alt={`${userData.username}'s profile`}
+            />
+            <AvatarFallback className="text-4xl">
+              {userData.username.charAt(0).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
         </div>
 
         {/* Profile info */}
@@ -69,7 +62,7 @@ export default function ProfileHeader({
           {/* Bio with fade effect */}
           <p className="text-lg text-muted-foreground italic max-w-3xl relative overflow-hidden">
             {userData.bio}
-            <span className="absolute bottom-0 right-0 bg-gradient-to-l from-background to-transparent w-12 h-full" />
+            <span className="absolute bottom-0 right-0 w-12 h-full" />
           </p>
 
           {/* Stats ribbon */}
