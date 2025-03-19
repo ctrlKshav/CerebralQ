@@ -1,6 +1,7 @@
 ﻿import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export function UserNotFoundFallback({ username }: { username: string }) {
   return (
@@ -27,16 +28,23 @@ export function UserNotFoundFallback({ username }: { username: string }) {
   );
 }
 
-export function NoTestsFallback({ username }: { username: string }) {
+export function NoTestsFallback({ username, profileImageUrl, bio }: { username: string; profileImageUrl?: string; bio?: string }) {
   return (
     <div className="container mx-auto px-4 py-8 mt-24">
       <div className="max-w-3xl mx-auto">
         {/* Basic profile header */}
         <div className="text-center mb-12">
-          <div className="w-24 h-24 bg-primary/10 rounded-full mx-auto flex items-center justify-center mb-4">
-            <span className="text-3xl font-bold text-primary">{username.charAt(0).toUpperCase()}</span>
-          </div>
+          <Avatar className="h-24 w-24 mx-auto mb-4">
+            <AvatarImage 
+              src={profileImageUrl || "/placeholder.svg"}
+              alt={`${username}'s profile`}
+            />
+            <AvatarFallback className="text-3xl font-bold">
+              {username.charAt(0).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
           <h1 className="text-3xl font-bold">{username}</h1>
+          {bio && <p className="text-muted-foreground mt-2 italic">{bio}</p>}
         </div>
         
         {/* No tests message */}
@@ -59,16 +67,23 @@ export function NoTestsFallback({ username }: { username: string }) {
   );
 }
 
-export function IncompleteDataFallback({ username }: { username: string }) {
+export function IncompleteDataFallback({ username, profileImageUrl, bio }: { username: string; profileImageUrl?: string; bio?: string }) {
   return (
     <div className="container mx-auto px-4 py-8 mt-24">
       <div className="max-w-3xl mx-auto">
         {/* Basic profile header */}
         <div className="text-center mb-12">
-          <div className="w-24 h-24 bg-primary/10 rounded-full mx-auto flex items-center justify-center mb-4">
-            <span className="text-3xl font-bold text-primary">{username.charAt(0).toUpperCase()}</span>
-          </div>
+          <Avatar className="h-24 w-24 mx-auto mb-4">
+            <AvatarImage 
+              src={profileImageUrl || "/placeholder.svg"}
+              alt={`${username}'s profile`}
+            />
+            <AvatarFallback className="text-3xl font-bold">
+              {username.charAt(0).toUpperCase()}
+            </AvatarFallback>
+          </Avatar>
           <h1 className="text-3xl font-bold">{username}</h1>
+          {bio && <p className="text-muted-foreground mt-2 italic">{bio}</p>}
         </div>
         
         {/* Incomplete data message */}

@@ -89,7 +89,7 @@ export default function ProfilePage({
     return (
       <>
         <Navbar user={user} username={viewerUsername}  />
-        <NoTestsFallback username={profileUsername} />
+        <NoTestsFallback username={profileUsername}  profileImageUrl={userData.profile_image_url} bio={userData.bio} />
       </>
     );
   }
@@ -105,7 +105,7 @@ export default function ProfilePage({
     return (
       <>
         <Navbar user={user} username={viewerUsername}  />
-        <IncompleteDataFallback username={profileUsername} />
+        <IncompleteDataFallback username={profileUsername} profileImageUrl={userData.profile_image_url} bio={userData.bio}  />
       </>
     );
   }
