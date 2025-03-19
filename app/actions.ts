@@ -8,7 +8,7 @@ import { ForgotPasswordPayload, ResetPasswordPayload, SignInPayload, SignUpPaylo
 import { checkUsernameExists } from "@/lib/supabaseOperations";
 
 export const signUpAction = async (data: SignUpPayload) => {
-  const { firstname, lastname, username, email, password, redirect: redirectToPage } = data;
+  const { firstname, lastname, username, email, password, referralCode, redirect: redirectToPage } = data;
   const supabase = await createClient();
   const origin = (await headers()).get("origin");
 
@@ -38,7 +38,8 @@ export const signUpAction = async (data: SignUpPayload) => {
         email,
         firstname,
         lastname,
-        username
+        username,
+        referralCode
       },
     },
   });
