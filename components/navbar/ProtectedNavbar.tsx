@@ -43,10 +43,7 @@ interface ProtectedNavbarProps {
   user: User;
 }
 
-const ProtectedNavbar = ({
-  className,
-  user,
-}: ProtectedNavbarProps) => {
+const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
   const router = useRouter();
   const supabase = createClient();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
@@ -155,7 +152,7 @@ const ProtectedNavbar = ({
                   <DropdownMenuItem asChild>
                     <Link href={`/protected/account`}>
                       <UserIcon className="mr-2 h-4 w-4" />
-                      <span>Profile</span>
+                      <span>Account</span>
                     </Link>
                   </DropdownMenuItem>
 
@@ -215,10 +212,19 @@ const ProtectedNavbar = ({
                     <div className="space-y-2 p-4">
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuItem
-                          href={`/protected/account`}
+                          href={`/profiles/${user.username}`}
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
                           title="Dashboard"
+                        />
+                      </div>
+
+                      <div className="space-y-2 pb-4 border-b">
+                        <MobileMenuItem
+                          href={`/protected/account`}
+                          isSheetOpen={isSheetOpen}
+                          setIsSheetOpen={setIsSheetOpen}
+                          title="Account"
                         />
                       </div>
                     </div>
