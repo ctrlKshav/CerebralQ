@@ -39,11 +39,37 @@ export function UserDataContextProvider({
       if(data === null) 
         return router.push("/sign-in");
       setUserData(data);
-
+      
+      // Set up realtime subscription for user data changes
+      const userId = data.id;
+      const channel = supabase
+        .channel(`public:users:id=eq.${userId}`)
+        .on(
+          'postgres_changes',
+          {
+            event: 'UPDATE',
+            schema: 'public',
+            table: 'users',
+            filter: `id=eq.${userId}`
+          },
+          (payload) => {
+            console.log('User data updated:', payload.new);
+            setUserData(currentData => {
+              if (!currentData) return null;
+              return { ...currentData, ...payload.new as Partial<User> };
+            });
+          }
+        )
+        .subscribe();
+      
+      // Clean up subscription on unmount
+      return () => {
+        channel.unsubscribe();
+      };
     }
     func();
 
-  }, []);
+  }, [router, supabase]);
 
   if(userData == null)
     return <LoadingSkeleton />  
