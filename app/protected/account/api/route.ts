@@ -64,7 +64,7 @@ export async function POST(request: NextRequest) {
     // Generate a signed URL for the file since the bucket is private
     const { data, error: signedUrlError } = await supabase.storage
       .from("user-images")
-      .createSignedUrl(filePath, 60 * 60 * 24 * 365); // 1 year expiry
+      .createSignedUrl(filePath, 60 * 60 * 24 * 365 * 2); // 2 year expiry
     if (signedUrlError || !data) {
       console.error("Error creating signed URL:", signedUrlError);
       return NextResponse.json(
