@@ -22,7 +22,11 @@ interface AvatarEditorProps {
   userId?: string;
 }
 
-export function AvatarEditor({ profileImage, username, userId }: AvatarEditorProps) {
+export function AvatarEditor({
+  profileImage,
+  username,
+  userId,
+}: AvatarEditorProps) {
   const [isAvatarDialogOpen, setIsAvatarDialogOpen] = useState(false);
   const [editedAvatarUrl, setEditedAvatarUrl] = useState(profileImage || "");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -32,14 +36,10 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
 
   // Predefined avatar options
   const avatarOptions = [
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
-    "/placeholder.svg",
+    "/profile-avatars/avatar1.svg",
+    "/profile-avatars/avatar2.svg",
+    "/profile-avatars/avatar3.svg",
+    "/profile-avatars/avatar4.svg",
   ];
 
   const handleSaveAvatar = async () => {
@@ -54,16 +54,16 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
       // Handle file upload
       if (avatarFile) {
         const formData = new FormData();
-        formData.append('avatar', avatarFile);
+        formData.append("avatar", avatarFile);
 
-        const response = await fetch('/protected/account/api', {
-          method: 'POST',
+        const response = await fetch("/protected/account/api", {
+          method: "POST",
           body: formData,
         });
 
         if (!response.ok) {
           const errorData = await response.json();
-          throw new Error(errorData.error || 'Failed to upload image');
+          throw new Error(errorData.error || "Failed to upload image");
         }
 
         const data = await response.json();
@@ -79,8 +79,12 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
         setIsAvatarDialogOpen(false);
       }
     } catch (error) {
-      console.error('Upload error:', error);
-      toast.error(error instanceof Error ? error.message : "Failed to update profile image. Please try again.");
+      console.error("Upload error:", error);
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Failed to update profile image. Please try again."
+      );
     } finally {
       setIsSubmitting(false);
       setUploadProgress(0);
@@ -108,7 +112,7 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
   const handleDrop = (e: React.DragEvent) => {
     e.preventDefault();
     setIsDragging(false);
-    
+
     if (e.dataTransfer.files && e.dataTransfer.files[0]) {
       const file = e.dataTransfer.files[0];
       setAvatarFile(file);
@@ -130,7 +134,7 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
           <User className="h-12 w-12 md:h-16 md:w-16" />
         </AvatarFallback>
       </Avatar>
-      
+
       <Dialog open={isAvatarDialogOpen} onOpenChange={setIsAvatarDialogOpen}>
         <DialogTrigger asChild>
           <Button
@@ -147,69 +151,49 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
           <DialogHeader>
             <DialogTitle>Edit Profile Picture</DialogTitle>
             <DialogDescription>
-              Customize your profile by uploading a new photo or selecting from our gallery of avatars.
-              Your profile picture will be visible to other users on the platform.
+              Customize your profile by uploading a new photo or selecting from
+              our gallery of avatars. Your profile picture will be visible to
+              other users on the platform.
             </DialogDescription>
           </DialogHeader>
-          
+
           <div className="mt-4">
             <Tabs defaultValue="upload" className="w-full">
               <TabsList className="grid w-full grid-cols-2 mb-4">
-                <TabsTrigger value="upload" aria-label="Upload image tab">Upload Image</TabsTrigger>
-                <TabsTrigger value="gallery" aria-label="Choose avatar tab">Choose Avatar</TabsTrigger>
+                <TabsTrigger value="upload" aria-label="Upload image tab">
+                  Upload Image
+                </TabsTrigger>
+                <TabsTrigger value="gallery" aria-label="Choose avatar tab">
+                  Choose Avatar
+                </TabsTrigger>
               </TabsList>
-              
+
               <TabsContent value="upload" className="space-y-4">
-                <div 
-                  className={`border-2 border-dashed rounded-lg p-6 text-center transition-all ${isDragging ? 'border-primary bg-primary/5' : 'border-border'}`}
+                <div
+                  className={`border-2 border-dashed rounded-lg p-6 text-center transition-all ${isDragging ? "border-primary bg-primary/5" : "border-border"}`}
                   onDragOver={handleDragOver}
                   onDragLeave={handleDragLeave}
                   onDrop={handleDrop}
                   aria-label="Image upload area"
                   role="region"
                 >
-                  {isSubmitting && uploadProgress > 0 ? (
-                    <div className="flex flex-col items-center gap-4">
-                      <div className="relative h-24 w-24">
-                        <div className="absolute inset-0 rounded-full border-4 border-primary/20"></div>
-                        <svg 
-                          className="absolute inset-0" 
-                          width="100%" 
-                          height="100%" 
-                          viewBox="0 0 100 100" 
-                          xmlns="http://www.w3.org/2000/svg"
-                          aria-hidden="true"
-                        >
-                          <circle
-                            className="text-primary"
-                            stroke="currentColor"
-                            strokeWidth="8"
-                            fill="transparent"
-                            r="46"
-                            cx="50"
-                            cy="50"
-                            strokeDasharray={`${uploadProgress * 2.89}, 289`}
-                            transform="rotate(-90 50 50)"
-                          />
-                        </svg>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-sm font-medium" aria-live="polite">{uploadProgress}%</span>
-                        </div>
-                      </div>
-                      <p className="text-sm text-muted-foreground" aria-live="polite">Uploading your image...</p>
-                    </div>
-                  ) : editedAvatarUrl && avatarFile ? (
+                  {editedAvatarUrl && avatarFile ? (
                     <div className="flex flex-col items-center gap-4">
                       <Avatar className="h-24 w-24 ring-2 ring-primary/50 ring-offset-2 ring-offset-background">
-                        <AvatarImage src={URL.createObjectURL(avatarFile)} alt="Preview of selected profile picture" />
+                        <AvatarImage
+                          src={URL.createObjectURL(avatarFile)}
+                          alt="Preview of selected profile picture"
+                        />
                         <AvatarFallback>
                           <User className="h-12 w-12" />
                         </AvatarFallback>
                       </Avatar>
-                      <p className="text-sm text-muted-foreground">{avatarFile.name}</p>
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
+                      <p className="text-sm text-muted-foreground">
+                        {avatarFile.name}
+                      </p>
+                      <Button
+                        variant="outline"
+                        size="sm"
                         onClick={() => {
                           setAvatarFile(null);
                           setEditedAvatarUrl(profileImage || "");
@@ -222,18 +206,26 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
                   ) : (
                     <>
                       <div className="flex flex-col items-center gap-3">
-                        <Upload className="h-10 w-10 text-muted-foreground mb-2" aria-hidden="true" />
-                        <p className="font-medium">Drag and drop your image here</p>
+                        <Upload
+                          className="h-10 w-10 text-muted-foreground mb-2"
+                          aria-hidden="true"
+                        />
+                        <p className="font-medium">
+                          Drag and drop your image here
+                        </p>
                         <p className="text-sm text-muted-foreground mb-2">or</p>
-                        <label htmlFor="avatar-upload" className="cursor-pointer">
+                        <label
+                          htmlFor="avatar-upload"
+                          className="cursor-pointer"
+                        >
                           <div className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-md text-sm font-medium transition-colors">
                             Select from computer
                           </div>
-                          <input 
-                            id="avatar-upload" 
-                            type="file" 
+                          <input
+                            id="avatar-upload"
+                            type="file"
                             accept="image/*"
-                            className="hidden" 
+                            className="hidden"
                             onChange={handleFileChange}
                             aria-label="Upload profile picture"
                           />
@@ -246,27 +238,30 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
                   )}
                 </div>
               </TabsContent>
-              
+
               <TabsContent value="gallery">
                 <p className="text-sm text-muted-foreground mb-3">
                   Select one of our predefined avatars for your profile picture:
                 </p>
-                <div 
+                <div
                   className="grid grid-cols-3 sm:grid-cols-4 gap-3"
                   role="listbox"
                   aria-label="Available avatar options"
                 >
                   {avatarOptions.map((avatar, index) => (
-                    <div 
-                      key={index} 
-                      className={`cursor-pointer rounded-lg p-2 transition-all hover:bg-accent ${editedAvatarUrl === avatar ? 'ring-2 ring-primary bg-accent' : ''}`}
+                    <div
+                      key={index}
+                      className={`cursor-pointer rounded-lg p-2 transition-all hover:bg-accent ${editedAvatarUrl === avatar ? "ring-2 ring-primary bg-accent" : ""}`}
                       onClick={() => selectAvatar(avatar)}
                       role="option"
                       aria-selected={editedAvatarUrl === avatar}
                       aria-label={`Avatar option ${index + 1}`}
                     >
                       <Avatar className="h-16 w-16 mx-auto">
-                        <AvatarImage src={avatar} alt={`Avatar option ${index + 1}`} />
+                        <AvatarImage
+                          src={avatar}
+                          alt={`Avatar option ${index + 1}`}
+                        />
                         <AvatarFallback>
                           <User className="h-8 w-8" />
                         </AvatarFallback>
@@ -277,27 +272,35 @@ export function AvatarEditor({ profileImage, username, userId }: AvatarEditorPro
               </TabsContent>
             </Tabs>
           </div>
-          
+
           <div className="flex justify-end gap-2 mt-4">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               onClick={() => setIsAvatarDialogOpen(false)}
               disabled={isSubmitting}
               aria-label="Cancel avatar changes"
             >
               Cancel
             </Button>
-            <Button 
+            <Button
               onClick={handleSaveAvatar}
-              disabled={isSubmitting || (!avatarFile && editedAvatarUrl === profileImage)}
+              disabled={
+                isSubmitting ||
+                (!avatarFile && editedAvatarUrl === profileImage)
+              }
               aria-label="Save profile picture changes"
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />
+                  <Loader2
+                    className="mr-2 h-4 w-4 animate-spin"
+                    aria-hidden="true"
+                  />
                   <span aria-live="polite">Uploading...</span>
                 </>
-              ) : 'Save Changes'}
+              ) : (
+                "Save Changes"
+              )}
             </Button>
           </div>
         </DialogContent>
