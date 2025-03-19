@@ -74,7 +74,7 @@ export function AvatarEditor({
         toast.success("Your profile image has been updated successfully.");
       } else if (editedAvatarUrl !== profileImage) {
         // If using a pre-defined avatar URL
-        const avatarURL = `${process.env.NEXT_PUBLIC_WEBSITE_URL}${editedAvatarUrl}`;
+        const avatarURL = `https://${process.env.NEXT_PUBLIC_WEBSITE_URL}${editedAvatarUrl}`;
         await updateUserProfile(userId, { profile_image_url: avatarURL });
         setIsAvatarDialogOpen(false);
         toast.success("Your profile image has been updated successfully.");
