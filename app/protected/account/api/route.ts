@@ -74,7 +74,6 @@ export async function POST(request: NextRequest) {
     }
 
     const signedUrl = data.signedUrl;
-    console.log(signedUrl);
 
     // Update the user profile with the new avatar URL
     const { data: userData, error: updateError } = await supabase
