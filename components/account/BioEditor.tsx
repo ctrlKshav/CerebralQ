@@ -57,19 +57,22 @@ export function BioEditor({ bio, userId }: BioEditorProps) {
   const isOverLimit = remainingChars < 0;
 
   return (
-    <div className="relative mt-3 md:mt-4 bg-background/50 rounded-lg p-2 md:p-3 border border-border/50">
+    <div className="relative mt-3 md:mt-4">
       {isEditing ? (
-        <div className="md:pr-8">
+        <div className="bg-background/50 rounded-lg p-3 md:p-4 border border-border shadow-sm">
           <Textarea 
             value={editedBio} 
             onChange={(e) => setEditedBio(e.target.value)}
             placeholder="Write something about yourself..."
-            className={`min-h-[80px] text-sm md:text-base ${isOverLimit ? 'border-red-500 focus-visible:ring-red-500' : ''}`}
+            className={`min-h-[100px] text-sm md:text-base w-full resize-none ${
+              isOverLimit ? 'border-red-500 focus-visible:ring-red-500' : ''
+            }`}
             aria-label="Edit your bio"
-            maxLength={MAX_CHARACTER_LIMIT_BIO + 10} // Allow typing a bit over the limit for better UX, but prevent saving
+            maxLength={MAX_CHARACTER_LIMIT_BIO + 10}
           />
-          <div className="flex justify-between items-center mt-2">
-            <div className={`text-xs ${
+          
+          <div className="flex flex-col sm:flex-row sm:justify-between gap-2 mt-3">
+            <div className={`text-xs self-start ${
               isOverLimit 
                 ? 'text-red-500 font-medium' 
                 : isNearLimit 
@@ -82,9 +85,9 @@ export function BioEditor({ bio, userId }: BioEditorProps) {
                 <span>{Math.abs(remainingChars)} {remainingChars >= 0 ? 'characters remaining' : 'characters over limit'}</span>
               )}
             </div>
-            <div className="flex gap-1">
+            <div className="flex gap-2 self-end sm:self-auto">
               <Button 
-                variant="ghost" 
+                variant="outline" 
                 size="sm" 
                 onClick={handleCancel}
                 disabled={isSubmitting}
@@ -107,20 +110,20 @@ export function BioEditor({ bio, userId }: BioEditorProps) {
           </div>
         </div>
       ) : (
-        <>
-          <p className="text-muted-foreground text-sm md:text-base max-w-2xl pr-6 md:pr-8">
+        <div className="bg-background/50 rounded-lg p-3 md:p-4 border border-border/50 group relative">
+          <p className="text-muted-foreground text-sm md:text-base pr-8">
             {bio || "No bio provided. Add a short description about yourself."}
           </p>
           <Button
             size="icon"
             variant="ghost"
-            className="absolute top-1 md:top-2 right-1 md:right-2 h-5 w-5 md:h-8 md:w-8 rounded-full opacity-70 md:opacity-0 group-hover:opacity-100 transition-opacity"
+            className="absolute top-2 right-2 h-8 w-8 rounded-full opacity-70 md:opacity-0 group-hover:opacity-100 transition-opacity"
             onClick={handleEdit}
             aria-label="Edit your bio"
           >
-            <Edit2 className="h-3 w-3 md:h-3.5 md:w-3.5 text-primary" aria-hidden="true" />
+            <Edit2 className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
           </Button>
-        </>
+        </div>
       )}
     </div>
   );
