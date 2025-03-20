@@ -29,6 +29,8 @@ export const signUpAction = async (data: SignUpPayload) => {
     );
   }
 
+  
+
   const {data: fetchedData, error} = await supabase.auth.signUp({
     email,
     password,
@@ -39,7 +41,7 @@ export const signUpAction = async (data: SignUpPayload) => {
         firstname,
         lastname,
         username,
-        referralCode
+        c4e_insider: referralCode === process.env.SECRET_INSIDER_CODE,
       },
     },
   });
