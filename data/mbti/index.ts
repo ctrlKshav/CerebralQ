@@ -70,6 +70,12 @@ export const sampleResultData: ResultData = {
         description:
           "High-stakes environments where your strategic thinking and persuasive communication skills help you excel.",
       },
+      {
+        title: "Engineering",
+        matchPercentage: 85,
+        description:
+          "Problem-solving roles where you can innovate and create solutions that make a real impact.",
+      }
     ],
   },
   relationships: [

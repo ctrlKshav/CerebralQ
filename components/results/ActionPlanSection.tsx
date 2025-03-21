@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Download, ClipboardCheck, Save } from "lucide-react";
 import { ResultData } from "@/types/tests/mbti";
+import { Card, CardContent } from "@/components/ui/card";
 
 interface ActionPlanSectionProps {
   data: ResultData;
@@ -32,34 +33,36 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
   };
 
   return (
-    <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
       
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
         <div className="text-center mb-16">
           <div className="text-center max-w-4xl mx-auto mb-8">
             <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-mbti-purple text-white text-lg font-bold shadow-md">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold shadow-md">
                 {sectionNumber}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-mbti-purple">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Your Action Plan
               </h2>
             </div>
-            <p className="text-lg md:text-xl text-gray-600 font-medium">
+            <p className="text-lg md:text-xl text-muted-foreground font-medium">
               Practical Steps for Growth
             </p>
           </div>
           
-          <div className="glass-card rounded-xl p-8 max-w-4xl mx-auto">
-            <p className="text-lg md:text-xl text-gray-700">
-              Here's a little checklist to help you shine as an {personalityType}—keep this handy and check in monthly, {username}!
-            </p>
-          </div>
+          <Card className="max-w-4xl mx-auto">
+            <CardContent className="p-8">
+              <p className="text-lg md:text-xl text-foreground">
+                Here's a little checklist to help you shine as an {personalityType}—keep this handy and check in monthly, {username}!
+              </p>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Main content with image - full width layout */}
-        <div className="glass-card rounded-xl p-0 mb-16 overflow-hidden">
+        <Card className="mb-16 overflow-hidden">
           <div className="flex flex-col md:flex-row">
             <div className="p-8 md:w-3/5">
               <div className="flex items-center mb-6">
@@ -69,19 +72,19 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
               </div>
               
               {/* Checklist */}
-              <div className="bg-white/70 rounded-xl p-6 mb-10 backdrop-blur-sm shadow-sm">
+              <div className="bg-card rounded-xl p-6 mb-10 shadow-sm">
                 <ul className="space-y-4">
                   {defaultItems.map((item, index) => (
                     <li key={index} className="flex items-start">
                       <Checkbox 
                         id={`item-${index}`} 
-                        className="h-5 w-5 rounded-sm mt-1 border-2 border-mbti-purple data-[state=checked]:bg-mbti-purple data-[state=checked]:text-white"
+                        className="h-5 w-5 rounded-sm mt-1 border-2 border-primary"
                         checked={checkedItems[index] || false}
                         onCheckedChange={() => toggleItem(index)}
                       />
                       <label 
                         htmlFor={`item-${index}`} 
-                        className={`ml-3 text-base md:text-lg ${checkedItems[index] ? 'text-gray-400 line-through' : 'text-gray-700'}`}
+                        className={`ml-3 text-base md:text-lg ${checkedItems[index] ? 'text-muted-foreground line-through' : 'text-foreground'}`}
                       >
                         {item}
                       </label>
@@ -90,16 +93,16 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
                 </ul>
               </div>
 
-              <p className="text-lg font-medium text-mbti-purple mb-8">
+              <p className="text-lg font-medium text-primary mb-8">
                 You're killing it, {username}! Save this plan and let's keep growing together.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-mbti-purple hover:bg-mbti-purple/90 text-white py-6 px-8 rounded-full font-medium">
+                <Button size="lg" className="text-primary-foreground py-6 px-8 rounded-full font-medium">
                   <Save className="mr-2 h-5 w-5" /> 
                   Save Your Report
                 </Button>
-                <Button size="lg" variant="outline" className="border-mbti-purple text-mbti-purple hover:bg-mbti-purple/10 py-6 px-8 rounded-full font-medium">
+                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 py-6 px-8 rounded-full font-medium">
                   <Download className="mr-2 h-5 w-5" />
                   Download PDF
                 </Button>
@@ -115,7 +118,7 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
               />
             </div>
           </div>
-        </div>
+        </Card>
       </div>
     </section>
   );

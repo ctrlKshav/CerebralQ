@@ -8,6 +8,7 @@ import {
   Target,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card";
 
 interface CareerPathSectionProps {
   data: ResultData;
@@ -37,121 +38,127 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
   };
 
   return (
-    <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-gradient-to-b from-white to-gray-50">
+    <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
     
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
         <div className="text-center mb-16">
           <div className="text-center max-w-4xl mx-auto mb-8">
             <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-mbti-purple text-white text-lg font-bold shadow-md">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold shadow-md">
                 {sectionNumber}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-mbti-purple">
+              <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Your Career Path
               </h2>
             </div>
-            <p className="text-lg md:text-xl text-gray-600 font-medium">
+            <p className="text-lg md:text-xl text-muted-foreground font-medium">
               How You Shine at Work, {username}
             </p>
           </div>
 
-          <div className="glass-card rounded-2xl p-8 max-w-4xl mx-auto">
-            <p className="text-lg md:text-xl text-gray-700">
-              You're a total force in jobs where you can lead and
-              strategize—like business management, entrepreneurship, or even
-              something high-stakes like law. You love roles that let you take
-              charge and achieve big goals, but you might get frustrated if the
-              work feels inefficient or if others don't keep up with your pace.
-            </p>
-          </div>
+          <Card className="max-w-4xl mx-auto">
+            <CardContent className="p-8">
+              <p className="text-lg md:text-xl text-foreground">
+                You're a total force in jobs where you can lead and
+                strategize—like business management, entrepreneurship, or even
+                something high-stakes like law. You love roles that let you take
+                charge and achieve big goals, but you might get frustrated if the
+                work feels inefficient or if others don't keep up with your pace.
+              </p>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Career Superpowers and Growth Areas */}
         <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
           {/* Career Superpowers */}
-          <div className="glass-card rounded-2xl p-8 h-full">
-            <div className="flex items-center mb-6">
-              <div className="rounded-full bg-gradient-to-r from-emerald-400 to-teal-600 p-3 mr-4 shadow-lg flex items-center justify-center">
-                <Award
-                  className="h-6 w-6 text-white drop-shadow-sm"
-                  strokeWidth={2.2}
-                />
+          <Card className="h-full">
+            <CardContent className="p-8">
+              <div className="flex items-center mb-6">
+                <div className="rounded-full bg-emerald-500 p-3 mr-4 shadow-lg flex items-center justify-center">
+                  <Award
+                    className="h-6 w-6 text-primary-foreground drop-shadow-sm"
+                    strokeWidth={2.2}
+                  />
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold">
+                  Your Career Superpowers
+                </h3>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold">
-                Your Career Superpowers
-              </h3>
-            </div>
 
-            <ul className="space-y-5 text-base ml-4">
-              <li className="flex items-start">
-                <CheckCircle className="h-6 w-6 text-emerald-500 mr-3 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-medium text-lg mb-1">
-                    Leading with Vision:
-                  </p>
-                  <p className="text-gray-700">
-                    You inspire others with your big ideas, {username}—like
-                    pitching a game-changing plan to your team.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <CheckCircle className="h-6 w-6 text-emerald-500 mr-3 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-medium text-lg mb-1">Getting Results:</p>
-                  <p className="text-gray-700">
-                    You're a pro at making things happen, like hitting every
-                    target on a tight deadline.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
+              <ul className="space-y-5 text-base ml-4">
+                <li className="flex items-start">
+                  <CheckCircle className="h-6 w-6 text-emerald-500 mr-3 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-medium text-lg mb-1">
+                      Leading with Vision:
+                    </p>
+                    <p className="text-foreground">
+                      You inspire others with your big ideas, {username}—like
+                      pitching a game-changing plan to your team.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="h-6 w-6 text-emerald-500 mr-3 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-medium text-lg mb-1">Getting Results:</p>
+                    <p className="text-foreground">
+                      You're a pro at making things happen, like hitting every
+                      target on a tight deadline.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
 
           {/* Growth Areas */}
-          <div className="glass-card rounded-2xl p-8 h-full">
-            <div className="flex items-center mb-6">
-              <div className="rounded-full bg-gradient-to-r from-amber-400 to-orange-500 p-3 mr-4 shadow-lg flex items-center justify-center">
-                <Briefcase
-                  className="h-6 w-6 text-white drop-shadow-sm"
-                  strokeWidth={2.2}
-                />
+          <Card className="h-full">
+            <CardContent className="p-8">
+              <div className="flex items-center mb-6">
+                <div className="rounded-full bg-amber-500 p-3 mr-4 shadow-lg flex items-center justify-center">
+                  <Briefcase
+                    className="h-6 w-6 text-primary-foreground drop-shadow-sm"
+                    strokeWidth={2.2}
+                  />
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold">
+                  Where You Can Grow a Bit
+                </h3>
               </div>
-              <h3 className="text-xl md:text-2xl font-bold">
-                Where You Can Grow a Bit
-              </h3>
-            </div>
 
-            <ul className="space-y-5 text-base ml-4">
-              <li className="flex items-start">
-                <div className="h-6 w-6 rounded-full border-2 border-amber-500 mr-3 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-medium text-lg mb-1">Being Patient:</p>
-                  <p className="text-gray-700">
-                    You might push too hard for results—like getting annoyed if
-                    a project isn't moving fast enough.
-                  </p>
-                </div>
-              </li>
-              <li className="flex items-start">
-                <div className="h-6 w-6 rounded-full border-2 border-amber-500 mr-3 flex-shrink-0 mt-1" />
-                <div>
-                  <p className="font-medium text-lg mb-1">
-                    Listening to Others:
-                  </p>
-                  <p className="text-gray-700">
-                    You might focus on your vision and miss input—like not
-                    hearing a teammate's alternative idea.
-                  </p>
-                </div>
-              </li>
-            </ul>
-          </div>
+              <ul className="space-y-5 text-base ml-4">
+                <li className="flex items-start">
+                  <div className="h-6 w-6 rounded-full border-2 border-amber-500 mr-3 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-medium text-lg mb-1">Being Patient:</p>
+                    <p className="text-foreground">
+                      You might push too hard for results—like getting annoyed if
+                      a project isn't moving fast enough.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="h-6 w-6 rounded-full border-2 border-amber-500 mr-3 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-medium text-lg mb-1">
+                      Listening to Others:
+                    </p>
+                    <p className="text-foreground">
+                      You might focus on your vision and miss input—like not
+                      hearing a teammate's alternative idea.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </CardContent>
+          </Card>
         </div>
 
         {/* "Let's Make It Happen" section */}
-        <div className="glass-card rounded-2xl p-0 mb-16 overflow-hidden">
+        <Card className="mb-16 overflow-hidden">
           <div className="flex flex-col md:flex-row">
             <div className="p-8 md:w-3/5">
               <div className="flex items-center mb-6">
@@ -162,29 +169,29 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
 
               <ul className="space-y-6 ml-4">
                 <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-mbti-purple text-white text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
+                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
                     1
                   </div>
-                  <p className="text-gray-700 text-base md:text-lg">
+                  <p className="text-foreground text-base md:text-lg">
                     If things are moving slowly, take a deep breath and break
                     the task into smaller steps to keep progress steady.
                   </p>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-mbti-purple text-white text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
+                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
                     2
                   </div>
-                  <p className="text-gray-700 text-base md:text-lg">
+                  <p className="text-foreground text-base md:text-lg">
                     Ask a coworker for their input this week—like "What do you
                     think we could do differently here?"—to open up to new
                     ideas.
                   </p>
                 </li>
                 <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-mbti-purple text-white text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
+                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
                     3
                   </div>
-                  <p className="text-gray-700 text-base md:text-lg">
+                  <p className="text-foreground text-base md:text-lg">
                     Look for jobs that let you lead and innovate, like being a
                     CEO or a consultant—your kind of vibe!
                   </p>
@@ -201,15 +208,15 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
               />
             </div>
           </div>
-        </div>
+        </Card>
 
-        {/* Career Suggestions Section - Fix icon alignment */}
+        {/* Career Suggestions Section */}
         <div className="mb-16 px-4 md:px-8 lg:px-16">
           <div className="text-center mb-12">
             <div className="flex items-center justify-center mb-5">
-              <div className="p-3 bg-mbti-purple rounded-full shadow-lg">
+              <div className="p-3 bg-primary rounded-full shadow-lg">
                 <Target
-                  className="h-6 w-6 text-white drop-shadow-sm"
+                  className="h-6 w-6 text-primary-foreground drop-shadow-sm"
                   strokeWidth={2.2}
                 />
               </div>
@@ -217,7 +224,7 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
                 Career Suggestions
               </h3>
             </div>
-            <p className="text-gray-600 max-w-3xl mx-auto text-base md:text-lg">
+            <p className="text-muted-foreground max-w-3xl mx-auto text-base md:text-lg">
               Based on your personality traits, these careers align well with
               your natural strengths and preferences.
             </p>
@@ -225,9 +232,9 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {career.matches.map((match, index) => (
-              <div
+              <Card
                 key={index}
-                className="glass-card rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all hover:-translate-y-1"
+                className="overflow-hidden shadow-md hover:shadow-lg transition-all hover:-translate-y-1"
               >
                 <div className="h-40 overflow-hidden">
                   <img
@@ -236,20 +243,20 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="p-5">
+                <CardContent className="p-5">
                   <div className="flex justify-between items-start mb-3">
-                    <h4 className="font-bold text-lg text-gray-800">
+                    <h4 className="font-bold text-lg text-foreground">
                       {match.title}
                     </h4>
-                    <Badge className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-1 px-2">
+                    <Badge className="bg-primary text-primary-foreground py-1 px-2">
                       {match.matchPercentage}%
                     </Badge>
                   </div>
-                  <p className="text-gray-600 text-sm md:text-base">
+                  <p className="text-muted-foreground text-sm md:text-base">
                     {match.description}
                   </p>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
