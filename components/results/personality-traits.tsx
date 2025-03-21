@@ -26,13 +26,18 @@ export default function PersonalityTraits({
 
   return (
     <div className="w-full max-w-6xl mx-auto p-6">
-      <div className="flex items-center gap-4 mb-10">
-        <div className="flex items-center justify-center w-10 h-10 rounded-full border-2 border-primary text-primary">
-          <span className="text-lg font-medium">{sectionNumber}</span>
+      <div className="text-center max-w-4xl mx-auto mb-8">
+        <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
+          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold shadow">
+            {sectionNumber}
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary">
+            Your Personality Traits
+          </h2>
         </div>
-        <h2 className="text-3xl font-semibold text-foreground">
-          Personality Traits
-        </h2>
+        <p className="text-lg md:text-xl text-muted-foreground font-medium">
+          Understanding Your Unique Traits
+        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -133,7 +138,8 @@ export default function PersonalityTraits({
                 const traitKey = selectedTrait;
                 const score = traitScores[traitKey];
                 const traitInfo = traitDescriptions[traitKey];
-                const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
+                const dominant =
+                  score.dominant === "left" ? traitInfo.left : traitInfo.right;
 
                 return (
                   <div className="space-y-4">
