@@ -18,8 +18,17 @@ import AboutPersonalityType from "@/components/profile/AboutPersonalityType";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-import HeroSection from "./extended-results/HeroSection";
+
 import { sampleResultData } from "@/data/mbti";
+
+import HeroSection from "./extended-results/HeroSection";
+import CareerPathSection from "./extended-results/CareerPathSection";
+import RelationshipSection from "./extended-results/RelationshipSection";
+import GrowthSection from "./extended-results/GrowthSection";
+import DailyHabitsSection from "./extended-results/DailyHabitsSection";
+import ValuesMotivatorSection from "./extended-results/ValuesMotivatorsSection";
+import CommunitySection from "./extended-results/CommunitySection";
+import ActionPlanSection from "./extended-results/ActionPlanSection";
 
 export default function Results() {
   const [resultData, setResultData] = useState<ResultData | null>(null);
@@ -170,6 +179,31 @@ export default function Results() {
         {traitScores && (
           <PersonalityTraits traitScores={traitScores} sectionNumber={1} />
         )}
+
+        {/* Career Path */}
+        <CareerPathSection data={resultData || sampleResultData} sectionNumber={2} />
+        
+        {/* Relationship Insights */}
+        <RelationshipSection data={resultData || sampleResultData} sectionNumber={3} />
+        
+        {/* Growth Journey */}
+        <GrowthSection data={resultData || sampleResultData} sectionNumber={4} />
+
+        {/* Daily Habits */}
+        <DailyHabitsSection data={resultData || sampleResultData} sectionNumber={5} />
+
+        {/* Values & Motivators */}
+        <ValuesMotivatorSection data={resultData || sampleResultData} sectionNumber={6} />
+
+        {/* Community Connection */}
+        <CommunitySection sectionNumber={7} />
+
+        {/* Action Plan */}
+        <ActionPlanSection data={resultData || sampleResultData} sectionNumber={
+          8
+        } />
+
+
       </main>
     </div>
   );
