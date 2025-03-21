@@ -2,16 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { ResultData } from "@/types/tests/mbti";
-import {
-  getCareerSuggestions,
-  getSimilarPersonalities,
-} from "@/lib/mbti/results";
+import { getCareerSuggestions, getSimilarPersonalities } from "@/lib/mbti/results";
 import { getPersonalityInsights } from "@/data/mbti/personalityInformation";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 // Import our components
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-
 import { sampleResultData } from "@/data/mbti";
 
 import HeroSection from "@/components/results/HeroSection";
@@ -51,12 +49,10 @@ export default function Results() {
         const data = JSON.parse(storedData);
 
         // Extract required data from localStorage format
-        const personalityType =
-          data.personalityType || data.raw_score?.personalityType;
+        const personalityType = data.personalityType || data.raw_score?.personalityType;
         const traitScores = data.traitScores || data.raw_score?.traitScores;
         const testId = data.testId || data.test_type_id;
-        const completionDate =
-          data.completionDate ||
+        const completionDate = data.completionDate ||
           (data.timestamp
             ? new Date(data.timestamp).toLocaleDateString()
             : data.taken_at
@@ -125,10 +121,10 @@ export default function Results() {
 
   // Destructure properties from resultData for easier access in JSX with default values
   const {
-    personalityType ,
+    personalityType,
     personalityDescription,
-    completionDate ,
-    traitScores ,
+    completionDate,
+    traitScores
   } = resultData || sampleResultData;
 
   const onExploreClick = () => {
@@ -176,6 +172,7 @@ export default function Results() {
           username={resultData?.username || null}
           onExploreClick={onExploreClick}
         />
+
         {/* Personality Traits */}
         {traitScores && (
           <PersonalityTraits traitScores={traitScores} sectionNumber={1} />
@@ -200,11 +197,7 @@ export default function Results() {
         <CommunitySection sectionNumber={7} />
 
         {/* Action Plan */}
-        <ActionPlanSection data={resultData || sampleResultData} sectionNumber={
-          8
-        } />
-
-
+        <ActionPlanSection data={resultData || sampleResultData} sectionNumber={8} />
       </main>
     </div>
   );
