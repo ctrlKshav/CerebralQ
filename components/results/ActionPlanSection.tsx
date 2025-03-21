@@ -1,7 +1,7 @@
 ﻿import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Download, ClipboardCheck, Save } from "lucide-react";
+import { Download, Save } from "lucide-react";
 import { ResultData } from "@/types/tests/mbti";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -40,7 +40,7 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
         <div className="text-center mb-16">
           <div className="text-center max-w-4xl mx-auto mb-8">
             <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold shadow-md">
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold shadow">
                 {sectionNumber}
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-primary">
@@ -54,7 +54,7 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
           
           <Card className="max-w-4xl mx-auto">
             <CardContent className="p-8">
-              <p className="text-lg md:text-xl text-foreground">
+              <p className="text-lg md:text-xl text-card-foreground">
                 Here's a little checklist to help you shine as an {personalityType}—keep this handy and check in monthly, {username}!
               </p>
             </CardContent>
@@ -66,25 +66,25 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
           <div className="flex flex-col md:flex-row">
             <div className="p-8 md:w-3/5">
               <div className="flex items-center mb-6">
-                <h3 className="text-xl md:text-2xl font-bold">
+                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
                   Your {personalityType} Action Plan
                 </h3>
               </div>
               
               {/* Checklist */}
-              <div className="bg-card rounded-xl p-6 mb-10 shadow-sm">
+              <div className="bg-card/50 rounded-xl p-6 mb-10 shadow-sm">
                 <ul className="space-y-4">
                   {defaultItems.map((item, index) => (
                     <li key={index} className="flex items-start">
                       <Checkbox 
                         id={`item-${index}`} 
-                        className="h-5 w-5 rounded-sm mt-1 border-2 border-primary"
+                        className="h-5 w-5 rounded-sm mt-1 border-2 border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
                         checked={checkedItems[index] || false}
                         onCheckedChange={() => toggleItem(index)}
                       />
                       <label 
                         htmlFor={`item-${index}`} 
-                        className={`ml-3 text-base md:text-lg ${checkedItems[index] ? 'text-muted-foreground line-through' : 'text-foreground'}`}
+                        className={`ml-3 text-base md:text-lg ${checkedItems[index] ? 'text-muted-foreground line-through' : 'text-card-foreground'}`}
                       >
                         {item}
                       </label>
@@ -110,7 +110,7 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
             </div>
             
             {/* Image section */}
-            <div className="md:w-2/5 h-auto sm:min-h-[400px] relative">
+            <div className="md:w-2/5 h-auto sm:min-h-[400px] relative border-t md:border-t-0 md:border-l border-border">
               <img 
                 src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80" 
                 alt="Person planning and organizing"
