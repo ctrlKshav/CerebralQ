@@ -24,7 +24,7 @@ const HeroSection = ({
       <div className="container max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div className="space-y-6 max-w-lg animate-fade-in">
-            <Badge className="bg-mbti-purple-light hover:bg-mbti-purple-light/90 text-white py-1.5 px-4 rounded-full">
+            <Badge className="bg-primary text-white py-1.5 px-4 rounded-full">
               Completed on {completionDate}
             </Badge>
 
