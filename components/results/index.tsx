@@ -138,10 +138,12 @@ export default function Results() {
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-lg">Loading your results...</p>
-        </div>
+        <Card className="p-8 text-center shadow">
+          <CardContent className="p-6">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-4 text-lg text-card-foreground">Loading your results...</p>
+          </CardContent>
+        </Card>
       </div>
     );
   }
@@ -149,15 +151,17 @@ export default function Results() {
   if (error) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center max-w-md mx-auto p-6 rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold mb-4">No Results Available</h2>
-          <a
-            href="/"
-            className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90"
-          >
-            Take the Test
-          </a>
-        </div>
+        <Card className="text-center max-w-md mx-auto shadow-lg">
+          <CardContent className="p-6">
+            <h2 className="text-2xl font-bold mb-4 text-card-foreground">No Results Available</h2>
+            <Button 
+              asChild
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              <a href="/">Take the Test</a>
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     );
   }
