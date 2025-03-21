@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useState } from "react";
-import { ResultData, ResultData } from "@/types/tests/mbti";
+import { ResultData } from "@/types/tests/mbti";
 import {
   getCareerSuggestions,
   getSimilarPersonalities,
@@ -69,14 +69,14 @@ export default function Results() {
         // Set all result data at once
         setResultData({
           username: user?.username || null,
-          personalityType,
-          personalityDescription: personalityDescriptions[personalityType],
+          personalityType: sampleResultData.personalityType,
+          personalityDescription: sampleResultData.personalityDescription,
           completionDate,
           traitScores,
-          career: {},
-          relationships: [],
-          growth: {},
-          actionItems: [],
+          career: sampleResultData.career,
+          relationships: sampleResultData.relationships,
+          growth: sampleResultData.growth,
+          actionItems: sampleResultData.actionItems,
         });
 
         // Save results to database if user is logged in
@@ -127,18 +127,6 @@ export default function Results() {
     completionDate ,
     traitScores ,
   } = resultData || sampleResultData;
-
-  // Get the alias for the current personality type
-  const personalityAlias = personalityDescription.alias;
-
-  // Get personality insights
-  const personalityInsights = getPersonalityInsights(personalityType);
-
-  const typeInfo = personalityDescriptions[personalityType] || {
-    title: "Personality Type",
-    description:
-      "A detailed analysis of cognitive preferences and behavioral patterns.",
-  };
 
 
   if (loading) {
