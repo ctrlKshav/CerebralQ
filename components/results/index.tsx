@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useEffect, useState } from "react";
-import { ResultData } from "@/types/tests/mbti";
+import { ResultData, ResultData } from "@/types/tests/mbti";
 import {
   getCareerSuggestions,
   getSimilarPersonalities,
@@ -18,22 +18,14 @@ import AboutPersonalityType from "@/components/profile/AboutPersonalityType";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
+import HeroSection from "./extended-results/HeroSection";
+import { sampleResultData } from "@/data/mbti";
 
 export default function Results() {
-  const [resultData, setResultData] = useState<ResultData>({
-    personalityType: "",
-    personalityDescription: { alias: "", description: "" },
-    testId: "",
-    completionDate: "",
-    traitScores: null,
-    careerSuggestions: [],
-    similarPersonalities: [],
-  });
+  const [resultData, setResultData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
-  
-  const [showingAllSections, setShowingAllSections] = useState(false);
 
   useEffect(() => {
     // Get data from localStorage and handle saving to database
@@ -76,13 +68,15 @@ export default function Results() {
 
         // Set all result data at once
         setResultData({
+          username: user?.username || null,
           personalityType,
           personalityDescription: personalityDescriptions[personalityType],
-          testId,
           completionDate,
           traitScores,
-          careerSuggestions: getCareerSuggestions(personalityType),
-          similarPersonalities: getSimilarPersonalities(personalityType),
+          career: {},
+          relationships: [],
+          growth: {},
+          actionItems: [],
         });
 
         // Save results to database if user is logged in
@@ -126,15 +120,13 @@ export default function Results() {
     loadResultsAndSaveToDatabase();
   }, []);
 
-  // Destructure properties from resultData for easier access in JSX
+  // Destructure properties from resultData for easier access in JSX with default values
   const {
-    personalityType,
+    personalityType ,
     personalityDescription,
-    completionDate,
-    traitScores,
-    careerSuggestions,
-    similarPersonalities,
-  } = resultData;
+    completionDate ,
+    traitScores ,
+  } = resultData || sampleResultData;
 
   // Get the alias for the current personality type
   const personalityAlias = personalityDescription.alias;
@@ -148,11 +140,6 @@ export default function Results() {
       "A detailed analysis of cognitive preferences and behavioral patterns.",
   };
 
-
-  // Function to show all sections
-  const handleShowAllSections = () => {
-    setShowingAllSections(true);
-  };
 
   if (loading) {
     return (
@@ -184,59 +171,16 @@ export default function Results() {
   return (
     <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-8 space-y-8">
-        
-
-        {/* Hero Section */}
-        <Hero
-          resultData={resultData}
-          userId={userID}
-        />
-
-        {/* About Personality Type Card */}
-        <AboutPersonalityType
+        <HeroSection
           personalityType={personalityType}
-          sectionNumber={1}
+          personalityDescription={personalityDescription}
+          completionDate={completionDate}
+          username={resultData?.username || null}
+          onExploreClick={() => console.log("Explore clicked")}
         />
-
         {/* Personality Traits */}
         {traitScores && (
-          <PersonalityTraits traitScores={traitScores} sectionNumber={2} />
-        )}
-
-        {/* Career Suggestions */}
-        <CareerSuggestions
-          personalityType={personalityType}
-          careerSuggestions={careerSuggestions}
-          sectionNumber={3}
-        />
-
-        {/* Similar Personalities */}
-        <SimilarPersonalities
-          personalityType={personalityType}
-          similarPersonalities={similarPersonalities}
-          sectionNumber={4}
-        />
-
-        {/* Additional sections or button to show them */}
-        {!showingAllSections ? (
-          <div className="flex justify-center py-6">
-            <button
-              onClick={handleShowAllSections}
-              className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
-            >
-              View Detailed Analysis
-            </button>
-          </div>
-        ) : (
-          <>
-            {/* Detailed Personality Insights */}
-            <DetailedPersonalityInsights
-              personalityType={personalityType}
-              personalityAlias={personalityAlias}
-              personalityInsights={personalityInsights}
-              sectionNumber={5}
-            />
-          </>
+          <PersonalityTraits traitScores={traitScores} sectionNumber={1} />
         )}
       </main>
     </div>

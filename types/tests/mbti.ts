@@ -90,16 +90,6 @@ export interface PersonalityTypeInsights {
   };
 }
 
-export interface ResultData {
-  personalityType: string;
-  personalityDescription: PersonalityDescription;
-  testId: string;
-  completionDate: string;
-  traitScores: TraitScores | null;
-  careerSuggestions: { title: string; match: number }[];
-  similarPersonalities: { name: string; profession: string; image: string }[];
-}
-
 export interface PersonalityDescription {
   alias: string;
   description: string;
@@ -189,4 +179,53 @@ export interface MBTIAnswer {
   score: number; // Typically 1-5 representing strongly disagree to strongly agree
   dimension: "E-I" | "S-N" | "T-F" | "J-P";
   direction: "left" | "right";
+}
+
+export interface ResultData {
+  username: string | null;
+  personalityType: string;
+  personalityDescription: PersonalityDescription;
+  completionDate: string;
+  traitScores: TraitScores | null;
+  career: {
+    superpowers: string[];
+    growthAreas: string[];
+    matches: CareerMatch[];
+  };
+  relationships: RelationshipCompatibility[];
+  growth: {
+    milestones: GrowthMilestone[];
+    journalingPrompts: JournalingPrompt[];
+  };
+  actionItems: ActionItem[];
+}
+
+export interface CareerMatch {
+  title: string;
+  matchPercentage: number;
+  description: string;
+}
+
+export interface RelationshipCompatibility {
+  type: string;
+  description: string;
+  compatibleTypes: string[];
+  tips: string[];
+}
+
+export interface GrowthMilestone {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+export interface JournalingPrompt {
+  question: string;
+  hint: string;
+}
+
+export interface ActionItem {
+  task: string;
+  completed: boolean;
+  description?: string;
 }
