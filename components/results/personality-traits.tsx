@@ -14,7 +14,7 @@ interface PersonalityTraitsProps {
   sectionNumber: number;
 }
 
-export function PersonalityTraits({
+export default function PersonalityTraits({
   traitScores,
   sectionNumber,
 }: PersonalityTraitsProps) {

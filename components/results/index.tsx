@@ -9,26 +9,20 @@ import {
 import { getPersonalityInsights } from "@/data/mbti/personalityInformation";
 
 // Import our components
-import { Hero } from "@/components/results/hero";
-import { PersonalityTraits } from "@/components/results/personality-traits";
-import { CareerSuggestions } from "@/components/results/career-suggestions";
-import { SimilarPersonalities } from "@/components/results/similar-personalities";
-import { DetailedPersonalityInsights } from "@/components/results/detailed-personality-insights";
-import AboutPersonalityType from "@/components/profile/AboutPersonalityType";
-import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 
 import { sampleResultData } from "@/data/mbti";
 
-import HeroSection from "./extended-results/HeroSection";
-import CareerPathSection from "./extended-results/CareerPathSection";
-import RelationshipSection from "./extended-results/RelationshipSection";
-import GrowthSection from "./extended-results/GrowthSection";
-import DailyHabitsSection from "./extended-results/DailyHabitsSection";
-import ValuesMotivatorSection from "./extended-results/ValuesMotivatorsSection";
-import CommunitySection from "./extended-results/CommunitySection";
-import ActionPlanSection from "./extended-results/ActionPlanSection";
+import HeroSection from "@/components/results/HeroSection";
+import PersonalityTraits from "@/components/results/personality-traits";
+import CareerPathSection from "@/components/results/CareerPathSection";
+import RelationshipSection from "@/components/results/RelationshipSection";
+import GrowthSection from "@/components/results/GrowthSection";
+import DailyHabitsSection from "@/components/results/DailyHabitsSection";
+import ValuesMotivatorSection from "@/components/results/ValuesMotivatorsSection";
+import CommunitySection from "@/components/results/CommunitySection";
+import ActionPlanSection from "@/components/results/ActionPlanSection";
 
 export default function Results() {
   const [resultData, setResultData] = useState<ResultData | null>(null);
