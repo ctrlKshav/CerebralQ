@@ -21,7 +21,7 @@ interface DailyHabitsSectionProps {
 }
 
 const DailyHabitsSection = ({ data, sectionNumber = 6 }: DailyHabitsSectionProps) => {
-  const { growth, username } = data;
+  const { growth, username, actionItems } = data;
   const [notes, setNotes] = useState<string[]>(Array(growth.journalingPrompts.length).fill(""));
 
   const handleNoteChange = (index: number, value: string) => {
@@ -57,103 +57,123 @@ const DailyHabitsSection = ({ data, sectionNumber = 6 }: DailyHabitsSectionProps
           </Card>
         </div>
 
-        {/* Daily Habits Section */}
-        <Card className="mb-16 overflow-hidden">
-          <div className="flex flex-col lg:flex-row">
-            <div className="p-8 lg:w-3/5">
+        {/* Growth Milestones - Two column layout */}
+        <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
+          {/* Morning and Day Habits */}
+          <Card className="h-full">
+            <CardContent className="p-8">
               <div className="flex items-center mb-6">
+                <div className="rounded-full bg-primary p-3 mr-4 shadow flex items-center justify-center">
+                  <Sun className="h-6 w-6 text-primary-foreground" strokeWidth={2.2} />
+                </div>
                 <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Let's Make It Happen
+                  Your Daily Routine
                 </h3>
               </div>
-              
-              <ul className="space-y-6 ml-4">
+
+              <ul className="space-y-5 text-base ml-4">
                 <li className="flex items-start">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground mr-4 flex-shrink-0 shadow">
-                    <Sun className="h-5 w-5" strokeWidth={2} />
-                  </div>
+                  <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-bold text-lg text-card-foreground mb-2">Morning Routine</h4>
-                    <p className="text-card-foreground text-base md:text-lg">
+                    <p className="font-medium text-lg mb-1 text-card-foreground">Morning Routine:</p>
+                    <p className="text-card-foreground">
                       Start your morning with a 5-minute goal check—like writing down one thing you want to achieve today.
                     </p>
                   </div>
                 </li>
-                <li className="flex items-start">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-secondary text-secondary-foreground mr-4 flex-shrink-0 shadow">
-                    <Clock className="h-5 w-5" strokeWidth={2} />
-                  </div>
+                <li className="flex items-start mt-4">
+                  <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-bold text-lg text-card-foreground mb-2">During the Day</h4>
-                    <p className="text-card-foreground text-base md:text-lg">
+                    <p className="font-medium text-lg mb-1 text-card-foreground">During the Day:</p>
+                    <p className="text-card-foreground">
                       Add a small, relaxing habit—like taking a quick walk after lunch—to give your mind a break.
                     </p>
                   </div>
                 </li>
+              </ul>
+            </CardContent>
+          </Card>
+
+          {/* Communication and Evening Habits */}
+          <Card className="h-full">
+            <CardContent className="p-8">
+              <div className="flex items-center mb-6">
+                <div className="rounded-full bg-secondary p-3 mr-4 shadow flex items-center justify-center">
+                  <Moon className="h-6 w-6 text-secondary-foreground" strokeWidth={2.2} />
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
+                  Communication & Wind-down
+                </h3>
+              </div>
+
+              <ul className="space-y-5 text-base ml-4">
                 <li className="flex items-start">
-                  <div className="flex items-center justify-center h-10 w-10 rounded-full bg-accent text-accent-foreground mr-4 flex-shrink-0 shadow">
-                    <Moon className="h-5 w-5" strokeWidth={2} />
-                  </div>
+                  <div className="h-6 w-6 rounded-full border-2 border-secondary mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-bold text-lg text-card-foreground mb-2">Evening Wind-down</h4>
-                    <p className="text-card-foreground text-base md:text-lg">
+                    <p className="font-medium text-lg mb-1 text-card-foreground">Conversation Style:</p>
+                    <p className="text-card-foreground">
+                      You're confident and direct when you talk, always getting your point across with clarity.
+                    </p>
+                  </div>
+                </li>
+                <li className="flex items-start mt-4">
+                  <div className="h-6 w-6 rounded-full border-2 border-secondary mr-3 flex-shrink-0 mt-1" />
+                  <div>
+                    <p className="font-medium text-lg mb-1 text-card-foreground">Evening Wind-down:</p>
+                    <p className="text-card-foreground">
                       Wind down with a 10-minute habit, like reading a chapter of a book, to relax before bed.
                     </p>
                   </div>
                 </li>
               </ul>
-            </div>
-            
-            {/* Image */}
-            <div className="lg:w-2/5 sm:min-h-[350px] lg:min-h-full relative border-t lg:border-t-0 lg:border-l border-border">
-              <img 
-                src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
-                alt="Structured morning routine" 
-                className="w-full h-full object-cover" 
-              />
-            </div>
-          </div>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
 
-        {/* Communication Section */}
-        <Card className="mb-16 overflow-hidden">
-          <div className="flex flex-col lg:flex-row">
-            <div className="p-8 lg:w-3/5">
+        {/* Let's Make It Happen section */}
+        <Card className="mb-16 mx-auto overflow-hidden">
+          <div className="flex flex-col md:flex-row">
+            <div className="p-8 md:w-3/5">
               <div className="flex items-center mb-6">
                 <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  How You Chat with Others
+                  Let's Make It Happen
                 </h3>
               </div>
-              
-              <p className="text-card-foreground text-base md:text-lg mb-6 ml-2">
-                You're confident and direct when you talk, {username}, always getting your point across with clarity. You love conversations that are goal-oriented, but sometimes you might come across as too intense without meaning to.
-              </p>
-              
-              <div className="ml-2 space-y-5">
-                <h4 className="font-medium text-lg text-card-foreground mb-3 flex items-center">
-                  <CheckCircle className="h-5 w-5 text-primary mr-2" /> Let's Make It Happen:
-                </h4>
-                <div className="flex items-start ml-4">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">1</div>
+
+              <ul className="space-y-6 ml-4">
+                <li className="flex items-start">
+                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
+                    1
+                  </div>
                   <p className="text-card-foreground text-base md:text-lg">
                     Add a warm touch to your conversations—like starting with "I'm really excited to hear your thoughts on this!"
                   </p>
-                </div>
-                <div className="flex items-start ml-4">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">2</div>
+                </li>
+                <li className="flex items-start">
+                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
+                    2
+                  </div>
                   <p className="text-card-foreground text-base md:text-lg">
                     Ask a friend a lighter question, like "What's been the best part of your week?"—it'll spark a more relaxed chat.
                   </p>
-                </div>
-              </div>
+                </li>
+                <li className="flex items-start">
+                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
+                    3
+                  </div>
+                  <p className="text-card-foreground text-base md:text-lg">
+                    {actionItems.length > 0 ? actionItems[4].description : "Add a small relaxing habit to your daily routine—try a quick walk after lunch or reading before bed."}
+                  </p>
+                </li>
+              </ul>
             </div>
-            
-            {/* Image */}
-            <div className="lg:w-2/5 sm:min-h-[350px] lg:min-h-full relative border-t lg:border-t-0 lg:border-l border-border">
-              <img 
-                src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" 
-                alt="People in conversation" 
-                className="w-full h-full object-cover" 
+
+            {/* Image section */}
+            <div className="md:w-2/5 h-auto max-h-[350px] relative border-t md:border-t-0 md:border-l border-border">
+              <img
+                src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+                alt="Daily habits and communication"
+                className="h-full w-full object-cover"
               />
             </div>
           </div>
@@ -194,11 +214,6 @@ const DailyHabitsSection = ({ data, sectionNumber = 6 }: DailyHabitsSectionProps
                   icon: <Users className="h-6 w-6 text-accent-foreground" strokeWidth={2} />,
                   accent: "border-accent focus:ring-accent/50"
                 },
-                {
-                  bg: "bg-muted",
-                  icon: <MessageSquare className="h-6 w-6 text-muted-foreground" strokeWidth={2} />,
-                  accent: "border-muted focus:ring-muted/50"
-                }
               ];
               
               const scheme = colorSchemes[index % colorSchemes.length];
