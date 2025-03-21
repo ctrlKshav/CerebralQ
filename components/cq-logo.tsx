@@ -9,7 +9,7 @@ export default function CQLogo({
   className?: string
 }) {
   const { theme, resolvedTheme } = useTheme();
-  const [logoSrc, setLogoSrc] = useState("/1.svg"); // Default for SSR
+  const [logoSrc, setLogoSrc] = useState("/logoLight.png"); // Default for SSR
   
   useEffect(() => {
     // Update logo when theme changes or on initial client-side render
