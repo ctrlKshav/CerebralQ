@@ -131,6 +131,9 @@ export default function Results() {
     traitScores ,
   } = resultData || sampleResultData;
 
+  const onExploreClick = () => {
+    document.getElementById("explore-traits")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   if (loading) {
     return (
@@ -167,7 +170,7 @@ export default function Results() {
           personalityDescription={personalityDescription}
           completionDate={completionDate}
           username={resultData?.username || null}
-          onExploreClick={() => console.log("Explore clicked")}
+          onExploreClick={onExploreClick}
         />
         {/* Personality Traits */}
         {traitScores && (

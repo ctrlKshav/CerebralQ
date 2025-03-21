@@ -21,11 +21,6 @@ const HeroSection = ({
   const description = personalityDescription.description;
   return (
     <section className=" flex flex-col justify-center items-center py-16 px-4 overflow-hidden relative">
-      {/* Background effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white to-gray-50 -z-10" />
-      <div className="absolute top-[25%] left-[15%] w-[500px] h-[500px] bg-mbti-purple/5 rounded-full blur-3xl -z-10 opacity-70" />
-      <div className="absolute bottom-[15%] right-[10%] w-[400px] h-[400px] bg-mbti-indigo/5 rounded-full blur-3xl -z-10 opacity-70" />
-
       <div className="container max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div className="space-y-6 max-w-lg animate-fade-in">
@@ -49,7 +44,7 @@ const HeroSection = ({
 
             <div className="pt-4">
               <button
-                className="px-6 py-3 bg-purple-gradient text-white rounded-lg transition-all hover:shadow-lg hover:shadow-mbti-purple/20 active:scale-95"
+                className="px-6 py-3 bg-primary text-white rounded-lg transition-all hover:shadow-lg hover:shadow-mbti-purple/20 active:scale-95"
                 onClick={onExploreClick}
               >
                 Explore Your Results

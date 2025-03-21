@@ -25,7 +25,7 @@ export default function PersonalityTraits({
   const isLightTheme = currentTheme === "light";
 
   return (
-    <div className="w-full max-w-6xl mx-auto p-6">
+    <div className="w-full max-w-6xl mx-auto p-6 scroll-mt-24" id="explore-traits">
       <div className="text-center max-w-4xl mx-auto mb-8">
         <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
           <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold shadow">
