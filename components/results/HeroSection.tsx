@@ -24,7 +24,7 @@ const HeroSection = ({
       <div className="container max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div className="space-y-6 max-w-lg animate-fade-in">
-            <Badge className="bg-primary text-white py-1.5 px-4 rounded-full">
+            <Badge className="bg-primary text-primary-foreground py-1.5 px-4 rounded-full">
               Completed on {completionDate}
             </Badge>
 
@@ -44,7 +44,7 @@ const HeroSection = ({
 
             <div className="pt-4">
               <button
-                className="px-6 py-3 bg-primary text-white rounded-lg transition-all hover:shadow-lg hover:shadow-mbti-purple/20 active:scale-95"
+                className="px-6 py-3 bg-primary text-primary-foreground rounded-lg transition-all hover:shadow-lg hover:shadow-mbti-purple/20 active:scale-95"
                 onClick={onExploreClick}
               >
                 Explore Your Results

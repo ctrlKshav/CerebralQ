@@ -149,11 +149,11 @@ export default function Results() {
   if (error) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center max-w-md mx-auto p-6  rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold  mb-4">No Results Available</h2>
+        <div className="text-center max-w-md mx-auto p-6 rounded-lg shadow-lg">
+          <h2 className="text-2xl font-bold mb-4">No Results Available</h2>
           <a
             href="/"
-            className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90"
+            className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90"
           >
             Take the Test
           </a>
