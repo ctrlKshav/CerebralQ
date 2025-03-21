@@ -53,7 +53,7 @@ export function UserDataContextProvider({
             filter: `id=eq.${userId}`
           },
           (payload) => {
-            console.log('User data updated:', payload.new);
+            
             setUserData(currentData => {
               if (!currentData) return null;
               return { ...currentData, ...payload.new as Partial<User> };
