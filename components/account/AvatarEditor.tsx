@@ -68,15 +68,15 @@ export function AvatarEditor({
           throw new Error(errorData.error || "Failed to upload image");
         }
 
+        setIsAvatarDialogOpen(false);
         const data = await response.json();
         setEditedAvatarUrl(data.url);
-        setIsAvatarDialogOpen(false);
         toast.success("Your profile image has been updated successfully.");
       } else if (editedAvatarUrl !== profileImage) {
         // If using a pre-defined avatar URL
         const avatarURL = `https://${process.env.NEXT_PUBLIC_WEBSITE_URL}${editedAvatarUrl}`;
-        await updateUserProfile(userId, { profile_image_url: avatarURL });
         setIsAvatarDialogOpen(false);
+        await updateUserProfile(userId, { profile_image_url: avatarURL });
         toast.success("Your profile image has been updated successfully.");
       } else {
         setIsAvatarDialogOpen(false);
