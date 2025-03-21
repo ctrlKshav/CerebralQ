@@ -3,6 +3,7 @@ import { ResultData } from "@/types/tests/mbti";
 import { Users, Heart, CheckCircle, AlertCircle, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import SectionNumber from "@/components/ui/section-number";
 
 interface RelationshipSectionProps {
   data: ResultData;
@@ -40,9 +41,7 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
         <div className="text-center mb-16">
           <div className="text-center max-w-4xl mx-auto mb-8">
             <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-primary-foreground text-lg font-bold shadow">
-                {sectionNumber}
-              </div>
+              <SectionNumber number={sectionNumber} />
               <h2 className="text-3xl md:text-4xl font-bold text-primary">
                 Relationship Insights
               </h2>
