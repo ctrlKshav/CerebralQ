@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import * as React from "react";
-import { Card } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { TraitScores } from "@/types/tests/mbti";
 import { traitDescriptions } from "@/data/mbti/traitDescriptions";
@@ -32,17 +32,20 @@ export default function PersonalityTraits({
       className="w-full max-w-6xl mx-auto p-6 scroll-mt-24"
       id="explore-traits"
     >
-      <div className="text-center max-w-4xl mx-auto mb-8">
-        <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-          <SectionNumber number={sectionNumber} />
-          <h2 className="text-3xl md:text-4xl font-bold text-primary">
-            Personality Blueprint
-          </h2>
+      {/* Section header */}
+      <div className="text-center mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-8">
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
+            <SectionNumber number={sectionNumber} />
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">
+              Personality Blueprint
+            </h2>
+          </div>
+          <p className="text-lg md:text-xl text-muted-foreground font-medium">
+            Let’s break down what makes you tick—it’s like a little guide to
+            understanding yourself better!
+          </p>
         </div>
-        <p className="text-lg md:text-xl text-muted-foreground font-medium">
-          Your Unique ENTJ Blueprint
-          {username ? `, ${username}` : ""}
-        </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
