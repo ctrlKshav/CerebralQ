@@ -8,7 +8,7 @@ import { traitDescriptions } from "@/data/mbti/traitDescriptions";
 import { useTheme } from "next-themes";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import SectionNumber from "@/components/ui/section-number";
+import SectionHeader from "./shared/SectionHeader";
 
 interface PersonalityTraitsProps {
   traitScores: TraitScores;
@@ -33,20 +33,11 @@ export default function PersonalityTraits({
       id="explore-traits"
     >
       {/* Section header */}
-      <div className="text-center mb-16">
-        <div className="text-center max-w-4xl mx-auto mb-8">
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-            <SectionNumber number={sectionNumber} />
-            <h2 className="text-3xl md:text-4xl font-bold text-primary">
-              Personality Blueprint
-            </h2>
-          </div>
-          <p className="text-lg md:text-xl text-muted-foreground font-medium">
-            Let’s break down what makes you tick—it’s like a little guide to
-            understanding yourself better!
-          </p>
-        </div>
-      </div>
+      <SectionHeader
+        title="Personality Blueprint"
+        subtitle="Let's break down what makes you tick—it's like a little guide to understanding yourself better!"
+        sectionNumber={sectionNumber}
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <Card className="p-8 space-y-10 flex flex-col justify-between">

@@ -4,10 +4,11 @@ import React from "react";
 import { ResultData } from "@/types/tests/mbti";
 import { Heart, Star, TrendingUp, Target, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
 import ActionStepsCard from "./shared/ActionStepsCard";
+import SectionHeader from "./shared/SectionHeader";
+import { formatWithUsername } from "../../utils/formatWithUsername";
 
 interface ValuesMotivatorSectionProps {
   data: ResultData;
@@ -15,7 +16,7 @@ interface ValuesMotivatorSectionProps {
 }
 
 const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSectionProps) => {
-  const { username = "there", personalityType, actionItems } = data;
+  const { username, personalityType, actionItems } = data;
 
   const coreValues = [
     {
@@ -59,27 +60,12 @@ const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSect
       
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="text-center max-w-4xl mx-auto mb-8">
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <SectionNumber number={sectionNumber} />
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Values & Motivators
-              </h2>
-            </div>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium">
-              What Drives You, {username}
-            </p>
-          </div>
-
-          <Card className="max-w-4xl mx-auto">
-            <CardContent className="p-8">
-              <p className="text-lg md:text-xl text-card-foreground">
-                Your values and what motivates you are the true fuel behind your success, {username}. Understanding these core drivers helps you make choices that align with your authentic self and create a life that truly fulfills you.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        <SectionHeader
+          title="Values & Motivators"
+          subtitle={formatWithUsername("What Drives You, {username}", username)}
+          description={formatWithUsername("Your values and what motivates you are the true fuel behind your success, {username}. Understanding these core drivers helps you make choices that align with your authentic self and create a life that truly fulfills you.", username)}
+          sectionNumber={sectionNumber}
+        />
 
         {/* Core Values and Motivators - Two column layout */}
         <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">

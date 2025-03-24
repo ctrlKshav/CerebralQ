@@ -2,7 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { ResultData } from "@/types/tests/mbti";
-import { getCareerSuggestions, getSimilarPersonalities } from "@/lib/mbti/results";
+import {
+  getCareerSuggestions,
+  getSimilarPersonalities,
+} from "@/lib/mbti/results";
 import { getPersonalityInsights } from "@/data/mbti/personalityInformation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -49,10 +52,12 @@ export default function Results() {
         const data = JSON.parse(storedData);
 
         // Extract required data from localStorage format
-        const personalityType = data.personalityType || data.raw_score?.personalityType;
+        const personalityType =
+          data.personalityType || data.raw_score?.personalityType;
         const traitScores = data.traitScores || data.raw_score?.traitScores;
         const testId = data.testId || data.test_type_id;
-        const completionDate = data.completionDate ||
+        const completionDate =
+          data.completionDate ||
           (data.timestamp
             ? new Date(data.timestamp).toLocaleDateString()
             : data.taken_at
@@ -128,11 +133,13 @@ export default function Results() {
     personalityType,
     personalityDescription,
     completionDate,
-    traitScores
+    traitScores,
   } = resultData || sampleResultData;
 
   const onExploreClick = () => {
-    document.getElementById("explore-traits")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    document
+      .getElementById("explore-traits")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
   if (loading) {
@@ -141,7 +148,9 @@ export default function Results() {
         <Card className="p-8 text-center shadow">
           <CardContent className="p-6">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-            <p className="mt-4 text-lg text-card-foreground">Loading your results...</p>
+            <p className="mt-4 text-lg text-card-foreground">
+              Loading your results...
+            </p>
           </CardContent>
         </Card>
       </div>
@@ -153,8 +162,10 @@ export default function Results() {
       <div className="min-h-screen bg-background flex items-center justify-center">
         <Card className="text-center max-w-md mx-auto shadow-lg">
           <CardContent className="p-6">
-            <h2 className="text-2xl font-bold mb-4 text-card-foreground">No Results Available</h2>
-            <Button 
+            <h2 className="text-2xl font-bold mb-4 text-card-foreground">
+              No Results Available
+            </h2>
+            <Button
               asChild
               className="bg-primary text-primary-foreground hover:bg-primary/90"
             >
@@ -179,29 +190,51 @@ export default function Results() {
 
         {/* Personality Traits */}
         {traitScores && (
-          <PersonalityTraits traitScores={traitScores} sectionNumber={1} username={resultData?.username ?? undefined} />
+          <PersonalityTraits
+            traitScores={traitScores}
+            sectionNumber={1}
+            username={resultData?.username ?? undefined}
+          />
         )}
 
         {/* Career Path */}
-        <CareerPathSection data={resultData || sampleResultData} sectionNumber={2} />
-        
+        <CareerPathSection
+          data={resultData || sampleResultData}
+          sectionNumber={2}
+        />
+
         {/* Relationship Insights */}
-        <RelationshipSection data={resultData || sampleResultData} sectionNumber={3} />
-        
+        <RelationshipSection
+          data={resultData || sampleResultData}
+          sectionNumber={3}
+        />
+
         {/* Growth Journey */}
-        <GrowthSection data={resultData || sampleResultData} sectionNumber={4} />
+        <GrowthSection
+          data={resultData || sampleResultData}
+          sectionNumber={4}
+        />
 
         {/* Daily Habits */}
-        <DailyHabitsSection data={resultData || sampleResultData} sectionNumber={5} />
+        <DailyHabitsSection
+          data={resultData || sampleResultData}
+          sectionNumber={5}
+        />
 
         {/* Values & Motivators */}
-        <ValuesMotivatorSection data={resultData || sampleResultData} sectionNumber={6} />
+        <ValuesMotivatorSection
+          data={resultData || sampleResultData}
+          sectionNumber={6}
+        />
 
         {/* Community Connection */}
         <CommunitySection sectionNumber={7} />
 
         {/* Action Plan */}
-        <ActionPlanSection data={resultData || sampleResultData} sectionNumber={8} />
+        <ActionPlanSection
+          data={resultData || sampleResultData}
+          sectionNumber={8}
+        />
       </main>
     </div>
   );

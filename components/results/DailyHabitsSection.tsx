@@ -7,6 +7,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
+import SectionHeader from "./shared/SectionHeader";
+import { formatWithUsername } from "../../utils/formatWithUsername";
 
 interface DailyHabitsSectionProps {
   data: ResultData;
@@ -46,30 +48,12 @@ const DailyHabitsSection = ({
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="text-center max-w-4xl mx-auto mb-8">
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <SectionNumber number={sectionNumber} />
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Daily Habits & Communication
-              </h2>
-            </div>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium">
-              Your Daily Habits, {username}
-            </p>
-          </div>
-
-          <Card className="max-w-4xl mx-auto">
-            <CardContent className="p-8">
-              <p className="text-lg md:text-xl text-card-foreground">
-                You love a routine that keeps you on track, {username}, and it
-                totally works for you—your days are focused and productive, and
-                you feel best when you're in control. Adding a little downtime
-                can help you recharge for your big goals.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        <SectionHeader
+          title="Daily Habits & Communication"
+          subtitle={formatWithUsername("Your Daily Habits, {username}", username)}
+          description={formatWithUsername("You love a routine that keeps you on track, {username}, and it totally works for you—your days are focused and productive, and you feel best when you're in control. Adding a little downtime can help you recharge for your big goals.", username)}
+          sectionNumber={sectionNumber}
+        />
 
         {/* Daily Habits Section */}
         <ContentImageCard

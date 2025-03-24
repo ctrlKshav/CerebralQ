@@ -4,10 +4,11 @@ import { Heart, Users, Briefcase, CheckCircle, ArrowRight, MessageSquare, Award 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
 import ActionStepsCard from "./shared/ActionStepsCard";
+import SectionHeader from "./shared/SectionHeader";
+import { formatWithUsername } from "../../utils/formatWithUsername";
 
 interface RelationshipSectionProps {
   data: ResultData;
@@ -156,29 +157,12 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
      
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="text-center max-w-4xl mx-auto mb-8">
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <SectionNumber number={sectionNumber} />
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Your Relationships
-              </h2>
-            </div>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium">
-              How you shine in relationships, {username}
-            </p>
-          </div>
-
-          <Card className="max-w-4xl mx-auto">
-            <CardContent className="p-8">
-              <p className="text-lg md:text-xl text-card-foreground">
-                You're a total force in your relationships—whether romantic, friendship, or professional. 
-                You love taking charge and helping others achieve their goals, but you might get 
-                frustrated if things move too slowly or if others don't keep up with your pace.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        <SectionHeader
+          title="Your Relationships"
+          subtitle={formatWithUsername("How you shine in relationships, {username}", username)}
+          description={formatWithUsername("You're a total force in your relationships—whether romantic, friendship, or professional. You love taking charge and helping others achieve their goals, but you might get frustrated if things move too slowly or if others don't keep up with your pace.", username)}
+          sectionNumber={sectionNumber}
+        />
         
         <Tabs 
           value={activeTab} 

@@ -3,10 +3,11 @@ import { ResultData } from "@/types/tests/mbti";
 import { CheckCircle, Award, MessageSquare, Lightbulb } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
 import ActionStepsCard from "./shared/ActionStepsCard";
+import SectionHeader from "./shared/SectionHeader";
+import { formatWithUsername } from "../../utils/formatWithUsername";
 
 interface GrowthSectionProps {
   data: ResultData;
@@ -58,30 +59,12 @@ const GrowthSection = ({ data, sectionNumber = 5 }: GrowthSectionProps) => {
       
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="text-center max-w-4xl mx-auto mb-8">
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <SectionNumber number={sectionNumber} />
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Your Growth Journey
-              </h2>
-            </div>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium">
-              Your Path to Personal Evolution, {username}
-            </p>
-          </div>
-
-          <Card className="max-w-4xl mx-auto">
-            <CardContent className="p-8">
-              <p className="text-lg md:text-xl text-card-foreground">
-                Growth for you is all about becoming an even better leader while
-                learning to connect more deeply, {username}. You're amazing at
-                setting goals and making them happen, but you might need to work
-                on being more patient and in tune with your emotions.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        <SectionHeader
+          title="Your Growth Journey"
+          subtitle={formatWithUsername("Your Path to Personal Evolution, {username}", username)}
+          description={formatWithUsername("Growth for you is all about becoming an even better leader while learning to connect more deeply, {username}. You're amazing at setting goals and making them happen, but you might need to work on being more patient and in tune with your emotions.", username)}
+          sectionNumber={sectionNumber}
+        />
 
         {/* Growth Superpowers and Areas to Grow */}
         <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">

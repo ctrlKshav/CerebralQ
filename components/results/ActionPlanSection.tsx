@@ -5,7 +5,8 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Download, Save } from "lucide-react";
 import { ResultData } from "@/types/tests/mbti";
 import { Card, CardContent } from "@/components/ui/card";
-import SectionNumber from "@/components/ui/section-number";
+import SectionHeader from "./shared/SectionHeader";
+import { formatWithUsername } from "../../utils/formatWithUsername";
 
 interface ActionPlanSectionProps {
   data: ResultData;
@@ -13,7 +14,7 @@ interface ActionPlanSectionProps {
 }
 
 const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps) => {
-  const { username = "there", personalityType = "ENTJ" } = data;
+  const { username, personalityType = "ENTJ" } = data;
   
   // Default action items if not provided in data
   const defaultItems = [
@@ -39,27 +40,12 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
       
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="text-center max-w-4xl mx-auto mb-8">
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <SectionNumber number={sectionNumber} />
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Your Action Plan
-              </h2>
-            </div>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium">
-              Practical Steps for Growth
-            </p>
-          </div>
-          
-          <Card className="max-w-4xl mx-auto">
-            <CardContent className="p-8">
-              <p className="text-lg md:text-xl text-card-foreground">
-                Here's a little checklist to help you shine as an {personalityType}—keep this handy and check in monthly, {username}!
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        <SectionHeader
+          title="Your Action Plan"
+          subtitle="Practical Steps for Growth"
+          description={formatWithUsername(`Here's a little checklist to help you shine as an ${personalityType}—keep this handy and check in monthly, {username}!`, username)}
+          sectionNumber={sectionNumber}
+        />
 
         {/* Main content with image - full width layout */}
         <Card className="mb-16 overflow-hidden">

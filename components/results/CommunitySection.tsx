@@ -2,7 +2,8 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import SectionNumber from "@/components/ui/section-number";
+import SectionHeader from "./shared/SectionHeader";
+import { formatWithUsername } from "../../utils/formatWithUsername";
 
 interface CommunitySectionProps {
   username?: string;
@@ -11,7 +12,7 @@ interface CommunitySectionProps {
 }
 
 const CommunitySection = ({ 
-  username = "there", 
+  username, 
   type = "ENTJ", 
   sectionNumber = 9 
 }: CommunitySectionProps) => {
@@ -20,27 +21,12 @@ const CommunitySection = ({
       
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="text-center max-w-4xl mx-auto mb-8">
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <SectionNumber number={sectionNumber} />
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Community Connection
-              </h2>
-            </div>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium">
-              Find Your Tribe
-            </p>
-          </div>
-
-          <Card className="max-w-4xl mx-auto">
-            <CardContent className="p-8">
-              <p className="text-lg md:text-xl text-card-foreground">
-                You don't have to figure this out alone, {username}! Come hang out with other {type}s and career starters in our growing community. Share your best strategies for success, swap ideas, and let's build something awesome together.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        <SectionHeader
+          title="Community Connection"
+          subtitle="Find Your Tribe"
+          description={formatWithUsername(`You don't have to figure this out alone, {username}! Come hang out with other ${type}s and career starters in our growing community. Share your best strategies for success, swap ideas, and let's build something awesome together.`, username)}
+          sectionNumber={sectionNumber}
+        />
 
         {/* Main content with image - full width layout */}
         <Card className="mb-16 overflow-hidden">

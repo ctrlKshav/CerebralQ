@@ -9,10 +9,11 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card";
-import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
 import ActionStepsCard from "./shared/ActionStepsCard";
+import SectionHeader from "./shared/SectionHeader";
+import { formatWithUsername } from "../../utils/formatWithUsername";
 
 interface CareerPathSectionProps {
   data: ResultData;
@@ -84,31 +85,12 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
     
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <div className="text-center max-w-4xl mx-auto mb-8">
-            <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
-              <SectionNumber number={sectionNumber} />
-              <h2 className="text-3xl md:text-4xl font-bold text-primary">
-                Your Career Path
-              </h2>
-            </div>
-            <p className="text-lg md:text-xl text-muted-foreground font-medium">
-              How You Shine at Work, {username}
-            </p>
-          </div>
-
-          <Card className="max-w-4xl mx-auto">
-            <CardContent className="p-8">
-              <p className="text-lg md:text-xl text-card-foreground">
-                You're a total force in jobs where you can lead and
-                strategize—like business management, entrepreneurship, or even
-                something high-stakes like law. You love roles that let you take
-                charge and achieve big goals, but you might get frustrated if the
-                work feels inefficient or if others don't keep up with your pace.
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+        <SectionHeader
+          title="Your Career Path"
+          subtitle={formatWithUsername("How You Shine at Work, {username}", username)}
+          description={formatWithUsername("You're a total force in jobs where you can lead and strategize—like business management, entrepreneurship, or even something high-stakes like law. You love roles that let you take charge and achieve big goals, but you might get frustrated if the work feels inefficient or if others don't keep up with your pace.", username)}
+          sectionNumber={sectionNumber}
+        />
 
         {/* Career Superpowers and Growth Areas */}
         <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
