@@ -179,7 +179,7 @@ export default function Results() {
 
         {/* Personality Traits */}
         {traitScores && (
-          <PersonalityTraits traitScores={traitScores} sectionNumber={1} />
+          <PersonalityTraits traitScores={traitScores} sectionNumber={1} username={resultData?.username ?? undefined} />
         )}
 
         {/* Career Path */}

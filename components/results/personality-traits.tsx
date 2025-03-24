@@ -13,11 +13,13 @@ import SectionNumber from "@/components/ui/section-number";
 interface PersonalityTraitsProps {
   traitScores: TraitScores;
   sectionNumber: number;
+  username?: string;
 }
 
 export default function PersonalityTraits({
   traitScores,
   sectionNumber,
+  username,
 }: PersonalityTraitsProps) {
   const [selectedTrait, setSelectedTrait] =
     React.useState<keyof TraitScores>("E-I");
@@ -34,11 +36,12 @@ export default function PersonalityTraits({
         <div className="flex flex-wrap items-center justify-center gap-3 mb-5">
           <SectionNumber number={sectionNumber} />
           <h2 className="text-3xl md:text-4xl font-bold text-primary">
-            Your Personality Traits
+            Personality Blueprint
           </h2>
         </div>
         <p className="text-lg md:text-xl text-muted-foreground font-medium">
-          Understanding Your Unique Traits
+          Your Unique ENTJ Blueprint
+          {username ? `, ${username}` : ""}
         </p>
       </div>
 
