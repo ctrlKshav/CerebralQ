@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { PersonalityDescription } from "@/types/tests/mbti";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 interface HeroSectionProps {
   personalityType: string;
@@ -21,6 +22,15 @@ const HeroSection = ({
 }: HeroSectionProps) => {
   const alias = personalityDescription.alias;
   const description = personalityDescription.description;
+
+  // Map personality types to their respective image paths
+  const personalityImages: Record<string, string> = {
+    default: "/ENTJ.jpeg",
+  };
+
+  const imagePath =
+    personalityImages[personalityType] || personalityImages.default;
+
   return (
     <section className="bg-background flex flex-col justify-center items-center py-16 px-4 overflow-hidden relative">
       <div className="container max-w-6xl mx-auto">
@@ -36,14 +46,14 @@ const HeroSection = ({
                 <span
                   className={`${username ? "text-primary decoration-2" : "decoration-1"}`}
                 >
-                  {username || "there"}
-                </span>
-                ! You're an{" "}
-                <span className="text-primary  decoration-2 ">
+                  {username || "there"}!
+                </span>{" "}
+                You're an{" "}
+                <span className="text-primary decoration-2">
                   {personalityType}
                 </span>
                 <br />
-                <span className=" font-semibold decoration-1">{alias}</span>
+                <span className=" font-semibold">{alias}</span>
               </h1>
             </div>
 
@@ -53,7 +63,8 @@ const HeroSection = ({
               Does that sound like you
               {username ? (
                 <>
-                  , <span className="font-semibold">{"Alex"}</span>
+                  ,{" "}
+                  <span className="font-semibold text-primary">{username}</span>
                 </>
               ) : (
                 ""
@@ -71,46 +82,17 @@ const HeroSection = ({
             </div>
           </div>
 
-          {/* Illustration */}
-          <div className="relative w-full h-full min-h-[300px] animate-fade-in-delayed flex justify-center">
-            <Card className="relative w-4/5 aspect-square border-0 shadow-none bg-background">
-              <CardContent className="p-0 h-full">
-                <div className="absolute inset-0 grid place-items-center">
-                  <svg
-                    viewBox="0 0 200 200"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-full h-full animate-float"
-                  >
-                    <path
-                      fill="hsl(var(--primary))"
-                      d="M45.7,-77.2C58.9,-69.2,69.3,-56.3,76.6,-42C83.9,-27.6,88.1,-11.9,88.4,4.2C88.7,20.3,85.2,36.9,76.5,50.2C67.8,63.5,53.9,73.5,38.8,79.7C23.7,85.9,7.3,88.4,-9.5,87.5C-26.4,86.7,-43.8,82.6,-58.1,73.2C-72.5,63.8,-83.9,49.1,-89.4,32.9C-94.9,16.7,-94.5,-1,-90.7,-17.7C-86.8,-34.4,-79.5,-50.2,-67.7,-60.4C-55.9,-70.6,-39.7,-75.3,-24.7,-79.5C-9.7,-83.7,4.2,-87.3,19.4,-85.6C34.7,-83.9,51.3,-76.8,58.2,-67.4Q59.6,-65.5,59.7,-63.5L45.7,-77.2Z"
-                      transform="translate(100 100)"
-                      className="opacity-10"
-                    />
-                  </svg>
-                </div>
-
-                {/* Circular elements */}
-                <div className="absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-primary/10 animate-pulse-soft"></div>
-                <div
-                  className="absolute bottom-1/3 right-1/3 w-8 h-8 rounded-full bg-primary/20 animate-pulse-soft"
-                  style={{ animationDelay: "1s" }}
-                ></div>
-
-                {/* Center circle with personality personalityType */}
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-card shadow-xl flex items-center justify-center border-4 border-primary/20">
-                  <span className="text-2xl font-bold text-primary">
-                    {personalityType}
-                  </span>
-                </div>
-
-                {/* Trait lines */}
-                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-1 h-24 bg-gradient-to-b from-transparent to-primary/30"></div>
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-24 bg-gradient-to-t from-transparent to-primary/30"></div>
-                <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-24 h-1 bg-gradient-to-r from-transparent to-primary/30"></div>
-                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-24 h-1 bg-gradient-to-l from-transparent to-primary/30"></div>
-              </CardContent>
-            </Card>
+          {/* Main personality image */}
+          <div className="relative w-full h-full flex items-center justify-center">
+            <Image
+              src={imagePath}
+              alt={`${personalityType} - ${alias} personality type illustration`}
+              width={400}
+              height={400}
+              priority
+              className="object-contain z-10"
+              sizes="(max-width: 768px) 80vw, 400px"
+            />
           </div>
         </div>
       </div>
