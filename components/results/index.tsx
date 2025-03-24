@@ -81,7 +81,6 @@ export default function Results() {
           relationships: sampleResultData.relationships,
           growth: sampleResultData.growth,
           dailyHabits: sampleResultData.dailyHabits,
-          communication: sampleResultData.communication,
           valuesAndMotivators: sampleResultData.valuesAndMotivators,
           communityConnection: sampleResultData.communityConnection,
           actionItems: sampleResultData.actionItems,
@@ -228,7 +227,7 @@ export default function Results() {
         />
 
         {/* Community Connection */}
-        <CommunitySection sectionNumber={7} />
+        <CommunitySection data={resultData || sampleResultData} sectionNumber={7} />
 
         {/* Action Plan */}
         <ActionPlanSection

@@ -1,21 +1,22 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Users } from "lucide-react";
+import { Circle, MessageCircle, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
+import { ResultData } from "@/types/tests/mbti";
 
 interface CommunitySectionProps {
-  username?: string;
-  type?: string;
+  data: ResultData;
   sectionNumber?: number;
 }
 
 const CommunitySection = ({ 
-  username, 
-  type = "ENTJ", 
+  data,
   sectionNumber = 9 
 }: CommunitySectionProps) => {
+  const { communityConnection, username } = data;
+  const { summary, suggestions } = communityConnection;
   return (
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
       
@@ -24,7 +25,7 @@ const CommunitySection = ({
         <SectionHeader
           title="Community Connection"
           subtitle="Find Your Tribe"
-          description={formatWithUsername(`You don't have to figure this out alone, {username}! Come hang out with other ${type}s and career starters in our growing community. Share your best strategies for success, swap ideas, and let's build something awesome together.`, username)}
+          description={formatWithUsername(summary, username)}
           sectionNumber={sectionNumber}
         />
 
@@ -39,18 +40,12 @@ const CommunitySection = ({
               </div>
               
               <ul className="space-y-6 ml-4">
-                <li className="flex items-start">
-                <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">1</div>
-                  <p className="text-card-foreground text-base md:text-lg mt-0.5">
-                    Drop your MBTI type in our community chat—say hi to other Commanders who get you!
-                  </p>
-                </li>
-                <li className="flex items-start">
-                <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">2</div>
-                  <p className="text-card-foreground text-base md:text-lg mt-0.5">
-                    Join our weekly "Leadership Goals" chat to share your latest plans and ambitions.
-                  </p>
-                </li>
+                {suggestions.map((suggestion, index) => (
+                  <li key={index} className="flex items-center">
+                    <Circle className="h-6 w-6 text-foreground" />
+                    <p className="ml-4 text-lg text-card-foreground">{suggestion}</p>
+                  </li>
+                ))}
               </ul>
               
               <div className="mt-10">
