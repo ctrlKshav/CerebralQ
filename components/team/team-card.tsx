@@ -4,7 +4,7 @@ import { TeamMember } from "@/types/team";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { Twitter, Linkedin } from "lucide-react";
+import { Twitter, Linkedin, Instagram, WebcamIcon, Network, Globe } from "lucide-react";
 import Link from "next/link";
 
 interface TeamCardProps {
@@ -88,6 +88,26 @@ export function TeamCard({ member, index }: TeamCardProps) {
                     rel="noopener noreferrer"
                   >
                     <Linkedin size={18} className="hover:scale-110 transition-transform" />
+                  </Link>
+                )}
+                {member.socialLinks.instagram && (
+                  <Link
+                    href={member.socialLinks.instagram}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Instagram size={18} className="hover:scale-110 transition-transform" />
+                  </Link>
+                )}
+                {member.socialLinks.website && (
+                  <Link
+                    href={member.socialLinks.website}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Globe size={18} className="hover:scale-110 transition-transform" />
                   </Link>
                 )}
               </motion.div>

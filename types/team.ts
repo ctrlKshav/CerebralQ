@@ -1,6 +1,8 @@
 export interface SocialLinks {
   twitter?: string;
   linkedin?: string;
+  instagram?: string;
+  website?: string;
 }
 
 export interface TeamMember {
