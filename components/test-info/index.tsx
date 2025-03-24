@@ -22,6 +22,9 @@ import {
 import { MBTI_TEST_ID } from "@/lib/constants";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
+import { TeamGrid } from "@/components/team/team-grid";
+import { TeamHero } from "@/components/team/team-hero";
+import { teamMembers } from "@/data/team";
 
 const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
@@ -173,8 +176,13 @@ export default function TestInformation({ testId }: { testId: string }) {
 
           if (testData) {
             // Format the test result for display
-            const orderedTraitScores = getOrderedMBTITraitsObject(testData.raw_score.traitScores);
-            const mbtiResult = {traitScores: orderedTraitScores, personalityType: testData.raw_score.personalityType} as MBTIRawScore;
+            const orderedTraitScores = getOrderedMBTITraitsObject(
+              testData.raw_score.traitScores
+            );
+            const mbtiResult = {
+              traitScores: orderedTraitScores,
+              personalityType: testData.raw_score.personalityType,
+            } as MBTIRawScore;
             const personalityType = mbtiResult?.personalityType || "Unknown";
 
             setLatestResult({
@@ -265,6 +273,15 @@ export default function TestInformation({ testId }: { testId: string }) {
             testShortCode={MBTI_TEST.short_code}
           />
         )}
+
+        <div className="">
+          <TeamHero
+            title="The CQ Crew"
+            description="A group of builders, thinkers, and problem-solvers making cool things happen. We turn ideas into reality."
+          />
+
+          <TeamGrid members={teamMembers} />
+        </div>
 
         <div className="mt-24 grid">
           {/* Citations Card */}
