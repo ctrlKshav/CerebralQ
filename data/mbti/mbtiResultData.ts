@@ -213,21 +213,30 @@ export const sampleResultData: ResultData = {
   },
   dailyHabits: {
     summary: "You love a routine that keeps you on track, and it totally works for you—your days are focused and productive, and you feel best when you're in control. Adding a little downtime can help you recharge for your big goals.",
-    morningHabits: [
-      "Start your morning with a 5-minute goal check—like writing down one thing you want to achieve today.",
-      "Add a small, relaxing habit—like taking a quick walk after lunch—to give your mind a break."
-    ],
-    eveningHabits: [
-      "Wind down with a 10-minute habit, like reading a chapter of a book, to relax before bed."
-    ]
+    habits: {
+      morning: {
+        title: "Morning Routine",
+        description: "You start your day with a clear plan and a goal in mind, like mapping out your top priorities over coffee."
+      },
+      afternoon: {
+        title: "Afternoon Break",
+        description: "You take a breather to recharge and refocus, like going for a walk or reading a book to clear your mind."
+      },
+      evening: {
+        title: "Evening Wind-Down",
+        description: "You wrap up your day with a reflection on what you've achieved, like jotting down your wins and what you're grateful for."
+      }
+    },
+    communication: {
+        summary: "You're confident and direct when you talk, always getting your point across with clarity. You love conversations that are goal-oriented, but sometimes you might come across as too intense without meaning to.",
+        tips: [
+          "Add a warm touch to your conversations—like starting with \"I'm really excited to hear your thoughts on this!\"",
+          "Ask a friend a lighter question, like \"What's been the best part of your week?\"—it'll spark a more relaxed chat."
+        ]
+      },
+   
   },
-  communication: {
-    summary: "You're confident and direct when you talk, always getting your point across with clarity. You love conversations that are goal-oriented, but sometimes you might come across as too intense without meaning to.",
-    tips: [
-      "Add a warm touch to your conversations—like starting with \"I'm really excited to hear your thoughts on this!\"",
-      "Ask a friend a lighter question, like \"What's been the best part of your week?\"—it'll spark a more relaxed chat."
-    ]
-  },
+
   valuesAndMotivators: {
     summary: "You're all about achieving success and inspiring others to do the same. You value leadership, efficiency, and progress, and you're motivated by setting big goals, overcoming challenges, and making a lasting impact.",
     coreValues: [

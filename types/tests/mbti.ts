@@ -181,7 +181,6 @@ export interface MBTIAnswer {
   direction: "left" | "right";
 }
 
-
 export interface ResultData {
   username: string | null;
   personalityType: string;
@@ -193,7 +192,6 @@ export interface ResultData {
   growth: GrowthJourney;
   actionItems: ActionItem[];
   dailyHabits: DailyHabits;
-  communication: CommunicationStyle;
   valuesAndMotivators: ValuesAndMotivators;
   communityConnection: CommunityConnection;
 }
@@ -249,8 +247,12 @@ export interface GrowthMilestone {
 
 export interface DailyHabits {
   summary: string;
-  morningHabits: string[];
-  eveningHabits: string[];
+  habits: {
+    morning: HabitItem;
+    afternoon: HabitItem;
+    evening: HabitItem;
+  },
+  communication: CommunicationStyle;
 }
 
 export interface CommunicationStyle {
@@ -285,7 +287,12 @@ export interface GrowthAreaItem {
   description: string;
 }
 
+export interface HabitItem {
+  title: string;
+  description: string;
+}
+
 export interface ActionStepItem {
-  number: number
+  number: number;
   description: string;
 }

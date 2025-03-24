@@ -19,30 +19,9 @@ const DailyHabitsSection = ({
   data,
   sectionNumber = 6,
 }: DailyHabitsSectionProps) => {
-  const { growth, username } = data;
-
-  const morningHabit = {
-    title: "Morning Routine",
-    description:
-      "Start your morning with a 5-minute goal check—like writing down one thing you want to achieve today.",
-  };
-
-  const dayHabit = {
-    title: "During the Day",
-    description:
-      "Add a small, relaxing habit—like taking a quick walk after lunch—to give your mind a break.",
-  };
-
-  const eveningHabit = {
-    title: "Evening Wind-down",
-    description:
-      "Wind down with a 10-minute habit, like reading a chapter of a book, to relax before bed.",
-  };
-
-  const communicationTips = [
-    'Add a warm touch to your conversations—like starting with "I\'m really excited to hear your thoughts on this!"',
-    "Ask a friend a lighter question, like \"What's been the best part of your week?\"—it'll spark a more relaxed chat.",
-  ];
+  const { dailyHabits, username } = data;
+  const { morning , afternoon, evening } = dailyHabits.habits;
+  const communicationTips = dailyHabits.communication.tips;
 
   return (
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
@@ -55,7 +34,7 @@ const DailyHabitsSection = ({
             username
           )}
           description={formatWithUsername(
-            "You love a routine that keeps you on track, {username}, and it totally works for you—your days are focused and productive, and you feel best when you're in control. Adding a little downtime can help you recharge for your big goals.",
+            dailyHabits.summary,
             username
           )}
           sectionNumber={sectionNumber}
@@ -71,22 +50,22 @@ const DailyHabitsSection = ({
           <ul className="space-y-6 ml-4">
             <HabitItem
               icon={<Sun className="h-5 w-5" strokeWidth={2} />}
-              title={morningHabit.title}
-              description={morningHabit.description}
+              title={morning.title}
+              description={morning.description}
               gradientFrom="cyan-400"
               gradientTo="blue-500"
             />
             <HabitItem
               icon={<Clock className="h-5 w-5" strokeWidth={2} />}
-              title={dayHabit.title}
-              description={dayHabit.description}
+              title={afternoon.title}
+              description={afternoon.description}
               gradientFrom="yellow-400"
               gradientTo="amber-500"
             />
             <HabitItem
               icon={<Moon className="h-5 w-5" strokeWidth={2} />}
-              title={eveningHabit.title}
-              description={eveningHabit.description}
+              title={evening.title}
+              description={evening.description}
               gradientFrom="indigo-400"
               gradientTo="gray-700"
             />
@@ -101,10 +80,7 @@ const DailyHabitsSection = ({
           className="mb-16"
         >
           <p className="text-card-foreground text-base md:text-lg mb-6 ml-2">
-            You're confident and direct when you talk, {username}, always
-            getting your point across with clarity. You love conversations that
-            are goal-oriented, but sometimes you might come across as too
-            intense without meaning to.
+            {formatWithUsername(dailyHabits.communication.summary, username)}
           </p>
 
           <div className="ml-2 space-y-5">
