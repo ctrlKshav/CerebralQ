@@ -105,19 +105,6 @@ const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSect
           imageAlt="Values and motivators"
           className="mb-16 mx-auto"
         />
-
-        {/* Pro Tip Section */}
-        <Card className="p-8 mb-16 mx-auto max-w-4xl">
-          <div className="flex items-center mb-4">
-            <div className="rounded-full bg-primary p-2 mr-3 shadow">
-              <Star className="h-5 w-5 text-primary-foreground" />
-            </div>
-            <h4 className="text-lg font-bold text-card-foreground">Pro Tip</h4>
-          </div>
-          <p className="text-card-foreground">
-            When you're feeling unmotivated, try reconnecting with one of these core drivers, {username}. For example, set a challenging short-term goal that can get your achievement drive fired up again.
-          </p>
-        </Card>
       </div>
     </section>
   );
