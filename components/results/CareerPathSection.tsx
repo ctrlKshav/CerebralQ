@@ -13,7 +13,7 @@ import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
 import ActionStepsCard from "./shared/ActionStepsCard";
 import SectionHeader from "./shared/SectionHeader";
-import { formatWithUsername } from "../../utils/formatWithUsername";
+import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface CareerPathSectionProps {
   data: ResultData;

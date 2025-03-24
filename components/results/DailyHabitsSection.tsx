@@ -8,7 +8,7 @@ import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
 import SectionHeader from "./shared/SectionHeader";
-import { formatWithUsername } from "../../utils/formatWithUsername";
+import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface DailyHabitsSectionProps {
   data: ResultData;

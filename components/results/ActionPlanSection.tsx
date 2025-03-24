@@ -6,7 +6,7 @@ import { Download, Save } from "lucide-react";
 import { ResultData } from "@/types/tests/mbti";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionHeader from "./shared/SectionHeader";
-import { formatWithUsername } from "../../utils/formatWithUsername";
+import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface ActionPlanSectionProps {
   data: ResultData;

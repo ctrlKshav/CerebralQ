@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { MessageCircle, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionHeader from "./shared/SectionHeader";
-import { formatWithUsername } from "../../utils/formatWithUsername";
+import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface CommunitySectionProps {
   username?: string;
