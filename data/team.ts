@@ -32,7 +32,7 @@ export const teamMembers: TeamMember[] = [
     role: "Content Strategist",
     bio: "Hi, Sneha here! I'm helping to build C4E",
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop",
+      "/team/sneha.jpg",
     socialLinks: {
       twitter: "https://x.com/sneh_1101?s=09",
       linkedin: "https://www.linkedin.com/in/snehajanthe11?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
