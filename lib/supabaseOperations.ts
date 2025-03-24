@@ -250,6 +250,7 @@ export async function getUserByUsername(username: string): Promise<UserProfile |
         bio: userData.bio || "",
         tests_taken: userData.tests_taken || 0,
         last_test_date: userData.last_test_date || "",
+        joined_at: userData.created_at   || "",
         raw_score: {
           personalityType: "Unknown",
           traitScores: {
@@ -271,6 +272,7 @@ export async function getUserByUsername(username: string): Promise<UserProfile |
         bio: userData.bio || "",
         tests_taken: userData.tests_taken || 0,
         last_test_date: userData.last_test_date || "",
+        joined_at: userData.created_at   || "",
         raw_score: {
           personalityType: "Unknown",
           traitScores: {
@@ -302,6 +304,7 @@ export async function getUserByUsername(username: string): Promise<UserProfile |
       bio: userData.bio || "",
       tests_taken: userData.tests_taken || 0,
       last_test_date: userData.last_test_date || "",
+      joined_at: userData.created_at   || "",
       raw_score: {
         personalityType: mbtiResult?.raw_score?.personalityType || "Unknown",
         traitScores: getOrderedMBTITraitsObject(mbtiResult?.raw_score.traitScores) || {

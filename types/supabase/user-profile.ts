@@ -10,6 +10,7 @@ export interface UserProfile {
   last_test_date: string
   raw_score: MBTIRawScore
   user_test_history: UserTestHistorySummary[]
+  joined_at: string;
 }
 
 export interface UserTestHistorySummary {

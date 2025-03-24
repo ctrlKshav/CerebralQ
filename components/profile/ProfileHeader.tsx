@@ -70,8 +70,8 @@ export default function ProfileHeader({
             <div className="flex items-center gap-2">
               <Calendar className="h-5 w-5 text-blue-500" />
               <span className="text-base font-medium">
-                Last test:{" "}
-                {new Date(userData.last_test_date).toLocaleDateString()}
+                Member Since:{" "}
+                {new Date(userData.joined_at).toLocaleDateString()}
               </span>
             </div>
             {isOwner ? (
