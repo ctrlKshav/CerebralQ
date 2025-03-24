@@ -18,7 +18,7 @@ import {
   TestResultSection,
   TestCitationsCard,
   TestRecommendationsSection,
-} from "./test-components";
+} from "./TestComponents";
 import { MBTI_TEST_ID } from "@/lib/constants";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";

@@ -2,7 +2,7 @@
 import React from "react";
 import { Separator } from "@/components/ui/separator";
 import Image from "next/image";
-import CQLogo from "@/components/cq-logo";
+import CQLogo from "@/components/CQLogo";
 import { socialLinks, testLinks, companyLinks } from "@/data/footerData";
 import Link from "next/link";
 

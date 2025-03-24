@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signinSchema, SignInSchema } from "@/schema/auth-pages";
-import { AuthPagesFormMessage } from "@/components/form-message";
+import { AuthPagesFormMessage } from "@/components/FormMessage";
 import { useState, useEffect } from "react";
 import { signInAction } from "@/app/actions";
 import { RETURN_URL_KEY } from "@/lib/constants";

@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { PersonalityTraits } from "@/components/results/personality-traits";
 import type { TraitScores } from "@/types/tests/mbti";
-import AboutPersonalityType from "./about-personality-type";
-import BigFiveConstellation from "./big-five-constellation";
+import AboutPersonalityType from "./AboutPersonalityType";
+import BigFiveConstellation from "./BigFiveConstellation";
 import { personalityDatabase } from "@/data/mbti/personalityDatabase";
 
 interface PersonalityShowcaseProps {

@@ -1,4 +1,4 @@
-﻿import LoadingSkeleton from '@/components/loading-skeleton'
+﻿import LoadingSkeleton from '@/components/LoadingSkeleton'
 import React from 'react'
 
 export default function Loading() {

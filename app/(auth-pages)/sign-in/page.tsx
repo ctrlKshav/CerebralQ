@@ -1,5 +1,5 @@
 "use client"
-import { SigninForm } from "@/components/auth/signin-form";
+import { SigninForm } from "@/components/auth/SigninForm";
 import { useSearchParams } from "next/navigation";
 
 export default function Login() {

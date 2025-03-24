@@ -13,7 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
-import { AuthPagesFormMessage } from "@/components/form-message";
+import { AuthPagesFormMessage } from "@/components/FormMessage";
 import { parseAuthMessage } from "@/lib/utils";
 import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";

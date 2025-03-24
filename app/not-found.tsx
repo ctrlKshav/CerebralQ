@@ -1,5 +1,5 @@
-﻿import ComingSoon from "@/components/coming-soon";
-import CQLogo from "@/components/cq-logo";
+﻿import ComingSoon from "@/components/ComingSoon";
+import CQLogo from "@/components/CQLogo";
 import Link from "next/link";
 import React from "react";
 

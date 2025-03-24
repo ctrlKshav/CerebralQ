@@ -1,5 +1,5 @@
 "use client"
-import { SignupForm } from "@/components/auth/signup-form";
+import { SignupForm } from "@/components/auth/SignupForm";
 import { useSearchParams } from "next/navigation";
 
 export default function Signup(){

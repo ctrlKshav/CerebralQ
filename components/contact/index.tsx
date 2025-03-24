@@ -24,7 +24,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "sonner";
-import { ContactInfo } from "./contact-info";
+import { ContactInfo } from "./ContactInfo";
 
 // Form schema using zod
 const formSchema = z.object({

@@ -26,7 +26,7 @@ import { MenuSection } from "./MenuSection";
 import { MobileMenuSection } from "./mobile-menu/MobileMenuSection";
 import { assessmentItems, communityItems } from "@/data/navbar";
 import { MobileMenuItem } from "./mobile-menu/MobileMenuItem";
-import CQLogo from "../cq-logo";
+import CQLogo from "../CQLogo";
 
 const UnprotectedNavbar = (props: { className?: string }) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);

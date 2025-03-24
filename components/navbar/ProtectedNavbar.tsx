@@ -31,12 +31,12 @@ import { MenuSection } from "./MenuSection";
 import { MobileMenuSection } from "./mobile-menu/MobileMenuSection";
 import { assessmentItems, protectedCommunityItems } from "@/data/navbar";
 import { MobileMenuItem } from "./mobile-menu/MobileMenuItem";
-import CQLogo from "../cq-logo";
+import CQLogo from "../CQLogo";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "@/types/supabase/users";
-import LogoutButton from "@/components/logout-button";
+import LogoutButton from "@/components/LogoutButton";
 
 interface ProtectedNavbarProps {
   className?: string;

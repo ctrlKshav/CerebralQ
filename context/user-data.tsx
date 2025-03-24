@@ -1,6 +1,6 @@
 ﻿"use client"
 
-import LoadingSkeleton from "@/components/loading-skeleton";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
 import { getCurrentUser } from "@/lib/supabaseOperations";
 import { User } from "@/types/supabase/users";
 import { createClient } from "@/utils/supabase/client";

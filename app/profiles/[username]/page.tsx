@@ -6,16 +6,16 @@ import { useRouter } from "next/navigation";
 
 // Components
 import Navbar from "@/components/navbar";
-import ProfileHeader from "@/components/profile/profile-header";
-import PersonalityShowcase from "@/components/profile/personality-showcase";
-import TestHistory from "@/components/profile/test-history";
-import MBTIInsights from "@/components/profile/mbti-insights";
-import LoadingSkeleton from "@/components/loading-skeleton";
+import ProfileHeader from "@/components/profile/ProfileHeader";
+import PersonalityShowcase from "@/components/profile/PersonalityShowcase";
+import TestHistory from "@/components/profile/TestHistory";
+import MBTIInsights from "@/components/profile/MBTIInsights";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
 import {
   UserNotFoundFallback,
   NoTestsFallback,
   IncompleteDataFallback,
-} from "@/components/profile/profile-fallbacks";
+} from "@/components/profile/ProfileFallbacks";
 import { User } from "@/types/supabase/users";
 import { UserProfile } from "@/types/supabase/user-profile";
 

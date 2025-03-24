@@ -2,7 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Brain, Star, Shield } from "lucide-react";
-import InsiderBadge from "@/components/insider-badge";
+import InsiderBadge from "@/components/InsiderBadge";
 
 interface UserBadgesProps {
   rank?: string | null;

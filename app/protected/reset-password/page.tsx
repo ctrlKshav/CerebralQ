@@ -10,7 +10,7 @@ import { resetPasswordSchema, ResetPasswordSchema } from "@/schema/auth-pages";
 import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { toast } from "sonner";
-import { AuthPagesFormMessage } from "@/components/form-message";
+import { AuthPagesFormMessage } from "@/components/FormMessage";
 import { parseAuthMessage } from "@/lib/utils";
 
 export default function ResetPassword() {

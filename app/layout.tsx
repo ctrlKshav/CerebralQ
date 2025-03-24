@@ -1,10 +1,10 @@
-import HeaderAuth from "@/components/header-auth";
-import ThemeSwitcher from "@/components/theme-switcher";
+import HeaderAuth from "@/components/HeaderAuth";
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 import { Geist } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import { Toaster } from "sonner";
-import Footer from "@/components/landing-page/footer";
+import Footer from "@/components/landing-page/Footer";
 import { TouchProvider } from "@/components/ui/tooltip-hybrid";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";

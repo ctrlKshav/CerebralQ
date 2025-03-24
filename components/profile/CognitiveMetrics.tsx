@@ -6,8 +6,8 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 // Import Recharts components
-import { IQProgressRing } from "./charts/iq-progress-ring"
-import { TrendSparkline } from "./charts/trend-sparkline"
+import { IQProgressRing } from "./charts/IQProgressRing"
+import { TrendSparkline } from "./charts/TrendSparkline"
 
 interface CognitiveMetricsProps {
   iqScore: {

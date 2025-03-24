@@ -3,7 +3,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
-import { BigFiveRadarChart } from "./charts/big-five-radar"
+import { BigFiveRadarChart } from "./charts/BigFiveRadar"
 
 interface BigFiveConstellationProps {
   bigFiveTraits: {

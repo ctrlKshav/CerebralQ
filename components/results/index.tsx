@@ -14,7 +14,7 @@ import { PersonalityTraits } from "@/components/results/personality-traits";
 import { CareerSuggestions } from "@/components/results/career-suggestions";
 import { SimilarPersonalities } from "@/components/results/similar-personalities";
 import { DetailedPersonalityInsights } from "@/components/results/detailed-personality-insights";
-import AboutPersonalityType from "@/components/profile/about-personality-type";
+import AboutPersonalityType from "@/components/profile/AboutPersonalityType";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";

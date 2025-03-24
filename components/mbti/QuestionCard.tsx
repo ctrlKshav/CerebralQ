@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { LikertScale } from "./likert-scale";
+import { LikertScale } from "./LikertScale";
 import { TestQuestion } from "@/types/tests/mbti";
 import { useFormContext } from "react-hook-form";
 import { useEffect } from "react";
