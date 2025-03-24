@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 // Import our components
 import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-import { sampleResultData } from "@/data/mbti";
+import { sampleResultData } from "@/data/mbti/personalityDatabase";
 
 import HeroSection from "@/components/results/HeroSection";
 import PersonalityTraits from "@/components/results/PersonalityTraits";
