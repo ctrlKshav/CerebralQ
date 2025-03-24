@@ -6,7 +6,7 @@ export const teamMembers: TeamMember[] = [
     role: "Boss Woman",
     bio: "Ya Right",
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop",
+      "/team/ak_pfp.jpg",
 
     socialLinks: {
       twitter: "https://x.com/akforthevibe ",
@@ -20,7 +20,7 @@ export const teamMembers: TeamMember[] = [
     role: "Design Lead",
     bio: "Hi! I’m Brishti, and at 19 I think I've found my muse.",
     imageUrl:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop",
+      "/team/bri.jpg",
     socialLinks: {
       twitter: "https://x.com/brishtiatc4e",
       linkedin: "https://www.linkedin.com/in/brishtisharma",
@@ -44,7 +44,7 @@ export const teamMembers: TeamMember[] = [
     role: "Lead Developer",
     bio: "I build websites.",
     imageUrl:
-      "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop",
+      "/team/keshav.jpeg",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/keshav3511/",
       website: "https://realk.site",
