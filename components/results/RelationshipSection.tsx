@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
+import ActionStepsCard from "./shared/ActionStepsCard";
 
 interface RelationshipSectionProps {
   data: ResultData;
@@ -99,6 +100,56 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
       ];
     }
   };
+
+  // Define action steps for each relationship type
+  const getRelationshipActionSteps = (type: string) => {
+    if (type === "Romantic") {
+      return [
+        {
+          number: 1,
+          description: "This week, share one feeling with someone you care about—like \"I've been feeling a bit overwhelmed lately.\""
+        },
+        {
+          number: 2,
+          description: "If you're encouraging someone, check in first—like \"I think this could be great for you, but how do you feel about it?\""
+        },
+        {
+          number: 3,
+          description: `Look for people who admire your drive, ${username}—someone who loves your ambitious energy as much as you do.`
+        }
+      ];
+    } else if (type === "Friendship") {
+      return [
+        {
+          number: 1,
+          description: "Let your friends take the lead on a plan this month—like saying, \"What do you guys want to do this time?\""
+        },
+        {
+          number: 2,
+          description: "Practice active listening—like asking a friend, \"What do you think about this?\" and really hearing them out."
+        },
+        {
+          number: 3,
+          description: "Consider seeking deeper friendships with people who appreciate your energy and directness."
+        }
+      ];
+    } else {
+      return [
+        {
+          number: 1,
+          description: "This month, delegate one important task you'd normally handle yourself—and resist the urge to micromanage."
+        },
+        {
+          number: 2,
+          description: "Practice active listening in your next meeting—try to speak less and listen more to team members' perspectives."
+        },
+        {
+          number: 3,
+          description: "Look for mentors or colleagues with complementary skills to yours—especially those who excel at details you might overlook."
+        }
+      ];
+    }
+  };
   
   return (
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
@@ -185,93 +236,18 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
               </div>
 
               {/* Let's Make It Happen card with image */}
-              <Card className="mb-16 overflow-hidden">
-                <div className="flex flex-col md:flex-row">
-                  <div className="p-8 md:w-3/5">
-                    <h4 className="text-xl md:text-2xl font-bold mb-6 flex items-center text-card-foreground">
-                      Let's Make It Happen:
-                    </h4>
-                    <ul className="space-y-6">
-                      {relationship.type === "Romantic" ? (
-                        <>
-                          <li className="flex items-start">
-                            <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">1</div>
-                            <p className="text-muted-foreground text-base md:text-lg">
-                              This week, share one feeling with someone you care about—like "I've been feeling a bit overwhelmed lately."
-                            </p>
-                          </li>
-                          <li className="flex items-start">
-                            <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">2</div>
-                            <p className="text-muted-foreground text-base md:text-lg">
-                              If you're encouraging someone, check in first—like "I think this could be great for you, but how do you feel about it?"
-                            </p>
-                          </li>
-                          <li className="flex items-start">
-                            <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">3</div>
-                            <p className="text-muted-foreground text-base md:text-lg">
-                              Look for people who admire your drive, {username}—someone who loves your ambitious energy as much as you do.
-                            </p>
-                          </li>
-                        </>
-                      ) : relationship.type === "Friendship" ? (
-                        <>
-                          <li className="flex items-start">
-                            <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">1</div>
-                            <p className="text-muted-foreground text-base md:text-lg">
-                              Let your friends take the lead on a plan this month—like saying, "What do you guys want to do this time?"
-                            </p>
-                          </li>
-                          <li className="flex items-start">
-                            <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">2</div>
-                            <p className="text-muted-foreground text-base md:text-lg">
-                              Practice active listening—like asking a friend, "What do you think about this?" and really hearing them out.
-                            </p>
-                          </li>
-                          <li className="flex items-start">
-                            <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">3</div>
-                            <p className="text-muted-foreground text-base md:text-lg">
-                              Consider seeking deeper friendships with people who appreciate your energy and directness.
-                            </p>
-                          </li>
-                        </>
-                      ) : (
-                        <>
-                          <li className="flex items-start">
-                            <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">1</div>
-                            <p className="text-muted-foreground text-base md:text-lg">
-                              This month, delegate one important task you'd normally handle yourself—and resist the urge to micromanage.
-                            </p>
-                          </li>
-                          <li className="flex items-start">
-                            <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">2</div>
-                            <p className="text-muted-foreground text-base md:text-lg">
-                              Practice active listening in your next meeting—try to speak less and listen more to team members' perspectives.
-                            </p>
-                          </li>
-                          <li className="flex items-start">
-                            <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">3</div>
-                            <p className="text-muted-foreground text-base md:text-lg">
-                              Look for mentors or colleagues with complementary skills to yours—especially those who excel at details you might overlook.
-                            </p>
-                          </li>
-                        </>
-                      )}
-                    </ul>
-                  </div>
-                  <div className="md:w-2/5 h-auto sm:min-h-[400px] relative border-t md:border-t-0 md:border-l border-border">
-                    <img 
-                      src={relationship.type === "Romantic" 
-                        ? "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop" 
-                        : relationship.type === "Friendship" 
-                        ? "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000&auto=format&fit=crop"
-                        : "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop"
-                      } 
-                      alt={`${relationship.type} relationships`}
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </div>
-              </Card>
+              <ActionStepsCard
+                title="Let's Make It Happen:"
+                steps={getRelationshipActionSteps(relationship.type)}
+                imageSrc={relationship.type === "Romantic" 
+                  ? "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop" 
+                  : relationship.type === "Friendship" 
+                  ? "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000&auto=format&fit=crop"
+                  : "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop"
+                }
+                imageAlt={`${relationship.type} relationships`}
+                className="mb-16"
+              />
             </TabsContent>
           ))}
         </Tabs>

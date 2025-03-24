@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
+import ActionStepsCard from "./shared/ActionStepsCard";
 
 interface GrowthSectionProps {
   data: ResultData;
@@ -34,6 +35,21 @@ const GrowthSection = ({ data, sectionNumber = 5 }: GrowthSectionProps) => {
     {
       title: "Connecting Emotionally:",
       description: "You might focus on results over feelings—like not noticing when you need a break."
+    }
+  ];
+
+  const growthActionSteps = [
+    {
+      number: 1,
+      description: "If you're feeling impatient, take a moment to reflect—like \"What's one small step I can take today?\""
+    },
+    {
+      number: 2,
+      description: "Try a new emotional check-in this week, like journaling about how you're feeling, to connect with yourself."
+    },
+    {
+      number: 3,
+      description: `Write down three things you love about being an ${personalityType} when you're feeling hard on yourself, ${username}.`
     }
   ];
 
@@ -85,56 +101,12 @@ const GrowthSection = ({ data, sectionNumber = 5 }: GrowthSectionProps) => {
         </div>
 
         {/* Let's Make It Happen section */}
-        <Card className="mb-16 mx-auto overflow-hidden">
-          <div className="flex flex-col md:flex-row">
-            <div className="p-8 md:w-3/5">
-              <div className="flex items-center mb-6">
-                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Let's Make It Happen
-                </h3>
-              </div>
-
-              <ul className="space-y-6 ml-4">
-                <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
-                    1
-                  </div>
-                  <p className="text-card-foreground text-base md:text-lg">
-                    If you're feeling impatient, take a moment to reflect—like
-                    "What's one small step I can take today?"
-                  </p>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
-                    2
-                  </div>
-                  <p className="text-card-foreground text-base md:text-lg">
-                    Try a new emotional check-in this week, like journaling
-                    about how you're feeling, to connect with yourself.
-                  </p>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
-                    3
-                  </div>
-                  <p className="text-card-foreground text-base md:text-lg">
-                    Write down three things you love about being an {personalityType} when
-                    you're feeling hard on yourself, {username}.
-                  </p>
-                </li>
-              </ul>
-            </div>
-
-            {/* Image section */}
-            <div className="md:w-2/5 h-auto max-h-[350px] relative border-t md:border-t-0 md:border-l border-border">
-              <img
-                src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                alt="Personal growth journey"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-        </Card>
+        <ActionStepsCard
+          steps={growthActionSteps}
+          imageSrc="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+          imageAlt="Personal growth journey"
+          className="mb-16 mx-auto"
+        />
       </div>
     </section>
   );

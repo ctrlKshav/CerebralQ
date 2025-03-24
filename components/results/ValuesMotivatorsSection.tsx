@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
+import ActionStepsCard from "./shared/ActionStepsCard";
 
 interface ValuesMotivatorSectionProps {
   data: ResultData;
@@ -35,6 +36,21 @@ const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSect
     {
       title: "Impact:",
       description: "Working with decisive, intelligent people and seeing your efforts create real change."
+    }
+  ];
+
+  const actionSteps = [
+    {
+      number: 1,
+      description: "Set aside 15 minutes this week to reflect on your biggest achievement—what values did it fulfill for you?"
+    },
+    {
+      number: 2,
+      description: "When you feel unmotivated, reconnect with your achievement drive by setting a small, achievable goal."
+    },
+    {
+      number: 3,
+      description: "Seek out a leadership opportunity in your community or workplace to flex your leadership"
     }
   ];
 
@@ -83,53 +99,12 @@ const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSect
         </div>
 
         {/* Let's Make It Happen section */}
-        <Card className="mb-16 mx-auto overflow-hidden">
-          <div className="flex flex-col md:flex-row">
-            <div className="p-8 md:w-3/5">
-              <div className="flex items-center mb-6">
-                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Let's Make It Happen
-                </h3>
-              </div>
-
-              <ul className="space-y-6 ml-4">
-                <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
-                    1
-                  </div>
-                  <p className="text-card-foreground text-base md:text-lg">
-                    Set aside 15 minutes this week to reflect on your biggest achievement—what values did it fulfill for you?
-                  </p>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
-                    2
-                  </div>
-                  <p className="text-card-foreground text-base md:text-lg">
-                    When you feel unmotivated, reconnect with your achievement drive by setting a small, achievable goal.
-                  </p>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
-                    3
-                  </div>
-                  <p className="text-card-foreground text-base md:text-lg">
-                    {actionItems.length > 0 ? actionItems[3].description : "Journal about one big goal you're working toward and identify small steps toward progress."}
-                  </p>
-                </li>
-              </ul>
-            </div>
-
-            {/* Image section */}
-            <div className="md:w-2/5 h-auto max-h-[350px] relative border-t md:border-t-0 md:border-l border-border">
-              <img
-                src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-                alt="Values and motivators"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-        </Card>
+        <ActionStepsCard
+          steps={actionSteps}
+          imageSrc="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          imageAlt="Values and motivators"
+          className="mb-16 mx-auto"
+        />
 
         {/* Pro Tip Section */}
         <Card className="p-8 mb-16 mx-auto max-w-4xl">

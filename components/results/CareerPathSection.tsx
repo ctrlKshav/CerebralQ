@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card"
 import SectionNumber from "@/components/ui/section-number";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
+import ActionStepsCard from "./shared/ActionStepsCard";
 
 interface CareerPathSectionProps {
   data: ResultData;
@@ -40,6 +41,21 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
     {
       title: "Listening to Others:",
       description: "You might focus on your vision and miss input—like not hearing a teammate's alternative idea."
+    }
+  ];
+
+  const careerActionSteps = [
+    {
+      number: 1,
+      description: "If things are moving slowly, take a deep breath and break the task into smaller steps to keep progress steady."
+    },
+    {
+      number: 2,
+      description: "Ask a coworker for their input this week—like \"What do you think we could do differently here?\"—to open up to new ideas."
+    },
+    {
+      number: 3,
+      description: "Look for jobs that let you lead and innovate, like being a CEO or a consultant—your kind of vibe!"
     }
   ];
 
@@ -112,57 +128,12 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
         </div>
 
         {/* "Let's Make It Happen" section */}
-        <Card className="mb-16 overflow-hidden">
-          <div className="flex flex-col md:flex-row">
-            <div className="p-8 md:w-3/5">
-              <div className="flex items-center mb-6">
-                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Let's Make It Happen
-                </h3>
-              </div>
-
-              <ul className="space-y-6 ml-4">
-                <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
-                    1
-                  </div>
-                  <p className="text-card-foreground text-base md:text-lg">
-                    If things are moving slowly, take a deep breath and break
-                    the task into smaller steps to keep progress steady.
-                  </p>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
-                    2
-                  </div>
-                  <p className="text-card-foreground text-base md:text-lg">
-                    Ask a coworker for their input this week—like "What do you
-                    think we could do differently here?"—to open up to new
-                    ideas.
-                  </p>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
-                    3
-                  </div>
-                  <p className="text-card-foreground text-base md:text-lg">
-                    Look for jobs that let you lead and innovate, like being a
-                    CEO or a consultant—your kind of vibe!
-                  </p>
-                </li>
-              </ul>
-            </div>
-
-            {/* Image section */}
-            <div className="md:w-2/5 h-auto sm:min-h-[320px] relative border-t md:border-t-0 md:border-l border-border">
-              <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                alt="Team collaboration"
-                className="h-full w-full object-cover"
-              />
-            </div>
-          </div>
-        </Card>
+        <ActionStepsCard
+          steps={careerActionSteps}
+          imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+          imageAlt="Team collaboration"
+          className="mb-16"
+        />
 
         {/* Career Suggestions Section */}
         <div className="mb-16 px-4 md:px-8 lg:px-16">
