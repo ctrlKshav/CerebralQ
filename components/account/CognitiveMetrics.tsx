@@ -7,7 +7,7 @@ export function CognitiveMetrics({
 }: CognitiveMetricsType) {
   return (
     <div className="bg-card/80 dark:bg-card/30 rounded-xl p-6 backdrop-blur-sm border border-border shadow-sm hover:bg-accent/10 dark:hover:bg-card/40 transition-all">
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between">
         <h3 className="text-xl font-semibold text-foreground">
           Personality Type
         </h3>
