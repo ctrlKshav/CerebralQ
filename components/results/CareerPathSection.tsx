@@ -10,6 +10,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader, CardFooter } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
+import SuperpowersCard from "./shared/SuperpowersCard";
+import GrowthAreasCard from "./shared/GrowthAreasCard";
 
 interface CareerPathSectionProps {
   data: ResultData;
@@ -18,6 +20,28 @@ interface CareerPathSectionProps {
 
 const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) => {
   const { career, username } = data;
+
+  const careerSuperpowers = [
+    {
+      title: "Leading with Vision:",
+      description: `You inspire others with your big ideas, ${username}—like pitching a game-changing plan to your team.`
+    },
+    {
+      title: "Getting Results:",
+      description: "You're a pro at making things happen, like hitting every target on a tight deadline."
+    }
+  ];
+
+  const careerGrowthAreas = [
+    {
+      title: "Being Patient:",
+      description: "You might push too hard for results—like getting annoyed if a project isn't moving fast enough."
+    },
+    {
+      title: "Listening to Others:",
+      description: "You might focus on your vision and miss input—like not hearing a teammate's alternative idea."
+    }
+  ];
 
   // Career image mapping based on title
   const getCareerImage = (title: string) => {
@@ -73,88 +97,18 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
         {/* Career Superpowers and Growth Areas */}
         <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
           {/* Career Superpowers */}
-          <Card className="h-full">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="rounded-full bg-primary p-3 mr-4 shadow flex items-center justify-center">
-                  <Award
-                    className="h-6 w-6 text-primary-foreground"
-                    strokeWidth={2.2}
-                  />
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Your Career Superpowers
-                </h3>
-              </div>
-
-              <ul className="space-y-5 text-base ml-4">
-                <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-medium text-lg mb-1 text-card-foreground">
-                      Leading with Vision:
-                    </p>
-                    <p className="text-card-foreground">
-                      You inspire others with your big ideas, {username}—like
-                      pitching a game-changing plan to your team.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-medium text-lg mb-1 text-card-foreground">Getting Results:</p>
-                    <p className="text-card-foreground">
-                      You're a pro at making things happen, like hitting every
-                      target on a tight deadline.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <SuperpowersCard 
+            title="Your Career Superpowers"
+            items={careerSuperpowers}
+            icon={<Award className="h-6 w-6" strokeWidth={2.2} />}
+          />
 
           {/* Growth Areas */}
-          <Card className="h-full">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="rounded-full bg-secondary p-3 mr-4 shadow flex items-center justify-center">
-                  <Briefcase
-                    className="h-6 w-6 text-secondary-foreground"
-                    strokeWidth={2.2}
-                  />
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Where You Can Grow a Bit
-                </h3>
-              </div>
-
-              <ul className="space-y-5 text-base ml-4">
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full border-2 border-secondary mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-medium text-lg mb-1 text-card-foreground">Being Patient:</p>
-                    <p className="text-card-foreground">
-                      You might push too hard for results—like getting annoyed if
-                      a project isn't moving fast enough.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full border-2 border-secondary mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-medium text-lg mb-1 text-card-foreground">
-                      Listening to Others:
-                    </p>
-                    <p className="text-card-foreground">
-                      You might focus on your vision and miss input—like not
-                      hearing a teammate's alternative idea.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <GrowthAreasCard
+            title="Where You Can Grow a Bit"
+            items={careerGrowthAreas}
+            icon={<Briefcase className="h-6 w-6 " strokeWidth={2.2} />}
+          />
         </div>
 
         {/* "Let's Make It Happen" section */}

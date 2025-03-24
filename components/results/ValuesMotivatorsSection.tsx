@@ -5,7 +5,8 @@ import { ResultData } from "@/types/tests/mbti";
 import { Heart, Star, TrendingUp, Target, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
-import { CheckCircle } from "lucide-react";
+import SuperpowersCard from "./shared/SuperpowersCard";
+import GrowthAreasCard from "./shared/GrowthAreasCard";
 
 interface ValuesMotivatorSectionProps {
   data: ResultData;
@@ -14,6 +15,28 @@ interface ValuesMotivatorSectionProps {
 
 const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSectionProps) => {
   const { username = "there", personalityType, actionItems } = data;
+
+  const coreValues = [
+    {
+      title: "Achievement:",
+      description: "You're driven to accomplish goals and prove your competence in everything you do."
+    },
+    {
+      title: "Leadership:",
+      description: "You value taking charge and directing others toward success with clarity and vision."
+    }
+  ];
+
+  const motivators = [
+    {
+      title: "Recognition:",
+      description: "Being recognized for your achievements and leadership drives you forward."
+    },
+    {
+      title: "Impact:",
+      description: "Working with decisive, intelligent people and seeing your efforts create real change."
+    }
+  ];
 
   return (
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
@@ -45,80 +68,18 @@ const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSect
         {/* Core Values and Motivators - Two column layout */}
         <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
           {/* Core Values */}
-          <Card className="h-full">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="rounded-full bg-primary p-3 mr-4 shadow flex items-center justify-center">
-                  <Heart
-                    className="h-6 w-6 text-primary-foreground"
-                    strokeWidth={2.2}
-                  />
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Your Core Values
-                </h3>
-              </div>
-
-              <ul className="space-y-5 text-base ml-4">
-                <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-medium text-lg mb-1 text-card-foreground">Achievement:</p>
-                    <p className="text-card-foreground">
-                      You're driven to accomplish goals and prove your competence in everything you do.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start mt-4">
-                  <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-medium text-lg mb-1 text-card-foreground">Leadership:</p>
-                    <p className="text-card-foreground">
-                      You value taking charge and directing others toward success with clarity and vision.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <SuperpowersCard 
+            title="Your Core Values"
+            items={coreValues}
+            icon={<Heart className="h-6 w-6" strokeWidth={2.2} />}
+          />
 
           {/* Motivators */}
-          <Card className="h-full">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="rounded-full bg-secondary p-3 mr-4 shadow flex items-center justify-center">
-                  <TrendingUp
-                    className="h-6 w-6 text-secondary-foreground"
-                    strokeWidth={2.2}
-                  />
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  What Motivates You
-                </h3>
-              </div>
-
-              <ul className="space-y-5 text-base ml-4">
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full border-2 border-secondary mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-medium text-lg mb-1 text-card-foreground">Recognition:</p>
-                    <p className="text-card-foreground">
-                      Being recognized for your achievements and leadership drives you forward.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start mt-4">
-                  <div className="h-6 w-6 rounded-full border-2 border-secondary mr-3 flex-shrink-0 mt-1" />
-                  <div>
-                    <p className="font-medium text-lg mb-1 text-card-foreground">Impact:</p>
-                    <p className="text-card-foreground">
-                      Working with decisive, intelligent people and seeing your efforts create real change.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <GrowthAreasCard
+            title="What Motivates You"
+            items={motivators}
+            icon={<TrendingUp className="h-6 w-6" strokeWidth={2.2} />}
+          />
         </div>
 
         {/* Let's Make It Happen section */}

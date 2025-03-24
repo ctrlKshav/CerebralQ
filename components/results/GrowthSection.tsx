@@ -4,6 +4,8 @@ import { CheckCircle, Award, MessageSquare, Lightbulb } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
+import SuperpowersCard from "./shared/SuperpowersCard";
+import GrowthAreasCard from "./shared/GrowthAreasCard";
 
 interface GrowthSectionProps {
   data: ResultData;
@@ -12,6 +14,28 @@ interface GrowthSectionProps {
 
 const GrowthSection = ({ data, sectionNumber = 5 }: GrowthSectionProps) => {
   const { growth, username, personalityType } = data;
+
+  const growthSuperpowers = [
+    {
+      title: "Being Ambitious:",
+      description: `You set big goals and go for them, ${username}—like always pushing yourself to the next level.`
+    },
+    {
+      title: "Staying Focused:",
+      description: "You don't let obstacles stop you, which makes your growth journey so powerful."
+    }
+  ];
+
+  const growthAreas = [
+    {
+      title: "Being Patient:",
+      description: "You might get frustrated with delays—like stressing if a goal takes longer than expected."
+    },
+    {
+      title: "Connecting Emotionally:",
+      description: "You might focus on results over feelings—like not noticing when you need a break."
+    }
+  ];
 
   return (
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
@@ -46,76 +70,18 @@ const GrowthSection = ({ data, sectionNumber = 5 }: GrowthSectionProps) => {
         {/* Growth Superpowers and Areas to Grow */}
         <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
           {/* Growth Superpowers */}
-          <Card className="h-full">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="rounded-full bg-primary p-3 mr-4 shadow flex items-center justify-center">
-                  <Award
-                    className="h-6 w-6 text-primary-foreground"
-                    strokeWidth={2.2}
-                  />
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Your Growth Superpowers
-                </h3>
-              </div>
-
-              <ul className="space-y-5 text-base ml-4">
-                <li className="flex items-start">
-                  <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                  <p className="text-card-foreground text-base md:text-lg">
-                    <span className="font-medium">Being Ambitious:</span> You set
-                    big goals and go for them, {username}—like always pushing
-                    yourself to the next level.
-                  </p>
-                </li>
-                <li className="flex items-start mt-4">
-                  <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                  <p className="text-card-foreground text-base md:text-lg">
-                    <span className="font-medium">Staying Focused:</span> You
-                    don't let obstacles stop you, which makes your growth journey
-                    so powerful.
-                  </p>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <SuperpowersCard 
+            title="Your Growth Superpowers"
+            items={growthSuperpowers}
+            icon={<Award className="h-6 w-6 " strokeWidth={2.2} />}
+          />
 
           {/* Where You Can Grow a Bit */}
-          <Card className="h-full">
-            <CardContent className="p-8">
-              <div className="flex items-center mb-6">
-                <div className="rounded-full bg-secondary p-3 mr-4 shadow flex items-center justify-center">
-                  <Lightbulb
-                    className="h-6 w-6 text-secondary-foreground"
-                    strokeWidth={2.2}
-                  />
-                </div>
-                <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Where You Can Grow a Bit
-                </h3>
-              </div>
-
-              <ul className="space-y-5 text-base ml-4">
-                <li className="flex items-start">
-                  <div className="h-6 w-6 rounded-full border-2 border-secondary mr-3 flex-shrink-0 mt-1" />
-                  <p className="text-card-foreground text-base md:text-lg">
-                    <span className="font-medium">Being Patient:</span> You might
-                    get frustrated with delays—like stressing if a goal takes
-                    longer than expected.
-                  </p>
-                </li>
-                <li className="flex items-start mt-4">
-                  <div className="h-6 w-6 rounded-full border-2 border-secondary mr-3 flex-shrink-0 mt-1" />
-                  <p className="text-card-foreground text-base md:text-lg">
-                    <span className="font-medium">Connecting Emotionally:</span>{" "}
-                    You might focus on results over feelings—like not noticing
-                    when you need a break.
-                  </p>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+          <GrowthAreasCard
+            title="Where You Can Grow a Bit"
+            items={growthAreas}
+            icon={<Lightbulb className="h-6 w-6 " strokeWidth={2.2} />}
+          />
         </div>
 
         {/* Let's Make It Happen section */}

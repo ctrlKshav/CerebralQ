@@ -5,6 +5,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
+import SuperpowersCard from "./shared/SuperpowersCard";
+import GrowthAreasCard from "./shared/GrowthAreasCard";
 
 interface RelationshipSectionProps {
   data: ResultData;
@@ -20,6 +22,81 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
       case "Romantic": return <Heart className={`h-5 w-5 ${className}`} />;
       case "Friendship": return <Users className={`h-5 w-5 ${className}`} />;
       default: return <Users className={`h-5 w-5 ${className}`} />;
+    }
+  };
+
+  // Define the relationship superpowers and growth areas for each type
+  const getRelationshipSuperpowers = (type: string) => {
+    if (type === "Romantic") {
+      return [
+        {
+          title: "Being Motivational:",
+          description: `You lift people up, ${username}—like cheering on a partner to go after a big opportunity.`
+        },
+        {
+          title: "Taking Charge:",
+          description: "You make things happen, like planning a memorable anniversary dinner for your partner."
+        }
+      ];
+    } else if (type === "Friendship") {
+      return [
+        {
+          title: "Being Inspiring:",
+          description: `Your friends look up to you, ${username}—like when you motivate them to join a charity run.`
+        },
+        {
+          title: "Planning Big Moments:",
+          description: "You create awesome experiences, like organizing a group trip everyone talks about for years."
+        }
+      ];
+    } else {
+      return [
+        {
+          title: "Natural Leadership:",
+          description: `You excel at taking charge, ${username}—like confidently leading a team through a challenging project.`
+        },
+        {
+          title: "Strategic Thinking:",
+          description: "You're excellent at seeing the big picture and creating plans to reach ambitious goals."
+        }
+      ];
+    }
+  };
+
+  const getRelationshipGrowthAreas = (type: string) => {
+    if (type === "Romantic") {
+      return [
+        {
+          title: "Being Vulnerable:",
+          description: "You might focus on goals and miss the emotions—like not sharing when you're feeling stressed."
+        },
+        {
+          title: "Slowing Down:",
+          description: "You might push too hard—like encouraging a loved one to act before they're ready."
+        }
+      ];
+    } else if (type === "Friendship") {
+      return [
+        {
+          title: "Listening More:",
+          description: "You might focus on your ideas—like not hearing a friend's quieter suggestion during a group plan."
+        },
+        {
+          title: "Being Flexible:",
+          description: "You might stick to your vision—like pushing for a plan when your friends want to do something else."
+        }
+      ];
+    } else {
+      return [
+        {
+          title: "Delegating Effectively:",
+          description: "You might take on too much—like handling tasks yourself instead of trusting team members with responsibilities."
+        },
+        {
+          title: "Patience with Process:",
+          description: "You might rush toward results—like skipping important steps when you're excited about a project."
+        }
+      ];
     }
   };
   
@@ -93,142 +170,18 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
             >
               <div className="grid md:grid-cols-2 gap-8 mb-16">
                 {/* Superpowers card */}
-                <Card className="h-full">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-6">
-                      <div className="rounded-full bg-primary p-3 mr-4 shadow-lg">
-                        <Award className="h-6 w-6 text-primary-foreground" />
-                      </div>
-                      <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                        Your {relationship.type} Superpowers
-                      </h3>
-                    </div>
-
-                    <ul className="space-y-5 text-base ml-4">
-                      {relationship.type === "Romantic" ? (
-                        <>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Being Motivational:</p>
-                              <p className="text-muted-foreground">You lift people up, {username}—like cheering on a partner to go after a big opportunity.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Taking Charge:</p>
-                              <p className="text-muted-foreground">You make things happen, like planning a memorable anniversary dinner for your partner.</p>
-                            </div>
-                          </li>
-                        </>
-                      ) : relationship.type === "Friendship" ? (
-                        <>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Being Inspiring:</p>
-                              <p className="text-muted-foreground">Your friends look up to you, {username}—like when you motivate them to join a charity run.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Planning Big Moments:</p>
-                              <p className="text-muted-foreground">You create awesome experiences, like organizing a group trip everyone talks about for years.</p>
-                            </div>
-                          </li>
-                        </>
-                      ) : (
-                        <>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Natural Leadership:</p>
-                              <p className="text-muted-foreground">You excel at taking charge, {username}—like confidently leading a team through a challenging project.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Strategic Thinking:</p>
-                              <p className="text-muted-foreground">You're excellent at seeing the big picture and creating plans to reach ambitious goals.</p>
-                            </div>
-                          </li>
-                        </>
-                      )}
-                    </ul>
-                  </CardContent>
-                </Card>
+                <SuperpowersCard 
+                  title={`Your ${relationship.type} Superpowers`}
+                  items={getRelationshipSuperpowers(relationship.type)}
+                  icon={<Award className="h-6 w-6 " />}
+                />
 
                 {/* Growth areas card */}
-                <Card className="h-full">
-                  <CardContent className="p-8">
-                    <div className="flex items-center mb-6">
-                      <div className="rounded-full bg-primary p-3 mr-4 shadow-lg">
-                        <ArrowRight className="h-6 w-6 text-primary-foreground" />
-                      </div>
-                      <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                        Where You Can Grow a Bit
-                      </h3>
-                    </div>
-
-                    <ul className="space-y-5 text-base ml-4">
-                      {relationship.type === "Romantic" ? (
-                        <>
-                          <li className="flex items-start">
-                            <div className="h-6 w-6 rounded-full border-2 border-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Being Vulnerable:</p>
-                              <p className="text-muted-foreground">You might focus on goals and miss the emotions—like not sharing when you're feeling stressed.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <div className="h-6 w-6 rounded-full border-2 border-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Slowing Down:</p>
-                              <p className="text-muted-foreground">You might push too hard—like encouraging a loved one to act before they're ready.</p>
-                            </div>
-                          </li>
-                        </>
-                      ) : relationship.type === "Friendship" ? (
-                        <>
-                          <li className="flex items-start">
-                            <div className="h-6 w-6 rounded-full border-2 border-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Listening More:</p>
-                              <p className="text-muted-foreground">You might focus on your ideas—like not hearing a friend's quieter suggestion during a group plan.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <div className="h-6 w-6 rounded-full border-2 border-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Being Flexible:</p>
-                              <p className="text-muted-foreground">You might stick to your vision—like pushing for a plan when your friends want to do something else.</p>
-                            </div>
-                          </li>
-                        </>
-                      ) : (
-                        <>
-                          <li className="flex items-start">
-                            <div className="h-6 w-6 rounded-full border-2 border-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Delegating Effectively:</p>
-                              <p className="text-muted-foreground">You might take on too much—like handling tasks yourself instead of trusting team members with responsibilities.</p>
-                            </div>
-                          </li>
-                          <li className="flex items-start">
-                            <div className="h-6 w-6 rounded-full border-2 border-primary mr-3 flex-shrink-0 mt-1" />
-                            <div>
-                              <p className="font-medium text-lg mb-1 text-card-foreground">Patience with Process:</p>
-                              <p className="text-muted-foreground">You might rush toward results—like skipping important steps when you're excited about a project.</p>
-                            </div>
-                          </li>
-                        </>
-                      )}
-                    </ul>
-                  </CardContent>
-                </Card>
+                <GrowthAreasCard
+                  title="Where You Can Grow a Bit"
+                  items={getRelationshipGrowthAreas(relationship.type)}
+                  icon={<ArrowRight className="h-6 w-6 " />}
+                />
               </div>
 
               {/* Let's Make It Happen card with image */}
