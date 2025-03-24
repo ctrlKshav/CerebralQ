@@ -1,5 +1,5 @@
 import React from "react";
-import { ResultData } from "@/types/tests/mbti";
+import { CareerPath, PersonalityDatabase, ResultData } from "@/types/tests/mbti";
 import {
   CheckCircle,
   Briefcase,
@@ -16,12 +16,12 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface CareerPathSectionProps {
-  data: ResultData;
+  username: string | null;
+  career: CareerPath;
   sectionNumber?: number;
 }
 
-const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) => {
-  const { career, username } = data;
+const CareerPathSection = ({ username, career, sectionNumber = 3 }: CareerPathSectionProps) => {
   const {superpowers, growthAreas, actionSteps} = career;
   // Career image mapping based on title
   const getCareerImage = (title: string) => {

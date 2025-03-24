@@ -4,18 +4,19 @@ import { Circle, MessageCircle, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
-import { ResultData } from "@/types/tests/mbti";
+import { CommunityConnection, ResultData } from "@/types/tests/mbti";
 
 interface CommunitySectionProps {
-  data: ResultData;
+  username: string | null;
+  communityConnection: CommunityConnection;
   sectionNumber?: number;
 }
 
 const CommunitySection = ({ 
-  data,
+  username,
+  communityConnection,
   sectionNumber = 9 
 }: CommunitySectionProps) => {
-  const { communityConnection, username } = data;
   const { summary, suggestions } = communityConnection;
   return (
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">

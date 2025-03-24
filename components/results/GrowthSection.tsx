@@ -1,5 +1,5 @@
 import React from "react";
-import { ResultData } from "@/types/tests/mbti";
+import { GrowthJourney, ResultData } from "@/types/tests/mbti";
 import { CheckCircle, Award, MessageSquare, Lightbulb } from "lucide-react";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
@@ -8,12 +8,12 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface GrowthSectionProps {
-  data: ResultData;
+  username: string | null;
+  growth: GrowthJourney
   sectionNumber?: number;
 }
 
-const GrowthSection = ({ data, sectionNumber = 5 }: GrowthSectionProps) => {
-  const { growth, username } = data;
+const GrowthSection = ({ username, growth, sectionNumber = 5 }: GrowthSectionProps) => {
   const { superpowers: growthSuperpowers, growthAreas, actionSteps: growthActionSteps } = growth;
 
   return (

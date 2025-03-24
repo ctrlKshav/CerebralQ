@@ -1,7 +1,7 @@
 ﻿import React, { useState } from "react";
 import { ReactNode } from "react";
 import Image from "next/image";
-import { ResultData } from "@/types/tests/mbti";
+import { DailyHabits, ResultData } from "@/types/tests/mbti";
 import { CheckCircle, Clock, Sun, Moon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
@@ -11,15 +11,17 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface DailyHabitsSectionProps {
-  data: ResultData;
+  username: string | null;
+  dailyHabits: DailyHabits;
   sectionNumber?: number;
 }
 
 const DailyHabitsSection = ({
-  data,
+  username,
+  dailyHabits,
   sectionNumber = 6,
 }: DailyHabitsSectionProps) => {
-  const { dailyHabits, username } = data;
+  
   const { morning , afternoon, evening } = dailyHabits.habits;
   const communicationTips = dailyHabits.communication.tips;
 

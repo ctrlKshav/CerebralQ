@@ -289,7 +289,7 @@ export interface ResultData {
   personalityDescription: PersonalityDescription;
   completionDate: string;
   traitScores: TraitScores | null;
-  personalityData: PersonalityDatabase | null;
+  personalityData: PersonalityDatabase;
 }
 
 export interface PersonalityDatabase {

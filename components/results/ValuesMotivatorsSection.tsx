@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import React from "react";
-import { ResultData } from "@/types/tests/mbti";
+import { ResultData, ValuesAndMotivators } from "@/types/tests/mbti";
 import { Heart, Star, TrendingUp, Target, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SuperpowersCard from "./shared/SuperpowersCard";
@@ -11,12 +11,13 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface ValuesMotivatorSectionProps {
-  data: ResultData;
+  username: string | null;
+  valuesAndMotivators: ValuesAndMotivators;
   sectionNumber?: number;
 }
 
-const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSectionProps) => {
-  const { username, valuesAndMotivators } = data;
+const ValuesMotivatorSection = ({ username, valuesAndMotivators, sectionNumber = 7 }: ValuesMotivatorSectionProps) => {
+  
   const { actionItems, coreValues, motivators } = valuesAndMotivators;
 
 

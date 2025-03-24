@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ResultData } from "@/types/tests/mbti";
+import { RelationshipCompatibility, ResultData } from "@/types/tests/mbti";
 import { Heart, Users, Briefcase, CheckCircle, ArrowRight, MessageSquare, Award } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
@@ -11,12 +11,13 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface RelationshipSectionProps {
-  data: ResultData;
+  username: string | null;
+  relationships: RelationshipCompatibility[];
   sectionNumber?: number;
 }
 
-const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionProps) => {
-  const { relationships, username } = data;
+const RelationshipSection = ({ username, relationships, sectionNumber = 4 }: RelationshipSectionProps) => {
+
   const [activeTab, setActiveTab] = useState("Friendship");
   
   const getIconForType = (type: string, className: string) => {

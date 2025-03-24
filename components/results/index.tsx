@@ -71,7 +71,7 @@ export default function Results() {
           return;
         }
 
-        const personalityData = getPersonalityData(personalityType);
+        const personalityData = getPersonalityData("ENTJ");
 
         // Set all result data at once
         setResultData({
@@ -195,40 +195,72 @@ export default function Results() {
 
         {/* Career Path */}
         <CareerPathSection
-          data={resultData || sampleResultData}
+          username={resultData?.username || null}
+          career={
+            resultData?.personalityData?.career ||
+            sampleResultData.personalityData?.career
+          }
           sectionNumber={2}
         />
 
         {/* Relationship Insights */}
         <RelationshipSection
-          data={resultData || sampleResultData}
+          username={resultData?.username || null}
+          relationships={
+            resultData?.personalityData?.relationships ||
+            sampleResultData.personalityData?.relationships
+          }
           sectionNumber={3}
         />
 
         {/* Growth Journey */}
         <GrowthSection
-          data={resultData || sampleResultData}
+          username={resultData?.username || null}
+          growth={
+            resultData?.personalityData?.growth ||
+            sampleResultData.personalityData?.growth
+          }
           sectionNumber={4}
         />
 
         {/* Daily Habits */}
         <DailyHabitsSection
-          data={resultData || sampleResultData}
+          username={resultData?.username || null}
+          dailyHabits={
+            resultData?.personalityData?.dailyHabits ||
+            sampleResultData.personalityData?.dailyHabits
+          }
           sectionNumber={5}
         />
 
         {/* Values & Motivators */}
         <ValuesMotivatorSection
-          data={resultData || sampleResultData}
+          username={resultData?.username || null}
+          valuesAndMotivators={
+            resultData?.personalityData?.valuesAndMotivators ||
+            sampleResultData.personalityData?.valuesAndMotivators
+          }
           sectionNumber={6}
         />
 
         {/* Community Connection */}
-        <CommunitySection data={resultData || sampleResultData} sectionNumber={7} />
+        <CommunitySection
+          username={resultData?.username ?? null}
+          communityConnection={
+            resultData?.personalityData.communityConnection ||
+            sampleResultData.personalityData.communityConnection
+          }
+          sectionNumber={7}
+        />
 
         {/* Action Plan */}
         <ActionPlanSection
-          data={resultData || sampleResultData}
+          username={resultData?.username || null}
+          personalityType={personalityType}
+          actionItems={
+            resultData?.personalityData.actionItems ||
+            sampleResultData.personalityData.actionItems
+          }
           sectionNumber={8}
         />
       </main>

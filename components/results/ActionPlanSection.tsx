@@ -3,18 +3,20 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Download, Save } from "lucide-react";
-import { ResultData } from "@/types/tests/mbti";
+import { ActionItem, ResultData } from "@/types/tests/mbti";
 import { Card } from "@/components/ui/card";
 import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface ActionPlanSectionProps {
-  data: ResultData;
+  username: string | null;
+  personalityType: string;
+  actionItems: ActionItem[];
   sectionNumber?: number;
 }
 
-const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps) => {
-  const { username, personalityType = "ENTJ", actionItems } = data;
+const ActionPlanSection = ({ username, personalityType, actionItems, sectionNumber = 10 }: ActionPlanSectionProps) => {
+  
 
   // Initialize state for checkboxes based on completed status from data
   const [checkedItems, setCheckedItems] = useState<{[key: number]: boolean}>({});
