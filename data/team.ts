@@ -3,8 +3,8 @@ import { TeamMember } from "@/types/team";
 export const teamMembers: TeamMember[] = [
   {
     name: "Anshika Kushwaha",
-    role: "Product Manager",
-    bio: "Leads the product team and ensures we're building the right things. Loves a good cup of coffee",
+    role: "Boss Woman",
+    bio: "Ya Right",
     imageUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop",
 
@@ -16,7 +16,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Brishti Sharma",
     role: "Design Lead",
-    bio: "Crafts beautiful interfaces and pixel-perfect designs. Enjoys a good book.",
+    bio: "Hi! I’m Brishti, and at 19 I think I've found my muse.",
     imageUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop",
     socialLinks: {
@@ -27,7 +27,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Sneha Janathe",
     role: "Content Strategist",
-    bio: "Writes engaging copy and crafts compelling stories. Loves a good pun.",
+    bio: "Hi, Sneha here! I'm helping to build C4E",
     imageUrl:
       "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop",
     socialLinks: {
@@ -38,7 +38,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Keshav Mittal",
     role: "Lead Developer",
-    bio: "Keeps the servers happy and the database running. Plays guitar when not debugging.",
+    bio: "I build websites.",
     imageUrl:
       "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?q=80&w=800&auto=format&fit=crop",
     socialLinks: {
