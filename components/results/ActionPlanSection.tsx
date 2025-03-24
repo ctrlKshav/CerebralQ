@@ -14,16 +14,8 @@ interface ActionPlanSectionProps {
 }
 
 const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps) => {
-  const { username, personalityType = "ENTJ" } = data;
-  
-  // Default action items if not provided in data
-  const defaultItems = [
-    "Ask a coworker for input: Say \"What do you think we could do differently here?\"",
-    "Share a feeling with a loved one: Say \"I've been feeling a bit overwhelmed lately.\"",
-    "Let your friends take the lead on a plan: Say \"What do you guys want to do this time?\"",
-    "Reflect on what keeps you going: Journal about one big goal you're working toward.",
-    "Join our community chat and say hi to another ENTJ—you'll love connecting!"
-  ];
+  const { username, personalityType = "ENTJ", actionItems } = data;
+
   
   // Initialize state for checkboxes
   const [checkedItems, setCheckedItems] = useState<{[key: number]: boolean}>({});
@@ -60,7 +52,7 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
               {/* Checklist */}
               <div className="bg-card/50 rounded-xl p-6 mb-10 shadow-sm">
                 <ul className="space-y-4">
-                  {defaultItems.map((item, index) => (
+                  {actionItems.map((item, index) => (
                     <li key={index} className="flex items-start">
                       <Checkbox 
                         id={`item-${index}`} 
@@ -72,7 +64,7 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
                         htmlFor={`item-${index}`} 
                         className={`ml-3 text-base md:text-lg ${checkedItems[index] ? 'text-muted-foreground line-through' : 'text-card-foreground'}`}
                       >
-                        {item}
+                        {item.description}
                       </label>
                     </li>
                   ))}
