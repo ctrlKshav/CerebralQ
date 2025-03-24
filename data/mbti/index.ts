@@ -189,20 +189,6 @@ export const sampleResultData: ResultData = {
       "Join our weekly \"Community Builders\" chat to share your favorite ways to connect with others"
     ]
   },
-  journalingPrompts: [
-    {
-      question: "What's one kind thing you've done lately that made you feel good?",
-      hint: "How can you do more of that?"
-    },
-    {
-      question: "When do you feel most connected to others?",
-      hint: "How can you create more of these moments in your life?"
-    },
-    {
-      question: "In what situations do you find it hardest to say no?",
-      hint: "What's one small boundary you could set this week?"
-    }
-  ],
   actionItems: [
     {
       task: "Practice saying 'no' once this week",

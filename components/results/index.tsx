@@ -75,6 +75,10 @@ export default function Results() {
           career: sampleResultData.career,
           relationships: sampleResultData.relationships,
           growth: sampleResultData.growth,
+          dailyHabits: sampleResultData.dailyHabits,
+          communication: sampleResultData.communication,
+          valuesAndMotivators: sampleResultData.valuesAndMotivators,
+          communityConnection: sampleResultData.communityConnection,
           actionItems: sampleResultData.actionItems,
         });
 
@@ -164,7 +168,7 @@ export default function Results() {
 
   return (
     <div className="min-h-screen bg-background">
-      <main className="container mx-auto px-4 py-8 space-y-8">
+      <main className="container mx-auto px-4  space-y-8">
         <HeroSection
           personalityType={personalityType}
           personalityDescription={personalityDescription}

@@ -196,7 +196,6 @@ export interface ResultData {
   communication: CommunicationStyle;
   valuesAndMotivators: ValuesAndMotivators;
   communityConnection: CommunityConnection;
-  journalingPrompts: JournalingPrompt[];
 }
 
 export interface PersonalityBlueprint {
@@ -269,11 +268,6 @@ export interface ValuesAndMotivators {
 export interface CommunityConnection {
   summary: string;
   suggestions: string[];
-}
-
-export interface JournalingPrompt {
-  question: string;
-  hint?: string;
 }
 
 export interface ActionItem {
