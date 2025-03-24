@@ -1,8 +1,6 @@
 import React from "react";
 import { ResultData } from "@/types/tests/mbti";
 import { CheckCircle, Award, MessageSquare, Lightbulb } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import SuperpowersCard from "./shared/SuperpowersCard";
 import GrowthAreasCard from "./shared/GrowthAreasCard";
 import ActionStepsCard from "./shared/ActionStepsCard";
@@ -15,44 +13,8 @@ interface GrowthSectionProps {
 }
 
 const GrowthSection = ({ data, sectionNumber = 5 }: GrowthSectionProps) => {
-  const { growth, username, personalityType } = data;
-
-  const growthSuperpowers = [
-    {
-      title: "Being Ambitious:",
-      description: `You set big goals and go for them, ${username}—like always pushing yourself to the next level.`
-    },
-    {
-      title: "Staying Focused:",
-      description: "You don't let obstacles stop you, which makes your growth journey so powerful."
-    }
-  ];
-
-  const growthAreas = [
-    {
-      title: "Being Patient:",
-      description: "You might get frustrated with delays—like stressing if a goal takes longer than expected."
-    },
-    {
-      title: "Connecting Emotionally:",
-      description: "You might focus on results over feelings—like not noticing when you need a break."
-    }
-  ];
-
-  const growthActionSteps = [
-    {
-      number: 1,
-      description: "If you're feeling impatient, take a moment to reflect—like \"What's one small step I can take today?\""
-    },
-    {
-      number: 2,
-      description: "Try a new emotional check-in this week, like journaling about how you're feeling, to connect with yourself."
-    },
-    {
-      number: 3,
-      description: `Write down three things you love about being an ${personalityType} when you're feeling hard on yourself, ${username}.`
-    }
-  ];
+  const { growth, username } = data;
+  const { superpowers: growthSuperpowers, growthAreas, actionSteps: growthActionSteps } = growth;
 
   return (
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">

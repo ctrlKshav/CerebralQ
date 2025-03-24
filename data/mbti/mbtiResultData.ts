@@ -210,23 +210,6 @@ export const sampleResultData: ResultData = {
         description: "Write down three things you love about being an ENTJ when you're feeling hard on yourself."
       }
     ],
-    milestones: [
-      {
-        title: "Practice active listening",
-        description: "Learn to slow down and truly hear others' perspectives before responding.",
-        completed: false
-      },
-      {
-        title: "Develop emotional intelligence",
-        description: "Build awareness of your own emotions and those of others around you.",
-        completed: false
-      },
-      {
-        title: "Balance leadership with collaboration",
-        description: "Find ways to lead while empowering others to contribute meaningfully.",
-        completed: false
-      }
-    ]
   },
   dailyHabits: {
     summary: "You love a routine that keeps you on track, and it totally works for you—your days are focused and productive, and you feel best when you're in control. Adding a little downtime can help you recharge for your big goals.",

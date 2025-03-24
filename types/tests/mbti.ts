@@ -239,7 +239,6 @@ export interface GrowthJourney {
   superpowers: SuperpowerItem[];
   growthAreas: GrowthAreaItem[];
   actionSteps: ActionStepItem[];
-  milestones: GrowthMilestone[];
 }
 
 export interface GrowthMilestone {
