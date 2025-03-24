@@ -42,12 +42,24 @@ export const sampleResultData: ResultData = {
   career: {
     summary: "You're a total force in jobs where you can lead and strategize—like business management, entrepreneurship, or even something high-stakes like law. You love roles that let you take charge and achieve big goals, but you might get frustrated if the work feels inefficient or if others don't keep up with your pace.",
     superpowers: [
-      "Leading with Vision",
-      "Getting Results"
+      {
+        title: "Leading with Vision",
+        description: "You inspire others with your big ideas—like pitching a game-changing plan to your team."
+      },
+      {
+        title: "Getting Results",
+        description: "You're a pro at making things happen, like hitting every target on a tight deadline."
+      }
     ],
     growthAreas: [
-      "Being Patient",
-      "Listening to Others"
+      {
+        title: "Being Patient",
+        description: "You might push too hard for results—like getting annoyed if a project isn't moving fast enough."
+      },
+      {
+        title: "Listening to Others",
+        description: "You might focus on your vision and miss input—like not hearing a teammate's alternative idea."
+      }
     ],
     matches: [
       {
@@ -72,9 +84,18 @@ export const sampleResultData: ResultData = {
       }
     ],
     actionSteps: [
-      "If things are moving slowly, take a deep breath and break the task into smaller steps to keep progress steady.",
-      "Ask a coworker for their input this week—like \"What do you think we could do differently here?\"—to open up to new ideas.",
-      "Look for jobs that let you lead and innovate, like being a CEO or a consultant—your kind of vibe!"
+      {
+        number: 1,
+        description: "If things are moving slowly, take a deep breath and break the task into smaller steps to keep progress steady."
+      },
+      {
+        number: 2,
+        description: "Ask a coworker for their input this week—like \"What do you think we could do differently here?\"—to open up to new ideas."
+      },
+      {
+        number: 3,
+        description: "Look for jobs that let you lead and innovate, like being a CEO or a consultant—your kind of vibe!"
+      }
     ]
   },
   relationships: [
@@ -83,17 +104,38 @@ export const sampleResultData: ResultData = {
       description: "You're the driven, inspiring one in your relationships. You show love by pushing others to be their best, like encouraging your partner to chase their dreams or organizing a family goal-setting session, but you might need to work on slowing down to connect emotionally.",
       compatibleTypes: ["ISFP", "ISTP", "ENFP", "INFP"],
       superpowers: [
-        "Being Motivational",
-        "Taking Charge"
+        {
+          title: "Being Motivational",
+          description: "You lift people up—like cheering on a friend to go after a big opportunity."
+        },
+        {
+          title: "Taking Charge",
+          description: "You make things happen, like planning a memorable anniversary dinner for your partner."
+        }
       ],
       growthAreas: [
-        "Being Vulnerable",
-        "Slowing Down"
+        {
+          title: "Being Vulnerable",
+          description: "You might focus on goals and miss the emotions—like not sharing when you're feeling stressed."
+        },
+        {
+          title: "Slowing Down",
+          description: "You might push too hard—like encouraging a loved one to act before they're ready."
+        }
       ],
       tips: [
-        "This week, share one feeling with someone you care about—like \"I've been feeling a bit overwhelmed lately.\"",
-        "If you're encouraging someone, check in first—like \"I think this could be great for you, but how do you feel about it?\"",
-        "Look for people who admire your drive—someone who loves your ambitious energy as much as you do."
+        {
+          number: 1,
+          description: "This week, share one feeling with someone you care about—like \"I've been feeling a bit overwhelmed lately.\""
+        },
+        {
+          number: 2,
+          description: "If you're encouraging someone, check in first—like \"I think this could be great for you, but how do you feel about it?\""
+        },
+        {
+          number: 3,
+          description: "Look for people who admire your drive—someone who loves your ambitious energy as much as you do."
+        }
       ]
     },
     {
@@ -101,34 +143,72 @@ export const sampleResultData: ResultData = {
       description: "You're the friend who takes the lead—always ready to organize a group adventure or motivate your crew to tackle a challenge. You love having a solid group of friends who respect your leadership and share your drive for success.",
       compatibleTypes: ["INTP", "ENTP", "INFJ", "INTJ"],
       superpowers: [
-        "Being Inspiring",
-        "Planning Big Moments"
+        {
+          title: "Being Inspiring",
+          description: "Your friends look up to you—like when you motivate them to join a charity run."
+        },
+        {
+          title: "Planning Big Moments",
+          description: "You create awesome experiences, like organizing a group trip everyone talks about for years."
+        }
       ],
       growthAreas: [
-        "Listening More",
-        "Being Flexible"
+        {
+          title: "Listening More",
+          description: "You might focus on your ideas—like not hearing a friend's quieter suggestion during a group plan."
+        },
+        {
+          title: "Being Flexible",
+          description: "You might stick to your vision—like pushing for a plan when your friends want to do something else."
+        }
       ],
       tips: [
-        "Let your friends take the lead on a plan this month—like saying, \"What do you guys want to do this time?\"",
-        "Practice active listening—like asking a friend, \"What do you think about this?\" and really hearing them out.",
-        "Connect with friends who appreciate your drive but also help you slow down occasionally"
+        {
+          number: 1,
+          description: "Let your friends take the lead on a plan this month—like saying, \"What do you guys want to do this time?\""
+        },
+        {
+          number: 2,
+          description: "Practice active listening—like asking a friend, \"What do you think about this?\" and really hearing them out."
+        }
       ]
     }
   ],
   growth: {
     summary: "Growth for you is all about becoming an even better leader while learning to connect more deeply. You're amazing at setting goals and making them happen, but you might need to work on being more patient and in tune with your emotions.",
     superpowers: [
-      "Being Ambitious",
-      "Staying Focused"
+      {
+        title: "Being Ambitious",
+        description: "You set big goals and go for them—like always pushing yourself to the next level."
+      },
+      {
+        title: "Staying Focused",
+        description: "You don't let obstacles stop you, which makes your growth journey so powerful."
+      }
     ],
     growthAreas: [
-      "Being Patient",
-      "Connecting Emotionally"
+      {
+        title: "Being Patient",
+        description: "You might get frustrated with delays—like stressing if a goal takes longer than expected."
+      },
+      {
+        title: "Connecting Emotionally",
+        description: "You might focus on results over feelings—like not noticing when you need a break."
+      }
     ],
     actionSteps: [
-      "If you're feeling impatient, take a moment to reflect—like \"What's one small step I can take today?\"",
-      "Try a new emotional check-in this week, like journaling about how you're feeling, to connect with yourself.",
-      "Write down three things you love about being an ENTJ when you're feeling hard on yourself."
+      {
+        number: 1,
+        description: "If you're feeling impatient, take a moment to reflect—like \"What's one small step I can take today?\""
+      },
+      {
+        number: 2,
+        description: "Try a new emotional check-in this week, like journaling about how you're feeling, to connect with yourself."
+      },
+      {
+        number: 3,
+        description: "Write down three things you love about being an ENTJ when you're feeling hard on yourself."
+      }
     ],
     milestones: [
       {
