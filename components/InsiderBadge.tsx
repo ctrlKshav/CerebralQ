@@ -1,7 +1,8 @@
 ﻿import { Crown } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { HybridTooltip, HybridTooltipContent, HybridTooltipTrigger } from "@/components/ui/tooltip-hybrid";
 
 interface InsiderBadgeProps {
   className?: string;
@@ -23,8 +24,8 @@ export default function InsiderBadge({ className, size = "md" }: InsiderBadgePro
 
   return (
     <TooltipProvider>
-      <Tooltip delayDuration={100}>
-        <TooltipTrigger asChild>
+      <HybridTooltip delayDuration={100}>
+        <HybridTooltipTrigger asChild>
           <Badge 
             variant="default"
             className={cn(
@@ -37,11 +38,11 @@ export default function InsiderBadge({ className, size = "md" }: InsiderBadgePro
             <Crown className={cn(iconSizes[size])} />
             <span>Insider</span>
           </Badge>
-        </TooltipTrigger>
-        <TooltipContent side="bottom" className="text-white">
+        </HybridTooltipTrigger>
+        <HybridTooltipContent side="bottom" className="text-white">
           <p>C4E Organisation Member</p>
-        </TooltipContent>
-      </Tooltip>
+        </HybridTooltipContent>
+      </HybridTooltip>
     </TooltipProvider>
   );
 }
