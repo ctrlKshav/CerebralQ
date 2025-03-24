@@ -181,21 +181,6 @@ export interface MBTIAnswer {
   direction: "left" | "right";
 }
 
-export interface ResultData {
-  username: string | null;
-  personalityType: string;
-  personalityDescription: PersonalityDescription;
-  completionDate: string;
-  traitScores: TraitScores | null;
-  career: CareerPath;
-  relationships: RelationshipCompatibility[];
-  growth: GrowthJourney;
-  actionItems: ActionItem[];
-  dailyHabits: DailyHabits;
-  valuesAndMotivators: ValuesAndMotivators;
-  communityConnection: CommunityConnection;
-}
-
 export interface PersonalityBlueprint {
   traits: TraitDescription[];
   summary: string;
@@ -262,8 +247,9 @@ export interface CommunicationStyle {
 
 export interface ValuesAndMotivators {
   summary: string;
-  coreValues: string[];
-  reflectionQuestions: string[];
+  coreValues: SuperpowerItem[];
+  motivators: GrowthAreaItem[];
+  actionItems: ActionStepItem[];
 }
 
 export interface CommunityConnection {
@@ -295,4 +281,20 @@ export interface HabitItem {
 export interface ActionStepItem {
   number: number;
   description: string;
+}
+
+
+export interface ResultData {
+  username: string | null;
+  personalityType: string;
+  personalityDescription: PersonalityDescription;
+  completionDate: string;
+  traitScores: TraitScores | null;
+  career: CareerPath;
+  relationships: RelationshipCompatibility[];
+  growth: GrowthJourney;
+  actionItems: ActionItem[];
+  dailyHabits: DailyHabits;
+  valuesAndMotivators: ValuesAndMotivators;
+  communityConnection: CommunityConnection;
 }

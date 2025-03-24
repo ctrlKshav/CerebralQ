@@ -16,44 +16,9 @@ interface ValuesMotivatorSectionProps {
 }
 
 const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSectionProps) => {
-  const { username, personalityType, actionItems } = data;
+  const { username, valuesAndMotivators } = data;
+  const { actionItems, coreValues, motivators } = valuesAndMotivators;
 
-  const coreValues = [
-    {
-      title: "Achievement:",
-      description: "You're driven to accomplish goals and prove your competence in everything you do."
-    },
-    {
-      title: "Leadership:",
-      description: "You value taking charge and directing others toward success with clarity and vision."
-    }
-  ];
-
-  const motivators = [
-    {
-      title: "Recognition:",
-      description: "Being recognized for your achievements and leadership drives you forward."
-    },
-    {
-      title: "Impact:",
-      description: "Working with decisive, intelligent people and seeing your efforts create real change."
-    }
-  ];
-
-  const actionSteps = [
-    {
-      number: 1,
-      description: "Set aside 15 minutes this week to reflect on your biggest achievement—what values did it fulfill for you?"
-    },
-    {
-      number: 2,
-      description: "When you feel unmotivated, reconnect with your achievement drive by setting a small, achievable goal."
-    },
-    {
-      number: 3,
-      description: "Seek out a leadership opportunity in your community or workplace to flex your leadership"
-    }
-  ];
 
   return (
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
@@ -86,7 +51,7 @@ const ValuesMotivatorSection = ({ data, sectionNumber = 7 }: ValuesMotivatorSect
 
         {/* Let's Make It Happen section */}
         <ActionStepsCard
-          steps={actionSteps}
+          steps={actionItems}
           imageSrc="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
           imageAlt="Values and motivators"
           className="mb-16 mx-auto"
