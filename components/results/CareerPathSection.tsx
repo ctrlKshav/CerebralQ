@@ -22,44 +22,7 @@ interface CareerPathSectionProps {
 
 const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) => {
   const { career, username } = data;
-
-  const careerSuperpowers = [
-    {
-      title: "Leading with Vision:",
-      description: `You inspire others with your big ideas, ${username}—like pitching a game-changing plan to your team.`
-    },
-    {
-      title: "Getting Results:",
-      description: "You're a pro at making things happen, like hitting every target on a tight deadline."
-    }
-  ];
-
-  const careerGrowthAreas = [
-    {
-      title: "Being Patient:",
-      description: "You might push too hard for results—like getting annoyed if a project isn't moving fast enough."
-    },
-    {
-      title: "Listening to Others:",
-      description: "You might focus on your vision and miss input—like not hearing a teammate's alternative idea."
-    }
-  ];
-
-  const careerActionSteps = [
-    {
-      number: 1,
-      description: "If things are moving slowly, take a deep breath and break the task into smaller steps to keep progress steady."
-    },
-    {
-      number: 2,
-      description: "Ask a coworker for their input this week—like \"What do you think we could do differently here?\"—to open up to new ideas."
-    },
-    {
-      number: 3,
-      description: "Look for jobs that let you lead and innovate, like being a CEO or a consultant—your kind of vibe!"
-    }
-  ];
-
+  const {superpowers, growthAreas, actionSteps} = career;
   // Career image mapping based on title
   const getCareerImage = (title: string) => {
     const images = {
@@ -97,21 +60,21 @@ const CareerPathSection = ({ data, sectionNumber = 3 }: CareerPathSectionProps) 
           {/* Career Superpowers */}
           <SuperpowersCard 
             title="Your Career Superpowers"
-            items={careerSuperpowers}
+            items={superpowers}
             icon={<Award className="h-6 w-6" strokeWidth={2.2} />}
           />
 
           {/* Growth Areas */}
           <GrowthAreasCard
             title="Where You Can Grow a Bit"
-            items={careerGrowthAreas}
+            items={growthAreas}
             icon={<Briefcase className="h-6 w-6 " strokeWidth={2.2} />}
           />
         </div>
 
         {/* "Let's Make It Happen" section */}
         <ActionStepsCard
-          steps={careerActionSteps}
+          steps={actionSteps}
           imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
           imageAlt="Team collaboration"
           className="mb-16"
