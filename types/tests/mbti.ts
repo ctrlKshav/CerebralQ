@@ -181,22 +181,43 @@ export interface MBTIAnswer {
   direction: "left" | "right";
 }
 
+
 export interface ResultData {
   username: string | null;
   personalityType: string;
   personalityDescription: PersonalityDescription;
   completionDate: string;
   traitScores: TraitScores | null;
-  career: {
-    superpowers: string[];
-    growthAreas: string[];
-    matches: CareerMatch[];
-  };
+  career: CareerPath;
   relationships: RelationshipCompatibility[];
-  growth: {
-    milestones: GrowthMilestone[];
-  };
+  growth: GrowthJourney;
   actionItems: ActionItem[];
+  dailyHabits: DailyHabits;
+  communication: CommunicationStyle;
+  valuesAndMotivators: ValuesAndMotivators;
+  communityConnection: CommunityConnection;
+  journalingPrompts: JournalingPrompt[];
+}
+
+export interface PersonalityBlueprint {
+  traits: TraitDescription[];
+  summary: string;
+}
+
+export interface TraitDescription {
+  name: string;
+  description: string;
+  spectrum: string;
+  position: string;
+  icon?: string;
+}
+
+export interface CareerPath {
+  summary: string;
+  superpowers: string[];
+  growthAreas: string[];
+  matches: CareerMatch[];
+  actionSteps: string[];
 }
 
 export interface CareerMatch {
@@ -209,7 +230,17 @@ export interface RelationshipCompatibility {
   type: string;
   description: string;
   compatibleTypes: string[];
+  superpowers?: string[];
+  growthAreas?: string[];
   tips: string[];
+}
+
+export interface GrowthJourney {
+  summary: string;
+  superpowers: string[];
+  growthAreas: string[];
+  actionSteps: string[];
+  milestones: GrowthMilestone[];
 }
 
 export interface GrowthMilestone {
@@ -218,9 +249,31 @@ export interface GrowthMilestone {
   completed: boolean;
 }
 
+export interface DailyHabits {
+  summary: string;
+  morningHabits: string[];
+  eveningHabits: string[];
+}
+
+export interface CommunicationStyle {
+  summary: string;
+  tips: string[];
+}
+
+export interface ValuesAndMotivators {
+  summary: string;
+  coreValues: string[];
+  reflectionQuestions: string[];
+}
+
+export interface CommunityConnection {
+  summary: string;
+  suggestions: string[];
+}
+
 export interface JournalingPrompt {
   question: string;
-  hint: string;
+  hint?: string;
 }
 
 export interface ActionItem {

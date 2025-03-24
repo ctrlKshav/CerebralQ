@@ -1,11 +1,12 @@
 ﻿import { ResultData } from "@/types/tests/mbti";
+
 export const sampleResultData: ResultData = {
   username: null,
-  personalityType: "ENTJ",
+  personalityType: "ESFJ",
   personalityDescription: {
-    alias: "The Commander",
+    alias: "The Consul",
     description:
-      "You're a bold leader with a vision for success, always ready to take charge and make big things happen. Whether it's leading a team project or setting ambitious goals for yourself, you've got a driven, inspiring vibe that makes you a total powerhouse.",
+      "You're a natural people-person who loves bringing everyone together, always making sure the people around you feel cared for and supported. Whether it's hosting a game night for your friends or checking in on your family, you've got a big, warm heart that makes you so special."
   },
   completionDate: new Date().toLocaleDateString(),
   traitScores: {
@@ -14,146 +15,219 @@ export const sampleResultData: ResultData = {
       right: 8,
       leftPercentage: 73,
       rightPercentage: 27,
-      dominant: "left",
+      dominant: "left"
     },
     "S-N": {
-      left: 10,
-      right: 20,
-      leftPercentage: 33,
-      rightPercentage: 67,
-      dominant: "right",
+      left: 20,
+      right: 10,
+      leftPercentage: 67,
+      rightPercentage: 33,
+      dominant: "left"
     },
     "T-F": {
-      left: 23,
-      right: 7,
-      leftPercentage: 77,
-      rightPercentage: 23,
-      dominant: "left",
+      left: 7,
+      right: 23,
+      leftPercentage: 23,
+      rightPercentage: 77,
+      dominant: "right"
     },
     "J-P": {
       left: 21,
       right: 9,
       leftPercentage: 70,
       rightPercentage: 30,
-      dominant: "left",
-    },
+      dominant: "left"
+    }
   },
   career: {
+    summary: "You're a total gem in jobs where you can connect with people and keep things running smoothly—like teaching, nursing, or event planning. You love roles that let you support others and create a sense of community, but you might feel stressed if the work environment feels cold or if you don't get the appreciation you deserve.",
     superpowers: [
-      "Leading with Vision",
-      "Getting Results",
-      "Inspiring others",
-      "Strategic planning",
+      "Building Connections",
+      "Staying Organized",
+      "Creating Harmony",
+      "Being Supportive"
     ],
     growthAreas: [
-      "Being Patient",
-      "Listening to Others",
-      "Flexibility",
-      "Handling slower progress",
+      "Saying No",
+      "Handling Criticism",
+      "Taking Time for Yourself",
+      "Speaking Up"
     ],
     matches: [
       {
-        title: "Business Management",
+        title: "Teaching",
         matchPercentage: 95,
-        description:
-          "Roles that let you lead and strategize, using your natural talent for organizing teams and driving toward ambitious goals.",
+        description: "Roles that let you connect with others and nurture their growth, using your natural talent for supporting and organizing."
       },
       {
-        title: "Entrepreneurship",
+        title: "Nursing",
         matchPercentage: 92,
-        description:
-          "Creating and growing your own business ventures where you can implement your vision and lead with autonomy.",
+        description: "Healthcare roles where you can provide compassionate care and create a supportive environment for patients."
       },
       {
-        title: "Law",
+        title: "Event Planning",
         matchPercentage: 88,
-        description:
-          "High-stakes environments where your strategic thinking and persuasive communication skills help you excel.",
+        description: "Organizing gatherings where your attention to detail and people skills help create memorable experiences."
       },
       {
-        title: "Engineering",
+        title: "Community Organizing",
         matchPercentage: 85,
-        description:
-          "Problem-solving roles where you can innovate and create solutions that make a real impact.",
-      },
+        description: "Roles that let you build community and support others, bringing people together for a common cause."
+      }
     ],
+    actionSteps: [
+      "Practice saying \"no\" once this week—like \"I'd love to help, but I'm swamped right now.\"",
+      "If you get feedback, take a deep breath and think, \"This can help me grow\"—it'll make it easier to handle.",
+      "Look for jobs that let you care for others, like being a teacher or a community organizer—your kind of vibe!"
+    ]
   },
   relationships: [
     {
       type: "Romantic",
-      description:
-        "You're the driven, inspiring one in your relationships. You show love by pushing others to be their best, like encouraging your partner to chase their dreams.",
-      compatibleTypes: ["INFP", "INTP", "ENFP", "ISFP"],
-      tips: [
-        "Share your feelings more openly - try saying 'I've been feeling a bit overwhelmed lately'",
-        "Check in before encouraging someone - ask 'How do you feel about this?' before pushing forward",
-        "Look for partners who appreciate your ambitious energy",
+      description: "You're the nurturing, social one in your relationships. You show love by making people feel special, like planning a thoughtful date night for your partner or calling to check in.",
+      compatibleTypes: ["ISFP", "ISTP", "INTJ", "INFJ"],
+      superpowers: [
+        "Being Thoughtful",
+        "Creating Harmony"
       ],
+      growthAreas: [
+        "Taking Time for Yourself",
+        "Letting Go of Small Stuff"
+      ],
+      tips: [
+        "Schedule time for yourself - try saying 'I'm going to take an hour to recharge today'",
+        "If you're overthinking something, ask yourself, 'Will this matter in a week?'—it'll help you let go",
+        "Look for partners who appreciate your caring nature and give back as much as you give"
+      ]
     },
     {
       type: "Friendship",
-      description:
-        "You're the friend who takes the lead, always ready to organize a group adventure or motivate your crew to tackle a challenge.",
-      compatibleTypes: ["INFJ", "ENFP", "INTP", "ENTP"],
-      tips: [
-        "Let your friends take the lead sometimes - try saying 'What do you guys want to do this time?'",
-        "Practice active listening with friends - really hear them out",
-        "Be more flexible with plans when others suggest alternatives",
+      description: "You're the friend who makes everyone feel at home, always ready to host a fun get-together or check in on your crew. You love having a big group of friends who feel like family.",
+      compatibleTypes: ["INFP", "ENFP", "INTP", "ENTP"],
+      superpowers: [
+        "Being Supportive",
+        "Planning Fun Times"
       ],
-    },
+      growthAreas: [
+        "Speaking Up",
+        "Trying New Things"
+      ],
+      tips: [
+        "Open up about your own feelings - try saying 'I've been feeling a bit stressed lately'",
+        "Plan a new kind of hangout, like a picnic in the park, to mix things up with your crew",
+        "Make time for your own hobbies and interests between social events"
+      ]
+    }
   ],
   growth: {
+    summary: "Growth for you is all about becoming an even better version of your amazing self while learning to take care of you too. You're so good at supporting others, but you might forget to give yourself the same love and care you give everyone else.",
+    superpowers: [
+      "Being Kind",
+      "Staying Grounded"
+    ],
+    growthAreas: [
+      "Putting Yourself First",
+      "Embracing Change"
+    ],
+    actionSteps: [
+      "Take 10 minutes each day just for you—like sipping coffee while listening to your favorite podcast",
+      "Try one new thing this week, like joining a dance class or trying a new recipe—it'll feel exciting!",
+      "Write down three things you love about being an ESFJ when you're feeling hard on yourself"
+    ],
     milestones: [
       {
-        title: "Cultivate patience",
-        description:
-          "Learn to manage frustration when things move slower than expected.",
-        completed: false,
+        title: "Practice saying no",
+        description: "Learn to set boundaries when taking on too many responsibilities for others.",
+        completed: false
       },
       {
-        title: "Develop emotional awareness",
-        description:
-          "Create regular habits for checking in with your own feelings and needs.",
-        completed: false,
+        title: "Make time for self-care",
+        description: "Create regular habits that prioritize your own needs and well-being.",
+        completed: false
       },
       {
-        title: "Practice active listening",
-        description:
-          "Focus on understanding others before offering solutions or taking charge.",
-        completed: false,
-      },
-    ],
+        title: "Embrace change",
+        description: "Try new experiences and approach unfamiliar situations with an open mind.",
+        completed: false
+      }
+    ]
   },
+  dailyHabits: {
+    summary: "You love a routine that keeps you connected, and it totally works for you—your days are warm and organized, and you feel best when you're taking care of others. Adding a little self-care can make your routine even more special.",
+    morningHabits: [
+      "Start your morning with a 5-minute gratitude list—like writing down three things you're thankful for today",
+      "Add a small, cozy habit—like lighting a candle while you plan your day—to make your morning feel extra nice"
+    ],
+    eveningHabits: [
+      "Wind down with a 10-minute habit, like texting a friend to say goodnight, to relax before bed"
+    ]
+  },
+  communication: {
+    summary: "You're warm and friendly when you talk, always making people feel heard and cared for. You love conversations that bring people together, but sometimes you might hold back on sharing your own thoughts to keep the peace.",
+    tips: [
+      "Share a little more in conversations—like saying \"I really loved that idea because…\" to open up",
+      "Ask a friend a fun question, like \"What's been making you smile lately?\"—it'll spark a deeper chat"
+    ]
+  },
+  valuesAndMotivators: {
+    summary: "You're all about taking care of the people you love and creating a sense of community. You value connection, kindness, and stability, and you're motivated by making others feel supported while building a life full of love and harmony.",
+    coreValues: [
+      "Connection",
+      "Kindness",
+      "Stability"
+    ],
+    reflectionQuestions: [
+      "What's one kind thing you've done lately that made you feel good? How can you do more of that?",
+      "When do you feel most connected—like everyone's coming together? How can you make that happen more?",
+      "Who do you look up to for their warmth? What ESFJ trait do you share with them?"
+    ]
+  },
+  communityConnection: {
+    summary: "You don't have to figure this out alone! Come hang out with other ESFJs and career starters in our growing community. Share your best tips for bringing people together, swap ideas, and let's build something awesome together.",
+    suggestions: [
+      "Drop your MBTI type in our community chat—say hi to other Consuls who get you!",
+      "Join our weekly \"Community Builders\" chat to share your favorite ways to connect with others"
+    ]
+  },
+  journalingPrompts: [
+    {
+      question: "What's one kind thing you've done lately that made you feel good?",
+      hint: "How can you do more of that?"
+    },
+    {
+      question: "When do you feel most connected to others?",
+      hint: "How can you create more of these moments in your life?"
+    },
+    {
+      question: "In what situations do you find it hardest to say no?",
+      hint: "What's one small boundary you could set this week?"
+    }
+  ],
   actionItems: [
     {
-      task: "Ask a coworker for their input on a project",
+      task: "Practice saying 'no' once this week",
       completed: false,
-      description:
-        "Try saying: 'What do you think we could do differently here?'",
+      description: "Try saying: 'I'd love to help, but I'm swamped right now.'"
     },
     {
-      task: "Share a feeling with a loved one",
+      task: "Schedule a solo evening for yourself",
       completed: false,
-      description:
-        "Be vulnerable by saying something like: 'I've been feeling a bit overwhelmed lately.'",
+      description: "Watch your favorite show with a cozy blanket to recharge."
     },
     {
-      task: "Let friends take the lead on planning an activity",
+      task: "Plan a new kind of hangout with friends",
       completed: false,
-      description:
-        "Step back and say: 'What do you guys want to do this time?'",
+      description: "Try a picnic in the park or another activity outside your usual routine."
     },
     {
-      task: "Journal about one big goal you're working toward",
+      task: "Start a 5-minute gratitude practice",
       completed: false,
-      description:
-        "Reflect on what keeps you motivated and identify small steps toward progress.",
+      description: "Write down three things you're thankful for each morning."
     },
     {
-      task: "Add a small relaxing habit to your daily routine",
+      task: "Open up to a friend about something you're going through",
       completed: false,
-      description:
-        "Try a quick walk after lunch or reading before bed to give your mind a break.",
-    },
-  ],
+      description: "Try saying: 'I've been feeling a bit stressed lately.'"
+    }
+  ]
 };
