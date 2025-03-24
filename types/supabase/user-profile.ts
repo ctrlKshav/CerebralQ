@@ -11,6 +11,7 @@ export interface UserProfile {
   raw_score: MBTIRawScore
   user_test_history: UserTestHistorySummary[]
   joined_at: string;
+  is_insider: boolean;
 }
 
 export interface UserTestHistorySummary {

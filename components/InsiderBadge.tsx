@@ -26,9 +26,9 @@ export default function InsiderBadge({ className, size = "md" }: InsiderBadgePro
       <Tooltip delayDuration={100}>
         <TooltipTrigger asChild>
           <Badge 
-            variant="outline"
+            variant="default"
             className={cn(
-              "bg-violet-100 text-violet-800 border-violet-300 hover:bg-violet-200 dark:bg-violet-900/30 dark:border-violet-800 dark:text-violet-300 dark:hover:bg-violet-900/50",
+              "bg-primary text-white",
               "font-medium",
               sizeClasses[size],
               className
@@ -38,7 +38,7 @@ export default function InsiderBadge({ className, size = "md" }: InsiderBadgePro
             <span>Insider</span>
           </Badge>
         </TooltipTrigger>
-        <TooltipContent side="bottom">
+        <TooltipContent side="bottom" className="text-white">
           <p>C4E Organisation Member</p>
         </TooltipContent>
       </Tooltip>

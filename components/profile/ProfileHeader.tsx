@@ -8,6 +8,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { handleShare } from "@/lib/shareUtils";
 import Link from "next/link";
 import { UserProfile } from "@/types/supabase/user-profile";
+import InsiderBadge from "@/components/InsiderBadge";
 
 interface ProfileHeaderProps {
   userData: UserProfile;
@@ -53,10 +54,11 @@ export default function ProfileHeader({
         {/* Profile info */}
         <div className="flex-1 space-y-5 text-center md:text-left">
           {/* Username and verified badge */}
-          <div className="flex items-center justify-center md:justify-start gap-2">
+          <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
             <h1 className="text-4xl md:text-5xl font-bold">
               {userData.username}
             </h1>
+            {userData.is_insider && <InsiderBadge size="lg" />}
           </div>
 
           {/* Bio with fade effect */}

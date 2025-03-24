@@ -67,7 +67,7 @@ export default function ProfilePage({
     };
 
     fetchProfileData();
-  }, [profileUsername]);
+  }, [profileUsername, supabase]);
 
   // Show loading state for everything
   if (loading || authLoading) {
