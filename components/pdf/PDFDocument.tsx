@@ -48,8 +48,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
     personalityDescription,
     completionDate,
     traitScores,
-    careerSuggestions,
-    similarPersonalities,
+   
   } = resultData;
 
   // Get the alias for the current personality type
@@ -105,24 +104,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
       {/* Third Page: Combined Career Suggestions and Similar Personalities */}
       <Page size="A4" style={styles.page}>
         {/* Career Suggestions - with compact prop to make it more space-efficient */}
-        <View style={styles.section}>
-          <PDFCareerSuggestions
-            personalityType={personalityType}
-            careerSuggestions={careerSuggestions.slice(0, 6)} // Limit to top 6 career suggestions
-            sectionNumber={3}
-            isDarkMode={isDarkMode}
-          />
-        </View>
-        
-        {/* Similar Personalities - also with compact prop */}
-        <View style={styles.section}>
-          <PDFSimilarPersonalities
-            personalityType={personalityType}
-            similarPersonalities={similarPersonalities.slice(0, 6)} // Limit to top 6 personalities
-            sectionNumber={4}
-            isDarkMode={isDarkMode}
-          />
-        </View>
         
         <Text style={styles.footer}>
           CerebralQ Personality Assessment | Page 3
