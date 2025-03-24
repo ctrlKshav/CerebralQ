@@ -75,7 +75,7 @@ export const sampleResultData: ResultData = {
         matchPercentage: 85,
         description:
           "Problem-solving roles where you can innovate and create solutions that make a real impact.",
-      }
+      },
     ],
   },
   relationships: [
@@ -121,21 +121,6 @@ export const sampleResultData: ResultData = {
         description:
           "Focus on understanding others before offering solutions or taking charge.",
         completed: false,
-      },
-    ],
-    journalingPrompts: [
-      {
-        question: "What's one big goal you're working toward right now?",
-        hint: "Consider what small step you can take toward it this month.",
-      },
-      {
-        question:
-          "When do you feel most in your element—like you're unstoppable?",
-        hint: "Think about how you can create more of these moments in your life.",
-      },
-      {
-        question: "Who do you look up to for their leadership?",
-        hint: "Reflect on what ENTJ trait you share with them.",
       },
     ],
   },

@@ -195,7 +195,6 @@ export interface ResultData {
   relationships: RelationshipCompatibility[];
   growth: {
     milestones: GrowthMilestone[];
-    journalingPrompts: JournalingPrompt[];
   };
   actionItems: ActionItem[];
 }
