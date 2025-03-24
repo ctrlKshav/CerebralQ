@@ -15,7 +15,7 @@ interface HeroSectionProps {
 const HeroSection = ({
   personalityType,
   personalityDescription,
-  completionDate, 
+  completionDate,
   username,
   onExploreClick,
 }: HeroSectionProps) => {
@@ -32,20 +32,37 @@ const HeroSection = ({
 
             <div className="space-y-2">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
-                {`Hey ${username}! You're an ${personalityType} \n ${alias}`}
+                Hey{" "}
+                <span
+                  className={`${username ? "text-primary decoration-2" : "decoration-1"}`}
+                >
+                  {username || "there"}
+                </span>
+                ! You're an{" "}
+                <span className="text-primary  decoration-2 ">
+                  {personalityType}
+                </span>
+                <br />
+                <span className=" font-semibold decoration-1">{alias}</span>
               </h1>
             </div>
 
             <p className="text-lg text-muted-foreground">{description}</p>
 
             <p className="text-lg text-muted-foreground">
-              Does that sound like you,{" "}
-              <span className="font-semibold">{username}</span>? Let's dive into
-              what makes you so incredible!
+              Does that sound like you
+              {username ? (
+                <>
+                  , <span className="font-semibold">{"Alex"}</span>
+                </>
+              ) : (
+                ""
+              )}
+              ? Let's dive into what makes you so incredible!
             </p>
 
             <div className="pt-4">
-              <Button 
+              <Button
                 className="px-6 py-3 bg-primary text-primary-foreground rounded-lg transition-all hover:shadow"
                 onClick={onExploreClick}
               >
