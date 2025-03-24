@@ -1,4 +1,5 @@
 ﻿import React, { useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Download, Save } from "lucide-react";
@@ -108,13 +109,19 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
               </div>
             </div>
             
-            {/* Image section */}
+            {/* Image section - Updated with Next.js Image */}
             <div className="md:w-2/5 h-auto sm:min-h-[400px] relative border-t md:border-t-0 md:border-l border-border">
-              <img 
-                src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80" 
-                alt="Person planning and organizing"
-                className="h-full w-full object-cover"
-              />
+              <div className="relative w-full h-full" style={{ minHeight: "400px", maxHeight: "600px" }}>
+                <Image 
+                  src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80" 
+                  alt="Person planning and organizing"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  priority={false}
+                  className="object-cover"
+                  quality={85}
+                />
+              </div>
             </div>
           </div>
         </Card>
