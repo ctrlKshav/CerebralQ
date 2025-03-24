@@ -123,7 +123,7 @@ export const sampleResultData: ResultData = {
           description: "You might push too hard—like encouraging a loved one to act before they're ready."
         }
       ],
-      tips: [
+      actionSteps: [
         {
           number: 1,
           description: "This week, share one feeling with someone you care about—like \"I've been feeling a bit overwhelmed lately.\""
@@ -162,7 +162,7 @@ export const sampleResultData: ResultData = {
           description: "You might stick to your vision—like pushing for a plan when your friends want to do something else."
         }
       ],
-      tips: [
+      actionSteps: [
         {
           number: 1,
           description: "Let your friends take the lead on a plan this month—like saying, \"What do you guys want to do this time?\""

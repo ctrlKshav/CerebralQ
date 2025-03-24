@@ -27,131 +27,6 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
     }
   };
 
-  // Define the relationship superpowers and growth areas for each type
-  const getRelationshipSuperpowers = (type: string) => {
-    if (type === "Romantic") {
-      return [
-        {
-          title: "Being Motivational:",
-          description: `You lift people up, ${username}—like cheering on a partner to go after a big opportunity.`
-        },
-        {
-          title: "Taking Charge:",
-          description: "You make things happen, like planning a memorable anniversary dinner for your partner."
-        }
-      ];
-    } else if (type === "Friendship") {
-      return [
-        {
-          title: "Being Inspiring:",
-          description: `Your friends look up to you, ${username}—like when you motivate them to join a charity run.`
-        },
-        {
-          title: "Planning Big Moments:",
-          description: "You create awesome experiences, like organizing a group trip everyone talks about for years."
-        }
-      ];
-    } else {
-      return [
-        {
-          title: "Natural Leadership:",
-          description: `You excel at taking charge, ${username}—like confidently leading a team through a challenging project.`
-        },
-        {
-          title: "Strategic Thinking:",
-          description: "You're excellent at seeing the big picture and creating plans to reach ambitious goals."
-        }
-      ];
-    }
-  };
-
-  const getRelationshipGrowthAreas = (type: string) => {
-    if (type === "Romantic") {
-      return [
-        {
-          title: "Being Vulnerable:",
-          description: "You might focus on goals and miss the emotions—like not sharing when you're feeling stressed."
-        },
-        {
-          title: "Slowing Down:",
-          description: "You might push too hard—like encouraging a loved one to act before they're ready."
-        }
-      ];
-    } else if (type === "Friendship") {
-      return [
-        {
-          title: "Listening More:",
-          description: "You might focus on your ideas—like not hearing a friend's quieter suggestion during a group plan."
-        },
-        {
-          title: "Being Flexible:",
-          description: "You might stick to your vision—like pushing for a plan when your friends want to do something else."
-        }
-      ];
-    } else {
-      return [
-        {
-          title: "Delegating Effectively:",
-          description: "You might take on too much—like handling tasks yourself instead of trusting team members with responsibilities."
-        },
-        {
-          title: "Patience with Process:",
-          description: "You might rush toward results—like skipping important steps when you're excited about a project."
-        }
-      ];
-    }
-  };
-
-  // Define action steps for each relationship type
-  const getRelationshipActionSteps = (type: string) => {
-    if (type === "Romantic") {
-      return [
-        {
-          number: 1,
-          description: "This week, share one feeling with someone you care about—like \"I've been feeling a bit overwhelmed lately.\""
-        },
-        {
-          number: 2,
-          description: "If you're encouraging someone, check in first—like \"I think this could be great for you, but how do you feel about it?\""
-        },
-        {
-          number: 3,
-          description: `Look for people who admire your drive, ${username}—someone who loves your ambitious energy as much as you do.`
-        }
-      ];
-    } else if (type === "Friendship") {
-      return [
-        {
-          number: 1,
-          description: "Let your friends take the lead on a plan this month—like saying, \"What do you guys want to do this time?\""
-        },
-        {
-          number: 2,
-          description: "Practice active listening—like asking a friend, \"What do you think about this?\" and really hearing them out."
-        },
-        {
-          number: 3,
-          description: "Consider seeking deeper friendships with people who appreciate your energy and directness."
-        }
-      ];
-    } else {
-      return [
-        {
-          number: 1,
-          description: "This month, delegate one important task you'd normally handle yourself—and resist the urge to micromanage."
-        },
-        {
-          number: 2,
-          description: "Practice active listening in your next meeting—try to speak less and listen more to team members' perspectives."
-        },
-        {
-          number: 3,
-          description: "Look for mentors or colleagues with complementary skills to yours—especially those who excel at details you might overlook."
-        }
-      ];
-    }
-  };
-  
   return (
     <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
      
@@ -207,14 +82,14 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
                 {/* Superpowers card */}
                 <SuperpowersCard 
                   title={`Your ${relationship.type} Superpowers`}
-                  items={getRelationshipSuperpowers(relationship.type)}
+                  items={relationship.superpowers}
                   icon={<Award className="h-6 w-6 " />}
                 />
 
                 {/* Growth areas card */}
                 <GrowthAreasCard
                   title="Where You Can Grow a Bit"
-                  items={getRelationshipGrowthAreas(relationship.type)}
+                  items={relationship.growthAreas}
                   icon={<ArrowRight className="h-6 w-6 " />}
                 />
               </div>
@@ -222,7 +97,7 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
               {/* Let's Make It Happen card with image */}
               <ActionStepsCard
                 title="Let's Make It Happen:"
-                steps={getRelationshipActionSteps(relationship.type)}
+                steps={relationship.actionSteps}
                 imageSrc={relationship.type === "Romantic" 
                   ? "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop" 
                   : relationship.type === "Friendship" 

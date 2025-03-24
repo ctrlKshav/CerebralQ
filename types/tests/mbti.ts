@@ -229,9 +229,9 @@ export interface RelationshipCompatibility {
   type: string;
   description: string;
   compatibleTypes: string[];
-  superpowers?: SuperpowerItem[];
-  growthAreas?: GrowthAreaItem[];
-  tips: ActionStepItem[];
+  superpowers: SuperpowerItem[];
+  growthAreas: GrowthAreaItem[];
+  actionSteps: ActionStepItem[];
 }
 
 export interface GrowthJourney {
