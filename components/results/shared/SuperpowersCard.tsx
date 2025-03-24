@@ -14,7 +14,12 @@ interface SuperpowersCardProps {
   className?: string;
 }
 
-const SuperpowersCard = ({ title, items, icon, className = "" }: SuperpowersCardProps) => {
+const SuperpowersCard = ({
+  title,
+  items,
+  icon,
+  className = "",
+}: SuperpowersCardProps) => {
   return (
     <Card className={`h-full ${className}`}>
       <CardContent className="p-8">
@@ -30,9 +35,11 @@ const SuperpowersCard = ({ title, items, icon, className = "" }: SuperpowersCard
         <ul className="space-y-5 text-base ml-4">
           {items.map((item, index) => (
             <li key={index} className="flex items-start">
-              <CheckCircle className="h-6 w-6 text-primary mr-3 flex-shrink-0 mt-1" />
+              <CheckCircle className="h-6 w-6 text-emerald-500 mr-3 flex-shrink-0 mt-1" />
               <div>
-                <p className="font-medium text-lg mb-1 text-card-foreground">{item.title}</p>
+                <p className="font-medium text-lg mb-1 text-card-foreground">
+                  {item.title}
+                </p>
                 <p className="text-card-foreground">{item.description}</p>
               </div>
             </li>
