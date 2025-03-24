@@ -20,7 +20,7 @@ export const teamMembers: TeamMember[] = [
     role: "Design Lead",
     bio: "Hi! I’m Brishti, and at 19 I think I've found my muse.",
     imageUrl:
-      "/team/bri.jpg",
+      "/team/bri.jpeg",
     socialLinks: {
       twitter: "https://x.com/brishtiatc4e",
       linkedin: "https://www.linkedin.com/in/brishtisharma",
