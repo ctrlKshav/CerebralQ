@@ -80,7 +80,7 @@ const ActionPlanSection = ({ data, sectionNumber = 10 }: ActionPlanSectionProps)
               </div>
 
               <p className="text-lg font-medium text-primary mb-8">
-                You're killing it, {username}! Save this plan and let's keep growing together.
+                You're killing it{username ? `, ${username}` : "" }! Save this plan and let's keep growing together.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4">

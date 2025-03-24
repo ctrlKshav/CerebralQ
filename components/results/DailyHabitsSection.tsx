@@ -50,8 +50,14 @@ const DailyHabitsSection = ({
         {/* Section header */}
         <SectionHeader
           title="Daily Habits & Communication"
-          subtitle={formatWithUsername("Your Daily Habits, {username}", username)}
-          description={formatWithUsername("You love a routine that keeps you on track, {username}, and it totally works for you—your days are focused and productive, and you feel best when you're in control. Adding a little downtime can help you recharge for your big goals.", username)}
+          subtitle={formatWithUsername(
+            "Your Daily Habits, {username}",
+            username
+          )}
+          description={formatWithUsername(
+            "You love a routine that keeps you on track, {username}, and it totally works for you—your days are focused and productive, and you feel best when you're in control. Adding a little downtime can help you recharge for your big goals.",
+            username
+          )}
           sectionNumber={sectionNumber}
         />
 
@@ -67,22 +73,22 @@ const DailyHabitsSection = ({
               icon={<Sun className="h-5 w-5" strokeWidth={2} />}
               title={morningHabit.title}
               description={morningHabit.description}
-              gradientFrom="yellow-400"
-              gradientTo="amber-500"
+              gradientFrom="cyan-400"
+              gradientTo="blue-500"
             />
             <HabitItem
               icon={<Clock className="h-5 w-5" strokeWidth={2} />}
               title={dayHabit.title}
               description={dayHabit.description}
-              gradientFrom="cyan-400"
-              gradientTo="blue-500"
+              gradientFrom="yellow-400"
+              gradientTo="amber-500"
             />
             <HabitItem
               icon={<Moon className="h-5 w-5" strokeWidth={2} />}
               title={eveningHabit.title}
               description={eveningHabit.description}
               gradientFrom="indigo-400"
-              gradientTo="mbti-purple"
+              gradientTo="gray-700"
             />
           </ul>
         </ContentImageCard>
