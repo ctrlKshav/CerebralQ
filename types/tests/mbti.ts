@@ -213,10 +213,10 @@ export interface TraitDescription {
 
 export interface CareerPath {
   summary: string;
-  superpowers: string[];
-  growthAreas: string[];
+  superpowers: SuperpowerItem[];
+  growthAreas: GrowthAreaItem[];
   matches: CareerMatch[];
-  actionSteps: string[];
+  actionSteps: ActionStepItem[];
 }
 
 export interface CareerMatch {
@@ -229,16 +229,16 @@ export interface RelationshipCompatibility {
   type: string;
   description: string;
   compatibleTypes: string[];
-  superpowers?: string[];
-  growthAreas?: string[];
-  tips: string[];
+  superpowers?: SuperpowerItem[];
+  growthAreas?: GrowthAreaItem[];
+  tips: ActionStepItem[];
 }
 
 export interface GrowthJourney {
   summary: string;
-  superpowers: string[];
-  growthAreas: string[];
-  actionSteps: string[];
+  superpowers: SuperpowerItem[];
+  growthAreas: GrowthAreaItem[];
+  actionSteps: ActionStepItem[];
   milestones: GrowthMilestone[];
 }
 
@@ -274,4 +274,19 @@ export interface ActionItem {
   task: string;
   completed: boolean;
   description?: string;
+}
+
+export interface SuperpowerItem {
+  title: string;
+  description: string;
+}
+
+export interface GrowthAreaItem {
+  title: string;
+  description: string;
+}
+
+export interface ActionStepItem {
+  number: number
+  description: string;
 }
