@@ -4,9 +4,9 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Anshika Kushwaha",
     role: "Boss Woman",
-    bio: "Ya Right",
+    bio: "Ya Right",  
     imageUrl:
-      "/team/ak_pfp.jpg",
+      "/team/ak.jpg",
 
     socialLinks: {
       twitter: "https://x.com/akforthevibe ",
