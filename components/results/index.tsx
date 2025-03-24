@@ -24,6 +24,7 @@ import DailyHabitsSection from "@/components/results/DailyHabitsSection";
 import ValuesMotivatorSection from "@/components/results/ValuesMotivatorsSection";
 import CommunitySection from "@/components/results/CommunitySection";
 import ActionPlanSection from "@/components/results/ActionPlanSection";
+import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 
 export default function Results() {
   const [resultData, setResultData] = useState<ResultData | null>(null);
@@ -70,6 +71,8 @@ export default function Results() {
           return;
         }
 
+        const personalityData = getPersonalityData(personalityType);
+
         // Set all result data at once
         setResultData({
           username: user?.username || null,
@@ -77,13 +80,7 @@ export default function Results() {
           personalityDescription: sampleResultData.personalityDescription,
           completionDate,
           traitScores,
-          career: sampleResultData.career,
-          relationships: sampleResultData.relationships,
-          growth: sampleResultData.growth,
-          dailyHabits: sampleResultData.dailyHabits,
-          valuesAndMotivators: sampleResultData.valuesAndMotivators,
-          communityConnection: sampleResultData.communityConnection,
-          actionItems: sampleResultData.actionItems,
+          personalityData,
         });
 
         // Save results to database if user is logged in

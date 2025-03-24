@@ -236,7 +236,7 @@ export interface DailyHabits {
     morning: HabitItem;
     afternoon: HabitItem;
     evening: HabitItem;
-  },
+  };
   communication: CommunicationStyle;
 }
 
@@ -283,13 +283,16 @@ export interface ActionStepItem {
   description: string;
 }
 
-
 export interface ResultData {
   username: string | null;
   personalityType: string;
   personalityDescription: PersonalityDescription;
   completionDate: string;
   traitScores: TraitScores | null;
+  personalityData: PersonalityDatabase | null;
+}
+
+export interface PersonalityDatabase {
   career: CareerPath;
   relationships: RelationshipCompatibility[];
   growth: GrowthJourney;
