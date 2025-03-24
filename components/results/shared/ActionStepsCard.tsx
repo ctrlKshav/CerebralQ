@@ -1,4 +1,5 @@
 ﻿import React from "react";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 
 interface ActionStep {
@@ -34,7 +35,7 @@ const ActionStepsCard = ({
           <ul className="space-y-6 ml-4">
             {steps.map((step) => (
               <li key={step.number} className="flex items-start">
-                <div className="h-8 w-8 rounded-full bg-primary text-white text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
+                <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
                   {step.number}
                 </div>
                 <p className="text-card-foreground text-base md:text-lg">
@@ -46,12 +47,18 @@ const ActionStepsCard = ({
         </div>
 
         {imageSrc && (
-          <div className="md:w-2/5 h-auto sm:min-h-[320px] relative border-t md:border-t-0 md:border-l border-border">
-            <img
-              src={imageSrc}
-              alt={imageAlt}
-              className="h-full w-full object-cover"
-            />
+          <div className="md:w-2/5 h-auto sm:min-h-[320px] max-h-[500px] relative border-t md:border-t-0 md:border-l border-border">
+            <div className="relative w-full h-full">
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                fill
+                sizes="(max-width: 768px) 100vw, 40vw"
+                priority={false}
+                className="object-cover"
+                style={{ maxHeight: "500px" }}
+              />
+            </div>
           </div>
         )}
       </div>
