@@ -187,7 +187,7 @@ const RelationshipSection = ({ data, sectionNumber = 4 }: RelationshipSectionPro
         >
           <div className="flex flex-col items-center justify-center mb-10">
             {/* Tab triggers */}
-            <TabsList className="grid grid-cols-2 w-full h-full max-w-lg bg-muted rounded-lg">
+            <TabsList className="grid grid-cols-2 gap-4 h-full w-full p-0  max-w-lg  rounded-lg">
               {relationships.map((rel) => (
                 <TabsTrigger 
                   key={rel.type} 
