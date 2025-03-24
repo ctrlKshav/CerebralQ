@@ -54,22 +54,22 @@ const DailyHabitsSection = ({
               icon={<Sun className="h-5 w-5" strokeWidth={2} />}
               title={morning.title}
               description={morning.description}
-              gradientFrom="cyan-400"
-              gradientTo="blue-500"
+              gradientFrom="from-cyan-400"
+              gradientTo="to-blue-500"
             />
             <HabitItem
               icon={<Clock className="h-5 w-5" strokeWidth={2} />}
               title={afternoon.title}
               description={afternoon.description}
-              gradientFrom="yellow-400"
-              gradientTo="amber-500"
+              gradientFrom="from-yellow-400"
+              gradientTo="to-amber-500"
             />
             <HabitItem
               icon={<Moon className="h-5 w-5" strokeWidth={2} />}
               title={evening.title}
               description={evening.description}
-              gradientFrom="indigo-400"
-              gradientTo="gray-700"
+              gradientFrom="from-indigo-400"
+              gradientTo="to-gray-700"
             />
           </ul>
         </ContentImageCard>
@@ -178,7 +178,7 @@ const HabitItem = ({
   return (
     <li className="flex items-start">
       <div
-        className={`flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r from-${gradientFrom} to-${gradientTo} text-white mr-4 flex-shrink-0 shadow-md`}
+        className={`flex items-center justify-center h-10 w-10 rounded-full bg-gradient-to-r ${gradientFrom} ${gradientTo} text-white mr-4 flex-shrink-0 shadow-md`}
       >
         {icon}
       </div>
