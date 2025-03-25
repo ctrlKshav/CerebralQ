@@ -62,7 +62,7 @@ const CareerPathSection = ({ username, career, sectionNumber = 3 }: CareerPathSe
 
         {/* Career Suggestions Section */}
         <div className="px-4 md:px-8 lg:px-16">
-          <CareerSuggestionsCard career={career} className="mb-16" />
+          <CareerSuggestionsCard  className="mb-16" />
         </div>
       </div>
     </section>

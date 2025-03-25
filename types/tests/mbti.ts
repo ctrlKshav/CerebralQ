@@ -202,10 +202,19 @@ export interface CareerPath {
   actionSteps: ActionStepItem[];
 }
 
+// MBTI trait type
+export type MBTITrait = "E" | "I" | "S" | "N" | "T" | "F" | "J" | "P";
+
+// MBTI trait with description
+interface MBTITraitDetail {
+  trait: MBTITrait;
+  description: string;
+}
 export interface CareerMatch {
   title: string;
   matchPercentage: number;
   description: string;
+  mbtiTraits?: MBTITraitDetail[];
 }
 
 export interface RelationshipCompatibility {
