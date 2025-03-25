@@ -18,7 +18,7 @@ export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Cerebral Quotient",
   description:
-    "Discover yourself with tests like MBTI, Big Five, and IQ—all in one place.",
+    "Discover yourself with MBTI personality test!",
 };
 
 const geistSans = Geist({
