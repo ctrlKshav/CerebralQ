@@ -274,7 +274,8 @@ export default function TestInformation({ testId }: { testId: string }) {
           />
         )}
 
-        <div className="">
+        <div className="" id="team">
+          {/* Team Section */}
           <TeamHero
             title="The CQ Crew"
             description="A group of builders, thinkers, and problem-solvers making cool things happen. We turn ideas into reality."
