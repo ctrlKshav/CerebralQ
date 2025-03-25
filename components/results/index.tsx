@@ -16,7 +16,7 @@ import { SimilarPersonalities } from "@/components/results/similar-personalities
 import { DetailedPersonalityInsights } from "@/components/results/detailed-personality-insights";
 import AboutPersonalityType from "@/components/profile/AboutPersonalityType";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
-import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
+import { getCurrentUser, saveTestResults, updatePersonalityType } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import Link from "next/link";
 
@@ -107,6 +107,7 @@ export default function Results() {
 
               // Save to Supabase
               await saveTestResults(testData);
+              await updatePersonalityType(userId, personalityType);
 
               // Mark as saved in localStorage
               localStorage.setItem(SAVED_RESULTS_KEY, "true");

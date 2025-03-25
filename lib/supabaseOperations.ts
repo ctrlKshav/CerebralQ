@@ -26,6 +26,23 @@ export async function saveTestResults(testResults: UserTestHistoryInsert) {
   return data;
 }
 
+export async function updatePersonalityType(userId: string, personalityType: string) {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("users")
+    .update({ mbti_personality_type: personalityType })
+    .eq("id", userId)
+    .select();
+
+  if (error) {
+    console.error("Error updating personality type:", error);
+    throw error;
+  }
+
+  return data;
+}
+
 /**
  * Get test information by ID
  */
