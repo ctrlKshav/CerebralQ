@@ -28,8 +28,8 @@ export default function PersonalityTraits({
   const isLightTheme = currentTheme === "light";
 
   return (
-    <div
-      className="w-full max-w-6xl mx-auto p-6 scroll-mt-24"
+    <section
+      className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background"
       id="explore-traits"
     >
       {/* Section header */}
@@ -180,6 +180,6 @@ export default function PersonalityTraits({
           </div>
         </Card>
       </div>
-    </div>
+    </section>
   );
 }

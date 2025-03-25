@@ -38,7 +38,7 @@ const ActionPlanSection = ({ username, personalityType, actionItems, sectionNumb
   };
 
   return (
-    <section className="py-20 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
+    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
       
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
