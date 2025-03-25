@@ -3,6 +3,7 @@ import Navbar from "@/components/navbar";
 import TestInformation from "@/components/test-info";
 import React from "react";
 import { useUserData } from "@/context/user-data";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 export default function TestInformationPage() {
   const userDataContext = useUserData();
@@ -11,7 +12,10 @@ export default function TestInformationPage() {
     return null;
   }
 
-  const { userData, setUserData } = userDataContext;
+  const { userData, setUserData, loading } = userDataContext;
+
+  if(loading) return <LoadingSkeleton />
+  
   return (
     <>
       <Navbar user={userData} />

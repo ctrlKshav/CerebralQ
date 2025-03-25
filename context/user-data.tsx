@@ -12,6 +12,7 @@ import { createContext } from "react";
 type UserDataContextType = {
   userData: User | null;
   setUserData: React.Dispatch<React.SetStateAction<User | null>>;
+  loading: boolean; // Add loading state to the context type
 };
 
 export const UserDataContext = createContext<UserDataContextType | null>(null);
@@ -33,47 +34,56 @@ export function UserDataContextProvider({
 }) {
   const supabase = createClient();
   const [userData, setUserData] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true); // Initialize loading state
   const router = useRouter();
 
   useEffect(() => {
     const func = async () => {
-      const data = await getCurrentUser();
+      try {
+        setLoading(true); // Set loading to true when starting to fetch
+        const data = await getCurrentUser();
 
-      setUserData(data);
-      let channel: RealtimeChannel;
-      if (data) {
-        // Set up realtime subscription for user data changes
-        const userId = data.id;
-        channel = supabase
-          .channel(`public:users:id=eq.${userId}`)
-          .on(
-            "postgres_changes",
-            {
-              event: "UPDATE",
-              schema: "public",
-              table: "users",
-              filter: `id=eq.${userId}`,
-            },
-            (payload) => {
-              setUserData((currentData) => {
-                if (!currentData) return null;
-                return { ...currentData, ...(payload.new as Partial<User>) };
-              });
-            }
-          )
-          .subscribe();
+        setUserData(data);
+        let channel: RealtimeChannel;
+        if (data) {
+          // Set up realtime subscription for user data changes
+          const userId = data.id;
+          channel = supabase
+            .channel(`public:users:id=eq.${userId}`)
+            .on(
+              "postgres_changes",
+              {
+                event: "UPDATE",
+                schema: "public",
+                table: "users",
+                filter: `id=eq.${userId}`,
+              },
+              (payload) => {
+                setUserData((currentData) => {
+                  if (!currentData) return null;
+                  return { ...currentData, ...(payload.new as Partial<User>) };
+                });
+              }
+            )
+            .subscribe();
+        }
+
+        setLoading(false); // Set loading to false when done fetching
+
+        // Clean up subscription on unmount
+        return () => {
+          if (channel) channel.unsubscribe();
+        };
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setLoading(false); // Make sure to set loading to false even on error
       }
-
-      // Clean up subscription on unmount
-      return () => {
-        channel.unsubscribe();
-      };
     };
     func();
   }, [router, supabase]);
 
   return (
-    <UserDataContext.Provider value={{ userData, setUserData }}>
+    <UserDataContext.Provider value={{ userData, setUserData, loading }}>
       {children}
     </UserDataContext.Provider>
   );
