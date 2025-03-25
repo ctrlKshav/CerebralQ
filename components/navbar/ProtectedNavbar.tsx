@@ -57,14 +57,6 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
   const prevScrollY = useRef(0);
   const userDataContext = useUserData();
 
-  if (userDataContext === null) {
-    return null;
-  }
-
-  const { userData, setUserData, loading } = userDataContext;
-
-  if (loading) return <LoadingSkeleton />;
-
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -170,7 +162,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
 
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
-                    <LogoutButton setUserData={setUserData} />
+                    <LogoutButton/>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -244,7 +236,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
 
                   {/* Mobile Logout Button */}
                   <div className="sticky bottom-0 left-0 right-0 px-4 py-8 border-t">
-                    <LogoutButton setUserData={setUserData}  />
+                    <LogoutButton  />
                   </div>
                 </SheetContent>
               </Sheet>
