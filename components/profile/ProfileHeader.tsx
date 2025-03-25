@@ -22,7 +22,7 @@ export default function ProfileHeader({
   const handleProfileShare = async () => {
     const title = `${userData.username}'s Profile`;
     const text = `I'm an ${userData.raw_score.personalityType}! Check out my personality profile on CerebralQuotient.`;
-    const url = `profiles/${userData.username}`;
+    const url = `${userData.username}`;
 
     await handleShare(title, text, url, false);
   };

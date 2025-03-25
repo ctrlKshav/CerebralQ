@@ -54,7 +54,7 @@ export function Hero({ resultData, userId }: HeroProps) {
       const text = `I'm an ${personalityType}! Check out my personality profile on CerebralQuotient.`;
 
       // Determine share URL based on user status
-      const url = isDemoUser ? `results` : `profiles/${username}`;
+      const url = isDemoUser ? `results` : `${username}`;
 
       // Use the existing share function
       await handleShare(title, text, url, isDemoUser);

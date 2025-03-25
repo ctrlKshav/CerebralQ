@@ -110,7 +110,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
                     className={cn(
                       "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
                     )}
-                    href={`/profiles/${user.username}`}
+                    href={`/${user.username}`}
                   >
                     Dashboard
                   </NavigationMenuLink>
@@ -212,7 +212,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
                     <div className="space-y-2 p-4">
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuItem
-                          href={`/profiles/${user.username}`}
+                          href={`/${user.username}`}
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
                           title="Dashboard"
