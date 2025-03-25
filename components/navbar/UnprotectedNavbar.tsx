@@ -28,6 +28,7 @@ import { assessmentItems, communityItems } from "@/data/navbar";
 import { MobileMenuItem } from "./mobile-menu/MobileMenuItem";
 import CQLogo from "../CQLogo";
 
+
 const UnprotectedNavbar = (props: { className?: string }) => {
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(

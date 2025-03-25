@@ -37,6 +37,8 @@ import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "@/types/supabase/users";
 import LogoutButton from "@/components/LogoutButton";
+import { useUserData } from "@/context/user-data";
+import LoadingSkeleton from "../LoadingSkeleton";
 
 interface ProtectedNavbarProps {
   className?: string;
@@ -51,7 +53,17 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
     null
   );
   const [isAtTop, setIsAtTop] = useState(true);
+
   const prevScrollY = useRef(0);
+  const userDataContext = useUserData();
+
+  if (userDataContext === null) {
+    return null;
+  }
+
+  const { userData, setUserData, loading } = userDataContext;
+
+  if (loading) return <LoadingSkeleton />;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -158,7 +170,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
 
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
-                    <LogoutButton />
+                    <LogoutButton setUserData={setUserData} />
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -232,7 +244,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
 
                   {/* Mobile Logout Button */}
                   <div className="sticky bottom-0 left-0 right-0 px-4 py-8 border-t">
-                    <LogoutButton />
+                    <LogoutButton setUserData={setUserData}  />
                   </div>
                 </SheetContent>
               </Sheet>

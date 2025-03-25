@@ -77,7 +77,7 @@ export const signInAction = async (data: SignInPayload) => {
     return encodedRedirect("error", "/sign-in", error.message);
   }
 
-  return redirect(`/${redirectToPage || ""}`);
+  // return redirect(`/${redirectToPage || ""}`);
 };
 
 export const forgotPasswordAction = async (data: ForgotPasswordPayload) => {
@@ -134,5 +134,5 @@ export const resetPasswordAction = async (data: ResetPasswordPayload) => {
 export const signOutAction = async () => {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  return redirect("/");
+  // return redirect("/");
 };

@@ -18,17 +18,34 @@ import { parseAuthMessage } from "@/lib/utils";
 import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
 
+import { useUserData } from "@/context/user-data";
+import LoadingSkeleton from "../LoadingSkeleton";
+import { useRouter } from "next/navigation";
+
 interface SigninFormProps extends React.ComponentProps<"div"> {
-  searchParams: URLSearchParams
+  searchParams: URLSearchParams;
 }
 
 export function SigninForm({
   className,
-  searchParams ,
+  searchParams,
   ...props
 }: SigninFormProps) {
-  const [authMessage, setAuthMessage] = useState<{type: string, message: string} | null>(null);
+  const [authMessage, setAuthMessage] = useState<{
+    type: string;
+    message: string;
+  } | null>(null);
   const [showPassword, setShowPassword] = useState(false);
+
+  const userDataContext = useUserData();
+
+  if (userDataContext === null) {
+    return null;
+  }
+
+  const { userData, setUserData, loading } = userDataContext;
+
+  if (loading) return <LoadingSkeleton />;
 
   const {
     register,
@@ -41,15 +58,15 @@ export function SigninForm({
   // Parse and display message from URL search params
   useEffect(() => {
     const message = parseAuthMessage(searchParams);
-    
+
     if (message) {
       setAuthMessage(message);
       // Show toast based on message type
-      if (message.type === 'success') {
+      if (message.type === "success") {
         toast.success(message.message);
-      } else if (message.type === 'error') {
+      } else if (message.type === "error") {
         toast.error(message.message);
-      } else if (message.type === 'info') {
+      } else if (message.type === "info") {
         toast.info(message.message);
       }
     }
@@ -61,6 +78,7 @@ export function SigninForm({
       redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
     };
     await signInAction(signInData);
+    window.location.href = "/"
   };
 
   return (
@@ -104,7 +122,7 @@ export function SigninForm({
                     type={showPassword ? "text" : "password"}
                     {...register("password")}
                   />
-                  <button 
+                  <button
                     type="button"
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600 hover:text-gray-800 dark:text-gray-100 dark:hover:text-gray-300 focus:outline-none transition-colors"
                     onClick={() => setShowPassword(!showPassword)}
@@ -138,16 +156,21 @@ export function SigninForm({
             </div>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <Image src="/signin1_glasses.png" alt="Cerebral Quotient " layout="fill" objectFit="cover" />
+            <Image
+              src="/signin1_glasses.png"
+              alt="Cerebral Quotient "
+              layout="fill"
+              objectFit="cover"
+            />
           </div>
         </CardContent>
       </Card>
 
       {/* Display form message if exists */}
       {authMessage && (
-        <AuthPagesFormMessage 
-          authActionResultType={authMessage.type} 
-          authActionResultMessage={authMessage.message} 
+        <AuthPagesFormMessage
+          authActionResultType={authMessage.type}
+          authActionResultMessage={authMessage.message}
         />
       )}
 

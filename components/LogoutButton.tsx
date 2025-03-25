@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { LogOut } from "lucide-react";
 import { SAVED_RESULTS_KEY, TEST_RESULTS_KEY, RETURN_URL_KEY, PROGRESS_KEY } from "@/lib/constants";
 
-export default function LogoutButton() {
+export default function LogoutButton( { setUserData}: { setUserData: any }) {
 
   const handleLogout = async () => {
     // Clear relevant localStorage items before logging out
@@ -15,7 +15,9 @@ export default function LogoutButton() {
     localStorage.removeItem(PROGRESS_KEY);
 
     // Call the server action to handle the actual logout
+    // setUserData(null)
     await signOutAction();
+    window.location.href = "/";
   };
 
   return (
