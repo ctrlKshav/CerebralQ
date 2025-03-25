@@ -29,7 +29,7 @@ export default function PersonalityTraits({
 
   return (
     <section
-      className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background"
+      className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-24"
       id="explore-traits"
     >
       {/* Section header */}
