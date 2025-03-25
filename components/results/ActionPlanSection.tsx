@@ -7,6 +7,11 @@ import { ActionItem, ResultData } from "@/types/tests/mbti";
 import { Card } from "@/components/ui/card";
 import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
+import { handleShare } from "@/lib/shareUtils";
+import { PDFGenerator } from "@/components/pdf/PDFGenerator";
+import { Share2 } from "lucide-react";
+import { sampleResultData } from "@/data/mbti/mbtiResultData";
+import { useRouter } from "next/navigation";
 
 interface ActionPlanSectionProps {
   username: string | null;
@@ -15,37 +20,78 @@ interface ActionPlanSectionProps {
   sectionNumber?: number;
 }
 
-const ActionPlanSection = ({ username, personalityType, actionItems, sectionNumber = 10 }: ActionPlanSectionProps) => {
-  
-
+const ActionPlanSection = ({
+  username,
+  personalityType,
+  actionItems,
+  sectionNumber = 10,
+}: ActionPlanSectionProps) => {
   // Initialize state for checkboxes based on completed status from data
-  const [checkedItems, setCheckedItems] = useState<{[key: number]: boolean}>({});
-  
+  const [checkedItems, setCheckedItems] = useState<{ [key: number]: boolean }>(
+    {}
+  );
+  const [isSharing, setIsSharing] = useState(false);
+  const isDemoUser = !username;
+  const router = useRouter();
+
   // Initialize checkedItems from the data
   useEffect(() => {
-    const initialCheckedState = actionItems.reduce<{[key: number]: boolean}>((acc, item, index) => {
-      acc[index] = item.completed;
-      return acc;
-    }, {});
+    const initialCheckedState = actionItems.reduce<{ [key: number]: boolean }>(
+      (acc, item, index) => {
+        acc[index] = item.completed;
+        return acc;
+      },
+      {}
+    );
     setCheckedItems(initialCheckedState);
   }, [actionItems]);
-  
+
   const toggleItem = (index: number) => {
-    setCheckedItems(prev => ({
+    setCheckedItems((prev) => ({
       ...prev,
-      [index]: !prev[index]
+      [index]: !prev[index],
     }));
+  };
+
+  const shareResults = async () => {
+    try {
+      setIsSharing(true);
+
+      // Handle sharing without saving to database (now handled in Results component)
+      const title = `My Personality Type: ${personalityType}`;
+      const text = `I'm an ${personalityType}! Check out my personality profile on CerebralQuotient.`;
+
+      // Determine share URL based on user status
+      const url = isDemoUser ? `results` : `profiles/${username}`;
+
+      // Use the existing share function
+      await handleShare(title, text, url, isDemoUser);
+
+      // Redirect demo users to sign up
+      if (isDemoUser) {
+        router.push(
+          "/sign-up?info=" +
+            encodeURIComponent("You need an account to share your profile.")
+        );
+      }
+    } catch (error) {
+      console.error("Error sharing results:", error);
+    } finally {
+      setIsSharing(false);
+    }
   };
 
   return (
     <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
-      
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
         <SectionHeader
           title="Your Action Plan"
           subtitle="Practical Steps for Growth"
-          description={formatWithUsername(`Here's a little checklist to help you shine as an ${personalityType}—keep this handy and check in monthly, {username}!`, username)}
+          description={formatWithUsername(
+            `Here's a little checklist to help you shine as an ${personalityType}—keep this handy and check in monthly, {username}!`,
+            username
+          )}
           sectionNumber={sectionNumber}
         />
 
@@ -58,21 +104,21 @@ const ActionPlanSection = ({ username, personalityType, actionItems, sectionNumb
                   Your {personalityType} Action Plan
                 </h3>
               </div>
-              
+
               {/* Checklist */}
               <div className="bg-muted/30 rounded-xl p-5 md:p-6 mb-8 shadow-sm">
                 <ul className="space-y-4">
                   {actionItems.map((item, index) => (
                     <li key={index} className="flex items-start">
-                      <Checkbox 
-                        id={`item-${index}`} 
+                      <Checkbox
+                        id={`item-${index}`}
                         className="h-5 w-5 rounded-sm mt-1 border-2 border-primary data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground"
                         checked={checkedItems[index] || false}
                         onCheckedChange={() => toggleItem(index)}
                       />
-                      <label 
-                        htmlFor={`item-${index}`} 
-                        className={`ml-3 text-base md:text-lg cursor-pointer ${checkedItems[index] ? 'text-muted-foreground line-through' : 'text-card-foreground'}`}
+                      <label
+                        htmlFor={`item-${index}`}
+                        className={`ml-3 text-base md:text-lg cursor-pointer ${checkedItems[index] ? "text-muted-foreground line-through" : "text-card-foreground"}`}
                       >
                         {item.task || item.description}
                       </label>
@@ -82,26 +128,38 @@ const ActionPlanSection = ({ username, personalityType, actionItems, sectionNumb
               </div>
 
               <p className="text-base md:text-lg font-medium text-primary mb-6 md:mb-8">
-                You're making great progress{username ? `, ${username}` : ""}! Save this plan and continue your growth journey.
+                You're making great progress{username ? `, ${username}` : ""}!
+                Save this plan and continue your growth journey.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
-                <Button size="lg" className="text-primary-foreground py-5 px-6 md:py-6 md:px-8 rounded-full font-medium w-full sm:w-auto">
-                  <Save className="mr-2 h-5 w-5" /> 
-                  Save Your Plan
+              <div className="flex justify-start gap-3 pt-2">
+                <Button
+                  variant="default"
+                  size="sm"
+                  onClick={shareResults}
+                  disabled={isSharing}
+                >
+                  <Share2 className="w-4 h-4 mr-2" />
+                  {isSharing
+                    ? "Processing..."
+                    : isDemoUser
+                      ? "Save & Share"
+                      : "Share Results"}
                 </Button>
-                <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10 py-5 px-6 md:py-6 md:px-8 rounded-full font-medium w-full sm:w-auto">
-                  <Download className="mr-2 h-5 w-5" />
-                  Download PDF
-                </Button>
+                <div>
+                  <PDFGenerator
+                    resultData={sampleResultData}
+                    fileName={`${personalityType}-personality-report.pdf`}
+                  />
+                </div>
               </div>
             </div>
-            
+
             {/* Image section */}
             <div className="md:w-2/5 h-auto sm:min-h-[320px] relative border-t md:border-t-0 md:border-l border-border">
               <div className="relative w-full h-full min-h-[250px] md:min-h-[400px]">
-                <Image 
-                  src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80" 
+                <Image
+                  src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1472&q=80"
                   alt="Person planning and organizing"
                   fill
                   sizes="(max-width: 768px) 100vw, 40vw"
