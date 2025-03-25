@@ -76,7 +76,7 @@ export function SimilarPersonalities({
               >
                 <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
                   <Image
-                    src={person.image || "/placeholder.svg"}
+                    src={person.image || "/profile-avatars/avatarPlaceholder.png"}
                     alt={`${person.name} portrait`}
                     fill
                     sizes="64px"

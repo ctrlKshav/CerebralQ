@@ -132,7 +132,7 @@ export function AvatarEditor({
   return (
     <div className="relative self-center md:self-auto">
       <Avatar className="h-24 w-24 md:h-32 md:w-32 ring-3 md:ring-4 ring-primary/50 ring-offset-2 md:ring-offset-4 ring-offset-background shadow-md">
-        <AvatarImage src={profileImage || ""} alt={username || "Avatar"} />
+        <AvatarImage src={profileImage || "/profile-avatars/avatarPlaceholder.png"} alt={username || "Avatar"} />
         <AvatarFallback>
           <User className="h-12 w-12 md:h-16 md:w-16" />
         </AvatarFallback>
