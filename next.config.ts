@@ -12,6 +12,21 @@ const nextConfig: NextConfig = {
 
     ],
   },
+  async rewrites() {
+    return {
+      afterFiles: [
+        {
+          source: "/blog",
+          destination: "https://wp.cerebralquotient.com/:slug*/"
+        },
+        {
+          source: "/blog/:slug*",
+          destination: "https://wp.cerebralquotient.com/:slug*/"
+        }
+      ]
+    }
+
+  }
 }
 
 export default nextConfig;
