@@ -153,7 +153,7 @@ export function SigninForm({
 
       <div className="space-y-4 text-center">
         <Button variant="outline" className="mx-auto" asChild>
-          <a href="/">← Back to Home</a>
+          <Link href="/">← Back to Home</Link>
         </Button>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { LucideIcon } from "lucide-react";
 import { MapPinIcon, PhoneIcon, MailIcon, Share2Icon } from "lucide-react";
 import { socialLinks } from "@/data/footerData";
 import { toast } from "sonner";
+import Link from "next/link";
 
 type ContactCardProps = {
   icon: LucideIcon;
@@ -70,7 +71,7 @@ export function SocialLinks() {
         <Share2Icon size={20} />
       </button>
       {socialLinks.map((social, index) => (
-        <a
+        <Link
           key={index}
           href={social.href}
           className="flex items-center justify-center w-10 h-10 rounded-full bg-primary text-white hover:bg-opacity-80 transition"
@@ -79,7 +80,7 @@ export function SocialLinks() {
           rel="noopener noreferrer"
         >
           {React.createElement(social.icon, { size: 20 })}
-        </a>
+        </Link>
       ))}
     </div>
   );
