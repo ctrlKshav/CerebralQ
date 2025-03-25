@@ -150,7 +150,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
                   </div>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem asChild>
-                    <Link href={`/protected/account`}>
+                    <Link href={`/account`}>
                       <UserIcon className="mr-2 h-4 w-4" />
                       <span>Account</span>
                     </Link>
@@ -221,7 +221,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
 
                       <div className="space-y-2 pb-4 border-b">
                         <MobileMenuItem
-                          href={`/protected/account`}
+                          href={`/account`}
                           isSheetOpen={isSheetOpen}
                           setIsSheetOpen={setIsSheetOpen}
                           title="Account"

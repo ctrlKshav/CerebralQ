@@ -58,7 +58,7 @@ export function AvatarEditor({
         const formData = new FormData();
         formData.append("avatar", avatarFile);
 
-        const response = await fetch("/protected/account/api", {
+        const response = await fetch("/account/api", {
           method: "POST",
           body: formData,
         });

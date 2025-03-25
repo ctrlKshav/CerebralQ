@@ -35,7 +35,7 @@ export const signUpAction = async (data: SignUpPayload) => {
     email,
     password,
     options: {
-      emailRedirectTo: `${origin}/auth/callback?redirect_to=/${redirectToPage || "protected"}`,
+      emailRedirectTo: `${origin}/auth/callback?redirect_to=/${redirectToPage || ""}`,
       data: {
         email,
         firstname,
@@ -77,7 +77,7 @@ export const signInAction = async (data: SignInPayload) => {
     return encodedRedirect("error", "/sign-in", error.message);
   }
 
-  return redirect(`/${redirectToPage || "/protected"}`);
+  return redirect(`/${redirectToPage || ""}`);
 };
 
 export const forgotPasswordAction = async (data: ForgotPasswordPayload) => {
@@ -90,7 +90,7 @@ export const forgotPasswordAction = async (data: ForgotPasswordPayload) => {
   }
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${origin}/auth/callback?redirect_to=/protected/reset-password`,
+    redirectTo: `${origin}/auth/callback?redirect_to=/account/reset-password`,
   });
 
   if (error) {
@@ -123,12 +123,12 @@ export const resetPasswordAction = async (data: ResetPasswordPayload) => {
   if (error) {
     return encodedRedirect(
       "error",
-      "/protected/reset-password",
+      "/account/reset-password",
       "Password update failed",
     );
   }
 
-  return encodedRedirect("success", "/protected/reset-password", "Password updated");
+  return encodedRedirect("success", "/account/reset-password", "Password updated");
 };
 
 export const signOutAction = async () => {

@@ -8,6 +8,7 @@ import Footer from "@/components/landing-page/Footer";
 import { TouchProvider } from "@/components/ui/tooltip-hybrid";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
+import { UserDataContextProvider } from "@/context/user-data";
 
 const defaultUrl =
   process.env.NODE_ENV === "production"
@@ -70,7 +71,7 @@ export default function RootLayout({
         >
           <TouchProvider>
             <Toaster position="top-right" richColors />
-            {children}
+            <UserDataContextProvider>{children}</UserDataContextProvider>
             <Footer />
             <ThemeSwitcher />
           </TouchProvider>
