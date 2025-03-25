@@ -170,7 +170,7 @@ export default function CareerSuggestionsCard({ career = defaultCareer, classNam
   }
 
   return (
-    <div className={`${className} py-12 container mx-auto`}>
+    <div className={`${className} py-12  mx-auto`}>
       {/* Add section header */}
       <div className="text-center mb-14">
         <motion.div 
@@ -180,16 +180,10 @@ export default function CareerSuggestionsCard({ career = defaultCareer, classNam
           className="relative mb-8"
         >
           
-          <h2 className="text-3xl font-bold text-foreground tracking-tight mb-3">
-            Career Pathways
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-6">
+            Career Suggestions
           </h2>
           
-          <div className="flex items-center justify-center gap-2">
-            <Compass className="h-5 w-5 text-primary" strokeWidth={2} />
-            <span className="text-primary/90 text-sm font-medium">
-              Matched to your personality strengths
-            </span>
-          </div>
         </motion.div>
         
         <p className="text-muted-foreground max-w-2xl mx-auto text-base md:text-lg leading-relaxed mb-8">
