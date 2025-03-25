@@ -1,23 +1,29 @@
 ﻿"use client";
 import { Button } from "@/components/ui/button";
 import { signOutAction } from "@/app/actions";
-import { useRouter } from "next/navigation";
-import { LogOut } from "lucide-react";
+import { useState } from "react";
+import { LogOut, Loader2 } from "lucide-react";
 import { SAVED_RESULTS_KEY, TEST_RESULTS_KEY, RETURN_URL_KEY, PROGRESS_KEY } from "@/lib/constants";
 
 export default function LogoutButton() {
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleLogout = async () => {
-    // Clear relevant localStorage items before logging out
-    localStorage.removeItem(SAVED_RESULTS_KEY);
-    localStorage.removeItem(TEST_RESULTS_KEY);
-    localStorage.removeItem(RETURN_URL_KEY);
-    localStorage.removeItem(PROGRESS_KEY);
+    setIsLoading(true);
+    try {
+      // Clear relevant localStorage items before logging out
+      localStorage.removeItem(SAVED_RESULTS_KEY);
+      localStorage.removeItem(TEST_RESULTS_KEY);
+      localStorage.removeItem(RETURN_URL_KEY);
+      localStorage.removeItem(PROGRESS_KEY);
 
-    // Call the server action to handle the actual logout
-    // setUserData(null)
-    await signOutAction();
-    window.location.href = "/";
+      // Call the server action to handle the actual logout
+      await signOutAction();
+      window.location.href = "/";
+    } catch (error) {
+      setIsLoading(false);
+      console.error("Logout failed:", error);
+    }
   };
 
   return (
@@ -25,9 +31,14 @@ export default function LogoutButton() {
       variant="outline"
       className="w-full text-base flex items-center"
       onClick={handleLogout}
+      disabled={isLoading}
     >
-      <LogOut className="mr-2 h-4 w-4" />
-      Log out
+      {isLoading ? (
+        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+      ) : (
+        <LogOut className="mr-2 h-4 w-4" />
+      )}
+      {isLoading ? "Logging out..." : "Log out"}
     </Button>
   );
 }
