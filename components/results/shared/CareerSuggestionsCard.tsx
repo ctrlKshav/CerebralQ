@@ -1,12 +1,13 @@
 ﻿"use client"
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { Target, Sparkles, ArrowRight, TrendingUp, Compass } from "lucide-react"
+import { Compass } from "lucide-react"
 
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { TooltipProvider } from "@/components/ui/tooltip"
+import { HybridTooltip, HybridTooltipContent, HybridTooltipTrigger } from "@/components/ui/tooltip-hybrid"
 import { CareerPath, MBTITrait } from "@/types/tests/mbti"
 
 interface CareerSuggestionsCardProps {
@@ -248,8 +249,8 @@ export default function CareerSuggestionsCard({ career = defaultCareer, classNam
                     <div className="grid sm:grid-cols-2 gap-3">
                       <TooltipProvider delayDuration={100}>
                         {match.mbtiTraits.map((traitDetail, i) => (
-                          <Tooltip key={i}>
-                            <TooltipTrigger asChild>
+                          <HybridTooltip key={i}>
+                            <HybridTooltipTrigger asChild>
                               <div
                                 className={`flex items-center gap-2 p-2 rounded-md ${getTraitColor(
                                   traitDetail.trait
@@ -265,12 +266,12 @@ export default function CareerSuggestionsCard({ career = defaultCareer, classNam
                                   {getTraitFullName(traitDetail.trait)}
                                 </span>
                               </div>
-                            </TooltipTrigger>
-                            <TooltipContent side="top" className="max-w-[280px] p-4 text-sm">
+                            </HybridTooltipTrigger>
+                            <HybridTooltipContent side="top" className="max-w-[280px] p-4 text-sm">
                               <p className="font-medium">{getTraitFullName(traitDetail.trait)}</p>
                               <p className="mt-1.5">{traitDetail.description}</p>
-                            </TooltipContent>
-                          </Tooltip>
+                            </HybridTooltipContent>
+                          </HybridTooltip>
                         ))}
                       </TooltipProvider>
                     </div>
