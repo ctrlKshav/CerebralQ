@@ -277,7 +277,7 @@ export function SignupForm({
         <Link href="/privacy">Privacy Policy</Link>
       </div>
       <Button variant="outline" className="mx-auto" asChild>
-        <a href="/">← Back to Home</a>
+        <Link href="/">← Back to Home</Link>
       </Button>
     </div>
   );
