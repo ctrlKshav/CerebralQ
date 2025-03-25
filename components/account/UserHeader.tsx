@@ -21,7 +21,7 @@ export function UserHeader({ username, profileImage, bio, rank, isInsider, userI
     if (!username) return;
     
     // Copy profile URL to clipboard
-    const profileUrl = `${window.location.origin}/profiles/${username}`;
+    const profileUrl = `${window.location.origin}/${username}`;
     navigator.clipboard.writeText(profileUrl);
     
     // Show success message
