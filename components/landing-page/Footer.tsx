@@ -27,7 +27,7 @@ export default function Footer() {
                 {socialLinks.map((link, index) => {
                   const Icon = link.icon;
                   return (
-                    <a
+                    <Link
                       key={index}
                       href={link.href}
                       className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white hover:bg-opacity-80 transition"
@@ -36,7 +36,7 @@ export default function Footer() {
                       rel="noopener noreferrer"
                     >
                       <Icon className="h-4 w-4" />
-                    </a>
+                    </Link>
                   );
                 })}
               </div>
@@ -49,12 +49,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {testLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -66,12 +66,12 @@ export default function Footer() {
             <ul className="space-y-3">
               {companyLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -81,7 +81,7 @@ export default function Footer() {
           <div className="space-y-4">
             <h3 className="font-semibold text-base">Supported by</h3>
             <div className="flex items-center">
-              <a
+              <Link
                 href="https://c4e.in"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -95,7 +95,7 @@ export default function Footer() {
                   height={40}
                   className="object-contain"
                 />
-              </a>
+              </Link>
             </div>
             <p className="text-sm text-muted-foreground">
               C4E is a collective of dreamers and doers.
