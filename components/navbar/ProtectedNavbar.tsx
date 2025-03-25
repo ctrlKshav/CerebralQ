@@ -161,7 +161,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
                   </DropdownMenuItem>
 
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className=" focus:bg-white">
+                  <DropdownMenuItem className=" focus:bg-background">
                     <LogoutButton/>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
