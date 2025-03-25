@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { UserDataContext } from "@/context/user-data";
 import Account from "@/components/account";
 import Navbar from "@/components/navbar";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 export default function Page() {
   const userDataContext = useContext(UserDataContext);
@@ -14,7 +15,7 @@ export default function Page() {
   const { userData, setUserData } = userDataContext;
 
   if (userData === null) {
-    return null;
+    return <LoadingSkeleton />;
   }
 
   return (
