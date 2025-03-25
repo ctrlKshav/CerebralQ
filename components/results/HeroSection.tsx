@@ -50,10 +50,10 @@ const HeroSection = ({
                 </span>{" "}
                 You're an{" "}
                 <span className="text-primary decoration-2">
-                  {personalityType}
+                  {personalityType}.
                 </span>
                 <br />
-                <span className=" font-semibold">{alias}</span>
+                <span className=" font-semibold">{alias}.</span>
               </h1>
             </div>
 
