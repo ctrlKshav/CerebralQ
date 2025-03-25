@@ -28,7 +28,7 @@ export const teamMembers: TeamMember[] = [
     },
   },
   {
-    name: "Sneha Janathe",
+    name: "Sneha Janthe",
     role: "Content Strategist",
     bio: "Hi, Sneha here! I'm helping to build C4E",
     imageUrl:
