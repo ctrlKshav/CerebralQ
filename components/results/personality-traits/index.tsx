@@ -16,6 +16,7 @@ interface PersonalityTraitsProps {
   traitScores: TraitScores;
   sectionNumber: number;
   username?: string;
+  dashboardView?: boolean;
 }
 
 export default function PersonalityTraits({
@@ -23,6 +24,7 @@ export default function PersonalityTraits({
   traitScores,
   sectionNumber,
   username,
+  dashboardView,
 }: PersonalityTraitsProps) {
   const [selectedTrait, setSelectedTrait] = React.useState<keyof TraitScores>("E-I");
   const { theme, resolvedTheme } = useTheme();
@@ -86,6 +88,8 @@ export default function PersonalityTraits({
                     score={score}
                     traitInfo={traitInfo}
                     themedColor={themedColor}
+                    username={username}
+                    dashboardView={dashboardView}
                   />
                 );
               })()}

@@ -10,11 +10,13 @@ import { personalityDatabase } from "@/data/mbti/personalityDatabase";
 interface PersonalityShowcaseProps {
   personalityType: string;
   traitScores: TraitScores;
+  username: string | undefined;
 }
 
 export default function PersonalityShowcase({
   personalityType,
   traitScores,
+  username
 }: PersonalityShowcaseProps) {
   return (
     <section className="relative">
@@ -40,7 +42,7 @@ export default function PersonalityShowcase({
             sectionNumber={1}
           />
           {/* Use the PersonalityTraits component */}
-          <PersonalityTraits personalityType={personalityType} traitScores={traitScores} sectionNumber={2} />
+          <PersonalityTraits personalityType={personalityType} traitScores={traitScores} sectionNumber={2} username={username} dashboardView={true} />
         </div>
       </div>
     </section>
