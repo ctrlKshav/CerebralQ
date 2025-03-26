@@ -150,7 +150,7 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
               key={index}
               className="flex items-start gap-3 bg-primary/5 p-3 rounded-lg"
             >
-              <div className="p-2 bg-background rounded-md">
+              <div className="p-2  rounded-md">
                 <benefit.icon className="h-5 w-5 text-primary" />
               </div>
               <div className="flex-1">
