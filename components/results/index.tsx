@@ -16,7 +16,7 @@ import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import { sampleResultData } from "@/data/mbti/mbtiResultData";
 
 import HeroSection from "@/components/results/HeroSection";
-import PersonalityTraits from "@/components/results/PersonalityTraits";
+import PersonalityTraits from "@/components/results/personality-traits";
 import CareerPathSection from "@/components/results/CareerPathSection";
 import RelationshipSection from "@/components/results/RelationshipSection";
 import GrowthSection from "@/components/results/GrowthSection";
