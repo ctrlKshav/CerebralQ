@@ -15,7 +15,7 @@ export function TeamGrid({ members }: TeamGridProps) {
           <TeamCard key={member.name} member={member} index={index} />
         ))}
       </div>
-      <div className="absolute inset-0 bg-grid-white/10 [mask-image:radial-gradient(white,transparent_70%)] pointer-events-none" />
+      
     </div>
   );
 }
