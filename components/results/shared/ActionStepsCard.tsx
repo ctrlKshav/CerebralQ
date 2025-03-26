@@ -23,13 +23,13 @@ const ActionStepsCard = ({
   className = "",
 }: ActionStepsCardProps) => {
   return (
-    <Card className={`overflow-hidden ${className}`}>
+    <Card className={`overflow-hidden ${className} border-0 sm:border shadow-none sm:shadow`}>
       <div className="flex flex-col md:flex-row">
-        <div className="p-8 md:w-3/5">
+        <div className="py-8 md:w-3/5">
           <div className="flex items-center mb-6">
-            <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
+            <h1 className="text-2xl md:text-2xl font-bold text-card-foreground">
               {title}
-            </h3>
+            </h1>
           </div>
 
           <ul className="space-y-6 ml-4">

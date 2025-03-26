@@ -21,8 +21,8 @@ const SuperpowersCard = ({
   className = "",
 }: SuperpowersCardProps) => {
   return (
-    <Card className={`h-full ${className}`}>
-      <CardContent className="p-8">
+    <Card className={`h-full ${className} shadow-none border-0 sm:border`}>
+      <CardContent className="px-0 ">
         <div className="flex items-center mb-6">
           <div className="rounded-full bg-gradient-to-r from-emerald-400 to-teal-600 text-white p-3 mr-4 shadow flex items-center justify-center">
             {icon}
