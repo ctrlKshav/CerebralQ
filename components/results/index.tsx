@@ -6,7 +6,7 @@ import {
   getCareerSuggestions,
   getSimilarPersonalities,
 } from "@/lib/mbti/results";
-import { getPersonalityInsights } from "@/data/mbti/personalityInformation";
+import { getPersonalityDescription, getPersonalityInsights, personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -32,6 +32,21 @@ export default function Results() {
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
 
+  // Destructure result data
+  
+  const {
+    personalityType,
+    personalityDescription,
+    completionDate,
+    traitScores,
+  } = resultData || sampleResultData;
+
+  const onExploreClick = () => {
+    document
+      .getElementById("explore-traits")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
   useEffect(() => {
     // Get data from localStorage and handle saving to database
     const loadResultsAndSaveToDatabase = async () => {
@@ -54,7 +69,7 @@ export default function Results() {
 
         // Extract required data from localStorage format
         const personalityType =
-          data.personalityType || data.raw_score?.personalityType;
+          data.raw_score?.personalityType;
         const traitScores = data.traitScores || data.raw_score?.traitScores;
         const testId = data.testId || data.test_type_id;
         const completionDate =
@@ -71,13 +86,14 @@ export default function Results() {
           return;
         }
 
-        const personalityData = getPersonalityData("ENTJ");
+        const personalityData = getPersonalityData(personalityType);
+        const personalityDescription = getPersonalityDescription(personalityType);
 
         // Set all result data at once
         setResultData({
           username: user?.username || null,
-          personalityType: sampleResultData.personalityType,
-          personalityDescription: sampleResultData.personalityDescription,
+          personalityType: personalityType,
+          personalityDescription: personalityDescription,
           completionDate,
           traitScores,
           personalityData,
@@ -123,20 +139,6 @@ export default function Results() {
 
     loadResultsAndSaveToDatabase();
   }, []);
-
-  // Destructure properties from resultData for easier access in JSX with default values
-  const {
-    personalityType,
-    personalityDescription,
-    completionDate,
-    traitScores,
-  } = resultData || sampleResultData;
-
-  const onExploreClick = () => {
-    document
-      .getElementById("explore-traits")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   if (loading) {
     return (
