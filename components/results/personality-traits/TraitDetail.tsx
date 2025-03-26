@@ -38,7 +38,7 @@ export const TraitDetail = ({
 
       <div className="mt-4 p-4 bg-primary/5 rounded-lg">
         <div className="space-y-4">
-          <div className="flex items-center justify-start gap-4">
+          <div className="flex items-start justify-start gap-4">
             <Badge
               variant="outline"
               className="text-sm py-0.5 px-2 font-semibold"
@@ -49,9 +49,7 @@ export const TraitDetail = ({
               <h5 className="text-base font-medium">
                 {dominant.name}
               </h5>
-              <span className="text-sm text-muted-foreground">
-                {traitInfo.title}
-              </span>
+           
             </div>
           </div>
           <p className="text-base text-muted-foreground leading-relaxed">
