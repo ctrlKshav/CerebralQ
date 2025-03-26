@@ -25,7 +25,7 @@ const ActionStepsCard = ({
   return (
     <Card className={`overflow-hidden ${className} border-0 sm:border shadow-none sm:shadow`}>
       <div className="flex flex-col md:flex-row">
-        <div className="py-8 md:w-3/5">
+        <div className="p-0 sm:p-8 md:w-3/5">
           <div className="flex items-center mb-6">
             <h1 className="text-2xl md:text-2xl font-bold text-card-foreground">
               {title}
