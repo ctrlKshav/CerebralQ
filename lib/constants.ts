@@ -4,3 +4,4 @@ export const TEST_RESULTS_KEY = "cerebralq_mbti_results";
 export const SAVED_RESULTS_KEY = "cerebralq_saved_results";
 export const PROGRESS_KEY = "cerebralq_mbti_progress";
 export const MAX_CHARACTER_LIMIT_BIO = 150;
+export const RESERVED_ROUTES="account,forgot-password,sign-in,sign-up,api,auth,contact,privacy,protected,results,start-test"
