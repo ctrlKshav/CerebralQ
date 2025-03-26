@@ -40,7 +40,7 @@ export default function PersonalityShowcase({
             sectionNumber={1}
           />
           {/* Use the PersonalityTraits component */}
-          <PersonalityTraits traitScores={traitScores} sectionNumber={2} />
+          <PersonalityTraits personalityType={personalityType} traitScores={traitScores} sectionNumber={2} />
         </div>
       </div>
     </section>
