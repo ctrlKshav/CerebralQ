@@ -63,18 +63,11 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
           <PDFHero
+            firstname={resultData.firstname}
             personalityType={personalityType}
             personalityAlias={personalityAlias}
             personalityDescription={personalityDescription}
             completionDate={completionDate}
-            isDarkMode={isDarkMode}
-          />
-        </View>
-        
-        <View style={styles.section}>
-          <PDFAboutPersonalityType
-            personalityType={personalityType}
-            sectionNumber={1}
             isDarkMode={isDarkMode}
           />
         </View>
