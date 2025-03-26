@@ -49,7 +49,7 @@ export default function PersonalityTraits({
         isMobile ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
       )}>
         {/* Trait scores list */}
-        <Card className="border-0 py-8 sm:p-8 md:border space-y-10 flex flex-col justify-between">
+        <Card className="shadow-none border-0 py-8 sm:p-8 sm:border sm:shadow space-y-10 flex flex-col justify-between">
           {Object.entries(traitScores).map(([trait, score]) => {
             const typedTrait = trait as keyof TraitScores;
             
