@@ -92,6 +92,8 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
               traitScores={traitScores} 
               sectionNumber={2}
               isDarkMode={isDarkMode}
+              username={resultData.username ?? undefined}
+              personalityType={personalityType}
             />
           </View>
         )}

@@ -1,7 +1,7 @@
 ﻿import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
 import type { TraitScores } from '@/types/tests/mbti';
-import { traitDescriptions } from '@/data/mbti/traitDescriptions';
+import { getPersonalityTraitDescriptions,personalityTraitDescriptions } from '@/data/mbti/traitDescriptions';
 import { createBaseStyles, getThemeColors } from './PDFTheme';
 
 // Create styles with theme variants
@@ -116,12 +116,16 @@ const createStyles = (isDarkMode = false) => {
 interface PDFPersonalityTraitsProps {
   traitScores: TraitScores;
   sectionNumber: number;
+  personalityType: string;
+  username?: string;
   isDarkMode?: boolean;
 }
 
 export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
   traitScores,
   sectionNumber,
+  personalityType,
+  username,
   isDarkMode = false,
 }) => {
   const styles = createStyles(isDarkMode);
@@ -136,7 +140,7 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
 
       {Object.entries(traitScores).map(([trait, score]) => {
         const typedTrait = trait as keyof TraitScores;
-        const description = traitDescriptions[typedTrait];
+        const description = getPersonalityTraitDescriptions(personalityType)[typedTrait];
         const leftPercentage = score.leftPercentage;
         const rightPercentage = score.rightPercentage;
         // Use chart colors from the theme for trait colors
@@ -185,7 +189,7 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
               <Text style={styles.traitTitle}>
                 {score.dominant === "left" ? description.leftLabel : description.rightLabel} ({dominant.letter})
               </Text>
-              <Text style={styles.traitText}>{dominant.description}</Text>
+              <Text style={styles.traitText}>{description.getDominantTraitDescription(username)}</Text>
             </View>
           </View>
         );
