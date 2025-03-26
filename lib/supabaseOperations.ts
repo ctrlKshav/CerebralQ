@@ -246,6 +246,7 @@ export async function getUserByUsername(username: string): Promise<UserProfile |
       // Still return user data but with empty test history
       return {
         username: userData.username || "",
+        firstname: userData.first_name || "",
         profile_image_url: userData.profile_image_url || "/placeholder.svg?height=128&width=128",
         bio: userData.bio || "",
         tests_taken: userData.tests_taken || 0,
@@ -267,6 +268,7 @@ export async function getUserByUsername(username: string): Promise<UserProfile |
     if (!historyData || historyData.length === 0) {
       return {
         username: userData.username || "",
+        firstname: userData.first_name || "",
         profile_image_url: userData.profile_image_url || "/placeholder.svg?height=128&width=128",
         bio: userData.bio || "",
         tests_taken: userData.tests_taken || 0,
@@ -298,6 +300,7 @@ export async function getUserByUsername(username: string): Promise<UserProfile |
     // Step 4: Format and return the user profile
     return {
       username: userData.username || "",
+      firstname: userData.first_name || "",
       profile_image_url: userData.profile_image_url || "/placeholder.svg?height=128&width=128",
       bio: userData.bio || "",
       tests_taken: userData.tests_taken || 0,
