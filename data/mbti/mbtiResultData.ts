@@ -680,5 +680,5 @@ export const personalityDatabase: { [key: string]: PersonalityDatabase } = {
 export const getPersonalityData = (
   personalityType: string
 ): PersonalityDatabase => {
-  return personalityDatabase[personalityType];
+  return personalityDatabase[personalityType] || personalityDatabase["ENTJ"];
 };
