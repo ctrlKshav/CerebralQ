@@ -14,14 +14,14 @@ import { sampleResultData } from "@/data/mbti/mbtiResultData";
 import { useRouter } from "next/navigation";
 
 interface ActionPlanSectionProps {
-  username: string | null;
+  firstname: string | null;
   personalityType: string;
   actionItems: ActionItem[];
   sectionNumber?: number;
 }
 
 const ActionPlanSection = ({
-  username,
+  firstname,
   personalityType,
   actionItems,
   sectionNumber = 10,
@@ -31,7 +31,7 @@ const ActionPlanSection = ({
     {}
   );
   const [isSharing, setIsSharing] = useState(false);
-  const isDemoUser = !username;
+  const isDemoUser = !firstname;
   const router = useRouter();
 
   // Initialize checkedItems from the data
@@ -62,7 +62,7 @@ const ActionPlanSection = ({
       const text = `I'm an ${personalityType}! Check out my personality profile on CerebralQuotient.`;
 
       // Determine share URL based on user status
-      const url = isDemoUser ? `results` : `profiles/${username}`;
+      const url = isDemoUser ? `results` : `profiles/${firstname}`;
 
       // Use the existing share function
       await handleShare(title, text, url, isDemoUser);
@@ -89,8 +89,8 @@ const ActionPlanSection = ({
           title="Your Action Plan"
           subtitle="Practical Steps for Growth"
           description={formatWithUsername(
-            `Here's a little checklist to help you shine as an ${personalityType}—keep this handy and check in monthly, {username}!`,
-            username
+            `Here's a little checklist to help you shine as an ${personalityType}—keep this handy and check in monthly, {firstname}!`,
+            firstname
           )}
           sectionNumber={sectionNumber}
         />
@@ -128,7 +128,7 @@ const ActionPlanSection = ({
               </div>
 
               <p className="text-base md:text-lg font-medium text-primary mb-6 md:mb-8">
-                You're making great progress{username ? `, ${username}` : ""}!
+                You're making great progress{firstname ? `, ${firstname}` : ""}!
                 Save this plan and continue your growth journey.
               </p>
 

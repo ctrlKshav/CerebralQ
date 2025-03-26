@@ -1,7 +1,7 @@
 ﻿import { PersonalityDatabase, ResultData } from "@/types/tests/mbti";
 
 export const sampleResultData: ResultData = {
-  username: null,
+  firstname: null,
   personalityType: "ENTJ",
   personalityDescription: {
     alias: "The Commander",

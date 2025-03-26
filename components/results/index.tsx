@@ -91,7 +91,7 @@ export default function Results() {
 
         // Set all result data at once
         setResultData({
-          username: user?.username || null,
+          firstname: user?.first_name || null,
           personalityType: personalityType,
           personalityDescription: personalityDescription,
           completionDate,
@@ -130,6 +130,7 @@ export default function Results() {
         }
 
         setLoading(false);
+        console.log(user?.first_name, user?.username)
       } catch (error) {
         console.error("Error parsing result data:", error);
         setError("Failed to load test results. Please retake the test.");
@@ -182,7 +183,7 @@ export default function Results() {
           personalityType={personalityType}
           personalityDescription={personalityDescription}
           completionDate={completionDate}
-          username={resultData?.username || null}
+          firstname={resultData?.firstname || null}
           onExploreClick={onExploreClick}
         />
 
@@ -192,13 +193,13 @@ export default function Results() {
             personalityType={personalityType}
             traitScores={traitScores}
             sectionNumber={1}
-            username={resultData?.username ?? undefined}
+            firstname={resultData?.firstname ?? undefined}
           />
         )}
 
         {/* Career Path */}
         <CareerPathSection
-          username={resultData?.username || null}
+          firstname={resultData?.firstname || null}
           career={
             resultData?.personalityData?.career ||
             sampleResultData.personalityData?.career
@@ -208,7 +209,7 @@ export default function Results() {
 
         {/* Relationship Insights */}
         <RelationshipSection
-          username={resultData?.username || null}
+          firstname={resultData?.firstname || null}
           relationships={
             resultData?.personalityData?.relationships ||
             sampleResultData.personalityData?.relationships
@@ -218,7 +219,7 @@ export default function Results() {
 
         {/* Growth Journey */}
         <GrowthSection
-          username={resultData?.username || null}
+          firstname={resultData?.firstname || null}
           growth={
             resultData?.personalityData?.growth ||
             sampleResultData.personalityData?.growth
@@ -228,7 +229,7 @@ export default function Results() {
 
         {/* Daily Habits */}
         <DailyHabitsSection
-          username={resultData?.username || null}
+          firstname={resultData?.firstname || null}
           dailyHabits={
             resultData?.personalityData?.dailyHabits ||
             sampleResultData.personalityData?.dailyHabits
@@ -238,7 +239,7 @@ export default function Results() {
 
         {/* Values & Motivators */}
         <ValuesMotivatorSection
-          username={resultData?.username || null}
+          firstname={resultData?.firstname || null}
           valuesAndMotivators={
             resultData?.personalityData?.valuesAndMotivators ||
             sampleResultData.personalityData?.valuesAndMotivators
@@ -248,7 +249,7 @@ export default function Results() {
 
         {/* Community Connection */}
         <CommunitySection
-          username={resultData?.username ?? null}
+          firstname={resultData?.firstname ?? null}
           communityConnection={
             resultData?.personalityData.communityConnection ||
             sampleResultData.personalityData.communityConnection
@@ -258,7 +259,7 @@ export default function Results() {
 
         {/* Action Plan */}
         <ActionPlanSection
-          username={resultData?.username || null}
+          firstname={resultData?.firstname || null}
           personalityType={personalityType}
           actionItems={
             resultData?.personalityData.actionItems ||

@@ -11,12 +11,12 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface RelationshipSectionProps {
-  username: string | null;
+  firstname: string | null;
   relationships: RelationshipCompatibility[];
   sectionNumber?: number;
 }
 
-const RelationshipSection = ({ username, relationships, sectionNumber = 4 }: RelationshipSectionProps) => {
+const RelationshipSection = ({ firstname, relationships, sectionNumber = 4 }: RelationshipSectionProps) => {
 
   const [activeTab, setActiveTab] = useState("Friendship");
   
@@ -35,8 +35,8 @@ const RelationshipSection = ({ username, relationships, sectionNumber = 4 }: Rel
         {/* Section header */}
         <SectionHeader
           title="Your Relationships"
-          subtitle={formatWithUsername("How you shine in relationships, {username}", username)}
-          description={formatWithUsername("You're a total force in your relationships—whether romantic, friendship, or professional. You love taking charge and helping others achieve their goals, but you might get frustrated if things move too slowly or if others don't keep up with your pace.", username)}
+          subtitle={formatWithUsername("How you shine in relationships, {firstname}", firstname)}
+          description={formatWithUsername("You're a total force in your relationships—whether romantic, friendship, or professional. You love taking charge and helping others achieve their goals, but you might get frustrated if things move too slowly or if others don't keep up with your pace.", firstname)}
           sectionNumber={sectionNumber}
         />
         

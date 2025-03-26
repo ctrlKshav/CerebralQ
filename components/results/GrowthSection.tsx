@@ -8,12 +8,12 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface GrowthSectionProps {
-  username: string | null;
+  firstname: string | null;
   growth: GrowthJourney
   sectionNumber?: number;
 }
 
-const GrowthSection = ({ username, growth, sectionNumber = 5 }: GrowthSectionProps) => {
+const GrowthSection = ({ firstname, growth, sectionNumber = 5 }: GrowthSectionProps) => {
   const { superpowers: growthSuperpowers, growthAreas, actionSteps: growthActionSteps } = growth;
 
   return (
@@ -23,8 +23,8 @@ const GrowthSection = ({ username, growth, sectionNumber = 5 }: GrowthSectionPro
         {/* Section header */}
         <SectionHeader
           title="Your Growth Journey"
-          subtitle={formatWithUsername("Your Path to Personal Evolution, {username}", username)}
-          description={formatWithUsername("Growth for you is all about becoming an even better leader while learning to connect more deeply, {username}. You're amazing at setting goals and making them happen, but you might need to work on being more patient and in tune with your emotions.", username)}
+          subtitle={formatWithUsername("Your Path to Personal Evolution, {firstname}", firstname)}
+          description={formatWithUsername("Growth for you is all about becoming an even better leader while learning to connect more deeply, {firstname}. You're amazing at setting goals and making them happen, but you might need to work on being more patient and in tune with your emotions.", firstname)}
           sectionNumber={sectionNumber}
         />
 

@@ -8,7 +8,7 @@ interface TraitDetailProps {
   score: TraitScore;
   traitInfo: TraitDescription;
   themedColor: string;
-  username: string | undefined;
+  firstname: string | undefined;
   dashboardView?: boolean;
 }
 
@@ -18,7 +18,7 @@ export const TraitDetail = ({
   score,
   traitInfo,
   themedColor,
-  username,
+  firstname,
   dashboardView
 }: TraitDetailProps) => {
     const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
@@ -57,7 +57,7 @@ export const TraitDetail = ({
             </div>
           </div>
           <p className="text-base text-muted-foreground leading-relaxed">
-            {traitInfo.getDominantTraitDescription(username, dashboardView)}
+            {traitInfo.getDominantTraitDescription(firstname, dashboardView)}
           </p>
         </div>
       </div>

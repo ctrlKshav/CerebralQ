@@ -11,12 +11,12 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface ValuesMotivatorSectionProps {
-  username: string | null;
+  firstname: string | null;
   valuesAndMotivators: ValuesAndMotivators;
   sectionNumber?: number;
 }
 
-const ValuesMotivatorSection = ({ username, valuesAndMotivators, sectionNumber = 7 }: ValuesMotivatorSectionProps) => {
+const ValuesMotivatorSection = ({ firstname, valuesAndMotivators, sectionNumber = 7 }: ValuesMotivatorSectionProps) => {
   
   const { actionItems, coreValues, motivators } = valuesAndMotivators;
 
@@ -28,8 +28,8 @@ const ValuesMotivatorSection = ({ username, valuesAndMotivators, sectionNumber =
         {/* Section header */}
         <SectionHeader
           title="Values & Motivators"
-          subtitle={formatWithUsername("What Drives You, {username}", username)}
-          description={formatWithUsername("Your values and what motivates you are the true fuel behind your success, {username}. Understanding these core drivers helps you make choices that align with your authentic self and create a life that truly fulfills you.", username)}
+          subtitle={formatWithUsername("What Drives You, {firstname}", firstname)}
+          description={formatWithUsername("Your values and what motivates you are the true fuel behind your success, {firstname}. Understanding these core drivers helps you make choices that align with your authentic self and create a life that truly fulfills you.", firstname)}
           sectionNumber={sectionNumber}
         />
 

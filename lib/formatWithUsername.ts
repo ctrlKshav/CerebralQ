@@ -4,12 +4,12 @@
  * @param username The username to include, or undefined/null
  * @returns Formatted text with username inserted if available
  */
-export const formatWithUsername = (text: string, username?: string | null): string => {
-  if (!username) {
-    // Replace ", {username}" or "{username}, " with empty string
-    return text.replace(/, \{username\}/g, '').replace(/\{username\}, /g, '');
+export const formatWithUsername = (text: string, firstname?: string | null): string => {
+  if (!firstname) {
+    // Replace ", {firstname}" or "{firstname}, " with empty string
+    return text.replace(/, \{firstname\}/g, '').replace(/\{firstname\}, /g, '');
   }
   
-  // Replace {username} with the actual username
-  return text.replace(/\{username\}/g, username);
+  // Replace {firstname} with the actual firstname
+  return text.replace(/\{firstname\}/g, firstname);
 };

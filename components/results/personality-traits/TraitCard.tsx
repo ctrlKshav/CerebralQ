@@ -12,7 +12,7 @@ interface TraitCardProps {
   onSelect: (trait: keyof TraitScores) => void;
   isMobile: boolean;
   personalityType: string;
-  username?: string;
+  firstname?: string;
   dashboardView?: boolean;
 }
 
@@ -24,7 +24,7 @@ export const TraitCard = ({
   onSelect,
   isMobile,
   personalityType,
-  username,
+  firstname,
   dashboardView,
 }: TraitCardProps) => {
   const { theme, resolvedTheme } = useTheme();
@@ -56,7 +56,7 @@ export const TraitCard = ({
             score={score}
             traitInfo={description}
             themedColor={themedColor}
-            username={username}
+            firstname={firstname}
             dashboardView={dashboardView}
           />
         </div>

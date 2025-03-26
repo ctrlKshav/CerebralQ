@@ -11,13 +11,13 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface DailyHabitsSectionProps {
-  username: string | null;
+  firstname: string | null;
   dailyHabits: DailyHabits;
   sectionNumber?: number;
 }
 
 const DailyHabitsSection = ({
-  username,
+  firstname,
   dailyHabits,
   sectionNumber = 6,
 }: DailyHabitsSectionProps) => {
@@ -32,12 +32,12 @@ const DailyHabitsSection = ({
         <SectionHeader
           title="Daily Habits & Communication"
           subtitle={formatWithUsername(
-            "Your Daily Habits, {username}",
-            username
+            "Your Daily Habits, {firstname}",
+            firstname
           )}
           description={formatWithUsername(
             dailyHabits.summary,
-            username
+            firstname
           )}
           sectionNumber={sectionNumber}
         />
@@ -82,7 +82,7 @@ const DailyHabitsSection = ({
           className="mb-16"
         >
           <p className="text-card-foreground text-base md:text-lg mb-6 ml-2">
-            {formatWithUsername(dailyHabits.communication.summary, username)}
+            {formatWithUsername(dailyHabits.communication.summary, firstname)}
           </p>
 
           <div className="ml-2 space-y-5">

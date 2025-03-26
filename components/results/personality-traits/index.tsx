@@ -15,7 +15,7 @@ interface PersonalityTraitsProps {
   personalityType: string;
   traitScores: TraitScores;
   sectionNumber: number;
-  username?: string;
+  firstname?: string;
   dashboardView?: boolean;
 }
 
@@ -23,7 +23,7 @@ export default function PersonalityTraits({
   personalityType,
   traitScores,
   sectionNumber,
-  username,
+  firstname,
   dashboardView,
 }: PersonalityTraitsProps) {
   const [selectedTrait, setSelectedTrait] =
@@ -68,7 +68,7 @@ export default function PersonalityTraits({
                   onSelect={setSelectedTrait}
                   isMobile={isMobile}
                   personalityType={personalityType}
-                  username={username}
+                  firstname={firstname}
                   dashboardView={dashboardView}
                 />
               );
@@ -96,7 +96,7 @@ export default function PersonalityTraits({
                     score={score}
                     traitInfo={traitInfo}
                     themedColor={themedColor}
-                    username={username}
+                    firstname={firstname}
                     dashboardView={dashboardView}
                   />
                 );

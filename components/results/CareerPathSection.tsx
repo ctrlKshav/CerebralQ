@@ -15,12 +15,12 @@ import CareerSuggestionsCard from "./shared/CareerSuggestionsCard";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 
 interface CareerPathSectionProps {
-  username: string | null;
+  firstname: string | null;
   career: CareerPath;
   sectionNumber?: number;
 }
 
-const CareerPathSection = ({ username, career, sectionNumber = 3 }: CareerPathSectionProps) => {
+const CareerPathSection = ({ firstname, career, sectionNumber = 3 }: CareerPathSectionProps) => {
   const {superpowers, growthAreas, actionSteps} = career;
 
   return (
@@ -30,8 +30,8 @@ const CareerPathSection = ({ username, career, sectionNumber = 3 }: CareerPathSe
         {/* Section header */}
         <SectionHeader
           title="Your Career Path"
-          subtitle={formatWithUsername("How You Shine at Work, {username}", username)}
-          description={formatWithUsername("You're a total force in jobs where you can lead and strategize—like business management, entrepreneurship, or even something high-stakes like law. You love roles that let you take charge and achieve big goals, but you might get frustrated if the work feels inefficient or if others don't keep up with your pace.", username)}
+          subtitle={formatWithUsername("How You Shine at Work, {firstname}", firstname)}
+          description={formatWithUsername("You're a total force in jobs where you can lead and strategize—like business management, entrepreneurship, or even something high-stakes like law. You love roles that let you take charge and achieve big goals, but you might get frustrated if the work feels inefficient or if others don't keep up with your pace.", firstname)}
           sectionNumber={sectionNumber}
         />
 

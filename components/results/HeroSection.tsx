@@ -9,7 +9,7 @@ interface HeroSectionProps {
   personalityType: string;
   personalityDescription: PersonalityDescription;
   completionDate: string;
-  username: string | null;
+  firstname: string | null;
   onExploreClick: () => void;
 }
 
@@ -17,7 +17,7 @@ const HeroSection = ({
   personalityType,
   personalityDescription,
   completionDate,
-  username,
+  firstname,
   onExploreClick,
 }: HeroSectionProps) => {
   const alias = personalityDescription.alias;
@@ -44,9 +44,9 @@ const HeroSection = ({
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 Hey{" "}
                 <span
-                  className={`${username ? "text-primary decoration-2" : "decoration-1"}`}
+                  className={`${firstname ? "text-primary decoration-2" : "decoration-1"}`}
                 >
-                  {username || "there"}!
+                  {firstname || "there"}!
                 </span>{" "}
                 You're an{" "}
                 <span className="text-primary decoration-2">
@@ -61,10 +61,10 @@ const HeroSection = ({
 
             <p className="text-lg text-muted-foreground">
               Does that sound like you
-              {username ? (
+              {firstname ? (
                 <>
                   ,{" "}
-                  <span className="font-semibold text-primary">{username}</span>
+                  <span className="font-semibold text-primary">{firstname}</span>
                 </>
               ) : (
                 ""

@@ -8,6 +8,7 @@
   tests_taken: number | null;
   updated_at: string;
   username: string | null;
+  first_name: string | null;
   rank: string | null;
   is_verified: boolean | null;
   is_insider: boolean | null;

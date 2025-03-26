@@ -8,13 +8,13 @@ import { CommunityConnection, ResultData } from "@/types/tests/mbti";
 import Image from "next/image";
 
 interface CommunitySectionProps {
-  username: string | null;
+  firstname: string | null;
   communityConnection: CommunityConnection;
   sectionNumber?: number;
 }
 
 const CommunitySection = ({
-  username,
+  firstname,
   communityConnection,
   sectionNumber = 9,
 }: CommunitySectionProps) => {
@@ -26,7 +26,7 @@ const CommunitySection = ({
         <SectionHeader
           title="Community Connection"
           subtitle="Find Your Tribe"
-          description={formatWithUsername(summary, username)}
+          description={formatWithUsername(summary, firstname)}
           sectionNumber={sectionNumber}
         />
 
