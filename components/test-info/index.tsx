@@ -263,6 +263,7 @@ export default function TestInformation({ testId }: { testId: string }) {
           <TestResultSection
             result={latestResult}
             testShortCode={MBTI_TEST.short_code}
+            username={user?.user_metadata.username}
           />
         )}
 

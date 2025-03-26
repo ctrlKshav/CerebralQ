@@ -23,7 +23,9 @@ import {
 } from "@/components/ui/tooltip-hybrid";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Image from "next/image";
-import { traitDescriptions } from "@/data/mbti/traitDescriptions";
+import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
+import { TraitKey, TraitScore, TraitScores } from "@/types/tests/mbti";
+import { FormattedTestResult } from "@/types/supabase/user-test-history";
 
 export const TestTypeBadge = ({ type }: { type: string }) => {
   const colors = {
@@ -202,9 +204,11 @@ export const TestDimensionsCard = ({ dimensions }: { dimensions: any[] }) => (
 export const TestResultSection = ({
   result,
   testShortCode,
+  username,
 }: {
-  result: any;
+  result: FormattedTestResult;
   testShortCode: string;
+  username: string;
 }) => (
   <div className="mt-16 rounded-xl p-6">
     <h2 className="text-3xl font-bold mb-16 text-center">Your Latest Result</h2>
@@ -246,6 +250,7 @@ export const TestResultSection = ({
             quality={85}
           />
         </div>
+        
       </div>
 
       {/* Right Column - Trait Scores */}
@@ -262,44 +267,37 @@ export const TestResultSection = ({
               className="flex-grow overflow-y-auto space-y-6 pb-4"
               style={{ minHeight: "450px" }}
             >
-              {Object.entries(result.traitScores).map(
-                ([trait, score]: [string, any]) => (
-                  <div key={trait} className="space-y-2">
-                    <div className="flex justify-between text-md">
-                      <span className="capitalize font-medium">{trait}</span>
-                      <span>
-                        {score.dominant === "left"
-                          ? score.leftPercentage.toFixed(0)
-                          : score.rightPercentage.toFixed(0)}
-                        %
-                      </span>
-                    </div>
-                    <Progress
-                      value={
-                        score.dominant === "left"
-                          ? score.leftPercentage.toFixed(0)
-                          : score.rightPercentage.toFixed(0)
-                      }
-                      className="h-2 bg-primary/20"
-                    />
-
-                    <TraitExplanation traitKey={trait} score={score} />
+              {Object.entries(result.traitScores).map(([trait, score]) => (
+                <div key={trait} className="space-y-2">
+                  <div className="flex justify-between text-md">
+                    <span className="capitalize font-medium">{trait}</span>
+                    <span>
+                      {score.dominant === "left"
+                        ? score.leftPercentage.toFixed(0)
+                        : score.rightPercentage.toFixed(0)}
+                      %
+                    </span>
                   </div>
-                )
-              )}
+                  <Progress
+                    value={
+                      score.dominant === "left"
+                        ? Number(score.leftPercentage.toFixed(0))
+                        : Number(score.rightPercentage.toFixed(0))
+                    }
+                    className="h-2 bg-primary/20"
+                  />
+
+                  <TraitExplanation
+                    traitKey={trait as TraitKey}
+                    score={score}
+                    username={username}
+                    personalityType={result.personalityType || "INTJ"}
+                  />
+                </div>
+              ))}
             </div>
 
-            <div className="mt-auto pt-4 border-t border-border">
-              <Link href={`/`} className="block w-full sm:w-auto">
-                <Button
-                  size="sm"
-                  variant="default"
-                  className="w-full sm:w-auto"
-                >
-                  Retake Test
-                </Button>
-              </Link>
-            </div>
+           
           </div>
         )}
       </div>
@@ -311,12 +309,15 @@ export const TestResultSection = ({
 export const TraitExplanation = ({
   traitKey,
   score,
+  username,
+  personalityType,
 }: {
-  traitKey: string;
-  score: any;
+  traitKey: TraitKey;
+  score: TraitScore;
+  username: string | undefined;
+  personalityType: string;
 }) => {
-  const traitInfo =
-    traitDescriptions[traitKey as keyof typeof traitDescriptions];
+  const traitInfo = getPersonalityTraitDescriptions(personalityType)[traitKey];
   const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
 
   return (
@@ -330,7 +331,9 @@ export const TraitExplanation = ({
           {traitInfo.title}
         </span>
       </div>
-      <p className="text-xs md:text-sm mt-1">{dominant.description}</p>
+      <p className="text-xs md:text-sm mt-1">
+        {traitInfo.getDominantTraitDescription(username, false)}
+      </p>
     </div>
   );
 };

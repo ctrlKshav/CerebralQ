@@ -1,4 +1,4 @@
-﻿import { PersonalityDescription } from '../tests/mbti';
+﻿import { PersonalityDescription, TraitKey, TraitScore } from '@/types/tests/mbti';
 import { Json } from './supabase';
 
 export interface UserTestHistory {
@@ -100,7 +100,7 @@ export interface FormattedTestResult {
   date: string;
   score?: number;
   traitScores?: {
-    [key: string]: MBTITraitScore;
+    [key in TraitKey]: TraitScore;
   };
   details?: any;
 }

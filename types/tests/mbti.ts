@@ -191,6 +191,7 @@ interface MBTITraitDetail {
   description: string;
 }
 
+export type TraitKey = "E-I" | "S-N" | "T-F" | "J-P";
 export interface TraitDescriptions {
   "E-I": TraitDescription;
   "S-N": TraitDescription;
