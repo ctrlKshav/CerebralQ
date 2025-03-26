@@ -23,18 +23,18 @@ const ActionStepsCard = ({
   className = "",
 }: ActionStepsCardProps) => {
   return (
-    <Card className={`overflow-hidden ${className} border-0 sm:border shadow-none sm:shadow`}>
+    <Card className={`h-full ${className} shadow-none border-0 sm:border overflow-hidden`}>
       <div className="flex flex-col md:flex-row">
-        <div className="p-0 sm:p-8 md:w-3/5">
+        <CardContent className={`px-0 sm:p-8 ${!imageSrc ? 'w-full' : 'md:w-3/5'}`}>
           <div className="flex items-center mb-6">
-            <h1 className="text-2xl md:text-2xl font-bold text-card-foreground">
+            <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
               {title}
-            </h1>
+            </h3>
           </div>
 
-          <ul className="space-y-6 ml-4">
+          <ul className="space-y-5 text-base ml-4">
             {steps.map((step) => (
-              <li key={step.number} className="flex items-center">
+              <li key={step.number} className="flex items-start">
                 <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
                   {step.number}
                 </div>
@@ -44,10 +44,10 @@ const ActionStepsCard = ({
               </li>
             ))}
           </ul>
-        </div>
+        </CardContent>
 
         {imageSrc && (
-          <div className="md:w-2/5  sm:min-h-[320px] h-[340px] max-h-[360px] relative border-t md:border-t-0 md:border-l border-border flex bg-red-500">
+          <div className="md:w-2/5 sm:min-h-[320px] h-[340px] max-h-[360px] relative border-t md:border-t-0 md:border-l border-border flex">
             <Image
               src={imageSrc}
               alt={imageAlt}
