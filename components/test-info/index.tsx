@@ -11,14 +11,11 @@ import {
   MBTIRawScore,
   FormattedTestResult,
 } from "@/types/supabase/user-test-history";
-import {
-  FeatureBadge,
-  TestOverviewCard,
-  TestDimensionsCard,
-  TestResultSection,
-  TestCitationsCard,
-  TestRecommendationsSection,
-} from "./TestComponents";
+import { FeatureBadge } from "./badges";
+import { TestOverviewCard } from "@/components/test-info/TestOverviewCard";
+import { TestDimensionsCard } from "@/components/test-info/TestDimensionsCard";
+import { TestResultSection } from "@/components/test-info/TestResultSection";
+import { TestCitationsCard } from "@/components/test-info/CitationsCard";
 import { MBTI_TEST_ID } from "@/lib/constants";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
