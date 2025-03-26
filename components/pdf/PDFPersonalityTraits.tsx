@@ -117,7 +117,7 @@ interface PDFPersonalityTraitsProps {
   traitScores: TraitScores;
   sectionNumber: number;
   personalityType: string;
-  username?: string;
+  firstname?: string;
   isDarkMode?: boolean;
 }
 
@@ -125,7 +125,7 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
   traitScores,
   sectionNumber,
   personalityType,
-  username,
+  firstname,
   isDarkMode = false,
 }) => {
   const styles = createStyles(isDarkMode);
@@ -189,7 +189,7 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
               <Text style={styles.traitTitle}>
                 {score.dominant === "left" ? description.leftLabel : description.rightLabel} ({dominant.letter})
               </Text>
-              <Text style={styles.traitText}>{description.getDominantTraitDescription(username)}</Text>
+              <Text style={styles.traitText}>{description.getDominantTraitDescription(firstname)}</Text>
             </View>
           </View>
         );

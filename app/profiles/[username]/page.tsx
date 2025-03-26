@@ -126,7 +126,7 @@ export default function ProfilePage({
           <PersonalityShowcase
             personalityType={userData.raw_score.personalityType}
             traitScores={userData.raw_score.traitScores}
-            username={user?.username ?? undefined}
+            firstname={user?.first_name ?? undefined}
           />
 
           {/* MBTI-specific insights and comparisons */}

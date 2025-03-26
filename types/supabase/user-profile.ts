@@ -4,6 +4,7 @@ import {User} from "@/types/supabase/users"
 
 export interface UserProfile {
   username: string
+  firstname: string
   profile_image_url: string
   bio: string
   tests_taken: number
