@@ -64,13 +64,15 @@ const CommunitySection = ({
             </div>
 
             {/* Image section */}
-            <div className="md:w-2/5 h-auto sm:min-h-[350px] relative border-t md:border-t-0 md:border-l border-border">
+            <div className="md:w-2/5 h-auto max-h-[450px] relative border-t md:border-t-0 md:border-l border-border flex">
               <Image
                 src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
                 alt="Diverse group of people in a community setting"
-                className="h-full w-full object-cover"
                 width={1470}
                 height={980}
+                className="object-cover w-full"
+                style={{ maxHeight: "450px" }}
+                priority={false}
               />
             </div>
           </div>

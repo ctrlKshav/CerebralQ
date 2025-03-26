@@ -47,18 +47,15 @@ const ActionStepsCard = ({
         </div>
 
         {imageSrc && (
-          <div className="md:w-2/5 h-auto sm:min-h-[320px] max-h-[500px] relative border-t md:border-t-0 md:border-l border-border">
-            <div className="relative w-full h-full">
-              <Image
-                src={imageSrc}
-                alt={imageAlt}
-                fill
-                sizes="(max-width: 768px) 100vw, 40vw"
-                priority={false}
-                className="object-cover"
-                style={{ maxHeight: "500px" }}
-              />
-            </div>
+          <div className="md:w-2/5  sm:min-h-[320px] h-[340px] max-h-[360px] relative border-t md:border-t-0 md:border-l border-border flex bg-red-500">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={1470}
+              height={640}
+              className="object-cover w-full h-auto"
+              priority={false}
+            />
           </div>
         )}
       </div>

@@ -127,7 +127,7 @@ const ContentImageCard = ({
 }: ContentImageCardProps) => {
   return (
     <div className={`glass-card rounded-xl p-0 overflow-hidden ${className}`}>
-      <div className="flex flex-col lg:flex-row items-center">
+      <div className="flex flex-col lg:flex-row">
         <div className="p-8 lg:w-3/5">
           <div className="flex items-center mb-6">
             <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
@@ -137,21 +137,16 @@ const ContentImageCard = ({
           {children}
         </div>
 
-        <div className="lg:w-2/5 sm:min-h-[350px] lg:min-h-full relative">
-          <div
-            className="relative w-full h-full"
-            style={{ minHeight: "350px", maxHeight: "500px" }}
-          >
-            <Image
-              src={imageSrc}
-              alt={imageAlt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 40vw"
-              priority={false}
-              className="object-cover"
-              quality={85}
-            />
-          </div>
+        <div className="lg:w-2/5 h-auto max-h-[450px] relative border-t lg:border-t-0 lg:border-l border-border flex">
+          <Image
+            src={imageSrc}
+            alt={imageAlt}
+            width={1470}
+            height={980}
+            className="object-cover w-full"
+            style={{ maxHeight: "450px" }}
+            priority={false}
+          />
         </div>
       </div>
     </div>
