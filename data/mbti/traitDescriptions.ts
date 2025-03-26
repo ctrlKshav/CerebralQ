@@ -1,4 +1,28 @@
-﻿import { TraitDescriptions } from "@/types/tests/mbti";
+﻿export interface TraitDescriptions {
+  "E-I": TraitDescription;
+  "S-N": TraitDescription;
+  "T-F": TraitDescription;
+  "J-P": TraitDescription;
+}
+
+export interface TraitDescription {
+  title: string;
+  leftLabel: string;
+  rightLabel: string;
+  lightColor: string;
+  darkColor: string;
+  description: string;
+  left: {
+    letter: string;
+    name: string;
+    description: string;
+  };
+  right: {
+    letter: string;
+    name: string;
+    description: string;
+  };
+}
 
 export const personalityTraitDescriptions: Record<string, TraitDescriptions> = {
   INTJ: {
@@ -88,3 +112,11 @@ export const personalityTraitDescriptions: Record<string, TraitDescriptions> = {
     },
   },
 };
+
+// Create a default trait descriptions object using the INTJ data as fallback
+const DEFAULT_TRAIT_DESCRIPTIONS: TraitDescriptions = personalityTraitDescriptions.INTJ;
+
+// Create a getter function that returns the requested type or the default
+export function getPersonalityTraitDescriptions(personalityType: string): TraitDescriptions {
+  return personalityTraitDescriptions[personalityType] || DEFAULT_TRAIT_DESCRIPTIONS;
+}

@@ -4,7 +4,7 @@ import * as React from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { TraitScores } from "@/types/tests/mbti";
-import { personalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
+import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import { useTheme } from "next-themes";
 import SectionHeader from "../shared/SectionHeader";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -74,7 +74,7 @@ export default function PersonalityTraits({
               {(() => {
                 const traitKey = selectedTrait;
                 const score = traitScores[traitKey];
-                const traitInfo = personalityTraitDescriptions[personalityType][traitKey];
+                const traitInfo = getPersonalityTraitDescriptions(personalityType)[traitKey];
                 const themedColor = !isLightTheme 
                   ? traitInfo.lightColor 
                   : traitInfo.darkColor;

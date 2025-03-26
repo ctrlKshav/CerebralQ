@@ -1,7 +1,7 @@
 ﻿import * as React from "react";
 import { useTheme } from "next-themes";
 import type { TraitScores } from "@/types/tests/mbti";
-import { personalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
+import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import TraitBar from "./TraitBar";
 import TraitDetail from "./TraitDetail";
 
@@ -27,7 +27,7 @@ export const TraitCard = ({
   const currentTheme = theme === "system" ? resolvedTheme : theme;
   const isLightTheme = currentTheme === "light";
   
-  const description = personalityTraitDescriptions[personalityType][trait];
+  const description = getPersonalityTraitDescriptions(personalityType)[trait];
   const themedColor = !isLightTheme ? description.lightColor : description.darkColor;
 
   return (
