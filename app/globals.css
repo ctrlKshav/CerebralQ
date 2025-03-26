@@ -93,6 +93,19 @@
   animation: fadeIn 0.3s ease-in-out forwards;
 }
 
+@keyframes bounce-gentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
 @layer base {
   * {
     @apply border-border;
