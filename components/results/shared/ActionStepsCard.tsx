@@ -34,7 +34,7 @@ const ActionStepsCard = ({
 
           <ul className="space-y-5 text-base ml-4">
             {steps.map((step) => (
-              <li key={step.number} className="flex items-start">
+              <li key={step.number} className="flex items-center">
                 <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
                   {step.number}
                 </div>
