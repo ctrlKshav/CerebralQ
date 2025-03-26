@@ -33,7 +33,7 @@ const HeroSection = ({
 
   return (
     <section className="bg-background flex flex-col justify-center items-center py-16 px-4 overflow-hidden relative">
-      <div className="container max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto text-center md:text-left">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div className="space-y-6 max-w-lg animate-fade-in">
             <Badge className="bg-primary text-primary-foreground py-1.5 px-4 rounded-full">
