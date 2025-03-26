@@ -6,6 +6,10 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { ForgotPasswordPayload, ResetPasswordPayload, SignInPayload, SignUpPayload } from "@/lib/authActionsPayload";
 import { checkUsernameExists } from "@/lib/supabaseOperations";
+import { RESERVED_ROUTES } from "@/lib/constants";
+
+// Parse reserved paths from environment variable
+const RESERVED_PATHS = process.env.NEXT_PUBLIC_RESERVED_PATHS?.split(",") || RESERVED_ROUTES
 
 export const signUpAction = async (data: SignUpPayload) => {
   const { firstname, lastname, username, email, password, referralCode, redirect: redirectToPage } = data;
@@ -20,6 +24,15 @@ export const signUpAction = async (data: SignUpPayload) => {
     );
   }
 
+  // Server-side check for reserved usernames
+  if (username && RESERVED_PATHS.includes(username.toLowerCase())) {
+    return encodedRedirect(
+      "error",
+      "/sign-up",
+      "This username is reserved. Please choose another."
+    );
+  }
+
   const usernameExists = await checkUsernameExists(username);
   if(usernameExists) {
     return encodedRedirect(
@@ -28,8 +41,6 @@ export const signUpAction = async (data: SignUpPayload) => {
       "Username already exists. Please choose a different username.",
     );
   }
-
-  
 
   const {data: fetchedData, error} = await supabase.auth.signUp({
     email,
