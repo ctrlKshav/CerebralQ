@@ -1,7 +1,7 @@
 ﻿import * as React from "react";
 import { useTheme } from "next-themes";
 import type { TraitScores } from "@/types/tests/mbti";
-import { traitDescriptions } from "@/data/mbti/traitDescriptions";
+import { personalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import TraitBar from "./TraitBar";
 import TraitDetail from "./TraitDetail";
 
@@ -11,6 +11,7 @@ interface TraitCardProps {
   isSelected: boolean;
   onSelect: (trait: keyof TraitScores) => void;
   isMobile: boolean;
+  personalityType: string;
 }
 
 // Component that combines trait bar and detail with accordion behavior
@@ -20,12 +21,13 @@ export const TraitCard = ({
   isSelected,
   onSelect,
   isMobile,
+  personalityType,
 }: TraitCardProps) => {
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = theme === "system" ? resolvedTheme : theme;
   const isLightTheme = currentTheme === "light";
   
-  const description = traitDescriptions[trait];
+  const description = personalityTraitDescriptions[personalityType][trait];
   const themedColor = !isLightTheme ? description.lightColor : description.darkColor;
 
   return (

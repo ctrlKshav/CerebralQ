@@ -44,16 +44,30 @@ export interface TraitScores {
   "J-P": TraitScore;
 }
 
+export interface TraitDescriptions {
+  "E-I": TraitDescription;
+  "S-N": TraitDescription;
+  "T-F": TraitDescription;
+  "J-P": TraitDescription;
+}
+
 export interface TraitDescription {
   title: string;
   leftLabel: string;
   rightLabel: string;
+  lightColor: string;
+  darkColor: string;
   description: string;
-  color: string;
-}
-
-export interface TraitDescriptions {
-  [key: string]: TraitDescription;
+  left: {
+    letter: string;
+    name: string;
+    description: string;
+  };
+  right: {
+    letter: string;
+    name: string;
+    description: string;
+  };
 }
 
 interface PersonalityInsight {
@@ -184,14 +198,6 @@ export interface MBTIAnswer {
 export interface PersonalityBlueprint {
   traits: TraitDescription[];
   summary: string;
-}
-
-export interface TraitDescription {
-  name: string;
-  description: string;
-  spectrum: string;
-  position: string;
-  icon?: string;
 }
 
 export interface CareerPath {

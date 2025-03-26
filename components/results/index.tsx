@@ -187,6 +187,7 @@ export default function Results() {
         {/* Personality Traits */}
         {traitScores && (
           <PersonalityTraits
+            personalityType={personalityType}
             traitScores={traitScores}
             sectionNumber={1}
             username={resultData?.username ?? undefined}

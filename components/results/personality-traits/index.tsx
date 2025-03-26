@@ -4,7 +4,7 @@ import * as React from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { TraitScores } from "@/types/tests/mbti";
-import { traitDescriptions } from "@/data/mbti/traitDescriptions";
+import { personalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import { useTheme } from "next-themes";
 import SectionHeader from "../shared/SectionHeader";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -12,12 +12,14 @@ import TraitCard from "./TraitCard";
 import TraitDetail from "./TraitDetail";
 
 interface PersonalityTraitsProps {
+  personalityType: string;
   traitScores: TraitScores;
   sectionNumber: number;
   username?: string;
 }
 
 export default function PersonalityTraits({
+  personalityType,
   traitScores,
   sectionNumber,
   username,
@@ -59,6 +61,7 @@ export default function PersonalityTraits({
                 isSelected={selectedTrait === typedTrait}
                 onSelect={setSelectedTrait}
                 isMobile={isMobile}
+                personalityType={personalityType}
               />
             );
           })}
@@ -71,7 +74,7 @@ export default function PersonalityTraits({
               {(() => {
                 const traitKey = selectedTrait;
                 const score = traitScores[traitKey];
-                const traitInfo = traitDescriptions[traitKey];
+                const traitInfo = personalityTraitDescriptions[personalityType][traitKey];
                 const themedColor = !isLightTheme 
                   ? traitInfo.lightColor 
                   : traitInfo.darkColor;
