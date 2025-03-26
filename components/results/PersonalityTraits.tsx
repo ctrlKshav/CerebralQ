@@ -23,7 +23,8 @@ const TraitBar = ({
   score, 
   description, 
   isSelected, 
-  onClick, 
+  onClick,
+  onHover,
   themedColor 
 }: { 
   trait: string;
@@ -31,6 +32,7 @@ const TraitBar = ({
   description: any;
   isSelected: boolean;
   onClick: () => void;
+  onHover?: () => void;
   themedColor: string;
 }) => {
   const leftPercentage = score.leftPercentage;
@@ -42,6 +44,7 @@ const TraitBar = ({
         "space-y-3 transition-opacity cursor-pointer",
         isSelected ? "opacity-100" : "opacity-80 hover:opacity-100"
       )}
+      onMouseEnter={onHover}
       onClick={onClick}
     >
       <div className="flex justify-between text-sm font-medium">
@@ -193,6 +196,7 @@ const TraitCard = ({
         description={description}
         isSelected={isSelected}
         onClick={() => onSelect(trait)}
+        onHover={() => onSelect(trait)}
         themedColor={themedColor}
       />
       
