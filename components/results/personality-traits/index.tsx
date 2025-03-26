@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import type { TraitScores } from "@/types/tests/mbti";
+import type { TraitScore, TraitScores } from "@/types/tests/mbti";
 import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import { useTheme } from "next-themes";
 import SectionHeader from "../shared/SectionHeader";
@@ -50,7 +50,7 @@ export default function PersonalityTraits({
       )}>
         {/* Trait scores list */}
         <Card className="shadow-none border-0 py-8 sm:p-8 sm:border sm:shadow space-y-10 flex flex-col justify-between">
-          {Object.entries(traitScores).map(([trait, score]) => {
+          {Object.entries(traitScores).map(([trait, score]: [string,TraitScore]) => {
             const typedTrait = trait as keyof TraitScores;
             
             return (
@@ -74,6 +74,7 @@ export default function PersonalityTraits({
               {(() => {
                 const traitKey = selectedTrait;
                 const score = traitScores[traitKey];
+                (score)
                 const traitInfo = getPersonalityTraitDescriptions(personalityType)[traitKey];
                 const themedColor = !isLightTheme 
                   ? traitInfo.lightColor 

@@ -1,12 +1,12 @@
 ﻿import * as React from "react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import type { TraitScores } from "@/types/tests/mbti";
+import type { TraitDescription, TraitScore, TraitScores } from "@/types/tests/mbti";
 
 interface TraitDetailProps {
   traitKey: keyof TraitScores;
-  score: any;
-  traitInfo: any;
+  score: TraitScore;
+  traitInfo: TraitDescription;
   themedColor: string;
 }
 
@@ -17,7 +17,7 @@ export const TraitDetail = ({
   traitInfo,
   themedColor,
 }: TraitDetailProps) => {
-  const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
+    const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
 
   return (
     <div className="space-y-8">
@@ -53,7 +53,7 @@ export const TraitDetail = ({
             </div>
           </div>
           <p className="text-base text-muted-foreground leading-relaxed">
-            {dominant.description}
+            {traitInfo.getDominantTraitDescription()}
           </p>
         </div>
       </div>

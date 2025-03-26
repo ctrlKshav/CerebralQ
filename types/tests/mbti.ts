@@ -190,6 +190,31 @@ interface MBTITraitDetail {
   trait: MBTITrait;
   description: string;
 }
+
+export interface TraitDescriptions {
+  "E-I": TraitDescription;
+  "S-N": TraitDescription;
+  "T-F": TraitDescription;
+  "J-P": TraitDescription;
+}
+
+export interface TraitDescription {
+  title: string;
+  leftLabel: string;
+  rightLabel: string;
+  lightColor: string;
+  darkColor: string;
+  left: {
+    letter: string;
+    name: string;
+  };
+  right: {
+    letter: string;
+    name: string;
+  };
+  getDominantTraitDescription: (username?: string, thirdPerson?: boolean) => string;
+}
+
 export interface CareerMatch {
   title: string;
   matchPercentage: number;
