@@ -24,7 +24,7 @@ const CareerPathSection = ({ username, career, sectionNumber = 3 }: CareerPathSe
   const {superpowers, growthAreas, actionSteps} = career;
 
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
+    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background ">
     
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
@@ -61,7 +61,7 @@ const CareerPathSection = ({ username, career, sectionNumber = 3 }: CareerPathSe
         />
 
         {/* Career Suggestions Section */}
-        <div className="px-4 md:px-8 lg:px-16">
+        <div className="md:px-8 lg:px-16">
           <CareerSuggestionsCard  className="mb-16" />
         </div>
       </div>
