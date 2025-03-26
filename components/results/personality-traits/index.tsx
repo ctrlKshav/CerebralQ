@@ -26,11 +26,12 @@ export default function PersonalityTraits({
   username,
   dashboardView,
 }: PersonalityTraitsProps) {
-  const [selectedTrait, setSelectedTrait] = React.useState<keyof TraitScores>("E-I");
+  const [selectedTrait, setSelectedTrait] =
+    React.useState<keyof TraitScores>("E-I");
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = theme === "system" ? resolvedTheme : theme;
   const isLightTheme = currentTheme === "light";
-  
+
   // Media query hook to determine if we're on mobile
   const isMobile = useMediaQuery("(max-width: 768px)");
 
@@ -46,27 +47,33 @@ export default function PersonalityTraits({
         sectionNumber={sectionNumber}
       />
 
-      <div className={cn(
-        "grid gap-8",
-        isMobile ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
-      )}>
+      <div
+        className={cn(
+          "grid gap-8",
+          isMobile ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
+        )}
+      >
         {/* Trait scores list */}
         <Card className="shadow-none border-0 py-8 sm:p-8 sm:border sm:shadow space-y-10 flex flex-col justify-between">
-          {Object.entries(traitScores).map(([trait, score]: [string,TraitScore]) => {
-            const typedTrait = trait as keyof TraitScores;
-            
-            return (
-              <TraitCard
-                key={trait}
-                trait={typedTrait}
-                score={score}
-                isSelected={selectedTrait === typedTrait}
-                onSelect={setSelectedTrait}
-                isMobile={isMobile}
-                personalityType={personalityType}
-              />
-            );
-          })}
+          {Object.entries(traitScores).map(
+            ([trait, score]: [string, TraitScore]) => {
+              const typedTrait = trait as keyof TraitScores;
+
+              return (
+                <TraitCard
+                  key={trait}
+                  trait={typedTrait}
+                  score={score}
+                  isSelected={selectedTrait === typedTrait}
+                  onSelect={setSelectedTrait}
+                  isMobile={isMobile}
+                  personalityType={personalityType}
+                  username={username}
+                  dashboardView={dashboardView}
+                />
+              );
+            }
+          )}
         </Card>
 
         {/* Trait details card - only show on desktop */}
@@ -76,10 +83,11 @@ export default function PersonalityTraits({
               {(() => {
                 const traitKey = selectedTrait;
                 const score = traitScores[traitKey];
-                (score)
-                const traitInfo = getPersonalityTraitDescriptions(personalityType)[traitKey];
-                const themedColor = !isLightTheme 
-                  ? traitInfo.lightColor 
+                score;
+                const traitInfo =
+                  getPersonalityTraitDescriptions(personalityType)[traitKey];
+                const themedColor = !isLightTheme
+                  ? traitInfo.lightColor
                   : traitInfo.darkColor;
 
                 return (

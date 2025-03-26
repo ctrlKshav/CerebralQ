@@ -12,6 +12,8 @@ interface TraitCardProps {
   onSelect: (trait: keyof TraitScores) => void;
   isMobile: boolean;
   personalityType: string;
+  username?: string;
+  dashboardView?: boolean;
 }
 
 // Component that combines trait bar and detail with accordion behavior
@@ -22,13 +24,17 @@ export const TraitCard = ({
   onSelect,
   isMobile,
   personalityType,
+  username,
+  dashboardView,
 }: TraitCardProps) => {
   const { theme, resolvedTheme } = useTheme();
   const currentTheme = theme === "system" ? resolvedTheme : theme;
   const isLightTheme = currentTheme === "light";
-  
+
   const description = getPersonalityTraitDescriptions(personalityType)[trait];
-  const themedColor = !isLightTheme ? description.lightColor : description.darkColor;
+  const themedColor = !isLightTheme
+    ? description.lightColor
+    : description.darkColor;
 
   return (
     <div className="w-full">
@@ -41,7 +47,7 @@ export const TraitCard = ({
         onHover={() => onSelect(trait)}
         themedColor={themedColor}
       />
-      
+
       {/* Show details directly below the trait on mobile when selected */}
       {isMobile && isSelected && (
         <div className="mt-8 mb-8 ml-2 animate-fadeIn">
@@ -50,6 +56,8 @@ export const TraitCard = ({
             score={score}
             traitInfo={description}
             themedColor={themedColor}
+            username={username}
+            dashboardView={dashboardView}
           />
         </div>
       )}
