@@ -29,16 +29,6 @@ const RelationshipSection = ({
   relationships,
   sectionNumber = 4,
 }: RelationshipSectionProps) => {
-  const getIconForType = (type: string, className: string) => {
-    switch (type) {
-      case "Romantic":
-        return <Heart className={`h-5 w-5 ${className}`} />;
-      case "Friendship":
-        return <Users className={`h-5 w-5 ${className}`} />;
-      default:
-        return <Users className={`h-5 w-5 ${className}`} />;
-    }
-  };
 
   return (
     <>
