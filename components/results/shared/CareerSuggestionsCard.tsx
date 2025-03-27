@@ -183,17 +183,8 @@ export default function CareerSuggestionsCard({
   };
 
   const getTraitColor = (trait: MBTITrait) => {
-    const colors: Record<MBTITrait, string> = {
-      E: "bg-blue-100 text-blue-800 border-blue-200 dark:bg-blue-900/30 dark:text-blue-300 dark:border-blue-800",
-      I: "bg-indigo-100 text-indigo-800 border-indigo-200 dark:bg-indigo-900/30 dark:text-indigo-300 dark:border-indigo-800",
-      S: "bg-green-100 text-green-800 border-green-200 dark:bg-green-900/30 dark:text-green-300 dark:border-green-800",
-      N: "bg-teal-100 text-teal-800 border-teal-200 dark:bg-teal-900/30 dark:text-teal-300 dark:border-teal-800",
-      T: "bg-amber-100 text-amber-800 border-amber-200 dark:bg-amber-900/30 dark:text-amber-300 dark:border-amber-800",
-      F: "bg-red-100 text-red-800 border-red-200 dark:bg-red-900/30 dark:text-red-300 dark:border-red-800",
-      J: "bg-purple-100 text-purple-800 border-purple-200 dark:bg-purple-900/30 dark:text-purple-300 dark:border-purple-800",
-      P: "bg-pink-100 text-pink-800 border-pink-200 dark:bg-pink-900/30 dark:text-pink-300 dark:border-pink-800",
-    };
-    return colors[trait];
+    // Replace with a subtle uniform style instead of different colors for each trait
+    return "bg-muted/40 text-muted-foreground border-muted hover:bg-muted/60 dark:bg-muted/20 dark:text-muted-foreground dark:border-muted/40";
   };
 
   const getTraitFullName = (trait: MBTITrait) => {
@@ -276,36 +267,32 @@ export default function CareerSuggestionsCard({
                 </p>
                 {match.mbtiTraits && match.mbtiTraits.length > 0 && (
                   <div className="mt-auto">
-                    <h4 className="text-sm font-medium mb-3 flex items-center gap-2">
+                    <h4 className="text-sm font-medium mb-3 text-muted-foreground">
                       Personality Traits Match
-                      <span className="inline-block w-full h-px bg-border flex-grow" />
                     </h4>
 
-                    {/* Remove the hint text section completely */}
-
-                    <div className="grid sm:grid-cols-2 gap-3">
+                    <div className="flex flex-wrap gap-2">
                       <TooltipProvider delayDuration={100}>
                         {match.mbtiTraits.map((traitDetail, i) => (
                           <HybridTooltip key={i}>
                             <HybridTooltipTrigger asChild>
                               <div
-                                className={`flex items-center gap-2 p-2 rounded-md ${getTraitColor(
+                                className={`inline-flex items-center gap-1.5 p-1.5 rounded-md ${getTraitColor(
                                   traitDetail.trait
-                                )} hover:bg-opacity-70 transition-colors relative`}
+                                )} hover:bg-opacity-70 transition-colors relative w-fit whitespace-nowrap`}
                               >
                                 <Badge
                                   variant="outline"
-                                  className={`${getTraitColor(traitDetail.trait)} border-0 h-7 w-7 flex items-center justify-center p-0`}
+                                  className="border text-xs h-5 w-5 flex items-center justify-center p-0 shrink-0"
                                 >
                                   {traitDetail.trait}
                                 </Badge>
-                                <span className="text-sm font-medium">
+                                <span className="text-xs font-medium">
                                   {getTraitFullName(traitDetail.trait)}
                                 </span>
 
-                                {/* Replace down arrow with info icon */}
                                 {isMobile && (
-                                  <Info className="h-4 w-4 absolute right-2 animate-pulse opacity-70" />
+                                  <Info className="h-3 w-3 ml-0.5 opacity-50 shrink-0" />
                                 )}
                               </div>
                             </HybridTooltipTrigger>
