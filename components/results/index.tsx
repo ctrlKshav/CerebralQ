@@ -207,6 +207,8 @@ export default function Results() {
           sectionNumber={2}
         />
 
+        {resultData?.personalityData.relationships.map((relationship) => (<></>))}
+
         {/* Relationship Insights */}
         <RelationshipSection
           firstname={resultData?.firstname || null}

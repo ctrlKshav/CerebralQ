@@ -224,7 +224,8 @@ export interface CareerMatch {
 }
 
 export interface RelationshipCompatibility {
-  type: string;
+  title: string;
+  subtitle: string;
   description: string;
   compatibleTypes: string[];
   superpowers: SuperpowerItem[];
