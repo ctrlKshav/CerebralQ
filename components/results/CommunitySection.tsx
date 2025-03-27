@@ -6,6 +6,7 @@ import SectionHeader from "./shared/SectionHeader";
 import { formatWithUsername } from "../../lib/formatWithUsername";
 import { CommunityConnection, ResultData } from "@/types/tests/mbti";
 import Image from "next/image";
+import Link from "next/link";
 
 interface CommunitySectionProps {
   firstname: string | null;
@@ -54,12 +55,14 @@ const CommunitySection = ({
               </ul>
 
               <div className="mt-10">
-                <Button
-                  size="lg"
-                  className="text-primary-foreground py-6 px-8 rounded-full text-lg font-medium"
-                >
-                  Join Our Community!
-                </Button>
+                <Link href={"/sign-up?source=newsletter"}>
+                  <Button
+                    size="lg"
+                    className="text-primary-foreground py-6 px-8 rounded-full text-lg font-medium"
+                  >
+                    Join Our Community!
+                  </Button>
+                </Link>
               </div>
             </div>
 
