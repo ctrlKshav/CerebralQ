@@ -73,40 +73,112 @@ export const sampleResultData: ResultData = {
           matchPercentage: 95,
           description:
             "Roles that let you lead and make strategic decisions, using your natural talent for driving results and organizing teams.",
-            qualityMatches: [{
-              title: "",
-              description: "",
-            }],
+          qualityMatches: [
+            {
+              title: "Strategic Vision",
+              description:
+                "Your ability to see the big picture and plan for long-term success aligns perfectly with leadership roles.",
+            },
+            {
+              title: "Decisive Leadership",
+              description:
+                "Your confident decision-making allows you to guide teams through challenges effectively.",
+            },
+            {
+              title: "Efficiency Focus",
+              description:
+                "Your drive to optimize processes and eliminate inefficiencies makes you an effective manager.",
+            },
+            {
+              title: "Results Orientation",
+              description:
+                "Your natural focus on achieving objectives helps organizations meet their goals.",
+            },
+          ],
         },
         {
           title: "Entrepreneurship",
           matchPercentage: 92,
           description:
             "Starting and growing businesses where you can implement your vision and create impactful solutions.",
-            qualityMatches: [{
-              title: "",
-              description: "",
-            }],
+          qualityMatches: [
+            {
+              title: "Bold Innovation",
+              description:
+                "Your willingness to take calculated risks and implement new ideas makes you a natural entrepreneur.",
+            },
+            {
+              title: "Strategic Planning",
+              description:
+                "Your ability to develop and execute long-term business strategies gives ventures a solid foundation.",
+            },
+            {
+              title: "Leadership Drive",
+              description:
+                "Your natural command presence helps you build and inspire effective teams.",
+            },
+            {
+              title: "Adaptability",
+              description:
+                "Your capacity to adjust strategies when faced with changing market conditions ensures business resilience.",
+            },
+          ],
         },
         {
           title: "Law",
           matchPercentage: 88,
           description:
             "High-stakes environments where your logical thinking and strategic planning help you analyze complex situations.",
-            qualityMatches: [{
-              title: "",
-              description: "",
-            }],
+          qualityMatches: [
+            {
+              title: "Logical Analysis",
+              description:
+                "Your ability to analyze complex arguments objectively benefits legal reasoning and case building.",
+            },
+            {
+              title: "Persuasive Communication",
+              description:
+                "Your natural talent for articulating viewpoints clearly strengthens your advocacy skills.",
+            },
+            {
+              title: "Strategic Thinking",
+              description:
+                "Your capacity to develop winning legal strategies makes you effective in litigation and negotiations.",
+            },
+            {
+              title: "Structured Approach",
+              description:
+                "Your methodical way of managing cases and meeting deadlines ensures legal success.",
+            },
+          ],
         },
         {
           title: "Consulting",
           matchPercentage: 85,
           description:
             "Roles that let you optimize systems and provide leadership guidance to help others achieve results.",
-            qualityMatches: [{
-              title: "",
-              description: "",
-            }],
+          qualityMatches: [
+            {
+              title: "Problem Solving",
+              description:
+                "Your ability to identify core issues and develop effective solutions makes you a valuable consultant.",
+            },
+            {
+              title: "Systems Thinking",
+              description:
+                "Your talent for understanding how organizational components interact helps you optimize operations.",
+            },
+            {
+              title: "Executive Presence",
+              description:
+                "Your natural confidence and authoritative communication style helps you influence client decisions.",
+            },
+            {
+              title: "Implementation Focus",
+              description:
+                "Your drive to turn plans into action ensures your recommendations deliver real-world results.",
+            },
+          ],
         },
       ],
       actionSteps: [
@@ -410,40 +482,112 @@ export const personalityDatabase: { [key: string]: PersonalityDatabase } = {
           matchPercentage: 95,
           description:
             "Roles that let you lead and make strategic decisions, using your natural talent for driving results and organizing teams.",
-            qualityMatches: [{
-              title: "",
-              description: "",
-            }],
+          qualityMatches: [
+            {
+              title: "Strategic Vision",
+              description:
+                "Your ability to see the big picture and plan for long-term success aligns perfectly with leadership roles.",
+            },
+            {
+              title: "Decisive Leadership",
+              description:
+                "Your confident decision-making allows you to guide teams through challenges effectively.",
+            },
+            {
+              title: "Efficiency Focus",
+              description:
+                "Your drive to optimize processes and eliminate inefficiencies makes you an effective manager.",
+            },
+            {
+              title: "Results Orientation",
+              description:
+                "Your natural focus on achieving objectives helps organizations meet their goals.",
+            },
+          ],
         },
         {
           title: "Entrepreneurship",
           matchPercentage: 92,
           description:
             "Starting and growing businesses where you can implement your vision and create impactful solutions.",
-            qualityMatches: [{
-              title: "",
-              description: "",
-            }],
+          qualityMatches: [
+            {
+              title: "Bold Innovation",
+              description:
+                "Your willingness to take calculated risks and implement new ideas makes you a natural entrepreneur.",
+            },
+            {
+              title: "Strategic Planning",
+              description:
+                "Your ability to develop and execute long-term business strategies gives ventures a solid foundation.",
+            },
+            {
+              title: "Leadership Drive",
+              description:
+                "Your natural command presence helps you build and inspire effective teams.",
+            },
+            {
+              title: "Adaptability",
+              description:
+                "Your capacity to adjust strategies when faced with changing market conditions ensures business resilience.",
+            },
+          ],
         },
         {
           title: "Law",
           matchPercentage: 88,
           description:
             "High-stakes environments where your logical thinking and strategic planning help you analyze complex situations.",
-            qualityMatches: [{
-              title: "",
-              description: "",
-            }],
+          qualityMatches: [
+            {
+              title: "Logical Analysis",
+              description:
+                "Your ability to analyze complex arguments objectively benefits legal reasoning and case building.",
+            },
+            {
+              title: "Persuasive Communication",
+              description:
+                "Your natural talent for articulating viewpoints clearly strengthens your advocacy skills.",
+            },
+            {
+              title: "Strategic Thinking",
+              description:
+                "Your capacity to develop winning legal strategies makes you effective in litigation and negotiations.",
+            },
+            {
+              title: "Structured Approach",
+              description:
+                "Your methodical way of managing cases and meeting deadlines ensures legal success.",
+            },
+          ],
         },
         {
           title: "Consulting",
           matchPercentage: 85,
           description:
             "Roles that let you optimize systems and provide leadership guidance to help others achieve results.",
-            qualityMatches: [{
-              title: "",
-              description: "",
-            }],
+          qualityMatches: [
+            {
+              title: "Problem Solving",
+              description:
+                "Your ability to identify core issues and develop effective solutions makes you a valuable consultant.",
+            },
+            {
+              title: "Systems Thinking",
+              description:
+                "Your talent for understanding how organizational components interact helps you optimize operations.",
+            },
+            {
+              title: "Executive Presence",
+              description:
+                "Your natural confidence and authoritative communication style helps you influence client decisions.",
+            },
+            {
+              title: "Implementation Focus",
+              description:
+                "Your drive to turn plans into action ensures your recommendations deliver real-world results.",
+            },
+          ],
         },
       ],
       actionSteps: [
@@ -514,8 +658,8 @@ export const personalityDatabase: { [key: string]: PersonalityDatabase } = {
         ],
       },
       {
-          title: "Friendships",
-          subtitle: "How you shine with Friends",
+        title: "Friendships",
+        subtitle: "How you shine with Friends",
         description:
           "You're the friend who takes the lead—always ready to organize a group adventure or motivate your crew to tackle a challenge. You love having a solid group of friends who respect your leadership and share your drive for success.",
         compatibleTypes: ["INTP", "ENTP", "INFJ", "INTJ"],
@@ -709,8 +853,7 @@ export const personalityDatabase: { [key: string]: PersonalityDatabase } = {
         description: "Say hi to another ENTJ—you'll love connecting!",
       },
     ],
-  
-  }
+  },
 };
 
 export const getPersonalityData = (

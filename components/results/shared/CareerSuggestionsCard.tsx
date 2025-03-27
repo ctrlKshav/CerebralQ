@@ -22,7 +22,6 @@ interface CareerSuggestionsCardProps {
   className?: string;
 }
 
-
 export default function CareerSuggestionsCard({
   careerSuggestions ,
   className = "",
