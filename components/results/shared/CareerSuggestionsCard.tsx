@@ -182,10 +182,6 @@ export default function CareerSuggestionsCard({
     );
   };
 
-  const getTraitColor = (trait: MBTITrait) => {
-    // Replace with a subtle uniform style instead of different colors for each trait
-    return "bg-muted/40 text-muted-foreground border-muted hover:bg-muted/60 dark:bg-muted/20 dark:text-muted-foreground dark:border-muted/40";
-  };
 
   const getTraitFullName = (trait: MBTITrait) => {
     const names: Record<MBTITrait, string> = {
@@ -267,8 +263,9 @@ export default function CareerSuggestionsCard({
                 </p>
                 {match.mbtiTraits && match.mbtiTraits.length > 0 && (
                   <div className="mt-auto">
-                    <h4 className="text-sm font-medium mb-3 text-muted-foreground">
-                      Personality Traits Match
+                    <h4 className="text-sm font-medium mb-3 text-muted-foreground flex items-center  gap-4 ">
+                      <span className="flex-none">Your Matching Traits</span>
+                      <span className="inline-block w-full h-px bg-border flex-grow" />
                     </h4>
 
                     <div className="flex flex-wrap gap-2">
@@ -277,16 +274,9 @@ export default function CareerSuggestionsCard({
                           <HybridTooltip key={i}>
                             <HybridTooltipTrigger asChild>
                               <div
-                                className={`inline-flex items-center gap-1.5 p-1.5 rounded-md ${getTraitColor(
-                                  traitDetail.trait
-                                )} hover:bg-opacity-70 transition-colors relative w-fit whitespace-nowrap`}
+                                className={`inline-flex items-center gap-1.5 p-1.5 rounded-md bg-muted hover:bg-opacity-70 transition-colors relative w-fit whitespace-nowrap`}
                               >
-                                <Badge
-                                  variant="outline"
-                                  className="border text-xs h-5 w-5 flex items-center justify-center p-0 shrink-0"
-                                >
-                                  {traitDetail.trait}
-                                </Badge>
+                                
                                 <span className="text-xs font-medium">
                                   {getTraitFullName(traitDetail.trait)}
                                 </span>
