@@ -67,30 +67,46 @@ export const sampleResultData: ResultData = {
             "You might focus on your vision and miss input—like not hearing a teammate's alternative idea.",
         },
       ],
-      matches: [
+      suggestions: [
         {
           title: "Business Management",
           matchPercentage: 95,
           description:
             "Roles that let you lead and make strategic decisions, using your natural talent for driving results and organizing teams.",
+            qualityMatches: [{
+              title: "",
+              description: "",
+            }],
         },
         {
           title: "Entrepreneurship",
           matchPercentage: 92,
           description:
             "Starting and growing businesses where you can implement your vision and create impactful solutions.",
+            qualityMatches: [{
+              title: "",
+              description: "",
+            }],
         },
         {
           title: "Law",
           matchPercentage: 88,
           description:
             "High-stakes environments where your logical thinking and strategic planning help you analyze complex situations.",
+            qualityMatches: [{
+              title: "",
+              description: "",
+            }],
         },
         {
           title: "Consulting",
           matchPercentage: 85,
           description:
             "Roles that let you optimize systems and provide leadership guidance to help others achieve results.",
+            qualityMatches: [{
+              title: "",
+              description: "",
+            }],
         },
       ],
       actionSteps: [
@@ -388,30 +404,46 @@ export const personalityDatabase: { [key: string]: PersonalityDatabase } = {
             "You might focus on your vision and miss input—like not hearing a teammate's alternative idea.",
         },
       ],
-      matches: [
+      suggestions: [
         {
           title: "Business Management",
           matchPercentage: 95,
           description:
             "Roles that let you lead and make strategic decisions, using your natural talent for driving results and organizing teams.",
+            qualityMatches: [{
+              title: "",
+              description: "",
+            }],
         },
         {
           title: "Entrepreneurship",
           matchPercentage: 92,
           description:
             "Starting and growing businesses where you can implement your vision and create impactful solutions.",
+            qualityMatches: [{
+              title: "",
+              description: "",
+            }],
         },
         {
           title: "Law",
           matchPercentage: 88,
           description:
             "High-stakes environments where your logical thinking and strategic planning help you analyze complex situations.",
+            qualityMatches: [{
+              title: "",
+              description: "",
+            }],
         },
         {
           title: "Consulting",
           matchPercentage: 85,
           description:
             "Roles that let you optimize systems and provide leadership guidance to help others achieve results.",
+            qualityMatches: [{
+              title: "",
+              description: "",
+            }],
         },
       ],
       actionSteps: [

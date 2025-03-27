@@ -178,9 +178,10 @@ export interface CareerPath {
   summary: string;
   superpowers: SuperpowerItem[];
   growthAreas: GrowthAreaItem[];
-  matches: CareerMatch[];
+  suggestions: CareerSuggestion[];
   actionSteps: ActionStepItem[];
 }
+
 
 // MBTI trait type
 export type MBTITrait = "E" | "I" | "S" | "N" | "T" | "F" | "J" | "P";
@@ -216,11 +217,16 @@ export interface TraitDescription {
   getDominantTraitDescription: (username?: string, thirdPerson?: boolean) => string;
 }
 
-export interface CareerMatch {
+export interface CareerSuggestion {
   title: string;
   matchPercentage: number;
   description: string;
-  mbtiTraits?: MBTITraitDetail[];
+  qualityMatches: CareerQualityMatch[];
+}
+
+export interface CareerQualityMatch {
+  title: string;
+  description: string;
 }
 
 export interface RelationshipCompatibility {
