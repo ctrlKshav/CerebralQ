@@ -144,33 +144,6 @@ export default function Report() {
           personalityData,
         });
 
-        // Save results to database if user is logged in
-        if (user && testId) {
-          // Check if we've already saved this result
-          const savedResults = JSON.parse(
-            localStorage.getItem(SAVED_RESULTS_KEY) || "false"
-          );
-
-          // If result hasn't been saved yet, save it
-          if (!savedResults) {
-            try {
-              // Prepare test data with correct user ID
-              const testData = {
-                ...data,
-                user_id: user.id,
-              };
-
-              // Save to Supabase
-              await saveTestResults(testData);
-
-              // Mark as saved in localStorage
-              localStorage.setItem(SAVED_RESULTS_KEY, "true");
-            } catch (error) {
-              console.error("Error saving test results:", error);
-            }
-          }
-        }
-
         setLoading(false);
       } catch (error) {
         console.error("Error parsing result data:", error);
