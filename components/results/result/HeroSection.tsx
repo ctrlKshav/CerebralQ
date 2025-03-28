@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { PersonalityDescription } from "@/types/tests/mbti";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { handleShare } from "@/lib/shareUtils";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { Share2 } from "lucide-react";
 
 interface HeroSectionProps {
   personalityType: string;
@@ -35,12 +37,35 @@ const HeroSection = ({
   const imagePath =
     personalityImages[personalityType] || personalityImages.default;
 
-  const handleProfileShare = async () => {
-    const title = `${firstname}'s Profile`;
-    const text = `I'm an ${personalityType}! Check out my personality profile on CerebralQuotient.`;
-    const url = `${username}`;
+  const [isSharing, setIsSharing] = useState(false);
+  const router = useRouter();
 
-    await handleShare(title, text, url, false);
+  const shareResults = async () => {
+    try {
+      setIsSharing(true);
+
+      // Handle sharing without saving to database (now handled in Results component)
+      const title = `My Personality Type: ${personalityType}`;
+      const text = `I'm an ${personalityType}! Check out my personality profile on CerebralQuotient.`;
+
+      // Determine share URL based on user status
+      const url = username ? `result` : `${username}`;
+
+      // Use the existing share function
+      await handleShare(title, text, url, username ? true : false);
+
+      // Redirect demo users to sign up
+      if (!username) {
+        router.push(
+          "/sign-up?info=" +
+            encodeURIComponent("You need an account to share your profile.")
+        );
+      }
+    } catch (error) {
+      console.error("Error sharing results:", error);
+    } finally {
+      setIsSharing(false);
+    }
   };
 
   return (
@@ -93,13 +118,20 @@ const HeroSection = ({
 
             <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center justify-center md:justify-start">
               <Button
-                className="px-3 py-3 bg-primary text-primary-foreground rounded-lg transition-all hover:shadow"
-                onClick={handleProfileShare}
+                variant="default"
+                size="sm"
+                onClick={shareResults}
+                disabled={isSharing}
               >
-                Share Result
+                <Share2 className="w-4 h-4 mr-2" />
+                {isSharing
+                  ? "Processing..."
+                  : !username
+                    ? "Save & Share"
+                    : "Share Results"}
               </Button>
               <Link href={"/report"}>
-                <Button className="px-3 py-3 bg-primary text-primary-foreground rounded-lg transition-all hover:shadow">
+                <Button variant="outline">
                   View Detailed Report
                 </Button>
               </Link>
