@@ -52,7 +52,13 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
   // Function to render PDF to blob using @react-pdf/renderer
   const renderToBlob = async () => {
     const { pdf } = await import('@react-pdf/renderer');
-    return await pdf(<PDFResultsDocument resultData={resultData} isDarkMode={isDarkMode} />).toBlob();
+    return await pdf(
+      <PDFResultsDocument 
+        resultData={resultData} 
+        isDarkMode={isDarkMode} 
+  
+      />
+    ).toBlob();
   };
 
   if (!isClient) {

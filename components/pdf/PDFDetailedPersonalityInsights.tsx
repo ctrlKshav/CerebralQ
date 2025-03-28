@@ -3,132 +3,137 @@ import { Text, View, StyleSheet } from "@react-pdf/renderer";
 import { PersonalityTypeInsights } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 
-// Create styles with theme variants
-const createStyles = (isDarkMode = false) => {
+// Extract styles to their own function outside the component
+const createDetailedInsightsStyles = (isDarkMode = false) => {
   const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
 
-  return {
-    ...StyleSheet.create({
-      container: {
-        margin: 10,
-      },
-      header: {
-        flexDirection: "row",
-        alignItems: "center",
-        marginBottom: 20,
-      },
-      subtitle: {
-        fontSize: 11,
-        color: theme.mutedForeground,
-        marginBottom: 15,
-        lineHeight: 1.5,
-      },
-      cardHeader: {
-        marginBottom: 15,
-      },
-      cardTitle: {
-        fontSize: 16,
-        fontFamily: "Helvetica-Bold",
-        color: theme.primary,
-        marginBottom: 8,
-      },
-      insightSection: {
-        marginBottom: 20, // Increased spacing between sections
-        padding: 15, // Slightly more padding inside sections
-        backgroundColor: theme.card,
-        borderRadius: 6,
-        borderLeftWidth: 4,
-        // Add a subtle bottom border for additional separation
-        borderBottomWidth: 1,
-        borderBottomColor: theme.border,
-        borderTopWidth: 1,
-        borderTopColor: theme.border,
-      },
-      // Section separator
-      sectionSeparator: {
-        height: 1,
-        backgroundColor: theme.border,
-        marginVertical: 15, // Space above and below separator
-        opacity: 0.6, // Make it subtle
-      },
-      insightHeader: {
-        flexDirection: "row",
-        alignItems: "center",
-        marginBottom: 12,
-      },
-      insightIcon: {
-        width: 12,
-        height: 12,
-        borderRadius: 6,
-        marginRight: 8,
-      },
-      insightTitle: {
-        fontSize: 14,
-        fontFamily: "Helvetica-Bold",
-        color: theme.foreground,
-      },
-      insightPoint: {
-        flexDirection: "row",
-        marginBottom: 6,
-        paddingLeft: 4,
-        alignItems: "center", // Center items vertically
-      },
-      bulletPoint: {
-        fontSize: 12,
-        marginRight: 6,
-        width: 10,
-        // color is now applied dynamically n the component
-        fontFamily: "Helvetica-Bold", // Make bullet point bolder
-      },
-      pointText: {
-        paddingTop:4,
-        fontSize:10,
-        lineHeight: 1.5,
-        color: theme.cardForeground,        
-      },
-      // Color styles for different sections
-      strengthsSection: {
-        borderLeftColor: theme.chart2,
-      },
-      strengthsIcon: {
-        backgroundColor: theme.chart2,
-      },
-      challengesSection: {
-        borderLeftColor: theme.chart4,
-      },
-      challengesIcon: {
-        backgroundColor: theme.chart4,
-      },
-      workStyleSection: {
-        borderLeftColor: theme.chart1,
-      },
-      workStyleIcon: {
-        backgroundColor: theme.chart1,
-      },
-      relationshipsSection: {
-        borderLeftColor: theme.chart5,
-      },
-      relationshipsIcon: {
-        backgroundColor: theme.chart5,
-      },
-      growthAreasSection: {
-        borderLeftColor: theme.chart3,
-      },
-      growthAreasIcon: {
-        backgroundColor: theme.chart3,
-      },
-      pageBreak: {
-        marginTop: 30,
-        marginBottom: 30,
-        borderTopWidth: 1,
-        borderTopColor: theme.border,
-        paddingTop: 30,
-      },
-    }),
+  return StyleSheet.create({
+    container: {
+      margin: 10,
+      position: "relative",
+      height: "100%",
+    },
+    header: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 20,
+    },
+    subtitle: {
+      fontSize: 11,
+      color: theme.mutedForeground,
+      marginBottom: 15,
+      lineHeight: 1.5,
+    },
+    cardHeader: {
+      marginBottom: 15,
+    },
+    cardTitle: {
+      fontSize: 16,
+      fontFamily: "Helvetica-Bold",
+      color: theme.primary,
+      marginBottom: 8,
+    },
+    insightSection: {
+      marginBottom: 20,
+      padding: 15,
+      backgroundColor: theme.card,
+      borderRadius: 6,
+      borderLeftWidth: 4,
+      borderBottomWidth: 1,
+      borderBottomColor: theme.border,
+      borderTopWidth: 1,
+      borderTopColor: theme.border,
+    },
+    sectionSeparator: {
+      height: 1,
+      backgroundColor: theme.border,
+      marginVertical: 15,
+      opacity: 0.6,
+    },
+    insightHeader: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 12,
+    },
+    insightIcon: {
+      width: 12,
+      height: 12,
+      borderRadius: 6,
+      marginRight: 8,
+    },
+    insightTitle: {
+      fontSize: 14,
+      fontFamily: "Helvetica-Bold",
+      color: theme.foreground,
+    },
+    insightPoint: {
+      flexDirection: "row",
+      marginBottom: 6,
+      paddingLeft: 4,
+      alignItems: "center",
+    },
+    bulletPoint: {
+      fontSize: 12,
+      marginRight: 6,
+      width: 10,
+      fontFamily: "Helvetica-Bold",
+    },
+    pointText: {
+      paddingTop: 4,
+      fontSize: 10,
+      lineHeight: 1.5,
+      color: theme.cardForeground,        
+    },
+    strengthsSection: {
+      borderLeftColor: theme.chart2,
+    },
+    strengthsIcon: {
+      backgroundColor: theme.chart2,
+    },
+    challengesSection: {
+      borderLeftColor: theme.chart4,
+    },
+    challengesIcon: {
+      backgroundColor: theme.chart4,
+    },
+    workStyleSection: {
+      borderLeftColor: theme.chart1,
+    },
+    workStyleIcon: {
+      backgroundColor: theme.chart1,
+    },
+    relationshipsSection: {
+      borderLeftColor: theme.chart5,
+    },
+    relationshipsIcon: {
+      backgroundColor: theme.chart5,
+    },
+    growthAreasSection: {
+      borderLeftColor: theme.chart3,
+    },
+    growthAreasIcon: {
+      backgroundColor: theme.chart3,
+    },
+    pageBreak: {
+      marginTop: 30,
+      marginBottom: 30,
+      borderTopWidth: 1,
+      borderTopColor: theme.border,
+      paddingTop: 30,
+    },
+    footer: {
+      position: "absolute",
+      bottom: 30,
+      left: 0,
+      right: 0,
+      textAlign: "center",
+      fontSize: 10,
+      color: theme.mutedForeground,
+    },
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
-  };
+  });
 };
 
 interface PDFDetailedPersonalityInsightsProps {
@@ -137,6 +142,7 @@ interface PDFDetailedPersonalityInsightsProps {
   personalityInsights: PersonalityTypeInsights;
   sectionNumber: number;
   isDarkMode?: boolean;
+  pageNumber?: number; // Page number for footer
 }
 
 // Helper function to get section styles
@@ -183,8 +189,9 @@ export const PDFDetailedPersonalityInsights: React.FC<
   personalityInsights,
   sectionNumber,
   isDarkMode = false,
+  pageNumber = 4,
 }) => {
-  const styles = createStyles(isDarkMode);
+  const styles = createDetailedInsightsStyles(isDarkMode);
 
   // Helper function to render an insight section
   const renderInsightSection = (
@@ -237,6 +244,11 @@ export const PDFDetailedPersonalityInsights: React.FC<
       {renderInsightSection("challenges", personalityInsights.challenges)}
       {renderInsightSection("workStyle", personalityInsights.workStyle)}
 
+      {/* Add footer inside the page */}
+      <Text style={styles.footer}>
+        CerebralQ Personality Assessment | Page {pageNumber}
+      </Text>
+      
       {/* Second part: Relationships, and Growth Areas */}
       <View break>
         {renderInsightSection(
@@ -244,6 +256,11 @@ export const PDFDetailedPersonalityInsights: React.FC<
           personalityInsights.relationships
         )}
         {renderInsightSection("growthAreas", personalityInsights.growthAreas)}
+        
+        {/* Add footer inside the second part */}
+        <Text style={styles.footer}>
+          CerebralQ Personality Assessment | Page {pageNumber + 1}
+        </Text>
       </View>
     </View>
   );

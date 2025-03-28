@@ -8,114 +8,125 @@ interface Person {
   image: string;
 }
 
+// Extract styles to their own function outside the component
+const createSimilarPersonalitiesStyles = (isDarkMode = false, isCompact = false) => {
+  const baseStyles = createBaseStyles(isDarkMode);
+  const theme = getThemeColors(isDarkMode);
+  
+  return StyleSheet.create({
+    container: {
+      margin: isCompact ? 5 : 10,
+      position: "relative",
+      height: "100%",
+    },
+    header: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: isCompact ? 10 : 20,
+    },
+    cardHeader: {
+      marginBottom: isCompact ? 8 : 15,
+    },
+    cardTitle: {
+      fontSize: 10,
+      color: theme.mutedForeground,
+      marginBottom: 2,
+    },
+    cardHeading: {
+      fontSize: isCompact ? 14 : 16,
+      fontFamily: 'Helvetica-Bold',
+      color: theme.primary,
+      marginBottom: isCompact ? 5 : 10,
+    },
+    description: {
+      fontSize: 10,
+      color: theme.mutedForeground,
+      marginBottom: isCompact ? 10 : 15,
+      lineHeight: 1.4,
+    },
+    personalitiesWrapper: {
+      flexDirection: 'column',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+    },
+    personalityItem: {
+      width: '48%',
+      flexDirection: 'row',
+      alignItems: 'center',
+      marginBottom: isCompact ? 6 : 12,
+      padding: isCompact ? 6 : 8,
+      borderWidth: 1,
+      borderColor: theme.border,
+      borderRadius: 6,
+      backgroundColor: theme.card,
+    },
+    imagePlaceholder: {
+      width: isCompact ? 30 : 40,
+      height: isCompact ? 30 : 40,
+      borderRadius: isCompact ? 15 : 20,
+      backgroundColor: theme.muted,
+      marginRight: isCompact ? 6 : 10,
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    placeholderText: {
+      fontSize: isCompact ? 12 : 16,
+      fontFamily: 'Helvetica-Bold',
+      color: theme.mutedForeground,
+    },
+    personInfo: {
+      flex: 1,
+    },
+    personName: {
+      fontSize: isCompact ? 9 : 10,
+      fontFamily: 'Helvetica-Bold',
+      color: theme.foreground,
+      marginBottom: isCompact ? 1 : 2,
+    },
+    profession: {
+      fontSize: isCompact ? 7 : 8,
+      color: theme.mutedForeground,
+    },
+    categoryLabel: {
+      width: '100%',
+      fontSize: 11,
+      fontFamily: 'Helvetica-Bold',
+      color: theme.foreground,
+      marginTop: isCompact ? 5 : 10,
+      marginBottom: isCompact ? 4 : 8,
+    },
+    footer: {
+      position: "absolute",
+      bottom: 30,
+      left: 0,
+      right: 0,
+      textAlign: "center",
+      fontSize: 10,
+      color: theme.mutedForeground,
+    },
+    sectionNumber: baseStyles.sectionNumber,
+    sectionTitle: baseStyles.sectionTitle,
+  });
+};
+
 interface PDFSimilarPersonalitiesProps {
   personalityType: string;
   similarPersonalities: Person[];
   sectionNumber: number;
   isDarkMode?: boolean;
   isCompact?: boolean; // New prop for compact display
+  pageNumber?: number; // Page number for footer
 }
-
-// Create styles with theme variants
-const createStyles = (isDarkMode = false, isCompact = false) => {
-  const baseStyles = createBaseStyles(isDarkMode);
-  const theme = getThemeColors(isDarkMode);
-  
-  return {
-    ...StyleSheet.create({
-      container: {
-        margin: isCompact ? 5 : 10,
-      },
-      header: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: isCompact ? 10 : 20,
-      },
-      cardHeader: {
-        marginBottom: isCompact ? 8 : 15,
-      },
-      cardTitle: {
-        fontSize: 10,
-        color: theme.mutedForeground,
-        marginBottom: 2,
-      },
-      cardHeading: {
-        fontSize: isCompact ? 14 : 16,
-        fontFamily: 'Helvetica-Bold',
-        color: theme.primary,
-        marginBottom: isCompact ? 5 : 10,
-      },
-      description: {
-        fontSize: 10,
-        color: theme.mutedForeground,
-        marginBottom: isCompact ? 10 : 15,
-        lineHeight: 1.4,
-      },
-      personalitiesWrapper: {
-        flexDirection: 'column',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
-      },
-      personalityItem: {
-        width: '48%',
-        flexDirection: 'row',
-        alignItems: 'center',
-        marginBottom: isCompact ? 6 : 12,
-        padding: isCompact ? 6 : 8,
-        borderWidth: 1,
-        borderColor: theme.border,
-        borderRadius: 6,
-        backgroundColor: theme.card,
-      },
-      imagePlaceholder: {
-        width: isCompact ? 30 : 40,
-        height: isCompact ? 30 : 40,
-        borderRadius: isCompact ? 15 : 20,
-        backgroundColor: theme.muted,
-        marginRight: isCompact ? 6 : 10,
-        alignItems: 'center',
-        justifyContent: 'center',
-      },
-      placeholderText: {
-        fontSize: isCompact ? 12 : 16,
-        fontFamily: 'Helvetica-Bold',
-        color: theme.mutedForeground,
-      },
-      personInfo: {
-        flex: 1,
-      },
-      personName: {
-        fontSize: isCompact ? 9 : 10,
-        fontFamily: 'Helvetica-Bold',
-        color: theme.foreground,
-        marginBottom: isCompact ? 1 : 2,
-      },
-      profession: {
-        fontSize: isCompact ? 7 : 8,
-        color: theme.mutedForeground,
-      },
-      categoryLabel: {
-        width: '100%',
-        fontSize: 11,
-        fontFamily: 'Helvetica-Bold',
-        color: theme.foreground,
-        marginTop: isCompact ? 5 : 10,
-        marginBottom: isCompact ? 4 : 8,
-      }
-    }),
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
-  };
-};
 
 export const PDFSimilarPersonalities: React.FC<PDFSimilarPersonalitiesProps> = ({
   personalityType,
   similarPersonalities,
   sectionNumber,
   isDarkMode = false,
-  isCompact = false
+  isCompact = false,
+  pageNumber = 5
 }) => {
-  const styles = createStyles(isDarkMode, isCompact);
+  const styles = createSimilarPersonalitiesStyles(isDarkMode, isCompact);
 
   // Get the first letter of the person's name for the placeholder
   const getInitial = (name: string) => name.charAt(0);
@@ -153,6 +164,11 @@ export const PDFSimilarPersonalities: React.FC<PDFSimilarPersonalitiesProps> = (
           </View>
         ))}
       </View>
+      
+      {/* Add footer inside the page */}
+      <Text style={styles.footer}>
+        CerebralQ Personality Assessment | Page {pageNumber}
+      </Text>
     </View>
   );
 };
