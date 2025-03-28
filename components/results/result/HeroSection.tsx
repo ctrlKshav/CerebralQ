@@ -52,7 +52,7 @@ const HeroSection = ({
       const url = username ? `result` : `${username}`;
 
       // Use the existing share function
-      await handleShare(title, text, url, username ? true : false);
+      await handleShare(title, text, url, username ? false : true);
 
       // Redirect demo users to sign up
       if (!username) {
