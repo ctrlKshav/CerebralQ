@@ -64,7 +64,7 @@ const ActionPlanSection = ({
       const text = `I'm an ${personalityType}! Check out my personality profile on CerebralQuotient.`;
 
       // Determine share URL based on user status
-      const url = isDemoUser ? `result` : `profiles/${firstname}`;
+      const url = isDemoUser ? `result` : `${firstname}`;
 
       // Use the existing share function
       await handleShare(title, text, url, isDemoUser);
