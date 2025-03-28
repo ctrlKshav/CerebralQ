@@ -82,23 +82,13 @@ export default function ResultsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
-      {/* Hero Section with enhanced background */}
-      <div className="relative w-full bg-gradient-to-b from-background to-background/80">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-600/20 via-blue-600/15 to-emerald-600/20 animate-pulse-slow"></div>
-        <div className="absolute inset-0" style={{ 
-          backgroundImage: "url('https://images.unsplash.com/photo-1636953056323-9c09fdd74fa6?q=80&w=1000')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.08
-        }}></div>
+    <div className="min-h-screen mt-24  bg-gradient-to-b from-background to-background/80 overflow-x-hidden">
+
+
+      <div className="relative w-full ">
+        
         <div className="relative w-full px-6 sm:px-8 pt-28 pb-24">
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md mb-10 shadow-lg">
-            <Brain className="w-5 h-5 text-violet-400" />
-            <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-violet-200">
-              Personality Insights
-            </span>
-          </div>
+          
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
             <div className="space-y-7">
               <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
@@ -111,7 +101,7 @@ export default function ResultsPage() {
               </p>
             </div>
             <div className="relative group">
-              <div className="absolute -inset-[3px] bg-gradient-to-r from-violet-500/40 via-blue-500/40 to-emerald-500/40 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
+              <div className="absolute rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="relative w-[220px] bg-white/8 backdrop-blur-md border-white/15 hover:border-white/30 transition-colors">
                   <SelectValue placeholder="Sort results by..." />
@@ -129,50 +119,51 @@ export default function ResultsPage() {
 
       {/* Results Cards with enhanced styling */}
       <div className="w-full px-6 sm:px-8 py-16 bg-gradient-to-b from-background/90 to-background">
-        <div className="space-y-10">
+        <div className="space-y-12">
           {sortedResults.map((result) => (
             <Card
               key={result.id}
-              className="group relative overflow-hidden border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 ease-out w-full min-h-[280px] hover:scale-[1.01]"
+              className="group relative overflow-hidden border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 ease-out w-full min-h-[350px] hover:scale-[1.01] dark:border-white/5 border-black/10 shadow-lg"
             >
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${result.color} opacity-15 group-hover:opacity-20 transition-opacity duration-500`}
+                className={`absolute inset-0 bg-gradient-to-br ${result.color} dark:opacity-15 opacity-20 group-hover:opacity-25 transition-opacity duration-500`}
               ></div>
               <div
-                className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-500"
+                className="absolute inset-0 dark:opacity-10 opacity-20 group-hover:opacity-25 transition-opacity duration-500"
                 style={{
                   backgroundImage: `url(${result.image})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
               ></div>
-              <CardHeader className="relative z-10 pb-8 pt-10">
-                <div className="flex flex-col gap-6">
-                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
-                    <div className="space-y-2">
+              <div className="absolute inset-0 bg-white/25 dark:bg-black/30"></div>
+              <CardHeader className="relative z-10 pb-8 pt-12">
+                <div className="flex flex-col gap-8">
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+                    <div className="space-y-3">
                       <div className="flex items-center gap-3">
                         <div className={`text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${result.color}`}>
                           {result.type}
                         </div>
                       </div>
-                      <p className="text-md text-muted-foreground/90">{result.description}</p>
+                      <p className="text-md dark:text-muted-foreground/90 text-muted-foreground/70">{result.description}</p>
                     </div>
-                    <span className="text-sm text-muted-foreground flex items-center gap-2 bg-background/50 backdrop-blur-sm rounded-full px-4 py-2 shadow-md">
+                    <span className="text-sm text-muted-foreground flex items-center gap-2 bg-background/80 backdrop-blur-sm rounded-full px-4 py-2 shadow-md border dark:border-white/10 border-black/10">
                       <Calendar className="h-4 w-4" />
                       {format(result.date, "MMM d, yyyy")}
                     </span>
                   </div>
-                  <p className="text-xl font-medium leading-relaxed">
+                  <p className="text-2xl font-medium leading-relaxed dark:text-white/90 text-black/80">
                     {result.highlight}
                   </p>
                 </div>
               </CardHeader>
-              <CardContent className="relative z-10 pt-0 pb-10 px-8">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
+              <CardContent className="relative z-10 pt-0 pb-14 px-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-4">
                   {result.traits.map((trait, i) => (
                     <div
                       key={trait}
-                      className={`relative group/trait overflow-hidden rounded-xl bg-background/50 backdrop-blur-sm border p-5
+                      className={`relative group/trait overflow-hidden rounded-xl bg-background/70 backdrop-blur-sm border dark:border-white/10 border-black/10 p-6
                         hover:bg-gradient-to-br ${result.color} hover:border-transparent transition-all duration-300
                         hover:scale-105 hover:shadow-xl hover:text-white`}
                     >
