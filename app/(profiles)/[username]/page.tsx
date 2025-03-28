@@ -124,6 +124,7 @@ export default function ProfilePage({
 
           {/* Detailed personality analysis */}
           <PersonalityShowcase
+            firstname={userData.firstname}
             personalityType={userData.raw_score.personalityType}
             traitScores={userData.raw_score.traitScores}
           />
