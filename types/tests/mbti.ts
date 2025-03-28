@@ -306,6 +306,7 @@ export interface ActionStepItem {
 }
 
 export interface ResultData {
+  username: string | null;
   firstname: string | null;
   personalityType: string;
   personalityDescription: PersonalityDescription;

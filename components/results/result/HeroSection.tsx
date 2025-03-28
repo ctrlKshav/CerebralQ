@@ -4,14 +4,16 @@ import { PersonalityDescription } from "@/types/tests/mbti";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { handleShare } from "@/lib/shareUtils";
+import Link from "next/link";
 
 interface HeroSectionProps {
   personalityType: string;
   personalityDescription: PersonalityDescription;
   completionDate: string;
   firstname: string | null;
-  onExploreClick: () => void;
   id?: string;
+  username: string | null;
 }
 
 const HeroSection = ({
@@ -19,8 +21,8 @@ const HeroSection = ({
   personalityDescription,
   completionDate,
   firstname,
-  onExploreClick,
   id,
+  username,
 }: HeroSectionProps) => {
   const alias = personalityDescription.alias;
   const description = personalityDescription.description;
@@ -32,6 +34,14 @@ const HeroSection = ({
 
   const imagePath =
     personalityImages[personalityType] || personalityImages.default;
+
+  const handleProfileShare = async () => {
+    const title = `${firstname}'s Profile`;
+    const text = `I'm an ${personalityType}! Check out my personality profile on CerebralQuotient.`;
+    const url = `${username}`;
+
+    await handleShare(title, text, url, false);
+  };
 
   return (
     <section
@@ -81,13 +91,18 @@ const HeroSection = ({
               ? Let's dive into what makes you so incredible!
             </p>
 
-            <div className="pt-4">
+            <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center justify-center md:justify-start">
               <Button
-                className="px-6 py-3 bg-primary text-primary-foreground rounded-lg transition-all hover:shadow"
-                onClick={onExploreClick}
+                className="px-3 py-3 bg-primary text-primary-foreground rounded-lg transition-all hover:shadow"
+                onClick={handleProfileShare}
               >
-                Explore Your Results
+                Share Result
               </Button>
+              <Link href={"/report"}>
+                <Button className="px-3 py-3 bg-primary text-primary-foreground rounded-lg transition-all hover:shadow">
+                  View Detailed Report
+                </Button>
+              </Link>
             </div>
           </div>
 
