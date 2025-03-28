@@ -297,6 +297,7 @@ export default function Report() {
 
             {/* Action Plan */}
             <ActionPlanSection
+              username={resultData?.username || null}
               firstname={resultData?.firstname || null}
               personalityType={personalityType}
               actionItems={
