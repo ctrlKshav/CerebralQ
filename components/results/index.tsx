@@ -202,7 +202,7 @@ export default function Results() {
           <div className="flex flex-col h-full pt-4">
             <div className="mb-8">
               <h2 className="text-xl font-bold mb-2">Results Navigation</h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
+              <p className="text-sm ">
                 Explore your {personalityType} profile
               </p>
             </div>
@@ -211,7 +211,7 @@ export default function Results() {
                 <SidebarLink
                   key={link.href}
                   link={link}
-                  className="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary"
+                  className=""
                 />
               ))}
             </div>
