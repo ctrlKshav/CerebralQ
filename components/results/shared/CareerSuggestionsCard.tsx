@@ -126,7 +126,7 @@ export default function CareerSuggestionsCard({
                   {suggestion.description}
                 </p>
                 {suggestion.qualityMatches && suggestion.qualityMatches.length > 0 && (
-                  <div className="mt-auto">
+                  <div className="">
                     <h4 className="text-sm font-medium mb-3 text-muted-foreground flex items-center  gap-4 ">
                       <span className="flex-none">Your Matching Traits</span>
                       <span className="inline-block w-full h-px bg-border flex-grow" />
