@@ -49,7 +49,7 @@ const HeroSection = ({
       const text = `I'm an ${personalityType}! Check out my personality profile on CerebralQuotient.`;
 
       // Determine share URL based on user status
-      const url = username ? `result` : `${username}`;
+      const url = !username ? `result` : `${username}`;
 
       // Use the existing share function
       await handleShare(title, text, url, username ? false : true);
