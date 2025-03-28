@@ -6,35 +6,66 @@ import {
   getCareerSuggestions,
   getSimilarPersonalities,
 } from "@/lib/mbti/results";
-import { getPersonalityInsights } from "@/data/mbti/personalityInformation";
+import { getPersonalityDescription, getPersonalityInsights, personalityDescriptions } from "@/data/mbti/personalityInformation";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 // Import our components
-import { Hero } from "@/components/results/hero";
-import { PersonalityTraits } from "@/components/results/personality-traits";
-import { CareerSuggestions } from "@/components/results/career-suggestions";
-import { SimilarPersonalities } from "@/components/results/similar-personalities";
-import { DetailedPersonalityInsights } from "@/components/results/detailed-personality-insights";
-import AboutPersonalityType from "@/components/profile/AboutPersonalityType";
-import { personalityDescriptions } from "@/data/mbti/personalityInformation";
-import { getCurrentUser, saveTestResults, updatePersonalityType } from "@/lib/supabaseOperations";
+import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-import Link from "next/link";
+import { sampleResultData } from "@/data/mbti/mbtiResultData";
+
+import HeroSection from "@/components/results/HeroSection";
+import PersonalityTraits from "@/components/results/personality-traits";
+import CareerPathSection from "@/components/results/CareerPathSection";
+import RelationshipSection from "@/components/results/RelationshipSection";
+import GrowthSection from "@/components/results/GrowthSection";
+import DailyHabitsSection from "@/components/results/DailyHabitsSection";
+import ValuesMotivatorSection from "@/components/results/ValuesMotivatorsSection";
+import CommunitySection from "@/components/results/CommunitySection";
+import ActionPlanSection from "@/components/results/ActionPlanSection";
+import { getPersonalityData } from "@/data/mbti/mbtiResultData";
+
+// Import sidebar components
+import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
+import { 
+  IconBrain, IconBriefcase, IconHeart, IconPlant, 
+  IconCalendar, IconStar, IconUsers, IconClipboardList
+} from "@tabler/icons-react";
 
 export default function Results() {
-  const [resultData, setResultData] = useState<ResultData>({
-    personalityType: "",
-    personalityDescription: { alias: "", description: "" },
-    testId: "",
-    completionDate: "",
-    traitScores: null,
-    careerSuggestions: [],
-    similarPersonalities: [],
-  });
+  const [resultData, setResultData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
+
+  // Destructure result data
   
-  const [showingAllSections, setShowingAllSections] = useState(false);
+  const {
+    personalityType,
+    personalityDescription,
+    completionDate,
+    traitScores,
+  } = resultData || sampleResultData;
+
+  const onExploreClick = () => {
+    document
+      .getElementById("explore-traits")
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+
+  // Create sidebar navigation links
+  const sidebarLinks = [
+    { label: "Personality Traits", href: "#explore-traits", icon: <IconBrain size={24} /> },
+    { label: "Career Path", href: "#career-path", icon: <IconBriefcase size={24} /> },
+    { label: "Relationships", href: "#relationships", icon: <IconHeart size={24} /> },
+    { label: "Growth Journey", href: "#growth-journey", icon: <IconPlant size={24} /> },
+    { label: "Daily Habits", href: "#daily-habits", icon: <IconCalendar size={24} /> },
+    { label: "Values & Motivators", href: "#values-motivators", icon: <IconStar size={24} /> },
+    { label: "Community", href: "#community", icon: <IconUsers size={24} /> },
+    { label: "Action Plan", href: "#action-plan", icon: <IconClipboardList size={24} /> },
+  ];
 
   useEffect(() => {
     // Get data from localStorage and handle saving to database
@@ -58,7 +89,7 @@ export default function Results() {
 
         // Extract required data from localStorage format
         const personalityType =
-          data.personalityType || data.raw_score?.personalityType;
+          data.raw_score?.personalityType;
         const traitScores = data.traitScores || data.raw_score?.traitScores;
         const testId = data.testId || data.test_type_id;
         const completionDate =
@@ -75,15 +106,17 @@ export default function Results() {
           return;
         }
 
+        const personalityData = getPersonalityData(personalityType);
+        const personalityDescription = getPersonalityDescription(personalityType);
+
         // Set all result data at once
         setResultData({
-          personalityType,
-          personalityDescription: personalityDescriptions[personalityType],
-          testId,
+          firstname: user?.first_name || null,
+          personalityType: personalityType,
+          personalityDescription: personalityDescription,
           completionDate,
           traitScores,
-          careerSuggestions: getCareerSuggestions(personalityType),
-          similarPersonalities: getSimilarPersonalities(personalityType),
+          personalityData,
         });
 
         // Save results to database if user is logged in
@@ -107,7 +140,6 @@ export default function Results() {
 
               // Save to Supabase
               await saveTestResults(testData);
-              await updatePersonalityType(userId, personalityType);
 
               // Mark as saved in localStorage
               localStorage.setItem(SAVED_RESULTS_KEY, "true");
@@ -118,6 +150,7 @@ export default function Results() {
         }
 
         setLoading(false);
+        console.log(user?.first_name, user?.username)
       } catch (error) {
         console.error("Error parsing result data:", error);
         setError("Failed to load test results. Please retake the test.");
@@ -128,41 +161,17 @@ export default function Results() {
     loadResultsAndSaveToDatabase();
   }, []);
 
-  // Destructure properties from resultData for easier access in JSX
-  const {
-    personalityType,
-    personalityDescription,
-    completionDate,
-    traitScores,
-    careerSuggestions,
-    similarPersonalities,
-  } = resultData;
-
-  // Get the alias for the current personality type
-  const personalityAlias = personalityDescription.alias;
-
-  // Get personality insights
-  const personalityInsights = getPersonalityInsights(personalityType);
-
-  const typeInfo = personalityDescriptions[personalityType] || {
-    title: "Personality Type",
-    description:
-      "A detailed analysis of cognitive preferences and behavioral patterns.",
-  };
-
-
-  // Function to show all sections
-  const handleShowAllSections = () => {
-    setShowingAllSections(true);
-  };
-
   if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-lg">Loading your results...</p>
-        </div>
+        <Card className="p-8 text-center shadow">
+          <CardContent className="p-6">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-4 text-lg text-card-foreground">
+              Loading your results...
+            </p>
+          </CardContent>
+        </Card>
       </div>
     );
   }
@@ -170,77 +179,148 @@ export default function Results() {
   if (error) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-center max-w-md mx-auto p-6  rounded-lg shadow-lg">
-          <h2 className="text-2xl font-bold  mb-4">No Results Available</h2>
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90"
-          >
-            Take the Test
-          </Link>
-        </div>
+        <Card className="text-center max-w-md mx-auto shadow-lg">
+          <CardContent className="p-6">
+            <h2 className="text-2xl font-bold mb-4 text-card-foreground">
+              No Results Available
+            </h2>
+            <Button
+              asChild
+              className="bg-primary text-primary-foreground hover:bg-primary/90"
+            >
+              <a href="/">Take the Test</a>
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-background">
-      <main className="container mx-auto px-4 py-8 space-y-8">
-        
-
-        {/* Hero Section */}
-        <Hero
-          resultData={resultData}
-          userId={userID}
-        />
-
-        {/* About Personality Type Card */}
-        <AboutPersonalityType
-          personalityType={personalityType}
-          sectionNumber={1}
-        />
-
-        {/* Personality Traits */}
-        {traitScores && (
-          <PersonalityTraits traitScores={traitScores} sectionNumber={2} />
-        )}
-
-        {/* Career Suggestions */}
-        <CareerSuggestions
-          personalityType={personalityType}
-          careerSuggestions={careerSuggestions}
-          sectionNumber={3}
-        />
-
-        {/* Similar Personalities */}
-        <SimilarPersonalities
-          personalityType={personalityType}
-          similarPersonalities={similarPersonalities}
-          sectionNumber={4}
-        />
-
-        {/* Additional sections or button to show them */}
-        {!showingAllSections ? (
-          <div className="flex justify-center py-6">
-            <button
-              onClick={handleShowAllSections}
-              className="px-6 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
-            >
-              View Detailed Analysis
-            </button>
+      <Sidebar open={open} setOpen={setOpen}>
+        <SidebarBody>
+          <div className="flex flex-col h-full pt-4">
+            <div className="h-24">
+              {open ? (<h2 className="text-xl font-bold mb-2">Results Navigation</h2>) : (<>CQ</>)}
+              
+              {open && (<p className="text-sm">
+                Explore your {personalityType} profile
+              </p>)}
+            </div>
+            <div className="space-y-2">
+              {sidebarLinks.map((link) => (
+                <SidebarLink
+                  key={link.href}
+                  link={link}
+                  className=""
+                />
+              ))}
+            </div>
           </div>
-        ) : (
-          <>
-            {/* Detailed Personality Insights */}
-            <DetailedPersonalityInsights
+        </SidebarBody>
+        
+        <div className="min-h-screen">
+          <main className="mx-auto transition-all duration-300 space-y-8 p-4">
+            <HeroSection
               personalityType={personalityType}
-              personalityAlias={personalityAlias}
-              personalityInsights={personalityInsights}
-              sectionNumber={5}
+              personalityDescription={personalityDescription}
+              completionDate={completionDate}
+              firstname={resultData?.firstname || null}
+              onExploreClick={onExploreClick}
             />
-          </>
-        )}
-      </main>
+
+            {/* Personality Traits */}
+            {traitScores && (
+              <PersonalityTraits
+                personalityType={personalityType}
+                traitScores={traitScores}
+                sectionNumber={1}
+                firstname={resultData?.firstname ?? undefined}
+                id="explore-traits"
+              />
+            )}
+
+            {/* Career Path */}
+            <CareerPathSection
+              firstname={resultData?.firstname || null}
+              career={
+                resultData?.personalityData?.career ||
+                sampleResultData.personalityData?.career
+              }
+              sectionNumber={2}
+              id="career-path"
+            />
+
+            {/* Relationship Insights */}
+            <RelationshipSection
+              firstname={resultData?.firstname || null}
+              relationships={
+                resultData?.personalityData?.relationships ||
+                sampleResultData.personalityData?.relationships
+              }
+              sectionNumber={3}
+              id="relationships"
+            />
+
+            {/* Growth Journey */}
+            <GrowthSection
+              firstname={resultData?.firstname || null}
+              growth={
+                resultData?.personalityData?.growth ||
+                sampleResultData.personalityData?.growth
+              }
+              sectionNumber={4}
+              id="growth-journey"
+            />
+
+            {/* Daily Habits */}
+            <DailyHabitsSection
+              firstname={resultData?.firstname || null}
+              dailyHabits={
+                resultData?.personalityData?.dailyHabits ||
+                sampleResultData.personalityData?.dailyHabits
+              }
+              sectionNumber={5}
+              id="daily-habits"
+            />
+
+            {/* Values & Motivators */}
+            <ValuesMotivatorSection
+              firstname={resultData?.firstname || null}
+              valuesAndMotivators={
+                resultData?.personalityData?.valuesAndMotivators ||
+                sampleResultData.personalityData?.valuesAndMotivators
+              }
+              sectionNumber={6}
+              id="values-motivators"
+            />
+
+            {/* Community Connection */}
+            <CommunitySection
+              firstname={resultData?.firstname ?? null}
+              communityConnection={
+                resultData?.personalityData.communityConnection ||
+                sampleResultData.personalityData.communityConnection
+              }
+              sectionNumber={7}
+              id="community"
+            />
+
+            {/* Action Plan */}
+            <ActionPlanSection
+              firstname={resultData?.firstname || null}
+              personalityType={personalityType}
+              actionItems={
+                resultData?.personalityData.actionItems ||
+                sampleResultData.personalityData.actionItems
+              }
+              sectionNumber={8}
+              id="action-plan"
+            />
+          </main>
+        </div>
+      </Sidebar>
     </div>
   );
 }
