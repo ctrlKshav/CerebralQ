@@ -87,20 +87,20 @@ export default function ResultsPage() {
 
       <div className="relative w-full ">
         
-        <div className="relative w-full px-6 sm:px-8 pt-28 pb-24">
+        <div className="relative w-full px-6 sm:px-8 pt-12">
           
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
-            <div className="space-y-7">
+          <div className="flex flex-col gap-12">
+            <div className="space-y-7 flex flex-col items-center text-center">
               <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
-                <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-blue-500 to-emerald-500 animate-gradient">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-blue-500 to-emerald-500 animate-gradient">
                   Your MBTI Journey
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground/90 max-w-3xl leading-relaxed">
+              <p className="text-xl md:text-2xl max-w-4xl  text-muted-foreground/90 leading-relaxed">
                 Track your personal growth and discover how your personality evolves over time through the lens of MBTI
               </p>
             </div>
-            <div className="relative group">
+            <div className="self-end relative group">
               <div className="absolute rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
               <Select value={sortBy} onValueChange={setSortBy}>
                 <SelectTrigger className="relative w-[220px] bg-white/8 backdrop-blur-md border-white/15 hover:border-white/30 transition-colors">
