@@ -1,0 +1,31 @@
+﻿"use client";
+import { useContext } from "react";
+import { UserDataContext } from "@/context/user-data";
+import Account from "@/components/account";
+import Navbar from "@/components/navbar";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
+import ResultsPage from "@/components/test-history";
+
+export default function Page() {
+  const userDataContext = useContext(UserDataContext);
+
+  if (userDataContext === null) {
+    return null;
+  }
+
+
+  const { userData, setUserData } = userDataContext;
+
+  if (userData === null) {
+    return <LoadingSkeleton />;
+  }
+
+  return (
+    <div className="">
+      <Navbar user={userData} />
+      <div className="mt-24">
+        <ResultsPage />
+      </div>
+    </div>
+  );
+}
