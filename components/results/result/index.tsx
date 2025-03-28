@@ -34,11 +34,6 @@ export default function Result() {
     traitScores,
   } = resultData || sampleResultData;
 
-  const onExploreClick = () => {
-    document
-      .getElementById("explore-traits")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
 
   // Create sidebar navigation links
   const sidebarLinks = [
@@ -97,6 +92,7 @@ export default function Result() {
         // Set all result data at once
         setResultData({
           firstname: user?.first_name || null,
+          username: user?.username || null,
           personalityType: personalityType,
           personalityDescription: personalityDescription,
           completionDate,
@@ -191,7 +187,7 @@ export default function Result() {
               personalityDescription={personalityDescription}
               completionDate={completionDate}
               firstname={resultData?.firstname || null}
-              onExploreClick={onExploreClick}
+              username={resultData?.username || null}
             />
           </main>
         </div>

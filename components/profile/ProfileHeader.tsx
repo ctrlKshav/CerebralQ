@@ -41,8 +41,11 @@ export default function ProfileHeader({
         {/* Avatar */}
         <div className="flex-shrink-0">
           <Avatar className="h-40 w-40 md:h-48 md:w-48 border-4 border-background">
-            <AvatarImage 
-              src={userData.profile_image_url || "/profile-avatars/avatarPlaceholder.png"}
+            <AvatarImage
+              src={
+                userData.profile_image_url ||
+                "/profile-avatars/avatarPlaceholder.png"
+              }
               alt={`${userData.username}'s profile`}
             />
             <AvatarFallback className="text-4xl">
