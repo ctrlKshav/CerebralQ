@@ -33,7 +33,7 @@ import {
   IconCalendar, IconStar, IconUsers, IconClipboardList
 } from "@tabler/icons-react";
 
-export default function Results() {
+export default function Report() {
   const [resultData, setResultData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -44,17 +44,8 @@ export default function Results() {
   
   const {
     personalityType,
-    personalityDescription,
-    completionDate,
     traitScores,
   } = resultData || sampleResultData;
-
-  const onExploreClick = () => {
-    document
-      .getElementById("explore-traits")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   // Create sidebar navigation links
   const sidebarLinks = [
     { label: "Personality Traits", href: "#explore-traits", icon: <IconBrain size={24} /> },
@@ -111,6 +102,7 @@ export default function Results() {
 
         // Set all result data at once
         setResultData({
+          username: user?.username || null,
           firstname: user?.first_name || null,
           personalityType: personalityType,
           personalityDescription: personalityDescription,
@@ -222,13 +214,6 @@ export default function Results() {
         
         <div className="min-h-screen">
           <main className="mx-auto transition-all duration-300 space-y-8 p-4">
-            <HeroSection
-              personalityType={personalityType}
-              personalityDescription={personalityDescription}
-              completionDate={completionDate}
-              firstname={resultData?.firstname || null}
-              onExploreClick={onExploreClick}
-            />
 
             {/* Personality Traits */}
             {traitScores && (
