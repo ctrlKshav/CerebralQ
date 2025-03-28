@@ -44,18 +44,6 @@ export interface TraitScores {
   "J-P": TraitScore;
 }
 
-export interface TraitDescription {
-  title: string;
-  leftLabel: string;
-  rightLabel: string;
-  description: string;
-  color: string;
-}
-
-export interface TraitDescriptions {
-  [key: string]: TraitDescription;
-}
-
 interface PersonalityInsight {
   title: string;
   icon: string;
@@ -88,16 +76,6 @@ export interface PersonalityTypeInsights {
     icon: string;
     points: string[];
   };
-}
-
-export interface ResultData {
-  personalityType: string;
-  personalityDescription: PersonalityDescription;
-  testId: string;
-  completionDate: string;
-  traitScores: TraitScores | null;
-  careerSuggestions: { title: string; match: number }[];
-  similarPersonalities: { name: string; profession: string; image: string }[];
 }
 
 export interface PersonalityDescription {
@@ -189,4 +167,159 @@ export interface MBTIAnswer {
   score: number; // Typically 1-5 representing strongly disagree to strongly agree
   dimension: "E-I" | "S-N" | "T-F" | "J-P";
   direction: "left" | "right";
+}
+
+export interface PersonalityBlueprint {
+  traits: TraitDescription[];
+  summary: string;
+}
+
+export interface CareerPath {
+  summary: string;
+  superpowers: SuperpowerItem[];
+  growthAreas: GrowthAreaItem[];
+  suggestions: CareerSuggestion[];
+  actionSteps: ActionStepItem[];
+}
+
+
+// MBTI trait type
+export type MBTITrait = "E" | "I" | "S" | "N" | "T" | "F" | "J" | "P";
+
+// MBTI trait with description
+interface MBTITraitDetail {
+  trait: MBTITrait;
+  description: string;
+}
+
+export type TraitKey = "E-I" | "S-N" | "T-F" | "J-P";
+export interface TraitDescriptions {
+  "E-I": TraitDescription;
+  "S-N": TraitDescription;
+  "T-F": TraitDescription;
+  "J-P": TraitDescription;
+}
+
+export interface TraitDescription {
+  title: string;
+  leftLabel: string;
+  rightLabel: string;
+  lightColor: string;
+  darkColor: string;
+  left: {
+    letter: string;
+    name: string;
+  };
+  right: {
+    letter: string;
+    name: string;
+  };
+  getDominantTraitDescription: (username?: string, thirdPerson?: boolean) => string;
+}
+
+export interface CareerSuggestion {
+  title: string;
+  matchPercentage: number;
+  description: string;
+  qualityMatches: CareerQualityMatch[];
+}
+
+export interface CareerQualityMatch {
+  title: string;
+  description: string;
+}
+
+export interface RelationshipCompatibility {
+  title: string;
+  subtitle: string;
+  description: string;
+  compatibleTypes: string[];
+  superpowers: SuperpowerItem[];
+  growthAreas: GrowthAreaItem[];
+  actionSteps: ActionStepItem[];
+}
+
+export interface GrowthJourney {
+  summary: string;
+  superpowers: SuperpowerItem[];
+  growthAreas: GrowthAreaItem[];
+  actionSteps: ActionStepItem[];
+}
+
+export interface GrowthMilestone {
+  title: string;
+  description: string;
+  completed: boolean;
+}
+
+export interface DailyHabits {
+  summary: string;
+  habits: {
+    morning: HabitItem;
+    afternoon: HabitItem;
+    evening: HabitItem;
+  };
+  communication: CommunicationStyle;
+}
+
+export interface CommunicationStyle {
+  summary: string;
+  tips: string[];
+}
+
+export interface ValuesAndMotivators {
+  summary: string;
+  coreValues: SuperpowerItem[];
+  motivators: GrowthAreaItem[];
+  actionItems: ActionStepItem[];
+}
+
+export interface CommunityConnection {
+  summary: string;
+  suggestions: string[];
+}
+
+export interface ActionItem {
+  task: string;
+  completed: boolean;
+  description?: string;
+}
+
+export interface SuperpowerItem {
+  title: string;
+  description: string;
+}
+
+export interface GrowthAreaItem {
+  title: string;
+  description: string;
+}
+
+export interface HabitItem {
+  title: string;
+  description: string;
+}
+
+export interface ActionStepItem {
+  number: number;
+  description: string;
+}
+
+export interface ResultData {
+  firstname: string | null;
+  personalityType: string;
+  personalityDescription: PersonalityDescription;
+  completionDate: string;
+  traitScores: TraitScores | null;
+  personalityData: PersonalityDatabase;
+}
+
+export interface PersonalityDatabase {
+  career: CareerPath;
+  relationships: RelationshipCompatibility[];
+  growth: GrowthJourney;
+  actionItems: ActionItem[];
+  dailyHabits: DailyHabits;
+  valuesAndMotivators: ValuesAndMotivators;
+  communityConnection: CommunityConnection;
 }
