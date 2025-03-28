@@ -118,6 +118,10 @@ export const personalityDescriptions: Record<string, PersonalityDescription> = {
   },
 };
 
+export function getPersonalityDescription(personalityType: string): PersonalityDescription {
+  return personalityDescriptions[personalityType];
+}
+
 export const personalityInsights: Record<string, PersonalityTypeInsights> = {
   INFP: {
     strengths: {
