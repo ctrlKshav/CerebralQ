@@ -1,4 +1,5 @@
-﻿export interface PersonalityInfo {
+﻿
+export interface PersonalityInfo {
     alias: string;
     description: string;
     compatibleTypes: string[];
@@ -19,6 +20,7 @@
     communicationStyle: string;
     workStyle: string;
   }
+
   
   export const personalityDatabase: Record<string, PersonalityInfo> = {
     "INFP": {
