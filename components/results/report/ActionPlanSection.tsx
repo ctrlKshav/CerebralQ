@@ -14,6 +14,7 @@ import { sampleResultData } from "@/data/mbti/mbtiResultData";
 import { useRouter } from "next/navigation";
 
 interface ActionPlanSectionProps {
+  username: string | null;
   firstname: string | null;
   personalityType: string;
   actionItems: ActionItem[];
@@ -22,6 +23,7 @@ interface ActionPlanSectionProps {
 }
 
 const ActionPlanSection = ({
+  username,
   firstname,
   personalityType,
   actionItems,
@@ -64,7 +66,7 @@ const ActionPlanSection = ({
       const text = `I'm an ${personalityType}! Check out my personality profile on CerebralQuotient.`;
 
       // Determine share URL based on user status
-      const url = isDemoUser ? `result` : `${firstname}`;
+      const url = isDemoUser ? `result` : `${username}`;
 
       // Use the existing share function
       await handleShare(title, text, url, isDemoUser);
