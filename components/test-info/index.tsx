@@ -267,7 +267,6 @@ export default function TestInformation({ testId }: { testId: string }) {
         {user && latestResult && !loading && (
           <TestResultSection
             result={latestResult}
-            testShortCode={MBTI_TEST.short_code}
           />
         )}
 
