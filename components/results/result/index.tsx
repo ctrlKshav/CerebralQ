@@ -29,7 +29,6 @@ export default function Result() {
   const [resultData, setResultData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [userID, setUserId] = useState<string | null>(null);
 
   // Destructure result data
 
@@ -86,8 +85,6 @@ export default function Result() {
       try {
         // Get the current user
         const user = await getCurrentUser();
-        const userId = user?.id || null;
-        setUserId(userId);
 
         // Get stored test results
         const storedData = localStorage.getItem(TEST_RESULTS_KEY);
@@ -134,9 +131,7 @@ export default function Result() {
         });
 
         // Save results to database if user is logged in
-        if (userId && testId) {
-          // Generate a unique key for this test result to prevent duplicates
-          const testKey = `${userId}_${testId}`;
+        if (user && testId) {
 
           // Check if we've already saved this result
           const savedResults = JSON.parse(
@@ -149,7 +144,7 @@ export default function Result() {
               // Prepare test data with correct user ID
               const testData = {
                 ...data,
-                user_id: userId,
+                user_id: user.id,
               };
 
               // Save to Supabase
@@ -164,7 +159,6 @@ export default function Result() {
         }
 
         setLoading(false);
-        console.log(user?.first_name, user?.username);
       } catch (error) {
         console.error("Error parsing result data:", error);
         setError("Failed to load test results. Please retake the test.");

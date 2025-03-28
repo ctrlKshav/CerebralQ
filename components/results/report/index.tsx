@@ -6,7 +6,11 @@ import {
   getCareerSuggestions,
   getSimilarPersonalities,
 } from "@/lib/mbti/results";
-import { getPersonalityDescription, getPersonalityInsights, personalityDescriptions } from "@/data/mbti/personalityInformation";
+import {
+  getPersonalityDescription,
+  getPersonalityInsights,
+  personalityDescriptions,
+} from "@/data/mbti/personalityInformation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -28,9 +32,15 @@ import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 
 // Import sidebar components
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/ui/sidebar";
-import { 
-  IconBrain, IconBriefcase, IconHeart, IconPlant, 
-  IconCalendar, IconStar, IconUsers, IconClipboardList
+import {
+  IconBrain,
+  IconBriefcase,
+  IconHeart,
+  IconPlant,
+  IconCalendar,
+  IconStar,
+  IconUsers,
+  IconClipboardList,
 } from "@tabler/icons-react";
 
 export default function Report() {
@@ -41,21 +51,46 @@ export default function Report() {
   const [open, setOpen] = useState(false);
 
   // Destructure result data
-  
-  const {
-    personalityType,
-    traitScores,
-  } = resultData || sampleResultData;
+
+  const { personalityType, traitScores } = resultData || sampleResultData;
   // Create sidebar navigation links
   const sidebarLinks = [
-    { label: "Personality Traits", href: "#explore-traits", icon: <IconBrain size={24} /> },
-    { label: "Career Path", href: "#career-path", icon: <IconBriefcase size={24} /> },
-    { label: "Relationships", href: "#relationships", icon: <IconHeart size={24} /> },
-    { label: "Growth Journey", href: "#growth-journey", icon: <IconPlant size={24} /> },
-    { label: "Daily Habits", href: "#daily-habits", icon: <IconCalendar size={24} /> },
-    { label: "Values & Motivators", href: "#values-motivators", icon: <IconStar size={24} /> },
+    {
+      label: "Personality Traits",
+      href: "#explore-traits",
+      icon: <IconBrain size={24} />,
+    },
+    {
+      label: "Career Path",
+      href: "#career-path",
+      icon: <IconBriefcase size={24} />,
+    },
+    {
+      label: "Relationships",
+      href: "#relationships",
+      icon: <IconHeart size={24} />,
+    },
+    {
+      label: "Growth Journey",
+      href: "#growth-journey",
+      icon: <IconPlant size={24} />,
+    },
+    {
+      label: "Daily Habits",
+      href: "#daily-habits",
+      icon: <IconCalendar size={24} />,
+    },
+    {
+      label: "Values & Motivators",
+      href: "#values-motivators",
+      icon: <IconStar size={24} />,
+    },
     { label: "Community", href: "#community", icon: <IconUsers size={24} /> },
-    { label: "Action Plan", href: "#action-plan", icon: <IconClipboardList size={24} /> },
+    {
+      label: "Action Plan",
+      href: "#action-plan",
+      icon: <IconClipboardList size={24} />,
+    },
   ];
 
   useEffect(() => {
@@ -64,8 +99,6 @@ export default function Report() {
       try {
         // Get the current user
         const user = await getCurrentUser();
-        const userId = user?.id || null;
-        setUserId(userId);
 
         // Get stored test results
         const storedData = localStorage.getItem(TEST_RESULTS_KEY);
@@ -79,8 +112,7 @@ export default function Report() {
         const data = JSON.parse(storedData);
 
         // Extract required data from localStorage format
-        const personalityType =
-          data.raw_score?.personalityType;
+        const personalityType = data.raw_score?.personalityType;
         const traitScores = data.traitScores || data.raw_score?.traitScores;
         const testId = data.testId || data.test_type_id;
         const completionDate =
@@ -98,12 +130,13 @@ export default function Report() {
         }
 
         const personalityData = getPersonalityData(personalityType);
-        const personalityDescription = getPersonalityDescription(personalityType);
+        const personalityDescription =
+          getPersonalityDescription(personalityType);
 
         // Set all result data at once
         setResultData({
-          username: user?.username || null,
           firstname: user?.first_name || null,
+          username: user?.username || null,
           personalityType: personalityType,
           personalityDescription: personalityDescription,
           completionDate,
@@ -112,10 +145,7 @@ export default function Report() {
         });
 
         // Save results to database if user is logged in
-        if (userId && testId) {
-          // Generate a unique key for this test result to prevent duplicates
-          const testKey = `${userId}_${testId}`;
-
+        if (user && testId) {
           // Check if we've already saved this result
           const savedResults = JSON.parse(
             localStorage.getItem(SAVED_RESULTS_KEY) || "false"
@@ -127,7 +157,7 @@ export default function Report() {
               // Prepare test data with correct user ID
               const testData = {
                 ...data,
-                user_id: userId,
+                user_id: user.id,
               };
 
               // Save to Supabase
@@ -142,7 +172,6 @@ export default function Report() {
         }
 
         setLoading(false);
-        console.log(user?.first_name, user?.username)
       } catch (error) {
         console.error("Error parsing result data:", error);
         setError("Failed to load test results. Please retake the test.");
@@ -194,27 +223,28 @@ export default function Report() {
         <SidebarBody>
           <div className="flex flex-col h-full pt-4">
             <div className="h-24">
-              {open ? (<h2 className="text-xl font-bold mb-2">Results Navigation</h2>) : (<>CQ</>)}
-              
-              {open && (<p className="text-sm">
-                Explore your {personalityType} profile
-              </p>)}
+              {open ? (
+                <h2 className="text-xl font-bold mb-2">Results Navigation</h2>
+              ) : (
+                <>CQ</>
+              )}
+
+              {open && (
+                <p className="text-sm">
+                  Explore your {personalityType} profile
+                </p>
+              )}
             </div>
             <div className="space-y-2">
               {sidebarLinks.map((link) => (
-                <SidebarLink
-                  key={link.href}
-                  link={link}
-                  className=""
-                />
+                <SidebarLink key={link.href} link={link} className="" />
               ))}
             </div>
           </div>
         </SidebarBody>
-        
+
         <div className="min-h-screen">
           <main className="mx-auto transition-all duration-300 space-y-8 p-4">
-
             {/* Personality Traits */}
             {traitScores && (
               <PersonalityTraits
