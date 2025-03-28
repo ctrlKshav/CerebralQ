@@ -85,26 +85,6 @@ export const DesktopSidebar = ({
   ...props
 }: React.ComponentProps<typeof motion.div>) => {
   const { open, setOpen, animate } = useSidebar();
-  const [isScrollingUp, setIsScrollingUp] = useState(true);
-  const [prevScrollY, setPrevScrollY] = useState(0);
-
-  // Track scroll direction to coordinate with navbar
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-      
-      if (currentScrollY < prevScrollY) {
-        setIsScrollingUp(true);
-      } else if (currentScrollY > 50 && currentScrollY > prevScrollY) {
-        setIsScrollingUp(false);
-      }
-      
-      setPrevScrollY(currentScrollY);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollY]);
 
   return (
     <>

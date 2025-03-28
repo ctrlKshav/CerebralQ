@@ -38,6 +38,7 @@ export default function Results() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [userID, setUserId] = useState<string | null>(null);
+  const [open, setOpen] = useState(false);
 
   // Destructure result data
   
@@ -197,14 +198,15 @@ export default function Results() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Sidebar>
+      <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody>
           <div className="flex flex-col h-full pt-4">
             <div className="mb-8">
-              <h2 className="text-xl font-bold mb-2">Results Navigation</h2>
-              <p className="text-sm ">
+              {open ? (<h2 className="text-xl font-bold mb-2">Results Navigation</h2>) : (<>CQ</>)}
+              
+              {open && (<p className="text-sm">
                 Explore your {personalityType} profile
-              </p>
+              </p>)}
             </div>
             <div className="space-y-2">
               {sidebarLinks.map((link) => (
