@@ -22,27 +22,28 @@ interface RelationshipSectionProps {
   firstname: string | null;
   relationships: RelationshipCompatibility[];
   sectionNumber?: number;
+  id?: string;
 }
 
 const RelationshipSection = ({
   firstname,
   relationships,
   sectionNumber = 4,
+  id = "relationship-section",
 }: RelationshipSectionProps) => {
-
   return (
     <>
       {relationships.map((relationship, index) => (
         <>
-          <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
+          <section
+            className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background"
+            id={id}
+          >
             <div className="max-w-[1800px] mx-auto">
               {/* Section header */}
               <SectionHeader
                 title={`Your ${relationship.title}`}
-                subtitle={formatWithUsername(
-                  relationship.subtitle,
-                  firstname
-                )}
+                subtitle={formatWithUsername(relationship.subtitle, firstname)}
                 description={formatWithUsername(
                   relationship.description,
                   firstname
@@ -57,15 +58,14 @@ const RelationshipSection = ({
                     Compatible with:
                   </span>
                   <div className="flex flex-wrap gap-2 justify-center">
-                    {relationship
-                      ?.compatibleTypes.map((type) => (
-                        <Badge
-                          key={type}
-                          className="bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1"
-                        >
-                          {type}
-                        </Badge>
-                      ))}
+                    {relationship?.compatibleTypes.map((type) => (
+                      <Badge
+                        key={type}
+                        className="bg-primary/10 hover:bg-primary/20 text-primary px-3 py-1"
+                      >
+                        {type}
+                      </Badge>
+                    ))}
                   </div>
                 </div>
               </div>

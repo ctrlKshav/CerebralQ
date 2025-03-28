@@ -17,6 +17,7 @@ interface PersonalityTraitsProps {
   sectionNumber: number;
   firstname?: string;
   dashboardView?: boolean;
+  id?: string;
 }
 
 export default function PersonalityTraits({
@@ -25,6 +26,7 @@ export default function PersonalityTraits({
   sectionNumber,
   firstname,
   dashboardView,
+  id = "explore-traits",
 }: PersonalityTraitsProps) {
   const [selectedTrait, setSelectedTrait] =
     React.useState<keyof TraitScores>("E-I");
@@ -37,8 +39,8 @@ export default function PersonalityTraits({
 
   return (
     <section
-      className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-24"
-      id="explore-traits"
+      className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-8"
+      id={id}
     >
       {/* Section header */}
       <SectionHeader

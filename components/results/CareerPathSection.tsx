@@ -18,13 +18,14 @@ interface CareerPathSectionProps {
   firstname: string | null;
   career: CareerPath;
   sectionNumber?: number;
+  id?: string;
 }
 
-const CareerPathSection = ({ firstname, career, sectionNumber = 3 }: CareerPathSectionProps) => {
+const CareerPathSection = ({ firstname, career, sectionNumber = 3, id = "career-path" }: CareerPathSectionProps) => {
   const {superpowers, growthAreas, actionSteps} = career;
 
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background ">
+    <section id={id} className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-8">
     
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}

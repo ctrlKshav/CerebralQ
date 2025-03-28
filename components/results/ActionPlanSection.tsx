@@ -18,6 +18,7 @@ interface ActionPlanSectionProps {
   personalityType: string;
   actionItems: ActionItem[];
   sectionNumber?: number;
+  id?: string;
 }
 
 const ActionPlanSection = ({
@@ -25,6 +26,7 @@ const ActionPlanSection = ({
   personalityType,
   actionItems,
   sectionNumber = 10,
+  id = "action-plan-section",
 }: ActionPlanSectionProps) => {
   // Initialize state for checkboxes based on completed status from data
   const [checkedItems, setCheckedItems] = useState<{ [key: number]: boolean }>(
@@ -82,7 +84,7 @@ const ActionPlanSection = ({
   };
 
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
+    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background" id={id}>
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
         <SectionHeader

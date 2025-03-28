@@ -12,16 +12,18 @@ interface CommunitySectionProps {
   firstname: string | null;
   communityConnection: CommunityConnection;
   sectionNumber?: number;
+  id?: string;
 }
 
 const CommunitySection = ({
   firstname,
   communityConnection,
   sectionNumber = 9,
+  id = "community-section",
 }: CommunitySectionProps) => {
   const { summary, suggestions } = communityConnection;
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
+    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background" id={id}>
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
         <SectionHeader

@@ -11,6 +11,7 @@ interface HeroSectionProps {
   completionDate: string;
   firstname: string | null;
   onExploreClick: () => void;
+  id?: string;
 }
 
 const HeroSection = ({
@@ -19,6 +20,7 @@ const HeroSection = ({
   completionDate,
   firstname,
   onExploreClick,
+  id,
 }: HeroSectionProps) => {
   const alias = personalityDescription.alias;
   const description = personalityDescription.description;
@@ -32,7 +34,10 @@ const HeroSection = ({
     personalityImages[personalityType] || personalityImages.default;
 
   return (
-    <section className="bg-background flex flex-col justify-center items-center py-16 px-4 overflow-hidden relative">
+    <section
+      id={id}
+      className="bg-background flex flex-col justify-center items-center py-16 px-4 overflow-hidden relative"
+    >
       <div className="max-w-6xl mx-auto text-center md:text-left">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
           <div className="space-y-6 max-w-lg animate-fade-in">
@@ -44,7 +49,9 @@ const HeroSection = ({
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 Hey{" "}
                 <span
-                  className={`${firstname ? "text-primary decoration-2" : "decoration-1"}`}
+                  className={`${
+                    firstname ? "text-primary decoration-2" : "decoration-1"
+                  }`}
                 >
                   {firstname || "there"}!
                 </span>{" "}
@@ -64,7 +71,9 @@ const HeroSection = ({
               {firstname ? (
                 <>
                   ,{" "}
-                  <span className="font-semibold text-primary">{firstname}</span>
+                  <span className="font-semibold text-primary">
+                    {firstname}
+                  </span>
                 </>
               ) : (
                 ""

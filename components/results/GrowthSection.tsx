@@ -11,13 +11,14 @@ interface GrowthSectionProps {
   firstname: string | null;
   growth: GrowthJourney
   sectionNumber?: number;
+  id?: string;
 }
 
-const GrowthSection = ({ firstname, growth, sectionNumber = 5 }: GrowthSectionProps) => {
+const GrowthSection = ({ firstname, growth, sectionNumber = 5, id = "growth-section" }: GrowthSectionProps) => {
   const { superpowers: growthSuperpowers, growthAreas, actionSteps: growthActionSteps } = growth;
 
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
+    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background" id={id}>
       
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}

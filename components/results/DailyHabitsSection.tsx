@@ -14,19 +14,21 @@ interface DailyHabitsSectionProps {
   firstname: string | null;
   dailyHabits: DailyHabits;
   sectionNumber?: number;
+  id?: string;
 }
 
 const DailyHabitsSection = ({
   firstname,
   dailyHabits,
   sectionNumber = 6,
+  id = "daily-habits-section",
 }: DailyHabitsSectionProps) => {
   
   const { morning , afternoon, evening } = dailyHabits.habits;
   const communicationTips = dailyHabits.communication.tips;
 
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background">
+    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background" id={id}>
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
         <SectionHeader
