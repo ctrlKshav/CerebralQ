@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import type { TraitScore, TraitScores } from "@/types/tests/mbti";
 import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import { useTheme } from "next-themes";
-import SectionHeader from "../shared/SectionHeader";
+import SectionHeader from "../../shared/SectionHeader";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import TraitCard from "./TraitCard";
 import TraitDetail from "./TraitDetail";

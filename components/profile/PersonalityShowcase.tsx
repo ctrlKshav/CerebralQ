@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import PersonalityTraits from "@/components/results/personality-traits";
+import PersonalityTraits from "@/components/results/report/personality-traits";
 import type { TraitScores } from "@/types/tests/mbti";
 import AboutPersonalityType from "./AboutPersonalityType";
 import BigFiveConstellation from "./BigFiveConstellation";

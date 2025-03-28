@@ -5,10 +5,10 @@ import { DailyHabits, ResultData } from "@/types/tests/mbti";
 import { CheckCircle, Clock, Sun, Moon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";
-import SuperpowersCard from "./shared/SuperpowersCard";
-import GrowthAreasCard from "./shared/GrowthAreasCard";
-import SectionHeader from "./shared/SectionHeader";
-import { formatWithUsername } from "../../lib/formatWithUsername";
+import SuperpowersCard from "../shared/SuperpowersCard";
+import GrowthAreasCard from "../shared/GrowthAreasCard";
+import SectionHeader from "../shared/SectionHeader";
+import { formatWithUsername } from "../../../lib/formatWithUsername";
 
 interface DailyHabitsSectionProps {
   firstname: string | null;
