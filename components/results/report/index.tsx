@@ -15,15 +15,15 @@ import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import { sampleResultData } from "@/data/mbti/mbtiResultData";
 
-import HeroSection from "@/components/results/HeroSection";
-import PersonalityTraits from "@/components/results/personality-traits";
-import CareerPathSection from "@/components/results/CareerPathSection";
-import RelationshipSection from "@/components/results/RelationshipSection";
-import GrowthSection from "@/components/results/GrowthSection";
-import DailyHabitsSection from "@/components/results/DailyHabitsSection";
-import ValuesMotivatorSection from "@/components/results/ValuesMotivatorsSection";
-import CommunitySection from "@/components/results/CommunitySection";
-import ActionPlanSection from "@/components/results/ActionPlanSection";
+import HeroSection from "@/components/results/result/HeroSection";
+import PersonalityTraits from "@/components/results/report/personality-traits";
+import CareerPathSection from "@/components/results/report/CareerPathSection";
+import RelationshipSection from "@/components/results/report/RelationshipSection";
+import GrowthSection from "@/components/results/report/GrowthSection";
+import DailyHabitsSection from "@/components/results/report/DailyHabitsSection";
+import ValuesMotivatorSection from "@/components/results/report/ValuesMotivatorsSection";
+import CommunitySection from "@/components/results/report/CommunitySection";
+import ActionPlanSection from "@/components/results/report/ActionPlanSection";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 
 // Import sidebar components

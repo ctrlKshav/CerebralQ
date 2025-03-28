@@ -12,11 +12,11 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import SuperpowersCard from "./shared/SuperpowersCard";
-import GrowthAreasCard from "./shared/GrowthAreasCard";
-import ActionStepsCard from "./shared/ActionStepsCard";
-import SectionHeader from "./shared/SectionHeader";
-import { formatWithUsername } from "../../lib/formatWithUsername";
+import SuperpowersCard from "../shared/SuperpowersCard";
+import GrowthAreasCard from "../shared/GrowthAreasCard";
+import ActionStepsCard from "../shared/ActionStepsCard";
+import SectionHeader from "../shared/SectionHeader";
+import { formatWithUsername } from "../../../lib/formatWithUsername";
 
 interface RelationshipSectionProps {
   firstname: string | null;
