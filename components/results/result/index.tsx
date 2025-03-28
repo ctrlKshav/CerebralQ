@@ -14,9 +14,15 @@ import { sampleResultData } from "@/data/mbti/mbtiResultData";
 import HeroSection from "@/components/results/result/HeroSection";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 
-import { 
-  IconBrain, IconBriefcase, IconHeart, IconPlant, 
-  IconCalendar, IconStar, IconUsers, IconClipboardList
+import {
+  IconBrain,
+  IconBriefcase,
+  IconHeart,
+  IconPlant,
+  IconCalendar,
+  IconStar,
+  IconUsers,
+  IconClipboardList,
 } from "@tabler/icons-react";
 
 export default function Result() {
@@ -26,7 +32,7 @@ export default function Result() {
   const [userID, setUserId] = useState<string | null>(null);
 
   // Destructure result data
-  
+
   const {
     personalityType,
     personalityDescription,
@@ -34,17 +40,44 @@ export default function Result() {
     traitScores,
   } = resultData || sampleResultData;
 
-
   // Create sidebar navigation links
   const sidebarLinks = [
-    { label: "Personality Traits", href: "#explore-traits", icon: <IconBrain size={24} /> },
-    { label: "Career Path", href: "#career-path", icon: <IconBriefcase size={24} /> },
-    { label: "Relationships", href: "#relationships", icon: <IconHeart size={24} /> },
-    { label: "Growth Journey", href: "#growth-journey", icon: <IconPlant size={24} /> },
-    { label: "Daily Habits", href: "#daily-habits", icon: <IconCalendar size={24} /> },
-    { label: "Values & Motivators", href: "#values-motivators", icon: <IconStar size={24} /> },
+    {
+      label: "Personality Traits",
+      href: "#explore-traits",
+      icon: <IconBrain size={24} />,
+    },
+    {
+      label: "Career Path",
+      href: "#career-path",
+      icon: <IconBriefcase size={24} />,
+    },
+    {
+      label: "Relationships",
+      href: "#relationships",
+      icon: <IconHeart size={24} />,
+    },
+    {
+      label: "Growth Journey",
+      href: "#growth-journey",
+      icon: <IconPlant size={24} />,
+    },
+    {
+      label: "Daily Habits",
+      href: "#daily-habits",
+      icon: <IconCalendar size={24} />,
+    },
+    {
+      label: "Values & Motivators",
+      href: "#values-motivators",
+      icon: <IconStar size={24} />,
+    },
     { label: "Community", href: "#community", icon: <IconUsers size={24} /> },
-    { label: "Action Plan", href: "#action-plan", icon: <IconClipboardList size={24} /> },
+    {
+      label: "Action Plan",
+      href: "#action-plan",
+      icon: <IconClipboardList size={24} />,
+    },
   ];
 
   useEffect(() => {
@@ -68,8 +101,7 @@ export default function Result() {
         const data = JSON.parse(storedData);
 
         // Extract required data from localStorage format
-        const personalityType =
-          data.raw_score?.personalityType;
+        const personalityType = data.raw_score?.personalityType;
         const traitScores = data.traitScores || data.raw_score?.traitScores;
         const testId = data.testId || data.test_type_id;
         const completionDate =
@@ -87,7 +119,8 @@ export default function Result() {
         }
 
         const personalityData = getPersonalityData(personalityType);
-        const personalityDescription = getPersonalityDescription(personalityType);
+        const personalityDescription =
+          getPersonalityDescription(personalityType);
 
         // Set all result data at once
         setResultData({
@@ -131,7 +164,7 @@ export default function Result() {
         }
 
         setLoading(false);
-        console.log(user?.first_name, user?.username)
+        console.log(user?.first_name, user?.username);
       } catch (error) {
         console.error("Error parsing result data:", error);
         setError("Failed to load test results. Please retake the test.");
@@ -179,19 +212,15 @@ export default function Result() {
 
   return (
     <div className="min-h-screen bg-background">
-        
-        <div className="min-h-screen">
-          <main className="mx-auto transition-all duration-300 space-y-8 p-4">
-            <HeroSection
-              personalityType={personalityType}
-              personalityDescription={personalityDescription}
-              completionDate={completionDate}
-              firstname={resultData?.firstname || null}
-              username={resultData?.username || null}
-            />
-          </main>
-        </div>
-      
+      <main className="md:mt-14 lg:mt-4 mx-auto transition-all duration-300 space-y-8 p-4">
+        <HeroSection
+          personalityType={personalityType}
+          personalityDescription={personalityDescription}
+          completionDate={completionDate}
+          firstname={resultData?.firstname || null}
+          username={resultData?.username || null}
+        />
+      </main>
     </div>
   );
 }
