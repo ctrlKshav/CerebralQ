@@ -97,6 +97,7 @@ const DailyHabitsSection = ({
               items={communicationTips.map((tip, index) => ({
                 title: `Step ${index + 1}`,
                 description: tip,
+                key: index,
               }))}
               icon={null}
               showHeader={false}

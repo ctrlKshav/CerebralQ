@@ -40,7 +40,7 @@ const GrowthAreasCard = ({
 
         <ul className="space-y-5 text-base ml-4">
           {items.map((item, index) => (
-            <li key={index} className="flex items-start">
+            <li key={`growth-area-${index}`} className="flex items-start">
               {numberCircles ? (
                 <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
                   {index + 1}

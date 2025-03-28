@@ -252,8 +252,6 @@ export default function Results() {
               id="career-path"
             />
 
-            {resultData?.personalityData.relationships.map((relationship) => (<></>))}
-
             {/* Relationship Insights */}
             <RelationshipSection
               firstname={resultData?.firstname || null}

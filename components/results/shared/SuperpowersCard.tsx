@@ -34,7 +34,7 @@ const SuperpowersCard = ({
 
         <ul className="space-y-5 text-base ml-4">
           {items.map((item, index) => (
-            <li key={index} className="flex items-start">
+            <li key={`superpower-${index}`} className="flex items-start">
               <CheckCircle className="h-6 w-6 text-emerald-500 mr-3 flex-shrink-0 mt-1" />
               <div>
                 <p className="font-medium text-lg mb-1 text-card-foreground">
