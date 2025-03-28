@@ -5,14 +5,14 @@ import { Redirect } from "next";
 import { getCurrentUser } from "@/lib/supabaseOperations";
 
 export default async function ResultsPage() {
-  
-
   const user = await getCurrentUser();
 
   return (
-    <div className="">
-      {user ? <Navbar user={user} /> : <Navbar />}
-      <div className="mt-24">
+    <div className="relative">
+      <div className="sticky top-0 z-50">
+        {user ? <Navbar user={user} /> : <Navbar />}
+      </div>
+      <div className="mt-16">
         <Results />
       </div>
     </div>

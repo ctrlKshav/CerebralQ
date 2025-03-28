@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
-import React, { useState, createContext, useContext } from "react";
+import React, { useState, createContext, useContext, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 
@@ -85,25 +85,49 @@ export const DesktopSidebar = ({
   ...props
 }: React.ComponentProps<typeof motion.div>) => {
   const { open, setOpen, animate } = useSidebar();
+  const [isScrollingUp, setIsScrollingUp] = useState(true);
+  const [prevScrollY, setPrevScrollY] = useState(0);
+
+  // Track scroll direction to coordinate with navbar
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY < prevScrollY) {
+        setIsScrollingUp(true);
+      } else if (currentScrollY > 50 && currentScrollY > prevScrollY) {
+        setIsScrollingUp(false);
+      }
+      
+      setPrevScrollY(currentScrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollY]);
+
   return (
     <>
       <motion.div
         className={cn(
-          "fixed top-0 left-0 h-screen px-4 py-4 hidden md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] z-40 overflow-y-auto",
+          "fixed  left-0 top-0 min-h-screen px-4 py-4 hidden md:flex md:flex-col bg-primary text-primary-foreground dark:bg-primary z-50 overflow-y-auto shadow-xl",
+          animate && !open ? "md:opacity-90 hover:opacity-100" : "md:opacity-100",
           className
         )}
         animate={{
           width: animate ? (open ? "300px" : "60px") : "300px",
+          boxShadow: animate && open ? "5px 0 15px rgba(0,0,0,0.1)" : "none",
         }}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
+        style={{
+          backdropFilter: "blur(8px)",
+        }}
         {...props}
       >
         {children}
       </motion.div>
-      <div className="hidden md:block w-[300px] shrink-0">
-        {/* This is a spacer div to ensure content isn't hidden behind the fixed sidebar */}
-      </div>
+      {/* Remove the spacer div since we're overlaying content */}
     </>
   );
 };

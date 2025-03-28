@@ -199,7 +199,7 @@ export default function Results() {
     <div className="min-h-screen bg-background">
       <Sidebar>
         <SidebarBody>
-          <div className="flex flex-col h-full">
+          <div className="flex flex-col h-full pt-4">
             <div className="mb-8">
               <h2 className="text-xl font-bold mb-2">Results Navigation</h2>
               <p className="text-sm text-gray-500 dark:text-gray-400">
@@ -219,7 +219,7 @@ export default function Results() {
         </SidebarBody>
         
         <div className="min-h-screen">
-          <main className="mx-auto md:ml-[300px] transition-all duration-300 space-y-8 p-4">
+          <main className="mx-auto transition-all duration-300 space-y-8 p-4">
             <HeroSection
               personalityType={personalityType}
               personalityDescription={personalityDescription}
