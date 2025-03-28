@@ -25,7 +25,6 @@ export default function Result() {
     personalityType,
     personalityDescription,
     completionDate,
-    traitScores,
   } = resultData || sampleResultData;
 
   useEffect(() => {
