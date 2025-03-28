@@ -201,7 +201,7 @@ export default function Results() {
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody>
           <div className="flex flex-col h-full pt-4">
-            <div className="mb-8">
+            <div className="h-24">
               {open ? (<h2 className="text-xl font-bold mb-2">Results Navigation</h2>) : (<>CQ</>)}
               
               {open && (<p className="text-sm">
