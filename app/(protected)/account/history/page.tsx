@@ -13,7 +13,6 @@ export default function Page() {
     return null;
   }
 
-
   const { userData, setUserData } = userDataContext;
 
   if (userData === null) {
@@ -21,9 +20,9 @@ export default function Page() {
   }
 
   return (
-    <div className="">
+    <div className="w-full overflow-x-hidden">
       <Navbar user={userData} />
-      <div className="mt-24">
+      <div className="w-full">
         <ResultsPage />
       </div>
     </div>

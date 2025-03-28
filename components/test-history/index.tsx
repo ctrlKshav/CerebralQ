@@ -82,37 +82,38 @@ export default function ResultsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
+      {/* Hero Section with enhanced background */}
       <div className="relative w-full bg-gradient-to-b from-background to-background/80">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-violet-500/10 via-blue-500/10 to-emerald-500/10"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-violet-600/20 via-blue-600/15 to-emerald-600/20 animate-pulse-slow"></div>
         <div className="absolute inset-0" style={{ 
           backgroundImage: "url('https://images.unsplash.com/photo-1636953056323-9c09fdd74fa6?q=80&w=1000')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          opacity: 0.05
+          opacity: 0.08
         }}></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
-          <div className="inline-flex items-center gap-3 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8">
+        <div className="relative w-full px-6 sm:px-8 pt-28 pb-24">
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-white/8 border border-white/15 backdrop-blur-md mb-10 shadow-lg">
             <Brain className="w-5 h-5 text-violet-400" />
             <span className="text-sm font-medium bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-violet-200">
               Personality Insights
             </span>
           </div>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-            <div className="space-y-6">
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-10">
+            <div className="space-y-7">
+              <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
                 <span className="inline-block bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-blue-500 to-emerald-500 animate-gradient">
                   Your MBTI Journey
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-muted-foreground/80 max-w-2xl leading-relaxed">
+              <p className="text-xl md:text-2xl text-muted-foreground/90 max-w-3xl leading-relaxed">
                 Track your personal growth and discover how your personality evolves over time through the lens of MBTI
               </p>
             </div>
             <div className="relative group">
-              <div className="absolute -inset-[1px] bg-gradient-to-r from-violet-500/30 via-blue-500/30 to-emerald-500/30 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+              <div className="absolute -inset-[3px] bg-gradient-to-r from-violet-500/40 via-blue-500/40 to-emerald-500/40 rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
               <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="relative w-[200px] bg-white/5 backdrop-blur-sm border-white/10 hover:border-white/20 transition-colors">
+                <SelectTrigger className="relative w-[220px] bg-white/8 backdrop-blur-md border-white/15 hover:border-white/30 transition-colors">
                   <SelectValue placeholder="Sort results by..." />
                   <ChevronDown className="w-4 h-4 opacity-50" />
                 </SelectTrigger>
@@ -126,60 +127,61 @@ export default function ResultsPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="space-y-6">
+      {/* Results Cards with enhanced styling */}
+      <div className="w-full px-6 sm:px-8 py-16 bg-gradient-to-b from-background/90 to-background">
+        <div className="space-y-10">
           {sortedResults.map((result) => (
             <Card
               key={result.id}
-              className="group relative overflow-hidden border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 ease-out"
+              className="group relative overflow-hidden border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 ease-out w-full min-h-[280px] hover:scale-[1.01]"
             >
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${result.color} opacity-10 group-hover:opacity-15 transition-opacity duration-500`}
+                className={`absolute inset-0 bg-gradient-to-br ${result.color} opacity-15 group-hover:opacity-20 transition-opacity duration-500`}
               ></div>
               <div
-                className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500"
+                className="absolute inset-0 opacity-10 group-hover:opacity-15 transition-opacity duration-500"
                 style={{
                   backgroundImage: `url(${result.image})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                 }}
               ></div>
-              <CardHeader className="relative z-10">
-                <div className="flex flex-col gap-4">
-                  <div className="flex items-start justify-between">
-                    <div className="space-y-1">
+              <CardHeader className="relative z-10 pb-8 pt-10">
+                <div className="flex flex-col gap-6">
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                    <div className="space-y-2">
                       <div className="flex items-center gap-3">
-                        <div className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${result.color}`}>
+                        <div className={`text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${result.color}`}>
                           {result.type}
                         </div>
                       </div>
-                      <p className="text-sm text-muted-foreground">{result.description}</p>
+                      <p className="text-md text-muted-foreground/90">{result.description}</p>
                     </div>
-                    <span className="text-sm text-muted-foreground flex items-center gap-2 bg-background/50 backdrop-blur-sm rounded-full px-3 py-1">
+                    <span className="text-sm text-muted-foreground flex items-center gap-2 bg-background/50 backdrop-blur-sm rounded-full px-4 py-2 shadow-md">
                       <Calendar className="h-4 w-4" />
                       {format(result.date, "MMM d, yyyy")}
                     </span>
                   </div>
-                  <p className="text-lg font-medium leading-relaxed">
+                  <p className="text-xl font-medium leading-relaxed">
                     {result.highlight}
                   </p>
                 </div>
               </CardHeader>
-              <CardContent className="relative z-10 pt-0">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              <CardContent className="relative z-10 pt-0 pb-10 px-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
                   {result.traits.map((trait, i) => (
                     <div
                       key={trait}
-                      className={`relative group/trait overflow-hidden rounded-xl bg-background/50 backdrop-blur-sm border p-3
+                      className={`relative group/trait overflow-hidden rounded-xl bg-background/50 backdrop-blur-sm border p-5
                         hover:bg-gradient-to-br ${result.color} hover:border-transparent transition-all duration-300
-                        hover:scale-105 hover:shadow-lg hover:text-white`}
+                        hover:scale-105 hover:shadow-xl hover:text-white`}
                     >
-                      <div className="flex items-center gap-2">
-                        {i === 0 && <Brain className="w-4 h-4" />}
-                        {i === 1 && <Sparkles className="w-4 h-4" />}
-                        {i === 2 && <Zap className="w-4 h-4" />}
-                        {i === 3 && <Flame className="w-4 h-4" />}
-                        <span className="font-medium text-sm">{trait}</span>
+                      <div className="flex items-center gap-3">
+                        {i === 0 && <Brain className="w-5 h-5" />}
+                        {i === 1 && <Sparkles className="w-5 h-5" />}
+                        {i === 2 && <Zap className="w-5 h-5" />}
+                        {i === 3 && <Flame className="w-5 h-5" />}
+                        <span className="font-medium text-md">{trait}</span>
                       </div>
                     </div>
                   ))}
