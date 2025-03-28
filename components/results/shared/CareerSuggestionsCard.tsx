@@ -23,10 +23,10 @@ interface CareerSuggestionsCardProps {
 }
 
 export default function CareerSuggestionsCard({
-  careerSuggestions ,
+  careerSuggestions,
   className = "",
 }: CareerSuggestionsCardProps) {
-  const careerData = careerSuggestions
+  const careerData = careerSuggestions;
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const getCareerImage = (title: string) => {
@@ -45,7 +45,6 @@ export default function CareerSuggestionsCard({
       "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=800&q=80"
     );
   };
-
 
   const getTraitFullName = (trait: MBTITrait) => {
     const names: Record<MBTITrait, string> = {
@@ -125,48 +124,42 @@ export default function CareerSuggestionsCard({
                 <p className="text-muted-foreground text-base mb-6 leading-relaxed">
                   {suggestion.description}
                 </p>
-                {suggestion.qualityMatches && suggestion.qualityMatches.length > 0 && (
-                  <div className="">
-                    <h4 className="text-sm font-medium mb-3 text-muted-foreground flex items-center  gap-4 ">
-                      <span className="flex-none">Your Matching Traits</span>
-                      <span className="inline-block w-full h-px bg-border flex-grow" />
-                    </h4>
+                {suggestion.qualityMatches &&
+                  suggestion.qualityMatches.length > 0 && (
+                    <div className="">
+                      <h4 className="text-sm font-medium mb-3 text-muted-foreground flex items-center  gap-4 ">
+                        <span className="flex-none">Your Matching Traits</span>
+                        <span className="inline-block w-full h-px bg-border flex-grow" />
+                      </h4>
 
-                    <div className="flex flex-wrap gap-2">
-                      <TooltipProvider delayDuration={100}>
-                        {suggestion.qualityMatches.map((quality, i) => (
-                          <HybridTooltip key={i}>
-                            <HybridTooltipTrigger asChild>
-                              <div
-                                className={`inline-flex items-center gap-1.5 p-1.5 rounded-md bg-muted hover:bg-opacity-70 transition-colors relative w-fit whitespace-nowrap`}
-                              >
-                                
-                                <span className="text-xs font-medium">
-                                  {quality.title}
-                                </span>
+                      <div className="flex flex-wrap gap-2">
+                        <TooltipProvider delayDuration={100}>
+                          {suggestion.qualityMatches.map((quality, i) => (
+                            <HybridTooltip key={i}>
+                              <HybridTooltipTrigger asChild>
+                                <div
+                                  className={`inline-flex items-center gap-1.5 p-1.5 rounded-md bg-muted hover:bg-opacity-70 transition-colors relative w-fit whitespace-nowrap`}
+                                >
+                                  <span className="text-xs font-medium">
+                                    {quality.title}
+                                  </span>
 
-                                {isMobile && (
                                   <Info className="h-3 w-3 ml-0.5 opacity-50 shrink-0" />
-                                )}
-                              </div>
-                            </HybridTooltipTrigger>
-                            <HybridTooltipContent
-                              side="top"
-                              className="max-w-[280px] p-4 text-sm"
-                            >
-                              <p className="font-medium">
-                                {quality.title}
-                              </p>
-                              <p className="mt-1.5">
-                                {quality.description}
-                              </p>
-                            </HybridTooltipContent>
-                          </HybridTooltip>
-                        ))}
-                      </TooltipProvider>
+                                </div>
+                              </HybridTooltipTrigger>
+                              <HybridTooltipContent
+                                side="top"
+                                className="max-w-[280px] p-4 text-sm"
+                              >
+                                <p className="font-medium">{quality.title}</p>
+                                <p className="mt-1.5">{quality.description}</p>
+                              </HybridTooltipContent>
+                            </HybridTooltip>
+                          ))}
+                        </TooltipProvider>
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
               </CardContent>
             </Card>
           </motion.div>
