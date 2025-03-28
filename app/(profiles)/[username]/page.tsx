@@ -119,8 +119,14 @@ export default function ProfilePage({
 
           {/* Detailed personality analysis */}
           <PersonalityShowcase
+<<<<<<< HEAD
             personalityType={profileData.raw_score.personalityType}
             traitScores={profileData.raw_score.traitScores}
+=======
+            firstname={userData.firstname}
+            personalityType={userData.raw_score.personalityType}
+            traitScores={userData.raw_score.traitScores}
+>>>>>>> 6e37984 (Pass Firstname in Profile Dashboard Component)
           />
 
           {/* MBTI-specific insights and comparisons */}
