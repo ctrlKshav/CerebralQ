@@ -1,8 +1,8 @@
 "use client";
 import { cn } from "@/lib/utils";
 import Link, { LinkProps } from "next/link";
-import React, { useState, createContext, useContext } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import React, { useState, createContext, useContext, useEffect } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { IconMenu2, IconX } from "@tabler/icons-react";
 
 interface Links {
@@ -85,22 +85,29 @@ export const DesktopSidebar = ({
   ...props
 }: React.ComponentProps<typeof motion.div>) => {
   const { open, setOpen, animate } = useSidebar();
+
   return (
     <>
       <motion.div
         className={cn(
-          "h-full px-4 py-4 hidden  md:flex md:flex-col bg-neutral-100 dark:bg-neutral-800 w-[300px] shrink-0",
+          "fixed  left-0 top-0 min-h-screen px-4 py-4 hidden md:flex md:flex-col bg-primary text-primary-foreground dark:bg-primary z-50 overflow-y-auto shadow-xl",
+          animate && !open ? "md:opacity-90 hover:opacity-100" : "md:opacity-100",
           className
         )}
         animate={{
           width: animate ? (open ? "300px" : "60px") : "300px",
+          boxShadow: animate && open ? "5px 0 15px rgba(0,0,0,0.1)" : "none",
         }}
         onMouseEnter={() => setOpen(true)}
         onMouseLeave={() => setOpen(false)}
+        style={{
+          backdropFilter: "blur(8px)",
+        }}
         {...props}
       >
         {children}
       </motion.div>
+      {/* Remove the spacer div since we're overlaying content */}
     </>
   );
 };
@@ -165,13 +172,30 @@ export const SidebarLink = ({
   props?: LinkProps;
 }) => {
   const { open, animate } = useSidebar();
+  
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (link.href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = link.href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        targetElement.scrollIntoView({ 
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    }
+  };
+  
   return (
     <Link
       href={link.href}
       className={cn(
-        "flex items-center justify-start gap-2  group/sidebar py-2",
+        "flex items-center justify-start gap-2 group/sidebar py-2",
         className
       )}
+      onClick={handleClick}
       {...props}
     >
       {link.icon}
@@ -181,7 +205,7 @@ export const SidebarLink = ({
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        className="text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
       >
         {link.label}
       </motion.span>
