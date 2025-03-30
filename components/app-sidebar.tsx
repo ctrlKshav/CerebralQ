@@ -1,6 +1,6 @@
-"use client"
+"use client";
 
-import * as React from "react"
+import * as React from "react";
 import {
   BookOpen,
   Brain,
@@ -14,9 +14,9 @@ import {
   Clock,
   Coffee,
   Star,
-} from "lucide-react"
+} from "lucide-react";
 
-import { NavMain } from "@/components/nav-main"
+import { NavMain } from "@/components/nav-main";
 import {
   Sidebar,
   SidebarContent,
@@ -25,7 +25,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
 
 const data = {
   user: {
@@ -88,7 +88,7 @@ const data = {
       icon: Clock,
     },
   ],
-}
+};
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -99,18 +99,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     >
       <SidebarHeader className="mb-2">
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild className="h-14">
-              <a href="#">
-                <div className="flex aspect-square size-10 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <Brain className="size-6" />
-                </div>
-                <div className="grid flex-1 text-left leading-tight ml-2">
-                  <span className="truncate font-semibold text-base">Cerebral Quotient</span>
-                  <span className="truncate text-sm">Personality Report</span>
-                </div>
-              </a>
-            </SidebarMenuButton>
+          <SidebarMenuItem className="px-2 pt-4">
+            <span className="truncate font-medium text-lg ">CQ Report</span>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
@@ -118,5 +108,5 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

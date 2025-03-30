@@ -31,6 +31,7 @@ export function NavMain({
         {items.map((item) => (
           <SidebarMenuItem key={item.title} className="my-1">
             <SidebarMenuButton 
+              variant={"default"}
               asChild 
               tooltip={item.title} 
               isActive={item.isActive}
