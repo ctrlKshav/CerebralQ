@@ -30,8 +30,8 @@ import CommunitySection from "@/components/results/report/CommunitySection";
 import ActionPlanSection from "@/components/results/report/ActionPlanSection";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
-import { SiteHeader } from "@/components/site-header";
-import { AppSidebar } from "@/components/app-sidebar";
+import { ReportHeader } from "@/components/results/report/SiteHeader";
+import { ReportSidebar } from "@/components/results/report/ReportSidebar";
 
 export default function Report() {
   const [resultData, setResultData] = useState<ResultData | null>(null);
@@ -141,9 +141,9 @@ export default function Report() {
   return (
     <div className="min-h-screen bg-background [--header-height:calc(theme(spacing.14))]">
       <SidebarProvider className="flex flex-col">
-        <SiteHeader />
+        <ReportHeader />
         <div className="flex flex-1">
-          <AppSidebar />
+          <ReportSidebar />
           <SidebarInset>
             <main className="flex-1 mt-12 mx-auto transition-all duration-300 space-y-8 p-4">
               {/* Personality Traits */}

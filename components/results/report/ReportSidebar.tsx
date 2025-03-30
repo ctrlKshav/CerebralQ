@@ -18,7 +18,7 @@ import {
   Smile,
 } from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
+import { SidebarNavMain } from "@/components/results/report/SidebarNavMain";
 import {
   Sidebar,
   SidebarContent,
@@ -97,7 +97,7 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function ReportSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar
       className="top-[--header-height] !h-[calc(100svh-var(--header-height))] w-[20rem]"
@@ -112,7 +112,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent className="px-2">
-        <NavMain items={data.navMain} />
+        <SidebarNavMain items={data.navMain} />
       </SidebarContent>
     </Sidebar>
   );
