@@ -4,7 +4,7 @@ import { UserDataContext } from "@/context/user-data";
 import Account from "@/components/account";
 import Navbar from "@/components/navbar";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
-import ResultsPage from "@/components/test-history";
+import UserTestHistory from "@/components/test-history";
 
 export default function Page() {
   const userDataContext = useContext(UserDataContext);
@@ -23,7 +23,7 @@ export default function Page() {
     <div className="w-full overflow-x-hidden">
       <Navbar user={userData} />
       <div className="w-full">
-        <ResultsPage />
+        <UserTestHistory />
       </div>
     </div>
   );

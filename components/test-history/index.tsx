@@ -1,18 +1,14 @@
 ﻿"use client";
 
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import EmptyState from "./empty-state";
 import TestCard from "./test-card";
 import { mockResults } from "./mock-data";
+import { Badge } from "../ui/badge";
 
-export default function ResultsPage() {
-  const [sortBy, setSortBy] = useState("date");
-
+export default function UserTestHistory() {
   const sortedResults = [...mockResults].sort((a, b) => {
-    if (sortBy === "date") return b.date.getTime() - a.date.getTime();
-    return a.type.localeCompare(b.type);
+    return b.date.getTime() - a.date.getTime();
   });
 
   if (mockResults.length === 0) {
@@ -31,21 +27,15 @@ export default function ResultsPage() {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl max-w-4xl text-muted-foreground/90 leading-relaxed">
-                Track your personal growth and discover how your personality evolves over time through the lens of MBTI
+                Track your personal growth and discover how your personality
+                evolves over time through the lens of MBTI
               </p>
             </div>
             <div className="self-end relative group">
               <div className="absolute rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
-              <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="relative w-[220px] bg-white/8 backdrop-blur-md border-white/15 hover:border-white/30 transition-colors">
-                  <SelectValue placeholder="Sort results by..." />
-                  <ChevronDown className="w-4 h-4 opacity-50" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="date">Sort by Date</SelectItem>
-                  <SelectItem value="type">Sort by Type</SelectItem>
-                </SelectContent>
-              </Select>
+              <Badge className="bg-primary/90 dark:bg-primary text-white">
+                <span className="text-sm font-semibold">Latest to Oldest</span>
+              </Badge>
             </div>
           </div>
         </div>
