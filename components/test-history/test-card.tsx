@@ -8,10 +8,10 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { TestResult } from "./mock-data";
+import { TestHistoryResult } from "./mock-data";
 
 interface TestCardProps {
-  result: TestResult;
+  result: TestHistoryResult;
 }
 
 export default function TestCard({ result }: TestCardProps) {
@@ -70,7 +70,7 @@ export default function TestCard({ result }: TestCardProps) {
 
               {/* Personality Alias */}
               <h3 className="text-2xl font-semibold dark:text-white/90 text-black/80">
-                {result.description.split("•")[0].trim()}
+                {result.alias}
               </h3>
             </div>
 
@@ -100,28 +100,7 @@ export default function TestCard({ result }: TestCardProps) {
         </div>
       </CardHeader>
 
-      <CardContent className="relative z-10 pt-4 pb-6 px-8">
-        <p className="text-xl font-medium leading-relaxed dark:text-white/90 text-black/80 mb-8">
-          {result.highlight}
-        </p>
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {result.traits.map((trait, i) => (
-            <div
-              key={trait}
-              className={`relative overflow-hidden rounded-lg bg-background/60 backdrop-blur-sm 
-                shadow-sm border-0`}
-            >
-              <div
-                className={`h-1 w-full bg-gradient-to-r ${result.color}`}
-              ></div>
-              <div className="p-3">
-                <p className="font-semibold text-sm">{trait}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </CardContent>
+     
 
       <CardFooter className="relative z-10 pt-4 px-8 pb-10 flex justify-center md:justify-end">
         <Button
