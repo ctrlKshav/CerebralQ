@@ -3,15 +3,17 @@
 import * as React from "react"
 import {
   BookOpen,
-  Bot,
-  Command,
-  Frame,
-  LifeBuoy,
-  Map,
-  PieChart,
-  Send,
+  Brain,
+  Briefcase,
+  Heart,
+  Lightbulb,
+  ListChecks,
   Settings2,
-  SquareTerminal,
+  Sparkles,
+  Users,
+  Clock,
+  Coffee,
+  Star,
 } from "lucide-react"
 
 import { NavMain } from "@/components/nav-main"
@@ -27,124 +29,63 @@ import {
 
 const data = {
   user: {
-    name: "shadcn",
-    email: "m@example.com",
-    avatar: "/avatars/shadcn.jpg",
+    name: "cerebralq",
+    email: "info@cerebralq.com",
+    avatar: "/avatars/cerebralq.jpg",
   },
   navMain: [
     {
-      title: "Playground",
-      url: "#",
-      icon: SquareTerminal,
+      title: "Personality Traits",
+      url: "#explore-traits",
+      icon: Brain,
       isActive: true,
-      items: [
-        {
-          title: "History",
-          url: "#",
-        },
-        {
-          title: "Starred",
-          url: "#",
-        },
-        {
-          title: "Settings",
-          url: "#",
-        },
-      ],
     },
     {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-      items: [
-        {
-          title: "Genesis",
-          url: "#",
-        },
-        {
-          title: "Explorer",
-          url: "#",
-        },
-        {
-          title: "Quantum",
-          url: "#",
-        },
-      ],
+      title: "Career Path",
+      url: "#career-path",
+      icon: Briefcase,
     },
     {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-      items: [
-        {
-          title: "Introduction",
-          url: "#",
-        },
-        {
-          title: "Get Started",
-          url: "#",
-        },
-        {
-          title: "Tutorials",
-          url: "#",
-        },
-        {
-          title: "Changelog",
-          url: "#",
-        },
-      ],
+      title: "Relationships",
+      url: "#relationships",
+      icon: Heart,
     },
     {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
-      items: [
-        {
-          title: "General",
-          url: "#",
-        },
-        {
-          title: "Team",
-          url: "#",
-        },
-        {
-          title: "Billing",
-          url: "#",
-        },
-        {
-          title: "Limits",
-          url: "#",
-        },
-      ],
+      title: "Growth Journey",
+      url: "#growth-journey",
+      icon: Sparkles,
+    },
+    {
+      title: "Daily Habits",
+      url: "#daily-habits",
+      icon: Coffee,
+    },
+    {
+      title: "Values & Motivators",
+      url: "#values-motivators",
+      icon: Lightbulb,
+    },
+    {
+      title: "Community",
+      url: "#community",
+      icon: Users,
+    },
+    {
+      title: "Action Plan",
+      url: "#action-plan",
+      icon: ListChecks,
     },
   ],
   navSecondary: [
     {
-      title: "Support",
-      url: "#",
-      icon: LifeBuoy,
+      title: "Take New Test",
+      url: "/",
+      icon: Star,
     },
     {
-      title: "Feedback",
+      title: "History",
       url: "#",
-      icon: Send,
-    },
-  ],
-  projects: [
-    {
-      name: "Design Engineering",
-      url: "#",
-      icon: Frame,
-    },
-    {
-      name: "Sales & Marketing",
-      url: "#",
-      icon: PieChart,
-    },
-    {
-      name: "Travel",
-      url: "#",
-      icon: Map,
+      icon: Clock,
     },
   ],
 }
@@ -152,27 +93,28 @@ const data = {
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar
-      className="top-[--header-height] !h-[calc(100svh-var(--header-height))]"
+      className="top-[--header-height] !h-[calc(100svh-var(--header-height))] w-[20rem]"
+      style={{ "--sidebar-width": "20rem" } as React.CSSProperties}
       {...props}
     >
-      <SidebarHeader>
+      <SidebarHeader className="mb-2">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild>
+            <SidebarMenuButton size="lg" asChild className="h-14 mb-2">
               <a href="#">
-                <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
-                  <Command className="size-4" />
+                <div className="flex aspect-square size-10 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
+                  <Brain className="size-6" />
                 </div>
-                <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-semibold">Acme Inc</span>
-                  <span className="truncate text-xs">Enterprise</span>
+                <div className="grid flex-1 text-left leading-tight ml-2">
+                  <span className="truncate font-semibold text-base">Cerebral Quotient</span>
+                  <span className="truncate text-sm">Personality Report</span>
                 </div>
               </a>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent>
+      <SidebarContent className="px-2">
         <NavMain items={data.navMain} />
       </SidebarContent>
     </Sidebar>
