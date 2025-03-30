@@ -202,7 +202,7 @@ export const sampleResultData: ResultData = {
     },
     relationships: [
       {
-        title: "Romantic",
+        title: "Relationships",
         subtitle: "How you show up in Relationships",
         description:
           "You're the driven, inspiring one in your relationships. You show love by pushing others to be their best, like encouraging your partner to chase their dreams or organizing a family goal-setting session, but you might need to work on slowing down to connect emotionally.",
@@ -250,7 +250,7 @@ export const sampleResultData: ResultData = {
         ],
       },
       {
-        title: "Friendship",
+        title: "Friendships",
         subtitle: "How you shine with Friends",
         description:
           "You're the friend who takes the lead—always ready to organize a group adventure or motivate your crew to tackle a challenge. You love having a solid group of friends who respect your leadership and share your drive for success.",

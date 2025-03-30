@@ -229,8 +229,10 @@ export interface CareerQualityMatch {
   description: string;
 }
 
+export type RelationshipSectionTitle = "Relationships" | "Friendships"
+
 export interface RelationshipCompatibility {
-  title: string;
+  title: RelationshipSectionTitle;
   subtitle: string;
   description: string;
   compatibleTypes: string[];
