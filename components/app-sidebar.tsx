@@ -14,6 +14,8 @@ import {
   Clock,
   Coffee,
   Star,
+  Handshake,
+  Smile,
 } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
@@ -53,7 +55,7 @@ const data = {
     {
       title: "Friendships",
       url: "#friendships",
-      icon: Users,
+      icon: Handshake,
     },
     {
       title: "Growth Journey",
@@ -73,7 +75,7 @@ const data = {
     {
       title: "Community",
       url: "#community",
-      icon: Users,
+      icon: Smile,
     },
     {
       title: "Action Plan",
