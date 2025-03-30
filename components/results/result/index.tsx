@@ -14,7 +14,7 @@ import { sampleResultData } from "@/data/mbti/mbtiResultData";
 import HeroSection from "@/components/results/result/HeroSection";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 
-export default function Result() {
+export default function ResultCertificate() {
   const [resultData, setResultData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
