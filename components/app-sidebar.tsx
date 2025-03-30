@@ -100,7 +100,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader className="mb-2">
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton size="lg" asChild className="h-14 mb-2">
+            <SidebarMenuButton size="lg" asChild className="h-14">
               <a href="#">
                 <div className="flex aspect-square size-10 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                   <Brain className="size-6" />
