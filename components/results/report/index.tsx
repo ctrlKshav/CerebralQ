@@ -29,6 +29,9 @@ import ValuesMotivatorSection from "@/components/results/report/ValuesMotivators
 import CommunitySection from "@/components/results/report/CommunitySection";
 import ActionPlanSection from "@/components/results/report/ActionPlanSection";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { SiteHeader } from "@/components/site-header";
+import { AppSidebar } from "@/components/app-sidebar";
 
 export default function Report() {
   const [resultData, setResultData] = useState<ResultData | null>(null);
@@ -136,100 +139,106 @@ export default function Report() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
-      <div className="min-h-screen">
-        <main className="mx-auto transition-all duration-300 space-y-8 p-4">
-          {/* Personality Traits */}
-          {traitScores && (
-            <PersonalityTraits
-              personalityType={personalityType}
-              traitScores={traitScores}
-              sectionNumber={1}
-              firstname={resultData?.firstname ?? undefined}
-              id="explore-traits"
-            />
-          )}
+    <div className="min-h-screen bg-background [--header-height:calc(theme(spacing.14))]">
+      <SidebarProvider className="flex flex-col">
+        <SiteHeader />
+        <div className="flex flex-1">
+          <AppSidebar />
+          <SidebarInset>
+            <main className="flex-1 mx-auto transition-all duration-300 space-y-8 p-4">
+              {/* Personality Traits */}
+              {traitScores && (
+                <PersonalityTraits
+                  personalityType={personalityType}
+                  traitScores={traitScores}
+                  sectionNumber={1}
+                  firstname={resultData?.firstname ?? undefined}
+                  id="explore-traits"
+                />
+              )}
 
-          {/* Career Path */}
-          <CareerPathSection
-            firstname={resultData?.firstname || null}
-            career={
-              resultData?.personalityData?.career ||
-              sampleResultData.personalityData?.career
-            }
-            sectionNumber={2}
-            id="career-path"
-          />
+              {/* Career Path */}
+              <CareerPathSection
+                firstname={resultData?.firstname || null}
+                career={
+                  resultData?.personalityData?.career ||
+                  sampleResultData.personalityData?.career
+                }
+                sectionNumber={2}
+                id="career-path"
+              />
 
-          {/* Relationship Insights */}
-          <RelationshipSection
-            firstname={resultData?.firstname || null}
-            relationships={
-              resultData?.personalityData?.relationships ||
-              sampleResultData.personalityData?.relationships
-            }
-            sectionNumber={3}
-            id="relationships"
-          />
+              {/* Relationship Insights */}
+              <RelationshipSection
+                firstname={resultData?.firstname || null}
+                relationships={
+                  resultData?.personalityData?.relationships ||
+                  sampleResultData.personalityData?.relationships
+                }
+                sectionNumber={3}
+                id="relationships"
+              />
 
-          {/* Growth Journey */}
-          <GrowthSection
-            firstname={resultData?.firstname || null}
-            growth={
-              resultData?.personalityData?.growth ||
-              sampleResultData.personalityData?.growth
-            }
-            sectionNumber={4}
-            id="growth-journey"
-          />
+              {/* Growth Journey */}
+              <GrowthSection
+                firstname={resultData?.firstname || null}
+                growth={
+                  resultData?.personalityData?.growth ||
+                  sampleResultData.personalityData?.growth
+                }
+                sectionNumber={4}
+                id="growth-journey"
+              />
 
-          {/* Daily Habits */}
-          <DailyHabitsSection
-            firstname={resultData?.firstname || null}
-            dailyHabits={
-              resultData?.personalityData?.dailyHabits ||
-              sampleResultData.personalityData?.dailyHabits
-            }
-            sectionNumber={5}
-            id="daily-habits"
-          />
+              {/* Daily Habits */}
+              <DailyHabitsSection
+                firstname={resultData?.firstname || null}
+                dailyHabits={
+                  resultData?.personalityData?.dailyHabits ||
+                  sampleResultData.personalityData?.dailyHabits
+                }
+                sectionNumber={5}
+                id="daily-habits"
+              />
 
-          {/* Values & Motivators */}
-          <ValuesMotivatorSection
-            firstname={resultData?.firstname || null}
-            valuesAndMotivators={
-              resultData?.personalityData?.valuesAndMotivators ||
-              sampleResultData.personalityData?.valuesAndMotivators
-            }
-            sectionNumber={6}
-            id="values-motivators"
-          />
+              {/* Values & Motivators */}
+              <ValuesMotivatorSection
+                firstname={resultData?.firstname || null}
+                valuesAndMotivators={
+                  resultData?.personalityData?.valuesAndMotivators ||
+                  sampleResultData.personalityData?.valuesAndMotivators
+                }
+                sectionNumber={6}
+                id="values-motivators"
+              />
 
-          {/* Community Connection */}
-          <CommunitySection
-            firstname={resultData?.firstname ?? null}
-            communityConnection={
-              resultData?.personalityData.communityConnection ||
-              sampleResultData.personalityData.communityConnection
-            }
-            sectionNumber={7}
-            id="community"
-          />
+              {/* Community Connection */}
+              <CommunitySection
+                firstname={resultData?.firstname ?? null}
+                communityConnection={
+                  resultData?.personalityData.communityConnection ||
+                  sampleResultData.personalityData.communityConnection
+                }
+                sectionNumber={7}
+                id="community"
+              />
 
-          {/* Action Plan */}
-          <ActionPlanSection
-            username={resultData?.username || null}
-            firstname={resultData?.firstname || null}
-            personalityType={personalityType}
-            actionItems={
-              resultData?.personalityData.actionItems ||
-              sampleResultData.personalityData.actionItems
-            }
-            sectionNumber={8}
-            id="action-plan"
-          />
-        </main>
-      </div>
+              {/* Action Plan */}
+              <ActionPlanSection
+                username={resultData?.username || null}
+                firstname={resultData?.firstname || null}
+                personalityType={personalityType}
+                actionItems={
+                  resultData?.personalityData.actionItems ||
+                  sampleResultData.personalityData.actionItems
+                }
+                sectionNumber={8}
+                id="action-plan"
+              />
+            </main>
+          </SidebarInset>
+        </div>
+      </SidebarProvider>
     </div>
   );
 }
