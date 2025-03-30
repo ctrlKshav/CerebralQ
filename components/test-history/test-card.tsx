@@ -15,9 +15,6 @@ interface TestCardProps {
 }
 
 export default function TestCard({ result }: TestCardProps) {
-  // Extract quality words from description
-  const qualities = result.description.split("•")[1]?.trim().split(" • ") || [];
-
   // Get badge color classes based on personality type
   const getBadgeClasses = (type: string, index: number) => {
     switch (type) {
@@ -42,6 +39,11 @@ export default function TestCard({ result }: TestCardProps) {
     }
   };
 
+  // Format the description by removing extra whitespace and "Sound like you?" text
+  const formattedDescription = result.description
+    .replace("Sound like you?", "")
+    .trim();
+
   return (
     <Card className="group relative overflow-hidden border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 ease-out w-full min-h-[350px] hover:scale-[1.01] dark:border-white/5 border-black/10 shadow-lg">
       <div
@@ -58,7 +60,7 @@ export default function TestCard({ result }: TestCardProps) {
       <div className="absolute inset-0 bg-white/25 dark:bg-black/30"></div>
 
       <CardHeader className="relative z-10 pb-6 pt-12">
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-6">
           <div className="flex items-end justify-between">
             <div className="space-y-2">
               {/* Personality Type */}
@@ -84,23 +86,27 @@ export default function TestCard({ result }: TestCardProps) {
             </Badge>
           </div>
 
-          {/* Colorful Ghost Badges for Qualities */}
+          {/* Trait Badges */}
           <div className="flex flex-wrap gap-2">
-            {qualities.map((quality, index) => (
+            {result.traits.map((trait, index) => (
               <Badge
                 key={index}
                 variant="outline"
                 className={`${getBadgeClasses(result.type, index)} px-4 py-1.5 border-[0.5px] rounded-full shadow-sm backdrop-blur-sm
                   hover:scale-105 transition-all duration-300`}
               >
-                {quality}
+                {trait}
               </Badge>
             ))}
           </div>
         </div>
       </CardHeader>
 
-     
+      <CardContent className="relative z-10 px-8 py-2">
+        <p className="text-base text-muted-foreground leading-relaxed">
+          {formattedDescription}
+        </p>
+      </CardContent>
 
       <CardFooter className="relative z-10 pt-4 px-8 pb-10 flex justify-center md:justify-end">
         <Button
