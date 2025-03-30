@@ -31,7 +31,7 @@ export default function UserTestHistory() {
                 evolves over time through the lens of MBTI
               </p>
             </div>
-            <div className="self-end relative group">
+            <div className="self-center sm:self-end relative group">
               <div className="absolute rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
               <Badge className="bg-primary/90 dark:bg-primary text-white">
                 <span className="text-sm font-semibold">Latest to Oldest</span>
