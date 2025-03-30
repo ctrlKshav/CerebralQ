@@ -29,7 +29,7 @@ const RelationshipSection = ({
   firstname,
   relationships,
   sectionNumber = 4,
-  id = "relationship-section",
+  id = "relationships",
 }: RelationshipSectionProps) => {
   return (
     <>
@@ -37,7 +37,7 @@ const RelationshipSection = ({
         <section
           key={`relationship-section-${relationship.title}-${index}`}
           className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background"
-          id={id}
+          id={`${relationship.title.toLowerCase()}`}
         >
           <div className="max-w-[1800px] mx-auto">
             {/* Section header */}

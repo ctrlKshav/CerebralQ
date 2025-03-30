@@ -51,6 +51,11 @@ const data = {
       icon: Heart,
     },
     {
+      title: "Friendships",
+      url: "#friendships",
+      icon: Users,
+    },
+    {
       title: "Growth Journey",
       url: "#growth-journey",
       icon: Sparkles,
