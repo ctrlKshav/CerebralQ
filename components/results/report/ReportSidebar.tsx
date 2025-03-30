@@ -29,73 +29,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 
-const data = {
-  user: {
-    name: "cerebralq",
-    email: "info@cerebralq.com",
-    avatar: "/avatars/cerebralq.jpg",
-  },
-  navMain: [
-    {
-      title: "Personality Traits",
-      url: "#explore-traits",
-      icon: Brain,
-      isActive: true,
-    },
-    {
-      title: "Career Path",
-      url: "#career-path",
-      icon: Briefcase,
-    },
-    {
-      title: "Relationships",
-      url: "#relationships",
-      icon: Heart,
-    },
-    {
-      title: "Friendships",
-      url: "#friendships",
-      icon: Handshake,
-    },
-    {
-      title: "Growth Journey",
-      url: "#growth-journey",
-      icon: Sparkles,
-    },
-    {
-      title: "Daily Habits",
-      url: "#daily-habits",
-      icon: Coffee,
-    },
-    {
-      title: "Values & Motivators",
-      url: "#values-motivators",
-      icon: Lightbulb,
-    },
-    {
-      title: "Community",
-      url: "#community",
-      icon: Smile,
-    },
-    {
-      title: "Action Plan",
-      url: "#action-plan",
-      icon: ListChecks,
-    },
-  ],
-  navSecondary: [
-    {
-      title: "Take New Test",
-      url: "/",
-      icon: Star,
-    },
-    {
-      title: "History",
-      url: "#",
-      icon: Clock,
-    },
-  ],
-};
+import { sidebarNavData } from "@/data/report/sidebarNav";
 
 export function ReportSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -112,7 +46,7 @@ export function ReportSidebar({ ...props }: React.ComponentProps<typeof Sidebar>
         </SidebarMenu>
       </SidebarHeader>
       <SidebarContent className="px-2">
-        <SidebarNavMain items={data.navMain} />
+        <SidebarNavMain items={sidebarNavData.navMain} />
       </SidebarContent>
     </Sidebar>
   );
