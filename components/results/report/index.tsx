@@ -145,7 +145,7 @@ export default function Report() {
         <div className="flex flex-1">
           <AppSidebar />
           <SidebarInset>
-            <main className="flex-1 mx-auto transition-all duration-300 space-y-8 p-4">
+            <main className="flex-1 mt-12 mx-auto transition-all duration-300 space-y-8 p-4">
               {/* Personality Traits */}
               {traitScores && (
                 <PersonalityTraits
