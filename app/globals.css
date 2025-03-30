@@ -41,7 +41,7 @@
     --chart-5: 27 87% 67%;
 
      /* Updated sidebar colors - Light Mode */
-     --background: 0 0% 100%;
+     --sidebar-background: 0 0% 100%;
      --sidebar-foreground: 248 30% 26%;
      --sidebar-primary: 248 73% 62%; /* Match primary royal blue */
      --sidebar-primary-foreground: 0 0% 100%;
