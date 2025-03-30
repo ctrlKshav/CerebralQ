@@ -5,7 +5,7 @@ import { Redirect } from "next";
 import { getCurrentUser } from "@/lib/supabaseOperations";
 import CQLogo from "@/components/CQLogo";
 
-export default async function ResultsPage() {
+export default async function ReportPage() {
 
   return (
     <div className="">
