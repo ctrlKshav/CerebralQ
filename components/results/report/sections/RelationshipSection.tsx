@@ -36,7 +36,7 @@ const RelationshipSection = ({
       {relationships.map((relationship, index) => (
         <section
           key={`relationship-section-${relationship.title}-${index}`}
-          className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-8"
+          className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-16"
           id={`${relationship.title.toLowerCase()}`}
         >
           <div className="max-w-[1800px] mx-auto">
