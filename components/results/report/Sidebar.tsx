@@ -51,14 +51,7 @@ export function ReportSidebar({ ...props }: React.ComponentProps<typeof Sidebar>
       <SidebarContent className="px-4">
         <SidebarNavMain items={sidebarNavData.navMain} />
       </SidebarContent>
-      <SidebarFooter className="mt-auto p-4">
-        <div className="rounded-xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/50 dark:to-purple-950/50 p-4 shadow-sm border border-indigo-100 dark:border-indigo-900/30">
-          <h4 className="text-sm font-medium text-indigo-700 dark:text-indigo-300 mb-1">Your CQ Journey</h4>
-          <p className="text-xs text-slate-600 dark:text-slate-400">
-            Explore your full report to discover insights about your personality, career, and relationships.
-          </p>
-        </div>
-      </SidebarFooter>
+     
     </Sidebar>
   );
 }
