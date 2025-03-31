@@ -140,7 +140,7 @@ export default function Report() {
   return (
     <div className="min-h-screen bg-background [--header-height:theme(spacing.16)]">
       <SidebarProvider className="flex flex-col">
-        <ReportHeader />
+        <ReportHeader firstname={resultData?.firstname} />
         <div className="flex flex-1">
           <ReportSidebar />
           <SidebarInset>
