@@ -32,8 +32,6 @@ const SIDEBAR_WIDTH_MOBILE = "18rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
 
-// ...existing code...
-
 type SidebarContextProps = {
   state: "expanded" | "collapsed";
   open: boolean;
@@ -42,8 +40,8 @@ type SidebarContextProps = {
   setOpenMobile: (open: boolean) => void;
   isMobile: boolean;
   toggleSidebar: () => void;
-  activeSection: string | null;
-  setActiveSection: (section: string | null) => void;
+  activeSection: string;
+  setActiveSection: (section: string) => void;
 };
 
 const SidebarContext = React.createContext<SidebarContextProps | null>(null);
@@ -63,7 +61,7 @@ const SidebarProvider = React.forwardRef<
     defaultOpen?: boolean;
     open?: boolean;
     onOpenChange?: (open: boolean) => void;
-    defaultActiveSection?: string | null;
+    defaultActiveSection?: string;
   }
 >(
   (
@@ -71,7 +69,7 @@ const SidebarProvider = React.forwardRef<
       defaultOpen = true,
       open: openProp,
       onOpenChange: setOpenProp,
-      defaultActiveSection = null,
+      defaultActiveSection = "",
       className,
       style,
       children,
@@ -81,7 +79,7 @@ const SidebarProvider = React.forwardRef<
   ) => {
     const isMobile = useIsMobile();
     const [openMobile, setOpenMobile] = React.useState(false);
-    const [activeSection, setActiveSection] = React.useState<string | null>(
+    const [activeSection, setActiveSection] = React.useState<string>(
       defaultActiveSection
     );
 
