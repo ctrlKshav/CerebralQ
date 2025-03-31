@@ -27,7 +27,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
+} from "@/components/ui/sidebar-custom";
 
 import { sidebarNavData } from "@/data/report/sidebarNav";
 
@@ -48,7 +48,7 @@ export function ReportSidebar({ ...props }: React.ComponentProps<typeof Sidebar>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarHeader>
-      <SidebarContent className="px-4">
+      <SidebarContent className="px@-4">
         <SidebarNavMain items={sidebarNavData.navMain} />
       </SidebarContent>
      

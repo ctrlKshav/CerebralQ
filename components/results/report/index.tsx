@@ -29,7 +29,7 @@ import ValuesMotivatorSection from "@/components/results/report/sections/ValuesM
 import CommunitySection from "@/components/results/report/sections/CommunitySection";
 import ActionPlanSection from "@/components/results/report/sections/ActionPlanSection";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
-import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar-custom";
 import { ReportHeader } from "@/components/results/report/SiteHeader";
 import { ReportSidebar } from "@/components/results/report/Sidebar";
 

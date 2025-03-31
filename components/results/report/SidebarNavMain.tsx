@@ -10,7 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
-} from "@/components/ui/sidebar";
+} from "@/components/ui/sidebar-custom";
 import { SidebarNavDataType } from "@/data/report/sidebarNav";
 import { useCallback } from "react";
 import Link from "next/link";
