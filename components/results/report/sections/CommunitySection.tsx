@@ -23,7 +23,7 @@ const CommunitySection = ({
 }: CommunitySectionProps) => {
   const { summary, suggestions } = communityConnection;
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background" id={id}>
+    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-8" id={id}>
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
         <SectionHeader
