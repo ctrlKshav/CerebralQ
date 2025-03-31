@@ -1,25 +1,6 @@
-﻿"use client";
-
-import { useEffect, useState } from "react";
-import { ResultData } from "@/types/tests/mbti";
-import {
-  getCareerSuggestions,
-  getSimilarPersonalities,
-} from "@/lib/mbti/results";
-import {
-  getPersonalityDescription,
-  getPersonalityInsights,
-  personalityDescriptions,
-} from "@/data/mbti/personalityInformation";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-
-// Import our components
-import { getCurrentUser, saveTestResults } from "@/lib/supabaseOperations";
-import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
+﻿import { ResultData } from "@/types/tests/mbti";
 import { sampleResultData } from "@/data/mbti/mbtiResultData";
 
-import HeroSection from "@/components/results/result/HeroSection";
 import PersonalityTraits from "@/components/results/report/sections/personality-traits";
 import CareerPathSection from "@/components/results/report/sections/CareerPathSection";
 import RelationshipSection from "@/components/results/report/sections/RelationshipSection";
@@ -28,119 +9,26 @@ import DailyHabitsSection from "@/components/results/report/sections/DailyHabits
 import ValuesMotivatorSection from "@/components/results/report/sections/ValuesMotivatorsSection";
 import CommunitySection from "@/components/results/report/sections/CommunitySection";
 import ActionPlanSection from "@/components/results/report/sections/ActionPlanSection";
-import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar-custom";
 import { ReportHeader } from "@/components/results/report/SiteHeader";
 import { ReportSidebar } from "@/components/results/report/Sidebar";
+import { User } from "@/types/supabase/users";
 
-export default function Report() {
-  const [resultData, setResultData] = useState<ResultData | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const { personalityType, traitScores } = resultData || sampleResultData;
-
-  useEffect(() => {
-    // Get data from localStorage and handle saving to database
-    const loadResultsAndSaveToDatabase = async () => {
-      try {
-        // Get the current user
-        const user = await getCurrentUser();
-
-        // Get stored test results
-        const storedData = localStorage.getItem(TEST_RESULTS_KEY);
-
-        if (!storedData) {
-          setError("No test results found. Please take the test first.");
-          setLoading(false);
-          return;
-        }
-
-        const data = JSON.parse(storedData);
-
-        // Extract required data from localStorage format
-        const personalityType = data.raw_score?.personalityType;
-        const traitScores = data.traitScores || data.raw_score?.traitScores;
-        const testId = data.testId || data.test_type_id;
-        const completionDate =
-          data.completionDate ||
-          (data.timestamp
-            ? new Date(data.timestamp).toLocaleDateString()
-            : data.taken_at
-              ? new Date(data.taken_at).toLocaleDateString()
-              : new Date().toLocaleDateString());
-
-        if (!personalityType) {
-          setError("Invalid test result data. Please retake the test.");
-          setLoading(false);
-          return;
-        }
-
-        const personalityData = getPersonalityData(personalityType);
-        const personalityDescription =
-          getPersonalityDescription(personalityType);
-
-        // Set all result data at once
-        setResultData({
-          firstname: user?.first_name || null,
-          username: user?.username || null,
-          personalityType: personalityType,
-          personalityDescription: personalityDescription,
-          completionDate,
-          traitScores,
-          personalityData,
-        });
-
-        setLoading(false);
-      } catch (error) {
-        console.error("Error parsing result data:", error);
-        setError("Failed to load test results. Please retake the test.");
-        setLoading(false);
-      }
-    };
-
-    loadResultsAndSaveToDatabase();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <Card className="p-8 text-center shadow">
-          <CardContent className="p-6">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-            <p className="mt-4 text-lg text-card-foreground">
-              Loading your results...
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <Card className="text-center max-w-md mx-auto shadow-lg">
-          <CardContent className="p-6">
-            <h2 className="text-2xl font-bold mb-4 text-card-foreground">
-              No Results Available
-            </h2>
-            <Button
-              asChild
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
-            >
-              <a href="/">Take the Test</a>
-            </Button>
-          </CardContent>
-        </Card>
-      </div>
-    );
-  }
-
+export interface ReportComponentProps {
+  userData: User | null;
+  resultData: ResultData | null;
+}
+export default function Report({userData, resultData}: ReportComponentProps) {
+  const {
+    personalityType,
+    personalityDescription,
+    completionDate,
+    traitScores,
+  } = resultData || sampleResultData;
   return (
     <div className="min-h-screen bg-background [--header-height:theme(spacing.16)]">
       <SidebarProvider className="flex flex-col">
-        <ReportHeader firstname={resultData?.firstname} />
+        <ReportHeader firstname={userData?.first_name} />
         <div className="flex flex-1">
           <ReportSidebar />
           <SidebarInset>
@@ -151,14 +39,14 @@ export default function Report() {
                   personalityType={personalityType}
                   traitScores={traitScores}
                   sectionNumber={1}
-                  firstname={resultData?.firstname ?? undefined}
+                  firstname={userData?.first_name ?? undefined}
                   id="explore-traits"
                 />
               )}
 
               {/* Career Path */}
               <CareerPathSection
-                firstname={resultData?.firstname || null}
+                firstname={userData?.first_name || null}
                 career={
                   resultData?.personalityData?.career ||
                   sampleResultData.personalityData?.career
@@ -169,7 +57,7 @@ export default function Report() {
 
               {/* Relationship Insights */}
               <RelationshipSection
-                firstname={resultData?.firstname || null}
+                firstname={userData?.first_name || null}
                 relationships={
                   resultData?.personalityData?.relationships ||
                   sampleResultData.personalityData?.relationships
@@ -180,7 +68,7 @@ export default function Report() {
 
               {/* Growth Journey */}
               <GrowthSection
-                firstname={resultData?.firstname || null}
+                firstname={userData?.first_name || null}
                 growth={
                   resultData?.personalityData?.growth ||
                   sampleResultData.personalityData?.growth
@@ -191,7 +79,7 @@ export default function Report() {
 
               {/* Daily Habits */}
               <DailyHabitsSection
-                firstname={resultData?.firstname || null}
+                firstname={userData?.first_name || null}
                 dailyHabits={
                   resultData?.personalityData?.dailyHabits ||
                   sampleResultData.personalityData?.dailyHabits
@@ -202,7 +90,7 @@ export default function Report() {
 
               {/* Values & Motivators */}
               <ValuesMotivatorSection
-                firstname={resultData?.firstname || null}
+                firstname={userData?.first_name || null}
                 valuesAndMotivators={
                   resultData?.personalityData?.valuesAndMotivators ||
                   sampleResultData.personalityData?.valuesAndMotivators
@@ -213,7 +101,7 @@ export default function Report() {
 
               {/* Community Connection */}
               <CommunitySection
-                firstname={resultData?.firstname ?? null}
+                firstname={userData?.first_name ?? null}
                 communityConnection={
                   resultData?.personalityData.communityConnection ||
                   sampleResultData.personalityData.communityConnection
@@ -225,7 +113,7 @@ export default function Report() {
               {/* Action Plan */}
               <ActionPlanSection
                 username={resultData?.username || null}
-                firstname={resultData?.firstname || null}
+                firstname={userData?.first_name || null}
                 personalityType={personalityType}
                 actionItems={
                   resultData?.personalityData.actionItems ||
