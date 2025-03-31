@@ -11,18 +11,18 @@ import { UserProfile } from "@/types/supabase/user-profile";
 import InsiderBadge from "@/components/InsiderBadge";
 
 interface ProfileHeaderProps {
-  userData: UserProfile;
+  profileData: UserProfile;
   isOwner: boolean;
 }
 
 export default function ProfileHeader({
-  userData,
+  profileData,
   isOwner,
 }: ProfileHeaderProps) {
   const handleProfileShare = async () => {
-    const title = `${userData.username}'s Profile`;
-    const text = `I'm an ${userData.raw_score.personalityType}! Check out my personality profile on CerebralQuotient.`;
-    const url = `${userData.username}`;
+    const title = `${profileData.username}'s Profile`;
+    const text = `I'm an ${profileData.raw_score.personalityType}! Check out my personality profile on CerebralQuotient.`;
+    const url = `${profileData.username}`;
 
     await handleShare(title, text, url, false);
   };
@@ -42,11 +42,11 @@ export default function ProfileHeader({
         <div className="flex-shrink-0">
           <Avatar className="h-40 w-40 md:h-48 md:w-48 border-4 border-background">
             <AvatarImage 
-              src={userData.profile_image_url || "/profile-avatars/avatarPlaceholder.png"}
-              alt={`${userData.username}'s profile`}
+              src={profileData.profile_image_url || "/profile-avatars/avatarPlaceholder.png"}
+              alt={`${profileData.username}'s profile`}
             />
             <AvatarFallback className="text-4xl">
-              {userData.username.charAt(0).toUpperCase()}
+              {profileData.username.charAt(0).toUpperCase()}
             </AvatarFallback>
           </Avatar>
         </div>
@@ -56,14 +56,14 @@ export default function ProfileHeader({
           {/* Username and verified badge */}
           <div className="flex items-center justify-center md:justify-start gap-2 flex-wrap">
             <h1 className="text-4xl md:text-5xl font-bold">
-              {userData.username}
+              {profileData.username}
             </h1>
-            {userData.is_insider && <InsiderBadge size="lg" />}
+            {profileData.is_insider && <InsiderBadge size="lg" />}
           </div>
 
           {/* Bio with fade effect */}
           <p className="text-lg text-muted-foreground italic max-w-3xl relative overflow-hidden">
-            {userData.bio}
+            {profileData.bio}
             <span className="absolute bottom-0 right-0 w-12 h-full" />
           </p>
 
@@ -73,7 +73,7 @@ export default function ProfileHeader({
               <Calendar className="h-5 w-5 text-blue-500" />
               <span className="text-base font-medium">
                 Member Since:{" "}
-                {new Date(userData.joined_at).toLocaleDateString()}
+                {new Date(profileData.joined_at).toLocaleDateString()}
               </span>
             </div>
             {isOwner ? (

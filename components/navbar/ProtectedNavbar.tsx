@@ -37,7 +37,7 @@ import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { User } from "@/types/supabase/users";
 import LogoutButton from "@/components/LogoutButton";
-import { useUserData } from "@/context/user-data";
+import { useUserDataContext } from "@/context/user-data";
 import LoadingSkeleton from "../LoadingSkeleton";
 
 interface ProtectedNavbarProps {
@@ -55,7 +55,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
   const [isAtTop, setIsAtTop] = useState(true);
 
   const prevScrollY = useRef(0);
-  const userDataContext = useUserData();
+  const userDataContext = useUserDataContext();
 
   useEffect(() => {
     const handleScroll = () => {

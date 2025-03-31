@@ -2,11 +2,11 @@
 import Navbar from "@/components/navbar";
 import TestInformation from "@/components/test-info";
 import React from "react";
-import { useUserData } from "@/context/user-data";
+import { useUserDataContext } from "@/context/user-data";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 export default function TestInformationPage() {
-  const userDataContext = useUserData();
+  const userDataContext = useUserDataContext();
 
   if (userDataContext === null) {
     return null;

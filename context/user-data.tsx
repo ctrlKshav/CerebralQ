@@ -17,7 +17,7 @@ type UserDataContextType = {
 
 export const UserDataContext = createContext<UserDataContextType | null>(null);
 
-export const useUserData = () => {
+export const useUserDataContext = () => {
   const context = useContext(UserDataContext);
   if (context === undefined) {
     throw new Error(

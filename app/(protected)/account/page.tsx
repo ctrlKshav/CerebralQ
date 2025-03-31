@@ -1,12 +1,11 @@
 ﻿"use client";
-import { useContext } from "react";
-import { UserDataContext } from "@/context/user-data";
+import { useUserDataContext } from "@/context/user-data";
 import Account from "@/components/account";
 import Navbar from "@/components/navbar";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 export default function Page() {
-  const userDataContext = useContext(UserDataContext);
+  const userDataContext = useUserDataContext();
 
   if (userDataContext === null) {
     return null;
