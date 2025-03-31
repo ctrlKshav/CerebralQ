@@ -4,11 +4,11 @@ import React from "react";
 import { ResultData, ValuesAndMotivators } from "@/types/tests/mbti";
 import { Heart, Star, TrendingUp, Target, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import SuperpowersCard from "../shared/SuperpowersCard";
-import GrowthAreasCard from "../shared/GrowthAreasCard";
-import ActionStepsCard from "../shared/ActionStepsCard";
-import SectionHeader from "../shared/SectionHeader";
-import { formatWithUsername } from "../../../lib/formatWithUsername";
+import SuperpowersCard from "../../shared/SuperpowersCard";
+import GrowthAreasCard from "../../shared/GrowthAreasCard";
+import ActionStepsCard from "../../shared/ActionStepsCard";
+import SectionHeader from "../../shared/SectionHeader";
+import { formatWithUsername } from "../../../../lib/formatWithUsername";
 
 interface ValuesMotivatorSectionProps {
   firstname: string | null;

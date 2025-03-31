@@ -20,18 +20,18 @@ import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import { sampleResultData } from "@/data/mbti/mbtiResultData";
 
 import HeroSection from "@/components/results/result/HeroSection";
-import PersonalityTraits from "@/components/results/report/personality-traits";
-import CareerPathSection from "@/components/results/report/CareerPathSection";
-import RelationshipSection from "@/components/results/report/RelationshipSection";
-import GrowthSection from "@/components/results/report/GrowthSection";
-import DailyHabitsSection from "@/components/results/report/DailyHabitsSection";
-import ValuesMotivatorSection from "@/components/results/report/ValuesMotivatorsSection";
-import CommunitySection from "@/components/results/report/CommunitySection";
-import ActionPlanSection from "@/components/results/report/ActionPlanSection";
+import PersonalityTraits from "@/components/results/report/sections/personality-traits";
+import CareerPathSection from "@/components/results/report/sections/CareerPathSection";
+import RelationshipSection from "@/components/results/report/sections/RelationshipSection";
+import GrowthSection from "@/components/results/report/sections/GrowthSection";
+import DailyHabitsSection from "@/components/results/report/sections/DailyHabitsSection";
+import ValuesMotivatorSection from "@/components/results/report/sections/ValuesMotivatorsSection";
+import CommunitySection from "@/components/results/report/sections/CommunitySection";
+import ActionPlanSection from "@/components/results/report/sections/ActionPlanSection";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { ReportHeader } from "@/components/results/report/SiteHeader";
-import { ReportSidebar } from "@/components/results/report/ReportSidebar";
+import { ReportSidebar } from "@/components/results/report/Sidebar";
 
 export default function Report() {
   const [resultData, setResultData] = useState<ResultData | null>(null);

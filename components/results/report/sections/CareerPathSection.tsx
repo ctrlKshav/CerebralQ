@@ -7,12 +7,12 @@ import {
   MessageSquare,
   Target,
 } from "lucide-react";
-import SuperpowersCard from "../shared/SuperpowersCard";
-import GrowthAreasCard from "../shared/GrowthAreasCard";
-import ActionStepsCard from "../shared/ActionStepsCard";
-import SectionHeader from "../shared/SectionHeader";
-import CareerSuggestionsCard from "../shared/CareerSuggestionsCard";
-import { formatWithUsername } from "../../../lib/formatWithUsername";
+import SuperpowersCard from "../../shared/SuperpowersCard";
+import GrowthAreasCard from "../../shared/GrowthAreasCard";
+import ActionStepsCard from "../../shared/ActionStepsCard";
+import SectionHeader from "../../shared/SectionHeader";
+import CareerSuggestionsCard from "../../shared/CareerSuggestionsCard";
+import { formatWithUsername } from "../../../../lib/formatWithUsername";
 
 interface CareerPathSectionProps {
   firstname: string | null;
