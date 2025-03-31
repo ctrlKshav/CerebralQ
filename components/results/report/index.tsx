@@ -37,7 +37,6 @@ export default function Report() {
   const [resultData, setResultData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [userID, setUserId] = useState<string | null>(null);
 
   const { personalityType, traitScores } = resultData || sampleResultData;
 
