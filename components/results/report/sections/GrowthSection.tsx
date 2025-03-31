@@ -18,7 +18,7 @@ const GrowthSection = ({ firstname, growth, sectionNumber = 5, id = "growth-sect
   const { superpowers: growthSuperpowers, growthAreas, actionSteps: growthActionSteps } = growth;
 
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background" id={id}>
+    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-8" id={id}>
       
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
