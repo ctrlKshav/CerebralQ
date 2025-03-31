@@ -29,8 +29,8 @@ export default function ResultCertificate({userData, resultData}: ResultCertific
           personalityType={personalityType}
           personalityDescription={personalityDescription}
           completionDate={completionDate}
-          firstname={userData?.first_name || null}
-          username={userData?.username || null}
+          firstname={resultData?.firstname || null}
+          username={resultData?.username || null}
         />
       </main>
     </div>

@@ -106,8 +106,8 @@ export default function ResultCertificatePage() {
       }
     };
 
-    loadResultsAndSaveToDatabase();
-  }, []);
+    if (!authLoading) loadResultsAndSaveToDatabase();
+  }, [authLoading]);
 
   if (loading || authLoading) {
     return (

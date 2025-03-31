@@ -28,7 +28,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
   return (
     <div className="min-h-screen bg-background [--header-height:theme(spacing.16)]">
       <SidebarProvider className="flex flex-col">
-        <ReportHeader firstname={userData?.first_name} />
+        <ReportHeader firstname={resultData?.firstname} />
         <div className="flex flex-1">
           <ReportSidebar />
           <SidebarInset>
@@ -39,14 +39,14 @@ export default function Report({userData, resultData}: ReportComponentProps) {
                   personalityType={personalityType}
                   traitScores={traitScores}
                   sectionNumber={1}
-                  firstname={userData?.first_name ?? undefined}
+                  firstname={resultData?.firstname ?? undefined}
                   id="explore-traits"
                 />
               )}
 
               {/* Career Path */}
               <CareerPathSection
-                firstname={userData?.first_name || null}
+                firstname={resultData?.firstname || null}
                 career={
                   resultData?.personalityData?.career ||
                   sampleResultData.personalityData?.career
@@ -57,7 +57,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
 
               {/* Relationship Insights */}
               <RelationshipSection
-                firstname={userData?.first_name || null}
+                firstname={resultData?.firstname || null}
                 relationships={
                   resultData?.personalityData?.relationships ||
                   sampleResultData.personalityData?.relationships
@@ -68,7 +68,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
 
               {/* Growth Journey */}
               <GrowthSection
-                firstname={userData?.first_name || null}
+                firstname={resultData?.firstname || null}
                 growth={
                   resultData?.personalityData?.growth ||
                   sampleResultData.personalityData?.growth
@@ -79,7 +79,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
 
               {/* Daily Habits */}
               <DailyHabitsSection
-                firstname={userData?.first_name || null}
+                firstname={resultData?.firstname || null}
                 dailyHabits={
                   resultData?.personalityData?.dailyHabits ||
                   sampleResultData.personalityData?.dailyHabits
@@ -90,7 +90,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
 
               {/* Values & Motivators */}
               <ValuesMotivatorSection
-                firstname={userData?.first_name || null}
+                firstname={resultData?.firstname || null}
                 valuesAndMotivators={
                   resultData?.personalityData?.valuesAndMotivators ||
                   sampleResultData.personalityData?.valuesAndMotivators
@@ -101,7 +101,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
 
               {/* Community Connection */}
               <CommunitySection
-                firstname={userData?.first_name ?? null}
+                firstname={resultData?.firstname ?? null}
                 communityConnection={
                   resultData?.personalityData.communityConnection ||
                   sampleResultData.personalityData.communityConnection
@@ -113,7 +113,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
               {/* Action Plan */}
               <ActionPlanSection
                 username={resultData?.username || null}
-                firstname={userData?.first_name || null}
+                firstname={resultData?.firstname || null}
                 personalityType={personalityType}
                 actionItems={
                   resultData?.personalityData.actionItems ||

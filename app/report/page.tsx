@@ -1,24 +1,21 @@
-﻿"use client"
+﻿"use client";
 import Report from "@/components/results/report";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { ResultData } from "@/types/tests/mbti";
 import { TEST_RESULTS_KEY } from "@/lib/constants";
-import { sampleResultData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/mbti/personalityInformation";
 import { useUserDataContext } from "@/context/user-data";
 
 export default function ReportPage() {
-
   const userDataContext = useUserDataContext();
   if (userDataContext === null) {
     return null;
   }
   const { userData, loading: authLoading } = userDataContext;
 
-  
   const [resultData, setResultData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -27,7 +24,6 @@ export default function ReportPage() {
     // Get data from localStorage and handle saving to database
     const loadResultsAndSaveToDatabase = async () => {
       try {
-
         // Get stored test results
         const storedData = localStorage.getItem(TEST_RESULTS_KEY);
 
@@ -42,7 +38,6 @@ export default function ReportPage() {
         // Extract required data from localStorage format
         const personalityType = data.raw_score?.personalityType;
         const traitScores = data.traitScores || data.raw_score?.traitScores;
-        const testId = data.testId || data.test_type_id;
         const completionDate =
           data.completionDate ||
           (data.timestamp
@@ -79,9 +74,8 @@ export default function ReportPage() {
         setLoading(false);
       }
     };
-
-    loadResultsAndSaveToDatabase();
-  }, []);
+    if (!authLoading) loadResultsAndSaveToDatabase();
+  }, [authLoading]);
   if (loading || authLoading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
