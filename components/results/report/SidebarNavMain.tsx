@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sidebar";
 import { SidebarNavDataType } from "@/data/report/sidebarNav";
 import { useCallback } from "react";
+import Link from "next/link";
 
 export function SidebarNavMain({
   items,
@@ -89,7 +90,7 @@ export function SidebarNavMain({
                   boxShadow: isActive ? `0 4px 12px ${item.bgColor}` : "",
                 }}
               >
-                <a href={item.url} className="flex items-center gap-3">
+                <Link href={item.url} className="flex items-center gap-3">
                   {/* Icon wrapper with background */}
                   <div
                     className={cn(
@@ -131,7 +132,7 @@ export function SidebarNavMain({
                       style={{ backgroundColor: item.color }}
                     />
                   )}
-                </a>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           );
