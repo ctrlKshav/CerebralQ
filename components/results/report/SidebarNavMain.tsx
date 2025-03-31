@@ -10,6 +10,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@/components/ui/sidebar-custom";
 import { SidebarNavDataType } from "@/data/report/sidebarNav";
 import { useCallback } from "react";
@@ -20,7 +21,9 @@ export function SidebarNavMain({
 }: {
   items: SidebarNavDataType["navMain"];
 }) {
-  const [activeItem, setActiveItem] = useState<string>(items[0].title);
+
+  const {activeSection, setActiveSection} = useSidebar();
+  
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const handleScroll = useCallback(() => {
@@ -38,14 +41,14 @@ export function SidebarNavMain({
     });
 
     if (currentSection) {
-      setActiveItem(currentSection.title);
+      setActiveSection(currentSection.title);
     }
 
-    document.getElementById(activeItem)?.scrollIntoView({
+    document.getElementById(activeSection)?.scrollIntoView({
       behavior: "smooth",
       block: "nearest",
     });
-  }, [activeItem, items]);
+  }, [activeSection, items]);
 
   // Update active item based on scroll position
   useEffect(() => {
@@ -62,7 +65,7 @@ export function SidebarNavMain({
       </SidebarGroupLabel>
       <SidebarMenu className="gap-2">
         {items.map((item) => {
-          const isActive = item.title === activeItem;
+          const isActive = item.title === activeSection;
           const isHovered = item.title === hoveredItem;
 
           return (
@@ -76,7 +79,7 @@ export function SidebarNavMain({
                 asChild
                 tooltip={item.title}
                 isActive={isActive}
-                onClick={() => setActiveItem(item.title)}
+                onClick={() => setActiveSection(item.title)}
                 onMouseEnter={() => setHoveredItem(item.title)}
                 onMouseLeave={() => setHoveredItem(null)}
                 className={cn(
