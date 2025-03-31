@@ -17,11 +17,6 @@ import { toast } from "sonner";
 import { parseAuthMessage } from "@/lib/utils";
 import Image from "next/image";
 import { Eye, EyeOff } from "lucide-react";
-
-import { useUserDataContext } from "@/context/user-data";
-import LoadingSkeleton from "../LoadingSkeleton";
-import { useRouter } from "next/navigation";
-
 interface SigninFormProps extends React.ComponentProps<"div"> {
   searchParams: URLSearchParams;
 }
@@ -36,16 +31,6 @@ export function SigninForm({
     message: string;
   } | null>(null);
   const [showPassword, setShowPassword] = useState(false);
-
-  const userDataContext = useUserDataContext();
-
-  if (userDataContext === null) {
-    return null;
-  }
-
-  const { userData, setUserData, loading } = userDataContext;
-
-  if (loading) return <LoadingSkeleton />;
 
   const {
     register,
