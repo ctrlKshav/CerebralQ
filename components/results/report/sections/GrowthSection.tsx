@@ -1,11 +1,11 @@
 import React from "react";
 import { GrowthJourney, ResultData } from "@/types/tests/mbti";
 import { CheckCircle, Award, MessageSquare, Lightbulb } from "lucide-react";
-import SuperpowersCard from "../shared/SuperpowersCard";
-import GrowthAreasCard from "../shared/GrowthAreasCard";
-import ActionStepsCard from "../shared/ActionStepsCard";
-import SectionHeader from "../shared/SectionHeader";
-import { formatWithUsername } from "../../../lib/formatWithUsername";
+import SuperpowersCard from "../../shared/SuperpowersCard";
+import GrowthAreasCard from "../../shared/GrowthAreasCard";
+import ActionStepsCard from "../../shared/ActionStepsCard";
+import SectionHeader from "../../shared/SectionHeader";
+import { formatWithUsername } from "../../../../lib/formatWithUsername";
 
 interface GrowthSectionProps {
   firstname: string | null;
