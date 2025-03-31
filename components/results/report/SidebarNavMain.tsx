@@ -46,7 +46,7 @@ export function SidebarNavMain({
 
     document.getElementById(activeSection)?.scrollIntoView({
       behavior: "smooth",
-      block: "nearest",
+      block: "center",
     });
   }, [activeSection, items]);
 
