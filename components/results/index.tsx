@@ -19,8 +19,17 @@ import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getCurrentUser, saveTestResults, updatePersonalityType } from "@/lib/supabaseOperations";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import Link from "next/link";
+import { useUserDataContext } from "@/context/user-data";
 
 export default function Results() {
+
+  const userDataContext = useUserDataContext();
+  if (userDataContext === null) {
+    return null;
+  }
+  const { userData } = userDataContext;
+  const userId = userData?.id || null;
+  
   const [resultData, setResultData] = useState<ResultData>({
     personalityType: "",
     personalityDescription: { alias: "", description: "" },
@@ -32,7 +41,6 @@ export default function Results() {
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [userID, setUserId] = useState<string | null>(null);
   
   const [showingAllSections, setShowingAllSections] = useState(false);
 
@@ -40,10 +48,7 @@ export default function Results() {
     // Get data from localStorage and handle saving to database
     const loadResultsAndSaveToDatabase = async () => {
       try {
-        // Get the current user
-        const user = await getCurrentUser();
-        const userId = user?.id || null;
-        setUserId(userId);
+       
 
         // Get stored test results
         const storedData = localStorage.getItem(TEST_RESULTS_KEY);
@@ -191,7 +196,7 @@ export default function Results() {
         {/* Hero Section */}
         <Hero
           resultData={resultData}
-          userId={userID}
+          userId={userId}
         />
 
         {/* About Personality Type Card */}
