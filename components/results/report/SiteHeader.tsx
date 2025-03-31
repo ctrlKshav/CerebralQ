@@ -10,12 +10,11 @@ import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 
 interface ReportHeaderProps {
-  sectionTitle?: string;
   firstname?: string | null;
 }
 
-export function ReportHeader({ sectionTitle = "Report", firstname }: ReportHeaderProps) {
-  const { toggleSidebar, open, openMobile, isMobile } = useSidebar();
+export function ReportHeader({ firstname }: ReportHeaderProps) {
+  const { toggleSidebar, open, openMobile, isMobile, activeSection } = useSidebar();
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
     null
   );
@@ -78,7 +77,7 @@ export function ReportHeader({ sectionTitle = "Report", firstname }: ReportHeade
           <div className="flex justify-center">
             <div className="relative">
               <h1 className="text-xl font-semibold tracking-tight text-foreground py-1 px-3 rounded-md relative">
-                {sectionTitle}
+                {activeSection}
               </h1>
             </div>
           </div>
