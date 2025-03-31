@@ -8,7 +8,7 @@ export const ENTPData: PersonalityDatabase = {
       {
         title: "Thinking Fast",
         description:
-          "You come up with ideas on the spot, [Name]—like pitching a new campaign during a meeting.",
+          "You come up with ideas on the spot, {firstname}—like pitching a new campaign during a meeting.",
       },
       {
         title: "Problem-Solving",
@@ -99,15 +99,15 @@ export const ENTPData: PersonalityDatabase = {
   relationships: [
     {
       title: "Relationships",
-      subtitle: "How You Show Up in Relationships, [Name]",
+      subtitle: "How You Show Up in Relationships, {firstname}",
       description:
-        "You’re the witty, adventurous one in your relationships, [Name]—whether it’s with your partner, family, or friends. You show love by keeping things exciting, like challenging your partner to a playful debate or planning a fun outing with your family, but you might need to work on slowing down to connect more emotionally.",
+        "You’re the witty, adventurous one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by keeping things exciting, like challenging your partner to a playful debate or planning a fun outing with your family, but you might need to work on slowing down to connect more emotionally.",
       compatibleTypes: [],
       superpowers: [
         {
           title: "Keeping Things Fun",
           description:
-            "You bring energy to every moment, [Name]—like turning a boring night into a game night.",
+            "You bring energy to every moment, {firstname}—like turning a boring night into a game night.",
         },
         {
           title: "Being Curious",
@@ -141,15 +141,15 @@ export const ENTPData: PersonalityDatabase = {
         {
           number: 3,
           description:
-            "Look for people who love your lively side, [Name]—someone who’s down for your quick wit and big ideas.",
+            "Look for people who love your lively side, {firstname}—someone who’s down for your quick wit and big ideas.",
         },
       ],
     },
     {
       title: "Friendships",
-      subtitle: "How You Shine with Friends, [Name]",
+      subtitle: "How You Shine with Friends, {firstname}",
       description:
-        "You’re the friend who keeps things exciting, [Name]—always ready to spark a debate or plan a fun adventure. You love having a big group of friends who are down for your spontaneous ideas and thought-provoking conversations.",
+        "You’re the friend who keeps things exciting, {firstname}—always ready to spark a debate or plan a fun adventure. You love having a big group of friends who are down for your spontaneous ideas and thought-provoking conversations.",
       compatibleTypes: [],
       superpowers: [
         {
@@ -191,12 +191,12 @@ export const ENTPData: PersonalityDatabase = {
   ],
   growth: {
     summary:
-      "Growth for you is all about channeling your endless ideas into action while connecting more deeply with others, [Name]. You’re amazing at thinking outside the box and sparking new ideas, but you might need to work on following through and slowing down to reflect.",
+      "Growth for you is all about channeling your endless ideas into action while connecting more deeply with others, {firstname}. You’re amazing at thinking outside the box and sparking new ideas, but you might need to work on following through and slowing down to reflect.",
     superpowers: [
       {
         title: "Being Creative",
         description:
-          "Your ideas help you grow in such a unique way, [Name]—like always finding new ways to solve problems.",
+          "Your ideas help you grow in such a unique way, {firstname}—like always finding new ways to solve problems.",
       },
       {
         title: "Staying Curious",
@@ -230,7 +230,7 @@ export const ENTPData: PersonalityDatabase = {
       {
         number: 3,
         description:
-          "Write down three things you love about being an ENTP when you’re feeling unsure, [Name].",
+          "Write down three things you love about being an ENTP when you’re feeling unsure, {firstname}.",
       },
     ],
   },
@@ -263,7 +263,7 @@ export const ENTPData: PersonalityDatabase = {
   ],
   dailyHabits: {
     summary:
-      "You love a routine that keeps your mind buzzing, [Name], and it totally works for you—your days are full of ideas and energy, and you feel best when you’re exploring something new. Adding a little structure can help you turn your thoughts into action.",
+      "You love a routine that keeps your mind buzzing, {firstname}, and it totally works for you—your days are full of ideas and energy, and you feel best when you’re exploring something new. Adding a little structure can help you turn your thoughts into action.",
     habits: {
       morning: {
         title: "Brainstorm",
@@ -283,7 +283,7 @@ export const ENTPData: PersonalityDatabase = {
     },
     communication: {
       summary:
-        "You’re witty and engaging when you talk, [Name], always keeping conversations lively and fun. You love debates and big ideas, but sometimes you might come across as too intense if you’re not careful.",
+        "You’re witty and engaging when you talk, {firstname}, always keeping conversations lively and fun. You love debates and big ideas, but sometimes you might come across as too intense if you’re not careful.",
       tips: [
         "Add a warm touch to your conversations—like starting with “I’m really curious to hear what you think!”",
         "Ask a friend a fun question, like “What’s the wildest idea you’ve ever had?”—it’ll spark a great chat.",
@@ -292,7 +292,7 @@ export const ENTPData: PersonalityDatabase = {
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about exploring new ideas and pushing boundaries, [Name]. You value curiosity, innovation, and freedom, and you’re motivated by solving problems, sparking debates, and creating something new.",
+      "You’re all about exploring new ideas and pushing boundaries, {firstname}. You value curiosity, innovation, and freedom, and you’re motivated by solving problems, sparking debates, and creating something new.",
     coreValues: [
       {
         title: "Curiosity",
@@ -323,7 +323,7 @@ export const ENTPData: PersonalityDatabase = {
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, [Name]! Come hang out with other ENTPs and career starters in our growing community. Share your best ideas, swap debates, and let’s build something awesome together.",
+      "You don’t have to figure this out alone, {firstname}! Come hang out with other ENTPs and career starters in our growing community. Share your best ideas, swap debates, and let’s build something awesome together.",
     suggestions: [
       "Drop your MBTI type in our community chat—say hi to other Debaters who get you!",
       "Join our weekly “Big Ideas” chat to share your latest thoughts and innovations.",

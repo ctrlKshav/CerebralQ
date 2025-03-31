@@ -7,7 +7,7 @@ export const ESTPData: PersonalityDatabase = {
       {
         title: "Taking Action",
         description:
-          "You make things happen, [Name]—like jumping in to fix a last-minute issue at work.",
+          "You make things happen, {firstname}—like jumping in to fix a last-minute issue at work.",
       },
       {
         title: "Staying Cool Under Pressure",
@@ -98,15 +98,15 @@ export const ESTPData: PersonalityDatabase = {
   relationships: [
     {
       title: "Relationships",
-      subtitle: "How You Show Up in Relationships, [Name]",
+      subtitle: "How You Show Up in Relationships, {firstname}",
       description:
-        "You’re the fun, spontaneous one in your relationships, [Name]—whether it’s with your partner, family, or friends. You show love by keeping things exciting, like taking your partner on a surprise date or rallying your family for a game night, but you might need to work on slowing down to connect on a deeper level.",
+        "You’re the fun, spontaneous one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by keeping things exciting, like taking your partner on a surprise date or rallying your family for a game night, but you might need to work on slowing down to connect on a deeper level.",
       compatibleTypes: [],
       superpowers: [
         {
           title: "Bringing Energy",
           description:
-            "You make every moment fun, [Name]—like turning a boring day into an adventure.",
+            "You make every moment fun, {firstname}—like turning a boring day into an adventure.",
         },
         {
           title: "Being Reliable",
@@ -140,15 +140,15 @@ export const ESTPData: PersonalityDatabase = {
         {
           number: 3,
           description:
-            "Look for people who love your adventurous side, [Name]—someone who’s down for your spontaneous energy.",
+            "Look for people who love your adventurous side, {firstname}—someone who’s down for your spontaneous energy.",
         },
       ],
     },
     {
       title: "Friendships",
-      subtitle: "How You Shine with Friends, [Name]",
+      subtitle: "How You Shine with Friends, {firstname}",
       description:
-        "You’re the friend who’s always up for a good time, [Name]—whether it’s organizing a last-minute beach trip or cracking everyone up with your quick wit. You love having a big group of friends who are down for fun and action.",
+        "You’re the friend who’s always up for a good time, {firstname}—whether it’s organizing a last-minute beach trip or cracking everyone up with your quick wit. You love having a big group of friends who are down for fun and action.",
       compatibleTypes: [],
       superpowers: [
         {
@@ -190,12 +190,12 @@ export const ESTPData: PersonalityDatabase = {
   ],
   growth: {
     summary:
-      "Growth for you is all about balancing your love for action with a little more reflection, [Name]. You’re amazing at jumping into the moment and making things happen, but you might need to work on thinking ahead and connecting more deeply with others.",
+      "Growth for you is all about balancing your love for action with a little more reflection, {firstname}. You’re amazing at jumping into the moment and making things happen, but you might need to work on thinking ahead and connecting more deeply with others.",
     superpowers: [
       {
         title: "Being Bold",
         description:
-          "You’re not afraid to take risks, [Name]—like trying a new sport or hobby without hesitation.",
+          "You’re not afraid to take risks, {firstname}—like trying a new sport or hobby without hesitation.",
       },
       {
         title: "Staying Adaptable",
@@ -229,7 +229,7 @@ export const ESTPData: PersonalityDatabase = {
       {
         number: 3,
         description:
-          "Write down three things you love about being an ESTP when you’re feeling unsure, [Name].",
+          "Write down three things you love about being an ESTP when you’re feeling unsure, {firstname}.",
       },
     ],
   },
@@ -262,7 +262,7 @@ export const ESTPData: PersonalityDatabase = {
   ],
   dailyHabits: {
     summary:
-      "You love a routine that keeps you moving, [Name], and it totally works for you—your days are full of energy and action, and you feel best when you’re on the go. Adding a little downtime can help you recharge for your next adventure.",
+      "You love a routine that keeps you moving, {firstname}, and it totally works for you—your days are full of energy and action, and you feel best when you’re on the go. Adding a little downtime can help you recharge for your next adventure.",
     habits: {
       morning: {
         title: "Burst of Energy",
@@ -282,7 +282,7 @@ export const ESTPData: PersonalityDatabase = {
     },
     communication: {
       summary:
-        "You’re bold and direct when you talk, [Name], always keeping things lively and fun. You love conversations that are quick and to the point, but sometimes you might miss the deeper stuff if you’re not paying close attention.",
+        "You’re bold and direct when you talk, {firstname}, always keeping things lively and fun. You love conversations that are quick and to the point, but sometimes you might miss the deeper stuff if you’re not paying close attention.",
       tips: [
         "Slow down in conversations—like pausing to really hear what someone’s saying before jumping in.",
         "Ask a friend a deeper question, like “What’s been the best part of your week?”—it’ll spark a more meaningful chat.",
@@ -291,7 +291,7 @@ export const ESTPData: PersonalityDatabase = {
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about living life to the fullest and making things happen, [Name]. You value freedom, action, and fun, and you’re motivated by new experiences and the thrill of solving problems in the moment.",
+      "You’re all about living life to the fullest and making things happen, {firstname}. You value freedom, action, and fun, and you’re motivated by new experiences and the thrill of solving problems in the moment.",
     coreValues: [
       {
         title: "Freedom",
@@ -322,7 +322,7 @@ export const ESTPData: PersonalityDatabase = {
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, [Name]! Come hang out with other ESTPs and career starters in our growing community. Share your best tips for taking action, swap ideas, and let’s build something awesome together.",
+      "You don’t have to figure this out alone, {firstname}! Come hang out with other ESTPs and career starters in our growing community. Share your best tips for taking action, swap ideas, and let’s build something awesome together.",
     suggestions: [
       "Drop your MBTI type in our community chat—say hi to other Entrepreneurs who get you!",
       "Join our weekly “Action Heroes” chat to share your latest adventures and ideas.",

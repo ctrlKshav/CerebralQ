@@ -8,7 +8,7 @@ export const ESTJData: PersonalityDatabase = {
       {
         title: "Leading the Way",
         description:
-          "You’re a natural at taking charge, [Name]—like organizing a team to hit a big deadline.",
+          "You’re a natural at taking charge, {firstname}—like organizing a team to hit a big deadline.",
       },
       {
         title: "Being Reliable",
@@ -99,15 +99,15 @@ export const ESTJData: PersonalityDatabase = {
   relationships: [
     {
       title: "Relationships",
-      subtitle: "How You Show Up in Relationships, [Name]",
+      subtitle: "How You Show Up in Relationships, {firstname}",
       description:
-        "You’re the dependable, organized one in your relationships, [Name]—whether it’s with your partner, family, or friends. You show love by taking care of the people you care about, like planning a perfect birthday party for your partner or making sure your family’s schedule runs smoothly, but you might need to work on being more flexible and emotional.",
+        "You’re the dependable, organized one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by taking care of the people you care about, like planning a perfect birthday party for your partner or making sure your family’s schedule runs smoothly, but you might need to work on being more flexible and emotional.",
       compatibleTypes: [],
       superpowers: [
         {
           title: "Being Reliable",
           description:
-            "People know they can count on you, [Name]—like always being there for a friend in need.",
+            "People know they can count on you, {firstname}—like always being there for a friend in need.",
         },
         {
           title: "Taking Charge",
@@ -141,21 +141,21 @@ export const ESTJData: PersonalityDatabase = {
         {
           number: 3,
           description:
-            "Look for people who appreciate your leadership, [Name]—someone who loves your take-charge energy.",
+            "Look for people who appreciate your leadership, {firstname}—someone who loves your take-charge energy.",
         },
       ],
     },
     {
       title: "Friendships",
-      subtitle: "How You Shine with Friends, [Name]",
+      subtitle: "How You Shine with Friends, {firstname}",
       description:
-        "You’re the friend who keeps everyone on track, [Name]—always ready to organize a group hangout or lead a project. You love having a solid crew who respects your ability to get things done and enjoys your straightforward vibe.",
+        "You’re the friend who keeps everyone on track, {firstname}—always ready to organize a group hangout or lead a project. You love having a solid crew who respects your ability to get things done and enjoys your straightforward vibe.",
       compatibleTypes: [],
       superpowers: [
         {
           title: "Being Dependable",
           description:
-            "Your friends know you’ll show up, [Name]—like organizing a study group before finals.",
+            "Your friends know you’ll show up, {firstname}—like organizing a study group before finals.",
         },
         {
           title: "Keeping It Real",
@@ -191,12 +191,12 @@ export const ESTJData: PersonalityDatabase = {
   ],
   growth: {
     summary:
-      "Growth for you is all about building on your leadership skills while learning to be more flexible, [Name]. You’re amazing at getting things done and keeping everything organized, but you might need to work on loosening up and connecting more emotionally.",
+      "Growth for you is all about building on your leadership skills while learning to be more flexible, {firstname}. You’re amazing at getting things done and keeping everything organized, but you might need to work on loosening up and connecting more emotionally.",
     superpowers: [
       {
         title: "Being Organized",
         description:
-          "You’re a pro at setting goals and making them happen, [Name]—like sticking to a plan no matter what.",
+          "You’re a pro at setting goals and making them happen, {firstname}—like sticking to a plan no matter what.",
       },
       {
         title: "Staying Committed",
@@ -230,7 +230,7 @@ export const ESTJData: PersonalityDatabase = {
       {
         number: 3,
         description:
-          "Write down three things you love about being an ESTJ when you’re feeling hard on yourself, [Name].",
+          "Write down three things you love about being an ESTJ when you’re feeling hard on yourself, {firstname}.",
       },
     ],
   },
@@ -263,7 +263,7 @@ export const ESTJData: PersonalityDatabase = {
   ],
   dailyHabits: {
     summary:
-      "You love a routine that keeps you on track, [Name], and it totally works for you—your days are structured and productive, and you feel best when you’ve got a plan. Adding a little flexibility can help you enjoy the moment more.",
+      "You love a routine that keeps you on track, {firstname}, and it totally works for you—your days are structured and productive, and you feel best when you’ve got a plan. Adding a little flexibility can help you enjoy the moment more.",
     habits: {
       morning: {
         title: "To-Do List",
@@ -283,7 +283,7 @@ export const ESTJData: PersonalityDatabase = {
     },
     communication: {
       summary:
-        "You’re clear and direct when you talk, [Name], always getting to the point. You love conversations that are practical and focused, but sometimes you might come across as too serious without meaning to.",
+        "You’re clear and direct when you talk, {firstname}, always getting to the point. You love conversations that are practical and focused, but sometimes you might come across as too serious without meaning to.",
       tips: [
         "Add a warm touch to your conversations—like starting with “I’m really glad we’re talking about this!”",
         "Ask a friend a fun question, like “What’s the best thing that happened to you this week?”—it’ll spark a lighter chat.",
@@ -292,7 +292,7 @@ export const ESTJData: PersonalityDatabase = {
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about getting things done and keeping things steady, [Name]. You value responsibility, structure, and honesty, and you’re motivated by achieving your goals and making sure everyone around you succeeds too.",
+      "You’re all about getting things done and keeping things steady, {firstname}. You value responsibility, structure, and honesty, and you’re motivated by achieving your goals and making sure everyone around you succeeds too.",
     coreValues: [
       {
         title: "Responsibility",
@@ -323,7 +323,7 @@ export const ESTJData: PersonalityDatabase = {
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, [Name]! Come hang out with other ESTJs and career starters in our growing community. Share your best tips for staying organized, swap ideas, and let’s build something awesome together.",
+      "You don’t have to figure this out alone, {firstname}! Come hang out with other ESTJs and career starters in our growing community. Share your best tips for staying organized, swap ideas, and let’s build something awesome together.",
     suggestions: [
       "Drop your MBTI type in our community chat—say hi to other Executives who get you!",
       "Join our weekly “Leadership Vibes” chat to share your go-to strategies for getting things done.",

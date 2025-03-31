@@ -8,7 +8,7 @@ export const ENFJData: PersonalityDatabase = {
         {
           title: "Inspiring Others",
           description:
-            "You motivate people like no one else, [Name]—like getting your team excited for a big project.",
+            "You motivate people like no one else, {firstname}—like getting your team excited for a big project.",
         },
         {
           title: "Building Connections",
@@ -105,15 +105,15 @@ export const ENFJData: PersonalityDatabase = {
     relationships: [
       {
         title: "Relationships",
-        subtitle: "How You Show Up in Relationships, [Name]",
+        subtitle: "How You Show Up in Relationships, {firstname}",
         description:
-          "You’re the warm, inspiring one in your relationships, [Name]—whether it’s with your partner, family, or friends. You show love by uplifting others, like encouraging your partner to chase their dreams or planning a heartfelt family gathering, but you might need to work on taking time for yourself too.",
+          "You’re the warm, inspiring one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by uplifting others, like encouraging your partner to chase their dreams or planning a heartfelt family gathering, but you might need to work on taking time for yourself too.",
         compatibleTypes: [],
         superpowers: [
           {
             title: "Being Supportive",
             description:
-              "You always know how to lift people up, [Name]—like cheering on a friend’s big win.",
+              "You always know how to lift people up, {firstname}—like cheering on a friend’s big win.",
           },
           {
             title: "Creating Deep Bonds",
@@ -147,21 +147,21 @@ export const ENFJData: PersonalityDatabase = {
           {
             number: 3,
             description:
-              "Look for people who value your passion, [Name]—someone who inspires you as much as you inspire them.",
+              "Look for people who value your passion, {firstname}—someone who inspires you as much as you inspire them.",
           },
         ],
       },
       {
         title: "Friendships",
-        subtitle: "How You Shine with Friends, [Name]",
+        subtitle: "How You Shine with Friends, {firstname}",
         description:
-          "You’re the friend who brings everyone together, [Name]—always ready to plan a meaningful hangout or support your crew through anything. You love having a big group of friends who feel like family, and you’re the one who makes everyone feel connected.",
+          "You’re the friend who brings everyone together, {firstname}—always ready to plan a meaningful hangout or support your crew through anything. You love having a big group of friends who feel like family, and you’re the one who makes everyone feel connected.",
         compatibleTypes: [],
         superpowers: [
           {
             title: "Being a Cheerleader",
             description:
-              "Your friends know you’ll always support them, [Name]—like hyping them up before a big presentation.",
+              "Your friends know you’ll always support them, {firstname}—like hyping them up before a big presentation.",
           },
           {
             title: "Planning Special Moments",
@@ -197,12 +197,12 @@ export const ENFJData: PersonalityDatabase = {
     ],
     growth: {
       summary:
-        "Growth for you is all about becoming an even more amazing leader while learning to take care of yourself too, [Name]. You’re so good at inspiring others, but you might forget to give yourself the same love and care you give everyone else.",
+        "Growth for you is all about becoming an even more amazing leader while learning to take care of yourself too, {firstname}. You’re so good at inspiring others, but you might forget to give yourself the same love and care you give everyone else.",
       superpowers: [
         {
           title: "Being Passionate",
           description:
-            "Your drive to help others helps you grow, [Name]—like always finding new ways to make a difference.",
+            "Your drive to help others helps you grow, {firstname}—like always finding new ways to make a difference.",
         },
         {
           title: "Staying Connected",
@@ -236,7 +236,7 @@ export const ENFJData: PersonalityDatabase = {
         {
           number: 3,
           description:
-            "Write down three things you love about being an ENFJ when you’re feeling unsure, [Name].",
+            "Write down three things you love about being an ENFJ when you’re feeling unsure, {firstname}.",
         },
       ],
     },
@@ -270,7 +270,7 @@ export const ENFJData: PersonalityDatabase = {
     ],
     dailyHabits: {
       summary:
-        "You love a routine that keeps you connected, [Name], and it totally works for you—your days are full of energy and care, and you feel best when you’re helping others. Adding a little self-care can make your routine even more special.",
+        "You love a routine that keeps you connected, {firstname}, and it totally works for you—your days are full of energy and care, and you feel best when you’re helping others. Adding a little self-care can make your routine even more special.",
       habits: {
         morning: {
           title: "Gratitude List",
@@ -290,7 +290,7 @@ export const ENFJData: PersonalityDatabase = {
       },
       communication: {
         summary:
-          "You’re warm and engaging when you talk, [Name], always making people feel inspired and understood. You love conversations that bring people together, but sometimes you might focus too much on others and not share enough about yourself.",
+          "You’re warm and engaging when you talk, {firstname}, always making people feel inspired and understood. You love conversations that bring people together, but sometimes you might focus too much on others and not share enough about yourself.",
         tips: [
           "Share a little more in conversations—like saying “I’ve been feeling really excited about this…” to open up.",
           "Ask a friend a meaningful question, like “What’s been inspiring you lately?”—it’ll spark a deeper chat.",
@@ -299,7 +299,7 @@ export const ENFJData: PersonalityDatabase = {
     },
     valuesAndMotivators: {
       summary:
-        "You’re all about making a positive impact and building deep connections, [Name]. You value empathy, growth, and community, and you’re motivated by helping others reach their potential and creating a world full of love and understanding.",
+        "You’re all about making a positive impact and building deep connections, {firstname}. You value empathy, growth, and community, and you’re motivated by helping others reach their potential and creating a world full of love and understanding.",
       coreValues: [
         {
           title: "Empathy",
@@ -332,7 +332,7 @@ export const ENFJData: PersonalityDatabase = {
     },
     communityConnection: {
       summary:
-        "You don’t have to figure this out alone, [Name]! Come hang out with other ENFJs and career starters in our growing community. Share your best tips for inspiring others, swap ideas, and let’s build something awesome together.",
+        "You don’t have to figure this out alone, {firstname}! Come hang out with other ENFJs and career starters in our growing community. Share your best tips for inspiring others, swap ideas, and let’s build something awesome together.",
       suggestions: [
         "Drop your MBTI type in our community chat—say hi to other Protagonists who get you!",
         "Join our weekly “Inspire & Connect” chat to share your latest ideas for making a difference.",

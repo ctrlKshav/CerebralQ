@@ -8,7 +8,7 @@ export const ENFPData: PersonalityDatabase = {
       {
         title: "Sparking Ideas",
         description:
-          "You’re full of energy and inspiration, [Name]—like coming up with a brilliant campaign idea in a brainstorm.",
+          "You’re full of energy and inspiration, {firstname}—like coming up with a brilliant campaign idea in a brainstorm.",
       },
       {
         title: "Connecting with People",
@@ -99,15 +99,15 @@ export const ENFPData: PersonalityDatabase = {
   relationships: [
     {
       title: "Relationships",
-      subtitle: "How You Show Up in Relationships, [Name]",
+      subtitle: "How You Show Up in Relationships, {firstname}",
       description:
-        "You’re the passionate, fun one in your relationships, [Name]—whether it’s with your partner, family, or friends. You show love by dreaming big with others, like planning an epic trip with your partner or cheering on your sibling’s wild ideas, but you might need to work on staying present and consistent.",
+        "You’re the passionate, fun one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by dreaming big with others, like planning an epic trip with your partner or cheering on your sibling’s wild ideas, but you might need to work on staying present and consistent.",
       compatibleTypes: [],
       superpowers: [
         {
           title: "Being Inspiring",
           description:
-            "You lift everyone up, [Name]—like encouraging a friend to take a big leap.",
+            "You lift everyone up, {firstname}—like encouraging a friend to take a big leap.",
         },
         {
           title: "Spreading Joy",
@@ -141,21 +141,21 @@ export const ENFPData: PersonalityDatabase = {
         {
           number: 3,
           description:
-            "Look for people who spark your imagination, [Name]—someone who loves your big ideas as much as you do.",
+            "Look for people who spark your imagination, {firstname}—someone who loves your big ideas as much as you do.",
         },
       ],
     },
     {
       title: "Friendships",
-      subtitle: "How You Shine with Friends, [Name]",
+      subtitle: "How You Shine with Friends, {firstname}",
       description:
-        "You’re the friend who brings the party, [Name]—always ready to dream up a fun plan or get everyone excited about something new. You love having a big group of friends who vibe with your free spirit and endless enthusiasm.",
+        "You’re the friend who brings the party, {firstname}—always ready to dream up a fun plan or get everyone excited about something new. You love having a big group of friends who vibe with your free spirit and endless enthusiasm.",
       compatibleTypes: [],
       superpowers: [
         {
           title: "Being Exciting",
           description:
-            "Your friends love your energy, [Name]—like suggesting a last-minute road trip that turns epic.",
+            "Your friends love your energy, {firstname}—like suggesting a last-minute road trip that turns epic.",
         },
         {
           title: "Seeing the Best in People",
@@ -191,12 +191,12 @@ export const ENFPData: PersonalityDatabase = {
   ],
   growth: {
     summary:
-      "Growth for you is all about channeling your amazing energy into action while staying a little more focused, [Name]. You’re incredible at dreaming big and inspiring others, but you might need to work on finishing what you start and grounding your ideas.",
+      "Growth for you is all about channeling your amazing energy into action while staying a little more focused, {firstname}. You’re incredible at dreaming big and inspiring others, but you might need to work on finishing what you start and grounding your ideas.",
     superpowers: [
       {
         title: "Being Imaginative",
         description:
-          "Your creativity helps you grow, [Name]—like always seeing new possibilities in every situation.",
+          "Your creativity helps you grow, {firstname}—like always seeing new possibilities in every situation.",
       },
       {
         title: "Staying Positive",
@@ -230,7 +230,7 @@ export const ENFPData: PersonalityDatabase = {
       {
         number: 3,
         description:
-          "Write down three things you love about being an ENFP when you’re feeling scattered, [Name].",
+          "Write down three things you love about being an ENFP when you’re feeling scattered, {firstname}.",
       },
     ],
   },
@@ -263,7 +263,7 @@ export const ENFPData: PersonalityDatabase = {
   ],
   dailyHabits: {
     summary:
-      "You love a routine that keeps you inspired, [Name], and it totally works for you—your days are full of energy and possibilities, and you feel best when you’re free to explore. Adding a little structure can help you turn your dreams into reality.",
+      "You love a routine that keeps you inspired, {firstname}, and it totally works for you—your days are full of energy and possibilities, and you feel best when you’re free to explore. Adding a little structure can help you turn your dreams into reality.",
     habits: {
       morning: {
         title: "Dream Session",
@@ -283,7 +283,7 @@ export const ENFPData: PersonalityDatabase = {
     },
     communication: {
       summary:
-        "You’re warm and enthusiastic when you talk, [Name], always lighting up the room with your ideas. You love conversations that are big and dreamy, but sometimes you might miss the details if you’re too caught up in the vibe.",
+        "You’re warm and enthusiastic when you talk, {firstname}, always lighting up the room with your ideas. You love conversations that are big and dreamy, but sometimes you might miss the details if you’re too caught up in the vibe.",
       tips: [
         "Slow down in conversations—like pausing to really hear someone before sharing your thoughts.",
         "Ask a friend a fun question, like “What’s your wildest dream?”—it’ll spark an awesome chat.",
@@ -292,7 +292,7 @@ export const ENFPData: PersonalityDatabase = {
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about chasing your dreams and lifting others up, [Name]. You value freedom, creativity, and connection, and you’re motivated by exploring new possibilities and making the world a brighter place.",
+      "You’re all about chasing your dreams and lifting others up, {firstname}. You value freedom, creativity, and connection, and you’re motivated by exploring new possibilities and making the world a brighter place.",
     coreValues: [
       {
         title: "Freedom",
@@ -323,7 +323,7 @@ export const ENFPData: PersonalityDatabase = {
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, [Name]! Come hang out with other ENFPs and career starters in our growing community. Share your wildest ideas, swap inspiration, and let’s build something awesome together.",
+      "You don’t have to figure this out alone, {firstname}! Come hang out with other ENFPs and career starters in our growing community. Share your wildest ideas, swap inspiration, and let’s build something awesome together.",
     suggestions: [
       "Drop your MBTI type in our community chat—say hi to other Campaigners who get you!",
       "Join our weekly “Dream Big” chat to share your latest passions and plans.",

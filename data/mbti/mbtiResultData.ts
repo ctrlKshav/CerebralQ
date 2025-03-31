@@ -7,6 +7,14 @@ import { ESTPData } from "./personalityDatabase/estp";
 import { ESFJData } from "./personalityDatabase/esfj";
 import { ENFPData } from "./personalityDatabase/enfp";
 import { ESFPData } from "./personalityDatabase/esfp";
+import { INTPData } from "./personalityDatabase/intp";
+import { INFPData } from "./personalityDatabase/infp";
+import { ISFPData } from "./personalityDatabase/isfp";
+import { ISTPData } from "./personalityDatabase/istp";
+import { INTJData } from "./personalityDatabase/intj";
+import { INFJData } from "./personalityDatabase/infj";
+import { ISFJData } from "./personalityDatabase/isfj";
+import { ISTJData } from "./personalityDatabase/istj";
 
 export const sampleResultData: ResultData = {
   username: null,
@@ -465,6 +473,14 @@ export const personalityDatabase: { [key: string]: PersonalityDatabase } = {
   ESTP: ESTPData,
   ESFJ: ESFJData,
   ESFP: ESFPData,
+  INTP: INTPData,
+  INFP: INFPData,
+  ISFP: ISFPData,
+  ISTP: ISTPData,
+  INTJ: INTJData,
+  INFJ: INFJData,
+  ISFJ: ISFJData,
+  ISTJ: ISTJData,
   
 };
 

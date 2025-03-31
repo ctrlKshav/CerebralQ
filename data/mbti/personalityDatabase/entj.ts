@@ -6,7 +6,7 @@ export const ENTJData: PersonalityDatabase = {
       superpowers: [
         {
           title: "Leading with Vision",
-          description: "You inspire others with your big ideas, [Name]—like pitching a game-changing plan to your team."
+          description: "You inspire others with your big ideas, {firstname}—like pitching a game-changing plan to your team."
         },
         {
           title: "Getting Results",
@@ -88,13 +88,13 @@ export const ENTJData: PersonalityDatabase = {
     relationships: [
       {
         title: "Relationships",
-        subtitle: "How You Show Up in Relationships, [Name]",
-        description: "You’re the driven, inspiring one in your relationships, [Name]—whether it’s with your partner, family, or friends. You show love by pushing others to be their best, like encouraging your partner to chase their dreams or organizing a family goal-setting session, but you might need to work on slowing down to connect emotionally.",
+        subtitle: "How You Show Up in Relationships, {firstname}",
+        description: "You’re the driven, inspiring one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by pushing others to be their best, like encouraging your partner to chase their dreams or organizing a family goal-setting session, but you might need to work on slowing down to connect emotionally.",
         compatibleTypes: [],
         superpowers: [
           {
             title: "Being Motivational",
-            description: "You lift people up, [Name]—like cheering on a friend to go after a big opportunity."
+            description: "You lift people up, {firstname}—like cheering on a friend to go after a big opportunity."
           },
           {
             title: "Taking Charge",
@@ -122,19 +122,19 @@ export const ENTJData: PersonalityDatabase = {
           },
           {
             number: 3,
-            description: "Look for people who admire your drive, [Name]—someone who loves your ambitious energy as much as you do."
+            description: "Look for people who admire your drive, {firstname}—someone who loves your ambitious energy as much as you do."
           }
         ]
       },
       {
         title: "Friendships",
-        subtitle: "How You Shine with Friends, [Name]",
-        description: "You’re the friend who takes the lead, [Name]—always ready to organize a group adventure or motivate your crew to tackle a challenge. You love having a solid group of friends who respect your leadership and share your drive for success.",
+        subtitle: "How You Shine with Friends, {firstname}",
+        description: "You’re the friend who takes the lead, {firstname}—always ready to organize a group adventure or motivate your crew to tackle a challenge. You love having a solid group of friends who respect your leadership and share your drive for success.",
         compatibleTypes: [],
         superpowers: [
           {
             title: "Being Inspiring",
-            description: "Your friends look up to you, [Name]—like when you motivate them to join a charity run."
+            description: "Your friends look up to you, {firstname}—like when you motivate them to join a charity run."
           },
           {
             title: "Planning Big Moments",
@@ -164,11 +164,11 @@ export const ENTJData: PersonalityDatabase = {
       }
     ],
     growth: {
-      summary: "Growth for you is all about becoming an even better leader while learning to connect more deeply, [Name]. You’re amazing at setting goals and making them happen, but you might need to work on being more patient and in tune with your emotions.",
+      summary: "Growth for you is all about becoming an even better leader while learning to connect more deeply, {firstname}. You’re amazing at setting goals and making them happen, but you might need to work on being more patient and in tune with your emotions.",
       superpowers: [
         {
           title: "Being Ambitious",
-          description: "You set big goals and go for them, [Name]—like always pushing yourself to the next level."
+          description: "You set big goals and go for them, {firstname}—like always pushing yourself to the next level."
         },
         {
           title: "Staying Focused",
@@ -196,7 +196,7 @@ export const ENTJData: PersonalityDatabase = {
         },
         {
           number: 3,
-          description: "Write down three things you love about being an ENTJ when you’re feeling hard on yourself, [Name]."
+          description: "Write down three things you love about being an ENTJ when you’re feeling hard on yourself, {firstname}."
         }
       ]
     },
@@ -228,7 +228,7 @@ export const ENTJData: PersonalityDatabase = {
       }
     ],
     dailyHabits: {
-      summary: "You love a routine that keeps you on track, [Name], and it totally works for you—your days are focused and productive, and you feel best when you’re in control. Adding a little downtime can help you recharge for your big goals.",
+      summary: "You love a routine that keeps you on track, {firstname}, and it totally works for you—your days are focused and productive, and you feel best when you’re in control. Adding a little downtime can help you recharge for your big goals.",
       habits: {
         morning: {
           title: "Goal Check",
@@ -244,7 +244,7 @@ export const ENTJData: PersonalityDatabase = {
         }
       },
       communication: {
-        summary: "You’re confident and direct when you talk, [Name], always getting your point across with clarity. You love conversations that are goal-oriented, but sometimes you might come across as too intense without meaning to.",
+        summary: "You’re confident and direct when you talk, {firstname}, always getting your point across with clarity. You love conversations that are goal-oriented, but sometimes you might come across as too intense without meaning to.",
         tips: [
           "Add a warm touch to your conversations—like starting with “I’m really excited to hear your thoughts on this!”",
           "Ask a friend a lighter question, like “What’s been the best part of your week?”—it’ll spark a more relaxed chat."
@@ -252,7 +252,7 @@ export const ENTJData: PersonalityDatabase = {
       }
     },
     valuesAndMotivators: {
-      summary: "You’re all about achieving success and inspiring others to do the same, [Name]. You value leadership, efficiency, and progress, and you’re motivated by setting big goals, overcoming challenges, and making a lasting impact.",
+      summary: "You’re all about achieving success and inspiring others to do the same, {firstname}. You value leadership, efficiency, and progress, and you’re motivated by setting big goals, overcoming challenges, and making a lasting impact.",
       coreValues: [
         {
           title: "Leadership",
@@ -281,7 +281,7 @@ export const ENTJData: PersonalityDatabase = {
       ]
     },
     communityConnection: {
-      summary: "You don’t have to figure this out alone, [Name]! Come hang out with other ENTJs and career starters in our growing community. Share your best strategies for success, swap ideas, and let’s build something awesome together.",
+      summary: "You don’t have to figure this out alone, {firstname}! Come hang out with other ENTJs and career starters in our growing community. Share your best strategies for success, swap ideas, and let’s build something awesome together.",
       suggestions: [
         "Drop your MBTI type in our community chat—say hi to other Commanders who get you!",
         "Join our weekly “Leadership Goals” chat to share your latest plans and ambitions."

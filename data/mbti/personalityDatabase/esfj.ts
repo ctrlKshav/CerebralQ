@@ -5,7 +5,7 @@ export const ESFJData: PersonalityDatabase = {
         superpowers: [
           {
             title: "Building Connections",
-            description: "You make everyone feel included, [Name]—like bringing your team together for a fun lunch."
+            description: "You make everyone feel included, {firstname}—like bringing your team together for a fun lunch."
           },
           {
             title: "Staying Organized",
@@ -87,13 +87,13 @@ export const ESFJData: PersonalityDatabase = {
       relationships: [
         {
           title: "Relationships",
-          subtitle: "How You Show Up in Relationships, [Name]",
-          description: "You’re the nurturing, social one in your relationships, [Name]—whether it’s with your partner, family, or friends. You show love by making people feel special, like planning a thoughtful date night for your partner or calling your parents just to chat, but you might need to work on taking time for yourself too.",
+          subtitle: "How You Show Up in Relationships, {firstname}",
+          description: "You’re the nurturing, social one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by making people feel special, like planning a thoughtful date night for your partner or calling your parents just to chat, but you might need to work on taking time for yourself too.",
           compatibleTypes: [],
           superpowers: [
             {
               title: "Being Thoughtful",
-              description: "You always know how to make people feel loved, [Name]—like remembering your friend’s favorite dessert."
+              description: "You always know how to make people feel loved, {firstname}—like remembering your friend’s favorite dessert."
             },
             {
               title: "Creating Harmony",
@@ -121,19 +121,19 @@ export const ESFJData: PersonalityDatabase = {
             },
             {
               number: 3,
-              description: "Look for people who appreciate your caring nature, [Name]—someone who gives back as much as you give."
+              description: "Look for people who appreciate your caring nature, {firstname}—someone who gives back as much as you give."
             }
           ]
         },
         {
           title: "Friendships",
-          subtitle: "How You Shine with Friends, [Name]",
-          description: "You’re the friend who makes everyone feel at home, [Name]—always ready to host a fun get-together or check in on your crew. You love having a big group of friends who feel like family, and you’re the one who keeps everyone connected.",
+          subtitle: "How You Shine with Friends, {firstname}",
+          description: "You’re the friend who makes everyone feel at home, {firstname}—always ready to host a fun get-together or check in on your crew. You love having a big group of friends who feel like family, and you’re the one who keeps everyone connected.",
           compatibleTypes: [],
           superpowers: [
             {
               title: "Being Supportive",
-              description: "Your friends know you’ve got their back, [Name]—like helping them through a breakup."
+              description: "Your friends know you’ve got their back, {firstname}—like helping them through a breakup."
             },
             {
               title: "Planning Fun Times",
@@ -163,11 +163,11 @@ export const ESFJData: PersonalityDatabase = {
         }
       ],
       growth: {
-        summary: "Growth for you is all about becoming an even better version of your amazing self while learning to take care of you too, [Name]. You’re so good at supporting others, but you might forget to give yourself the same love and care you give everyone else.",
+        summary: "Growth for you is all about becoming an even better version of your amazing self while learning to take care of you too, {firstname}. You’re so good at supporting others, but you might forget to give yourself the same love and care you give everyone else.",
         superpowers: [
           {
             title: "Being Kind",
-            description: "Your big heart helps you grow in such a genuine way, [Name]—like always learning from your experiences."
+            description: "Your big heart helps you grow in such a genuine way, {firstname}—like always learning from your experiences."
           },
           {
             title: "Staying Grounded",
@@ -195,7 +195,7 @@ export const ESFJData: PersonalityDatabase = {
           },
           {
             number: 3,
-            description: "Write down three things you love about being an ESFJ when you’re feeling hard on yourself, [Name]."
+            description: "Write down three things you love about being an ESFJ when you’re feeling hard on yourself, {firstname}."
           }
         ]
       },
@@ -227,7 +227,7 @@ export const ESFJData: PersonalityDatabase = {
         }
       ],
       dailyHabits: {
-        summary: "You love a routine that keeps you connected, [Name], and it totally works for you—your days are warm and organized, and you feel best when you’re taking care of others. Adding a little self-care can make your routine even more special.",
+        summary: "You love a routine that keeps you connected, {firstname}, and it totally works for you—your days are warm and organized, and you feel best when you’re taking care of others. Adding a little self-care can make your routine even more special.",
         habits: {
           morning: {
             title: "Gratitude List",
@@ -243,7 +243,7 @@ export const ESFJData: PersonalityDatabase = {
           }
         },
         communication: {
-          summary: "You’re warm and friendly when you talk, [Name], always making people feel heard and cared for. You love conversations that bring people together, but sometimes you might hold back on sharing your own thoughts to keep the peace.",
+          summary: "You’re warm and friendly when you talk, {firstname}, always making people feel heard and cared for. You love conversations that bring people together, but sometimes you might hold back on sharing your own thoughts to keep the peace.",
           tips: [
             "Share a little more in conversations—like saying “I really loved that idea because…” to open up.",
             "Ask a friend a fun question, like “What’s been making you smile lately?”—it’ll spark a deeper chat."
@@ -251,7 +251,7 @@ export const ESFJData: PersonalityDatabase = {
         }
       },
       valuesAndMotivators: {
-        summary: "You’re all about taking care of the people you love and creating a sense of community, [Name]. You value connection, kindness, and stability, and you’re motivated by making others feel supported while building a life full of love and harmony.",
+        summary: "You’re all about taking care of the people you love and creating a sense of community, {firstname}. You value connection, kindness, and stability, and you’re motivated by making others feel supported while building a life full of love and harmony.",
         coreValues: [
           {
             title: "Connection",
@@ -280,7 +280,7 @@ export const ESFJData: PersonalityDatabase = {
         ]
       },
       communityConnection: {
-        summary: "You don’t have to figure this out alone, [Name]! Come hang out with other ESFJs and career starters in our growing community. Share your best tips for bringing people together, swap ideas, and let’s build something awesome together.",
+        summary: "You don’t have to figure this out alone, {firstname}! Come hang out with other ESFJs and career starters in our growing community. Share your best tips for bringing people together, swap ideas, and let’s build something awesome together.",
         suggestions: [
           "Drop your MBTI type in our community chat—say hi to other Consuls who get you!",
           "Join our weekly “Community Builders” chat to share your favorite ways to connect with others."
