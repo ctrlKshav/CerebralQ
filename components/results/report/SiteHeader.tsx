@@ -4,7 +4,7 @@ import { SidebarIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { useSidebar } from "@/components/ui/sidebar";
+import { useSidebar } from "@/components/ui/sidebar-custom";
 import { cn } from "@/lib/utils";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
