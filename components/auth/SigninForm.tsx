@@ -35,26 +35,7 @@ export function SigninForm({
     type: string;
     message: string;
   } | null>(null);
-  const [showPassword, setShowPassword] = useState(false);
-
-  const userDataContext = useUserDataContext();
-
-  if (userDataContext === null) {
-    return null;
-  }
-
-  const { userData, setUserData, loading } = userDataContext;
-
-  if (loading) return <LoadingSkeleton />;
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<SignInSchema>({
-    resolver: zodResolver(signinSchema),
-  });
-
+  
   // Parse and display message from URL search params
   useEffect(() => {
     const message = parseAuthMessage(searchParams);
@@ -72,13 +53,33 @@ export function SigninForm({
     }
   }, [searchParams]);
 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<SignInSchema>({
+    resolver: zodResolver(signinSchema),
+  });
+
+  const userDataContext = useUserDataContext();
+
+  if (userDataContext === null) {
+    return null;
+  }
+
+  const { loading } = userDataContext;
+
+  if (loading) return <LoadingSkeleton />;
+
   const onSubmit = async (data: SignInSchema) => {
     const signInData = {
       ...data,
       redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
     };
     await signInAction(signInData);
-    window.location.href = "/"
+    window.location.href = "/";
   };
 
   return (
