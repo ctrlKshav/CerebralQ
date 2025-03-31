@@ -7,8 +7,14 @@ import { Separator } from "@/components/ui/separator";
 import { useSidebar } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 
-export function ReportHeader() {
+interface ReportHeaderProps {
+  sectionTitle?: string;
+  firstname?: string | null;
+}
+
+export function ReportHeader({ sectionTitle = "Report", firstname }: ReportHeaderProps) {
   const { toggleSidebar, open, openMobile, isMobile } = useSidebar();
   const [scrollDirection, setScrollDirection] = useState<"up" | "down" | null>(
     null
@@ -44,18 +50,46 @@ export function ReportHeader() {
     }
   );
 
+  // Create greeting message
+  const greeting = firstname ? `Hello, ${firstname}` : "Hello, User";
+
   return (
     <header className={navbarClasses}>
-      <div className="flex h-[--header-height] w-full items-center gap-2 px-4">
-        <Button
-          className="h-8 w-8"
-          variant="ghost"
-          size="icon"
-          onClick={toggleSidebar}
-        >
-          <SidebarIcon />
-        </Button>
-        <Separator orientation="vertical" className="mr-2 h-4" />
+      <div className="flex h-[--header-height] w-full items-center px-4">
+        {/* Three-column layout */}
+        <div className="grid grid-cols-3 items-center w-full">
+          {/* Left column - Sidebar button */}
+          <div className="flex items-center gap-2">
+            <Button
+              className="h-9 w-9 hover:bg-primary/10 transition-colors"
+              variant="ghost"
+              size="icon"
+              onClick={toggleSidebar}
+            >
+              <SidebarIcon className="h-5 w-5" />
+            </Button>
+            <Separator orientation="vertical" className="h-6 mx-1" />
+            <Link href={"/"} className="text-lg font-medium text-foreground">
+              Home
+            </Link>
+          </div>
+
+          {/* Middle column - Section title */}
+          <div className="flex justify-center">
+            <div className="relative">
+              <h1 className="text-xl font-semibold tracking-tight text-foreground py-1 px-3 rounded-md relative">
+                {sectionTitle}
+              </h1>
+            </div>
+          </div>
+
+          {/* Right column - Greeting */}
+          <div className="flex justify-end">
+            <p className="text-md font-medium text-foreground px-2">
+              {greeting}
+            </p>
+          </div>
+        </div>
       </div>
     </header>
   );
