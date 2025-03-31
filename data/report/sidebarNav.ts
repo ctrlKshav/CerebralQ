@@ -1,11 +1,25 @@
 ﻿import { Brain, Briefcase, Heart, Handshake, Sparkles, Coffee, Lightbulb, Smile, ListChecks } from "lucide-react";
-export const sidebarNavData = {
+
+
+export type SidebarNavLink = {
+  title: string;
+  url: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  items?: {
+    title: string;
+    url: string;
+  }[];
+};
+
+export type SidebarNavDataType = {
+  navMain: SidebarNavLink[];
+}
+export const sidebarNavData: SidebarNavDataType = {
   navMain: [
     {
       title: "Personality Traits",
       url: "#explore-traits",
       icon: Brain,
-      isActive: true,
     },
     {
       title: "Career Path",

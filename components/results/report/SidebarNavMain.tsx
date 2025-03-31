@@ -9,22 +9,16 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar"
+import { useState } from "react"
+import { SidebarNavDataType } from "@/data/report/sidebarNav"
 
 export function SidebarNavMain({
   items,
 }: {
-  items: {
-    title: string
-    url: string
-    icon: LucideIcon
-    isActive?: boolean
-    items?: {
-      title: string
-      url: string
-    }[]
-  }[]
+  items: SidebarNavDataType["navMain"]
 }) {
-  return (
+  const [ activeItem, setActiveItem] = useState<string>(items[0].title);
+    return (
     <SidebarGroup>
       <SidebarGroupLabel className="text-sm font-semibold mb-2">Sections</SidebarGroupLabel>
       <SidebarMenu className="gap-2">
@@ -34,7 +28,8 @@ export function SidebarNavMain({
               variant={"default"}
               asChild 
               tooltip={item.title} 
-              isActive={item.isActive}
+              isActive={item.title === activeItem}
+              onClick={() => setActiveItem(item.title)}
               className="h-12 px-3 py-3 text-base font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               <a href={item.url} className="flex items-center gap-3">
