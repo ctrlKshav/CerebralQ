@@ -136,7 +136,7 @@ const ActionPlanSection = ({
                 Save this plan and continue your growth journey.
               </p>
 
-              <div className="flex justify-start gap-3 pt-2">
+              <div className="flex flex-col md:flex-row justify-start gap-3 pt-2">
                 <Button
                   variant="default"
                   size="sm"
