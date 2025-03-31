@@ -25,7 +25,7 @@ const CareerPathSection = ({ firstname, career, sectionNumber = 3, id = "career-
   const {superpowers, growthAreas, actionSteps} = career;
 
   return (
-    <section id={id} className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-8">
+    <section id={id} className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-16">
     
       <div className="max-w-[1800px] mx-auto">
         {/* Section header */}
