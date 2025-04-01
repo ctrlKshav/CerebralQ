@@ -80,7 +80,7 @@ export interface PersonalityTypeInsights {
 
 export interface PersonalityDescription {
   alias: string;
-  description: string;
+  description: (firstname: string | null, thirdPerson?: boolean) => string;
 }
 
 /**

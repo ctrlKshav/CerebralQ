@@ -27,7 +27,7 @@ const HeroSection = ({
   username,
 }: HeroSectionProps) => {
   const alias = personalityDescription.alias;
-  const description = personalityDescription.description;
+  const description = personalityDescription.description(firstname,false);
 
   // Map personality types to their respective image paths
   const personalityImages: Record<string, string> = {
