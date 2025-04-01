@@ -3,9 +3,14 @@ import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { CareerPath } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import { AwardIcon, BriefcaseIcon, CheckboxIcon, UpArrowIcon } from "./shared/newIcons";
 import PDFCardSection from "./shared/PDFCardSection";
 import PDFListItem from "./shared/PDFListItem";
+import {
+  AwardIcon,
+  BriefcaseIcon,
+  CheckboxIcon,
+  UpArrowIcon,
+} from "@/components/pdf/shared/icons";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -149,10 +154,7 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
           <Text style={styles.sectionTitle}>Your Career Path</Text>
         </View>
         <Text style={styles.subtitle}>
-          {formatWithUsername(
-            "How You Shine at Work, {firstname}",
-            firstname
-          )}
+          {formatWithUsername("How You Shine at Work, {firstname}", firstname)}
         </Text>
         <Text style={styles.description}>
           {formatWithUsername(career.summary, firstname)}
@@ -160,8 +162,8 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
       </View>
 
       {/* Career Superpowers */}
-      <PDFCardSection 
-        title="Your Career Superpowers" 
+      <PDFCardSection
+        title="Your Career Superpowers"
         icon={<AwardIcon color={ICON_COLORS.award} size={20} />}
         isDarkMode={isDarkMode}
       >
@@ -176,8 +178,8 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
       </PDFCardSection>
 
       {/* Growth Areas */}
-      <PDFCardSection 
-        title="Where You Can Grow a Bit" 
+      <PDFCardSection
+        title="Where You Can Grow a Bit"
         icon={<BriefcaseIcon color={ICON_COLORS.briefcase} size={20} />}
         isDarkMode={isDarkMode}
       >

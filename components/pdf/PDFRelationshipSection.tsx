@@ -3,8 +3,7 @@ import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { RelationshipCompatibility } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import { ArrowRightIcon, HeartIcon, UsersIcon, MessageSquareIcon } from "./shared/icons";
-import AwardIcon  from "./shared/newIcons/AwardIcon";
+import { ArrowRightIcon, HeartIcon, UsersIcon, MessageSquareIcon, AwardIcon, CheckboxIcon } from "./shared/icons";
 import PDFCardSection from "./shared/PDFCardSection";
 import PDFListItem from "./shared/PDFListItem";
 
