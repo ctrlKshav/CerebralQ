@@ -101,7 +101,7 @@ export const ESTPData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the fun, spontaneous one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by keeping things exciting, like taking your partner on a surprise date or rallying your family for a game night, but you might need to work on slowing down to connect on a deeper level.",
-      compatibleTypes: ['INTJ'],
+      compatibleTypes: ["ISFJ", "ISTJ", "INFJ", "INTJ", "ESFP", "ISTP", "ISFP"],
       superpowers: [
         {
           title: "Bringing Energy",
@@ -149,7 +149,7 @@ export const ESTPData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who’s always up for a good time, {firstname}—whether it’s organizing a last-minute beach trip or cracking everyone up with your quick wit. You love having a big group of friends who are down for fun and action.",
-      compatibleTypes: ['INTJ'],
+      compatibleTypes: ["ISTP", "ESTP", "ENTP", "ESTJ", "ENTJ", "ESFP", "ENFP"],
       superpowers: [
         {
           title: "Being Fun",

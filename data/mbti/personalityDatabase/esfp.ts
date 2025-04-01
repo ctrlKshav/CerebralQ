@@ -102,7 +102,7 @@ export const ESFPData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the fun, loving one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by making people laugh and creating happy moments, like throwing a surprise party for your partner or cheering up your sibling with a silly dance, but you might need to work on slowing down to connect more deeply.",
-      compatibleTypes: ['INTJ'],
+      compatibleTypes: ["ISFJ", "ISTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ENFP"],
       superpowers: [
         {
           title: "Spreading Joy",
@@ -150,7 +150,7 @@ export const ESFPData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who makes every hangout a blast, {firstname}—always ready to get everyone laughing or plan a fun night out. You love having a big group of friends who are down for your spontaneous ideas and good vibes.",
-      compatibleTypes: ['INTJ'],
+      compatibleTypes: ["ISFP", "ESFJ", "ENFP", "ESTP", "ESFP", "ISFJ", "ENFJ"],
       superpowers: [
         {
           title: "Being Fun",

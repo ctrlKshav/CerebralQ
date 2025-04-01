@@ -102,7 +102,7 @@ export const ISTPData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the chill, dependable one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by doing practical things, like fixing your friend’s phone or taking your partner on a spontaneous adventure, but you might not always open up about your deeper feelings.",
-      compatibleTypes: ['INTJ'],
+      compatibleTypes: ["ESFJ", "ESTJ", "ENFJ", "ENTJ", "ISFP", "ESTP", "ESFP"],
       superpowers: [
         {
           title: "Being Handy",
@@ -150,7 +150,7 @@ export const ISTPData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who’s always up for an adventure, {firstname}—whether it’s trying a new hobby or fixing something for your crew. You love having a small group of friends who are down to explore and keep things low-key.",
-      compatibleTypes: ['INTJ'],
+      compatibleTypes: ["ESTP", "ISTJ", "ISTP", "ISFP", "INTP", "ENTJ", "ENTP"],
       superpowers: [
         {
           title: "Being Spontaneous",

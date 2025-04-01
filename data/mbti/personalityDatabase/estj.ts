@@ -150,7 +150,7 @@ export const ESTJData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who keeps everyone on track, {firstname}—always ready to organize a group hangout or lead a project. You love having a solid crew who respects your ability to get things done and enjoys your straightforward vibe.",
-      compatibleTypes: ['INTJ'],
+      compatibleTypes: ["ISTJ", "ENTJ", "INTJ", "ESTJ", "ESTP", "ESFJ", "ISFJ"],
       superpowers: [
         {
           title: "Being Dependable",
