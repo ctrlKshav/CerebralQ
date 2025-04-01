@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { CareerPath } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import { AwardIcon, BriefcaseIcon, CheckboxIcon, UpArrowIcon } from "./shared/icons";
+import { AwardIcon, BriefcaseIcon, CheckboxIcon, UpArrowIcon } from "./shared/newIcons";
 import PDFCardSection from "./shared/PDFCardSection";
 import PDFListItem from "./shared/PDFListItem";
 
