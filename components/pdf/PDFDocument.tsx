@@ -51,9 +51,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
     traitScores,
   } = resultData;
 
-  // Get the alias for the current personality type
-  const personalityAlias = personalityDescription.alias;
-
   // Get personality insights
   const personalityInsights = getPersonalityInsights(personalityType);
 
@@ -65,7 +62,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           <PDFHero
             firstname={resultData.firstname}
             personalityType={personalityType}
-            personalityAlias={personalityAlias}
             personalityDescription={personalityDescription}
             completionDate={completionDate}
             isDarkMode={isDarkMode}

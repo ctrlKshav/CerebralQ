@@ -101,7 +101,6 @@ const createHeroStyles = (isDarkMode = false) => {
 
 interface PDFHeroProps {
   personalityType: string;
-  personalityAlias: string;
   personalityDescription: PersonalityDescription;
   completionDate: string;
   firstname: string | null;
@@ -110,7 +109,6 @@ interface PDFHeroProps {
 
 export const PDFHero: React.FC<PDFHeroProps> = ({
   personalityType,
-  personalityAlias,
   personalityDescription,
   completionDate,
   firstname,
@@ -125,6 +123,9 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
 
   const imagePath =
     personalityImages[personalityType] || personalityImages.default;
+
+  const alias = personalityDescription.alias;
+  const description = personalityDescription.description(firstname, false);
 
   return (
     <View style={styles.page}>
@@ -145,10 +146,10 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
           <Text style={styles.personalityType}>{personalityType}</Text>
         </Text>
 
-        <Text style={styles.subtitle}>{personalityAlias}</Text>
+        <Text style={styles.subtitle}>{alias}</Text>
 
         <Text style={styles.description}>
-          {personalityDescription.description}
+          {description}
         </Text>
 
         <Text style={styles.encouragement}>
