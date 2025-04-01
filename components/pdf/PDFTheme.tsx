@@ -68,8 +68,9 @@ export const createBaseStyles = (isDarkMode: boolean) => {
     },
     headerRow: {
       flexDirection: "row",
+      justifyContent: "center",
       alignItems: "center",
-      marginBottom: 20,
+      marginBottom: 30,
     },
     sectionNumber: {
       width: 28,
