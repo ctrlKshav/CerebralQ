@@ -189,8 +189,7 @@ export default function TestInformation({ testId }: { testId: string }) {
               label:
                 personalityDescriptions[personalityType].alias || "Unknown",
               description:
-                personalityDescriptions[personalityType].description ||
-                "Unknown",
+                personalityDescriptions[personalityType].description(null, false),
               date: testData.taken_at || new Date().toISOString(),
               traitScores: mbtiResult?.traitScores,
               details: testData.raw_score,

@@ -99,7 +99,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         <View style={styles.section}>
           <PDFDetailedPersonalityInsights
             personalityType={personalityType}
-            personalityAlias={personalityAlias}
+            personalityAlias={personalityDescription.alias}
             personalityInsights={personalityInsights}
             sectionNumber={5}
             isDarkMode={isDarkMode}
