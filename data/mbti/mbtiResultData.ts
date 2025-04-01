@@ -22,8 +22,15 @@ export const sampleResultData: ResultData = {
   personalityType: "ENTJ",
   personalityDescription: {
     alias: "The Commander",
-    description:
-      "You're a bold leader with a vision for success, always ready to take charge and make big things happen. Whether it's leading a team project or setting ambitious goals for yourself, you've got a driven, inspiring vibe that makes you a total powerhouse.",
+    description: (firstname, thirdPerson): string => {
+      if (firstname && thirdPerson) {
+        return `${firstname} is a bold leader with a vision for success, always ready to take charge and make big things happen. They’ve got a driven, inspiring vibe that makes them a total powerhouse, whether leading a team project or setting ambitious goals for themselves.`;
+      } else if (firstname && !thirdPerson) {
+        return `You’re a bold leader with a vision for success, always ready to take charge and make big things happen. You’ve got a driven, inspiring vibe that makes you a total powerhouse, whether leading a team project or setting ambitious goals for yourself, ${firstname}.`;
+      } else {
+        return `You’re a bold leader with a vision for success, always ready to take charge and make big things happen. You’ve got a driven, inspiring vibe that makes you a total powerhouse, whether leading a team project or setting ambitious goals for yourself.`;
+      }
+    },
   },
   completionDate: new Date().toLocaleDateString(),
   traitScores: {
@@ -481,7 +488,6 @@ export const personalityDatabase: { [key: string]: PersonalityDatabase } = {
   INFJ: INFJData,
   ISFJ: ISFJData,
   ISTJ: ISTJData,
-  
 };
 
 export const getPersonalityData = (
