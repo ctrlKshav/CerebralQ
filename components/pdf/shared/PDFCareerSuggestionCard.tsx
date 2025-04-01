@@ -16,37 +16,47 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
   
   const styles = StyleSheet.create({
     card: {
-      marginBottom: 25,
+      marginBottom: 30,
       backgroundColor: theme.card,
       borderRadius: 10,
       borderWidth: 1,
       borderColor: theme.border,
       overflow: "hidden",
-    },
-    contentRow: {
       flexDirection: "row",
-      padding: 0,
+      height: 200, // Fixed height for consistency
     },
     imageContainer: {
-      width: "40%",
-      height: 180,
-      position: "relative",
+      width: "35%",
+      height: "100%", // Full height of the card
     },
     image: {
       objectFit: "cover",
       width: "100%",
       height: "100%",
     },
-    content: {
-      width: "60%",
-      padding: 20,
-      paddingRight: 25,
+    contentContainer: {
+      width: "65%",
+      padding: 0,
+      position: "relative",
+    },
+    headerContainer: {
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      padding: 16,
+      paddingBottom: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: theme.border,
+      marginBottom: 12,
+    },
+    title: {
+      fontSize: 18,
+      fontFamily: "Helvetica-Bold",
+      color: theme.foreground,
+      maxWidth: "70%", // Prevent title from running into match badge
     },
     matchBadge: {
-      position: "absolute",
-      top: 12,
-      right: 12,
-      paddingVertical: 5,
+      paddingVertical: 6,
       paddingHorizontal: 10,
       borderRadius: 5,
       backgroundColor: suggestion.matchPercentage >= 90 
@@ -54,27 +64,24 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
         : suggestion.matchPercentage >= 80 
           ? "#3b82f6" 
           : "#f59e0b",
-      opacity: 0.95,
     },
     matchBadgeText: {
       color: "#ffffff",
-      fontSize: 12,
+      fontSize: 11,
       fontFamily: "Helvetica-Bold",
     },
-    title: {
-      fontSize: 18,
-      fontFamily: "Helvetica-Bold",
-      color: theme.foreground,
-      marginBottom: 12,
+    content: {
+      padding: 16,
+      paddingTop: 0,
     },
     description: {
-      fontSize: 12,
+      fontSize: 11,
       color: theme.mutedForeground,
       lineHeight: 1.6,
-      marginBottom: 16,
+      marginBottom: 14,
     },
     traitsContainer: {
-      marginTop: 8,
+      marginTop: 4,
     },
     traitsHeader: {
       fontSize: 11,
@@ -88,14 +95,14 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     },
     traitBadge: {
       backgroundColor: theme.muted,
-      paddingVertical: 5,
+      paddingVertical: 4,
       paddingHorizontal: 8,
       borderRadius: 4,
       marginRight: 8,
-      marginBottom: 8,
+      marginBottom: 6,
     },
     traitText: {
-      fontSize: 10,
+      fontSize: 9,
       color: theme.mutedForeground,
       fontFamily: "Helvetica-Bold",
     },
@@ -120,25 +127,32 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     );
   };
 
-  // Ensure we only show the first 3 quality matches to avoid overflow
+  // Ensure we only show the first 3-4 quality matches to avoid overflow
   const displayQualityMatches = suggestion.qualityMatches?.slice(0, 4) || [];
 
   return (
     <View style={styles.card}>
-      <View style={styles.contentRow}>
-        <View style={styles.imageContainer}>
-          <Image
-            src={getCareerImage(suggestion.title)}
-            style={styles.image}
-            cache={true}
-          />
-        </View>
-        
-        <View style={styles.content}>
+      {/* Left side - Image */}
+      <View style={styles.imageContainer}>
+        <Image
+          src={getCareerImage(suggestion.title)}
+          style={styles.image}
+          cache={true}
+        />
+      </View>
+      
+      {/* Right side - Content */}
+      <View style={styles.contentContainer}>
+        {/* Header with title and match percentage */}
+        <View style={styles.headerContainer}>
           <Text style={styles.title}>{suggestion.title}</Text>
           <View style={styles.matchBadge}>
             <Text style={styles.matchBadgeText}>{suggestion.matchPercentage}% Match</Text>
           </View>
+        </View>
+        
+        {/* Main content */}
+        <View style={styles.content}>
           <Text style={styles.description}>{suggestion.description}</Text>
           
           {displayQualityMatches.length > 0 && (
