@@ -61,7 +61,8 @@ export const createBaseStyles = (isDarkMode: boolean) => {
 
   return StyleSheet.create({
     page: {
-      padding: 30,
+      paddingHorizontal: 20,
+      paddingVertical: 30,
       fontFamily: "Helvetica",
       backgroundColor: theme.background,
       color: theme.foreground,
