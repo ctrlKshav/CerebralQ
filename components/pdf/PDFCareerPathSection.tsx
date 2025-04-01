@@ -3,6 +3,14 @@ import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { CareerPath } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
+import { AwardIcon, BriefcaseIcon } from "./icons";
+
+// Define specific colors for icons
+const ICON_COLORS = {
+  award: "#10b981", // emerald-500
+  briefcase: "#f59e0b", // amber-500
+  target: "#3b82f6", // blue-500 (using a default blue for target)
+};
 
 // Extract styles to their own object outside the component
 const createCareerSectionStyles = (isDarkMode = false) => {
@@ -55,11 +63,19 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       fontSize: 18,
       color: theme.primary,
       fontFamily: "Helvetica-Bold",
-      marginBottom: 15,
       textAlign: "center",
+    },
+    cardTitleContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 15,
       paddingBottom: 8,
       borderBottomWidth: 1,
       borderBottomColor: theme.border,
+    },
+    cardTitleIcon: {
+      marginRight: 8,
     },
     listItem: {
       flexDirection: "row",
@@ -91,8 +107,13 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       fontSize: 24,
       color: theme.primary,
       fontFamily: "Helvetica-Bold",
-      marginBottom: 20,
       textAlign: "center",
+    },
+    actionStepsTitleContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 20,
       paddingBottom: 10,
       borderBottomWidth: 1,
       borderBottomColor: theme.border,
@@ -157,6 +178,7 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
 }) => {
   // Use the extracted styles
   const styles = createCareerSectionStyles(isDarkMode);
+  const theme = getThemeColors(isDarkMode);
   const { superpowers, growthAreas, actionSteps } = career;
 
   return (
@@ -176,33 +198,44 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
             )}
           </Text>
           <Text style={styles.description}>
-            {formatWithUsername(
-              career.summary,
-              firstname
-            )}
+            {formatWithUsername(career.summary, firstname)}
           </Text>
         </View>
 
         {/* Career Superpowers */}
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Your Career Superpowers</Text>
+          <View style={styles.cardTitleContainer}>
+            <View style={styles.cardTitleIcon}>
+              <AwardIcon color={ICON_COLORS.award} size={20} />
+            </View>
+            <Text style={styles.cardTitle}>Your Career Superpowers</Text>
+          </View>
 
           {superpowers.map((item, index) => (
             <View style={styles.listItem} key={`superpower-${index}`}>
               <Text style={styles.bullet}>•</Text>
-              <Text style={styles.listItemText}>{formatWithUsername(item.description, firstname)}</Text>
+              <Text style={styles.listItemText}>
+                {formatWithUsername(item.description, firstname)}
+              </Text>
             </View>
           ))}
         </View>
 
         {/* Growth Areas */}
         <View style={styles.card}>
-          <Text style={styles.cardTitle}>Where You Can Grow a Bit</Text>
+          <View style={styles.cardTitleContainer}>
+            <View style={styles.cardTitleIcon}>
+              <BriefcaseIcon color={ICON_COLORS.briefcase} size={20} />
+            </View>
+            <Text style={styles.cardTitle}>Where You Can Grow a Bit</Text>
+          </View>
 
           {growthAreas.map((item, index) => (
             <View style={styles.listItem} key={`growth-${index}`}>
               <Text style={styles.bullet}>•</Text>
-              <Text style={styles.listItemText}>{formatWithUsername(item.description, firstname)}</Text>
+              <Text style={styles.listItemText}>
+                {formatWithUsername(item.description, firstname)}
+              </Text>
             </View>
           ))}
         </View>
@@ -217,7 +250,9 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
       <View style={styles.page}>
         {/* "Let's Make It Happen" section */}
         <View style={styles.actionStepsContainer}>
-          <Text style={styles.actionStepsTitle}>Let's Make It Happen</Text>
+          <View style={styles.actionStepsTitleContainer}>
+            <Text style={styles.actionStepsTitle}>Let's Make It Happen</Text>
+          </View>
 
           {actionSteps.map((step, index) => (
             <View style={styles.actionStep} key={`step-${index}`}>
