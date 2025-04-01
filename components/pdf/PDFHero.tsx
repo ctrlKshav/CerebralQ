@@ -28,11 +28,14 @@ const createHeroStyles = (isDarkMode = false) => {
       backgroundColor: theme.primary,
       borderRadius: 20,
       marginBottom: 20,
+      textAlign: "center",
     },
     badgeText: {
       fontSize: 12,
+      fontWeight: "semibold",
       color: theme.primaryForeground,
       padding: "2 10",
+      marginHorizontal: 2,
     },
     greeting: {
       fontSize: 28,

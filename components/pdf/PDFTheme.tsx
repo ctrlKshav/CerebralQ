@@ -7,7 +7,7 @@ export const lightTheme = {
   card: '#ffffff', // 0 0% 100%
   cardForeground: '#0f1729', // 222.2 84% 4.9%
   primary: '#6257e3', // 248 73% 62% - Royal Blue
-  primaryForeground: '#f8fafc', // 210 40% 98%
+  primaryForeground: '#ffffff', // 210 40% 98%
   secondary: '#f1f5f9', // 210 40% 96.1%
   secondaryForeground: '#1e293b', // 222.2 47.4% 11.2%
   muted: '#f1f5f9', // 210 40% 96.1%
@@ -33,7 +33,7 @@ export const darkTheme = {
   card: '#0f1729', // 222.2 84% 4.9%
   cardForeground: '#f8fafc', // 210 40% 98%
   primary: '#6257e3', // 248 73% 62% - Royal Blue
-  primaryForeground: '#1e293b', // 222.2 47.4% 11.2%
+  primaryForeground: '#ffffff', // 222.2 47.4% 11.2%
   secondary: '#1e293b', // 217.2 32.6% 17.5%
   secondaryForeground: '#f8fafc', // 210 40% 98%
   muted: '#1e293b', // 217.2 32.6% 17.5%
