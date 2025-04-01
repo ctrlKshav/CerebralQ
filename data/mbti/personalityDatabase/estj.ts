@@ -102,7 +102,7 @@ export const ESTJData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the dependable, organized one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by taking care of the people you care about, like planning a perfect birthday party for your partner or making sure your family’s schedule runs smoothly, but you might need to work on being more flexible and emotional.",
-      compatibleTypes: [],
+      compatibleTypes: ["ISFP", "ISTP", "INFP", "INTP", "ISTJ", "ISFJ", "ESFJ"],
       superpowers: [
         {
           title: "Being Reliable",
@@ -150,7 +150,7 @@ export const ESTJData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who keeps everyone on track, {firstname}—always ready to organize a group hangout or lead a project. You love having a solid crew who respects your ability to get things done and enjoys your straightforward vibe.",
-      compatibleTypes: [],
+      compatibleTypes: ['INTJ'],
       superpowers: [
         {
           title: "Being Dependable",

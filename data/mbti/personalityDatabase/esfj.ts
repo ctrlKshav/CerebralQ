@@ -89,7 +89,7 @@ export const ESFJData: PersonalityDatabase = {
           title: "Relationships",
           subtitle: "How You Show Up in Relationships, {firstname}",
           description: "You’re the nurturing, social one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by making people feel special, like planning a thoughtful date night for your partner or calling your parents just to chat, but you might need to work on taking time for yourself too.",
-          compatibleTypes: [],
+          compatibleTypes: ['INTJ'],
           superpowers: [
             {
               title: "Being Thoughtful",
@@ -129,7 +129,7 @@ export const ESFJData: PersonalityDatabase = {
           title: "Friendships",
           subtitle: "How You Shine with Friends, {firstname}",
           description: "You’re the friend who makes everyone feel at home, {firstname}—always ready to host a fun get-together or check in on your crew. You love having a big group of friends who feel like family, and you’re the one who keeps everyone connected.",
-          compatibleTypes: [],
+          compatibleTypes: ['INTJ'],
           superpowers: [
             {
               title: "Being Supportive",

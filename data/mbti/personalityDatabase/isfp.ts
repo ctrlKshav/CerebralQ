@@ -102,7 +102,7 @@ export const ISFPData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the sweet, creative one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love through thoughtful gestures, like making a playlist for your partner or drawing a picture for your sibling, but you might need some space to recharge after being so emotionally open.",
-      compatibleTypes: [],
+      compatibleTypes: ['INTJ'],
       superpowers: [
         {
           title: "Being Thoughtful",
@@ -150,7 +150,7 @@ export const ISFPData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who brings a chill, artsy vibe to the group, {firstname}—always down for a new experience or a creative project. You love having a small crew who appreciates your unique style and is up for low-key adventures.",
-      compatibleTypes: [],
+      compatibleTypes: ['INTJ'],
       superpowers: [
         {
           title: "Being Spontaneous",

@@ -102,7 +102,7 @@ export const ISFJData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the nurturing, dependable one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by doing thoughtful things, like making your partner’s favorite breakfast or calling your mom just to chat, but you might not always ask for the support you need in return.",
-      compatibleTypes: [],
+      compatibleTypes: ["ESFP", "ESTP", "ENTP", "ESTJ", "ISTJ", "ISFP", "ISFJ"],
       superpowers: [
         {
           title: "Being Thoughtful",
@@ -150,7 +150,7 @@ export const ISFJData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who makes everyone feel at home, {firstname}—always there with a listening ear or a homemade treat. You love having a close-knit group you can count on, and you’re the one who keeps everyone connected.",
-      compatibleTypes: [],
+      compatibleTypes: ["ESFJ", "ISTJ", "ISFP", "ESTJ", "ISFJ", "INFP", "ENFP"],
       superpowers: [
         {
           title: "Being Supportive",

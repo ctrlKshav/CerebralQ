@@ -104,7 +104,7 @@ export const ISTJData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the steady, loyal one in your relationships, {firstname}—whether it’s with your partner, family, or besties. You show you care by being there, like helping a friend move or remembering your sibling’s big day, but you might not always share what’s going on inside your heart.",
-      compatibleTypes: [],
+        compatibleTypes: ['ESFP', 'ESTP', 'ENFP', 'ESTJ', 'ISFJ', 'ENTJ', 'ISTP'],
       superpowers: [
         {
           title: "Being There",
@@ -152,7 +152,7 @@ export const ISTJData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend everyone knows they can rely on, {firstname}—always there to help with a study session or plan a chill hangout. You love having a tight-knit crew you can trust, rather than a huge group of acquaintances.",
-      compatibleTypes: [],
+        compatibleTypes: ['ESTJ', 'ISFJ', 'ENTJ', 'INTJ', 'ISTP', 'ISTJ', 'ESTP'],
       superpowers: [
         {
           title: "Being Solid",
