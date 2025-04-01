@@ -141,96 +141,61 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
   const { superpowers, growthAreas, actionSteps } = career;
 
   return (
-    <>
-      {/* Page 1: Header, Superpowers, Growth Areas */}
-      <View style={styles.page}>
-        {/* Section header */}
-        <View style={styles.headerContainer}>
-          <View style={styles.headerRow}>
-            <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-            <Text style={styles.sectionTitle}>Your Career Path</Text>
-          </View>
-          <Text style={styles.subtitle}>
-            {formatWithUsername(
-              "How You Shine at Work, {firstname}",
-              firstname
-            )}
-          </Text>
-          <Text style={styles.description}>
-            {formatWithUsername(career.summary, firstname)}
-          </Text>
+    <View style={styles.page}>
+      {/* Section header */}
+      <View style={styles.headerContainer}>
+        <View style={styles.headerRow}>
+          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
+          <Text style={styles.sectionTitle}>Your Career Path</Text>
         </View>
-
-        {/* Career Superpowers */}
-        <PDFCardSection 
-          title="Your Career Superpowers" 
-          icon={<AwardIcon color={ICON_COLORS.award} size={20} />}
-          isDarkMode={isDarkMode}
-        >
-          {superpowers.map((item, index) => (
-            <PDFListItem
-              key={`superpower-${index}`}
-              text={formatWithUsername(item.description, firstname)}
-              icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-              isDarkMode={isDarkMode}
-            />
-          ))}
-        </PDFCardSection>
-
-        {/* Growth Areas */}
-        <PDFCardSection 
-          title="Where You Can Grow a Bit" 
-          icon={<BriefcaseIcon color={ICON_COLORS.briefcase} size={20} />}
-          isDarkMode={isDarkMode}
-        >
-          {growthAreas.map((item, index) => (
-            <PDFListItem
-              key={`growth-${index}`}
-              text={formatWithUsername(item.description, firstname)}
-              icon={<UpArrowIcon color={ICON_COLORS.upArrow} size={14} />}
-              isDarkMode={isDarkMode}
-            />
-          ))}
-        </PDFCardSection>
-
-        {/* Footer inside the page */}
-        <Text style={styles.footer}>
-          CerebralQ Personality Assessment | Page 3
+        <Text style={styles.subtitle}>
+          {formatWithUsername(
+            "How You Shine at Work, {firstname}",
+            firstname
+          )}
+        </Text>
+        <Text style={styles.description}>
+          {formatWithUsername(career.summary, firstname)}
         </Text>
       </View>
 
-      {/* Page 2: Let's Make It Happen and Image */}
-      <View style={styles.page}>
-        {/* "Let's Make It Happen" section */}
-        <View style={styles.actionStepsContainer}>
-          <View style={styles.actionStepsTitleContainer}>
-            <Text style={styles.actionStepsTitle}>Let's Make It Happen</Text>
-          </View>
-
-          {actionSteps.map((step, index) => (
-            <View style={styles.actionStep} key={`step-${index}`}>
-              <View style={styles.stepNumber}>
-                <Text style={styles.stepNumberText}>{index + 1}</Text>
-              </View>
-              <Text style={styles.stepText}>{step.description}</Text>
-            </View>
-          ))}
-        </View>
-
-        {/* Image section */}
-        <View style={styles.imageContainer}>
-          <Image
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-            style={styles.actionImage}
+      {/* Career Superpowers */}
+      <PDFCardSection 
+        title="Your Career Superpowers" 
+        icon={<AwardIcon color={ICON_COLORS.award} size={20} />}
+        isDarkMode={isDarkMode}
+      >
+        {superpowers.map((item, index) => (
+          <PDFListItem
+            key={`superpower-${index}`}
+            text={formatWithUsername(item.description, firstname)}
+            icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
+            isDarkMode={isDarkMode}
           />
-        </View>
+        ))}
+      </PDFCardSection>
 
-        {/* Footer inside the page */}
-        <Text style={styles.footer}>
-          CerebralQ Personality Assessment | Page 4
-        </Text>
-      </View>
-    </>
+      {/* Growth Areas */}
+      <PDFCardSection 
+        title="Where You Can Grow a Bit" 
+        icon={<BriefcaseIcon color={ICON_COLORS.briefcase} size={20} />}
+        isDarkMode={isDarkMode}
+      >
+        {growthAreas.map((item, index) => (
+          <PDFListItem
+            key={`growth-${index}`}
+            text={formatWithUsername(item.description, firstname)}
+            icon={<UpArrowIcon color={ICON_COLORS.upArrow} size={14} />}
+            isDarkMode={isDarkMode}
+          />
+        ))}
+      </PDFCardSection>
+
+      {/* Footer inside the page */}
+      <Text style={styles.footer}>
+        CerebralQ Personality Assessment | Page 3
+      </Text>
+    </View>
   );
 };
 

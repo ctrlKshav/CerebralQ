@@ -6,6 +6,8 @@ import { ResultData } from "@/types/tests/mbti";
 import { getPersonalityInsights } from "@/data/mbti/oldData/personalityInsights";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerPathSection from "./PDFCareerPathSection";
+import PDFActionStepsSection from "./shared/PDFActionStepsSection";
+import PDFCareerSuggestionsSection from "./PDFCareerSuggestionsSection";
 
 // Create styles with theme variants
 const createStyles = (isDarkMode = false) => {
@@ -80,9 +82,8 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         )}
       </Page>
 
-      {/* Third Page: Combined Career Suggestions and Similar Personalities */}
+      {/* Third Page: Career Path - Superpowers and Growth Areas */}
       <Page size="A4" style={styles.page}>
-        {/* Career Suggestions - with compact prop to make it more space-efficient */}
         <PDFCareerPathSection
           firstname={resultData.firstname}
           sectionNumber={2}
@@ -91,7 +92,24 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-     
+      {/* Fourth Page: Action Steps */}
+      <Page size="A4" style={styles.page}>
+        <PDFActionStepsSection
+          actionSteps={resultData.personalityData.career.actionSteps}
+          isDarkMode={isDarkMode}
+          pageNumber={4}
+        />
+      </Page>
+
+      {/* Fifth Page: Career Suggestions */}
+      <Page size="A4" style={styles.page}>
+        <PDFCareerSuggestionsSection
+          career={resultData.personalityData.career}
+          sectionNumber={3}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+        />
+      </Page>
     </Document>
   );
 };
