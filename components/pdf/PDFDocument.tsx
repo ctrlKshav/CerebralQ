@@ -75,7 +75,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           <View style={styles.section}>
             <PDFPersonalityTraits
               traitScores={traitScores}
-              sectionNumber={2}
+              sectionNumber={1}
               isDarkMode={isDarkMode}
               firstname={resultData.firstname ?? undefined}
               personalityType={personalityType}

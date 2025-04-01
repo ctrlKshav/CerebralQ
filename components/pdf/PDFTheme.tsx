@@ -85,7 +85,6 @@ export const createBaseStyles = (isDarkMode: boolean) => {
       fontSize: 18,
       fontFamily: "Helvetica-Bold",
       color: theme.foreground,
-      marginBottom: 5,
     },
     card: {
       padding: 15,
