@@ -3,13 +3,14 @@ import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { CareerPath } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import { AwardIcon, BriefcaseIcon } from "./icons";
+import { AwardIcon, BriefcaseIcon, CheckboxIcon, UpArrowIcon } from "./icons";
 
 // Define specific colors for icons
 const ICON_COLORS = {
   award: "#10b981", // emerald-500
   briefcase: "#f59e0b", // amber-500
-  target: "#3b82f6", // blue-500 (using a default blue for target)
+  checkbox: "#10b981", // emerald-500
+  upArrow: "#f59e0b", // amber-500
 };
 
 // Extract styles to their own object outside the component
@@ -160,6 +161,10 @@ const createCareerSectionStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
+    bulletIcon: {
+      marginRight: 8,
+      marginTop: 1,
+    },
   });
 };
 
@@ -213,7 +218,9 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
 
           {superpowers.map((item, index) => (
             <View style={styles.listItem} key={`superpower-${index}`}>
-              <Text style={styles.bullet}>•</Text>
+              <View style={styles.bulletIcon}>
+                <CheckboxIcon color={ICON_COLORS.checkbox} size={14} />
+              </View>
               <Text style={styles.listItemText}>
                 {formatWithUsername(item.description, firstname)}
               </Text>
@@ -232,7 +239,9 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
 
           {growthAreas.map((item, index) => (
             <View style={styles.listItem} key={`growth-${index}`}>
-              <Text style={styles.bullet}>•</Text>
+              <View style={styles.bulletIcon}>
+                <UpArrowIcon color={ICON_COLORS.upArrow} size={14} />
+              </View>
               <Text style={styles.listItemText}>
                 {formatWithUsername(item.description, firstname)}
               </Text>
