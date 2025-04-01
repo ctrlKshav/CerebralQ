@@ -1,14 +1,11 @@
 ﻿import React from "react";
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { CommunityConnection } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import PDFCardSection from "./shared/PDFCardSection";
 import PDFListItem from "./shared/PDFListItem";
-import {
-  UsersIcon,
-  CheckboxIcon,
-} from "@/components/pdf/shared/icons";
+import { UsersIcon, CheckboxIcon } from "@/components/pdf/shared/icons";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -68,6 +65,16 @@ const createCommunitySectionStyles = (isDarkMode = false) => {
       borderRadius: 8,
       alignSelf: "center",
     },
+    imageContainer: {
+      marginTop: 10,
+      alignItems: "center",
+    },
+    cardImage: {
+      width: 400,
+      height: 200,
+      borderRadius: 8,
+      objectFit: "cover",
+    },
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
@@ -125,6 +132,14 @@ const PDFCommunitySection: React.FC<PDFCommunitySectionProps> = ({
           />
         ))}
       </PDFCardSection>
+
+      {/* Image now below the content */}
+      <View style={styles.imageContainer}>
+        <Image
+          src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          style={styles.cardImage}
+        />
+      </View>
 
       {/* Footer inside the page */}
       <Text style={styles.footer}>
