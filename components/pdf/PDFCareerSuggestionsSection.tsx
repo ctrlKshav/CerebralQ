@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { View, Text, StyleSheet } from "@react-pdf/renderer";
-import { CareerPath } from "@/types/tests/mbti";
+import { CareerPath, CareerSuggestion } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerSuggestionCard from "./shared/PDFCareerSuggestionCard";
 import { formatWithUsername } from "@/lib/formatWithUsername";
@@ -48,82 +48,67 @@ const createCareerSuggestionsStyles = (isDarkMode = false) => {
       maxWidth: 480,
     },
     cardsContainer: {
-      flexDirection: "row",
-      flexWrap: "wrap",
-      justifyContent: "space-between",
-    },
-    cardColumn: {
-      width: "48%",
+      flexDirection: "column",
     },
     footer: baseStyles.footer,
   });
 };
 
 interface PDFCareerSuggestionsSectionProps {
-  career: CareerPath;
+  suggestions: CareerSuggestion[];
   sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;
+  pageNumber: number;
+  isFirstPage?: boolean;
 }
 
 const PDFCareerSuggestionsSection: React.FC<PDFCareerSuggestionsSectionProps> = ({
-  career,
+  suggestions,
   sectionNumber,
   firstname,
   isDarkMode = false,
+  pageNumber,
+  isFirstPage = false
 }) => {
   const styles = createCareerSuggestionsStyles(isDarkMode);
   
-  if (!career.suggestions || career.suggestions.length === 0) {
+  if (!suggestions || suggestions.length === 0) {
     return null;
   }
 
-  // Split suggestions into two columns
-  const leftColumn = career.suggestions.filter((_, i) => i % 2 === 0);
-  const rightColumn = career.suggestions.filter((_, i) => i % 2 === 1);
-
   return (
     <View style={styles.page}>
-      {/* Section header */}
-      <View style={styles.headerContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>Career Suggestions</Text>
+      {/* Only show the header on the first page */}
+      {isFirstPage && (
+        <View style={styles.headerContainer}>
+          <View style={styles.headerRow}>
+            <Text style={styles.sectionNumber}>{sectionNumber}</Text>
+            <Text style={styles.sectionTitle}>Career Suggestions</Text>
+          </View>
+          
+          <Text style={styles.description}>
+            These career paths naturally complement your personality traits and
+            abilities, offering environments where you're likely to thrive and
+            find fulfillment.
+          </Text>
         </View>
-        
-        <Text style={styles.description}>
-          These career paths naturally complement your personality traits and
-          abilities, offering environments where you're likely to thrive and
-          find fulfillment.
-        </Text>
-      </View>
+      )}
 
-      {/* Career suggestions in two columns */}
+      {/* Show one card per row, maximum 2 per page */}
       <View style={styles.cardsContainer}>
-        <View style={styles.cardColumn}>
-          {leftColumn.map((suggestion, index) => (
-            <PDFCareerSuggestionCard 
-              key={`suggestion-left-${index}`}
-              suggestion={suggestion}
-              isDarkMode={isDarkMode}
-            />
-          ))}
-        </View>
-        
-        <View style={styles.cardColumn}>
-          {rightColumn.map((suggestion, index) => (
-            <PDFCareerSuggestionCard 
-              key={`suggestion-right-${index}`}
-              suggestion={suggestion}
-              isDarkMode={isDarkMode}
-            />
-          ))}
-        </View>
+        {suggestions.map((suggestion, index) => (
+          <PDFCareerSuggestionCard 
+            key={`suggestion-${index}`}
+            suggestion={suggestion}
+            isDarkMode={isDarkMode}
+          />
+        ))}
       </View>
 
       {/* Footer */}
       <Text style={styles.footer}>
-        CerebralQ Personality Assessment | Page 5
+        CerebralQ Personality Assessment | Page {pageNumber}
       </Text>
     </View>
   );

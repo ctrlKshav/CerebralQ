@@ -49,8 +49,15 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
     traitScores,
   } = resultData;
 
-  // Get personality insights
-  const personalityInsights = getPersonalityInsights(personalityType);
+  // Get career suggestions and split them into chunks of 2 per page
+  const { career } = resultData.personalityData;
+  const suggestions = career.suggestions || [];
+  const suggestionPages = [];
+  
+  // Split suggestions into chunks of 2
+  for (let i = 0; i < suggestions.length; i += 2) {
+    suggestionPages.push(suggestions.slice(i, i + 2));
+  }
 
   return (
     <Document>
@@ -101,15 +108,19 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-      {/* Fifth Page: Career Suggestions */}
-      <Page size="A4" style={styles.page}>
-        <PDFCareerSuggestionsSection
-          career={resultData.personalityData.career}
-          sectionNumber={3}
-          firstname={resultData.firstname}
-          isDarkMode={isDarkMode}
-        />
-      </Page>
+      {/* Career Suggestions Pages - One page per 2 suggestions */}
+      {suggestionPages.map((pageSuggestions, pageIndex) => (
+        <Page key={`suggestions-page-${pageIndex}`} size="A4" style={styles.page}>
+          <PDFCareerSuggestionsSection
+            suggestions={pageSuggestions}
+            sectionNumber={3}
+            firstname={resultData.firstname}
+            isDarkMode={isDarkMode}
+            pageNumber={5 + pageIndex}
+            isFirstPage={pageIndex === 0}
+          />
+        </Page>
+      ))}
     </Document>
   );
 };
