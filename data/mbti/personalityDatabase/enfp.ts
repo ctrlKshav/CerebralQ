@@ -102,7 +102,7 @@ export const ENFPData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the passionate, fun one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by dreaming big with others, like planning an epic trip with your partner or cheering on your sibling’s wild ideas, but you might need to work on staying present and consistent.",
-      compatibleTypes: [],
+      compatibleTypes: ["INTJ", "INFJ", "ENTJ", "INTP", "ENFJ", "INFP", "ISTJ"],
       superpowers: [
         {
           title: "Being Inspiring",
@@ -150,7 +150,7 @@ export const ENFPData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who brings the party, {firstname}—always ready to dream up a fun plan or get everyone excited about something new. You love having a big group of friends who vibe with your free spirit and endless enthusiasm.",
-      compatibleTypes: [],
+      compatibleTypes: ["INFJ", "INFP", "ENTP", "ENFJ", "INTJ", "INTP", "ESFP"],
       superpowers: [
         {
           title: "Being Exciting",

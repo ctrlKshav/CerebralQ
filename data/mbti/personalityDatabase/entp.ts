@@ -102,7 +102,7 @@ export const ENTPData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the witty, adventurous one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by keeping things exciting, like challenging your partner to a playful debate or planning a fun outing with your family, but you might need to work on slowing down to connect more emotionally.",
-      compatibleTypes: [],
+      compatibleTypes: ["INFJ", "INTJ", "INTP", "ENFJ", "INFP", "ENTJ", "ISFJ"],
       superpowers: [
         {
           title: "Keeping Things Fun",
@@ -150,7 +150,7 @@ export const ENTPData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who keeps things exciting, {firstname}—always ready to spark a debate or plan a fun adventure. You love having a big group of friends who are down for your spontaneous ideas and thought-provoking conversations.",
-      compatibleTypes: [],
+      compatibleTypes: ["INTP", "INTJ", "ENFP", "ENTJ", "INFJ", "ENTP", "ESTP"],
       superpowers: [
         {
           title: "Being Entertaining",

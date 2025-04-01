@@ -90,7 +90,7 @@ export const ENTJData: PersonalityDatabase = {
         title: "Relationships",
         subtitle: "How You Show Up in Relationships, {firstname}",
         description: "You’re the driven, inspiring one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by pushing others to be their best, like encouraging your partner to chase their dreams or organizing a family goal-setting session, but you might need to work on slowing down to connect emotionally.",
-        compatibleTypes: [],
+        compatibleTypes: ['INFP', 'INTP', 'ENFP', 'INTJ', 'INFJ', 'ISTP', 'ISFP'],
         superpowers: [
           {
             title: "Being Motivational",
@@ -130,7 +130,7 @@ export const ENTJData: PersonalityDatabase = {
         title: "Friendships",
         subtitle: "How You Shine with Friends, {firstname}",
         description: "You’re the friend who takes the lead, {firstname}—always ready to organize a group adventure or motivate your crew to tackle a challenge. You love having a solid group of friends who respect your leadership and share your drive for success.",
-        compatibleTypes: [],
+        compatibleTypes: ['INTJ', 'INTP', 'ENTP', 'ENTJ', 'ESTJ', 'ENFJ', 'ESTP', 'ISTJ'],
         superpowers: [
           {
             title: "Being Inspiring",

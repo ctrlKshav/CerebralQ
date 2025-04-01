@@ -99,7 +99,7 @@ export const INFJData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the deep, caring one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You love having meaningful connections, like staying up late talking about dreams with your bestie, but you might need time to recharge after being so emotionally present.",
-      compatibleTypes: [],
+      compatibleTypes: ['ENFP', 'ENTP', 'INFP', 'INTJ', 'INTP', 'ENFJ', 'ISFP'],
       superpowers: [
         {
           title: "Understanding Others",
@@ -147,7 +147,7 @@ export const INFJData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who really listens, {firstname}—always there for a heart-to-heart or to help with a big idea. You love having a small, close group of friends who get you, and you’re the one who makes everyone feel understood.",
-      compatibleTypes: [],
+      compatibleTypes: ['ENFP', 'ENTP', 'INFP', 'INTJ', 'INTP', 'ENFJ', 'ISFP'],
       superpowers: [
         {
           title: "Being a Listener",

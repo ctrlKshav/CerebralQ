@@ -106,7 +106,7 @@ export const INTPData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the curious, thoughtful one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by sharing your ideas and having deep conversations, like debating a big topic with your partner, but you might need to work on opening up about your emotions.",
-      compatibleTypes: [],
+      compatibleTypes: ["ENTJ", "ENFJ", "ENFP", "INTJ", "ESTJ", "INFJ", "ENTP"],
       superpowers: [
         {
           title: "Being Thoughtful",
@@ -154,7 +154,7 @@ export const INTPData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend who’s always up for a good debate or a deep dive into a new topic, {firstname}. You love having a small group of friends who get your quirky, intellectual side and are down for thought-provoking chats.",
-      compatibleTypes: [],
+      compatibleTypes: ["INTJ", "ENTP", "INFJ", "ENTJ", "INTP", "ENFP", "ISTP"],
       superpowers: [
         {
           title: "Being Curious",

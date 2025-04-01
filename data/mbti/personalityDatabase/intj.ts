@@ -103,7 +103,7 @@ export const INTJData: PersonalityDatabase = {
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
         "You’re the thoughtful, driven one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by supporting others’ goals, like helping your partner brainstorm their next career move, but you might need to work on opening up about your own feelings.",
-      compatibleTypes: [],
+      compatibleTypes: ["ENTJ", "INTP", "INTJ", "INFJ", "ISTJ", "ENTP", "ENFP"],
       superpowers: [
         {
           title: "Being Supportive",
@@ -151,7 +151,7 @@ export const INTJData: PersonalityDatabase = {
       subtitle: "How You Shine with Friends, {firstname}",
       description:
         "You’re the friend with the big ideas, {firstname}—always there to help your crew think through their goals or solve a problem. You love having a small, trusted group of friends who share your passion for growth and deep conversations.",
-      compatibleTypes: [],
+      compatibleTypes: ["ENTJ", "INTP", "INTJ", "INFJ", "ISTJ", "ENTP", "ENFP"],
       superpowers: [
         {
           title: "Giving Smart Advice",
