@@ -4,6 +4,8 @@ import { CareerPath } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import { AwardIcon, BriefcaseIcon, CheckboxIcon, UpArrowIcon } from "./shared/icons";
+import PDFCardSection from "./shared/PDFCardSection";
+import PDFListItem from "./shared/PDFListItem";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -51,50 +53,6 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       textAlign: "center",
       alignSelf: "center",
       maxWidth: 480,
-    },
-    card: {
-      marginBottom: 25,
-      padding: 18,
-      backgroundColor: theme.card,
-      borderWidth: 1,
-      borderColor: theme.border,
-      borderRadius: 12,
-    },
-    cardTitle: {
-      fontSize: 18,
-      color: theme.primary,
-      fontFamily: "Helvetica-Bold",
-      textAlign: "center",
-    },
-    cardTitleContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      marginBottom: 15,
-      paddingBottom: 8,
-      borderBottomWidth: 1,
-      borderBottomColor: theme.border,
-    },
-    cardTitleIcon: {
-      marginRight: 8,
-    },
-    listItem: {
-      flexDirection: "row",
-      alignItems: "flex-start",
-      marginBottom: 10,
-      paddingHorizontal: 8,
-    },
-    bullet: {
-      fontSize: 16,
-      color: theme.primary,
-      marginRight: 8,
-      lineHeight: 1.2,
-    },
-    listItemText: {
-      flex: 1,
-      fontSize: 13,
-      color: theme.foreground,
-      lineHeight: 1.4,
     },
     actionStepsContainer: {
       marginBottom: 30,
@@ -161,10 +119,6 @@ const createCareerSectionStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
-    bulletIcon: {
-      marginRight: 8,
-      marginTop: 1,
-    },
   });
 };
 
@@ -208,46 +162,36 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
         </View>
 
         {/* Career Superpowers */}
-        <View style={styles.card}>
-          <View style={styles.cardTitleContainer}>
-            <View style={styles.cardTitleIcon}>
-              <AwardIcon color={ICON_COLORS.award} size={20} />
-            </View>
-            <Text style={styles.cardTitle}>Your Career Superpowers</Text>
-          </View>
-
+        <PDFCardSection 
+          title="Your Career Superpowers" 
+          icon={<AwardIcon color={ICON_COLORS.award} size={20} />}
+          isDarkMode={isDarkMode}
+        >
           {superpowers.map((item, index) => (
-            <View style={styles.listItem} key={`superpower-${index}`}>
-              <View style={styles.bulletIcon}>
-                <CheckboxIcon color={ICON_COLORS.checkbox} size={14} />
-              </View>
-              <Text style={styles.listItemText}>
-                {formatWithUsername(item.description, firstname)}
-              </Text>
-            </View>
+            <PDFListItem
+              key={`superpower-${index}`}
+              text={formatWithUsername(item.description, firstname)}
+              icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
+              isDarkMode={isDarkMode}
+            />
           ))}
-        </View>
+        </PDFCardSection>
 
         {/* Growth Areas */}
-        <View style={styles.card}>
-          <View style={styles.cardTitleContainer}>
-            <View style={styles.cardTitleIcon}>
-              <BriefcaseIcon color={ICON_COLORS.briefcase} size={20} />
-            </View>
-            <Text style={styles.cardTitle}>Where You Can Grow a Bit</Text>
-          </View>
-
+        <PDFCardSection 
+          title="Where You Can Grow a Bit" 
+          icon={<BriefcaseIcon color={ICON_COLORS.briefcase} size={20} />}
+          isDarkMode={isDarkMode}
+        >
           {growthAreas.map((item, index) => (
-            <View style={styles.listItem} key={`growth-${index}`}>
-              <View style={styles.bulletIcon}>
-                <UpArrowIcon color={ICON_COLORS.upArrow} size={14} />
-              </View>
-              <Text style={styles.listItemText}>
-                {formatWithUsername(item.description, firstname)}
-              </Text>
-            </View>
+            <PDFListItem
+              key={`growth-${index}`}
+              text={formatWithUsername(item.description, firstname)}
+              icon={<UpArrowIcon color={ICON_COLORS.upArrow} size={14} />}
+              isDarkMode={isDarkMode}
+            />
           ))}
-        </View>
+        </PDFCardSection>
 
         {/* Footer inside the page */}
         <Text style={styles.footer}>
