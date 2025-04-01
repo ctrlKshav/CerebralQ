@@ -72,7 +72,7 @@ const createHeroStyles = (isDarkMode = false) => {
     encouragement: {
       fontSize: 14,
       color: theme.mutedForeground,
-      marginBottom: 20,
+      marginBottom: 10,
       lineHeight: 1.5,
       textAlign: "center",
     },
@@ -87,15 +87,7 @@ const createHeroStyles = (isDarkMode = false) => {
       width: 280,
       height: 280,
     },
-    footer: {
-      position: "absolute",
-      bottom: 30,
-      left: 0,
-      right: 0,
-      textAlign: "center",
-      fontSize: 10,
-      color: theme.mutedForeground,
-    },
+    footer: baseStyles.footer,
   });
 };
 
@@ -110,7 +102,7 @@ interface PDFHeroProps {
 export const PDFHero: React.FC<PDFHeroProps> = ({
   personalityType,
   personalityDescription,
-  completionDate,
+  completionDate, 
   firstname,
   isDarkMode = false,
 }) => {
