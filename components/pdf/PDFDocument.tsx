@@ -8,6 +8,8 @@ import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerPathSection from "./PDFCareerPathSection";
 import PDFActionStepsSection from "./shared/PDFActionStepsSection";
 import PDFCareerSuggestionsSection from "./PDFCareerSuggestionsSection";
+import PDFRelationshipSection from "./PDFRelationshipSection";
+import PDFRelationshipActionSection from "./PDFRelationshipActionSection";
 
 // Create styles with theme variants
 const createStyles = (isDarkMode = false) => {
@@ -50,7 +52,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   } = resultData;
 
   // Get career suggestions and split them into chunks of 2 per page
-  const { career } = resultData.personalityData;
+  const { career, relationships } = resultData.personalityData;
   const suggestions = career.suggestions || [];
   const suggestionPages = [];
   
@@ -58,6 +60,10 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   for (let i = 0; i < suggestions.length; i += 2) {
     suggestionPages.push(suggestions.slice(i, i + 2));
   }
+
+  // Calculate the starting page number for relationship sections
+  const careerStartPage = 5;
+  const relationshipStartPage = careerStartPage + suggestionPages.length;
 
   return (
     <Document>
@@ -116,10 +122,36 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
             sectionNumber={3}
             firstname={resultData.firstname}
             isDarkMode={isDarkMode}
-            pageNumber={5 + pageIndex}
+            pageNumber={careerStartPage + pageIndex}
             isFirstPage={pageIndex === 0}
           />
         </Page>
+      ))}
+
+      {/* Relationship and Friendship Pages - Two pages per relationship */}
+      {relationships.map((relationship, index) => (
+        <React.Fragment key={`relationship-${index}`}>
+          {/* First page with overview, superpowers, and growth areas */}
+          <Page size="A4" style={styles.page}>
+            <PDFRelationshipSection
+              relationship={relationship}
+              sectionNumber={4 + index}
+              firstname={resultData.firstname}
+              isDarkMode={isDarkMode}
+              pageNumber={relationshipStartPage + (index * 2)}
+            />
+          </Page>
+          
+          {/* Second page with action steps and image */}
+          <Page size="A4" style={styles.page}>
+            <PDFRelationshipActionSection
+              relationship={relationship}
+              firstname={resultData.firstname}
+              isDarkMode={isDarkMode}
+              pageNumber={relationshipStartPage + (index * 2) + 1}
+            />
+          </Page>
+        </React.Fragment>
       ))}
     </Document>
   );
