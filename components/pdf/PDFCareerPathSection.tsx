@@ -142,14 +142,14 @@ const createCareerSectionStyles = (isDarkMode = false) => {
   });
 };
 
-interface PDFCareerSectionProps {
+interface PDFCareerPathSectionProps {
   career: CareerPath;
   sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;
 }
 
-const PDFCareerSection: React.FC<PDFCareerSectionProps> = ({
+const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
   career,
   sectionNumber,
   firstname,
@@ -246,4 +246,4 @@ const PDFCareerSection: React.FC<PDFCareerSectionProps> = ({
   );
 };
 
-export default PDFCareerSection;
+export default PDFCareerPathSection;

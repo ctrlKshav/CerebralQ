@@ -9,7 +9,7 @@ import { PDFAboutPersonalityType } from "@/components/pdf/PDFAboutPersonalityTyp
 import { ResultData } from "@/types/tests/mbti";
 import { getPersonalityInsights } from "@/data/mbti/oldData/personalityInsights";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
-import PDFCareerSection from "./PDFCareerSection";
+import PDFCareerPathSection from "./PDFCareerPathSection";
 
 // Create styles with theme variants
 const createStyles = (isDarkMode = false) => {
@@ -87,7 +87,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
       {/* Third Page: Combined Career Suggestions and Similar Personalities */}
       <Page size="A4" style={styles.page}>
         {/* Career Suggestions - with compact prop to make it more space-efficient */}
-        <PDFCareerSection
+        <PDFCareerPathSection
           firstname={resultData.firstname}
           sectionNumber={2}
           career={resultData.personalityData.career}
