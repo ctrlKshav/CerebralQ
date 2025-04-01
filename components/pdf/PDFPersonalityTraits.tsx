@@ -74,7 +74,7 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
       color: "white",
     },
     traitDescription: {
-      marginTop: 10,
+      marginTop: 15,
       padding: 10,
       backgroundColor: theme.accent,
       borderRadius: 8,
