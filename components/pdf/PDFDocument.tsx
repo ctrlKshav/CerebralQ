@@ -2,10 +2,6 @@
 import { Document, Page, StyleSheet, View, Text } from "@react-pdf/renderer";
 import { PDFHero } from "@/components/pdf/PDFHero";
 import { PDFPersonalityTraits } from "@/components/pdf/PDFPersonalityTraits";
-import { PDFCareerSuggestions } from "@/components/pdf/PDFCareerSuggestions";
-import { PDFSimilarPersonalities } from "@/components/pdf/PDFSimilarPersonalities";
-import { PDFDetailedPersonalityInsights } from "@/components/pdf/PDFDetailedPersonalityInsights";
-import { PDFAboutPersonalityType } from "@/components/pdf/PDFAboutPersonalityType";
 import { ResultData } from "@/types/tests/mbti";
 import { getPersonalityInsights } from "@/data/mbti/oldData/personalityInsights";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
@@ -95,18 +91,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-      {/* Fourth Page: Detailed Personality Insights */}
-      <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <PDFDetailedPersonalityInsights
-            personalityType={personalityType}
-            personalityAlias={personalityDescription.alias}
-            personalityInsights={personalityInsights}
-            sectionNumber={5}
-            isDarkMode={isDarkMode}
-          />
-        </View>
-      </Page>
+     
     </Document>
   );
 };
