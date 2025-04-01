@@ -177,7 +177,7 @@ const PDFCareerSection: React.FC<PDFCareerSectionProps> = ({
           </Text>
           <Text style={styles.description}>
             {formatWithUsername(
-              "You're a total force in jobs where you can lead and strategize—like business management, entrepreneurship, or even something high-stakes like law. You love roles that let you take charge and achieve big goals, but you might get frustrated if the work feels inefficient or if others don't keep up with your pace.",
+              career.summary,
               firstname
             )}
           </Text>
@@ -190,7 +190,7 @@ const PDFCareerSection: React.FC<PDFCareerSectionProps> = ({
           {superpowers.map((item, index) => (
             <View style={styles.listItem} key={`superpower-${index}`}>
               <Text style={styles.bullet}>•</Text>
-              <Text style={styles.listItemText}>{item.description}</Text>
+              <Text style={styles.listItemText}>{formatWithUsername(item.description, firstname)}</Text>
             </View>
           ))}
         </View>
@@ -202,7 +202,7 @@ const PDFCareerSection: React.FC<PDFCareerSectionProps> = ({
           {growthAreas.map((item, index) => (
             <View style={styles.listItem} key={`growth-${index}`}>
               <Text style={styles.bullet}>•</Text>
-              <Text style={styles.listItemText}>{item.description}</Text>
+              <Text style={styles.listItemText}>{formatWithUsername(item.description, firstname)}</Text>
             </View>
           ))}
         </View>
