@@ -1,6 +1,6 @@
 ﻿import React from 'react';
 import { Text, View, StyleSheet } from '@react-pdf/renderer';
-import { personalityDatabase } from '@/data/mbti/personalityDatabase';
+import { personalityDatabase } from '@/data/mbti/oldData/personalityDatabase';
 import { createBaseStyles, getThemeColors } from './PDFTheme';
 
 // Extract styles to their own function outside the component

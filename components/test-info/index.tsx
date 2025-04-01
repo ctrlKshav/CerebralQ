@@ -17,7 +17,7 @@ import { TestDimensionsCard } from "@/components/test-info/TestDimensionsCard";
 import { TestResultSection } from "@/components/test-info/TestResultSection";
 import { TestCitationsCard } from "@/components/test-info/CitationsCard";
 import { MBTI_TEST_ID } from "@/lib/constants";
-import { personalityDescriptions } from "@/data/mbti/personalityInformation";
+import { personalityDescriptions } from "@/data/mbti/personalityDescription";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { TeamGrid } from "@/components/team/team-grid";
 import { TeamHero } from "@/components/team/team-hero";

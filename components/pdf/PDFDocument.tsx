@@ -7,7 +7,7 @@ import { PDFSimilarPersonalities } from "@/components/pdf/PDFSimilarPersonalitie
 import { PDFDetailedPersonalityInsights } from "@/components/pdf/PDFDetailedPersonalityInsights";
 import { PDFAboutPersonalityType } from "@/components/pdf/PDFAboutPersonalityType";
 import { ResultData } from "@/types/tests/mbti";
-import { getPersonalityInsights } from "@/data/mbti/personalityInformation";
+import { getPersonalityInsights } from "@/data/mbti/oldData/personalityInsights";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerSection from "./PDFCareerSection";
 

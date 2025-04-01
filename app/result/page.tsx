@@ -10,7 +10,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ResultData } from "@/types/tests/mbti";
 import { Button } from "@/components/ui/button";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
-import { getPersonalityDescription } from "@/data/mbti/personalityInformation";
+import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
 
 export default function ResultCertificatePage() {
   const userDataContext = useUserDataContext();

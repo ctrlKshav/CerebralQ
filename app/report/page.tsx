@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { ResultData } from "@/types/tests/mbti";
 import { TEST_RESULTS_KEY } from "@/lib/constants";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
-import { getPersonalityDescription } from "@/data/mbti/personalityInformation";
+import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
 import { useUserDataContext } from "@/context/user-data";
 
 export default function ReportPage() {
