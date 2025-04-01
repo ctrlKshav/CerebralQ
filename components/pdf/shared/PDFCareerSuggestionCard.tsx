@@ -50,14 +50,14 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       marginBottom: 12,
     },
     title: {
-      fontSize: 18,
+      fontSize: 16,
       fontFamily: "Helvetica-Bold",
       color: theme.foreground,
       maxWidth: "70%", // Prevent title from running into match badge
     },
     matchBadge: {
       paddingVertical: 6,
-      paddingHorizontal: 10,
+      paddingHorizontal: 8,
       borderRadius: 5,
       backgroundColor: suggestion.matchPercentage >= 90 
         ? "#10b981" 
@@ -67,8 +67,8 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     },
     matchBadgeText: {
       color: "#ffffff",
-      fontSize: 11,
-      fontFamily: "Helvetica-Bold",
+      fontSize: 9,
+      fontFamily: "Helvetica",
     },
     content: {
       padding: 16,

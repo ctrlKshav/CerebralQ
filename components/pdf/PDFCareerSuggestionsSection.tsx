@@ -63,16 +63,18 @@ interface PDFCareerSuggestionsSectionProps {
   isFirstPage?: boolean;
 }
 
-const PDFCareerSuggestionsSection: React.FC<PDFCareerSuggestionsSectionProps> = ({
+const PDFCareerSuggestionsSection: React.FC<
+  PDFCareerSuggestionsSectionProps
+> = ({
   suggestions,
   sectionNumber,
   firstname,
   isDarkMode = false,
   pageNumber,
-  isFirstPage = false
+  isFirstPage = false,
 }) => {
   const styles = createCareerSuggestionsStyles(isDarkMode);
-  
+
   if (!suggestions || suggestions.length === 0) {
     return null;
   }
@@ -82,11 +84,10 @@ const PDFCareerSuggestionsSection: React.FC<PDFCareerSuggestionsSectionProps> = 
       {/* Only show the header on the first page */}
       {isFirstPage && (
         <View style={styles.headerContainer}>
-          <View style={styles.headerRow}>
-            <Text style={styles.sectionNumber}>{sectionNumber}</Text>
+          <View style={styles.headerContainer}>
             <Text style={styles.sectionTitle}>Career Suggestions</Text>
           </View>
-          
+
           <Text style={styles.description}>
             These career paths naturally complement your personality traits and
             abilities, offering environments where you're likely to thrive and
@@ -98,7 +99,7 @@ const PDFCareerSuggestionsSection: React.FC<PDFCareerSuggestionsSectionProps> = 
       {/* Show one card per row, maximum 2 per page */}
       <View style={styles.cardsContainer}>
         {suggestions.map((suggestion, index) => (
-          <PDFCareerSuggestionCard 
+          <PDFCareerSuggestionCard
             key={`suggestion-${index}`}
             suggestion={suggestion}
             isDarkMode={isDarkMode}
