@@ -16,6 +16,7 @@ import { useRouter } from "next/navigation";
 interface ActionPlanSectionProps {
   username: string | null;
   firstname: string | null;
+  resultData: ResultData;
   personalityType: string;
   actionItems: ActionItem[];
   sectionNumber?: number;
@@ -25,6 +26,7 @@ interface ActionPlanSectionProps {
 const ActionPlanSection = ({
   username,
   firstname,
+  resultData,
   personalityType,
   actionItems,
   sectionNumber = 10,
@@ -152,7 +154,7 @@ const ActionPlanSection = ({
                 </Button>
                 <div>
                   <PDFGenerator
-                    resultData={sampleResultData}
+                    resultData={resultData}
                     fileName={`${personalityType}-personality-report.pdf`}
                   />
                 </div>

@@ -115,6 +115,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
                 username={resultData?.username || null}
                 firstname={resultData?.firstname || null}
                 personalityType={personalityType}
+                resultData={resultData || sampleResultData}
                 actionItems={
                   resultData?.personalityData.actionItems ||
                   sampleResultData.personalityData.actionItems
