@@ -1,16 +1,12 @@
 ﻿import React from "react";
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { DailyHabits } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import PDFCardSection from "./shared/PDFCardSection";
-import PDFListItem from "./shared/PDFListItem";
 import {
   SunIcon,
   ClockIcon,
   MoonIcon,
-  MessageSquareIcon,
-  CheckboxIcon,
 } from "@/components/pdf/shared/icons";
 
 // Define specific colors for icons
@@ -18,8 +14,6 @@ const ICON_COLORS = {
   sun: "#f59e0b", // amber-500
   clock: "#6366f1", // indigo-500
   moon: "#7c3aed", // violet-600
-  message: "#10b981", // emerald-500
-  checkbox: "#10b981", // emerald-500
 };
 
 // Extract styles to their own object outside the component
@@ -61,20 +55,68 @@ const createDailyHabitsStyles = (isDarkMode = false) => {
       alignSelf: "center",
       maxWidth: 480,
     },
-    communicationContainer: {
-      marginTop: 20,
+    cardContainer: {
+      backgroundColor: theme.card,
+      borderRadius: 10,
+      padding: 20,
+      marginBottom: 30,
+      borderWidth: 1,
+      borderColor: theme.border,
     },
-    communicationTitle: {
+    cardTitle: {
       fontSize: 18,
       color: theme.foreground,
       fontFamily: "Helvetica-Bold",
-      marginBottom: 12,
+      marginBottom: 20,
     },
-    communicationSummary: {
+    habitList: {
+      marginBottom: 25,
+    },
+    habitItem: {
+      flexDirection: 'row',
+      marginBottom: 20,
+    },
+    habitIconContainer: {
+      width: 32,
+      height: 32,
+      borderRadius: 16,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginRight: 12,
+      marginTop: 2,
+    },
+    sunIconContainer: {
+      backgroundColor: '#bfdbfe', // light blue bg
+    },
+    clockIconContainer: {
+      backgroundColor: '#fef3c7', // light amber bg
+    },
+    moonIconContainer: {
+      backgroundColor: '#e0e7ff', // light indigo bg
+    },
+    habitContent: {
+      flex: 1,
+    },
+    habitTitle: {
+      fontSize: 16,
+      fontFamily: "Helvetica-Bold",
+      color: theme.foreground,
+      marginBottom: 5,
+    },
+    habitDescription: {
       fontSize: 14,
       color: theme.mutedForeground,
-      marginBottom: 15,
-      lineHeight: 1.6,
+      lineHeight: 1.5,
+    },
+    imageContainer: {
+      marginTop: 10,
+      alignItems: 'center',
+    },
+    cardImage: {
+      width: 400,
+      height: 200,
+      borderRadius: 8,
+      objectFit: 'cover',
     },
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,
@@ -100,7 +142,7 @@ const PDFDailyHabitsSection: React.FC<PDFDailyHabitsSectionProps> = ({
 }) => {
   // Use the extracted styles
   const styles = createDailyHabitsStyles(isDarkMode);
-  const { habits, communication } = dailyHabits;
+  const { habits } = dailyHabits;
 
   return (
     <View style={styles.page}>
@@ -108,73 +150,69 @@ const PDFDailyHabitsSection: React.FC<PDFDailyHabitsSectionProps> = ({
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>
           <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>Your Daily Habits</Text>
+          <Text style={styles.sectionTitle}>Daily Habits & Communication</Text>
         </View>
         <Text style={styles.subtitle}>
-          {formatWithUsername("Optimizing Your Day, {firstname}", firstname)}
+          {formatWithUsername("Your Daily Habits, {firstname}", firstname)}
         </Text>
         <Text style={styles.description}>
           {formatWithUsername(dailyHabits.summary, firstname)}
         </Text>
       </View>
 
-      {/* Morning Habits */}
-      <PDFCardSection
-        title="Morning Routine"
-        icon={<SunIcon color={ICON_COLORS.sun} size={20} />}
-        isDarkMode={isDarkMode}
-      >
-        <PDFListItem
-          text={formatWithUsername(habits.morning.description, firstname)}
-          icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-          isDarkMode={isDarkMode}
-        />
-      </PDFCardSection>
+      {/* Daily Habits Card with content above, image below */}
+      <View style={styles.cardContainer}>
+        <Text style={styles.cardTitle}>Let's Make It Happen</Text>
+        
+        <View style={styles.habitList}>
+          {/* Morning Routine */}
+          <View style={styles.habitItem}>
+            <View style={[styles.habitIconContainer, styles.sunIconContainer]}>
+              <SunIcon color={ICON_COLORS.sun} size={16} />
+            </View>
+            <View style={styles.habitContent}>
+              <Text style={styles.habitTitle}>{habits.morning.title}</Text>
+              <Text style={styles.habitDescription}>
+                {formatWithUsername(habits.morning.description, firstname)}
+              </Text>
+            </View>
+          </View>
 
-      {/* Afternoon Habits */}
-      <PDFCardSection
-        title="Afternoon Approach"
-        icon={<ClockIcon color={ICON_COLORS.clock} size={20} />}
-        isDarkMode={isDarkMode}
-      >
-        <PDFListItem
-          text={formatWithUsername(habits.afternoon.description, firstname)}
-          icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-          isDarkMode={isDarkMode}
-        />
-      </PDFCardSection>
+          {/* Afternoon Approach */}
+          <View style={styles.habitItem}>
+            <View style={[styles.habitIconContainer, styles.clockIconContainer]}>
+              <ClockIcon color={ICON_COLORS.clock} size={16} />
+            </View>
+            <View style={styles.habitContent}>
+              <Text style={styles.habitTitle}>{habits.afternoon.title}</Text>
+              <Text style={styles.habitDescription}>
+                {formatWithUsername(habits.afternoon.description, firstname)}
+              </Text>
+            </View>
+          </View>
 
-      {/* Evening Habits */}
-      <PDFCardSection
-        title="Evening Wind-down"
-        icon={<MoonIcon color={ICON_COLORS.moon} size={20} />}
-        isDarkMode={isDarkMode}
-      >
-        <PDFListItem
-          text={formatWithUsername(habits.evening.description, firstname)}
-          icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-          isDarkMode={isDarkMode}
-        />
-      </PDFCardSection>
+          {/* Evening Wind-down */}
+          <View style={styles.habitItem}>
+            <View style={[styles.habitIconContainer, styles.moonIconContainer]}>
+              <MoonIcon color={ICON_COLORS.moon} size={16} />
+            </View>
+            <View style={styles.habitContent}>
+              <Text style={styles.habitTitle}>{habits.evening.title}</Text>
+              <Text style={styles.habitDescription}>
+                {formatWithUsername(habits.evening.description, firstname)}
+              </Text>
+            </View>
+          </View>
+        </View>
 
-      {/* Communication Style */}
-      <PDFCardSection
-        title="Your Communication Style"
-        icon={<MessageSquareIcon color={ICON_COLORS.message} size={20} />}
-        isDarkMode={isDarkMode}
-      >
-        <Text style={styles.communicationSummary}>
-          {formatWithUsername(communication.summary, firstname)}
-        </Text>
-        {communication.tips.map((tip, index) => (
-          <PDFListItem
-            key={`communication-tip-${index}`}
-            text={formatWithUsername(tip, firstname)}
-            icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-            isDarkMode={isDarkMode}
+        {/* Image now below the content */}
+        <View style={styles.imageContainer}>
+          <Image 
+            src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            style={styles.cardImage}
           />
-        ))}
-      </PDFCardSection>
+        </View>
+      </View>
 
       {/* Footer inside the page */}
       <Text style={styles.footer}>

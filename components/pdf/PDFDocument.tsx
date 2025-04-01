@@ -17,6 +17,7 @@ import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
 import PDFValuesActionSection from "./PDFValuesActionSection";
 import PDFCommunitySection from "./PDFCommunitySection";
 import PDFActionPlanSection from "./PDFActionPlanSection";
+import PDFCommunicationSection from "./PDFCommunicationSection";
 
 // Create styles with theme variants
 const createStyles = (isDarkMode = false) => {
@@ -73,7 +74,8 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   const relationshipStartPage = careerStartPage + suggestionPages.length;
   const growthStartPage = relationshipStartPage + (relationships.length * 2);
   const dailyHabitsPage = growthStartPage + 2;
-  const valuesStartPage = dailyHabitsPage + 1;
+  const communicationPage = dailyHabitsPage + 1;
+  const valuesStartPage = communicationPage + 1;
   const communityPage = valuesStartPage + 2;
   const actionPlanPage = communityPage + 1;
 
@@ -186,7 +188,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-      {/* Daily Habits Section */}
+      {/* Daily Habits Section - Two pages */}
       <Page size="A4" style={styles.page}>
         <PDFDailyHabitsSection
           dailyHabits={dailyHabits}
@@ -194,6 +196,15 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           firstname={resultData.firstname}
           isDarkMode={isDarkMode}
           pageNumber={dailyHabitsPage}
+        />
+      </Page>
+
+      <Page size="A4" style={styles.page}>
+        <PDFCommunicationSection
+          dailyHabits={dailyHabits}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={communicationPage}
         />
       </Page>
 
