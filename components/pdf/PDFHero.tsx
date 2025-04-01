@@ -142,7 +142,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
           )}{" "}
           {"\n"}
           You're an{" "}
-          <Text style={styles.personalityType}>{personalityType}.</Text>
+          <Text style={styles.personalityType}>{personalityType}</Text>
         </Text>
 
         <Text style={styles.subtitle}>{personalityAlias}</Text>
