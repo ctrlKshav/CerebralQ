@@ -20,11 +20,10 @@ export const lightTheme = {
   input: "#e2e8f0", // 214.3 31.8% 91.4%
   ring: "#6257e3", // 248 73% 62%
   // Chart colors
-  chart1: "#f97316", // 12 76% 61%
-  chart2: "#10b981", // 173 58% 39%
-  chart3: "#1e293b", // 197 37% 24%
-  chart4: "#eab308", // 43 74% 66%
-  chart5: "#f59e0b", // 27 87% 67%
+  chart1: "#4F46E5", 
+  chart2: "#10B981", 
+  chart3: "#F59E0B", 
+  chart4: "#EC4899", 
 };
 
 export const darkTheme = {
@@ -46,11 +45,10 @@ export const darkTheme = {
   input: "#1e293b", // 217.2 32.6% 17.5%
   ring: "#6257e3", // 248 73% 62%
   // Chart colors
-  chart1: "#3b82f6", // 220 70% 50%
-  chart2: "#10b981", // 160 60% 45%
-  chart3: "#cbd5e1", // 30 80% 55%
-  chart4: "#a855f7", // 280 65% 60%
-  chart5: "#ec4899", // 340 75% 55%
+  chart1: "#818CF8", 
+  chart2: "#34D399", 
+  chart3: "#FBBF24", 
+  chart4: "#F472B6", 
 };
 
 // Helper to get the theme based on mode
