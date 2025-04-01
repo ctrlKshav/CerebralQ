@@ -89,6 +89,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         {/* Career Suggestions - with compact prop to make it more space-efficient */}
         <PDFCareerSection
           firstname={resultData.firstname}
+          sectionNumber={2}
           career={resultData.personalityData.career}
           isDarkMode={isDarkMode}
         />

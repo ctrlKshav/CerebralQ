@@ -20,12 +20,6 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       marginBottom: 25,
       alignItems: "center",
     },
-    sectionNumber: {
-      fontSize: 16,
-      color: theme.primary,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 10,
-    },
     title: {
       fontSize: 30,
       color: theme.foreground,
@@ -141,26 +135,23 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       borderRadius: 10,
       objectFit: "cover",
     },
-    footer: {
-      position: "absolute",
-      bottom: 30,
-      left: 0,
-      right: 0,
-      textAlign: "center",
-      fontSize: 10,
-      color: theme.mutedForeground,
-    },
+    footer: baseStyles.footer,
+    headerRow: baseStyles.headerRow,
+    sectionNumber: baseStyles.sectionNumber,
+    sectionTitle: baseStyles.sectionTitle,
   });
 };
 
 interface PDFCareerSectionProps {
   career: CareerPath;
+  sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;
 }
 
 const PDFCareerSection: React.FC<PDFCareerSectionProps> = ({
   career,
+  sectionNumber,
   firstname,
   isDarkMode = false,
 }) => {
@@ -174,8 +165,10 @@ const PDFCareerSection: React.FC<PDFCareerSectionProps> = ({
       <View style={styles.page}>
         {/* Section header */}
         <View style={styles.headerContainer}>
-          <Text style={styles.sectionNumber}>SECTION 3</Text>
-          <Text style={styles.title}>Your Career Path</Text>
+          <View style={styles.headerRow}>
+            <Text style={styles.sectionNumber}>{sectionNumber}</Text>
+            <Text style={styles.sectionTitle}>Your Career Path</Text>
+          </View>
           <Text style={styles.subtitle}>
             {formatWithUsername(
               "How You Shine at Work, {firstname}",
@@ -243,7 +236,7 @@ const PDFCareerSection: React.FC<PDFCareerSectionProps> = ({
             style={styles.actionImage}
           />
         </View>
-        
+
         {/* Footer inside the page */}
         <Text style={styles.footer}>
           CerebralQ Personality Assessment | Page 4

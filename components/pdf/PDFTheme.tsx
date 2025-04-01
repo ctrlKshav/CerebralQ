@@ -66,6 +66,11 @@ export const createBaseStyles = (isDarkMode: boolean) => {
       backgroundColor: theme.background,
       color: theme.foreground,
     },
+    headerRow: {
+      flexDirection: "row",
+      alignItems: "center",
+      marginBottom: 20,
+    },
     sectionNumber: {
       width: 28,
       height: 28,

@@ -15,11 +15,6 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
       position: "relative",
       height: "100%",
     },
-    headerRow: {
-      flexDirection: "row",
-      alignItems: "center",
-      marginBottom: 20,
-    },
     traitContainer: {
       marginTop: 20,
       marginBottom: 20,
@@ -109,6 +104,7 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
       fontFamily: "Helvetica-Bold",
     },
     footer: baseStyles.footer,
+    headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
   });
@@ -136,7 +132,7 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
     <View style={styles.container}>
       <View style={styles.headerRow}>
         <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-        <Text style={styles.sectionTitle}>Personality Traits</Text>
+        <Text style={styles.sectionTitle}>Personality Blueprint</Text>
       </View>
 
       {Object.entries(traitScores).map(([trait, score]) => {
