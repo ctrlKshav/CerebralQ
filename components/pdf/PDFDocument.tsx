@@ -10,6 +10,13 @@ import PDFActionStepsSection from "./shared/PDFActionStepsSection";
 import PDFCareerSuggestionsSection from "./PDFCareerSuggestionsSection";
 import PDFRelationshipSection from "./PDFRelationshipSection";
 import PDFRelationshipActionSection from "./PDFRelationshipActionSection";
+import PDFGrowthSection from "./PDFGrowthSection";
+import PDFGrowthActionSection from "./PDFGrowthActionSection";
+import PDFDailyHabitsSection from "./PDFDailyHabitsSection";
+import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
+import PDFValuesActionSection from "./PDFValuesActionSection";
+import PDFCommunitySection from "./PDFCommunitySection";
+import PDFActionPlanSection from "./PDFActionPlanSection";
 
 // Create styles with theme variants
 const createStyles = (isDarkMode = false) => {
@@ -52,7 +59,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   } = resultData;
 
   // Get career suggestions and split them into chunks of 2 per page
-  const { career, relationships } = resultData.personalityData;
+  const { career, relationships, growth, dailyHabits, valuesAndMotivators, communityConnection, actionItems } = resultData.personalityData;
   const suggestions = career.suggestions || [];
   const suggestionPages = [];
   
@@ -61,9 +68,14 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
     suggestionPages.push(suggestions.slice(i, i + 2));
   }
 
-  // Calculate the starting page number for relationship sections
+  // Calculate the starting page numbers for different sections
   const careerStartPage = 5;
   const relationshipStartPage = careerStartPage + suggestionPages.length;
+  const growthStartPage = relationshipStartPage + (relationships.length * 2);
+  const dailyHabitsPage = growthStartPage + 2;
+  const valuesStartPage = dailyHabitsPage + 1;
+  const communityPage = valuesStartPage + 2;
+  const actionPlanPage = communityPage + 1;
 
   return (
     <Document>
@@ -153,6 +165,79 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           </Page>
         </React.Fragment>
       ))}
+
+      {/* Growth Journey Section - Two pages */}
+      <Page size="A4" style={styles.page}>
+        <PDFGrowthSection
+          growth={growth}
+          sectionNumber={4 + relationships.length}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={growthStartPage}
+        />
+      </Page>
+      
+      <Page size="A4" style={styles.page}>
+        <PDFGrowthActionSection
+          growth={growth}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={growthStartPage + 1}
+        />
+      </Page>
+
+      {/* Daily Habits Section */}
+      <Page size="A4" style={styles.page}>
+        <PDFDailyHabitsSection
+          dailyHabits={dailyHabits}
+          sectionNumber={5 + relationships.length}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={dailyHabitsPage}
+        />
+      </Page>
+
+      {/* Values and Motivators Section - Two pages */}
+      <Page size="A4" style={styles.page}>
+        <PDFValuesAndMotivatorsSection
+          valuesAndMotivators={valuesAndMotivators}
+          sectionNumber={6 + relationships.length}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={valuesStartPage}
+        />
+      </Page>
+
+      <Page size="A4" style={styles.page}>
+        <PDFValuesActionSection
+          valuesAndMotivators={valuesAndMotivators}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={valuesStartPage + 1}
+        />
+      </Page>
+
+      {/* Community Connection Section */}
+      <Page size="A4" style={styles.page}>
+        <PDFCommunitySection
+          community={communityConnection}
+          sectionNumber={7 + relationships.length}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={communityPage}
+        />
+      </Page>
+
+      {/* Action Plan Section */}
+      <Page size="A4" style={styles.page}>
+        <PDFActionPlanSection
+          actionItems={actionItems}
+          sectionNumber={8 + relationships.length}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={actionPlanPage}
+        />
+      </Page>
     </Document>
   );
 };
