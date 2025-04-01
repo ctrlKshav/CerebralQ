@@ -31,7 +31,7 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       fontSize: 20,
       color: theme.foreground,
       fontFamily: "Helvetica-Bold",
-      marginBottom: 15,
+      marginBottom: 20,
       textAlign: "center",
     },
     description: {

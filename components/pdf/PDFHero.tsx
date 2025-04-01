@@ -41,7 +41,7 @@ const createHeroStyles = (isDarkMode = false) => {
       fontSize: 28,
       marginBottom: 12,
       color: theme.foreground,
-      fontFamily: "Helvetica",
+      fontFamily: "Helvetica-Bold",
       textAlign: "center",
       lineHeight: 1.4,
     },
