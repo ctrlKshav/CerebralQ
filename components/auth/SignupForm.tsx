@@ -84,7 +84,7 @@ export function SignupForm({
                 </h1>
                 <p className="text-balance text-muted-foreground">
                   {isNewsletterSignup
-                    ? "Sign up to receive updates and insights."
+                    ? "Sign up to get Beta links and Insider Access."
                     : "Sign up for your Cerebral Quotient account."}
                 </p>
               </div>
