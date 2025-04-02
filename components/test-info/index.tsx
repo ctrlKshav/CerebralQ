@@ -27,7 +27,7 @@ const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
   short_code: "mbti",
   description:
-    "You are about to go on a self-discovery journey. With MBTI—the world’s most beloved personality tool — let’s find out who you really are. Get your unique 4-letter type (like ENFP or ISTJ) and start to see why you light up in chaos, shy away from small talk, or love checking off those to-do lists. Ready?",
+    "You are about to go on a self-discovery journey. With MBTI—the world’s most beloved personality tool — let’s find out who you really are.\n Get your unique 4-letter type (like ENFP or ISTJ) and start to see why you light up in chaos, shy away from small talk, or love checking off those to-do lists.\n Ready?\n",
   features: [
     { icon: Timer, label: "12 mins", color: "bg-blue-100 text-blue-700" },
     {
@@ -207,6 +207,26 @@ export default function TestInformation({ testId }: { testId: string }) {
     fetchUserAndTestData();
   }, []);
 
+  // Utility function to format description with line breaks
+  const formatDescriptionWithLineBreaks = (description: string) => {
+    const segments = description.split('\n');
+    return (
+      <>
+        {segments.map((segment, index) => (
+          <span key={index}>
+            {segment}
+            {index < segments.length - 2 && (
+              <>
+                <br />
+                <br />
+              </>
+            )}
+          </span>
+        ))}
+      </>
+    );
+  };
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -219,9 +239,9 @@ export default function TestInformation({ testId }: { testId: string }) {
             </span>
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {MBTI_TEST.description}
+            {formatDescriptionWithLineBreaks(MBTI_TEST.description)}
           </p>
-          <div className="flex flex-wrap justify-center gap-3">
+          <div className="flex flex-wrap justify-center gap-3 ">
             {MBTI_TEST.features.map((feature, index) => (
               <FeatureBadge
                 key={index}
