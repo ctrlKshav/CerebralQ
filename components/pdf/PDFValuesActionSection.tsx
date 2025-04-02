@@ -60,6 +60,7 @@ const PDFValuesActionSection: React.FC<PDFValuesActionSectionProps> = ({
 
       {/* Action Steps Section */}
       <PDFActionStepsSection
+        firstname={firstname}
         actionSteps={actionItems}
         isDarkMode={isDarkMode}
         pageNumber={pageNumber}
