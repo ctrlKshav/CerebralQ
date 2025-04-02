@@ -23,7 +23,7 @@ const ActionStepsCard = ({
   className = "",
 }: ActionStepsCardProps) => {
   return (
-    <Card className={`h-full ${className} shadow-none border-0 sm:border overflow-hidden`}>
+    <Card className={`h-full  ${className} shadow-none border-0 sm:border overflow-hidden`}>
       <div className="flex flex-col md:flex-row">
         <CardContent className={`px-0 sm:p-8 ${!imageSrc ? 'w-full' : 'md:w-3/5'}`}>
           <div className="flex items-center mb-6">
