@@ -43,7 +43,7 @@ const ValuesMotivatorSection = ({
         />
 
         {/* Core Values and Motivators - Two column layout */}
-        <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* Core Values */}
           <SuperpowersCard
             firstname={firstname}

@@ -50,7 +50,7 @@ const CareerPathSection = ({
         />
 
         {/* Career Superpowers and Growth Areas */}
-        <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* Career Superpowers */}
           <SuperpowersCard 
             firstname={firstname}
@@ -69,7 +69,7 @@ const CareerPathSection = ({
         </div>
 
         {/* "Let's Make It Happen" section */}
-        <div className="px-4 md:px-8 lg:px-16">
+        <div className="">
           <ActionStepsCard
             steps={actionSteps}
             imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"

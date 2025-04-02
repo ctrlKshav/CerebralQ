@@ -51,7 +51,7 @@ export default function PersonalityTraits({
 
       <div
         className={cn(
-          "grid gap-8 sm:px-8  lg:px-16",
+          "grid gap-8 ",
           isMobile ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
         )}
       >

@@ -30,7 +30,7 @@ const GrowthSection = ({ firstname, growth, sectionNumber = 5, id = "growth-sect
         />
 
         {/* Growth Superpowers and Areas to Grow */}
-        <div className="grid md:grid-cols-2 gap-8  md:px-8 lg:px-16 mb-16">
+        <div className="grid md:grid-cols-2 gap-8  mb-16">
           {/* Growth Superpowers */}
           <SuperpowersCard 
             firstname={firstname}
