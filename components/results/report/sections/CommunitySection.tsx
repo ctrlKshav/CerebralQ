@@ -39,7 +39,7 @@ const CommunitySection = ({
             <div className="p-8 md:w-3/5 flex flex-col justify-between">
               <div className="flex items-center mb-6">
                 <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
-                  Let's Make It Happen
+                  Let's Get Started on this!
                 </h3>
               </div>
 

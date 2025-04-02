@@ -46,7 +46,7 @@ const DailyHabitsSection = ({
 
         {/* Daily Habits Section */}
         <ContentImageCard
-          title="Let's Make It Happen"
+          title="Let's Get Started on this!"
           imageSrc="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
           imageAlt="Structured morning routine"
           className="mb-16"
@@ -89,7 +89,7 @@ const DailyHabitsSection = ({
 
           <div className="ml-2 space-y-5">
             <h4 className="font-medium text-lg text-card-foreground mb-3 flex items-center">
-              Let's Make it Happen
+              Let's Get Started on this!"
             </h4>
 
             <GrowthAreasCard

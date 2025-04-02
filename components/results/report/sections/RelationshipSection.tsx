@@ -90,7 +90,6 @@ const RelationshipSection = ({
 
             {/* Let's Make It Happen card with image */}
             <ActionStepsCard
-              title="Let's Make It Happen:"
               steps={relationship.actionSteps}
               imageSrc={
                 relationship.title === "Relationships"

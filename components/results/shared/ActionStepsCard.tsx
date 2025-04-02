@@ -16,7 +16,7 @@ interface ActionStepsCardProps {
 }
 
 const ActionStepsCard = ({
-  title = "Let's Make It Happen",
+  title = "Let's Get Started on this!",
   steps,
   imageSrc,
   imageAlt = "Action steps",
