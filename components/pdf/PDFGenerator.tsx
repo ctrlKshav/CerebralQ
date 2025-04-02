@@ -1,10 +1,17 @@
 ﻿import React, { useEffect, useState } from "react";
-import { BlobProvider } from "@react-pdf/renderer";
+import { BlobProvider, PDFViewer } from "@react-pdf/renderer";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, Eye } from "lucide-react";
 import { PDFResultsDocument } from "@/components/pdf/PDFDocument";
 import { ResultData } from "@/types/tests/mbti";
 import { useTheme } from "next-themes";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface PDFGeneratorProps {
   resultData: ResultData;
@@ -17,6 +24,7 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
 }) => {
   // Using client-side rendering
   const [isClient, setIsClient] = useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const { theme, resolvedTheme } = useTheme();
 
   // Determine if dark mode is active
@@ -60,22 +68,50 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
 
   if (!isClient) {
     return (
-      <Button disabled variant="outline" size="sm" className="w-full">
-        <Download className="w-4 h-4 mr-2" />
-        Preparing Download...
-      </Button>
+      <div className="flex gap-2">
+        <Button disabled variant="outline" size="sm">
+          <Download className="w-4 h-4 mr-2" />
+          Preparing Download...
+        </Button>
+      </div>
     );
   }
 
   return (
-    <Button
-      variant="outline"
-      size="sm"
-      onClick={handleDownload}
-      className="w-full"
-    >
-      <Download className="w-4 h-4 mr-2" />
-      Download Report
-    </Button>
+    <div className="flex gap-2">
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleDownload}
+      >
+        <Download className="w-4 h-4 mr-2" />
+        Download Report
+      </Button>
+      
+      <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
+        <DialogTrigger asChild>
+          <Button variant="secondary" size="sm">
+            <Eye className="w-4 h-4 mr-2" />
+            Preview
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-[95vw] w-[900px] h-svh">
+        
+          <div className="w-full h-full overflow-hidden">
+            <PDFViewer
+              width="100%"
+              height="100%"
+              className="border rounded shadow-sm"
+              showToolbar={false}
+            >
+              <PDFResultsDocument 
+                resultData={resultData} 
+                isDarkMode={isDarkMode} 
+              />
+            </PDFViewer>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </div>
   );
 };

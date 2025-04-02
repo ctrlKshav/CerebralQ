@@ -144,6 +144,7 @@ const ActionPlanSection = ({
                   size="sm"
                   onClick={shareResults}
                   disabled={isSharing}
+                  className="w-full md:w-auto"
                 >
                   <Share2 className="w-4 h-4 mr-2" />
                   {isSharing
@@ -152,7 +153,7 @@ const ActionPlanSection = ({
                       ? "Save & Share"
                       : "Share Results"}
                 </Button>
-                <div>
+                <div className="w-full md:w-auto flex-grow md:flex-grow-0">
                   <PDFGenerator
                     resultData={resultData}
                     fileName={`${personalityType}-personality-report.pdf`}
