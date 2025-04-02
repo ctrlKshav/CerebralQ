@@ -146,7 +146,7 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
 
       {/* Superpowers card */}
       <PDFCardSection 
-        title={`Your ${relationship.title} Superpowers`} 
+        title={`Your ${relationship.title.slice(0,-1)} Superpowers`} 
         icon={<AwardIcon color={ICON_COLORS.award} size={20} />}
         isDarkMode={isDarkMode}
       >
