@@ -11,7 +11,6 @@ import PDFCareerSuggestionsSection from "./PDFCareerSuggestionsSection";
 import PDFRelationshipSection from "./PDFRelationshipSection";
 import PDFRelationshipActionSection from "./PDFRelationshipActionSection";
 import PDFGrowthSection from "./PDFGrowthSection";
-import PDFGrowthActionSection from "./PDFGrowthActionSection";
 import PDFDailyHabitsSection from "./PDFDailyHabitsSection";
 import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
 import PDFValuesActionSection from "./PDFValuesActionSection";
@@ -178,15 +177,16 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           pageNumber={growthStartPage}
         />
       </Page>
-      
+
       <Page size="A4" style={styles.page}>
-        <PDFGrowthActionSection
-          growth={growth}
-          firstname={resultData.firstname}
+        <PDFActionStepsSection
+          actionSteps={growth.actionSteps}
           isDarkMode={isDarkMode}
           pageNumber={growthStartPage + 1}
+          imageSrc="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
         />
       </Page>
+
 
       {/* Daily Habits Section - Two pages */}
       <Page size="A4" style={styles.page}>
