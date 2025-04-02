@@ -33,6 +33,7 @@ const GrowthSection = ({ firstname, growth, sectionNumber = 5, id = "growth-sect
         <div className="grid md:grid-cols-2 gap-8  md:px-8 lg:px-16 mb-16">
           {/* Growth Superpowers */}
           <SuperpowersCard 
+            firstname={firstname}
             title="Your Growth Superpowers"
             items={growthSuperpowers}
             icon={<Award className="h-6 w-6 " strokeWidth={2.2} />}
@@ -40,6 +41,7 @@ const GrowthSection = ({ firstname, growth, sectionNumber = 5, id = "growth-sect
 
           {/* Where You Can Grow a Bit */}
           <GrowthAreasCard
+            firstname={firstname}
             title="Where You Can Grow a Bit"
             items={growthAreas}
             icon={<Lightbulb className="h-6 w-6 " strokeWidth={2.2} />}

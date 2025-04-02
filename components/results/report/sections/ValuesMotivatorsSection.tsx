@@ -46,6 +46,7 @@ const ValuesMotivatorSection = ({
         <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
           {/* Core Values */}
           <SuperpowersCard
+            firstname={firstname}
             title="Your Core Values"
             items={coreValues}
             icon={<Heart className="h-6 w-6" strokeWidth={2.2} />}
@@ -53,6 +54,7 @@ const ValuesMotivatorSection = ({
 
           {/* Motivators */}
           <GrowthAreasCard
+            firstname={firstname}
             title="What Motivates You"
             items={motivators}
             icon={<TrendingUp className="h-6 w-6" strokeWidth={2.2} />}

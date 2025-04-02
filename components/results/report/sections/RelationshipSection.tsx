@@ -73,6 +73,7 @@ const RelationshipSection = ({
             <div className="grid md:grid-cols-2 gap-8 mb-16">
               {/* Superpowers card */}
               <SuperpowersCard
+                firstname={firstname}
                 title={`Your ${relationship.title} Superpowers`}
                 items={relationship.superpowers}
                 icon={<Award className="h-6 w-6 " />}
@@ -80,6 +81,7 @@ const RelationshipSection = ({
 
               {/* Growth areas card */}
               <GrowthAreasCard
+                firstname={firstname}
                 title="Where You Can Grow a Bit"
                 items={relationship.growthAreas}
                 icon={<ArrowRight className="h-6 w-6 " />}
