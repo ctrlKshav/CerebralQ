@@ -247,7 +247,7 @@ export function SignupForm({
             <Image
               src={
                 isNewsletterSignup
-                  ? "/signup2_nl_storyboard.jpeg"
+                  ? "/signup2_nl_creative.png"
                   : "/signup1_book.jpeg"
               }
               alt={
