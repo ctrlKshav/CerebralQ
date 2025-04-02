@@ -46,20 +46,6 @@ export default function CareerSuggestionsCard({
     );
   };
 
-  const getTraitFullName = (trait: MBTITrait) => {
-    const names: Record<MBTITrait, string> = {
-      E: "Extraversion",
-      I: "Introversion",
-      S: "Sensing",
-      N: "Intuition",
-      T: "Thinking",
-      F: "Feeling",
-      J: "Judging",
-      P: "Perceiving",
-    };
-    return names[trait];
-  };
-
   return (
     <div className={`${className} py-12  mx-auto`}>
       {/* Add section header */}
@@ -82,15 +68,16 @@ export default function CareerSuggestionsCard({
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10 ">
+      <div className="grid grid-cols-1 gap-8 lg:gap-10 items-center justify-center">
         {careerData?.map((suggestion, index) => (
           <motion.div
             key={index}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
+            className="flex flex-col items-center justify-center"
           >
-            <Card className="group overflow-hidden border bg-card h-full flex flex-col hover:shadow-xl transition-all duration-300">
+            <Card className="group overflow-hidden border bg-card h-full w-full sm:w-3/4 flex flex-col hover:shadow-xl transition-all duration-300">
               <div className="relative h-56 md:h-64 overflow-hidden">
                 <Image
                   src={getCareerImage(suggestion.title)}
