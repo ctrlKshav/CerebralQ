@@ -121,6 +121,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
       {/* Fourth Page: Action Steps */}
       <Page size="A4" style={styles.page}>
         <PDFActionStepsSection
+          firstname={resultData.firstname}
           actionSteps={resultData.personalityData.career.actionSteps}
           isDarkMode={isDarkMode}
           pageNumber={4}
@@ -180,6 +181,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
 
       <Page size="A4" style={styles.page}>
         <PDFActionStepsSection
+          firstname={resultData.firstname}
           actionSteps={growth.actionSteps}
           isDarkMode={isDarkMode}
           pageNumber={growthStartPage + 1}

@@ -2,6 +2,7 @@
 import { View, Text, StyleSheet, Image } from "@react-pdf/renderer";
 import { ActionStepItem } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "../PDFTheme";
+import { formatWithUsername } from "@/lib/formatWithUsername";
 
 // Create styles with theme variants
 const createActionStepsStyles = (isDarkMode = false) => {
@@ -81,6 +82,7 @@ const createActionStepsStyles = (isDarkMode = false) => {
 };
 
 interface PDFActionStepsSectionProps {
+  firstname: string | null;
   actionSteps: ActionStepItem[];
   imageSrc?: string;
   isDarkMode?: boolean;
@@ -88,6 +90,7 @@ interface PDFActionStepsSectionProps {
 }
 
 const PDFActionStepsSection: React.FC<PDFActionStepsSectionProps> = ({
+  firstname,
   actionSteps,
   imageSrc = "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
   isDarkMode = false,
@@ -108,7 +111,7 @@ const PDFActionStepsSection: React.FC<PDFActionStepsSectionProps> = ({
             <View style={styles.stepNumber}>
               <Text style={styles.stepNumberText}>{index + 1}</Text>
             </View>
-            <Text style={styles.stepText}>{step.description}</Text>
+            <Text style={styles.stepText}>{formatWithUsername(step.description, firstname)}</Text>
           </View>
         ))}
       </View>
