@@ -23,7 +23,7 @@ const ActionStepsCard = ({
   className = "",
 }: ActionStepsCardProps) => {
   return (
-    <Card className={`h-full  ${className} shadow-none border-0 sm:border overflow-hidden`}>
+    <Card className={`h-full ${className} shadow-none border-0 sm:border overflow-hidden`}>
       <div className="flex flex-col md:flex-row">
         <CardContent className={`px-0 sm:p-8 ${!imageSrc ? 'w-full' : 'md:w-3/5'}`}>
           <div className="flex items-center mb-6">
@@ -34,11 +34,11 @@ const ActionStepsCard = ({
 
           <ul className="space-y-5 text-base ml-4">
             {steps.map((step) => (
-              <li key={`action-step-${step.number}`} className="flex items-center">
-                <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
+              <li key={`action-step-${step.number}`} className="flex items-start">
+                <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 flex-shrink-0 relative -top-1 md:-top-0.5">
                   {step.number}
                 </div>
-                <p className="text-card-foreground text-base md:text-lg">
+                <p className="mt-0 text-card-foreground text-base md:text-lg">
                   {step.description}
                 </p>
               </li>
