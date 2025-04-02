@@ -36,7 +36,7 @@ const CommunitySection = ({
         {/* Main content with image - full width layout */}
         <Card className="mb-16 overflow-hidden">
           <div className="flex flex-col md:flex-row">
-            <div className="p-8 md:w-3/5">
+            <div className="p-8 md:w-3/5 flex flex-col justify-between">
               <div className="flex items-center mb-6">
                 <h3 className="text-xl md:text-2xl font-bold text-card-foreground">
                   Let's Make It Happen
@@ -45,8 +45,8 @@ const CommunitySection = ({
 
               <ul className="space-y-6 ml-4">
                 {suggestions.map((suggestion, index) => (
-                  <li key={index} className="flex items-center">
-                    <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 mt-1 flex-shrink-0">
+                  <li key={index} className="flex items-start">
+                    <div className="h-8 w-8 rounded-full bg-primary text-primary-foreground text-base grid place-items-center mr-4 flex-shrink-0 relative -top-1 md:-top-0.5">
                       {(index + 1).toString()}
                     </div>
                     <p className="ml-4 text-lg text-card-foreground">
