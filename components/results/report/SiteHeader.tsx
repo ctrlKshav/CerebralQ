@@ -70,7 +70,7 @@ export function ReportHeader({ firstname }: ReportHeaderProps) {
           </div>
 
           {/* Middle column - Section title */}
-          <div className="flex justify-center">
+          <div className={`${isMobile ? "hidden" : "flex"} justify-center`}>
             <div className="relative">
               <h1 className="text-xl font-semibold tracking-tight text-foreground py-1 px-3 rounded-md relative">
                 {activeSection}
@@ -79,7 +79,7 @@ export function ReportHeader({ firstname }: ReportHeaderProps) {
           </div>
 
           {/* Right column - Greeting */}
-          <div className="flex justify-end">
+          <div className={`flex justify-end ${isMobile ? "justify-self-center" : "justify-self-end"}`}>
             <p className="text-md font-medium text-foreground px-2">
               {greeting}
             </p>
