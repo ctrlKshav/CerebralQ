@@ -53,8 +53,6 @@ export default function ResultCertificatePage() {
   if (userDataContext === null) {
     return null;
   }
-  const { userData, loading: authLoading } = userDataContext;
-
   const [resultData, setResultData] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -102,97 +100,11 @@ export default function ResultCertificatePage() {
         return false;
       }
     };
+    loadResultsFromUrl();    
 
-    // Get data from localStorage and handle saving to database
-    const loadResultsAndSaveToDatabase = async () => {
-      // First try to load from URL parameter
-      const loadedFromUrl = loadResultsFromUrl();
-      if (loadedFromUrl) return;
+  }, [urlPersonalityType]);
 
-      try {
-        // Get stored test results
-        const storedData = localStorage.getItem(TEST_RESULTS_KEY);
-
-        if (!storedData) {
-          setError("No test results found. Please take the test first.");
-          setLoading(false);
-          return;
-        }
-
-        const data = JSON.parse(storedData);
-
-        // Extract required data from localStorage format
-        const personalityType = data.raw_score?.personalityType;
-        const traitScores = data.traitScores || data.raw_score?.traitScores;
-        const testId = data.testId || data.test_type_id;
-        const completionDate =
-          data.completionDate ||
-          (data.timestamp
-            ? new Date(data.timestamp).toLocaleDateString()
-            : data.taken_at
-              ? new Date(data.taken_at).toLocaleDateString()
-              : new Date().toLocaleDateString());
-
-        if (!personalityType) {
-          setError("Invalid test result data. Please retake the test.");
-          setLoading(false);
-          return;
-        }
-
-        const personalityData = getPersonalityData(personalityType);
-        const personalityDescription =
-          getPersonalityDescription(personalityType);
-
-        // Set all result data at once
-        setResultData({
-          firstname: userData?.first_name || null,
-          username: userData?.username || null,
-          personalityType: personalityType,
-          personalityDescription: personalityDescription,
-          completionDate,
-          traitScores,
-          personalityData,
-        });
-
-        // Save results to database if user is logged in
-        if (userData && testId) {
-          // Check if we've already saved this result
-          const savedResults = JSON.parse(
-            localStorage.getItem(SAVED_RESULTS_KEY) || "false"
-          );
-
-          // If result hasn't been saved yet, save it
-          if (!savedResults) {
-            try {
-              // Prepare test data with correct user ID
-              const testData = {
-                ...data,
-                user_id: userData.id,
-              };
-
-              // Save to Supabase
-              await saveTestResults(testData);
-
-              // Mark as saved in localStorage
-              localStorage.setItem(SAVED_RESULTS_KEY, "true");
-            } catch (error) {
-              console.error("Error saving test results:", error);
-            }
-          }
-        }
-
-        setLoading(false);
-      } catch (error) {
-        console.error("Error parsing result data:", error);
-        setError("Failed to load test results. Please retake the test.");
-        setLoading(false);
-      }
-    };
-
-    if (!authLoading) loadResultsAndSaveToDatabase();
-  }, [authLoading, urlPersonalityType]);
-
-  if (loading || authLoading) {
+  if (loading) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <Card className="p-8 text-center shadow">
@@ -229,8 +141,8 @@ export default function ResultCertificatePage() {
   }
   return (
     <div className="">
-      <ResultCertificate userData={userData} resultData={resultData} />
-      <Report userData={userData} resultData={resultData} />
+      <ResultCertificate userData={null} resultData={resultData} />
+      <Report userData={null} resultData={resultData} />
     </div>
   );
 }
