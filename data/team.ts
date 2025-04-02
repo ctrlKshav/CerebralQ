@@ -4,7 +4,7 @@ export const teamMembers: TeamMember[] = [
   {
     name: "Anshika Kushwaha",
     role: "Boss Woman",
-    bio: "Ya Right",  
+    bio: "What are we building next?",  
     imageUrl:
       "/team/ak.jpg",
 
@@ -17,7 +17,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Brishti Sharma",
-    role: "Design Lead",
+    role: "Content Manager",
     bio: "Hi! I’m Brishti, and at 19 I think I've found my muse.",
     imageUrl:
       "/team/bri.jpeg",
@@ -29,7 +29,7 @@ export const teamMembers: TeamMember[] = [
   },
   {
     name: "Sneha Janthe",
-    role: "Content Strategist",
+    role: "Content Manager",
     bio: "Hi, Sneha here! I'm helping to build C4E",
     imageUrl:
       "/team/sneha.jpg",
