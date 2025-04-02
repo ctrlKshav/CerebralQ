@@ -298,6 +298,7 @@ export const ClockIcon: React.FC<IconProps> = ({
       strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
+      fill="none"
     />
   </Svg>
 );
@@ -396,6 +397,7 @@ export const TrendingUpIcon: React.FC<IconProps> = ({
       strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
+      fill="none"
     />
   </Svg>
 );
@@ -483,6 +485,7 @@ export const CheckCircleIcon: React.FC<IconProps> = ({
       strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
+      fill="none"
     />
   </Svg>
 );
@@ -514,6 +517,7 @@ export const ArrowRightIcon: React.FC<IconProps> = ({
       strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
+      fill="none"
     />
   </Svg>
 );
@@ -536,6 +540,7 @@ export const StarIcon: React.FC<IconProps> = ({
       strokeWidth={strokeWidth}
       strokeLinecap="round"
       strokeLinejoin="round"
+      fill="none"
     />
   </Svg>
 );
