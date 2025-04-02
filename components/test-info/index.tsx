@@ -22,6 +22,7 @@ import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { TeamGrid } from "@/components/team/team-grid";
 import { TeamHero } from "@/components/team/team-hero";
 import { teamMembers } from "@/data/team";
+import {motion} from "framer-motion";
 
 const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
@@ -209,7 +210,7 @@ export default function TestInformation({ testId }: { testId: string }) {
 
   // Utility function to format description with line breaks
   const formatDescriptionWithLineBreaks = (description: string) => {
-    const segments = description.split('\n');
+    const segments = description.split("\n");
     return (
       <>
         {segments.map((segment, index) => (
@@ -275,6 +276,17 @@ export default function TestInformation({ testId }: { testId: string }) {
         className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
         id="test-details-section"
       >
+        <div className="mb-12 text-center">
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70"
+            initial={{ scale: 0.95 }}
+            animate={{ scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            About the Test
+          </motion.h1>
+        </div>
+
         <div className="grid gap-12 md:gap-6 md:grid-cols-2 text-md">
           {/* Test Overview Card */}
           <TestOverviewCard testData={MBTI_TEST} />
