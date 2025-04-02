@@ -64,7 +64,8 @@ const createHeroStyles = (isDarkMode = false) => {
     description: {
       fontSize: 14,
       color: theme.mutedForeground,
-      marginBottom: 15,
+      marginBottom: 5,
+      marginTop: 25,
       lineHeight: 1.5,
       textAlign: "center",
       maxWidth: 500,
@@ -102,7 +103,7 @@ interface PDFHeroProps {
 export const PDFHero: React.FC<PDFHeroProps> = ({
   personalityType,
   personalityDescription,
-  completionDate, 
+  completionDate,
   firstname,
   isDarkMode = false,
 }) => {
@@ -140,9 +141,11 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
 
         <Text style={styles.subtitle}>{alias}</Text>
 
-        <Text style={styles.description}>
-          {description}
-        </Text>
+        <View style={styles.imageContainer}>
+          <Image src={imagePath} style={styles.personalityImage} />
+        </View>
+
+        <Text style={styles.description}>{description}</Text>
 
         <Text style={styles.encouragement}>
           Does that sound like you
@@ -157,10 +160,6 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
         </Text>
       </View>
 
-      <View style={styles.imageContainer}>
-        <Image src={imagePath} style={styles.personalityImage} />
-      </View>
-      
       {/* Add footer inside the page */}
       <Text style={styles.footer}>
         CerebralQ Personality Assessment | Page 1
