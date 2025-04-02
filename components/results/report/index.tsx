@@ -26,7 +26,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
     traitScores,
   } = resultData || sampleResultData;
   return (
-    <div className="min-h-screen bg-background [--header-height:theme(spacing.16)]">
+    <div className="min-h-screen bg-background [--header-height:6rem]">
       <SidebarProvider className="flex flex-col">
         <ReportHeader firstname={resultData?.firstname} />
         <div className="flex flex-1">
