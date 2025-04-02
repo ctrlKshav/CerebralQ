@@ -1,6 +1,7 @@
 ﻿import React, { ReactNode } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowUpCircle } from "lucide-react";
+import { formatWithUsername } from "@/lib/formatWithUsername";
 
 interface GrowthAreaItem {
   title: string;
@@ -8,6 +9,7 @@ interface GrowthAreaItem {
 }
 
 interface GrowthAreasCardProps {
+  firstname?: string | null;
   title: string;
   items: GrowthAreaItem[];
   icon: ReactNode;
@@ -17,6 +19,7 @@ interface GrowthAreasCardProps {
 }
 
 const GrowthAreasCard = ({
+  firstname,
   title,
   items,
   icon,
@@ -52,7 +55,7 @@ const GrowthAreasCard = ({
                 <p className="font-medium text-lg mb-1 text-card-foreground">
                   {item.title}
                 </p>
-                <p className="text-card-foreground">{item.description}</p>
+                <p className="text-card-foreground">{formatWithUsername(item.description, firstname)}</p>
               </div>
             </li>
           ))}

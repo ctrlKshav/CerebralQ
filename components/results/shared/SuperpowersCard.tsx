@@ -1,6 +1,7 @@
 ﻿import React, { ReactNode } from "react";
 import { CheckCircle } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import { formatWithUsername } from "@/lib/formatWithUsername";
 
 interface SuperpowerItem {
   title: string;
@@ -8,6 +9,7 @@ interface SuperpowerItem {
 }
 
 interface SuperpowersCardProps {
+  firstname? : string | null;
   title: string;
   items: SuperpowerItem[];
   icon: ReactNode;
@@ -15,6 +17,7 @@ interface SuperpowersCardProps {
 }
 
 const SuperpowersCard = ({
+  firstname,
   title,
   items,
   icon,
@@ -40,7 +43,7 @@ const SuperpowersCard = ({
                 <p className="font-medium text-lg mb-1 text-card-foreground">
                   {item.title}
                 </p>
-                <p className="text-card-foreground">{item.description}</p>
+                <p className="text-card-foreground">{formatWithUsername(item.description, firstname)}</p>
               </div>
             </li>
           ))}

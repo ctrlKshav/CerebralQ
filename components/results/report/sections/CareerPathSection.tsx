@@ -40,6 +40,7 @@ const CareerPathSection = ({ firstname, career, sectionNumber = 3, id = "career-
         <div className="grid md:grid-cols-2 gap-8 px-4 md:px-8 lg:px-16 mb-16">
           {/* Career Superpowers */}
           <SuperpowersCard 
+            firstname={firstname}
             title="Your Career Superpowers"
             items={superpowers}
             icon={<Award className="h-6 w-6" strokeWidth={2.2} />}
@@ -47,6 +48,7 @@ const CareerPathSection = ({ firstname, career, sectionNumber = 3, id = "career-
 
           {/* Growth Areas */}
           <GrowthAreasCard
+            firstname={firstname}
             title="Where You Can Grow a Bit"
             items={growthAreas}
             icon={<Briefcase className="h-6 w-6 " strokeWidth={2.2} />}
