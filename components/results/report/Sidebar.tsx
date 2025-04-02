@@ -34,22 +34,29 @@ import {
 import { sidebarNavData } from "@/data/report/sidebarNav";
 
 export function ReportSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
-  const { state } = useSidebar();
+  const { isMobile, state } = useSidebar();
   const triggerButtonTopPosition = "calc(var(--header-height) + 1.5rem)";
   
-  // Common button styles for both states
-  const buttonStyle = "h-9 w-9 bg-white hover:bg-white dark:bg-slate-950/80 dark:hover:bg-slate-950/80";
+  // Common button styles
+  const buttonStyle = "h-9 w-9 bg-white hover:bg-white dark:bg-slate-950/80 dark:hover:bg-slate-950/80  z-50";
   
   return (
     <>
-      {/* External trigger with smooth transitions */}
+      {/* Trigger button that moves with the sidebar */}
       <div 
-        className={`fixed left-4 z-30 transition-all duration-300 ease-in-out ${
-          state === "expanded" ? "opacity-0 pointer-events-none transform -translate-x-2" : "opacity-100 transform translate-x-0"
-        }`}
-        style={{ top: triggerButtonTopPosition }}
+        className="fixed z-50 transition-all duration-300 ease-in-out"
+        style={{ 
+          top: state === "expanded" 
+            ? "calc(var(--header-height) + 1.7rem)" // Consistent vertical position
+            : triggerButtonTopPosition,
+          left: state === "expanded" 
+            ? isMobile ? 'calc(100% - 4rem)' : 'calc(20rem - 4rem)' // Moved inside sidebar when expanded
+            : isMobile ? '12px' : '16px',
+        }}
       >
-        <SidebarTrigger className={`${buttonStyle} transition-all duration-300 ease-in-out`} />
+        <SidebarTrigger 
+          className={`${buttonStyle} ${isMobile ? "h-10 w-10" : ""}`} 
+        />
       </div>
       
       <Sidebar
@@ -57,21 +64,13 @@ export function ReportSidebar({ ...props }: React.ComponentProps<typeof Sidebar>
         style={{ "--sidebar-width": "20rem" } as React.CSSProperties}
         {...props}
       >
-        <SidebarHeader className="relative mb-4">
+        <SidebarHeader className="mb-4">
           <SidebarMenu>
             <SidebarMenuItem className="px-4 pt-6">
               <div className="flex items-center justify-between w-full">
                 <span className="font-semibold text-xl text-slate-800 dark:text-white">CQ Report</span>
-                
-                {/* Internal trigger with matching styling and transitions */}
-                <div 
-                  className={`right-4 transition-all duration-300 ease-in-out ${
-                    state === "collapsed" ? "opacity-0 pointer-events-none transform translate-x-2" : "opacity-100 transform translate-x-0"
-                  }`}
-                  style={{ top: `calc(${triggerButtonTopPosition} - var(--header-height))` }}
-                >
-                  <SidebarTrigger className={`${buttonStyle} transition-all duration-300 ease-in-out`} />
-                </div>
+                {/* Empty placeholder to maintain spacing */}
+                <div className="w-9"></div>
               </div>
             </SidebarMenuItem>
           </SidebarMenu>
