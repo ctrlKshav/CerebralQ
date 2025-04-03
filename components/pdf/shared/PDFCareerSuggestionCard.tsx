@@ -23,7 +23,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       borderColor: theme.border,
       overflow: "hidden",
       flexDirection: "row",
-      height: 200, // Fixed height for consistency
+      height: 170, // Fixed height for consistency
     },
     imageContainer: {
       width: "35%",
@@ -43,8 +43,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
-      padding: 16,
-      paddingBottom: 10,
+      padding: 8,
       borderBottomWidth: 1,
       borderBottomColor: theme.border,
       marginBottom: 12,

@@ -69,9 +69,9 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   const suggestions = career.suggestions || [];
   const suggestionPages = [];
 
-  // Split suggestions into chunks of 2
-  for (let i = 0; i < suggestions.length; i += 2) {
-    suggestionPages.push(suggestions.slice(i, i + 2));
+  // Split suggestions into chunks of 3
+  for (let i = 0; i < suggestions.length; i += 3) {
+    suggestionPages.push(suggestions.slice(i, i + 3));
   }
 
   // Calculate the starting page numbers for different sections

@@ -96,7 +96,7 @@ const PDFCareerSuggestionsSection: React.FC<
         </View>
       )}
 
-      {/* Show one card per row, maximum 2 per page */}
+      {/* Show one card per row, maximum 3 per page */}
       <View style={styles.cardsContainer}>
         {suggestions.map((suggestion, index) => (
           <PDFCareerSuggestionCard
