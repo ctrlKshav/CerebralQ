@@ -83,7 +83,7 @@ interface PDFActionImageSectionProps {
 const PDFActionImageSection: React.FC<PDFActionImageSectionProps> = ({
   actionSteps,
   imageSrc,
-  title = "Let's Make It Happen",
+  title = "Let's Get Started on this!",
   firstname,
   isDarkMode = false,
 }) => {
