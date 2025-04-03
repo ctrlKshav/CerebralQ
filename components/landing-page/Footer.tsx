@@ -69,6 +69,7 @@ export default function Footer() {
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    scroll={true}
                   >
                     {link.name}
                   </Link>
