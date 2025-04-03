@@ -125,3 +125,34 @@ export const createBaseStyles = (isDarkMode: boolean) => {
     },
   });
 };
+
+export const createTwoColumnLayoutStyles = (isDarkMode: boolean) => {
+  const theme = getThemeColors(isDarkMode);
+  return StyleSheet.create({
+    columnsContainer: {
+      flexDirection: "row",
+      marginBottom: 20,
+      gap: 15,
+    },
+    column: {
+      flex: 1,
+    },
+    columnTitleContainer: {
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+      marginBottom: 12,
+      paddingBottom: 8,
+      borderBottomWidth: 1,
+      borderBottomColor: theme.border,
+    },
+    columnTitle: {
+      fontSize: 18,
+      color: theme.primary,
+      fontFamily: "Helvetica-Bold",
+    },
+    listSection: {
+      marginBottom: 5,
+    },
+  });
+};

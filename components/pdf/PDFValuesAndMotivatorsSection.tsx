@@ -11,6 +11,7 @@ import {
   CheckboxIcon,
   UpArrowIcon,
 } from "@/components/pdf/shared/icons";
+import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -95,37 +96,16 @@ const PDFValuesAndMotivatorsSection: React.FC<PDFValuesAndMotivatorsSectionProps
         </Text>
       </View>
 
-      {/* Core Values */}
-      <PDFCardSection
-        title="Your Core Values"
-        icon={<HeartIcon color={ICON_COLORS.heart} size={20} />}
+      <PDFTwoColumnSection
+        leftTitle="Your Core Values"
+        leftIcon={<HeartIcon color={ICON_COLORS.heart} size={20} />}
+        leftItems={coreValues}
+        rightTitle="What Motivates You"
+        rightIcon={<TrendingUpIcon color={ICON_COLORS.trendingUp} size={20} />}
+        rightItems={motivators}
+        firstname={firstname}
         isDarkMode={isDarkMode}
-      >
-        {coreValues.map((value, index) => (
-          <PDFListItem
-            key={`core-value-${index}`}
-            text={formatWithUsername(value.description, firstname)}
-            icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-            isDarkMode={isDarkMode}
-          />
-        ))}
-      </PDFCardSection>
-
-      {/* Motivators */}
-      <PDFCardSection
-        title="What Motivates You"
-        icon={<TrendingUpIcon color={ICON_COLORS.trendingUp} size={20} />}
-        isDarkMode={isDarkMode}
-      >
-        {motivators.map((motivator, index) => (
-          <PDFListItem
-            key={`motivator-${index}`}
-            text={formatWithUsername(motivator.description, firstname)}
-            icon={<UpArrowIcon color={ICON_COLORS.upArrow} size={14} />}
-            isDarkMode={isDarkMode}
-          />
-        ))}
-      </PDFCardSection>
+      />
 
       {/* Footer inside the page */}
       <Text style={styles.footer}>

@@ -11,6 +11,8 @@ import {
   CheckboxIcon,
   UpArrowIcon,
 } from "@/components/pdf/shared/icons";
+import PDFActionImageSection from "./shared/PDFActionImageSection";
+import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -56,7 +58,7 @@ const createGrowthSectionStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: baseStyles.sectionSubtitle
+    sectionSubtitle: baseStyles.sectionSubtitle,
   });
 };
 
@@ -88,46 +90,34 @@ const PDFGrowthSection: React.FC<PDFGrowthSectionProps> = ({
           <Text style={styles.sectionTitle}>Your Growth Journey</Text>
         </View>
         <Text style={styles.sectionSubtitle}>
-          {formatWithUsername("Your Path to Personal Evolution, {firstname}", firstname)}
+          {formatWithUsername(
+            "Your Path to Personal Evolution, {firstname}",
+            firstname
+          )}
         </Text>
         <Text style={styles.description}>
           {formatWithUsername(growth.summary, firstname)}
         </Text>
       </View>
 
-      {/* Growth Superpowers */}
-      <PDFCardSection
-        title="Your Growth Superpowers"
-        icon={<AwardIcon color={ICON_COLORS.award} size={20} />}
+      {/* Replace separate card sections with two-column layout */}
+      <PDFTwoColumnSection
+        leftTitle="Superpowers"
+        leftIcon={<AwardIcon color={ICON_COLORS.award} size={20} />}
+        leftItems={superpowers}
+        rightTitle="Growth Areas"
+        rightIcon={<LightbulbIcon color={ICON_COLORS.lightbulb} size={20} />}
+        rightItems={growthAreas}
+        firstname={firstname}
         isDarkMode={isDarkMode}
-      >
-        {superpowers.map((item, index) => (
-          <PDFListItem
-            key={`growth-superpower-${index}`}
-            text={formatWithUsername(item.description, firstname)}
-            icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-            isDarkMode={isDarkMode}
-          />
-        ))}
-      </PDFCardSection>
+      />
 
-      {/* Growth Areas */}
-      <PDFCardSection
-        title="Where You Can Grow a Bit"
-        icon={<LightbulbIcon color={ICON_COLORS.lightbulb} size={20} />}
+      <PDFActionImageSection
+        actionSteps={growth.actionSteps}
+        imageSrc="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+        firstname={firstname}
         isDarkMode={isDarkMode}
-      >
-        {growthAreas.map((item, index) => (
-          <PDFListItem
-            key={`growth-area-${index}`}
-            text={formatWithUsername(item.description, firstname)}
-            icon={<UpArrowIcon color={ICON_COLORS.upArrow} size={14} />}
-            isDarkMode={isDarkMode}
-          />
-        ))}
-      </PDFCardSection>
-
-      {/* Footer inside the page */}
+      />
       <Text style={styles.footer}>
         Cerebral Quotient Personality Assessment | Page {pageNumber}
       </Text>

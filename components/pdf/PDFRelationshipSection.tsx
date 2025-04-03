@@ -6,6 +6,7 @@ import { formatWithUsername } from "@/lib/formatWithUsername";
 import { ArrowRightIcon, HeartIcon, UsersIcon, MessageSquareIcon, AwardIcon, CheckboxIcon } from "./shared/icons";
 import PDFCardSection from "./shared/PDFCardSection";
 import PDFListItem from "./shared/PDFListItem";
+import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -131,37 +132,17 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
         </View>
       </View>
 
-      {/* Superpowers card */}
-      <PDFCardSection 
-        title={`Your ${relationship.title.slice(0,-1)} Superpowers`} 
-        icon={<AwardIcon color={ICON_COLORS.award} size={20} />}
+      {/* Replace superpowers and growth areas with two-column section */}
+      <PDFTwoColumnSection
+        leftTitle={`Superpowers`}
+        leftIcon={<AwardIcon color={ICON_COLORS.award} size={20} />}
+        leftItems={superpowers}
+        rightTitle="Growth Areas"
+        rightIcon={getSectionIcon(relationship.title)}
+        rightItems={growthAreas}
+        firstname={firstname}
         isDarkMode={isDarkMode}
-      >
-        {superpowers.map((item, index) => (
-          <PDFListItem
-            key={`superpower-${index}`}
-            text={formatWithUsername(item.description, firstname)}
-            icon={<MessageSquareIcon color={ICON_COLORS.messageSquare} size={14} />}
-            isDarkMode={isDarkMode}
-          />
-        ))}
-      </PDFCardSection>
-
-      {/* Growth areas card */}
-      <PDFCardSection 
-        title="Where You Can Grow a Bit" 
-        icon={getSectionIcon(relationship.title)}
-        isDarkMode={isDarkMode}
-      >
-        {growthAreas.map((item, index) => (
-          <PDFListItem
-            key={`growth-${index}`}
-            text={formatWithUsername(item.description, firstname)}
-            icon={<ArrowRightIcon color={ICON_COLORS.arrowRight} size={14} />}
-            isDarkMode={isDarkMode}
-          />
-        ))}
-      </PDFCardSection>
+      />
 
       {/* Footer inside the page */}
       <Text style={styles.footer}>

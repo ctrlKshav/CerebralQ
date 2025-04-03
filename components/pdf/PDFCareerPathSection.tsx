@@ -11,14 +11,7 @@ import {
   CheckboxIcon,
   UpArrowIcon,
 } from "@/components/pdf/shared/icons";
-
-// Define specific colors for icons
-const ICON_COLORS = {
-  award: "#10b981", // emerald-500
-  briefcase: "#f59e0b", // amber-500
-  checkbox: "#10b981", // emerald-500
-  upArrow: "#f59e0b", // amber-500
-};
+import { ICON_COLORS } from "@/lib/constants";
 
 // Extract styles to their own object outside the component
 const createCareerSectionStyles = (isDarkMode = false) => {

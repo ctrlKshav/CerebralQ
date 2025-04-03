@@ -180,16 +180,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-      <Page size="A4" style={styles.page}>
-        <PDFActionStepsSection
-          firstname={resultData.firstname}
-          actionSteps={growth.actionSteps}
-          isDarkMode={isDarkMode}
-          pageNumber={growthStartPage + 1}
-          imageSrc="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-        />
-      </Page>
-
       {/* Daily Habits Section - Two pages */}
       <Page size="A4" style={styles.page}>
         <PDFDailyHabitsSection
