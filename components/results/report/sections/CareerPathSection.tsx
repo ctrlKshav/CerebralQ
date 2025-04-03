@@ -68,7 +68,7 @@ const CareerPathSection = ({
           />
         </div>
 
-        {/* "Let's Make It Happen" section */}
+        {/* "Let's get started on this!" section */}
         <div className="">
           <ActionStepsCard
             firstname={firstname}

@@ -148,7 +148,7 @@ const PDFCommunicationSection: React.FC<PDFCommunicationSectionProps> = ({
           {formatWithUsername(communication.summary, firstname)}
         </Text>
         
-        <Text style={styles.tipsTitle}>Let's Make it Happen</Text>
+        <Text style={styles.tipsTitle}>Let's get started on this!</Text>
         
         <View style={styles.tipsList}>
           {communication.tips.map((tip, index) => (

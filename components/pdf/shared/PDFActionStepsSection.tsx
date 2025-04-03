@@ -100,10 +100,10 @@ const PDFActionStepsSection: React.FC<PDFActionStepsSectionProps> = ({
 
   return (
     <View style={styles.page}>
-      {/* "Let's Make It Happen" section */}
+      {/* "Let's get started on this!" section */}
       <View style={styles.actionStepsContainer}>
         <View style={styles.actionStepsTitleContainer}>
-          <Text style={styles.actionStepsTitle}>Let's Make It Happen</Text>
+          <Text style={styles.actionStepsTitle}>Let's get started on this!</Text>
         </View>
 
         {actionSteps.map((step, index) => (

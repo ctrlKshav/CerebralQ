@@ -48,7 +48,7 @@ const GrowthSection = ({ firstname, growth, sectionNumber = 5, id = "growth-sect
           />
         </div>
 
-        {/* Let's Make It Happen section */}
+        {/* Let's get started on this! section */}
         <ActionStepsCard
           firstname={firstname}
           steps={growthActionSteps}

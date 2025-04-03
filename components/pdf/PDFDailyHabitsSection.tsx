@@ -162,7 +162,7 @@ const PDFDailyHabitsSection: React.FC<PDFDailyHabitsSectionProps> = ({
 
       {/* Daily Habits Card with content above, image below */}
       <View style={styles.cardContainer}>
-        <Text style={styles.cardTitle}>Let's Make It Happen</Text>
+        <Text style={styles.cardTitle}>Let's get started on this!</Text>
         
         <View style={styles.habitList}>
           {/* Morning Routine */}

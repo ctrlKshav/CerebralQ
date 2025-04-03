@@ -88,7 +88,7 @@ const RelationshipSection = ({
               />
             </div>
 
-            {/* Let's Make It Happen card with image */}
+            {/* Let's get started on this! card with image */}
             <ActionStepsCard
               firstname={firstname}
               steps={relationship.actionSteps}
