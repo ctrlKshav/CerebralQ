@@ -16,8 +16,8 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
       height: "100%",
     },
     traitContainer: {
-      marginTop: 20,
-      marginBottom: 20,
+      marginTop: 10,
+      marginBottom: 10,
     },
     labelRow: {
       flexDirection: "row",
@@ -216,7 +216,7 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
 
       {/* Add footer inside the page */}
       <Text style={styles.footer}>
-        CerebralQ Personality Assessment | Page 2
+        Cerebral Quotient Personality Assessment | Page 2
       </Text>
     </View>
   );

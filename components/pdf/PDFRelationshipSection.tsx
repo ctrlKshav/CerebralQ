@@ -178,7 +178,7 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
 
       {/* Footer inside the page */}
       <Text style={styles.footer}>
-        CerebralQ Personality Assessment | Page {pageNumber}
+        Cerebral Quotient Personality Assessment | Page {pageNumber}
       </Text>
     </View>
   );

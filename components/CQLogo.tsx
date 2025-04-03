@@ -23,6 +23,6 @@ export default function CQLogo({
   }, [theme, resolvedTheme]);
 
   return (
-    <img src={logoSrc} alt="CerebralQ" className={`${className} object-contain`} />
+    <img src={logoSrc} alt="Cerebral Quotient" className={`${className} object-contain`} />
   );
 }

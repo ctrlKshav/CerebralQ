@@ -195,7 +195,7 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
 
       {/* Footer inside the page */}
       <Text style={styles.footer}>
-        CerebralQ Personality Assessment | Page 3
+        Cerebral Quotient Personality Assessment | Page 3
       </Text>
     </View>
   );
