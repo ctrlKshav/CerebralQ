@@ -71,12 +71,12 @@ export const createBaseStyles = (isDarkMode: boolean) => {
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
-      marginBottom: 30,
+      marginBottom: 15,
     },
     sectionNumber: {
-      width: 28,
-      height: 28,
-      borderRadius: 14,
+      width: 32,
+      height: 32,
+      borderRadius: 16,
       borderWidth: 1,
       borderColor: theme.primary,
       color: theme.primary,
@@ -87,9 +87,16 @@ export const createBaseStyles = (isDarkMode: boolean) => {
       paddingTop: 5, // Fix vertical alignment
     },
     sectionTitle: {
-      fontSize: 18,
+      fontSize: 24,
       fontFamily: "Helvetica-Bold",
       color: theme.foreground,
+    },
+    sectionSubtitle: {
+      fontSize: 16,
+      fontFamily: "Helvetica",
+      color: theme.foreground,
+      marginBottom: 20,
+      textAlign: "center",
     },
     card: {
       padding: 15,

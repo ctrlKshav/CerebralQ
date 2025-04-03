@@ -107,10 +107,12 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
+    sectionSubtitle: baseStyles.sectionSubtitle,
   });
 };
 
 interface PDFPersonalityTraitsProps {
+  subtitle?: string;
   traitScores: TraitScores;
   sectionNumber: number;
   personalityType: string;
@@ -119,6 +121,7 @@ interface PDFPersonalityTraitsProps {
 }
 
 export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
+  subtitle = "Let's break down what makes you tick—it's like a little guide to understanding yourself better!",
   traitScores,
   sectionNumber,
   personalityType,
@@ -134,6 +137,8 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
         <Text style={styles.sectionNumber}>{sectionNumber}</Text>
         <Text style={styles.sectionTitle}>Personality Blueprint</Text>
       </View>
+
+      <Text style={styles.sectionSubtitle}>{subtitle}</Text>
 
       {Object.entries(traitScores).map(([trait, score]) => {
         const typedTrait = trait as keyof TraitScores;
