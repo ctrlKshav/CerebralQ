@@ -27,7 +27,7 @@ const ValuesMotivatorSection = ({
 
   return (
     <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-16" id={id}>
-      <div className="max-w-[1800px] mx-auto">
+      <div className=" ">
         {/* Section header */}
         <SectionHeader
           title="Values & Motivators"
