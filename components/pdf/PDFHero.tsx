@@ -13,21 +13,34 @@ const createHeroStyles = (isDarkMode = false) => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      padding: 20, // Reduced padding
-      justifyContent: "flex-start", // Changed to start from the top
+      justifyContent: "flex-start",
       height: "100%",
-      position: "relative",
+      position: "relative", // Important for absolute positioning
     },
     contentContainer: {
       width: "100%",
       alignItems: "center",
-      marginBottom: 15, // Reduced margin
+      marginBottom: 15,
+      paddingTop: 20, // Add padding to account for the logo at the top
+    },
+    logoContainer: {
+      position: "absolute",
+      top: 10, // Position at the very top of the page
+      left: 10, // Position at the very left of the page
+      width: 86,
+      height: 52,
+      zIndex: 10,
+    },
+    logo: {
+      width: "100%",
+      height: "100%",
     },
     badge: {
-      padding: 3, // Smaller padding
+      padding: 3,
       backgroundColor: theme.muted,
-      borderRadius: 10, // Smaller radius
-      marginBottom: 12, // Reduced margin
+      borderRadius: 10,
+      marginTop: 0,
+      marginBottom: 12,
       textAlign: "center",
       width: "auto",
       alignSelf: "center",
@@ -47,11 +60,15 @@ const createHeroStyles = (isDarkMode = false) => {
     },
     greeting: {
       fontSize: 24, // Slightly smaller
+      marginTop: 8,
       marginBottom: 8, // Reduced margin
       color: theme.foreground,
       fontFamily: "Times-Bold", // More clinical font
       textAlign: "center",
       lineHeight: 1.3,
+      width: "60%", // Control width
+      wordBreak: "normal", // Prevent overflow
+      
     },
     nameText: {
       color: theme.primary,
@@ -100,6 +117,7 @@ const createHeroStyles = (isDarkMode = false) => {
       marginTop: 8,
       lineHeight: 1.4,
       textAlign: "center",
+      width: "90%", // Control width
       fontFamily: "Times-Italic",
     },
     interpretationNote: {
@@ -129,6 +147,13 @@ const createHeroStyles = (isDarkMode = false) => {
       width: "80%",
     },
     footer: baseStyles.footer,
+    headerContainer: {
+      width: "100%",
+      flexDirection: "row",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: 10,
+    },
   });
 };
 
@@ -169,8 +194,15 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
 
   return (
     <View style={styles.page}>
+      {/* Logo absolutely positioned to the page (not the content container) */}
+      <View style={styles.logoContainer}>
+        <Image 
+          src="/logoLight.png" 
+          style={styles.logo} 
+        />
+      </View>
+      
       <View style={styles.contentContainer}>
-        
         <View style={styles.badge}>
           <Text style={styles.badgeText}>Assessment Completed: {completionDate}</Text>
         </View>
@@ -181,7 +213,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
               Welcome, <Text style={styles.nameText}>{firstname}!</Text>
             </>
           ) : (
-            <>Welcome to Your Assessment Results</>
+            <>Welcome, User!</>
           )}
         </Text>
 
