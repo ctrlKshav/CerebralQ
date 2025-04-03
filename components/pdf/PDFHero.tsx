@@ -13,68 +13,59 @@ const createHeroStyles = (isDarkMode = false) => {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      padding: 40,
-      justifyContent: "space-between",
+      padding: 20, // Reduced padding
+      justifyContent: "flex-start", // Changed to start from the top
       height: "100%",
       position: "relative",
     },
     contentContainer: {
       width: "100%",
       alignItems: "center",
-      marginBottom: 20,
+      marginBottom: 15, // Reduced margin
     },
     badge: {
-      padding: 8,
+      padding: 6,
       backgroundColor: theme.primary,
-      borderRadius: 20,
-      marginBottom: 20,
+      borderRadius: 16,
+      marginBottom: 15, // Reduced margin
       textAlign: "center",
     },
     badgeText: {
-      fontSize: 12,
-      fontWeight: "semibold",
+      fontSize: 10, // Smaller font
+      fontWeight: "bold",
       color: theme.primaryForeground,
-      padding: "2 10",
+      padding: "2 8",
       marginHorizontal: 2,
     },
-    greeting: {
-      fontSize: 28,
-      marginBottom: 12,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
+    reportTitle: {
+      fontSize: 14,
+      color: theme.mutedForeground,
+      fontFamily: "Times-Roman",
+      marginBottom: 4,
       textAlign: "center",
-      lineHeight: 1.4,
+    },
+    greeting: {
+      fontSize: 24, // Slightly smaller
+      marginBottom: 8, // Reduced margin
+      color: theme.foreground,
+      fontFamily: "Times-Bold", // More clinical font
+      textAlign: "center",
+      lineHeight: 1.3,
     },
     nameText: {
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "Times-Bold",
     },
     personalityType: {
-      fontFamily: "Helvetica-Bold",
-      fontSize: 32,
+      fontFamily: "Times-Bold",
+      fontSize: 28,
       color: theme.primary,
     },
     subtitle: {
-      fontSize: 20,
+      fontSize: 18,
       color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 18,
-      textAlign: "center",
-    },
-    description: {
-      fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 5,
-      marginTop: 25,
-      lineHeight: 1.5,
-      textAlign: "center",
-      maxWidth: 500,
-    },
-    encouragement: {
-      fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 10,
-      lineHeight: 1.5,
+      fontFamily: "Times-Italic", // Italics for the alias
+      marginBottom: 12,
       textAlign: "center",
     },
     imageContainer: {
@@ -82,11 +73,59 @@ const createHeroStyles = (isDarkMode = false) => {
       alignItems: "center",
       justifyContent: "center",
       marginTop: 5,
-      marginBottom: 15,
+      marginBottom: 12,
+      borderWidth: 1,
+      borderColor: theme.border,
+      padding: 2,
     },
     personalityImage: {
-      width: 280,
-      height: 280,
+      width: 320, // Wider image
+      height: 200, // Adjusted height for better aspect ratio
+    },
+    description: {
+      fontSize: 12,
+      color: theme.foreground, // Darker text for better readability
+      marginBottom: 5,
+      marginTop: 16,
+      lineHeight: 1.4,
+      textAlign: "left", // Left aligned for easier reading
+      width: "90%", // Control width
+      fontFamily: "Times-Roman", // More clinical font
+    },
+    encouragement: {
+      fontSize: 12,
+      color: theme.foreground,
+      marginBottom: 8,
+      marginTop: 8,
+      lineHeight: 1.4,
+      textAlign: "center",
+      fontFamily: "Times-Italic",
+    },
+    interpretationNote: {
+      fontSize: 11,
+      color: theme.mutedForeground,
+      marginTop: 12,
+      marginBottom: 8,
+      lineHeight: 1.4,
+      textAlign: "left",
+      width: "90%",
+      padding: 10,
+      backgroundColor: theme.muted,
+      borderRadius: 4,
+      borderLeftWidth: 3,
+      borderLeftColor: theme.primary,
+      fontFamily: "Helvetica",
+    },
+    assessmentInfo: {
+      fontSize: 10,
+      color: theme.mutedForeground,
+      lineHeight: 1.4,
+      textAlign: "center",
+      marginTop: 8,
+      borderTopWidth: 1,
+      borderTopColor: theme.border,
+      paddingTop: 8,
+      width: "80%",
     },
     footer: baseStyles.footer,
   });
@@ -98,6 +137,7 @@ interface PDFHeroProps {
   completionDate: string;
   firstname: string | null;
   isDarkMode?: boolean;
+  profileImage?: string;
 }
 
 export const PDFHero: React.FC<PDFHeroProps> = ({
@@ -106,12 +146,18 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
   completionDate,
   firstname,
   isDarkMode = false,
+  profileImage,
 }) => {
   const styles = createHeroStyles(isDarkMode);
 
-  // Map personality types to their respective image paths (same as in HeroSection)
+  // Use a more professional image URL for personality types
   const personalityImages: Record<string, string> = {
-    default: "/ENTJ.jpeg",
+    INTJ: "https://cdn.pixabay.com/photo/2018/03/10/09/45/businessman-3213659_1280.jpg",
+    INTP: "https://cdn.pixabay.com/photo/2017/08/30/12/45/girl-2696947_1280.jpg",
+    ENTJ: "https://cdn.pixabay.com/photo/2017/08/06/09/50/people-2590997_1280.jpg",
+    ENTP: "https://cdn.pixabay.com/photo/2015/07/31/15/01/man-869215_1280.jpg",
+    // Add other types with appropriate images
+    default: "https://cdn.pixabay.com/photo/2017/07/31/11/44/people-2557464_1280.jpg",
   };
 
   const imagePath =
@@ -123,22 +169,23 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
   return (
     <View style={styles.page}>
       <View style={styles.contentContainer}>
+        <Text style={styles.reportTitle}>PERSONALITY ASSESSMENT REPORT</Text>
+        
         <View style={styles.badge}>
-          <Text style={styles.badgeText}>Completed on {completionDate}</Text>
+          <Text style={styles.badgeText}>Assessment Completed: {completionDate}</Text>
         </View>
 
         <Text style={styles.greeting}>
-          Hey{" "}
           {firstname ? (
-            <Text style={styles.nameText}>{firstname}!</Text>
+            <>
+              Welcome, <Text style={styles.nameText}>{firstname}</Text>
+            </>
           ) : (
-            <>there!</>
-          )}{" "}
-          {"\n"}
-          You're an{" "}
-          <Text style={styles.personalityType}>{personalityType}</Text>
+            <>Welcome to Your Assessment Results</>
+          )}
         </Text>
 
+        <Text style={styles.personalityType}>{personalityType} Personality Type</Text>
         <Text style={styles.subtitle}>{alias}</Text>
 
         <View style={styles.imageContainer}>
@@ -148,7 +195,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
         <Text style={styles.description}>{description}</Text>
 
         <Text style={styles.encouragement}>
-          Does that sound like you
+          Does this personality profile resonate with you
           {firstname ? (
             <Text>
               , <Text style={styles.nameText}>{firstname}</Text>
@@ -156,13 +203,27 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
           ) : (
             ""
           )}
-          ? Let's dive into what makes you so incredible!
+          ? The following pages will provide deeper insights into your unique traits and tendencies.
+        </Text>
+
+        <Text style={styles.interpretationNote}>
+          <Text style={{ fontFamily: "Helvetica-Bold" }}>How to Interpret Your Results: </Text>
+          This assessment identifies your primary personality type based on cognitive preferences. 
+          While these results represent your dominant traits, remember that personality exists on a 
+          spectrum. Use these insights as a framework for self-understanding rather than a rigid 
+          categorization.
+        </Text>
+
+        <Text style={styles.assessmentInfo}>
+          This assessment is based on the Myers-Briggs Type Indicator® framework and complementary 
+          personality research. The insights provided are designed to help you understand your 
+          natural preferences and tendencies.
         </Text>
       </View>
 
       {/* Add footer inside the page */}
       <Text style={styles.footer}>
-        CerebralQ Personality Assessment | Page 1
+        Cerebral Quotient | Personality Assessment | Page 1
       </Text>
     </View>
   );
