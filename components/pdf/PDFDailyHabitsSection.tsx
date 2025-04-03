@@ -3,11 +3,7 @@ import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { DailyHabits } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import {
-  SunIcon,
-  ClockIcon,
-  MoonIcon,
-} from "@/components/pdf/shared/icons";
+import { SunIcon, ClockIcon, MoonIcon } from "@/components/pdf/shared/icons";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -66,26 +62,26 @@ const createDailyHabitsStyles = (isDarkMode = false) => {
       marginBottom: 25,
     },
     habitItem: {
-      flexDirection: 'row',
+      flexDirection: "row",
       marginBottom: 20,
     },
     habitIconContainer: {
       width: 32,
       height: 32,
       borderRadius: 16,
-      alignItems: 'center',
-      justifyContent: 'center',
+      alignItems: "center",
+      justifyContent: "center",
       marginRight: 12,
       marginTop: 2,
     },
     sunIconContainer: {
-      backgroundColor: '#bfdbfe', // light blue bg
+      backgroundColor: "#fff7ed", // light amber/orange bg that complements the sun icon
     },
     clockIconContainer: {
-      backgroundColor: '#fef3c7', // light amber bg
+      backgroundColor: "#eef2ff", // light indigo bg that matches the clock icon
     },
     moonIconContainer: {
-      backgroundColor: '#e0e7ff', // light indigo bg
+      backgroundColor: "#f3e8ff", // light violet bg that matches the moon icon
     },
     habitContent: {
       flex: 1,
@@ -103,13 +99,13 @@ const createDailyHabitsStyles = (isDarkMode = false) => {
     },
     imageContainer: {
       marginTop: 10,
-      alignItems: 'center',
+      alignItems: "center",
     },
     cardImage: {
       width: 400,
       height: 200,
       borderRadius: 8,
-      objectFit: 'cover',
+      objectFit: "cover",
     },
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,
@@ -174,7 +170,9 @@ const PDFDailyHabitsSection: React.FC<PDFDailyHabitsSectionProps> = ({
 
           {/* Afternoon Approach */}
           <View style={styles.habitItem}>
-            <View style={[styles.habitIconContainer, styles.clockIconContainer]}>
+            <View
+              style={[styles.habitIconContainer, styles.clockIconContainer]}
+            >
               <ClockIcon color={ICON_COLORS.clock} size={16} />
             </View>
             <View style={styles.habitContent}>
@@ -201,7 +199,7 @@ const PDFDailyHabitsSection: React.FC<PDFDailyHabitsSectionProps> = ({
 
         {/* Image now below the content */}
         <View style={styles.imageContainer}>
-          <Image 
+          <Image
             src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
             style={styles.cardImage}
           />
