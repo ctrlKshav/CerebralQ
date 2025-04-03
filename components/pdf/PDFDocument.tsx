@@ -124,7 +124,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-
       {/* Career Suggestions Pages - One page per 2 suggestions */}
       {suggestionPages.map((pageSuggestions, pageIndex) => (
         <Page
@@ -149,21 +148,16 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           {/* First page with overview, superpowers, and growth areas */}
           <Page size="A4" style={styles.page}>
             <PDFRelationshipSection
+              imageSrc={
+                index === 0
+                  ? "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop"
+                  : "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000&auto=format&fit=crop"
+              }
               relationship={relationship}
               sectionNumber={4 + index}
               firstname={resultData.firstname}
               isDarkMode={isDarkMode}
               pageNumber={relationshipStartPage + index * 2}
-            />
-          </Page>
-
-          {/* Second page with action steps and image */}
-          <Page size="A4" style={styles.page}>
-            <PDFRelationshipActionSection
-              relationship={relationship}
-              firstname={resultData.firstname}
-              isDarkMode={isDarkMode}
-              pageNumber={relationshipStartPage + index * 2 + 1}
             />
           </Page>
         </React.Fragment>

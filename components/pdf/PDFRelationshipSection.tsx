@@ -7,6 +7,7 @@ import { ArrowRightIcon, HeartIcon, UsersIcon, MessageSquareIcon, AwardIcon, Che
 import PDFCardSection from "./shared/PDFCardSection";
 import PDFListItem from "./shared/PDFListItem";
 import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
+import PDFActionImageSection from "./shared/PDFActionImageSection";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -80,6 +81,7 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
 };
 
 interface PDFRelationshipSectionProps {
+  imageSrc: string;
   relationship: RelationshipCompatibility;
   sectionNumber: number;
   firstname: string | null;
@@ -88,6 +90,7 @@ interface PDFRelationshipSectionProps {
 }
 
 const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
+  imageSrc,
   relationship,
   sectionNumber,
   firstname,
@@ -142,6 +145,17 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
         rightItems={growthAreas}
         firstname={firstname}
         isDarkMode={isDarkMode}
+      />
+
+      <PDFActionImageSection
+        actionSteps={[
+          { description: "Reflect on your superpowers and growth areas." },
+          { description: "Discuss them with someone you trust." },
+        ]}
+        imageSrc={imageSrc}
+        firstname={firstname}
+        isDarkMode={isDarkMode}
+        title="Let's Get Started on this!"
       />
 
       {/* Footer inside the page */}
