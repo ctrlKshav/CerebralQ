@@ -4,6 +4,7 @@ import { CareerPath } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import PDFListItem from "./shared/PDFListItem";
+import PDFActionImageSection from "./shared/PDFActionImageSection";
 import {
   AwardIcon,
   BriefcaseIcon,
@@ -67,67 +68,6 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       borderBottomWidth: 1,
       borderBottomColor: theme.border,
     },
-    actionStepsContainer: {
-      marginTop: 15,
-      marginBottom: 20,
-    },
-    actionImageContainer: {
-      marginBottom: 12,
-      width: '100%',
-      height: 180,
-    },
-    actionImage: {
-      width: '100%',
-      height: '100%',
-      objectFit: "cover",
-      borderRadius: 6,
-    },
-    actionStepsTitle: {
-      fontSize: 18,
-      color: theme.primary,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 12,
-      paddingBottom: 4,
-      borderBottomWidth: 1,
-      borderBottomColor: theme.border,
-    },
-    actionStepsContent: {
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      justifyContent: 'space-between',
-    },
-    actionStep: {
-      flexDirection: "row",
-      alignItems: "flex-start",
-      marginBottom: 8,
-      width: '48%', // Two columns of steps
-    },
-    stepNumber: {
-      width: 20,
-      height: 20,
-      borderRadius: 10,
-      backgroundColor: theme.primary,
-      alignItems: "center",
-      justifyContent: "center",
-      marginRight: 8,
-    },
-    stepNumberText: {
-      color: theme.primaryForeground,
-      fontSize: 11,
-      fontFamily: "Helvetica-Bold",
-    },
-    stepText: {
-      flex: 1,
-      fontSize: 12,
-      color: theme.foreground,
-      lineHeight: 1.4,
-      paddingTop: 2,
-    },
-    imageContainer: {
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 15,
-    },
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
@@ -154,7 +94,6 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
 }) => {
   // Use the extracted styles
   const styles = createCareerSectionStyles(isDarkMode);
-  const theme = getThemeColors(isDarkMode);
   const { superpowers, growthAreas, actionSteps } = career;
 
   return (
@@ -216,32 +155,13 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
         </View>
       </View>
 
-      {/* Action Steps - "Let's Make It Happen" Section - Full width with image above */}
-      <View style={styles.actionStepsContainer}>
-        {/* Image above action steps */}
-        <View style={styles.actionImageContainer}>
-          <Image
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-            style={styles.actionImage}
-          />
-        </View>
-        
-        {/* Full width action steps */}
-        <Text style={styles.actionStepsTitle}>Let's Make It Happen</Text>
-        
-        <View style={styles.actionStepsContent}>
-          {actionSteps && actionSteps.map((step, index) => (
-            <View key={`step-${index}`} style={styles.actionStep}>
-              <View style={styles.stepNumber}>
-                <Text style={styles.stepNumberText}>{index + 1}</Text>
-              </View>
-              <Text style={styles.stepText}>
-                {formatWithUsername(step.description, firstname)}
-              </Text>
-            </View>
-          ))}
-        </View>
-      </View>
+      {/* Action Steps - Using the new reusable component */}
+      <PDFActionImageSection
+        actionSteps={actionSteps || []}
+        imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+        firstname={firstname}
+        isDarkMode={isDarkMode}
+      />
 
       {/* Footer inside the page */}
       <Text style={styles.footer}>
