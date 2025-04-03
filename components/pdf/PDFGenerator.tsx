@@ -88,6 +88,30 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
         Download Report
       </Button>
       
+      <Dialog open={isPreviewOpen} onOpenChange={setIsPreviewOpen}>
+        <DialogTrigger asChild>
+          <Button variant="secondary" size="sm">
+            <Eye className="w-4 h-4 mr-2" />
+            Preview
+          </Button>
+        </DialogTrigger>
+        <DialogContent className="max-w-[95vw] w-[900px] h-svh">
+        
+          <div className="w-full h-full overflow-hidden">
+            <PDFViewer
+              width="100%"
+              height="100%"
+              className="border rounded shadow-sm"
+              showToolbar={false}
+            >
+              <PDFResultsDocument 
+                resultData={resultData} 
+                isDarkMode={isDarkMode} 
+              />
+            </PDFViewer>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
