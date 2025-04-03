@@ -40,6 +40,12 @@ export function SignupForm({
   } | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  
+  // making sure we are always on the top of the scroll when the page loads
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
 
   // Check if user came from newsletter link
   const source = searchParams.get("source");
