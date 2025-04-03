@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { CareerPath } from "@/types/tests/mbti";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import PDFCardSection from "./shared/PDFCardSection";
 import PDFListItem from "./shared/PDFListItem";
 import {
   AwardIcon,
@@ -27,91 +26,116 @@ const createCareerSectionStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
-      padding: 40,
+      padding: 20, // Reduced padding to use more width
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
     headerContainer: {
-      marginBottom: 25,
+      marginBottom: 20,
       alignItems: "center",
     },
-  
     description: {
       fontSize: 14,
       color: theme.mutedForeground,
-      marginBottom: 30,
+      marginBottom: 20,
       lineHeight: 1.6,
       textAlign: "center",
       alignSelf: "center",
-      maxWidth: 480,
+      maxWidth: 540,
     },
-    actionStepsContainer: {
-      marginBottom: 30,
-      padding: 25,
-      backgroundColor: theme.card,
-      borderWidth: 1,
-      borderColor: theme.border,
-      borderRadius: 12,
+    columnsContainer: {
+      flexDirection: 'row',
+      marginBottom: 20,
+      gap: 15, // Reduced gap
     },
-    actionStepsTitle: {
-      fontSize: 24,
+    column: {
+      flex: 1,
+    },
+    columnTitle: {
+      fontSize: 18,
       color: theme.primary,
       fontFamily: "Helvetica-Bold",
       textAlign: "center",
     },
-    actionStepsTitleContainer: {
+    columnTitleContainer: {
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",
-      marginBottom: 20,
-      paddingBottom: 10,
+      marginBottom: 12,
+      paddingBottom: 8,
       borderBottomWidth: 1,
       borderBottomColor: theme.border,
+    },
+    actionStepsContainer: {
+      marginTop: 15,
+      marginBottom: 20,
+    },
+    actionImageContainer: {
+      marginBottom: 12,
+      width: '100%',
+      height: 180,
+    },
+    actionImage: {
+      width: '100%',
+      height: '100%',
+      objectFit: "cover",
+      borderRadius: 6,
+    },
+    actionStepsTitle: {
+      fontSize: 18,
+      color: theme.primary,
+      fontFamily: "Helvetica-Bold",
+      marginBottom: 12,
+      paddingBottom: 4,
+      borderBottomWidth: 1,
+      borderBottomColor: theme.border,
+    },
+    actionStepsContent: {
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
     },
     actionStep: {
       flexDirection: "row",
       alignItems: "flex-start",
-      marginBottom: 16,
-      paddingHorizontal: 10,
+      marginBottom: 8,
+      width: '48%', // Two columns of steps
     },
     stepNumber: {
-      width: 26,
-      height: 26,
-      borderRadius: 13,
+      width: 20,
+      height: 20,
+      borderRadius: 10,
       backgroundColor: theme.primary,
       alignItems: "center",
       justifyContent: "center",
-      marginRight: 10,
+      marginRight: 8,
     },
     stepNumberText: {
       color: theme.primaryForeground,
-      fontSize: 14,
+      fontSize: 11,
       fontFamily: "Helvetica-Bold",
     },
     stepText: {
       flex: 1,
-      fontSize: 14,
+      fontSize: 12,
       color: theme.foreground,
-      lineHeight: 1.5,
-      paddingTop: 3,
+      lineHeight: 1.4,
+      paddingTop: 2,
     },
     imageContainer: {
       alignItems: "center",
       justifyContent: "center",
-      marginTop: 25,
-    },
-    actionImage: {
-      width: 450,
-      height: 250,
-      borderRadius: 10,
-      objectFit: "cover",
+      marginTop: 15,
     },
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
     sectionSubtitle: baseStyles.sectionSubtitle,
+    listSection: {
+      marginBottom: 5,
+    },
   });
 };
 
@@ -149,37 +173,75 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
         </Text>
       </View>
 
-      {/* Career Superpowers */}
-      <PDFCardSection
-        title="Your Career Superpowers"
-        icon={<AwardIcon color={ICON_COLORS.award} size={20} />}
-        isDarkMode={isDarkMode}
-      >
-        {superpowers.map((item, index) => (
-          <PDFListItem
-            key={`superpower-${index}`}
-            text={formatWithUsername(item.description, firstname)}
-            icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-            isDarkMode={isDarkMode}
-          />
-        ))}
-      </PDFCardSection>
+      {/* Two column layout for Superpowers and Growth Areas */}
+      <View style={styles.columnsContainer}>
+        {/* Career Superpowers Column */}
+        <View style={styles.column}>
+          <View style={styles.columnTitleContainer}>
+            <AwardIcon color={ICON_COLORS.award} size={18} />
+            <Text style={[styles.columnTitle, { marginLeft: 8 }]}>
+              Career Superpowers
+            </Text>
+          </View>
+          <View style={styles.listSection}>
+            {superpowers.map((item, index) => (
+              <PDFListItem
+                key={`superpower-${index}`}
+                text={formatWithUsername(item.description, firstname)}
+                icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
+                isDarkMode={isDarkMode}
+              />
+            ))}
+          </View>
+        </View>
 
-      {/* Growth Areas */}
-      <PDFCardSection
-        title="Where You Can Grow a Bit"
-        icon={<BriefcaseIcon color={ICON_COLORS.briefcase} size={20} />}
-        isDarkMode={isDarkMode}
-      >
-        {growthAreas.map((item, index) => (
-          <PDFListItem
-            key={`growth-${index}`}
-            text={formatWithUsername(item.description, firstname)}
-            icon={<UpArrowIcon color={ICON_COLORS.upArrow} size={14} />}
-            isDarkMode={isDarkMode}
+        {/* Growth Areas Column */}
+        <View style={styles.column}>
+          <View style={styles.columnTitleContainer}>
+            <BriefcaseIcon color={ICON_COLORS.briefcase} size={18} />
+            <Text style={[styles.columnTitle, { marginLeft: 8 }]}>
+              Growth Areas
+            </Text>
+          </View>
+          <View style={styles.listSection}>
+            {growthAreas.map((item, index) => (
+              <PDFListItem
+                key={`growth-${index}`}
+                text={formatWithUsername(item.description, firstname)}
+                icon={<UpArrowIcon color={ICON_COLORS.upArrow} size={14} />}
+                isDarkMode={isDarkMode}
+              />
+            ))}
+          </View>
+        </View>
+      </View>
+
+      {/* Action Steps - "Let's Make It Happen" Section - Full width with image above */}
+      <View style={styles.actionStepsContainer}>
+        {/* Image above action steps */}
+        <View style={styles.actionImageContainer}>
+          <Image
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+            style={styles.actionImage}
           />
-        ))}
-      </PDFCardSection>
+        </View>
+        
+        {/* Full width action steps */}
+        <Text style={styles.actionStepsTitle}>Let's Make It Happen</Text>
+        
+        <View style={styles.actionStepsContent}>
+          {actionSteps && actionSteps.map((step, index) => (
+            <View key={`step-${index}`} style={styles.actionStep}>
+              <View style={styles.stepNumber}>
+                <Text style={styles.stepNumberText}>{index + 1}</Text>
+              </View>
+              <Text style={styles.stepText}>
+                {formatWithUsername(step.description, firstname)}
+              </Text>
+            </View>
+          ))}
+        </View>
+      </View>
 
       {/* Footer inside the page */}
       <Text style={styles.footer}>

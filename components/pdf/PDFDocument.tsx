@@ -124,15 +124,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-      {/* Fourth Page: Action Steps */}
-      <Page size="A4" style={styles.page}>
-        <PDFActionStepsSection
-          firstname={resultData.firstname}
-          actionSteps={resultData.personalityData.career.actionSteps}
-          isDarkMode={isDarkMode}
-          pageNumber={4}
-        />
-      </Page>
 
       {/* Career Suggestions Pages - One page per 2 suggestions */}
       {suggestionPages.map((pageSuggestions, pageIndex) => (
