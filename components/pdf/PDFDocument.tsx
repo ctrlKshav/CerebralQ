@@ -15,6 +15,7 @@ import PDFDailyHabitsSection from "./PDFDailyHabitsSection";
 import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
 import PDFValuesActionSection from "./PDFValuesActionSection";
 import PDFCommunicationSection from "./PDFCommunicationSection";
+import PDFActionImageSection from "./shared/PDFActionImageSection";
 
 // Create styles with theme variants
 const createStyles = (isDarkMode = false) => {
@@ -205,14 +206,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-      <Page size="A4" style={styles.page}>
-        <PDFValuesActionSection
-          valuesAndMotivators={valuesAndMotivators}
-          firstname={resultData.firstname}
-          isDarkMode={isDarkMode}
-          pageNumber={valuesStartPage + 1}
-        />
-      </Page>
+    
     </Document>
   );
 };

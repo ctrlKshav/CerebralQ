@@ -12,6 +12,8 @@ import {
   UpArrowIcon,
 } from "@/components/pdf/shared/icons";
 import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
+import PDFValuesActionSection from "./PDFValuesActionSection";
+import PDFActionImageSection from "./shared/PDFActionImageSection";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -28,13 +30,13 @@ const createValuesSectionStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
-      padding: 40,
+      padding: 20, // Reduced from 40
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
     headerContainer: {
-      marginBottom: 25,
+      marginBottom: 15, // Reduced from 25
       alignItems: "center",
     },
     title: {
@@ -48,7 +50,7 @@ const createValuesSectionStyles = (isDarkMode = false) => {
       fontSize: 14,
       color: theme.mutedForeground,
       marginBottom: 30,
-      lineHeight: 1.6,
+      lineHeight: 1.4, // Reduced from 1.6
       textAlign: "center",
       alignSelf: "center",
       maxWidth: 480,
@@ -69,7 +71,9 @@ interface PDFValuesAndMotivatorsSectionProps {
   pageNumber?: number;
 }
 
-const PDFValuesAndMotivatorsSection: React.FC<PDFValuesAndMotivatorsSectionProps> = ({
+const PDFValuesAndMotivatorsSection: React.FC<
+  PDFValuesAndMotivatorsSectionProps
+> = ({
   valuesAndMotivators,
   sectionNumber,
   firstname,
@@ -104,6 +108,14 @@ const PDFValuesAndMotivatorsSection: React.FC<PDFValuesAndMotivatorsSectionProps
         rightIcon={<TrendingUpIcon color={ICON_COLORS.trendingUp} size={20} />}
         rightItems={motivators}
         firstname={firstname}
+        isDarkMode={isDarkMode}
+      />
+
+      <PDFActionImageSection
+        title="Let's Get Started on this!"
+        firstname={firstname}
+        imageSrc="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+        actionSteps={valuesAndMotivators.actionItems}
         isDarkMode={isDarkMode}
       />
 
