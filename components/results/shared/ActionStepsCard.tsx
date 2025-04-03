@@ -1,6 +1,7 @@
 ﻿import React from "react";
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
+import { formatWithUsername } from "@/lib/formatWithUsername";
 
 interface ActionStep {
   number: number;
@@ -8,6 +9,7 @@ interface ActionStep {
 }
 
 interface ActionStepsCardProps {
+  firstname?: string | null;
   title?: string;
   steps: ActionStep[];
   imageSrc?: string;
@@ -16,6 +18,7 @@ interface ActionStepsCardProps {
 }
 
 const ActionStepsCard = ({
+  firstname,
   title = "Let's Get Started on this!",
   steps,
   imageSrc,
@@ -39,7 +42,7 @@ const ActionStepsCard = ({
                   {step.number}
                 </div>
                 <p className="mt-0 text-card-foreground text-base md:text-lg">
-                  {step.description}
+                  {formatWithUsername(step.description, firstname)}
                 </p>
               </li>
             ))}

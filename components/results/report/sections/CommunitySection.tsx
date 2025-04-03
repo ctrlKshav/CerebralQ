@@ -50,7 +50,7 @@ const CommunitySection = ({
                       {(index + 1).toString()}
                     </div>
                     <p className="ml-4 text-lg text-card-foreground">
-                      {suggestion}
+                      {formatWithUsername(suggestion, firstname)}
                     </p>
                   </li>
                 ))}

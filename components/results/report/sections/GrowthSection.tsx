@@ -50,6 +50,7 @@ const GrowthSection = ({ firstname, growth, sectionNumber = 5, id = "growth-sect
 
         {/* Let's Make It Happen section */}
         <ActionStepsCard
+          firstname={firstname}
           steps={growthActionSteps}
           imageSrc="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
           imageAlt="Personal growth journey"
