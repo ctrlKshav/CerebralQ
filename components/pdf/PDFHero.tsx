@@ -24,18 +24,19 @@ const createHeroStyles = (isDarkMode = false) => {
       marginBottom: 15, // Reduced margin
     },
     badge: {
-      padding: 6,
-      backgroundColor: theme.primary,
-      borderRadius: 16,
-      marginBottom: 15, // Reduced margin
+      padding: 3, // Smaller padding
+      backgroundColor: theme.muted,
+      borderRadius: 10, // Smaller radius
+      marginBottom: 12, // Reduced margin
       textAlign: "center",
+      width: "auto",
+      alignSelf: "center",
     },
     badgeText: {
-      fontSize: 10, // Smaller font
-      fontWeight: "bold",
-      color: theme.primaryForeground,
-      padding: "2 8",
-      marginHorizontal: 2,
+      fontSize: 8, // Smaller font
+      fontWeight: "normal",
+      color: theme.mutedForeground,
+      padding: "1 6", // Reduced padding
     },
     reportTitle: {
       fontSize: 14,
@@ -169,7 +170,6 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
   return (
     <View style={styles.page}>
       <View style={styles.contentContainer}>
-        <Text style={styles.reportTitle}>PERSONALITY ASSESSMENT REPORT</Text>
         
         <View style={styles.badge}>
           <Text style={styles.badgeText}>Assessment Completed: {completionDate}</Text>
@@ -178,14 +178,14 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
         <Text style={styles.greeting}>
           {firstname ? (
             <>
-              Welcome, <Text style={styles.nameText}>{firstname}</Text>
+              Welcome, <Text style={styles.nameText}>{firstname}!</Text>
             </>
           ) : (
             <>Welcome to Your Assessment Results</>
           )}
         </Text>
 
-        <Text style={styles.personalityType}>{personalityType} Personality Type</Text>
+        <Text style={styles.personalityType}>You are an {personalityType}</Text>
         <Text style={styles.subtitle}>{alias}</Text>
 
         <View style={styles.imageContainer}>
