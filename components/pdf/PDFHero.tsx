@@ -87,18 +87,18 @@ const createHeroStyles = (isDarkMode = false) => {
       textAlign: "center",
     },
     imageContainer: {
-      width: "100%",
+      width: "90%",
+      height: "200",
       alignItems: "center",
       justifyContent: "center",
       marginTop: 5,
       marginBottom: 12,
-      borderWidth: 1,
-      borderColor: theme.border,
       padding: 2,
     },
     personalityImage: {
-      width: 320, // Wider image
-      height: 200, // Adjusted height for better aspect ratio
+      width: "100%", // Wider image
+      height: "100%", // Adjusted height for better aspect ratio
+      objectFit: "cover"
     },
     description: {
       fontSize: 12,
@@ -183,7 +183,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
     ENTJ: "https://cdn.pixabay.com/photo/2017/08/06/09/50/people-2590997_1280.jpg",
     ENTP: "https://cdn.pixabay.com/photo/2015/07/31/15/01/man-869215_1280.jpg",
     // Add other types with appropriate images
-    default: "https://cdn.pixabay.com/photo/2017/07/31/11/44/people-2557464_1280.jpg",
+    default: "/results_artsy_board.jpeg",
   };
 
   const imagePath =
