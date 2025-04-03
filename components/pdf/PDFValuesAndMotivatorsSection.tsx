@@ -43,13 +43,6 @@ const createValuesSectionStyles = (isDarkMode = false) => {
       marginBottom: 12,
       textAlign: "center",
     },
-    subtitle: {
-      fontSize: 20,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 20,
-      textAlign: "center",
-    },
     description: {
       fontSize: 14,
       color: theme.mutedForeground,
@@ -63,6 +56,7 @@ const createValuesSectionStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
+    sectionSubtitle: baseStyles.sectionSubtitle,
   });
 };
 
@@ -93,7 +87,7 @@ const PDFValuesAndMotivatorsSection: React.FC<PDFValuesAndMotivatorsSectionProps
           <Text style={styles.sectionNumber}>{sectionNumber}</Text>
           <Text style={styles.sectionTitle}>Values & Motivators</Text>
         </View>
-        <Text style={styles.subtitle}>
+        <Text style={styles.sectionSubtitle}>
           {formatWithUsername("What Drives You, {firstname}", firstname)}
         </Text>
         <Text style={styles.description}>

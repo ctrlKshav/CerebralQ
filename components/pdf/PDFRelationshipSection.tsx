@@ -32,20 +32,6 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
       marginBottom: 25,
       alignItems: "center",
     },
-    title: {
-      fontSize: 30,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 12,
-      textAlign: "center",
-    },
-    subtitle: {
-      fontSize: 20,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 20,
-      textAlign: "center",
-    },
     description: {
       fontSize: 14,
       color: theme.mutedForeground,
@@ -88,6 +74,7 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
+    sectionSubtitle: baseStyles.sectionSubtitle,
   });
 };
 
@@ -124,7 +111,7 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
           <Text style={styles.sectionNumber}>{sectionNumber}</Text>
           <Text style={styles.sectionTitle}>{`Your ${relationship.title}`}</Text>
         </View>
-        <Text style={styles.subtitle}>
+        <Text style={styles.sectionSubtitle}>
           {formatWithUsername(relationship.subtitle, firstname)}
         </Text>
         <Text style={styles.description}>

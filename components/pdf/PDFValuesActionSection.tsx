@@ -21,7 +21,7 @@ const createValuesActionStyles = (isDarkMode = false) => {
       marginBottom: 25,
       alignItems: "center",
     },
-    subtitle: {
+    sectionSubtitle: {
       fontSize: 22,
       color: theme.foreground,
       fontFamily: "Helvetica-Bold",
@@ -53,7 +53,7 @@ const PDFValuesActionSection: React.FC<PDFValuesActionSectionProps> = ({
     <View style={styles.page}>
       {/* Header */}
       <View style={styles.headerContainer}>
-        <Text style={styles.subtitle}>
+        <Text style={styles.sectionSubtitle}>
           {formatWithUsername("Aligning Your Life with Your Values, {firstname}", firstname)}
         </Text>
       </View>

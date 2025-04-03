@@ -39,13 +39,6 @@ const createDailyHabitsStyles = (isDarkMode = false) => {
       marginBottom: 12,
       textAlign: "center",
     },
-    subtitle: {
-      fontSize: 20,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 20,
-      textAlign: "center",
-    },
     description: {
       fontSize: 14,
       color: theme.mutedForeground,
@@ -122,6 +115,7 @@ const createDailyHabitsStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
+    sectionSubtitle: baseStyles.sectionSubtitle,
   });
 };
 
@@ -152,7 +146,7 @@ const PDFDailyHabitsSection: React.FC<PDFDailyHabitsSectionProps> = ({
           <Text style={styles.sectionNumber}>{sectionNumber}</Text>
           <Text style={styles.sectionTitle}>Daily Habits & Communication</Text>
         </View>
-        <Text style={styles.subtitle}>
+        <Text style={styles.sectionSubtitle}>
           {formatWithUsername("Your Daily Habits, {firstname}", firstname)}
         </Text>
         <Text style={styles.description}>
