@@ -6,7 +6,7 @@ export const teamMembers: TeamMember[] = [
     role: "Boss Woman",
     bio: "What are we building next?",  
     imageUrl:
-      "/team/ak.jpg",
+      "/images/team/ak.jpg",
 
     socialLinks: {
       twitter: "https://x.com/akforthevibe ",
@@ -20,7 +20,7 @@ export const teamMembers: TeamMember[] = [
     role: "Content Manager",
     bio: "Hi! I’m Brishti, and at 19 I think I've found my muse.",
     imageUrl:
-      "/team/bri.jpeg",
+      "/images/team/bri.jpeg",
     socialLinks: {
       twitter: "https://x.com/brishtiatc4e",
       linkedin: "https://www.linkedin.com/in/brishtisharma",
@@ -32,7 +32,7 @@ export const teamMembers: TeamMember[] = [
     role: "Content Manager",
     bio: "Hi, Sneha here! I'm helping to build C4E",
     imageUrl:
-      "/team/sneha.jpg",
+      "/images/team/sneha.jpg",
     socialLinks: {
       twitter: "https://x.com/sneh_1101?s=09",
       linkedin: "https://www.linkedin.com/in/snehajanthe11?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -44,7 +44,7 @@ export const teamMembers: TeamMember[] = [
     role: "Lead Developer",
     bio: "I build websites.",
     imageUrl:
-      "/team/keshav.jpeg",
+      "/images/team/keshav.jpeg",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/keshav3511/",
       website: "https://realk.site",
