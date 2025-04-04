@@ -141,7 +141,7 @@ export default function ResultCertificatePage() {
   }
   return (
     <div className="">
-      <ResultCertificate userData={null} resultData={resultData} />
+      <ResultCertificate userData={null} resultData={resultData} historyPage={false} />
       <Report userData={null} resultData={resultData} />
     </div>
   );
