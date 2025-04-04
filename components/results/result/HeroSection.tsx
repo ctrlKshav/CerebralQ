@@ -16,6 +16,7 @@ interface HeroSectionProps {
   firstname: string | null;
   id?: string;
   username: string | null;
+  historyPage: boolean;
 }
 
 const HeroSection = ({
@@ -25,6 +26,7 @@ const HeroSection = ({
   firstname,
   id,
   username,
+  historyPage = false,
 }: HeroSectionProps) => {
   const alias = personalityDescription.alias;
   const description = personalityDescription.description(firstname,false);
@@ -130,7 +132,7 @@ const HeroSection = ({
                     ? "Save & Share"
                     : "Share Results"}
               </Button>
-              <Link href={"/report"}>
+              <Link href={`${historyPage ? "/account/report" : "/report"}`}>
                 <Button variant="outline">
                   View Detailed Report
                 </Button>

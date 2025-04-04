@@ -13,9 +13,10 @@ import LoadingSkeleton from "@/components/LoadingSkeleton";
 interface ResultCertificateProps {
   userData: User | null;
   resultData: ResultData | null;
+  historyPage: boolean,
 }
 
-export default function ResultCertificate({userData, resultData}: ResultCertificateProps) {
+export default function ResultCertificate({userData, resultData, historyPage = false}: ResultCertificateProps) {
   const {
     personalityType,
     personalityDescription,
@@ -31,6 +32,7 @@ export default function ResultCertificate({userData, resultData}: ResultCertific
           completionDate={completionDate}
           firstname={resultData?.firstname || null}
           username={resultData?.username || null}
+          historyPage={historyPage}
         />
       </main>
     </div>

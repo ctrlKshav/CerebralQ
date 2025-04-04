@@ -148,7 +148,7 @@ export default function ResultCertificatePage() {
       <Link href="/" className="fixed z-50 top-0 left-4 sm:left-8  ">
         <CQLogo className="w-24 h-24 sm:w-28 sm:h-28" />
       </Link>
-      <ResultCertificate userData={userData} resultData={resultData} />
+      <ResultCertificate userData={userData} resultData={resultData} historyPage={false} />
     </div>
   );
 }
