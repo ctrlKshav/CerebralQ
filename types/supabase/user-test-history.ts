@@ -1,4 +1,5 @@
 ﻿import { Json } from '.';
+import { TraitScores } from '@/types/tests/mbti/traits';
 
 export interface UserTestHistory {
   completion_time_minutes: number | null;
@@ -62,22 +63,9 @@ export interface UserTestHistoryRelationships {
   };
 }
 
-export interface MBTITraitScore {
-  left: number;
-  right: number;
-  leftPercentage: number;
-  rightPercentage: number;
-  dominant: "left" | "right";
-}
-
 export interface MBTIRawScore {
   personalityType: string;
-  traitScores: {
-    "E-I": MBTITraitScore;
-    "S-N": MBTITraitScore;
-    "T-F": MBTITraitScore;
-    "J-P": MBTITraitScore;
-  };
+  traitScores: TraitScores;
 }
 
 export interface TestHistoryWithTestType extends UserTestHistory {
@@ -98,9 +86,7 @@ export interface FormattedTestResult {
   description?: string;
   date: string;
   score?: number;
-  traitScores?: {
-    [key: string]: MBTITraitScore;
-  };
+  traitScores?: TraitScores;
   details?: any;
 }
 
