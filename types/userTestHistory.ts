@@ -4,8 +4,7 @@
 export interface UserTestHistory {
   id: string;
   created_at: string;
-  personalityType: string;
-  traitScores: MBTIRawScore;
+  raw_scores: MBTIRawScore;
   user_id: string;
 }
 

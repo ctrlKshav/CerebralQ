@@ -1,5 +1,4 @@
 ﻿"use server"
-import { MBTIRawScore } from "@/types/supabase/user-test-history";
 import { createClient } from "@/utils/supabase/server";
 import { UserTestHistory } from "@/types/userTestHistory";
 
@@ -23,8 +22,7 @@ export async function getUsersTestHistory(userId: string, testTypeId: string) {
   const typedData: UserTestHistory[] = data.map((test) => ({
     id: test.id,
     created_at: test.created_at,
-    personalityType: test.raw_score.personalityType,
-    traitScores: test.raw_score.traitScores,
+    raw_scores: test.raw_score,
     user_id: test.user_id,
   }));
 

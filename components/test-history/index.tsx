@@ -4,10 +4,16 @@ import { useState } from "react";
 import EmptyState from "./empty-state";
 import TestCard from "./test-card";
 import { Badge } from "../ui/badge";
-import { UserTestHistory, UserTestHistoryData } from "@/types/userTestHistory";
+import { UserTestHistoryData } from "@/types/userTestHistory";
+import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
+import { getOrderedMBTITraitsObject } from "@/lib/utils";
+import { MBTIRawScore } from "@/types/supabase/user-test-history";
 
 // Extend database result with static fields
-export type ExtendedUserTestHistory = UserTestHistory & {
+export type ExtendedUserTestHistory = {
+  id: string;
+  takenAt: string;
+  personalityType: string;
   color: string;
   image: string;
   alias: string;
@@ -19,56 +25,72 @@ interface UserTestHistoryProps {
   testHistoryData: UserTestHistoryData;
 }
 
+function getDominantTraits(traitScores: MBTIRawScore['traitScores']): string[] {
+  const traitMap: Record<string, string> = {
+    E: "Extraversion",
+    I: "Introversion",
+    S: "Sensing",
+    N: "Intuition",
+    T: "Thinking",
+    F: "Feeling",
+    J: "Judging",
+    P: "Perceiving",
+  };
+
+  return Object.keys(traitScores).map((key) => {
+    const score = traitScores[key as keyof MBTIRawScore['traitScores']];
+    const dominantTrait = score.dominant === "left" ? key.charAt(0) : key.charAt(2);
+
+    return traitMap[dominantTrait];
+  });
+}
+
 export default function TestHistory({ testHistoryData }: UserTestHistoryProps) {
   if (!testHistoryData || testHistoryData.length === 0) {
     return <EmptyState />;
   }
-
   // Static data to be randomly applied in a cycle
   const staticSets = [
     {
       color: "from-violet-500 to-purple-500",
-      image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=1000",
-      alias: "Visionary Dreamer",
-      description: "Real",
-      traits: ["Introverted", "Intuitive", "Feeling", "Judging"],
+      image:
+        "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=1000",
     },
     {
       color: "from-amber-500 to-orange-500",
-      image: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=1000",
-      alias: "Energetic Explorer",
-      description: "Real",
-      traits: ["Extroverted", "Intuitive", "Feeling", "Perceiving"],
+      image:
+        "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=1000",
     },
     {
       color: "from-blue-500 to-indigo-500",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000",
-      alias: "Analytical Mastermind",
-      description: "Real",
-      traits: ["Introverted", "Intuitive", "Thinking", "Judging"],
+      image:
+        "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000",
     },
     {
       color: "from-emerald-500 to-teal-500",
-      image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1000",
-      alias: "Innovative Visionary",
-      description: "Real",
-      traits: ["Extroverted", "Intuitive", "Thinking", "Perceiving"],
+      image:
+        "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1000",
     },
   ];
 
-
   // Merge static data with DB results in a rotating manner
-  const resultsWithStaticData: ExtendedUserTestHistory[] = testHistoryData.map((res, i) => {
-    const setIndex = i % staticSets.length;
-    return {
-      ...res,
-      color: staticSets[setIndex].color,
-      image: staticSets[setIndex].image,
-      alias: staticSets[setIndex].alias,
-      description: staticSets[setIndex].description,
-      traits: staticSets[setIndex].traits,
-    };
-  });
+  const resultsWithStaticData: ExtendedUserTestHistory[] = testHistoryData.map(
+    (res, i) => {
+      const setIndex = i % staticSets.length;
+      return {
+        id: res.id,
+        takenAt: res.created_at,
+        personalityType: res.raw_scores.personalityType,
+        alias: getPersonalityDescription(res.raw_scores.personalityType).alias,
+        description: getPersonalityDescription(
+          res.raw_scores.personalityType
+        ).description(null, false),
+        traits: getDominantTraits(getOrderedMBTITraitsObject(res.raw_scores.traitScores)),
+        color: staticSets[setIndex].color,
+        image: staticSets[setIndex].image,
+      };
+    }
+  );
 
   return (
     <div className="min-h-screen mt-24 bg-gradient-to-b from-background to-background/80 overflow-x-hidden">

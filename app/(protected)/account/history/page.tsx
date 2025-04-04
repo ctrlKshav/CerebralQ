@@ -36,7 +36,6 @@ export default function Page() {
     };
     if (!authLoading) fetchUserTestHistory();
   }, [authLoading]);
-    console.log(testHistoryData)
 
   if (loading || authLoading) {
     return <LoadingSkeleton />;

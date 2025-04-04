@@ -17,7 +17,7 @@ interface TestCardProps {
 
 export default function TestCard({ result }: TestCardProps) {
   const dateObj = new Date(
-    result.created_at ?? Date.now()
+    result.takenAt ?? Date.now()
   ).toLocaleDateString();
   // Get badge color classes based on personality type
   const getBadgeClasses = (type: string, index: number) => {
