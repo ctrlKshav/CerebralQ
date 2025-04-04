@@ -1,4 +1,4 @@
-﻿
+﻿"use server"
 import { MBTI_TEST_ID } from "@/lib/constants";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { UserProfile } from "@/types/supabase/user-profile";
