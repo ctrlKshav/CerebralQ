@@ -1,13 +1,13 @@
 ﻿import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
 import { PersonalityDescription } from "@/types/tests/mbti/results";
+import { TraitScores } from "@/types/tests/mbti/traits";
 
 export interface TestHistoryResult {
   id: number;
-  date: Date;
-  type: string;
-  traits: string[];
-  alias: PersonalityDescription['alias'];
-  description: PersonalityDescription["description"];
+  date: EpochTimeStamp;
+  personalityType: string;
+  personalityDescription: PersonalityDescription;
+  traits: TraitScores;
   image: string;
   color: string;
 }
@@ -16,7 +16,7 @@ export const mockResults: TestHistoryResult[] = [
   {
     id: 1,
     date: new Date("2024-03-20"),
-    type: "INFJ",
+    personalityType: "INFJ",
     alias: getPersonalityDescription("INFJ").alias,
     image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=1000",
     color: "from-violet-500 to-purple-500",
@@ -26,7 +26,7 @@ export const mockResults: TestHistoryResult[] = [
   {
     id: 2,
     date: new Date("2024-03-15"),
-    type: "ENFP",
+    personalityType: "ENFP",
     alias: getPersonalityDescription("ENFP").alias,
     image: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=1000",
     color: "from-amber-500 to-orange-500",
@@ -36,7 +36,7 @@ export const mockResults: TestHistoryResult[] = [
   {
     id: 3,
     date: new Date("2024-03-10"),
-    type: "INTJ",
+    personalityType: "INTJ",
     alias: getPersonalityDescription("INTJ").alias,
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000",
     color: "from-blue-500 to-indigo-500",
@@ -45,7 +45,7 @@ export const mockResults: TestHistoryResult[] = [
   {
     id: 4,
     date: new Date("2024-03-05"),
-    type: "ENTP",
+    personalityType: "ENTP",
     alias: getPersonalityDescription("ENTP").alias,
     image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1000",
     color: "from-emerald-500 to-teal-500",

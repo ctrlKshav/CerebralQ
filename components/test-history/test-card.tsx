@@ -1,4 +1,4 @@
-﻿"use client"
+﻿"use client";
 import { format } from "date-fns";
 import { Calendar, ExternalLink } from "lucide-react";
 import {
@@ -9,13 +9,15 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { TestHistoryResult } from "./mock-data";
+import { ExtendedUserTestHistory } from ".";
 
 interface TestCardProps {
-  result: TestHistoryResult;
+  result: ExtendedUserTestHistory;
 }
 
 export default function TestCard({ result }: TestCardProps) {
+
+  const dateObj = new Date((result.created_at ?? Date.now())).toLocaleDateString()
   // Get badge color classes based on personality type
   const getBadgeClasses = (type: string, index: number) => {
     switch (type) {
@@ -40,11 +42,8 @@ export default function TestCard({ result }: TestCardProps) {
     }
   };
 
-  // Format the description by removing extra whitespace and "Sound like you?" text
-  const formattedDescription = result.description(null,false).replace(
-    /Sound like you\?\s+/,
-    ""
-  );
+  const formattedDescription =
+    result.test_types?.description || "No description";
 
   return (
     <Card className="group relative overflow-hidden border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 ease-out w-full min-h-[350px] hover:scale-[1.01] dark:border-white/5 border-black/10 shadow-lg">
@@ -69,7 +68,9 @@ export default function TestCard({ result }: TestCardProps) {
               <div
                 className={`text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${result.color}`}
               >
-                {result.type}
+                {result.raw_score && typeof result.raw_score === "object"
+                  ? (result.raw_score as any)["personalityType"]
+                  : "Unknown"}
               </div>
 
               {/* Personality Alias */}
@@ -81,10 +82,10 @@ export default function TestCard({ result }: TestCardProps) {
             {/* Date Badge */}
             <Badge
               variant="outline"
-              className="text-sm text-muted-foreground flex items-center gap-2 bg-background/80 backdrop-blur-sm px-4 py-2 shadow-md border dark:border-white/10 border-black/10"
+              className="text-sm text-muted-foreground flex items-center gap-2 bg-background/80 backdrop-blur-sm px-4 py-2 shadow-md border dark:border-white/10 border-black/10 whitespace-nowrap"
             >
               <Calendar className="h-4 w-4" />
-              {format(result.date, "MMM d, yyyy")}
+              {dateObj}
             </Badge>
           </div>
 
@@ -94,7 +95,12 @@ export default function TestCard({ result }: TestCardProps) {
               <Badge
                 key={index}
                 variant="outline"
-                className={`${getBadgeClasses(result.type, index)} px-4 py-1.5 border-[0.5px] rounded-full shadow-sm backdrop-blur-sm
+                className={`${getBadgeClasses(
+                  result.raw_score && typeof result.raw_score === "object"
+                    ? (result.raw_score as any)["personalityType"]
+                    : "Unknown",
+                  index
+                )} px-4 py-1.5 border-[0.5px] rounded-full shadow-sm backdrop-blur-sm
                   hover:scale-105 transition-all duration-300`}
               >
                 {trait}
