@@ -1,5 +1,5 @@
 ﻿import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
-import { PersonalityDescription } from "@/types/tests/mbti";
+import { PersonalityDescription } from "@/types/tests/mbti/results";
 
 export interface TestHistoryResult {
   id: number;
