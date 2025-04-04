@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, use } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { getCurrentUser, getUserByUsername } from "@/lib/supabaseOperations";
+import { getUserProfileByUsername } from "@/lib/supabaseOperations/getUserProfile";
 import { useRouter } from "next/navigation";
 
 // Components
@@ -43,7 +43,7 @@ export default function ProfilePage({
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
-        const profileData = await getUserByUsername(profileUsername);
+        const profileData = await getUserProfileByUsername(profileUsername);
         setProfileData(profileData);
       } catch (err) {
         console.error("Error fetching profile:", err);
