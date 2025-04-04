@@ -1,4 +1,4 @@
-﻿import { Json } from './supabase';
+﻿import { Json } from '.';
 
 export interface UserTestHistory {
   completion_time_minutes: number | null;
