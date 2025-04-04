@@ -13,12 +13,11 @@ import Link from "next/link";
 
 interface TestCardProps {
   result: ExtendedUserTestHistory;
+  onViewDetailedReport: (testHistoryID: string) => void;
 }
 
-export default function TestCard({ result }: TestCardProps) {
-  const dateObj = new Date(
-    result.takenAt ?? Date.now()
-  ).toLocaleDateString();
+export default function TestCard({ result, onViewDetailedReport }: TestCardProps) {
+  const dateObj = new Date(result.takenAt ?? Date.now()).toLocaleDateString();
   // Get badge color classes based on personality type
   const getBadgeClasses = (type: string, index: number) => {
     switch (type) {
@@ -42,6 +41,7 @@ export default function TestCard({ result }: TestCardProps) {
         return "bg-gray-100/80 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300 border-gray-200 dark:border-gray-700/20";
     }
   };
+
 
   return (
     <Card className="group relative overflow-hidden border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 ease-out w-full min-h-[350px] hover:scale-[1.01] dark:border-white/5 border-black/10 shadow-lg">
@@ -114,6 +114,9 @@ export default function TestCard({ result }: TestCardProps) {
         <Link href={"/account/result"}>
           <Button
             className={`relative overflow-hidden group/button bg-gradient-to-r ${result.color} text-white shadow-lg hover:shadow-xl border-0 px-6 py-6`}
+            onClick={() => {
+              onViewDetailedReport(result.id);
+            }}
           >
             <span className="absolute inset-0 bg-white opacity-0 group-hover/button:opacity-10 transition-opacity"></span>
             <span className="flex items-center gap-2">

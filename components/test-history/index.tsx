@@ -8,6 +8,7 @@ import { UserTestHistoryData } from "@/types/userTestHistory";
 import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { MBTIRawScore } from "@/types/supabase/user-test-history";
+import { MBTIResponse } from "@/schema/mbti";
 
 // Extend database result with static fields
 export type ExtendedUserTestHistory = {
@@ -21,11 +22,7 @@ export type ExtendedUserTestHistory = {
   traits: string[];
 };
 
-interface UserTestHistoryProps {
-  testHistoryData: UserTestHistoryData;
-}
-
-function getDominantTraits(traitScores: MBTIRawScore['traitScores']): string[] {
+function getDominantTraits(traitScores: MBTIRawScore["traitScores"]): string[] {
   const traitMap: Record<string, string> = {
     E: "Extraversion",
     I: "Introversion",
@@ -38,14 +35,23 @@ function getDominantTraits(traitScores: MBTIRawScore['traitScores']): string[] {
   };
 
   return Object.keys(traitScores).map((key) => {
-    const score = traitScores[key as keyof MBTIRawScore['traitScores']];
-    const dominantTrait = score.dominant === "left" ? key.charAt(0) : key.charAt(2);
+    const score = traitScores[key as keyof MBTIRawScore["traitScores"]];
+    const dominantTrait =
+      score.dominant === "left" ? key.charAt(0) : key.charAt(2);
 
     return traitMap[dominantTrait];
   });
 }
 
-export default function TestHistory({ testHistoryData }: UserTestHistoryProps) {
+interface UserTestHistoryProps {
+  testHistoryData: UserTestHistoryData;
+  onViewDetailedReport: (testHistoryID: string) => void;
+}
+
+export default function TestHistory({
+  testHistoryData,
+  onViewDetailedReport,
+}: UserTestHistoryProps) {
   if (!testHistoryData || testHistoryData.length === 0) {
     return <EmptyState />;
   }
@@ -85,7 +91,9 @@ export default function TestHistory({ testHistoryData }: UserTestHistoryProps) {
         description: getPersonalityDescription(
           res.raw_scores.personalityType
         ).description(null, false),
-        traits: getDominantTraits(getOrderedMBTITraitsObject(res.raw_scores.traitScores)),
+        traits: getDominantTraits(
+          getOrderedMBTITraitsObject(res.raw_scores.traitScores)
+        ),
         color: staticSets[setIndex].color,
         image: staticSets[setIndex].image,
       };
@@ -122,7 +130,11 @@ export default function TestHistory({ testHistoryData }: UserTestHistoryProps) {
       <div className="w-full px-6 sm:px-8 py-16 bg-gradient-to-b from-background/90 to-background">
         <div className="space-y-12">
           {resultsWithStaticData.map((result) => (
-            <TestCard key={result.id} result={result} />
+            <TestCard
+              key={result.id}
+              result={result}
+              onViewDetailedReport={onViewDetailedReport}
+            />
           ))}
         </div>
       </div>
