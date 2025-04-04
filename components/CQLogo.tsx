@@ -28,6 +28,7 @@ export default function CQLogo({
       width={96}
       height={96}
       quality={100}
+      unoptimized
     />
   );
 }
