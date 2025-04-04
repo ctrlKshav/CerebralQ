@@ -158,9 +158,16 @@ export type Database = {
           bio: string | null
           created_at: string | null
           email: string
+          first_name: string | null
           id: string
+          iq: string | null
+          is_insider: boolean
+          last_name: string | null
           last_test_date: string | null
+          mbti_personality_type: string | null
+          ocean_traits: Json | null
           profile_image_url: string | null
+          rank: string | null
           tests_taken: number | null
           updated_at: string | null
           username: string | null
@@ -169,9 +176,16 @@ export type Database = {
           bio?: string | null
           created_at?: string | null
           email: string
+          first_name?: string | null
           id?: string
+          iq?: string | null
+          is_insider?: boolean
+          last_name?: string | null
           last_test_date?: string | null
+          mbti_personality_type?: string | null
+          ocean_traits?: Json | null
           profile_image_url?: string | null
+          rank?: string | null
           tests_taken?: number | null
           updated_at?: string | null
           username?: string | null
@@ -180,9 +194,16 @@ export type Database = {
           bio?: string | null
           created_at?: string | null
           email?: string
+          first_name?: string | null
           id?: string
+          iq?: string | null
+          is_insider?: boolean
+          last_name?: string | null
           last_test_date?: string | null
+          mbti_personality_type?: string | null
+          ocean_traits?: Json | null
           profile_image_url?: string | null
+          rank?: string | null
           tests_taken?: number | null
           updated_at?: string | null
           username?: string | null
@@ -194,10 +215,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
-      "Insert User in Users Table": {
-        Args: Record<PropertyKey, never>
-        Returns: Record<string, unknown>
-      }
+      [_ in never]: never
     }
     Enums: {
       [_ in never]: never
