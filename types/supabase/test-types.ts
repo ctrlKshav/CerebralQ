@@ -1,4 +1,4 @@
-﻿import { Json } from './supabase';
+﻿import { Json } from '.';
 
 export interface TestType {
   avg_score: number | null;
