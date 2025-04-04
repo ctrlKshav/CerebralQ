@@ -1,20 +1,13 @@
-﻿import { Database } from "@/types/supabase";
+﻿import { MBTIRawScore } from "./supabase/user-test-history";
 
-// Base type from the user_test_history table
-export type UserTestHistory = Database["public"]["Tables"]["user_test_history"]["Row"];
+// Interface for a single test history entry
+export interface UserTestHistory {
+  id: string;
+  created_at: string;
+  personalityType: string;
+  traitScores: MBTIRawScore;
+  user_id: string;
+}
 
-// Type for the test_types joined data
-export type TestType = {
-  name: string;
-  short_code: string;
-  description: string;
-  category: string;
-};
-
-// Combined type for the query result
-export type UserTestHistoryWithType = UserTestHistory & {
-  test_types: TestType;
-};
-
-// Type for the array of results returned by getUsersTestHistory
-export type UserTestHistoryData = UserTestHistoryWithType[] | null;
+// Type for the collection of test history results
+export type UserTestHistoryData = UserTestHistory[] | null;

@@ -1,18 +1,14 @@
 ﻿"use server"
+import { MBTIRawScore } from "@/types/supabase/user-test-history";
 import { createClient } from "@/utils/supabase/server";
+import { UserTestHistory } from "@/types/userTestHistory";
 
 export async function getUsersTestHistory(userId: string, testTypeId: string) {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("user_test_history")
     .select(`
-      *,
-      test_types:test_type_id (
-        name,
-        short_code,
-        description,
-        category
-      )
+      *
     `)
     .eq("user_id", userId)
     .eq("test_type_id", testTypeId)
@@ -24,5 +20,13 @@ export async function getUsersTestHistory(userId: string, testTypeId: string) {
     throw error;
   }
 
-  return data;
+  const typedData: UserTestHistory[] = data.map((test) => ({
+    id: test.id,
+    created_at: test.created_at,
+    personalityType: test.raw_score.personalityType,
+    traitScores: test.raw_score.traitScores,
+    user_id: test.user_id,
+  }));
+
+  return typedData;
 }

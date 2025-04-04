@@ -4,13 +4,14 @@ import { useState } from "react";
 import EmptyState from "./empty-state";
 import TestCard from "./test-card";
 import { Badge } from "../ui/badge";
-import { UserTestHistoryData, UserTestHistoryWithType } from "@/types/userTestHistory";
+import { UserTestHistory, UserTestHistoryData } from "@/types/userTestHistory";
 
 // Extend database result with static fields
-export type ExtendedUserTestHistory = UserTestHistoryWithType & {
+export type ExtendedUserTestHistory = UserTestHistory & {
   color: string;
   image: string;
   alias: string;
+  description: string;
   traits: string[];
 };
 
@@ -18,7 +19,7 @@ interface UserTestHistoryProps {
   testHistoryData: UserTestHistoryData;
 }
 
-export default function UserTestHistory({ testHistoryData }: UserTestHistoryProps) {
+export default function TestHistory({ testHistoryData }: UserTestHistoryProps) {
   if (!testHistoryData || testHistoryData.length === 0) {
     return <EmptyState />;
   }
@@ -29,24 +30,28 @@ export default function UserTestHistory({ testHistoryData }: UserTestHistoryProp
       color: "from-violet-500 to-purple-500",
       image: "https://images.unsplash.com/photo-1519834785169-98be25ec3f84?q=80&w=1000",
       alias: "Visionary Dreamer",
+      description: "Real",
       traits: ["Introverted", "Intuitive", "Feeling", "Judging"],
     },
     {
       color: "from-amber-500 to-orange-500",
       image: "https://images.unsplash.com/photo-1490730141103-6cac27aaab94?q=80&w=1000",
       alias: "Energetic Explorer",
+      description: "Real",
       traits: ["Extroverted", "Intuitive", "Feeling", "Perceiving"],
     },
     {
       color: "from-blue-500 to-indigo-500",
       image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000",
       alias: "Analytical Mastermind",
+      description: "Real",
       traits: ["Introverted", "Intuitive", "Thinking", "Judging"],
     },
     {
       color: "from-emerald-500 to-teal-500",
       image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=1000",
       alias: "Innovative Visionary",
+      description: "Real",
       traits: ["Extroverted", "Intuitive", "Thinking", "Perceiving"],
     },
   ];
@@ -60,6 +65,7 @@ export default function UserTestHistory({ testHistoryData }: UserTestHistoryProp
       color: staticSets[setIndex].color,
       image: staticSets[setIndex].image,
       alias: staticSets[setIndex].alias,
+      description: staticSets[setIndex].description,
       traits: staticSets[setIndex].traits,
     };
   });

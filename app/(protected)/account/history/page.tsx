@@ -4,7 +4,7 @@ import { UserDataContext, useUserDataContext } from "@/context/user-data";
 import Account from "@/components/account";
 import Navbar from "@/components/navbar";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
-import UserTestHistory from "@/components/test-history";
+import TestHistory from "@/components/test-history";
 import { getUsersTestHistory } from "@/lib/supabaseOperations/getUsersTestHistory";
 import { User } from "@/types/supabase/users";
 import { MBTI_TEST_ID } from "@/lib/constants";
@@ -46,7 +46,7 @@ export default function Page() {
     <div className="w-full overflow-x-hidden">
       <Navbar user={userData} />
       <div className="w-full">
-        <UserTestHistory testHistoryData={testHistoryData} />
+        <TestHistory testHistoryData={testHistoryData} />
       </div>
     </div>
   );

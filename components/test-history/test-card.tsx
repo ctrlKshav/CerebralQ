@@ -16,8 +16,9 @@ interface TestCardProps {
 }
 
 export default function TestCard({ result }: TestCardProps) {
-
-  const dateObj = new Date((result.created_at ?? Date.now())).toLocaleDateString()
+  const dateObj = new Date(
+    result.created_at ?? Date.now()
+  ).toLocaleDateString();
   // Get badge color classes based on personality type
   const getBadgeClasses = (type: string, index: number) => {
     switch (type) {
@@ -42,9 +43,6 @@ export default function TestCard({ result }: TestCardProps) {
     }
   };
 
-  const formattedDescription =
-    result.test_types?.description || "No description";
-
   return (
     <Card className="group relative overflow-hidden border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 ease-out w-full min-h-[350px] hover:scale-[1.01] dark:border-white/5 border-black/10 shadow-lg">
       <div
@@ -68,9 +66,7 @@ export default function TestCard({ result }: TestCardProps) {
               <div
                 className={`text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${result.color}`}
               >
-                {result.raw_score && typeof result.raw_score === "object"
-                  ? (result.raw_score as any)["personalityType"]
-                  : "Unknown"}
+                {result.personalityType}
               </div>
 
               {/* Personality Alias */}
@@ -96,9 +92,7 @@ export default function TestCard({ result }: TestCardProps) {
                 key={index}
                 variant="outline"
                 className={`${getBadgeClasses(
-                  result.raw_score && typeof result.raw_score === "object"
-                    ? (result.raw_score as any)["personalityType"]
-                    : "Unknown",
+                  result.personalityType,
                   index
                 )} px-4 py-1.5 border-[0.5px] rounded-full shadow-sm backdrop-blur-sm
                   hover:scale-105 transition-all duration-300`}
@@ -112,7 +106,7 @@ export default function TestCard({ result }: TestCardProps) {
 
       <CardContent className="relative z-10 px-8 py-2">
         <p className="text-base text-muted-foreground leading-relaxed">
-          {formattedDescription}
+          {result.description}
         </p>
       </CardContent>
 
