@@ -150,29 +150,6 @@ export async function updateUserProfile(
   return data;
 }
 
-/**
- * Update test result privacy (make public/private)
- */
-export async function updateTestResultPrivacy(
-  resultId: string,
-  isPublic: boolean
-) {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase
-    .from("user_test_history")
-    .update({ is_public: isPublic })
-    .eq("id", resultId)
-    .select()
-    .single();
-
-  if (error) {
-    console.error("Error updating test result privacy:", error);
-    throw error;
-  }
-
-  return data;
-}
 
 /**
  * Get current authenticated user
