@@ -1,7 +1,7 @@
 ﻿import * as React from "react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import type { TraitDescription, TraitScore, TraitScores } from "@/types/tests/mbti";
+import type { TraitDescription, TraitScore, TraitScores } from "@/types/tests/mbti/traits";
 
 interface TraitDetailProps {
   traitKey: keyof TraitScores;

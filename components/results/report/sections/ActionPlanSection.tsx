@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Download, Save } from "lucide-react";
-import { ActionItem, ResultData } from "@/types/tests/mbti";
+import { ActionItem, ResultData } from "@/types/tests/mbti/results";
 import { Card } from "@/components/ui/card";
 import SectionHeader from "../../shared/SectionHeader";
 import { formatWithUsername } from "../../../../lib/formatWithUsername";

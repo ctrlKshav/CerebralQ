@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { View, Text, StyleSheet, Image } from "@react-pdf/renderer";
-import { CareerSuggestion } from "@/types/tests/mbti";
+import { CareerSuggestion } from "@/types/tests/mbti/results";
 import { getThemeColors } from "../PDFTheme";
 
 interface PDFCareerSuggestionCardProps {

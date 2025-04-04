@@ -1,4 +1,4 @@
-﻿import { TraitDescriptions } from "@/types/tests/mbti";
+﻿import { TraitDescriptions } from "@/types/tests/mbti/traits";
 export const personalityTraitDescriptions: Record<string, TraitDescriptions> = {
   ENTJ: {
     "E-I": {

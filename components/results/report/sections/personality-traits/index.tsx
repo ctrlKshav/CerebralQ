@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
-import type { TraitScore, TraitScores } from "@/types/tests/mbti";
+import type { TraitScore, TraitScores } from "@/types/tests/mbti/traits";
 import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import { useTheme } from "next-themes";
 import SectionHeader from "../../../shared/SectionHeader";

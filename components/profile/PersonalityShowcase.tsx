@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import PersonalityTraits from "@/components/results/report/sections/personality-traits";
-import type { TraitScores } from "@/types/tests/mbti";
+import type { TraitScores } from "@/types/tests/mbti/traits";
 import AboutPersonalityType from "./AboutPersonalityType";
 import BigFiveConstellation from "./BigFiveConstellation";
 import { personalityDatabase } from "@/data/mbti/oldData/personalityDatabase";

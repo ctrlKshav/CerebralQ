@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import { saveTestResults } from "@/lib/supabaseOperations";
 import { Card, CardContent } from "@/components/ui/card";
-import { ResultData } from "@/types/tests/mbti";
+import { ResultData } from "@/types/tests/mbti/results";
 import { Button } from "@/components/ui/button";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/mbti/personalityDescription";

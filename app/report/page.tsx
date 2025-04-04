@@ -3,7 +3,7 @@ import Report from "@/components/results/report";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { ResultData } from "@/types/tests/mbti";
+import { ResultData } from "@/types/tests/mbti/results";
 import { TEST_RESULTS_KEY } from "@/lib/constants";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/mbti/personalityDescription";

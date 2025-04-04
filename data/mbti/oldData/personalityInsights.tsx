@@ -1,4 +1,4 @@
-﻿import { PersonalityTypeInsights } from "@/types/tests/mbti";
+﻿import { PersonalityTypeInsights } from "@/types/tests/mbti/oldResults";
 export const personalityInsights: Record<string, PersonalityTypeInsights> = {
     INFP: {
       strengths: {

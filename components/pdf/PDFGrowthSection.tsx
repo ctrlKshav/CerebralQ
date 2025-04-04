@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
-import { GrowthJourney } from "@/types/tests/mbti";
+import { GrowthJourney } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import PDFCardSection from "./shared/PDFCardSection";

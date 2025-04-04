@@ -1,4 +1,4 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti";
+﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
 
 export const ESFPData: PersonalityDatabase = {
   career: {

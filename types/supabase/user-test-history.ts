@@ -1,5 +1,4 @@
-﻿import { PersonalityDescription } from '../tests/mbti';
-import { Json } from './supabase';
+﻿import { Json } from './supabase';
 
 export interface UserTestHistory {
   completion_time_minutes: number | null;

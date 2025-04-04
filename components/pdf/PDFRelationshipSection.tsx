@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
-import { RelationshipCompatibility } from "@/types/tests/mbti";
+import { RelationshipCompatibility } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import { ArrowRightIcon, HeartIcon, UsersIcon, MessageSquareIcon, AwardIcon, CheckboxIcon } from "./shared/icons";

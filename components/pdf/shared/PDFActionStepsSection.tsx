@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { View, Text, StyleSheet, Image } from "@react-pdf/renderer";
-import { ActionStepItem } from "@/types/tests/mbti";
+import { ActionStepItem } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "../PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 

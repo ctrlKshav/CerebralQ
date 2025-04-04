@@ -3,7 +3,7 @@ import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
 import Image from "next/image";
 import { TraitExplanation } from "./TraitExplanation";
-import { TraitKey } from "@/types/tests/mbti";
+import { TraitKey } from "@/types/tests/mbti/traits";
 
 export const TestResultSection = ({
   result,

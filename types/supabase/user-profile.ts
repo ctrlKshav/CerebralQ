@@ -1,5 +1,4 @@
-﻿import { TraitScores } from "@/types/tests/mbti"
-import { MBTIRawScore } from './user-test-history';
+﻿import { MBTIRawScore } from './user-test-history';
 import {User} from "@/types/supabase/users"
 
 export interface UserProfile {

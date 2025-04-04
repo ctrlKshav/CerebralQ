@@ -1,4 +1,4 @@
-﻿import { ResultData } from "@/types/tests/mbti";
+﻿import { ResultData } from "@/types/tests/mbti/results";
 import { sampleResultData } from "@/data/mbti/mbtiResultData";
 
 import PersonalityTraits from "@/components/results/report/sections/personality-traits";

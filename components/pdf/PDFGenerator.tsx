@@ -3,7 +3,7 @@ import { BlobProvider, PDFViewer } from "@react-pdf/renderer";
 import { Button } from "@/components/ui/button";
 import { Download, Eye } from "lucide-react";
 import { PDFResultsDocument } from "@/components/pdf/PDFDocument";
-import { ResultData } from "@/types/tests/mbti";
+import { ResultData } from "@/types/tests/mbti/results";
 import { useTheme } from "next-themes";
 import {
   Dialog,

@@ -1,5 +1,5 @@
 import React from "react";
-import { CareerPath } from "@/types/tests/mbti";
+import { CareerPath } from "@/types/tests/mbti/results";
 import {
   CheckCircle,
   Briefcase,

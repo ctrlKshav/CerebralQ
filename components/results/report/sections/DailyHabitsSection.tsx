@@ -1,7 +1,7 @@
 ﻿import React, { useState } from "react";
 import { ReactNode } from "react";
 import Image from "next/image";
-import { DailyHabits, ResultData } from "@/types/tests/mbti";
+import { DailyHabits, ResultData } from "@/types/tests/mbti/results";
 import { CheckCircle, Clock, Sun, Moon } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionNumber from "@/components/ui/section-number";

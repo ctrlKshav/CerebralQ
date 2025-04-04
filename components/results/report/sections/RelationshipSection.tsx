@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { RelationshipCompatibility, ResultData } from "@/types/tests/mbti";
+import { RelationshipCompatibility, ResultData } from "@/types/tests/mbti/results";
 import {
   Heart,
   Users,

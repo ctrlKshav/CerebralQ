@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
-import { DailyHabits } from "@/types/tests/mbti";
+import { DailyHabits } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import { MessageSquareIcon } from "@/components/pdf/shared/icons";

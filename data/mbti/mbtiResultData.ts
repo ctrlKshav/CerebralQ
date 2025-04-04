@@ -1,4 +1,4 @@
-﻿import { PersonalityDatabase, ResultData } from "@/types/tests/mbti";
+﻿import { PersonalityDatabase, ResultData } from "@/types/tests/mbti/results";
 import { ENTJData } from "./personalityDatabase/entj";
 import { ENFJData } from "./personalityDatabase/enfj";
 import { ENTPData } from "./personalityDatabase/entp";

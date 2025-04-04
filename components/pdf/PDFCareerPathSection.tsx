@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
-import { CareerPath } from "@/types/tests/mbti";
+import { CareerPath } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import PDFListItem from "./shared/PDFListItem";
