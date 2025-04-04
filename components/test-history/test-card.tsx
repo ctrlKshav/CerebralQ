@@ -9,6 +9,7 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExtendedUserTestHistory } from ".";
+import Link from "next/link";
 
 interface TestCardProps {
   result: ExtendedUserTestHistory;
@@ -110,15 +111,17 @@ export default function TestCard({ result }: TestCardProps) {
       </CardContent>
 
       <CardFooter className="relative z-10 pt-4 px-8 pb-10 flex justify-center md:justify-end">
-        <Button
-          className={`relative overflow-hidden group/button bg-gradient-to-r ${result.color} text-white shadow-lg hover:shadow-xl border-0 px-6 py-6`}
-        >
-          <span className="absolute inset-0 bg-white opacity-0 group-hover/button:opacity-10 transition-opacity"></span>
-          <span className="flex items-center gap-2">
-            View Detailed Report
-            <ExternalLink className="w-4 h-4" />
-          </span>
-        </Button>
+        <Link href={"/account/result"}>
+          <Button
+            className={`relative overflow-hidden group/button bg-gradient-to-r ${result.color} text-white shadow-lg hover:shadow-xl border-0 px-6 py-6`}
+          >
+            <span className="absolute inset-0 bg-white opacity-0 group-hover/button:opacity-10 transition-opacity"></span>
+            <span className="flex items-center gap-2">
+              View Detailed Report
+              <ExternalLink className="w-4 h-4" />
+            </span>
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );
