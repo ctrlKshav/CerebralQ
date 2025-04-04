@@ -21,22 +21,7 @@ export default function TestCard({ result, onViewDetailedReport }: TestCardProps
   // Get badge color classes based on personality type
   const getBadgeClasses = (type: string, index: number) => {
     switch (type) {
-      case "INFJ":
-        return index % 2 === 0
-          ? "bg-violet-100/80 text-violet-800 dark:bg-violet-900/30 dark:text-violet-300 border-violet-200 dark:border-violet-700/20"
-          : "bg-purple-100/80 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300 border-purple-200 dark:border-purple-700/20";
-      case "ENFP":
-        return index % 2 === 0
-          ? "bg-amber-100/80 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300 border-amber-200 dark:border-amber-700/20"
-          : "bg-orange-100/80 text-orange-800 dark:bg-orange-900/30 dark:text-orange-300 border-orange-200 dark:border-orange-700/20";
-      case "INTJ":
-        return index % 2 === 0
-          ? "bg-blue-100/80 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300 border-blue-200 dark:border-blue-700/20"
-          : "bg-indigo-100/80 text-indigo-800 dark:bg-indigo-900/30 dark:text-indigo-300 border-indigo-200 dark:border-indigo-700/20";
-      case "ENTP":
-        return index % 2 === 0
-          ? "bg-emerald-100/80 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 border-emerald-200 dark:border-emerald-700/20"
-          : "bg-teal-100/80 text-teal-800 dark:bg-teal-900/30 dark:text-teal-300 border-teal-200 dark:border-teal-700/20";
+      
       default:
         return "bg-gray-100/80 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300 border-gray-200 dark:border-gray-700/20";
     }
