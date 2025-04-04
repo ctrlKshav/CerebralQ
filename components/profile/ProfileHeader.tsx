@@ -42,7 +42,7 @@ export default function ProfileHeader({
         <div className="flex-shrink-0">
           <Avatar className="h-40 w-40 md:h-48 md:w-48 border-4 border-background">
             <AvatarImage 
-              src={profileData.profile_image_url || "/profile-avatars/avatarPlaceholder.png"}
+              src={profileData.profile_image_url || "/images/profile-avatars/avatarPlaceholder.png"}
               alt={`${profileData.username}'s profile`}
             />
             <AvatarFallback className="text-4xl">

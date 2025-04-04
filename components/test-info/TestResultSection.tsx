@@ -43,7 +43,7 @@ export const TestResultSection = ({
         {/* Responsive Image Container */}
         <div className="relative aspect-square w-full max-w-md mx-auto mt-auto">
           <Image
-            src="/latest_test_result_paint.jpeg"
+            src="/images/latest_test_result_paint.jpeg"
             alt={`${result.personalityType || result.type} Personality Type Visualization`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"

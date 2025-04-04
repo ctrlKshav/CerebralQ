@@ -64,7 +64,7 @@ export const TraitDetail = ({
 
       <div className="relative aspect-square w-full max-h-[200px] mx-auto mt-4">
         <Image
-          src="/career_paths.jpeg"
+          src="/images/career_paths.jpeg"
           alt={`${traitInfo.title} trait illustration`}
           fill
           sizes="(max-width: 768px) 200px, (max-width: 1200px) 200px, 280px"

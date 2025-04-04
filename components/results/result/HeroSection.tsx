@@ -33,7 +33,7 @@ const HeroSection = ({
 
   // Map personality types to their respective image paths
   const personalityImages: Record<string, string> = {
-    default: "/ENTJ.jpeg",
+    default: "/images/ENTJ.jpeg",
   };
 
   const imagePath =

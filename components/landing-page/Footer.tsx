@@ -89,7 +89,7 @@ export default function Footer() {
                 aria-label="C4E Website"
               >
                 <Image
-                  src="/C4E-logo.png"
+                  src="/images/C4E-logo.png"
                   alt="C4E Logo"
                   width={80}
                   height={40}

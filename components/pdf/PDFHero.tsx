@@ -197,7 +197,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
       {/* Logo absolutely positioned to the page (not the content container) */}
       <View style={styles.logoContainer}>
         <Image 
-          src="/logoLight.png" 
+          src="/images/logoLight.png" 
           style={styles.logo} 
         />
       </View>
