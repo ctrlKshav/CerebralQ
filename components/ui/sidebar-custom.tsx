@@ -3,7 +3,7 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { VariantProps, cva } from "class-variance-authority";
-import { PanelLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, PanelLeft, PanelRight } from "lucide-react";
 
 import { useIsMobile } from "@/hooks/use-mobile";
 import { cn } from "@/lib/utils";
@@ -49,7 +49,9 @@ const SidebarContext = React.createContext<SidebarContextProps | null>(null);
 function useSidebar() {
   const context = React.useContext(SidebarContext);
   if (!context) {
-    throw new Error("useSidebar must be used within a SidebarProvider for real.");
+    throw new Error(
+      "useSidebar must be used within a SidebarProvider for real."
+    );
   }
 
   return context;
@@ -79,9 +81,8 @@ const SidebarProvider = React.forwardRef<
   ) => {
     const isMobile = useIsMobile();
     const [openMobile, setOpenMobile] = React.useState(false);
-    const [activeSection, setActiveSection] = React.useState<string>(
-      defaultActiveSection
-    );
+    const [activeSection, setActiveSection] =
+      React.useState<string>(defaultActiveSection);
 
     // This is the internal state of the sidebar.
     // We use openProp and setOpenProp for control from outside the component.
@@ -293,22 +294,47 @@ const SidebarTrigger = React.forwardRef<
   React.ElementRef<typeof Button>,
   React.ComponentProps<typeof Button>
 >(({ className, onClick, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar();
+  const { toggleSidebar, state, isMobile } = useSidebar();
 
   return (
     <Button
       ref={ref}
       data-sidebar="trigger"
+      data-state={state}
       variant="ghost"
       size="icon"
-      className={cn("h-7 w-7", className)}
+      className={cn("h-7 w-7 relative", className)}
       onClick={(event) => {
         onClick?.(event);
         toggleSidebar();
       }}
       {...props}
     >
-      <PanelLeft />
+      {isMobile ? (
+        <>
+          <PanelRight />
+        </>
+      ) : (
+        <div className="relative w-full h-full flex items-center justify-center">
+          <ArrowRight
+            className={cn(
+              "absolute transition-all duration-300",
+              state === "expanded"
+                ? "opacity-0 -translate-x-2"
+                : "opacity-100 translate-x-0"
+            )}
+          />
+          <ArrowLeft
+            className={cn(
+              "absolute transition-all duration-300",
+              state === "expanded"
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 translate-x-2"
+            )}
+          />
+        </div>
+      )}
+
       <span className="sr-only">Toggle Sidebar</span>
     </Button>
   );
