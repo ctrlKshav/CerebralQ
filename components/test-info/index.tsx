@@ -22,7 +22,7 @@ import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { TeamGrid } from "@/components/team/team-grid";
 import { TeamHero } from "@/components/team/team-hero";
 import { teamMembers } from "@/data/team";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 
 const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
@@ -231,7 +231,7 @@ export default function TestInformation({ testId }: { testId: string }) {
   return (
     <div className="">
       {/* Hero Section */}
-      <section className="px-4 py-10 sm:py-0 min-h-screen flex flex-col justify-start sm:justify-center">
+      <section className=" px-4 py-10 sm:py-0 min-h-screen flex flex-col justify-start sm:justify-center">
         <div className="mb-12 max-w-4xl mx-auto text-center space-y-10">
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
             {MBTI_TEST.name}{" "}
@@ -276,25 +276,23 @@ export default function TestInformation({ testId }: { testId: string }) {
         className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
         id="test-details-section"
       >
-        <div className="mb-24 text-center">
-          <motion.h1
-            className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70"
-            initial={{ scale: 0.95 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            About the Test
-          </motion.h1>
-        </div>
-
+        {/* Team Section */}
+        <TeamHero
+          title="About the Test"
+          description="Explore the science and structure behind this assessment, including major benefits and personality dimensions."
+        />
         <div className="grid gap-12 md:gap-6 md:grid-cols-2 text-md">
           {/* Test Overview Card */}
           <TestOverviewCard testData={MBTI_TEST} />
-
           {/* Personality Dimensions Card */}
           <TestDimensionsCard dimensions={MBTI_TEST.personality_dimensions} />
         </div>
+      </section>
 
+      <section
+        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
+        id="test-details-section"
+      >
         {/* Past Results Section - Only show if user is logged in and has results */}
         {user && latestResult && !loading && (
           <TestResultSection
@@ -302,25 +300,30 @@ export default function TestInformation({ testId }: { testId: string }) {
             testShortCode={MBTI_TEST.short_code}
           />
         )}
-
-        <div className="" id="team">
-          {/* Team Section */}
-          <TeamHero
-            title="The CQ Crew"
-            description="A group of builders, thinkers, and problem-solvers making cool things happen. We turn ideas into reality."
-          />
-
-          <TeamGrid members={teamMembers} />
-        </div>
-
-        <div className="mt-24 grid">
-          {/* Citations Card */}
-          <TestCitationsCard citations={MBTI_TEST.citations} />
-        </div>
-
-        {/* Related Tests Section */}
-        {/* <TestRecommendationsSection recommendations={MBTI_TEST.complementary_tests} /> */}
       </section>
+
+      <section
+        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
+        id="test-details-section"
+      >
+        {/* Team Section */}
+        <TeamHero
+          title="The CQ Crew"
+          description="A group of builders, thinkers, and problem-solvers making cool things happen. We turn ideas into reality."
+        />
+
+        <TeamGrid members={teamMembers} />
+      </section>
+      <section
+        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
+        id="test-details-section"
+      >
+        {/* Citations Card */}
+        <TestCitationsCard citations={MBTI_TEST.citations} />
+      </section>
+
+      {/* Related Tests Section */}
+      {/* <TestRecommendationsSection recommendations={MBTI_TEST.complementary_tests} /> */}
     </div>
   );
 }
