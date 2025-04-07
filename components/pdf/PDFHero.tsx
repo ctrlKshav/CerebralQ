@@ -183,7 +183,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
     ENTJ: "https://cdn.pixabay.com/photo/2017/08/06/09/50/people-2590997_1280.jpg",
     ENTP: "https://cdn.pixabay.com/photo/2015/07/31/15/01/man-869215_1280.jpg",
     // Add other types with appropriate images
-    default: "/results_artsy_board.jpeg",
+    default: "/images/results_artsy_board.jpeg",
   };
 
   const imagePath =
