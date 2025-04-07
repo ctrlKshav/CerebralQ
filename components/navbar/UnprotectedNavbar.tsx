@@ -69,7 +69,7 @@ const UnprotectedNavbar = (props: { className?: string }) => {
   return (
     <header className={navbarClasses}>
       <div className="flex h-24 items-center px-4 max-w-7xl mx-auto">
-        <div className="grid grid-cols-3 items-center w-full">
+        <div className="grid grid-cols-3 items-center w-full ">
           {/* Logo - Left column */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center space-x-2">
@@ -78,13 +78,13 @@ const UnprotectedNavbar = (props: { className?: string }) => {
           </div>
 
           {/* Navigation - Center column */}
-          <div className="hidden lg:flex justify-center">
+          <div className="hidden lg:flex justify-center w-max">
             <NavigationMenu>
               <NavigationMenuList>
                 {/* Newsletter Link */}
                 <NavigationMenuItem>
                   <NavigationMenuLink
-                    className="h-auto w-max rounded-md px-4 py-2 text-sm xl:text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
+                    className="h-auto w-max flex-1  rounded-md px-4 py-2 text-sm xl:text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
                     href="/sign-up?source=newsletter"
                   >
                     Newsletter coming soon! Click{" "}
