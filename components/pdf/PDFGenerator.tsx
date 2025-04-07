@@ -68,26 +68,17 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
 
   if (!isClient) {
     return (
-      <div className="flex gap-2">
-        <Button disabled variant="outline" size="sm">
-          <Download className="w-4 h-4 mr-2" />
-          Preparing Download...
-        </Button>
-      </div>
+      <Button disabled variant="outline" size="sm">
+        <Download className="w-4 h-4 mr-2" />
+        Preparing Download...
+      </Button>
     );
   }
 
   return (
-    <div className="flex gap-2">
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={handleDownload}
-      >
-        <Download className="w-4 h-4 mr-2" />
-        Download Report
-      </Button>
-      
-    </div>
+    <Button variant="outline" size="sm" onClick={handleDownload}>
+      <Download className="w-4 h-4 mr-2" />
+      Download Report
+    </Button>
   );
 };

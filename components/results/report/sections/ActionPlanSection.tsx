@@ -88,7 +88,10 @@ const ActionPlanSection = ({
   };
 
   return (
-    <section className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-16" id={id}>
+    <section
+      className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-16"
+      id={id}
+    >
       <div className=" ">
         {/* Section header */}
         <SectionHeader
@@ -138,13 +141,13 @@ const ActionPlanSection = ({
                 Save this plan and continue your growth journey.
               </p>
 
-              <div className="flex flex-col md:flex-row justify-start gap-3 pt-2">
+              <div className="flex flex-col sm:flex-row justify-start gap-3 pt-2">
                 <Button
                   variant="default"
                   size="sm"
                   onClick={shareResults}
                   disabled={isSharing}
-                  className="w-full md:w-auto"
+                  className=""
                 >
                   <Share2 className="w-4 h-4 mr-2" />
                   {isSharing
@@ -153,12 +156,10 @@ const ActionPlanSection = ({
                       ? "Save & Share"
                       : "Share Results"}
                 </Button>
-                <div className="w-full md:w-auto flex-grow md:flex-grow-0">
-                  <PDFGenerator
-                    resultData={resultData}
-                    fileName={`${personalityType}-personality-report.pdf`}
-                  />
-                </div>
+                <PDFGenerator
+                  resultData={resultData}
+                  fileName={`${personalityType}-personality-report.pdf`}
+                />
               </div>
             </div>
 
