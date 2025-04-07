@@ -49,7 +49,7 @@ export default function InsiderBadge({
         </HybridTooltipTrigger>
         <HybridTooltipContent side="bottom" className="text-white">
           <p>
-            <Link href={"/contact"} className="font-bold underline">
+            <Link href={"/sign-up?source=newsletter"} className="font-bold underline">
               C4E
             </Link>{" "}
             organization member
