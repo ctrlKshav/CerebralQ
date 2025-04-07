@@ -81,7 +81,6 @@ export function SidebarNavMain({
                 isActive={isActive}
                 onClick={() => {
                   if (isMobile) {
-                    setActiveSection(item.title);
                     setOpenMobile(false);
                   } else {
                     setActiveSection(item.title);
