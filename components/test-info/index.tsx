@@ -1,7 +1,6 @@
 ﻿"use client";
 
 import { Button } from "@/components/ui/button";
-import { ArrowDown } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
@@ -22,7 +21,6 @@ import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { TeamGrid } from "@/components/team/TeamGrid";
 import { SectionHeader } from "@/components/test-info/SectionHeader";
 import { teamMembers } from "@/data/team";
-import { motion } from "framer-motion";
 
 const MBTI_TEST = {
   name: "Myers-Briggs Type Indicator",
@@ -259,16 +257,6 @@ export default function TestInformation({ testId }: { testId: string }) {
               </Button>
             </Link>
           </div>
-          <button
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 hidden sm:block lg:hidden"
-            onClick={() => {
-              document
-                .getElementById("test-details-section")
-                ?.scrollIntoView({ behavior: "smooth", block: "start" });
-            }}
-          >
-            <ArrowDown className="h-6 w-6 text-muted-foreground" />
-          </button>
         </div>
       </section>
 
