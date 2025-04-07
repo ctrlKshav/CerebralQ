@@ -19,7 +19,7 @@ export default function TestInformationPage() {
   return (
     <>
       <Navbar user={userData} />
-      <div className="mt-16">
+      <div className="mt-24">
         <TestInformation testId={"mbti"} />
       </div>
     </>

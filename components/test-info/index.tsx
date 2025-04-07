@@ -229,9 +229,9 @@ export default function TestInformation({ testId }: { testId: string }) {
   };
 
   return (
-    <div className="min-h-screen">
+    <div className="">
       {/* Hero Section */}
-      <section className="py-20 px-4 min-h-screen sm:py-0 sm:flex sm:flex-col sm:justify-center">
+      <section className="px-4 py-10 sm:py-0 min-h-screen flex flex-col justify-start sm:justify-center">
         <div className="mb-12 max-w-4xl mx-auto text-center space-y-10">
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
             {MBTI_TEST.name}{" "}
