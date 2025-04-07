@@ -119,7 +119,7 @@ const MBTI_TEST = {
   ],
 };
 
-export default function TestInformation({ testId }: { testId: string }) {
+export default function TestInformation({ testCode }: { testCode: string }) {
   const supabase = createClient();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);

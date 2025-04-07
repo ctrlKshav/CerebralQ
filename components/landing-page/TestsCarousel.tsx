@@ -3,7 +3,7 @@
 import Carousel from "@/components/ui/carousel";
 import { slideData } from "@/data/testCarousel";
 
-export function TestsCarousel() {
+export default function TestsCarousel() {
   
   return (
     <div className="relative overflow-hidden w-full h-full py-20">
