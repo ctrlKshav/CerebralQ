@@ -19,8 +19,8 @@ import { TestCitationsCard } from "@/components/test-info/CitationsCard";
 import { MBTI_TEST_ID } from "@/lib/constants";
 import { personalityDescriptions } from "@/data/mbti/personalityInformation";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
-import { TeamGrid } from "@/components/team/team-grid";
-import { TeamHero } from "@/components/team/team-hero";
+import { TeamGrid } from "@/components/team/TeamGrid";
+import { SectionHeader } from "@/components/test-info/SectionHeader";
 import { teamMembers } from "@/data/team";
 import { motion } from "framer-motion";
 
@@ -277,7 +277,7 @@ export default function TestInformation({ testId }: { testId: string }) {
         id="test-details-section"
       >
         {/* Team Section */}
-        <TeamHero
+        <SectionHeader
           title="About the Test"
           description="Explore the science and structure behind this assessment, including major benefits and personality dimensions."
         />
@@ -307,7 +307,7 @@ export default function TestInformation({ testId }: { testId: string }) {
         id="test-details-section"
       >
         {/* Team Section */}
-        <TeamHero
+        <SectionHeader
           title="The CQ Crew"
           description="A group of builders, thinkers, and problem-solvers making cool things happen. We turn ideas into reality."
         />

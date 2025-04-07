@@ -7,7 +7,7 @@ interface TeamHeroProps {
   description: string;
 }
 
-export function TeamHero({ title, description }: TeamHeroProps) {
+export function SectionHeader({ title, description }: TeamHeroProps) {
   return (
     <div className="relative overflow-hidden">
       <motion.div 

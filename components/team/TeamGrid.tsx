@@ -1,7 +1,7 @@
 "use client";
 
 import { TeamMember } from "@/types/team";
-import { TeamCard } from "./team-card";
+import { TeamCard } from "./TeamCard";
 
 interface TeamGridProps {
   members: TeamMember[];
