@@ -23,7 +23,7 @@ import { SectionHeader } from "@/components/test-info/mbti/SectionHeader";
 import { teamMembers } from "@/data/team";
 import { mbtiTestInfo } from "@/data/tests/mbti/testInfo";
 
-export default function TestInformation({ testCode }: { testCode: string }) {
+export default function MBTITestInformation() {
   const supabase = createClient();
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);

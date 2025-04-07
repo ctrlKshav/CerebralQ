@@ -1,6 +1,6 @@
 "use client";
 import Navbar from "@/components/navbar";
-import TestInformation from "@/components/test-info/mbti";
+import MBTITestInformation from "@/components/test-info/mbti";
 import React, { use } from "react";
 import { useUserDataContext } from "@/context/user-data";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
@@ -25,7 +25,7 @@ export default function TestInformationPage({
     <>
       <Navbar user={userData} />
       <div className="mt-24">
-        {testCode === "mbti" && <TestInformation testCode={testCode} />}
+        {testCode === "mbti" && <MBTITestInformation />}
         {/* {testCode === "ocean" && <TestInformation testCode={testCode} />} */}
       </div>
     </>
