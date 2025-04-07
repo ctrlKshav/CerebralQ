@@ -196,10 +196,20 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
     <View style={styles.page}>
       {/* Logo absolutely positioned to the page (not the content container) */}
       <View style={styles.logoContainer}>
-        <Image 
-          src="/images/logoLight.png" 
-          style={styles.logo} 
-        />
+        {isDarkMode ? (
+          <Image
+            src="/images/logoDark.png"
+            style={styles.logo}
+            
+            
+          />
+        ) : (
+          <Image
+            src="/images/logoLight.png"
+            style={styles.logo}
+            
+          />
+        )}
       </View>
       
       <View style={styles.contentContainer}>
