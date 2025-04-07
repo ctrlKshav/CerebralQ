@@ -21,9 +21,9 @@ export function SidebarNavMain({
 }: {
   items: SidebarNavDataType["navMain"];
 }) {
+  const { activeSection, setActiveSection, isMobile, setOpenMobile } =
+    useSidebar();
 
-  const {activeSection, setActiveSection} = useSidebar();
-  
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
 
   const handleScroll = useCallback(() => {
@@ -79,7 +79,14 @@ export function SidebarNavMain({
                 asChild
                 tooltip={item.title}
                 isActive={isActive}
-                onClick={() => setActiveSection(item.title)}
+                onClick={() => {
+                  if (isMobile) {
+                    setActiveSection(item.title);
+                    setOpenMobile(false);
+                  } else {
+                    setActiveSection(item.title);
+                  }
+                }}
                 onMouseEnter={() => setHoveredItem(item.title)}
                 onMouseLeave={() => setHoveredItem(null)}
                 className={cn(
