@@ -1,5 +1,5 @@
 ﻿import { Badge } from "@/components/ui/badge";
-import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
+import { getPersonalityTraitDescriptions } from "@/data/tests/mbti/traitDescriptions";
 import { TraitKey } from "@/types/tests/mbti/traits";
 
 export const TraitExplanation = ({

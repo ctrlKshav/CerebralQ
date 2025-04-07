@@ -3,7 +3,7 @@ import { Document, Page, StyleSheet, View, Text } from "@react-pdf/renderer";
 import { PDFHero } from "@/components/pdf/PDFHero";
 import { PDFPersonalityTraits } from "@/components/pdf/PDFPersonalityTraits";
 import { ResultData } from "@/types/tests/mbti/results";
-import { getPersonalityInsights } from "@/data/mbti/oldData/personalityInsights";
+import { getPersonalityInsights } from "@/data/tests/mbti/oldData/personalityInsights";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerPathSection from "./PDFCareerPathSection";
 import PDFActionStepsSection from "./shared/PDFActionStepsSection";

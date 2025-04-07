@@ -1,5 +1,5 @@
 ﻿import { ResultData } from "@/types/tests/mbti/results";
-import { sampleResultData } from "@/data/mbti/mbtiResultData";
+import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
 
 import PersonalityTraits from "@/components/results/report/sections/personality-traits";
 import CareerPathSection from "@/components/results/report/sections/CareerPathSection";

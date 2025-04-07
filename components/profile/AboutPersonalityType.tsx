@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { motion } from "framer-motion"
-import { personalityDatabase } from "@/data/mbti/oldData/personalityDatabase"
+import { personalityDatabase } from "@/data/tests/mbti/oldData/personalityDatabase"
 import { CheckCircle, AlertCircle, Star, TrendingUp } from "lucide-react"
 
 interface AboutPersonalityTypeProps {
