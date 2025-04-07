@@ -4,6 +4,7 @@ import MBTITestInformation from "@/components/test-info/mbti";
 import React, { use } from "react";
 import { useUserDataContext } from "@/context/user-data";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
+import OceanTestInformation from "@/components/test-info/ocean";
 
 export default function TestInformationPage({
   params,
@@ -26,7 +27,7 @@ export default function TestInformationPage({
       <Navbar user={userData} />
       <div className="mt-24">
         {testCode === "mbti" && <MBTITestInformation />}
-        {/* {testCode === "ocean" && <TestInformation testCode={testCode} />} */}
+        {testCode === "ocean" && <OceanTestInformation />}
       </div>
     </>
   );
