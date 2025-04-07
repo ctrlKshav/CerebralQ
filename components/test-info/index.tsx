@@ -308,7 +308,7 @@ export default function TestInformation({ testId }: { testId: string }) {
 
       <section
         className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
-        id="team-section"
+        id="team"
       >
         {/* Team Section */}
         <SectionHeader
