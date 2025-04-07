@@ -1,20 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { PersonalityTraits } from "@/components/results/personality-traits";
-import type { TraitScores } from "@/types/tests/mbti";
+import PersonalityTraits from "@/components/results/report/sections/personality-traits";
+import type { TraitScores } from "@/types/tests/mbti/traits";
 import AboutPersonalityType from "./AboutPersonalityType";
 import BigFiveConstellation from "./BigFiveConstellation";
-import { personalityDatabase } from "@/data/mbti/personalityDatabase";
+import { personalityDatabase } from "@/data/mbti/oldData/personalityDatabase";
 
 interface PersonalityShowcaseProps {
   personalityType: string;
   traitScores: TraitScores;
+  firstname: string | undefined;
 }
 
 export default function PersonalityShowcase({
   personalityType,
   traitScores,
+  firstname
 }: PersonalityShowcaseProps) {
   return (
     <section className="relative">
@@ -40,7 +42,7 @@ export default function PersonalityShowcase({
             sectionNumber={1}
           />
           {/* Use the PersonalityTraits component */}
-          <PersonalityTraits traitScores={traitScores} sectionNumber={2} />
+          <PersonalityTraits personalityType={personalityType} traitScores={traitScores} sectionNumber={2} firstname={firstname} dashboardView={true} />
         </div>
       </div>
     </section>

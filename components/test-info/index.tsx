@@ -16,7 +16,7 @@ import { TestDimensionsCard } from "@/components/test-info/TestDimensionsCard";
 import { TestResultSection } from "@/components/test-info/TestResultSection";
 import { TestCitationsCard } from "@/components/test-info/CitationsCard";
 import { MBTI_TEST_ID } from "@/lib/constants";
-import { personalityDescriptions } from "@/data/mbti/personalityInformation";
+import { personalityDescriptions } from "@/data/mbti/personalityDescription";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { TeamGrid } from "@/components/team/TeamGrid";
 import { SectionHeader } from "@/components/test-info/SectionHeader";
@@ -188,8 +188,7 @@ export default function TestInformation({ testId }: { testId: string }) {
               label:
                 personalityDescriptions[personalityType].alias || "Unknown",
               description:
-                personalityDescriptions[personalityType].description ||
-                "Unknown",
+                personalityDescriptions[personalityType].description(null, false),
               date: testData.taken_at || new Date().toISOString(),
               traitScores: mbtiResult?.traitScores,
               details: testData.raw_score,
@@ -289,7 +288,6 @@ export default function TestInformation({ testId }: { testId: string }) {
           {/* Past Results Section - Only show if user is logged in and has results */}
           <TestResultSection
             result={latestResult}
-            testShortCode={MBTI_TEST.short_code}
           />
         </section>
       )}

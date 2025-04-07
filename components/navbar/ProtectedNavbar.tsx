@@ -119,6 +119,17 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
                     Dashboard
                   </NavigationMenuLink>
                 </NavigationMenuItem>
+
+                <NavigationMenuItem>
+                  <NavigationMenuLink
+                    className={cn(
+                      "group inline-flex h-auto w-max items-center justify-center rounded-md px-4 py-2 text-base font-medium transition-colors hover:bg-primary hover:text-white focus:bg-primary focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-primary/50 data-[state=open]:bg-primary/50"
+                    )}
+                    href={`/account/history`}
+                  >
+                    History
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
               </NavigationMenuList>
               <NavigationMenuViewport className="origin-top-center" />
             </NavigationMenu>
@@ -162,7 +173,7 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
 
                   <DropdownMenuSeparator />
                   <DropdownMenuItem className=" focus:bg-background">
-                    <LogoutButton/>
+                    <LogoutButton />
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -231,12 +242,21 @@ const ProtectedNavbar = ({ className, user }: ProtectedNavbarProps) => {
                           title="Account"
                         />
                       </div>
+
+                      <div className="space-y-2 pb-4 border-b">
+                        <MobileMenuItem
+                          href={`/account/history`}
+                          isSheetOpen={isSheetOpen}
+                          setIsSheetOpen={setIsSheetOpen}
+                          title="History"
+                        />
+                      </div>
                     </div>
                   </div>
 
                   {/* Mobile Logout Button */}
                   <div className="sticky bottom-0 left-0 right-0 px-4 py-8 border-t">
-                    <LogoutButton  />
+                    <LogoutButton />
                   </div>
                 </SheetContent>
               </Sheet>

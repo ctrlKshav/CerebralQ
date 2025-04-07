@@ -65,7 +65,7 @@ export function SigninForm({
       redirect: localStorage.getItem(RETURN_URL_KEY) || undefined,
     };
     await signInAction(signInData);
-    window.location.href = "/";
+    window.location.href = `/${signInData.redirect ?? ""}`
   };
 
   return (

@@ -1,6 +1,7 @@
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { MBTIRawScore, MBTITraitScore } from "@/types/supabase/user-test-history";
+import { MBTIRawScore } from "@/types/supabase/user-test-history";
+import { TraitScore, TraitScores } from "@/types/tests/mbti/traits";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -60,9 +61,9 @@ export const MBTI_TRAIT_ORDER = ["E-I", "S-N", "T-F", "J-P"] as const;
  * @returns Object with trait scores in standard MBTI order
  */
 export function getOrderedMBTITraitsObject(
-  traitScores: { [key: string]: MBTITraitScore } | undefined
+  traitScores: TraitScores | undefined
 ): MBTIRawScore["traitScores"] {
-  const defaultTraitScore: MBTITraitScore = {
+  const defaultTraitScore: TraitScore = {
     left: 0,
     right: 0,
     leftPercentage: 50,

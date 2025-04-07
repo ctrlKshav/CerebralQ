@@ -1,5 +1,5 @@
 ﻿import { MBTI_TEST_ID } from "@/lib/constants"
-import { TestData } from "@/types/tests/mbti"
+import { TestData } from "@/types/tests/mbti/testQuestions"
 
 export const getTestName = () => {
   return testData[0].id;

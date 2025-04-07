@@ -1,5 +1,5 @@
 ﻿import { MBTIRawScore } from "@/types/supabase/user-test-history";
-import { personalityDescriptions } from "@/data/mbti/personalityInformation";
+import { personalityDescriptions } from "@/data/mbti/personalityDescription";
 import { FormattedTestResult } from "@/types/supabase/user-test-history";
 
 /**
@@ -12,7 +12,7 @@ export function formatMBTIResult(data: any): FormattedTestResult | null {
   const personalityType = mbtiResult?.personalityType || "Unknown";
   
   // Get description from our data file or use a default
-  const description = personalityDescriptions[personalityType]?.description || 
+  const description = personalityDescriptions[personalityType]?.description(null, false) || 
     "A unique combination of psychological preferences";
   
   // Get the type alias from our data file or constants

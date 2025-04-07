@@ -3,13 +3,14 @@ import { Progress } from "@/components/ui/progress";
 import Link from "next/link";
 import Image from "next/image";
 import { TraitExplanation } from "./TraitExplanation";
+import { TraitKey } from "@/types/tests/mbti/traits";
 
 export const TestResultSection = ({
   result,
-  testShortCode,
+
 }: {
   result: any;
-  testShortCode: string;
+
 }) => (
   <div className=" rounded-xl p-6">
 
@@ -87,7 +88,7 @@ export const TestResultSection = ({
                       className="h-2 bg-primary/20"
                     />
 
-                    <TraitExplanation traitKey={trait} score={score} />
+                    <TraitExplanation traitKey={trait as TraitKey} personalityType={result.personalityType} score={score} />
                   </div>
                 )
               )}

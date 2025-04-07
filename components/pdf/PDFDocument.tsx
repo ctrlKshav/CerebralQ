@@ -1,31 +1,38 @@
-﻿import React from 'react';
-import { Document, Page, StyleSheet, View, Text } from '@react-pdf/renderer';
-import { PDFHero } from '@/components/pdf/PDFHero';
-import { PDFPersonalityTraits } from '@/components/pdf/PDFPersonalityTraits';
-import { PDFCareerSuggestions } from '@/components/pdf/PDFCareerSuggestions';
-import { PDFSimilarPersonalities } from '@/components/pdf/PDFSimilarPersonalities';
-import { PDFDetailedPersonalityInsights } from '@/components/pdf/PDFDetailedPersonalityInsights';
-import { PDFAboutPersonalityType } from '@/components/pdf/PDFAboutPersonalityType';
-import { ResultData } from '@/types/tests/mbti';
-import { getPersonalityInsights } from '@/data/mbti/personalityInformation';
-import { createBaseStyles, getThemeColors } from './PDFTheme';
+﻿import React from "react";
+import { Document, Page, StyleSheet, View, Text } from "@react-pdf/renderer";
+import { PDFHero } from "@/components/pdf/PDFHero";
+import { PDFPersonalityTraits } from "@/components/pdf/PDFPersonalityTraits";
+import { ResultData } from "@/types/tests/mbti/results";
+import { getPersonalityInsights } from "@/data/mbti/oldData/personalityInsights";
+import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import PDFCareerPathSection from "./PDFCareerPathSection";
+import PDFActionStepsSection from "./shared/PDFActionStepsSection";
+import PDFCareerSuggestionsSection from "./PDFCareerSuggestionsSection";
+import PDFRelationshipSection from "./PDFRelationshipSection";
+import PDFRelationshipActionSection from "./PDFRelationshipActionSection";
+import PDFGrowthSection from "./PDFGrowthSection";
+import PDFDailyHabitsSection from "./PDFDailyHabitsSection";
+import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
+import PDFValuesActionSection from "./PDFValuesActionSection";
+import PDFCommunicationSection from "./PDFCommunicationSection";
+import PDFActionImageSection from "./shared/PDFActionImageSection";
 
 // Create styles with theme variants
 const createStyles = (isDarkMode = false) => {
   const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
-  
+
   return StyleSheet.create({
     page: baseStyles.page,
     section: {
       marginBottom: 20,
     },
     footer: {
-      position: 'absolute',
+      position: "absolute",
       bottom: 30,
       left: 0,
       right: 0,
-      textAlign: 'center',
+      textAlign: "center",
       fontSize: 10,
       color: theme.mutedForeground,
     },
@@ -37,26 +44,46 @@ interface PDFDocumentProps {
   isDarkMode?: boolean;
 }
 
-export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({ 
+export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   resultData,
-  isDarkMode = false 
+  isDarkMode = false,
 }) => {
   const styles = createStyles(isDarkMode);
-  
+
   const {
     personalityType,
     personalityDescription,
     completionDate,
     traitScores,
-    careerSuggestions,
-    similarPersonalities,
   } = resultData;
 
-  // Get the alias for the current personality type
-  const personalityAlias = personalityDescription.alias;
+  // Get career suggestions and split them into chunks of 2 per page
+  const {
+    career,
+    relationships,
+    growth,
+    dailyHabits,
+    valuesAndMotivators,
+    communityConnection,
+    actionItems,
+  } = resultData.personalityData;
+  const suggestions = career.suggestions || [];
+  const suggestionPages = [];
 
-  // Get personality insights
-  const personalityInsights = getPersonalityInsights(personalityType);
+  // Split suggestions into chunks of 3
+  for (let i = 0; i < suggestions.length; i += 2) {
+    suggestionPages.push(suggestions.slice(i, i + 2));
+  }
+
+  // Calculate the starting page numbers for different sections
+  const careerStartPage = 5;
+  const relationshipStartPage = careerStartPage + suggestionPages.length;
+  const growthStartPage = relationshipStartPage + relationships.length * 2;
+  const dailyHabitsPage = growthStartPage + 2;
+  const communicationPage = dailyHabitsPage + 1;
+  const valuesStartPage = communicationPage + 1;
+  const communityPage = valuesStartPage + 2;
+  const actionPlanPage = communityPage + 1;
 
   return (
     <Document>
@@ -64,87 +91,122 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
       <Page size="A4" style={styles.page}>
         <View style={styles.section}>
           <PDFHero
+            firstname={resultData.firstname}
             personalityType={personalityType}
-            personalityAlias={personalityAlias}
             personalityDescription={personalityDescription}
             completionDate={completionDate}
             isDarkMode={isDarkMode}
           />
         </View>
-        
-        <View style={styles.section}>
-          <PDFAboutPersonalityType
-            personalityType={personalityType}
-            sectionNumber={1}
-            isDarkMode={isDarkMode}
-          />
-        </View>
-        
-        <Text style={styles.footer}>
-          CerebralQ Personality Assessment | Page 1
-        </Text>
       </Page>
-      
+
       {/* Second Page: Detailed Traits */}
       <Page size="A4" style={styles.page}>
         {traitScores && (
           <View style={styles.section}>
-            <PDFPersonalityTraits 
-              traitScores={traitScores} 
-              sectionNumber={2}
+            <PDFPersonalityTraits
+              traitScores={traitScores}
+              sectionNumber={1}
               isDarkMode={isDarkMode}
+              firstname={resultData.firstname ?? undefined}
+              personalityType={personalityType}
             />
           </View>
         )}
-        
-        <Text style={styles.footer}>
-          CerebralQ Personality Assessment | Page 2
-        </Text>
       </Page>
-      
-      {/* Third Page: Combined Career Suggestions and Similar Personalities */}
+
+      {/* Third Page: Career Path - Superpowers and Growth Areas */}
       <Page size="A4" style={styles.page}>
-        {/* Career Suggestions - with compact prop to make it more space-efficient */}
-        <View style={styles.section}>
-          <PDFCareerSuggestions
-            personalityType={personalityType}
-            careerSuggestions={careerSuggestions.slice(0, 6)} // Limit to top 6 career suggestions
+        <PDFCareerPathSection
+          firstname={resultData.firstname}
+          sectionNumber={2}
+          career={resultData.personalityData.career}
+          isDarkMode={isDarkMode}
+        />
+      </Page>
+
+      {/* Career Suggestions Pages - One page per 2 suggestions */}
+      {suggestionPages.map((pageSuggestions, pageIndex) => (
+        <Page
+          key={`suggestions-page-${pageIndex}`}
+          size="A4"
+          style={styles.page}
+        >
+          <PDFCareerSuggestionsSection
+            suggestions={pageSuggestions}
             sectionNumber={3}
+            firstname={resultData.firstname}
             isDarkMode={isDarkMode}
+            pageNumber={careerStartPage + pageIndex}
+            isFirstPage={pageIndex === 0}
           />
-        </View>
-        
-        {/* Similar Personalities - also with compact prop */}
-        <View style={styles.section}>
-          <PDFSimilarPersonalities
-            personalityType={personalityType}
-            similarPersonalities={similarPersonalities.slice(0, 6)} // Limit to top 6 personalities
-            sectionNumber={4}
-            isDarkMode={isDarkMode}
-          />
-        </View>
-        
-        <Text style={styles.footer}>
-          CerebralQ Personality Assessment | Page 3
-        </Text>
-      </Page>
-      
-      {/* Fourth Page: Detailed Personality Insights */}
+        </Page>
+      ))}
+
+      {/* Relationship and Friendship Pages - Two pages per relationship */}
+      {relationships.map((relationship, index) => (
+        <React.Fragment key={`relationship-${index}`}>
+          {/* First page with overview, superpowers, and growth areas */}
+          <Page size="A4" style={styles.page}>
+            <PDFRelationshipSection
+              imageSrc={
+                index === 0
+                  ? "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop"
+                  : "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000&auto=format&fit=crop"
+              }
+              relationship={relationship}
+              sectionNumber={4 + index}
+              firstname={resultData.firstname}
+              isDarkMode={isDarkMode}
+              pageNumber={relationshipStartPage + index * 2}
+            />
+          </Page>
+        </React.Fragment>
+      ))}
+
+      {/* Growth Journey Section - Two pages */}
       <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
-          <PDFDetailedPersonalityInsights
-            personalityType={personalityType}
-            personalityAlias={personalityAlias}
-            personalityInsights={personalityInsights}
-            sectionNumber={5}
-            isDarkMode={isDarkMode}
-          />
-        </View>
-        
-        <Text style={styles.footer}>
-          CerebralQ Personality Assessment | Page 4
-        </Text>
+        <PDFGrowthSection
+          growth={growth}
+          sectionNumber={4 + relationships.length}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={growthStartPage}
+        />
       </Page>
+
+      {/* Daily Habits Section - Two pages */}
+      <Page size="A4" style={styles.page}>
+        <PDFDailyHabitsSection
+          dailyHabits={dailyHabits}
+          sectionNumber={5 + relationships.length}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={dailyHabitsPage}
+        />
+      </Page>
+
+      <Page size="A4" style={styles.page}>
+        <PDFCommunicationSection
+          dailyHabits={dailyHabits}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={communicationPage}
+        />
+      </Page>
+
+      {/* Values and Motivators Section - Two pages */}
+      <Page size="A4" style={styles.page}>
+        <PDFValuesAndMotivatorsSection
+          valuesAndMotivators={valuesAndMotivators}
+          sectionNumber={6 + relationships.length}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          pageNumber={valuesStartPage}
+        />
+      </Page>
+
+    
     </Document>
   );
 };

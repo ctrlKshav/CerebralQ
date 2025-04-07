@@ -1,15 +1,18 @@
 ﻿import { Badge } from "@/components/ui/badge";
-import { traitDescriptions } from "@/data/mbti/traitDescriptions";
+import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
+import { TraitKey } from "@/types/tests/mbti/traits";
 
 export const TraitExplanation = ({
   traitKey,
   score,
+  personalityType,
 }: {
-  traitKey: string;
+  traitKey: TraitKey;
   score: any;
+  personalityType: string;
 }) => {
   const traitInfo =
-    traitDescriptions[traitKey as keyof typeof traitDescriptions];
+    getPersonalityTraitDescriptions(personalityType)[traitKey]
   const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
 
   return (
@@ -23,7 +26,7 @@ export const TraitExplanation = ({
           {traitInfo.title}
         </span>
       </div>
-      <p className="text-xs md:text-sm mt-1">{dominant.description}</p>
+      <p className="text-xs md:text-sm mt-1">{traitInfo.getDominantTraitDescription()}</p>
     </div>
   );
 };
