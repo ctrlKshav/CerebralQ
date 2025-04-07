@@ -273,7 +273,7 @@ export default function TestInformation({ testId }: { testId: string }) {
       </section>
 
       <section
-        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
+        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
         id="test-details-section"
       >
         {/* Team Section */}
@@ -289,22 +289,26 @@ export default function TestInformation({ testId }: { testId: string }) {
         </div>
       </section>
 
-      <section
-        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
-        id="test-details-section"
-      >
-        {/* Past Results Section - Only show if user is logged in and has results */}
-        {user && latestResult && !loading && (
+      {user && latestResult && !loading && (
+        <section
+          className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
+          id="latest-result"
+        >
+          <SectionHeader
+            title="Your Latest Result"
+            description="Pick up where you left off and rediscover your unique personality type. A quick flashback to your previous insights."
+          />
+          {/* Past Results Section - Only show if user is logged in and has results */}
           <TestResultSection
             result={latestResult}
             testShortCode={MBTI_TEST.short_code}
           />
-        )}
-      </section>
+        </section>
+      )}
 
       <section
-        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
-        id="test-details-section"
+        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
+        id="team-section"
       >
         {/* Team Section */}
         <SectionHeader
@@ -315,10 +319,14 @@ export default function TestInformation({ testId }: { testId: string }) {
         <TeamGrid members={teamMembers} />
       </section>
       <section
-        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36"
-        id="test-details-section"
+        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
+        id="citations-section"
       >
-        {/* Citations Card */}
+        {/* Citations Section */}
+        <SectionHeader
+          title="Academic Citations"
+          description="Peer-reviewed sources informing our methodology and assessment design"
+        />
         <TestCitationsCard citations={MBTI_TEST.citations} />
       </section>
 

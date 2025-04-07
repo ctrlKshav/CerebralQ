@@ -11,8 +11,7 @@ export const TestResultSection = ({
   result: any;
   testShortCode: string;
 }) => (
-  <div className="mt-16 rounded-xl p-6">
-    <h2 className="text-3xl font-bold mb-16 text-center">Your Latest Result</h2>
+  <div className=" rounded-xl p-6">
 
     <div className="flex flex-col lg:flex-row gap-6">
       {/* Left Column - Type, Alias, Date, Description, Image */}

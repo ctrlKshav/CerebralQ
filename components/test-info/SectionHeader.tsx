@@ -14,7 +14,7 @@ export function SectionHeader({ title, description }: TeamHeroProps) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-center max-w-3xl mx-auto px-4 pb-16 md:pb-24 relative z-10"
+        className="text-center max-w-3xl mx-auto px-4 pb-16  relative z-10"
       >
         <motion.h1 
           className="text-4xl md:text-5xl font-bold tracking-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70"
