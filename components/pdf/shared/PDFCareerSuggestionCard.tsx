@@ -23,7 +23,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       borderColor: theme.border,
       overflow: "hidden",
       flexDirection: "row",
-      height: 170, // Fixed height for consistency
+      height: 300, // Fixed height for consistency
     },
     imageContainer: {
       width: "35%",
@@ -71,6 +71,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     },
     content: {
       padding: 16,
+      paddingBottom: 8,
       paddingTop: 0,
     },
     description: {
@@ -80,7 +81,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       marginBottom: 14,
     },
     traitsContainer: {
-      marginTop: 4,
+      marginTop: 2,
     },
     traitsHeader: {
       fontSize: 11,
@@ -89,21 +90,27 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       marginBottom: 8,
     },
     traitsRow: {
-      flexDirection: "row",
-      flexWrap: "wrap",
+      flexDirection: "column",
     },
     traitBadge: {
       backgroundColor: theme.muted,
-      paddingVertical: 4,
       paddingHorizontal: 8,
+      paddingVertical: 4,
       borderRadius: 4,
-      marginRight: 8,
-      marginBottom: 6,
+      marginBottom: 8,
     },
-    traitText: {
-      fontSize: 9,
+    traitTitle: {
+      fontSize: 10,
       color: theme.mutedForeground,
       fontFamily: "Helvetica-Bold",
+      marginBottom: 6,
+    },
+    traitDescription: {
+      fontSize: 8,
+      color: theme.mutedForeground,
+      fontFamily: "Helvetica",
+      marginBottom: 3,
+
     },
   });
   
@@ -127,7 +134,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
   };
 
   // Ensure we only show the first 3-4 quality matches to avoid overflow
-  const displayQualityMatches = suggestion.qualityMatches?.slice(0, 4) || [];
+  const displayQualityMatches = suggestion.qualityMatches?.slice(0, 3) || [];
 
   return (
     <View style={styles.card}>
@@ -160,7 +167,8 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
               <View style={styles.traitsRow}>
                 {displayQualityMatches.map((quality, index) => (
                   <View key={index} style={styles.traitBadge}>
-                    <Text style={styles.traitText}>{quality.title}</Text>
+                    <Text style={styles.traitTitle}>{quality.title}</Text>
+                    <Text style={styles.traitDescription}>{quality.description}</Text>
                   </View>
                 ))}
               </View>
