@@ -10,7 +10,7 @@ export function PageHeader({ title, subtitle }: HeaderProps) {
   return (
     <header className="text-center mb-16">
       <motion.h1 
-        className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-transparent bg-clip-text"
+        className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-purple-500 to-emerald-500  text-transparent bg-clip-text"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ 

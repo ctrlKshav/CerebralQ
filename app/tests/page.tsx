@@ -29,14 +29,14 @@ export default function ChooseTestPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-12 max-w-5xl">
+      <div className="container mx-auto px-4 py-12 max-w-7xl">
         <PageHeader 
           title="Discover Yourself" 
           subtitle="Embark on a journey of self-discovery through scientifically designed assessments that reveal your unique personality traits, strengths, and potential."
         />
 
         <motion.div
-          className="grid md:grid-cols-2 gap-8 mb-16"
+          className="grid md:grid-cols-2 gap-16 mb-16"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
