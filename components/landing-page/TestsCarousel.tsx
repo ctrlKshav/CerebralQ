@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import Carousel from "@/components/ui/carousel";
+import Carousel from "@/components/ui/carousel-custom";
 import { slideData } from "@/data/testCarousel";
 
 export default function TestsCarousel() {
