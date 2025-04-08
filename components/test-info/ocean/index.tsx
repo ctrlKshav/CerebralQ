@@ -239,7 +239,7 @@ export default function OceanTestInformation() {
         <TestCitationsCard citations={oceanTestInfo.citations} />
       </section>
 
-      <section
+      {/* <section
         className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
         id="recommendations-section"
       >
@@ -248,7 +248,7 @@ export default function OceanTestInformation() {
           description="Enhance your self-awareness with these complementary tests that work well with your OCEAN results."
         />
         <TestRecommendationsSection recommendations={oceanTestInfo.complementary_tests} />
-      </section>
+      </section> */}
 
     </div>
   );
