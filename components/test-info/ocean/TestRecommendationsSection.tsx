@@ -20,7 +20,6 @@ export const TestRecommendationsSection = ({
     <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
       {recommendations.map((test, index) => (
         <Card key={index} className="group hover:shadow-lg transition-all duration-300 overflow-hidden border-primary/10">
-          <div className="absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 transform rounded-full bg-gradient-to-br from-primary/20 to-primary/40 opacity-20 blur-2xl"></div>
           <CardContent className="pt-8 p-6">
             <div className="flex items-start gap-6">
               <div className="p-3 rounded-lg bg-primary/10 text-primary">
