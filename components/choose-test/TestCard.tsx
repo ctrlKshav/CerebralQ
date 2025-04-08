@@ -118,7 +118,7 @@ export function TestCard({ test }: TestCardProps) {
             
             <div className="mt-6">
               <span className={`inline-flex items-center ${test.textColorClass} font-medium group-hover:underline`}>
-                Start {test.title}
+                Explore More
                 <motion.div
                   variants={arrowVariants}
                   transition={{ duration: 0.2 }}
