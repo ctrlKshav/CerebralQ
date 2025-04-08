@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
-import { Brain, Timer, Users, Target, Award, BookOpen } from "lucide-react";
 import { User } from "@supabase/supabase-js";
 import {
   MBTIRawScore,
@@ -15,13 +14,11 @@ import { FeatureBadge } from "../shared/badges/FeatureBadge";
 import { TestOverviewCard } from "@/components/test-info/mbti/TestOverviewCard";
 import { TestDimensionsCard } from "@/components/test-info/mbti/TestDimensionsCard";
 import { TestResultSection } from "@/components/test-info/mbti/TestResultSection";
-import { TestCitationsCard } from "@/components/test-info/mbti/CitationsCard";
+import { TestCitationsCard } from "@/components/test-info/shared/CitationsCard";
 import { MBTI_TEST_ID } from "@/lib/constants";
 import { personalityDescriptions } from "@/data/tests/mbti/personalityDescription";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
-import { TeamGrid } from "@/components/team/TeamGrid";
 import { SectionHeader } from "@/components/test-info/mbti/SectionHeader";
-import { teamMembers } from "@/data/team";
 import { mbtiTestInfo } from "@/data/tests/mbti/testInfo";
 
 export default function MBTITestInformation() {

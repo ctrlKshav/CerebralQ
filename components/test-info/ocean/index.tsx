@@ -9,7 +9,7 @@ import { FeatureBadge } from "..//shared/badges/FeatureBadge";
 import { TestOverviewCard } from "./TestOverviewCard";
 import { TestDimensionsCard } from "./TestDimensionsCard";
 import { TestResultSection } from "./TestResultSection";
-import { TestCitationsCard } from "./CitationsCard";
+import { TestCitationsCard } from "../shared/CitationsCard";
 import { TestRecommendationsSection } from "./TestRecommendationsSection";
 import { TeamGrid } from "@/components/team/TeamGrid";
 import { SectionHeader } from "./SectionHeader";
