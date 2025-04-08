@@ -163,13 +163,7 @@ export default function OceanTestInformation() {
         <div className="absolute top-20 left-10 w-72 h-72 bg-primary/5 rounded-full filter blur-3xl"></div>
         <div className="absolute bottom-10 right-10 w-80 h-80 bg-blue-500/5 rounded-full filter blur-3xl"></div>
         
-        <div className="mb-12 max-w-4xl mx-auto text-center space-y-8 sm:space-y-10 relative z-10">
-          <div className="inline-flex items-center justify-center mb-2">
-            <span className="inline-flex items-center rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-sm text-primary">
-              <Sparkles className="mr-1 h-3.5 w-3.5" />
-              Science-Backed Assessment
-            </span>
-          </div>
+        <div className="mb-12 max-w-7xl mx-auto text-center space-y-8 sm:space-y-10 relative z-10">
           
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
             {oceanTestInfo.name}{" "}
