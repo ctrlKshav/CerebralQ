@@ -104,7 +104,7 @@ export function TestCard({ test }: TestCardProps) {
                     {test.badges.quality}
                   </Badge>
                 </div>
-                <p className="mt-3 text-muted-foreground text-sm leading-relaxed">
+                <p className="mt-3 text-muted-foreground leading-relaxed">
                   {test.description}
                 </p>
               </div>
