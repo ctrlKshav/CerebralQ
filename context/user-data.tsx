@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import LoadingSkeleton from "@/components/LoadingSkeleton";
-import { getCurrentUser } from "@/lib/supabaseOperations";
+import { getCurrentUser } from "@/lib/supabase-operations";
 import { User } from "@/types/supabase/users";
 import { createClient } from "@/utils/supabase/client";
 import { RealtimeChannel } from "@supabase/supabase-js";

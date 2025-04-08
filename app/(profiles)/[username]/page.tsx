@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, use } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { getUserProfileByUsername } from "@/lib/supabaseOperations/getUserProfile";
+import { getUserProfileByUsername } from "@/lib/supabase-operations/getUserProfile";
 import { useRouter } from "next/navigation";
 
 // Components

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Edit2, User, Upload, Loader2 } from "lucide-react";
-import { updateUserProfile } from "@/lib/supabaseOperations";
+import { updateUserProfile } from "@/lib/supabase-operations";
 import { toast } from "sonner";
 import {
   Dialog,
