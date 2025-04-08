@@ -16,7 +16,6 @@ import { SectionHeader } from "./SectionHeader";
 import { teamMembers } from "@/data/team";
 import { oceanTestInfo } from "@/data/tests/ocean/testInfo";
 import { OceanTraitKey } from "@/types/tests/ocean/traits";
-import { Sparkles } from "lucide-react";
 
 // Mock constant for Ocean test ID (should be replaced with actual constant)
 const OCEAN_TEST_ID = 2;

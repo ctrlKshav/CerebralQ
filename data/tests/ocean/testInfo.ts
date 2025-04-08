@@ -12,11 +12,6 @@ export const oceanTestInfo = {
       label: "1.5M+ people tested",
       color: "bg-indigo-100 text-indigo-700",
     },
-    {
-      icon: Star,
-      label: "99% accuracy",
-      color: "bg-amber-100 text-amber-700",
-    },
   ],
   category: "personality",
   citations: [
