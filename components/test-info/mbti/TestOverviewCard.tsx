@@ -13,7 +13,8 @@ import {
   HybridTooltipTrigger,
 } from "@/components/ui/tooltip-hybrid";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { TestTypeBadge, DifficultyBadge } from "./badges";
+import { TestTypeBadge } from "../shared/badges/TestTypeBadge";
+import {DifficultyBadge} from "../shared/badges/DifficultyBadge";
 
 export const TestOverviewCard = ({ testData }: { testData: any }) => (
   <Card className="h-full flex flex-col">

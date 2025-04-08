@@ -17,11 +17,8 @@ import {
   HybridTooltipTrigger,
 } from "@/components/ui/tooltip-hybrid";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import { 
-  TestTypeBadge, 
-  DifficultyBadge, 
-  ReliabilityBadge 
-} from "../shared/badges";
+import { TestTypeBadge } from "../shared/badges/TestTypeBadge";
+import { DifficultyBadge } from "../shared/badges/DifficultyBadge";
 
 export const TestOverviewCard = ({ testData }: { testData: any }) => (
   <Card className="h-full flex flex-col">
@@ -39,7 +36,6 @@ export const TestOverviewCard = ({ testData }: { testData: any }) => (
         <div className="flex flex-wrap gap-2">
           <TestTypeBadge type={testData.category} />
           <DifficultyBadge level={testData.difficulty_level} />
-          <ReliabilityBadge score={testData.scientific_validity_score} />
         </div>
 
         <div className="grid grid-cols-2 gap-4">

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { useEffect, useState } from "react";
 import { User } from "@supabase/supabase-js";
-import { FeatureBadge } from "../shared/badges";
+import { FeatureBadge } from "..//shared/badges/FeatureBadge";
 import { TestOverviewCard } from "./TestOverviewCard";
 import { TestDimensionsCard } from "./TestDimensionsCard";
 import { TestResultSection } from "./TestResultSection";

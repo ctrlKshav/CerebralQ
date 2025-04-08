@@ -10,7 +10,8 @@ import {
   MBTIRawScore,
   FormattedTestResult,
 } from "@/types/supabase/user-test-history";
-import { FeatureBadge } from "./badges";
+import { FeatureBadge } from "../shared/badges/FeatureBadge";
+
 import { TestOverviewCard } from "@/components/test-info/mbti/TestOverviewCard";
 import { TestDimensionsCard } from "@/components/test-info/mbti/TestDimensionsCard";
 import { TestResultSection } from "@/components/test-info/mbti/TestResultSection";
@@ -91,8 +92,10 @@ export default function MBTITestInformation() {
               personalityType: personalityType,
               label:
                 personalityDescriptions[personalityType].alias || "Unknown",
-              description:
-                personalityDescriptions[personalityType].description(null, false),
+              description: personalityDescriptions[personalityType].description(
+                null,
+                false
+              ),
               date: testData.taken_at || new Date().toISOString(),
               traitScores: mbtiResult?.traitScores,
               details: testData.raw_score,
@@ -176,7 +179,9 @@ export default function MBTITestInformation() {
           {/* Test Overview Card */}
           <TestOverviewCard testData={mbtiTestInfo} />
           {/* Personality Dimensions Card */}
-          <TestDimensionsCard dimensions={mbtiTestInfo.personality_dimensions} />
+          <TestDimensionsCard
+            dimensions={mbtiTestInfo.personality_dimensions}
+          />
         </div>
       </section>
 
@@ -190,9 +195,7 @@ export default function MBTITestInformation() {
             description="Pick up where you left off and rediscover your unique personality type. A quick flashback to your previous insights."
           />
           {/* Past Results Section - Only show if user is logged in and has results */}
-          <TestResultSection
-            result={latestResult}
-          />
+          <TestResultSection result={latestResult} />
         </section>
       )}
 
