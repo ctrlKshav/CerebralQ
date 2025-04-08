@@ -20,6 +20,7 @@ import { personalityDescriptions } from "@/data/tests/mbti/personalityDescriptio
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { SectionHeader } from "@/components/test-info/mbti/SectionHeader";
 import { mbtiTestInfo } from "@/data/tests/mbti/testInfo";
+import { TestRecommendationsSection } from "../shared/TestRecommendationsSection";
 
 export default function MBTITestInformation() {
   const supabase = createClient();
@@ -208,8 +209,18 @@ export default function MBTITestInformation() {
         <TestCitationsCard citations={mbtiTestInfo.citations} />
       </section>
 
-      {/* Related Tests Section */}
-      {/* <TestRecommendationsSection recommendations={MBTI_TEST.complementary_tests} /> */}
+      <section
+        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
+        id="recommendations-section"
+      >
+        <SectionHeader
+          title="Complementary Assessments"
+          description="Enhance your self-awareness with these complementary tests that work well with your OCEAN results."
+        />
+        <TestRecommendationsSection
+          recommendations={mbtiTestInfo.complementary_tests}
+        />
+      </section>
     </div>
   );
 }

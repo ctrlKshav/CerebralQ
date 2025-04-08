@@ -10,10 +10,8 @@ import { TestOverviewCard } from "./TestOverviewCard";
 import { TestDimensionsCard } from "./TestDimensionsCard";
 import { TestResultSection } from "./TestResultSection";
 import { TestCitationsCard } from "../shared/CitationsCard";
-import { TestRecommendationsSection } from "./TestRecommendationsSection";
-import { TeamGrid } from "@/components/team/TeamGrid";
+import { TestRecommendationsSection } from "../shared/TestRecommendationsSection";
 import { SectionHeader } from "./SectionHeader";
-import { teamMembers } from "@/data/team";
 import { oceanTestInfo } from "@/data/tests/ocean/testInfo";
 import { OceanTraitKey } from "@/types/tests/ocean/traits";
 
@@ -232,6 +230,17 @@ export default function OceanTestInformation() {
 
       <section
         className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
+        id="citations-section"
+      >
+        <SectionHeader
+          title="Scientific Foundation"
+          description="Discover the robust research and academic citations supporting the OCEAN personality model."
+        />
+        <TestCitationsCard citations={oceanTestInfo.citations} />
+      </section>
+
+      <section
+        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
         id="recommendations-section"
       >
         <SectionHeader
@@ -241,16 +250,6 @@ export default function OceanTestInformation() {
         <TestRecommendationsSection recommendations={oceanTestInfo.complementary_tests} />
       </section>
 
-      <section
-        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
-        id="citations-section"
-      >
-        <SectionHeader
-          title="Scientific Foundation"
-          description="Discover the robust research and academic citations supporting the OCEAN personality model."
-        />
-        <TestCitationsCard citations={oceanTestInfo.citations} />
-      </section>
     </div>
   );
 }
