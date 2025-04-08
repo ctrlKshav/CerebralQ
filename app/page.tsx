@@ -3,6 +3,7 @@ import DataVisuals from "@/components/landing-page/DataVisuals";
 import Features from "@/components/landing-page/Features";
 import TestsCarousel  from "@/components/landing-page/TestsCarousel";
 import Navbar from "@/components/navbar";
+import Team from "@/components/landing-page/Team";
 
 export default async function Home() {
   return (
@@ -12,6 +13,7 @@ export default async function Home() {
       <TestsCarousel />
       <Features />
       <DataVisuals />
+      <Team />
     </>
   );
 }

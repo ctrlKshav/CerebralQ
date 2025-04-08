@@ -243,17 +243,6 @@ export default function OceanTestInformation() {
 
       <section
         className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
-        id="team"
-      >
-        <SectionHeader
-          title="The CQ Crew"
-          description="Meet the diverse team of psychologists, researchers, and developers behind our assessment platform."
-        />
-        <TeamGrid members={teamMembers} />
-      </section>
-
-      <section
-        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
         id="citations-section"
       >
         <SectionHeader
