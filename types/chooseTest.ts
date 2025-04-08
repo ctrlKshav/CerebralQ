@@ -1,8 +1,7 @@
 ﻿export interface TestFeature {
   icon: string;
-  iconBgClass: string;
+  iconColorClass: string;
   text: string;
-  tooltip: string;
 }
 
 export interface TestAvatar {
@@ -23,6 +22,5 @@ export interface TestInfo {
   icon: string;
   textColorClass: string;
   features: TestFeature[];
-  avatars: TestAvatar[];
   testsTaken: string;
 }

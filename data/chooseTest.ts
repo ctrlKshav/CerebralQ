@@ -18,24 +18,20 @@ export const tests: TestInfo[] = [
     features: [
       {
         icon: "CheckCircle",
-        iconBgClass: "bg-blue-100 text-blue-600",
+        iconColorClass: "text-blue-600",
         text: "Answer simple questions about your preferences",
-        tooltip: "No right or wrong answers - just be yourself",
       },
       {
         icon: "LineChart",
-        iconBgClass: "bg-blue-100 text-blue-600",
+        iconColorClass: "text-blue-600",
         text: "Get a detailed breakdown of your personality type",
-        tooltip: "Visualize your characteristics across different dimensions",
       },
       {
         icon: "Users",
-        iconBgClass: "bg-blue-100 text-blue-600",
+        iconColorClass: "text-blue-600",
         text: "Discover how you interact with other types",
-        tooltip: "Understand relationship dynamics and communication styles",
       },
     ],
-    avatars: [{ initial: "A" }, { initial: "B" }, { initial: "C" }],
     testsTaken: "8.5M+ tests taken",
   },
   {
@@ -55,25 +51,20 @@ export const tests: TestInfo[] = [
     features: [
       {
         icon: "CheckCircle",
-        iconBgClass: "bg-teal-100 text-teal-600",
+        iconColorClass: "text-teal-600",
         text: "Rate how well statements describe you",
-        tooltip:
-          "Simple sliding scale from strongly disagree to strongly agree",
       },
       {
         icon: "BarChart3",
-        iconBgClass: "bg-teal-100 text-teal-600",
+        iconColorClass: "text-teal-600",
         text: "See where you score on the five key dimensions",
-        tooltip: "Personalized percentile scores compared to others",
       },
       {
         icon: "BookOpen",
-        iconBgClass: "bg-teal-100 text-teal-600",
+        iconColorClass: "text-teal-600",
         text: "Get actionable insights for personal growth",
-        tooltip: "Practical recommendations based on your unique profile",
       },
     ],
-    avatars: [{ initial: "D" }, { initial: "E" }, { initial: "F" }],
     testsTaken: "5.2M+ tests taken",
   },
 ];
