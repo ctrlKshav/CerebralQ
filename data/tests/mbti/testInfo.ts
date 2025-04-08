@@ -1,4 +1,4 @@
-﻿import { Brain, Timer, Users, Award, BookOpen, Target } from "lucide-react";
+﻿import { Brain, Timer, Users, Award, BookOpen, Target, WavesIcon } from "lucide-react";
 
 export const mbtiTestInfo = {
   name: "Myers-Briggs Type Indicator",
@@ -62,20 +62,14 @@ export const mbtiTestInfo = {
     {
       name: "Big Five Personality",
       description: "Measure five core personality dimensions",
-      shortCode: "big5-neo",
-      icon: Target,
+      shortCode: "ocean",
+      icon: WavesIcon,
     },
     {
-      name: "DISC Assessment",
+      name: "MBTI Test",
       description: "Understand your behavioral style",
-      shortCode: "disc",
-      icon: Award,
-    },
-    {
-      name: "HEXACO",
-      description: "Explore six personality dimensions",
-      shortCode: "hexaco",
-      icon: BookOpen,
+      shortCode: "mbti",
+      icon: Brain,
     },
   ],
   test_benefits: [

@@ -1,4 +1,4 @@
-﻿import { Brain, Timer, Users, Award, BookOpen, Target, BarChart, Layers, Heart, Star, Zap } from "lucide-react";
+﻿import { Brain, Timer, Users, Award, BookOpen, Target, BarChart, Layers, Heart, Star, Zap, WavesIcon } from "lucide-react";
 
 export const oceanTestInfo = {
   name: "Ocean Big Five Personality Test",
@@ -70,21 +70,15 @@ export const oceanTestInfo = {
   ],
   complementary_tests: [
     {
-      name: "Myers-Briggs Type Indicator",
-      description: "Discover your 16-type personality profile",
+      name: "Big Five Personality",
+      description: "Measure five core personality dimensions",
+      shortCode: "ocean",
+      icon: WavesIcon,
+    },
+    {
+      name: "MBTI Test",
+      description: "Understand your behavioral style",
       shortCode: "mbti",
-      icon: Layers,
-    },
-    {
-      name: "Emotional Intelligence",
-      description: "Measure your emotional awareness and skills",
-      shortCode: "eq",
-      icon: Heart,
-    },
-    {
-      name: "Cognitive Abilities",
-      description: "Assess your cognitive strengths",
-      shortCode: "cognitive",
       icon: Brain,
     },
   ],
