@@ -14,14 +14,14 @@ export interface TestInfo {
   title: string;
   description: string;
   path: string;
-  badge: string;
-  badgeClass: string;
+  badges: {
+    quality: string;
+    testDuration: string;
+    traitCount: string;
+  }
+  colorClass: string;
   icon: string;
-  gradientClass: string;
   textColorClass: string;
-  backgroundPattern: string;
-  testDuration: string;
-  traitCount: string;  
   features: TestFeature[];
   avatars: TestAvatar[];
   testsTaken: string;
