@@ -31,108 +31,7 @@ interface FormattedOceanResult {
 }
 
 export default function OceanTestInformation() {
-  const supabase = createClient();
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [latestResult, setLatestResult] = useState<FormattedOceanResult | null>(
-    null
-  );
-
-  useEffect(() => {
-    // Check if user is authenticated and fetch their latest test result
-    async function fetchUserAndTestData() {
-      try {
-        setLoading(true);
-
-        // Get current authenticated user
-        const {
-          data: { user },
-          error: userError,
-        } = await supabase.auth.getUser();
-
-        if (userError) return setLoading(false);
-
-        setUser(user);
-
-        // If user is authenticated, fetch their latest test result
-        if (user) {
-          // Get the most recent Ocean test result
-          const { data: testData, error: testError } = await supabase
-            .from("user_test_history")
-            .select(
-              `
-              *,
-              test_type:test_type_id (
-                name,
-                short_code,
-                description,
-                category
-              )
-            `
-            )
-            .eq("user_id", user.id)
-            .eq("test_type_id", OCEAN_TEST_ID)
-            .order("taken_at", { ascending: false })
-            .limit(1)
-            .single();
-
-          if (testError && testError.code !== "PGRST116") {
-            // PGRST116 means no rows returned
-            console.error("Error fetching test data:", testError);
-          }
-
-          // For demo purposes, creating mock result data
-          // In a real implementation, you would parse testData.raw_score
-          if (testData) {
-            setLatestResult({
-              id: testData.id,
-              type: testData.test_type?.short_code || "OCEAN",
-              personalityType: "O+C+E-A+N-",
-              label: "The Thoughtful Analyst",
-              description: "You combine openness to new ideas with strong organization skills. While you prefer quiet, focused environments, you're compassionate toward others and generally emotionally stable.",
-              date: testData.taken_at || new Date().toISOString(),
-              traitScores: {
-                openness: {
-                  dominant: "right",
-                  leftPercentage: 32,
-                  rightPercentage: 68,
-                },
-                conscientiousness: {
-                  dominant: "right",
-                  leftPercentage: 24,
-                  rightPercentage: 76,
-                },
-                extraversion: {
-                  dominant: "left",
-                  leftPercentage: 65,
-                  rightPercentage: 35,
-                },
-                agreeableness: {
-                  dominant: "right",
-                  leftPercentage: 22,
-                  rightPercentage: 78,
-                },
-                neuroticism: {
-                  dominant: "left",
-                  leftPercentage: 72,
-                  rightPercentage: 28,
-                },
-              },
-              details: testData.raw_score,
-            });
-          }
-        }
-      } catch (error) {
-        console.error("Unexpected error:", error);
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    fetchUserAndTestData();
-  }, []);
-
-  // Utility function to format description with line breaks
+  
   const formatDescriptionWithLineBreaks = (description: string) => {
     const segments = description.split("\n");
     return (
@@ -212,21 +111,6 @@ export default function OceanTestInformation() {
           <TestDimensionsCard dimensions={oceanTestInfo.personality_dimensions} />
         </div>
       </section>
-
-      {user && latestResult && !loading && (
-        <section
-          className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12 bg-gradient-to-b from-background to-primary/5 pt-12 rounded-3xl"
-          id="latest-result"
-        >
-          <SectionHeader
-            title="Your Latest Result"
-            description="View your most recent OCEAN personality profile with detailed trait breakdowns and personalized insights."
-            gradient={false}
-          />
-          {/* Results Section - Only shown if user is logged in and has results */}
-          <TestResultSection result={latestResult} />
-        </section>
-      )}
 
       <section
         className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
