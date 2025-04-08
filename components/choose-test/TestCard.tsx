@@ -61,19 +61,19 @@ export function TestCard({ test }: TestCardProps) {
 
   return (
     <motion.div
-      className="relative overflow-hidden rounded-xl shadow-md hover:shadow-xl bg-card text-card-foreground border border-border group"
+      className="relative overflow-hidden rounded-xl shadow-md hover:shadow-xl bg-card text-card-foreground border border-border group h-full"
       initial="initial"
       whileHover="hover"
       transition={{ duration: 0.3 }}
       variants={cardVariants}
     >
       <Link href={test.path}>
-        <div className="p-6 md:p-8 cursor-pointer">
+        <div className="p-6 md:p-8 cursor-pointer flex flex-col justify-between h-full">
           <div
             className={`absolute top-0 right-0 w-32 h-32 opacity-20 rounded-bl-full ${test.colorClass}`}
           ></div>
 
-          <div className="flex items-start mb-4">
+          <div className="flex items-start mb-4 h-full">
             <div
               className={`mr-4 p-3 rounded-lg ${test.colorClass} text-white`}
             >
@@ -109,38 +109,38 @@ export function TestCard({ test }: TestCardProps) {
             </div>
           </div>
 
-          <div className="space-y-4 mt-6">
-            {test.features.map((feature, index) => (
-              <div className="flex items-center">
-                <span
-                  className={`w-8 h-8 flex items-center justify-center rounded-full ${feature.iconColorClass} mr-3`}
-                >
-                  {getIcon(feature.icon)}
-                </span>
-                <span className="text-sm">{feature.text}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 flex justify-between items-center">
-           
-            <span className="text-sm text-muted-foreground">
-              {test.testsTaken}
-            </span>
-          </div>
-
-          <div className="mt-6">
-            <span
-              className={`inline-flex items-center ${test.textColorClass} font-medium group-hover:underline`}
-            >
-              Explore More
-              <motion.div
-                variants={arrowVariants}
-                transition={{ duration: 0.2 }}
+          <div className="h-full">
+            <div className="space-y-4 mt-6">
+              {test.features.map((feature, index) => (
+                <div className="flex items-center">
+                  <span
+                    className={`w-8 h-8 flex items-center justify-center rounded-full ${feature.iconColorClass} mr-3`}
+                  >
+                    {getIcon(feature.icon)}
+                  </span>
+                  <span className="text-sm">{feature.text}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 flex justify-between items-center">
+            
+              <span className="text-sm text-muted-foreground">
+                {test.testsTaken}
+              </span>
+            </div>
+            <div className="mt-6">
+              <span
+                className={`inline-flex items-center ${test.textColorClass} font-medium group-hover:underline`}
               >
-                <ChevronRight className="ml-2 h-4 w-4" />
-              </motion.div>
-            </span>
+                Explore More
+                <motion.div
+                  variants={arrowVariants}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </motion.div>
+              </span>
+            </div>
           </div>
         </div>
       </Link>
