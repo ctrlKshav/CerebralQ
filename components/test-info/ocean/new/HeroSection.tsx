@@ -148,7 +148,7 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-primary/10 dark:bg-white/5 rounded-xl backdrop-blur-sm transform rotate-3"></div>
               
               {/* Ocean Test Certificate */}
-              <div className="relative bg-white dark:bg-card rounded-lg p-6 shadow-xl transform transition-all hover:rotate-1 border border-primary/20 dark:border-muted overflow-hidden">
+              <div className="relative bg-white dark:bg-card rounded-lg p-6 shadow-xl transform transition-all hover:rotate-3 border border-primary/20 dark:border-muted overflow-hidden">
                 {/* Certificate header */}
                 <div className="text-center mb-4 pb-2 border-b border-primary/20 dark:border-muted">
                   <div className="flex justify-center mb-2">
