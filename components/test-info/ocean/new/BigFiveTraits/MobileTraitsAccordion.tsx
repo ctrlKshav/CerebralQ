@@ -6,9 +6,10 @@
 } from "@/components/ui/accordion";
 import TraitContent from "./TraitContent";
 import TraitIcon from "./TraitIcon";
+import { Trait } from "@/types/tests/test-info/ocean";
 
 interface MobileTraitsAccordionProps {
-  traits: any[];
+  traits: Trait[];
 }
 
 const MobileTraitsAccordion = ({ traits }: MobileTraitsAccordionProps) => {

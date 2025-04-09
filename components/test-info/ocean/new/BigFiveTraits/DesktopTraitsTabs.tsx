@@ -2,9 +2,10 @@
 import TraitContent from "./TraitContent";
 import TraitIcon from "./TraitIcon";
 import { useState, useEffect } from "react";
+import { Trait } from "@/types/tests/test-info/ocean";
 
 interface DesktopTraitsTabsProps {
-  traits: any[];
+  traits: Trait[];
   initialTrait: string;
 }
 

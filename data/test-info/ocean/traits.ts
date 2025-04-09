@@ -1,4 +1,6 @@
-export const traits = [
+import { Trait } from "@/types/tests/test-info/ocean";
+
+export const traits: Trait[] = [
   {
     name: "Openness",
     tagline: "Imagination and curiosity drive you.",
