@@ -7,18 +7,6 @@ import BigFiveTraitsSection from "@/components/test-info/ocean/new/BigFiveTraits
 import MbtiTestSection from "@/components/test-info/ocean/new/MbtiTestSection";
 import { OceanTraitKey } from "@/types/tests/ocean/traits";
 
-// Sample type for the formatted test result
-interface FormattedOceanResult {
-  id: string;
-  type: string;
-  personalityType: string;
-  label: string;
-  description: string;
-  date: string;
-  traitScores: Record<OceanTraitKey, any>;
-  details: any;
-}
-
 export default function OceanTestInformation() {
   
   return (

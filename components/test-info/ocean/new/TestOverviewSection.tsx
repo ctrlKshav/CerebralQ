@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { testDetails } from "@/data/test-info-new/ocean/test-overview";
+import { testDetails } from "@/data/test-info/ocean/test-overview";
 import { Medal, Clock, Lightbulb, BarChart2, CheckCircle, Users, ShieldCheck, Brain } from "lucide-react";
 
 const TestOverviewSection = () => {

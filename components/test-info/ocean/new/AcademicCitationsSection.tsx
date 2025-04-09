@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { citations } from "@/data/test-info-new/ocean/citations";
+import { citations } from "@/data/test-info/ocean/citations";
 import { FileText, BookOpen, Award } from "lucide-react";
 
 const AcademicCitationsSection = () => {
