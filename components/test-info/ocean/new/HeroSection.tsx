@@ -7,7 +7,7 @@ const HeroSection = () => {
     <section className="relative overflow-hidden pb-24 bg-background">
       <div className="absolute inset-0 gradient-to-br from-primary/80 via-primary to-primary-foreground/90 dark:from-primary/70 dark:via-primary/80 dark:to-primary-foreground/80">
         {/* Animated ocean wave background patterns */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden text-primary dark:text-white/20">
+        <div className="absolute inset-0 w-full h-full overflow-hidden text-purple-600 dark:text-purple-400">
           <motion.svg 
             xmlns="http://www.w3.org/2000/svg" 
             width="100%" 
@@ -21,7 +21,7 @@ const HeroSection = () => {
               scaleY: [1, 1.05, 1, 0.95, 1]
             }}
             transition={{
-              duration: 12,
+              duration: 20,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -38,7 +38,7 @@ const HeroSection = () => {
                 ]
               }}
               transition={{
-                duration: 3,
+                duration: 18,
                 repeat: Infinity,
                 repeatType: "reverse",
                 ease: "easeInOut"
@@ -59,7 +59,7 @@ const HeroSection = () => {
               scaleY: [1, 0.97, 1, 1.03, 1]
             }}
             transition={{
-              duration: 5,
+              duration: 18,
               repeat: Infinity,
               ease: "easeInOut",
               delay: 1
@@ -77,7 +77,7 @@ const HeroSection = () => {
                 ]
               }}
               transition={{
-                duration: 3,
+                duration: 15,
                 repeat: Infinity,
                 repeatType: "reverse",
                 ease: "easeInOut"
