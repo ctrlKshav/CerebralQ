@@ -1,13 +1,21 @@
 import { useRef } from "react";
 import { citations } from "@/data/test-info/ocean/citations";
-import { FileText, BookOpen, Award } from "lucide-react";
+import {
+  FileText,
+  BookOpen,
+  Award,
+  Cross,
+  X,
+  Check,
+  PersonStanding,
+} from "lucide-react";
 
 const AcademicCitationsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const citationIcons = [
-    <BookOpen className="w-6 h-6" />,
-    <Award className="w-6 h-6" />,
+    <PersonStanding className="w-6 h-6" />,
+    <Check className="w-6 h-6" />,
     <FileText className="w-6 h-6" />,
   ];
 
@@ -42,10 +50,10 @@ const AcademicCitationsSection = () => {
           {/* Left side card without animation */}
           <div className="lg:col-span-2 hidden lg:block">
             <div className="relative">
-            <div className="absolute inset-0 bg-primary/10 dark:bg-white/5 rounded-xl backdrop-blur-sm transform rotate-3"></div>
+              <div className="absolute inset-0 bg-primary/10 dark:bg-white/5 rounded-xl backdrop-blur-sm transform rotate-3"></div>
               <div className="relative bg-card p-8 rounded-xl shadow-lg border border-muted hover:rotate-3">
                 <div className="flex items-center mb-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-primary-foreground flex items-center justify-center text-white mr-4">
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white mr-4">
                     <BookOpen className="w-6 h-6" />
                   </div>
                   <h3 className="text-xl font-bold text-card-foreground">
@@ -78,31 +86,36 @@ const AcademicCitationsSection = () => {
 
           {/* Citations list without animation */}
           <div className="lg:col-span-3 space-y-6">
-            {citations.map((citation, index) => (
-              <div
-                key={index}
-                className="bg-card rounded-xl shadow-md overflow-hidden border border-muted transform transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1"
-              >
-                <div className="p-6">
-                  <div className="flex items-start">
-                    <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-primary-foreground flex items-center justify-center text-white mr-4 mt-1 flex-shrink-0">
-                      {citationIcons[index % citationIcons.length]}
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-bold text-card-foreground mb-1">
-                        {citation.title}
-                      </h3>
-                      <p className="text-primary font-medium mb-3">
-                        {citation.authors}
-                      </p>
-                      <p className="text-muted-foreground">
-                        {citation.description}
-                      </p>
+            {citations.map((citation, index) => {
+              const colorClass = index === 0 ? "bg-emerald-600" : (index === 1 ? "bg-amber-600" : "bg-rose-600")
+              return (
+                <div
+                  key={index}
+                  className="bg-card rounded-xl shadow-md overflow-hidden border border-muted transform transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1"
+                >
+                  <div className="p-6">
+                    <div className="flex items-start">
+                      <div
+                        className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center text-white mr-4 mt-1 flex-shrink-0`}
+                      >
+                        {citationIcons[index % citationIcons.length]}
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-bold text-card-foreground mb-1">
+                          {citation.title}
+                        </h3>
+                        <p className="text-primary font-medium mb-3">
+                          {citation.authors}
+                        </p>
+                        <p className="text-muted-foreground">
+                          {citation.description}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>
