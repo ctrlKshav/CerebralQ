@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { traits } from "@/data/test-info/ocean/traits";
-import MobileTraitsAccordion from "./BigFiveTraits/MobileTraitsAccordion";
-import DesktopTraitsTabs from "./BigFiveTraits/DesktopTraitsTabs";
+import MobileTraitsAccordion from "./MobileTraitsAccordion";
+import DesktopTraitsTabs from "./DesktopTraitsTabs";
 
 const BigFiveTraitsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

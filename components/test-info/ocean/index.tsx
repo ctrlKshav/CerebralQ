@@ -3,9 +3,8 @@
 import HeroSection from "@/components/test-info/ocean/new/HeroSection";
 import TestOverviewSection from "@/components/test-info/ocean/new/TestOverviewSection";
 import AcademicCitationsSection from "@/components/test-info/ocean/new/AcademicCitationsSection";
-import BigFiveTraitsSection from "@/components/test-info/ocean/new/BigFiveTraitsSection";
+import BigFiveTraitsSection from "@/components/test-info/ocean/new/BigFiveTraits";
 import MbtiTestSection from "@/components/test-info/ocean/new/MbtiTestSection";
-import { OceanTraitKey } from "@/types/tests/ocean/traits";
 
 export default function OceanTestInformation() {
   
