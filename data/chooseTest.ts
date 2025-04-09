@@ -12,23 +12,23 @@ export const tests: TestInfo[] = [
       testDuration: "12 min",
       traitCount: "16 vibes",
     },
-    colorClass: "bg-purple-600",
+    colorClass: "bg-rose-600",
     icon: "BarChart3",
-    textColorClass: "text-blue-600",
+    textColorClass: "text-rose-600",
     features: [
       {
         icon: "CheckCircle",
-        iconColorClass: "text-blue-600",
+        iconColorClass: "text-rose-600",
         text: "Quick questions, real you—just pick what feels right",
       },
       {
         icon: "LineChart",
-        iconColorClass: "text-blue-600",
+        iconColorClass: "text-rose-600",
         text: "Score a deep dive into your unique personality code",
       },
       {
         icon: "Users",
-        iconColorClass: "text-blue-600",
+        iconColorClass: "text-rose-600",
         text: "See how you click (or clash) with other types",
       },
     ],

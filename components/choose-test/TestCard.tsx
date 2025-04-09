@@ -84,21 +84,21 @@ export function TestCard({ test }: TestCardProps) {
               <div className="flex mt-2 gap-2">
                 <Badge
                   variant="default"
-                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 bg-indigo-600 hover:bg-indigo-600/80 text-white`}
+                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} opacity-80 text-white`}
                 >
                   <Clock className="h-3 w-3 mr-1" />
                   {test.badges.testDuration}
                 </Badge>
                 <Badge
                   variant="default"
-                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 bg-emerald-600 hover:bg-emerald-600/80 text-white`}
+                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} opacity-80 text-white`}
                 >
                   <Users className="h-3 w-3 mr-1" />
                   {test.badges.traitCount}
                 </Badge>
                 <Badge
                   variant="default"
-                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 bg-red-600 hover:bg-red-600/80 text-white`}
+                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} opacity-80 text-white`}
                 >
                   {test.badges.quality}
                 </Badge>
