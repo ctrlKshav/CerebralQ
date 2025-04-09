@@ -20,6 +20,5 @@ export interface Trait {
   tags: string[];
   gradient: string;
   image: string;
-  imageSvg: string;
   alt: string;
 }

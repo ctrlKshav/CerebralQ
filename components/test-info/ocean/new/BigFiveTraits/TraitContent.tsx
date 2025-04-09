@@ -1,18 +1,8 @@
-﻿import { Info } from "lucide-react";
-
-type TraitType = {
-  name: string;
-  image: string;
-  alt: string;
-  tags: string[];
-  description: string;
-  tagline: string;
-  gradient: string;
-  imageSvg: string;
-};
+﻿import { Trait } from "@/types/tests/test-info/ocean";
+import { Info } from "lucide-react";
 
 interface TraitContentProps {
-  trait: TraitType;
+  trait: Trait;
 }
 
 const TraitContent = ({ trait }: TraitContentProps) => {
