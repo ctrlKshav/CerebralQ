@@ -42,8 +42,8 @@ const AcademicCitationsSection = () => {
           {/* Left side card without animation */}
           <div className="lg:col-span-2 hidden lg:block">
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-primary/10 to-primary-foreground/10 rounded-2xl transform rotate-3 opacity-70"></div>
-              <div className="relative bg-card p-8 rounded-xl shadow-lg border border-muted">
+            <div className="absolute inset-0 bg-primary/10 dark:bg-white/5 rounded-xl backdrop-blur-sm transform rotate-3"></div>
+              <div className="relative bg-card p-8 rounded-xl shadow-lg border border-muted hover:rotate-3">
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 rounded-full bg-gradient-to-r from-primary to-primary-foreground flex items-center justify-center text-white mr-4">
                     <BookOpen className="w-6 h-6" />
