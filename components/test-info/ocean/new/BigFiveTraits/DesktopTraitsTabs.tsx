@@ -29,9 +29,9 @@ const DesktopTraitsTabs = ({ traits, initialTrait }: DesktopTraitsTabsProps) => 
                 <TabsTrigger
                   key={trait.name}
                   value={trait.name}
-                  className={`flex h-auto w-full items-center justify-start p-4 rounded-lg transition-all duration-200 text-base
+                  className={`flex h-auto w-full items-center justify-start p-4 rounded-lg transition-all duration-200 text-base data-[state=active]:text-white
                     ${isActive 
-                      ? `${trait.gradient} text-white shadow-sm` 
+                      ? `${trait.gradient} shadow-sm`
                       : 'hover:bg-muted/80 text-foreground'}`}
                   aria-selected={isActive}
                 >
