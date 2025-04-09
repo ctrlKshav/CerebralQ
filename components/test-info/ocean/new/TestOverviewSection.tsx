@@ -56,7 +56,6 @@ const TestOverviewSection = () => {
 
             {/* Blockquote with gradient border instead of star icon */}
             <div className="mt-6 relative pl-6 border-l-4 border-primary/50">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-primary-foreground"></div>
               <p className="text-card-foreground/90 font-medium">
                 Understand yourself with the same framework used by leading
                 researchers and psychologists for decades.
@@ -66,12 +65,12 @@ const TestOverviewSection = () => {
         </div>
 
         {/* Test details card */}
-        <div className="bg-card rounded-xl shadow-lg border border-muted overflow-hidden max-w-4xl mx-auto">
-          <div className="p-6 border-b border-muted">
-            <h3 className="text-xl font-bold text-card-foreground mb-2">
+        <div className="bg-card rounded-2xl shadow-lg border border-muted overflow-hidden max-w-4xl mx-auto">
+          <div className="p-8 border-b border-muted">
+            <h3 className="text-2xl font-bold text-card-foreground mb-3">
               Test Details
             </h3>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground text-base">
               Everything you need to know before taking the test
             </p>
           </div>
@@ -129,12 +128,12 @@ const TestOverviewSection = () => {
           </div>
 
           {/* Benefits list */}
-          <div className="p-6">
-            <h4 className="font-medium text-card-foreground mb-4">
+          <div className="p-8">
+            <h4 className="text-lg font-semibold text-card-foreground mb-6">
               What You'll Get:
             </h4>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {[
                 "Detailed scores for all five dimensions",
                 "Personalized trait descriptions",
@@ -144,7 +143,7 @@ const TestOverviewSection = () => {
                 "Career path suggestions",
               ].map((benefit, i) => (
                 <div key={i} className="flex items-start">
-                  <div className="mr-3 mt-1 text-primary">
+                  <div className="mr-3 mt-0.5 text-primary">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 20 20"
@@ -158,7 +157,9 @@ const TestOverviewSection = () => {
                       />
                     </svg>
                   </div>
-                  <span className="text-muted-foreground">{benefit}</span>
+                  <span className="text-base text-card-foreground">
+                    {benefit}
+                  </span>
                 </div>
               ))}
             </div>
