@@ -8,7 +8,7 @@ import {
   MoveRight,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import Link from "next/link";
 
 const MbtiTestSection = () => {
   // Refs for section
@@ -84,16 +84,13 @@ const MbtiTestSection = () => {
               </ul>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="group">
-                Take the MBTI Test Now
-                <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
-              </Button>
-
-              <Button variant="outline" size="lg" className="transition-soft">
-                Compare MBTI & Big Five
-                <ExternalLink className="ml-2 h-4 w-4" />
-              </Button>
+            <div className="flex justify-center md:justify-start gap-4">
+              <Link href="/tests/mbti">
+                <Button size="lg" className="group">
+                  Explore MBTI
+                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 ease-in-out group-hover:translate-x-1" />
+                </Button>
+              </Link>
             </div>
           </div>
 
@@ -112,11 +109,6 @@ const MbtiTestSection = () => {
               {/* Floating badges */}
               <div className="absolute top-4 right-4 p-2 px-3 bg-white/80 backdrop-blur-sm dark:bg-gray-800/80 rounded-full shadow-md font-medium text-sm text-primary dark:text-primary-foreground">
                 16 Personality Types
-              </div>
-
-              <div className="absolute bottom-4 left-4 p-2 px-3 bg-white/80 backdrop-blur-sm dark:bg-gray-800/80 rounded-full shadow-md font-medium text-sm text-foreground">
-                <Star className="h-3.5 w-3.5 mr-1 inline-block text-amber-500" />
-                Includes MBTI Type Descriptions
               </div>
             </div>
           </div>
