@@ -50,7 +50,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     },
     title: {
       fontSize: 16,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       color: theme.foreground,
       maxWidth: "70%", // Prevent title from running into match badge
     },
@@ -68,7 +68,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     matchBadgeText: {
       color: "#ffffff",
       fontSize: 9,
-      fontFamily: "Helvetica",
+      fontFamily: "PTSans",
     },
     content: {
       padding: 16,
@@ -87,7 +87,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     traitsHeader: {
       fontSize: 11,
       color: theme.mutedForeground,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       marginBottom: 8,
     },
     traitsRow: {
@@ -102,7 +102,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       marginBottom: 8,
       fontSize: 10,
       color: theme.mutedForeground,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       },
   });
 

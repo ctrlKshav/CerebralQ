@@ -28,7 +28,7 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
     label: {
       fontSize: 9,
       color: theme.mutedForeground,
-      fontFamily: "Helvetica",
+      fontFamily: "PTSans",
     },
     barContainer: {
       height: 16,
@@ -66,7 +66,7 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
     },
     percentageText: {
       fontSize: 8,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       color: "white",
     },
     traitDescription: {
@@ -77,7 +77,7 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
     },
     traitTitle: {
       fontSize: 14,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       color: theme.primary,
       marginBottom: 5,
     },
@@ -102,7 +102,7 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
     badgeText: {
       fontSize: 8,
       color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
     },
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,

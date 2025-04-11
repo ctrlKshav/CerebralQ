@@ -41,7 +41,7 @@ const createGrowthSectionStyles = (isDarkMode = false) => {
     title: {
       fontSize: 30,
       color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       marginBottom: 12,
       textAlign: "center",
     },

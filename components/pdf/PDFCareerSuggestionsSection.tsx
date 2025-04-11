@@ -28,7 +28,7 @@ const createCareerSuggestionsStyles = (isDarkMode = false) => {
     subtitle: {
       fontSize: 20,
       color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       marginBottom: 20,
       textAlign: "center",
     },

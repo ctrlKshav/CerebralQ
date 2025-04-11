@@ -26,7 +26,7 @@ const createActionSectionStyles = (isDarkMode = false, totalSteps = 1) => {
     title: {
       fontSize: 18,
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       marginBottom: 12,
       paddingBottom: 4,
       borderBottomWidth: 1,
@@ -55,7 +55,7 @@ const createActionSectionStyles = (isDarkMode = false, totalSteps = 1) => {
     stepNumberText: {
       color: theme.primaryForeground,
       fontSize: 11,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
     },
     stepText: {
       flex: 1,

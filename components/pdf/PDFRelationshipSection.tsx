@@ -48,7 +48,7 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
     },
     compatibleTypesLabel: {
       fontSize: 14,
-      fontFamily: "Helvetica",
+      fontFamily: "PTSans",
       color: theme.foreground,
       marginRight: 8,
       marginBottom: 10,
@@ -68,7 +68,7 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
     typeBadgeText: {
       fontSize: 12,
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
     },
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,

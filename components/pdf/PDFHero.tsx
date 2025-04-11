@@ -54,7 +54,7 @@ const createHeroStyles = (isDarkMode = false) => {
       marginTop: 8,
       marginBottom: 8, // Reduced margin
       color: theme.foreground,
-      fontFamily: "Helvetica-Bold", // More clinical font
+      fontFamily: "PTSans-Bold", // More clinical font
       textAlign: "center",
       lineHeight: 1.3,
       width: "60%", // Control width
@@ -62,17 +62,18 @@ const createHeroStyles = (isDarkMode = false) => {
     },
     nameText: {
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
     },
     personalityType: {
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       fontSize: 32,
       color: theme.primary,
     },
     subtitle: {
       fontSize: 18,
+      fontWeight: "normal",
       color: theme.foreground,
-      fontFamily: "Times-Italic", // Italics for the alias
+      fontFamily: "PTSans-Italic", // Italics for the alias
       marginBottom: 12,
       textAlign: "center",
     },
@@ -98,7 +99,7 @@ const createHeroStyles = (isDarkMode = false) => {
       lineHeight: 1.4,
       textAlign: "left", // Left aligned for easier reading
       width: "100%", // Control width
-      fontFamily: "Helvetica", // More clinical font
+      fontFamily: "PTSans", // More clinical font
     },
     encouragement: {
       fontSize: 12,
@@ -108,7 +109,7 @@ const createHeroStyles = (isDarkMode = false) => {
       lineHeight: 1.4,
       textAlign: "center",
       width: "100%", // Control width
-      fontFamily: "Helvetica",
+      fontFamily: "PTSans",
     },
     interpretationNote: {
       fontSize: 11,
@@ -123,7 +124,7 @@ const createHeroStyles = (isDarkMode = false) => {
       borderRadius: 4,
       borderLeftWidth: 3,
       borderLeftColor: theme.primary,
-      fontFamily: "Helvetica",
+      fontFamily: "PTSans",
     },
     assessmentInfo: {
       fontSize: 10,
@@ -234,7 +235,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
         </Text>
 
         <Text style={styles.interpretationNote}>
-          <Text style={{ fontFamily: "Helvetica-Bold" }}>
+          <Text style={{ fontFamily: "PTSans-Bold" }}>
             How to Interpret Your Results:{" "}
           </Text>
           This assessment identifies your primary personality type based on

@@ -49,7 +49,7 @@ const createCareerSectionStyles = (isDarkMode = false) => {
     columnTitle: {
       fontSize: 18,
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       textAlign: "center",
     },
     columnTitleContainer: {

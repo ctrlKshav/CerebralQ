@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { Document, Page, StyleSheet, View, Text } from "@react-pdf/renderer";
+import { Document, Page, Font } from "@react-pdf/renderer";
 import { PDFHero } from "@/components/pdf/PDFHero";
 import { PDFPersonalityTraits } from "@/components/pdf/PDFPersonalityTraits";
 import { ResultData } from "@/types/tests/mbti/results";
@@ -21,6 +21,10 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   resultData,
   isDarkMode = false,
 }) => {
+  Font.register({family: "PTSans", src: "/fonts/PT_Sans/PTSans-Regular.ttf"});
+  Font.register({family: "PTSans-Bold", src: "/fonts/PT_Sans/PTSans-Bold.ttf"});
+  Font.register({family: "PTSans-Italic", src: "/fonts/PT_Sans/PTSans-Italic.ttf"});
+  Font.register({family: "PTSans-BoldItalic", src: "/fonts/PT_Sans/PTSans-BoldItalic.ttf"});
   const styles = createBaseStyles(isDarkMode);
 
   const {

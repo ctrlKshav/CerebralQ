@@ -43,7 +43,7 @@ const createCardSectionStyles = (isDarkMode = false) => {
     cardTitle: {
       fontSize: 18,
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       textAlign: "center",
     },
     cardTitleContainer: {

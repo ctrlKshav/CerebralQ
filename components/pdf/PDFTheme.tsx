@@ -63,7 +63,7 @@ export const createBaseStyles = (isDarkMode: boolean) => {
     page: {
       paddingHorizontal: 20,
       paddingVertical: 15,
-      fontFamily: "Helvetica",
+      fontFamily: "PTSans",
       backgroundColor: theme.background,
       color: theme.foreground,
     },
@@ -81,19 +81,19 @@ export const createBaseStyles = (isDarkMode: boolean) => {
       borderColor: theme.primary,
       color: theme.primary,
       textAlign: "center",
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       marginRight: 10,
       lineHeight: 1,
       paddingTop: 5, // Fix vertical alignment
     },
     sectionTitle: {
       fontSize: 24,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       color: theme.foreground,
     },
     sectionSubtitle: {
       fontSize: 16,
-      fontFamily: "Helvetica",
+      fontFamily: "PTSans",
       color: theme.foreground,
       marginBottom: 30,
       textAlign: "center",
@@ -150,7 +150,7 @@ export const createTwoColumnLayoutStyles = (isDarkMode: boolean) => {
     columnTitle: {
       fontSize: 18,
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
     },
     listSection: {
       marginBottom: 5,

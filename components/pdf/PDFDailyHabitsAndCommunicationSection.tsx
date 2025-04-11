@@ -51,7 +51,7 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
     sectionHeader: {
       fontSize: 18,
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       marginBottom: 12,
       paddingBottom: 4,
       borderBottomWidth: 1,
@@ -115,7 +115,7 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
     },
     habitTitle: {
       fontSize: 12,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       color: theme.foreground,
       marginBottom: 4,
     },
@@ -131,7 +131,7 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
     communicationTitle: {
       fontSize: 18,
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       marginBottom: 12,
       paddingBottom: 4,
       borderBottomWidth: 1,
@@ -169,7 +169,7 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
     stepNumberText: {
       color: theme.primaryForeground,
       fontSize: 11,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
     },
     tipText: {
       flex: 1,
