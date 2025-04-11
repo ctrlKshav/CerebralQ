@@ -28,13 +28,7 @@ const createDailyHabitsStyles = (isDarkMode = false) => {
       marginBottom: 10,
       alignItems: "center",
     },
-    title: {
-      fontSize: 30,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 12,
-      textAlign: "center",
-    },
+
     description: {
       fontSize: 14,
       color: theme.mutedForeground,

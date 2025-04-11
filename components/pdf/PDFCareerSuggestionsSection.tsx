@@ -24,13 +24,7 @@ const createCareerSuggestionsStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
-    title: {
-      fontSize: 30,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 12,
-      textAlign: "center",
-    },
+  
     subtitle: {
       fontSize: 20,
       color: theme.foreground,

@@ -13,6 +13,7 @@ import PDFDailyHabitsSection from "./PDFDailyHabitsSection";
 import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
 import PDFCommunicationSection from "./PDFCommunicationSection";
 import PDFActionImageSection from "./shared/PDFActionImageSection";
+import PDFDailyHabitsCommunicationSection from "./PDFDailyHabitsAndCommunicationSection";
 
 interface PDFDocumentProps {
   resultData: ResultData;
@@ -146,23 +147,14 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-      {/* Daily Habits Section - Two pages */}
+      {/* Combined Daily Habits & Communication Section */}
       <Page size="A4" style={styles.page}>
-        <PDFDailyHabitsSection
+        <PDFDailyHabitsCommunicationSection
           dailyHabits={dailyHabits}
           sectionNumber={5 + relationships.length}
           firstname={resultData.firstname}
           isDarkMode={isDarkMode}
           pageNumber={dailyHabitsPage}
-        />
-      </Page>
-
-      <Page size="A4" style={styles.page}>
-        <PDFCommunicationSection
-          dailyHabits={dailyHabits}
-          firstname={resultData.firstname}
-          isDarkMode={isDarkMode}
-          pageNumber={communicationPage}
         />
       </Page>
 

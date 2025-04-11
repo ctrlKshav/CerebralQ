@@ -46,13 +46,6 @@ const createValuesSectionStyles = (isDarkMode = false) => {
       marginBottom: 10, // Reduced from 25
       alignItems: "center",
     },
-    title: {
-      fontSize: 30,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 12,
-      textAlign: "center",
-    },
 
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,
