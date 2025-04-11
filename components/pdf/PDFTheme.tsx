@@ -140,7 +140,8 @@ export const createTwoColumnLayoutStyles = (isDarkMode: boolean) => {
     columnTitleContainer: {
       flexDirection: "row",
       alignItems: "center",
-      justifyContent: "center",
+      justifyContent: "flex-start",
+      gap: 8,
       marginBottom: 12,
       paddingBottom: 8,
       borderBottomWidth: 1,
