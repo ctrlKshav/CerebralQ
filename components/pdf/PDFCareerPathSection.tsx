@@ -77,6 +77,7 @@ interface PDFCareerPathSectionProps {
   sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;
+  pageNumber?: number;
 }
 
 const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
@@ -84,6 +85,7 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
   sectionNumber,
   firstname,
   isDarkMode = false,
+  pageNumber,
 }) => {
   // Use the extracted styles
   const styles = createCareerSectionStyles(isDarkMode);
@@ -127,7 +129,7 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
 
       {/* Footer inside the page */}
       <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page 3
+        Cerebral Quotient Personality Assessment | Page {pageNumber}
       </Text>
     </View>
   );

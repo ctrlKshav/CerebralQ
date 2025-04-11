@@ -1,4 +1,14 @@
-﻿import { Brain, Briefcase, Heart, Handshake, Sparkles, Coffee, Lightbulb, Smile, ListChecks } from "lucide-react";
+﻿import {
+  Brain,
+  Briefcase,
+  Heart,
+  Handshake,
+  Sparkles,
+  Coffee,
+  Lightbulb,
+  Smile,
+  ListChecks,
+} from "lucide-react";
 
 export type SidebarNavLink = {
   title: string;
@@ -14,7 +24,7 @@ export type SidebarNavLink = {
 
 export type SidebarNavDataType = {
   navMain: SidebarNavLink[];
-}
+};
 
 export const sidebarNavData: SidebarNavDataType = {
   navMain: [
@@ -24,6 +34,13 @@ export const sidebarNavData: SidebarNavDataType = {
       icon: Brain,
       color: "#8b5cf6",
       bgColor: "rgba(139, 92, 246, 0.1)",
+    },
+    {
+      title: "Values & Motivators",
+      url: "#values-motivators",
+      icon: Lightbulb,
+      color: "#eab308",
+      bgColor: "rgba(234, 179, 8, 0.1)",
     },
     {
       title: "Career Path",
@@ -59,13 +76,6 @@ export const sidebarNavData: SidebarNavDataType = {
       icon: Coffee,
       color: "#6366f1",
       bgColor: "rgba(99, 102, 241, 0.1)",
-    },
-    {
-      title: "Values & Motivators",
-      url: "#values-motivators",
-      icon: Lightbulb,
-      color: "#eab308",
-      bgColor: "rgba(234, 179, 8, 0.1)",
     },
     {
       title: "Community",

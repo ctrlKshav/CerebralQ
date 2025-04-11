@@ -21,10 +21,19 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   resultData,
   isDarkMode = false,
 }) => {
-  Font.register({family: "PTSans", src: "/fonts/PT_Sans/PTSans-Regular.ttf"});
-  Font.register({family: "PTSans-Bold", src: "/fonts/PT_Sans/PTSans-Bold.ttf"});
-  Font.register({family: "PTSans-Italic", src: "/fonts/PT_Sans/PTSans-Italic.ttf"});
-  Font.register({family: "PTSans-BoldItalic", src: "/fonts/PT_Sans/PTSans-BoldItalic.ttf"});
+  Font.register({ family: "PTSans", src: "/fonts/PT_Sans/PTSans-Regular.ttf" });
+  Font.register({
+    family: "PTSans-Bold",
+    src: "/fonts/PT_Sans/PTSans-Bold.ttf",
+  });
+  Font.register({
+    family: "PTSans-Italic",
+    src: "/fonts/PT_Sans/PTSans-Italic.ttf",
+  });
+  Font.register({
+    family: "PTSans-BoldItalic",
+    src: "/fonts/PT_Sans/PTSans-BoldItalic.ttf",
+  });
   const styles = createBaseStyles(isDarkMode);
 
   const {
@@ -47,14 +56,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   const suggestions = career.suggestions || [];
   const suggestionPages = suggestions.slice(0, 3);
 
-  // Calculate the starting page numbers for different sections
-  const careerStartPage = 3;
-  const careerSuggestionPage = careerStartPage + 1;
-  const relationshipStartPage = careerStartPage + 2;
-  const growthStartPage = relationshipStartPage + relationships.length;
-  const dailyHabitsPage = growthStartPage + 1;
-  const valuesStartPage = dailyHabitsPage + 1;
-
   return (
     <Document>
       {/* First Page: Introduction and Personality Type Overview */}
@@ -65,6 +66,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           personalityDescription={personalityDescription}
           completionDate={completionDate}
           isDarkMode={isDarkMode}
+          pageNumber={1}
         />
       </Page>
 
@@ -73,35 +75,47 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         {traitScores && (
           <PDFPersonalityTraits
             traitScores={traitScores}
-            sectionNumber={1}
             isDarkMode={isDarkMode}
             firstname={resultData.firstname ?? undefined}
             personalityType={personalityType}
+            sectionNumber={1}
+            pageNumber={2}
           />
         )}
+      </Page>
+
+      {/* Values and Motivators Section - Two pages */}
+      <Page size="A4" style={styles.page}>
+        <PDFValuesAndMotivatorsSection
+          valuesAndMotivators={valuesAndMotivators}
+          firstname={resultData.firstname}
+          isDarkMode={isDarkMode}
+          sectionNumber={2}
+          pageNumber={3}
+        />
       </Page>
 
       {/* Third Page: Career Path - Superpowers and Growth Areas */}
       <Page size="A4" style={styles.page}>
         <PDFCareerPathSection
           firstname={resultData.firstname}
-          sectionNumber={2}
           career={resultData.personalityData.career}
           isDarkMode={isDarkMode}
+          sectionNumber={3}
+          pageNumber={4}
         />
       </Page>
 
       <Page
-        key={`suggestions-page-${careerStartPage + 1}`}
         size="A4"
         style={styles.page}
       >
         <PDFCareerSuggestionsSection
           suggestions={suggestionPages}
-          sectionNumber={3}
+          sectionNumber={4}
           firstname={resultData.firstname}
           isDarkMode={isDarkMode}
-          pageNumber={careerSuggestionPage}
+          pageNumber={5}
         />
       </Page>
 
@@ -117,10 +131,10 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
                   : "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000&auto=format&fit=crop"
               }
               relationship={relationship}
-              sectionNumber={4 + index}
+              sectionNumber={5 + index}
               firstname={resultData.firstname}
               isDarkMode={isDarkMode}
-              pageNumber={relationshipStartPage + index}
+              pageNumber={6 + index}
             />
           </Page>
         </React.Fragment>
@@ -130,10 +144,10 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
       <Page size="A4" style={styles.page}>
         <PDFGrowthSection
           growth={growth}
-          sectionNumber={4 + relationships.length}
+          sectionNumber={5 + relationships.length}
           firstname={resultData.firstname}
           isDarkMode={isDarkMode}
-          pageNumber={growthStartPage}
+          pageNumber={8}
         />
       </Page>
 
@@ -141,21 +155,10 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
       <Page size="A4" style={styles.page}>
         <PDFDailyHabitsCommunicationSection
           dailyHabits={dailyHabits}
-          sectionNumber={5 + relationships.length}
-          firstname={resultData.firstname}
-          isDarkMode={isDarkMode}
-          pageNumber={dailyHabitsPage}
-        />
-      </Page>
-
-      {/* Values and Motivators Section - Two pages */}
-      <Page size="A4" style={styles.page}>
-        <PDFValuesAndMotivatorsSection
-          valuesAndMotivators={valuesAndMotivators}
           sectionNumber={6 + relationships.length}
           firstname={resultData.firstname}
           isDarkMode={isDarkMode}
-          pageNumber={valuesStartPage}
+          pageNumber={9}
         />
       </Page>
     </Document>

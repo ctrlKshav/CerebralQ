@@ -119,6 +119,7 @@ interface PDFPersonalityTraitsProps {
   personalityType: string;
   firstname?: string;
   isDarkMode?: boolean;
+  pageNumber?: number;
 }
 
 export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
@@ -128,6 +129,7 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
   personalityType,
   firstname,
   isDarkMode = false,
+  pageNumber,
 }) => {
   const styles = createPersonalityTraitsStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
@@ -222,7 +224,7 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
 
       {/* Add footer inside the page */}
       <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page 2
+        Cerebral Quotient Personality Assessment | Page {pageNumber}
       </Text>
     </View>
   );

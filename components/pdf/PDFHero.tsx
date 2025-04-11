@@ -156,6 +156,7 @@ interface PDFHeroProps {
   firstname: string | null;
   isDarkMode?: boolean;
   profileImage?: string;
+  pageNumber?: number;
 }
 
 export const PDFHero: React.FC<PDFHeroProps> = ({
@@ -165,6 +166,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
   firstname,
   isDarkMode = false,
   profileImage,
+  pageNumber = 1,
 }) => {
   const styles = createHeroStyles(isDarkMode);
 
@@ -255,7 +257,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
 
       {/* Add footer inside the page */}
       <Text style={styles.footer}>
-        Cerebral Quotient | Personality Assessment | Page 1
+        Cerebral Quotient | Personality Assessment | Page {pageNumber}
       </Text>
     </View>
   );

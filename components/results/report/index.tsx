@@ -18,7 +18,7 @@ export interface ReportComponentProps {
   userData: User | null;
   resultData: ResultData | null;
 }
-export default function Report({userData, resultData}: ReportComponentProps) {
+export default function Report({ userData, resultData }: ReportComponentProps) {
   const {
     personalityType,
     personalityDescription,
@@ -44,6 +44,17 @@ export default function Report({userData, resultData}: ReportComponentProps) {
                 />
               )}
 
+              {/* Values & Motivators */}
+              <ValuesMotivatorSection
+                firstname={resultData?.firstname || null}
+                valuesAndMotivators={
+                  resultData?.personalityData?.valuesAndMotivators ||
+                  sampleResultData.personalityData?.valuesAndMotivators
+                }
+                sectionNumber={2}
+                id="values-motivators"
+              />
+
               {/* Career Path */}
               <CareerPathSection
                 firstname={resultData?.firstname || null}
@@ -51,7 +62,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
                   resultData?.personalityData?.career ||
                   sampleResultData.personalityData?.career
                 }
-                sectionNumber={2}
+                sectionNumber={3}
                 id="career-path"
               />
 
@@ -62,7 +73,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
                   resultData?.personalityData?.relationships ||
                   sampleResultData.personalityData?.relationships
                 }
-                sectionNumber={3}
+                sectionNumber={4}
                 id="relationships"
               />
 
@@ -73,7 +84,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
                   resultData?.personalityData?.growth ||
                   sampleResultData.personalityData?.growth
                 }
-                sectionNumber={4}
+                sectionNumber={5}
                 id="growth-journey"
               />
 
@@ -84,19 +95,8 @@ export default function Report({userData, resultData}: ReportComponentProps) {
                   resultData?.personalityData?.dailyHabits ||
                   sampleResultData.personalityData?.dailyHabits
                 }
-                sectionNumber={5}
-                id="daily-habits"
-              />
-
-              {/* Values & Motivators */}
-              <ValuesMotivatorSection
-                firstname={resultData?.firstname || null}
-                valuesAndMotivators={
-                  resultData?.personalityData?.valuesAndMotivators ||
-                  sampleResultData.personalityData?.valuesAndMotivators
-                }
                 sectionNumber={6}
-                id="values-motivators"
+                id="daily-habits"
               />
 
               {/* Community Connection */}
