@@ -45,7 +45,6 @@ const createCareerSuggestionsStyles = (isDarkMode = false) => {
       lineHeight: 1.6,
       textAlign: "center",
       alignSelf: "center",
-      maxWidth: 480,
     },
     cardsContainer: {
       flexDirection: "column",

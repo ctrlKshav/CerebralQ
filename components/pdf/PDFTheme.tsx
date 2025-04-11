@@ -95,7 +95,7 @@ export const createBaseStyles = (isDarkMode: boolean) => {
       fontSize: 16,
       fontFamily: "Helvetica",
       color: theme.foreground,
-      marginBottom: 20,
+      marginBottom: 30,
       textAlign: "center",
     },
     card: {

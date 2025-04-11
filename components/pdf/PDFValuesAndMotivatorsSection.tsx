@@ -34,8 +34,16 @@ const createValuesSectionStyles = (isDarkMode = false) => {
       height: "100%",
       position: "relative",
     },
+    description: {
+      fontSize: 14,
+      color: theme.mutedForeground,
+      marginBottom: 10,
+      lineHeight: 1.6, // Reduced from 1.6
+      textAlign: "center",
+      alignSelf: "center",
+    },
     headerContainer: {
-      marginBottom: 15, // Reduced from 25
+      marginBottom: 10, // Reduced from 25
       alignItems: "center",
     },
     title: {
@@ -45,15 +53,7 @@ const createValuesSectionStyles = (isDarkMode = false) => {
       marginBottom: 12,
       textAlign: "center",
     },
-    description: {
-      fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 30,
-      lineHeight: 1.4, // Reduced from 1.6
-      textAlign: "center",
-      alignSelf: "center",
-      maxWidth: 480,
-    },
+
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,

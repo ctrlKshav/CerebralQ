@@ -27,17 +27,16 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       position: "relative",
     },
     headerContainer: {
-      marginBottom: 20,
+      marginBottom: 10,
       alignItems: "center",
     },
     description: {
       fontSize: 14,
       color: theme.mutedForeground,
-      marginBottom: 20,
+      marginBottom: 10,
       lineHeight: 1.6,
       textAlign: "center",
       alignSelf: "center",
-      maxWidth: 540,
     },
     columnsContainer: {
       flexDirection: "row",

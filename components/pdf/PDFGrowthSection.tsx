@@ -52,7 +52,6 @@ const createGrowthSectionStyles = (isDarkMode = false) => {
       lineHeight: 1.6,
       textAlign: "center",
       alignSelf: "center",
-      maxWidth: 480,
     },
     footer: baseStyles.footer,
     headerRow: baseStyles.headerRow,

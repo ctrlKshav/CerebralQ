@@ -41,7 +41,6 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
       lineHeight: 1.6,
       textAlign: "center",
       alignSelf: "center",
-      maxWidth: 480,
     },
     compatibleTypesContainer: {
       marginBottom: 30,
@@ -58,7 +57,6 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
       flexDirection: "row",
       flexWrap: "wrap",
       justifyContent: "center",
-      maxWidth: 480,
     },
     typeBadge: {
       backgroundColor: `${theme.muted}`,

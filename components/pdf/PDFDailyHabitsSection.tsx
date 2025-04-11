@@ -25,7 +25,7 @@ const createDailyHabitsStyles = (isDarkMode = false) => {
       position: "relative",
     },
     headerContainer: {
-      marginBottom: 25,
+      marginBottom: 10,
       alignItems: "center",
     },
     title: {
@@ -38,11 +38,10 @@ const createDailyHabitsStyles = (isDarkMode = false) => {
     description: {
       fontSize: 14,
       color: theme.mutedForeground,
-      marginBottom: 30,
+      marginBottom: 10,
       lineHeight: 1.6,
       textAlign: "center",
       alignSelf: "center",
-      maxWidth: 480,
     },
     cardContainer: {
       backgroundColor: theme.card,
