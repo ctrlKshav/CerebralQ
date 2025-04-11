@@ -6,7 +6,6 @@ import { ResultData } from "@/types/tests/mbti/results";
 import { getPersonalityInsights } from "@/data/mbti/oldData/personalityInsights";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerPathSection from "./PDFCareerPathSection";
-import PDFActionStepsSection from "./shared/PDFActionStepsSection";
 import PDFCareerSuggestionsSection from "./PDFCareerSuggestionsSection";
 import PDFRelationshipSection from "./PDFRelationshipSection";
 import PDFGrowthSection from "./PDFGrowthSection";
