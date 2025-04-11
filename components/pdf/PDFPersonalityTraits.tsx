@@ -113,8 +113,8 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
       fontFamily: "PTSans",
       color: theme.foreground,
       textAlign: "center",
-      maxWidth: 500,
       alignSelf: "center",
+      paddingHorizontal: 35,
     },
     footer: baseStyles.footer,
   });
