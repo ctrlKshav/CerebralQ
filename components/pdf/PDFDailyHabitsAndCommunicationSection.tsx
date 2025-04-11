@@ -49,10 +49,13 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
 
     sectionContainer: {},
     sectionHeader: {
-      fontSize: 15,
-      color: theme.foreground,
+      fontSize: 18,
+      color: theme.primary,
       fontFamily: "Helvetica-Bold",
       marginBottom: 12,
+      paddingBottom: 4,
+      borderBottomWidth: 1,
+      borderBottomColor: theme.border,
       display: "flex",
       flexDirection: "row",
       alignItems: "center",
@@ -103,6 +106,9 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
     },
     iconContainer: {
       marginRight: 8,
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
     },
     habitContent: {
       flex: 1,
@@ -118,44 +124,59 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
       color: theme.mutedForeground,
       lineHeight: 1.4,
     },
+    communicationContainer: {
+      marginTop: 15,
+      marginBottom: 20,
+    },
+    communicationTitle: {
+      fontSize: 18,
+      color: theme.primary,
+      fontFamily: "Helvetica-Bold",
+      marginBottom: 12,
+      paddingBottom: 4,
+      borderBottomWidth: 1,
+      borderBottomColor: theme.border,
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+    },
     communicationSummary: {
-      fontSize: 11,
+      fontSize: 12,
       color: theme.mutedForeground,
       marginBottom: 14,
       lineHeight: 1.5,
     },
-    tipsList: {
-      marginBottom: 12,
+    stepsContent: {
       flexDirection: "row",
       flexWrap: "wrap",
       justifyContent: "space-between",
     },
     tipItem: {
-      width: "48%",
       flexDirection: "row",
-      marginBottom: 12,
       alignItems: "flex-start",
+      marginBottom: 8,
+      width: "48%", // Two columns of steps
     },
     stepNumber: {
-      width: 18,
-      height: 18,
-      borderRadius: 9,
+      width: 20,
+      height: 20,
+      borderRadius: 10,
       backgroundColor: theme.primary,
       alignItems: "center",
       justifyContent: "center",
       marginRight: 8,
-      marginTop: 2,
     },
     stepNumberText: {
       color: theme.primaryForeground,
-      fontSize: 10,
+      fontSize: 11,
       fontFamily: "Helvetica-Bold",
     },
     tipText: {
-      fontSize: 10,
-      color: theme.foreground,
       flex: 1,
+      fontSize: 12,
+      color: theme.foreground,
       lineHeight: 1.4,
+      paddingTop: 2,
     },
     footer: baseStyles.footer,
   });
@@ -263,37 +284,30 @@ const PDFDailyHabitsCommunicationSection: React.FC<
         </View>
       </View>
 
-      {/* Communication Section - Content above, Image below */}
-      <View style={styles.sectionContainer}>
-        <View style={styles.sectionHeader}>
-          <Text>Communication Style</Text>
-        </View>
-
-        <View style={styles.contentContainer}>
-          <Text style={styles.communicationSummary}>
-            {formatWithUsername(communication.summary, firstname)}
-          </Text>
-
-          <View style={styles.tipsList}>
-            {communication.tips.slice(0, 4).map((tip, index) => (
-              <View key={`tip-${index}`} style={styles.tipItem}>
-                <View style={styles.stepNumber}>
-                  <Text style={styles.stepNumberText}>{index + 1}</Text>
-                </View>
-                <Text style={styles.tipText}>
-                  {formatWithUsername(tip, firstname)}
-                </Text>
-              </View>
-            ))}
+      {/* Communication Section - Redesigned to match action steps format */}
+      <View style={styles.communicationContainer}>
+        <Text style={styles.communicationTitle}>
+          <View style={styles.iconContainer}>
+            <MessageSquareIcon color={ICON_COLORS.message} size={16} />
           </View>
-        </View>
+          Communication Style
+        </Text>
 
-        {/* Image below content */}
-        <View style={styles.imageContainer}>
-          <Image
-            src="https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            style={styles.sectionImage}
-          />
+        <Text style={styles.communicationSummary}>
+          {formatWithUsername(communication.summary, firstname)}
+        </Text>
+
+        <View style={styles.stepsContent}>
+          {communication.tips.slice(0, 4).map((tip, index) => (
+            <View key={`tip-${index}`} style={styles.tipItem}>
+              <View style={styles.stepNumber}>
+                <Text style={styles.stepNumberText}>{index + 1}</Text>
+              </View>
+              <Text style={styles.tipText}>
+                {formatWithUsername(tip, firstname)}
+              </Text>
+            </View>
+          ))}
         </View>
       </View>
 
