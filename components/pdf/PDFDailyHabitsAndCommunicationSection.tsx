@@ -271,9 +271,6 @@ const PDFDailyHabitsCommunicationSection: React.FC<
       {/* Communication Section - Content above, Image below */}
       <View style={styles.sectionContainer}>
         <View style={styles.sectionHeader}>
-          <View style={styles.iconContainer}>
-            <MessageSquareIcon color={ICON_COLORS.message} size={14} />
-          </View>
           <Text>Communication Style</Text>
         </View>
 
