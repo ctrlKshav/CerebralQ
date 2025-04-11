@@ -24,7 +24,7 @@ const createCareerSuggestionsStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
-  
+
     subtitle: {
       fontSize: 20,
       color: theme.foreground,
@@ -53,7 +53,6 @@ interface PDFCareerSuggestionsSectionProps {
   firstname: string | null;
   isDarkMode?: boolean;
   pageNumber: number;
-  isFirstPage?: boolean;
 }
 
 const PDFCareerSuggestionsSection: React.FC<
@@ -63,8 +62,7 @@ const PDFCareerSuggestionsSection: React.FC<
   sectionNumber,
   firstname,
   isDarkMode = false,
-  pageNumber,
-  isFirstPage = false,
+  pageNumber
 }) => {
   const styles = createCareerSuggestionsStyles(isDarkMode);
 
@@ -75,19 +73,17 @@ const PDFCareerSuggestionsSection: React.FC<
   return (
     <View style={styles.page}>
       {/* Only show the header on the first page */}
-      {isFirstPage && (
+      <View style={styles.headerContainer}>
         <View style={styles.headerContainer}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.sectionTitle}>Career Suggestions</Text>
-          </View>
-
-          <Text style={styles.description}>
-            These career paths naturally complement your personality traits and
-            abilities, offering environments where you're likely to thrive and
-            find fulfillment.
-          </Text>
+          <Text style={styles.sectionTitle}>Career Suggestions</Text>
         </View>
-      )}
+
+        <Text style={styles.description}>
+          These career paths naturally complement your personality traits and
+          abilities, offering environments where you're likely to thrive and
+          find fulfillment.
+        </Text>
+      </View>
 
       {/* Show one card per row, maximum 3 per page */}
       <View style={styles.cardsContainer}>
