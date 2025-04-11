@@ -9,7 +9,6 @@ import PDFCareerPathSection from "./PDFCareerPathSection";
 import PDFActionStepsSection from "./shared/PDFActionStepsSection";
 import PDFCareerSuggestionsSection from "./PDFCareerSuggestionsSection";
 import PDFRelationshipSection from "./PDFRelationshipSection";
-import PDFRelationshipActionSection from "./PDFRelationshipActionSection";
 import PDFGrowthSection from "./PDFGrowthSection";
 import PDFDailyHabitsSection from "./PDFDailyHabitsSection";
 import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
