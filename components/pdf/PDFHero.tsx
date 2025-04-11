@@ -19,7 +19,7 @@ const createHeroStyles = (isDarkMode = false) => {
       width: "100%",
       alignItems: "center",
       marginBottom: 15,
-      paddingTop: 20, // Add padding to account for the logo at the top
+      paddingTop: 10, // Add padding to account for the logo at the top
     },
     logoContainer: {
       position: "absolute",
@@ -77,7 +77,7 @@ const createHeroStyles = (isDarkMode = false) => {
       textAlign: "center",
     },
     imageContainer: {
-      width: "90%",
+      width: "100%",
       height: "200",
       alignItems: "center",
       justifyContent: "center",
@@ -97,7 +97,7 @@ const createHeroStyles = (isDarkMode = false) => {
       marginTop: 16,
       lineHeight: 1.4,
       textAlign: "left", // Left aligned for easier reading
-      width: "90%", // Control width
+      width: "100%", // Control width
       fontFamily: "Helvetica", // More clinical font
     },
     encouragement: {
@@ -107,7 +107,7 @@ const createHeroStyles = (isDarkMode = false) => {
       marginTop: 8,
       lineHeight: 1.4,
       textAlign: "center",
-      width: "90%", // Control width
+      width: "100%", // Control width
       fontFamily: "Helvetica",
     },
     interpretationNote: {
@@ -117,7 +117,7 @@ const createHeroStyles = (isDarkMode = false) => {
       marginBottom: 8,
       lineHeight: 1.4,
       textAlign: "left",
-      width: "90%",
+      width: "100%",
       padding: 10,
       backgroundColor: theme.muted,
       borderRadius: 4,
@@ -134,7 +134,8 @@ const createHeroStyles = (isDarkMode = false) => {
       borderTopWidth: 1,
       borderTopColor: theme.border,
       paddingTop: 8,
-      width: "80%",
+      paddingHorizontal: 10,
+      width: "100%",
     },
     footer: baseStyles.footer,
     headerContainer: {
