@@ -17,7 +17,7 @@ const createCommunicationStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
-      padding: 40,
+      padding: 10,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
@@ -36,7 +36,7 @@ const createCommunicationStyles = (isDarkMode = false) => {
     cardContainer: {
       backgroundColor: theme.card,
       borderRadius: 10,
-      padding: 20,
+      padding: 10,
       marginBottom: 30,
       borderWidth: 1,
       borderColor: theme.border,

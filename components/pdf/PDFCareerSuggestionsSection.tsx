@@ -12,7 +12,7 @@ const createCareerSuggestionsStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
-      padding: 40,
+      padding: 10,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",

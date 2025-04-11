@@ -20,7 +20,7 @@ const createCareerSectionStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
-      padding: 20, // Reduced padding to use more width
+      padding: 10, // Reduced padding to use more width
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",

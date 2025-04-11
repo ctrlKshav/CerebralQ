@@ -10,10 +10,11 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
   const theme = getThemeColors(isDarkMode);
 
   return StyleSheet.create({
-    container: {
-      margin: 10,
-      position: "relative",
+    page: {
+      padding: 10,
+      backgroundColor: theme.background,
       height: "100%",
+      position: "relative",
     },
     traitContainer: {
       marginTop: 10,
@@ -132,7 +133,7 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
   const theme = getThemeColors(isDarkMode);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.page}>
       <View style={styles.headerRow}>
         <Text style={styles.sectionNumber}>{sectionNumber}</Text>
         <Text style={styles.sectionTitle}>Personality Blueprint</Text>

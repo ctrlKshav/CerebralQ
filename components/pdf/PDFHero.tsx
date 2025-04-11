@@ -10,12 +10,10 @@ const createHeroStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "flex-start",
+      padding: 10,
+      backgroundColor: theme.background,
       height: "100%",
-      position: "relative", // Important for absolute positioning
+      position: "relative",
     },
     contentContainer: {
       width: "100%",
@@ -68,7 +66,6 @@ const createHeroStyles = (isDarkMode = false) => {
       lineHeight: 1.3,
       width: "60%", // Control width
       wordBreak: "normal", // Prevent overflow
-      
     },
     nameText: {
       color: theme.primary,
@@ -98,7 +95,7 @@ const createHeroStyles = (isDarkMode = false) => {
     personalityImage: {
       width: "100%", // Wider image
       height: "100%", // Adjusted height for better aspect ratio
-      objectFit: "cover"
+      objectFit: "cover",
     },
     description: {
       fontSize: 12,
@@ -197,24 +194,17 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
       {/* Logo absolutely positioned to the page (not the content container) */}
       <View style={styles.logoContainer}>
         {isDarkMode ? (
-          <Image
-            src="/images/logoDark.png"
-            style={styles.logo}
-            
-            
-          />
+          <Image src="/images/logoDark.png" style={styles.logo} />
         ) : (
-          <Image
-            src="/images/logoLight.png"
-            style={styles.logo}
-            
-          />
+          <Image src="/images/logoLight.png" style={styles.logo} />
         )}
       </View>
-      
+
       <View style={styles.contentContainer}>
         <View style={styles.badge}>
-          <Text style={styles.badgeText}>Assessment Completed: {completionDate}</Text>
+          <Text style={styles.badgeText}>
+            Assessment Completed: {completionDate}
+          </Text>
         </View>
 
         <Text style={styles.greeting}>
@@ -245,21 +235,26 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
           ) : (
             ""
           )}
-          ? The following pages will provide deeper insights into your unique traits and tendencies.
+          ? The following pages will provide deeper insights into your unique
+          traits and tendencies.
         </Text>
 
         <Text style={styles.interpretationNote}>
-          <Text style={{ fontFamily: "Helvetica-Bold" }}>How to Interpret Your Results: </Text>
-          This assessment identifies your primary personality type based on cognitive preferences. 
-          While these results represent your dominant traits, remember that personality exists on a 
-          spectrum. Use these insights as a framework for self-understanding rather than a rigid 
+          <Text style={{ fontFamily: "Helvetica-Bold" }}>
+            How to Interpret Your Results:{" "}
+          </Text>
+          This assessment identifies your primary personality type based on
+          cognitive preferences. While these results represent your dominant
+          traits, remember that personality exists on a spectrum. Use these
+          insights as a framework for self-understanding rather than a rigid
           categorization.
         </Text>
 
         <Text style={styles.assessmentInfo}>
-          This assessment is based on the Myers-Briggs Type Indicator® framework and complementary 
-          personality research. The insights provided are designed to help you understand your 
-          natural preferences and tendencies.
+          This assessment is based on the Myers-Briggs Type Indicator®
+          framework and complementary personality research. The insights
+          provided are designed to help you understand your natural preferences
+          and tendencies.
         </Text>
       </View>
 

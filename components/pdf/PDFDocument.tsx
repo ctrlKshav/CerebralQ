@@ -17,28 +17,6 @@ import PDFValuesActionSection from "./PDFValuesActionSection";
 import PDFCommunicationSection from "./PDFCommunicationSection";
 import PDFActionImageSection from "./shared/PDFActionImageSection";
 
-// Create styles with theme variants
-const createStyles = (isDarkMode = false) => {
-  const baseStyles = createBaseStyles(isDarkMode);
-  const theme = getThemeColors(isDarkMode);
-
-  return StyleSheet.create({
-    page: baseStyles.page,
-    section: {
-      marginBottom: 20,
-    },
-    footer: {
-      position: "absolute",
-      bottom: 30,
-      left: 0,
-      right: 0,
-      textAlign: "center",
-      fontSize: 10,
-      color: theme.mutedForeground,
-    },
-  });
-};
-
 interface PDFDocumentProps {
   resultData: ResultData;
   isDarkMode?: boolean;
@@ -48,7 +26,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   resultData,
   isDarkMode = false,
 }) => {
-  const styles = createStyles(isDarkMode);
+  const styles = createBaseStyles(isDarkMode);
 
   const {
     personalityType,
@@ -89,7 +67,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
     <Document>
       {/* First Page: Introduction and Personality Type Overview */}
       <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
           <PDFHero
             firstname={resultData.firstname}
             personalityType={personalityType}
@@ -97,13 +74,11 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
             completionDate={completionDate}
             isDarkMode={isDarkMode}
           />
-        </View>
       </Page>
 
       {/* Second Page: Detailed Traits */}
       <Page size="A4" style={styles.page}>
         {traitScores && (
-          <View style={styles.section}>
             <PDFPersonalityTraits
               traitScores={traitScores}
               sectionNumber={1}
@@ -111,7 +86,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
               firstname={resultData.firstname ?? undefined}
               personalityType={personalityType}
             />
-          </View>
         )}
       </Page>
 

@@ -30,7 +30,7 @@ const createValuesSectionStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
-      padding: 20, // Reduced from 40
+      padding: 10, // Reduced from 40
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
