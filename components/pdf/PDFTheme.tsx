@@ -2,7 +2,7 @@
 
 // Theme colors based on shadcn UI system from globals.css
 export const lightTheme = {
-  background: "#ffffff", // 0 0% 100%
+  background: "#f8f7fe", //
   foreground: "#0f1729", // 222.2 84% 4.9%
   card: "#ffffff", // 0 0% 100%
   cardForeground: "#0f1729", // 222.2 84% 4.9%
@@ -24,6 +24,7 @@ export const lightTheme = {
   chart2: "#10B981", 
   chart3: "#F59E0B", 
   chart4: "#EC4899", 
+  newBackground: "#f8f7fe",
 };
 
 export const darkTheme = {
