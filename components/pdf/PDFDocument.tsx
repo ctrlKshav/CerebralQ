@@ -56,6 +56,11 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   const suggestions = career.suggestions || [];
   const suggestionPages = suggestions.slice(0, 3);
 
+  // Logo URL for consistent branding across all pages
+  const logoUrl = isDarkMode
+    ? "/images/logoDark.png"
+    : "/images/logoLight.png";
+
   return (
     <Document>
       {/* First Page: Introduction and Personality Type Overview */}
@@ -67,6 +72,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           completionDate={completionDate}
           isDarkMode={isDarkMode}
           pageNumber={1}
+          logoUrl={logoUrl}
         />
       </Page>
 
@@ -80,6 +86,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
             personalityType={personalityType}
             sectionNumber={1}
             pageNumber={2}
+            logoUrl={logoUrl}
           />
         )}
       </Page>
@@ -92,6 +99,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           isDarkMode={isDarkMode}
           sectionNumber={2}
           pageNumber={3}
+          logoUrl={logoUrl}
         />
       </Page>
 
@@ -103,6 +111,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           isDarkMode={isDarkMode}
           sectionNumber={3}
           pageNumber={4}
+          logoUrl={logoUrl}
         />
       </Page>
 
@@ -116,6 +125,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           firstname={resultData.firstname}
           isDarkMode={isDarkMode}
           pageNumber={5}
+          logoUrl={logoUrl}
         />
       </Page>
 
@@ -135,6 +145,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
               firstname={resultData.firstname}
               isDarkMode={isDarkMode}
               pageNumber={6 + index}
+              logoUrl={logoUrl}
             />
           </Page>
         </React.Fragment>
@@ -148,6 +159,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           firstname={resultData.firstname}
           isDarkMode={isDarkMode}
           pageNumber={8}
+          logoUrl={logoUrl}
         />
       </Page>
 
@@ -159,6 +171,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           firstname={resultData.firstname}
           isDarkMode={isDarkMode}
           pageNumber={9}
+          logoUrl={logoUrl}
         />
       </Page>
     </Document>

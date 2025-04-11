@@ -8,6 +8,7 @@ import PDFCardSection from "./shared/PDFCardSection";
 import PDFListItem from "./shared/PDFListItem";
 import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
 import PDFActionImageSection from "./shared/PDFActionImageSection";
+import { PDFLogo } from "./PDFLogo";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -79,21 +80,23 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
 };
 
 interface PDFRelationshipSectionProps {
-  imageSrc: string;
   relationship: RelationshipCompatibility;
   sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;
-  pageNumber: number;
+  pageNumber?: number;
+  imageSrc?: string;
+  logoUrl?: string;
 }
 
 const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
-  imageSrc,
   relationship,
   sectionNumber,
   firstname,
   isDarkMode = false,
-  pageNumber,
+  pageNumber = 1,
+  imageSrc,
+  logoUrl,
 }) => {
   const styles = createRelationshipSectionStyles(isDarkMode);
   const { superpowers, growthAreas, compatibleTypes } = relationship;
@@ -107,6 +110,9 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
 
   return (
     <View style={styles.page}>
+      {/* Add logo to top right */}
+      <PDFLogo logoUrl={logoUrl} />
+      
       {/* Section header */}
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>

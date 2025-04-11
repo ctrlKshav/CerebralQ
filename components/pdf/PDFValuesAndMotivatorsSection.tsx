@@ -13,6 +13,7 @@ import {
 } from "@/components/pdf/shared/icons";
 import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
 import PDFActionImageSection from "./shared/PDFActionImageSection";
+import { PDFLogo } from "./PDFLogo";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -61,6 +62,7 @@ interface PDFValuesAndMotivatorsSectionProps {
   firstname: string | null;
   isDarkMode?: boolean;
   pageNumber?: number;
+  logoUrl?: string;
 }
 
 const PDFValuesAndMotivatorsSection: React.FC<
@@ -71,6 +73,7 @@ const PDFValuesAndMotivatorsSection: React.FC<
   firstname,
   isDarkMode = false,
   pageNumber = 1,
+  logoUrl,
 }) => {
   // Use the extracted styles
   const styles = createValuesSectionStyles(isDarkMode);
@@ -78,6 +81,9 @@ const PDFValuesAndMotivatorsSection: React.FC<
 
   return (
     <View style={styles.page}>
+      {/* Add logo to top right */}
+      <PDFLogo logoUrl={logoUrl} />
+      
       {/* Section header */}
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>

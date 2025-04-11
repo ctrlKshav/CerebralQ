@@ -2,6 +2,7 @@
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { PersonalityDescription } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import { PDFLogo } from "./PDFLogo";
 
 // Extract styles to their own function outside the component
 const createHeroStyles = (isDarkMode = false) => {
@@ -168,6 +169,7 @@ interface PDFHeroProps {
   isDarkMode?: boolean;
   profileImage?: string;
   pageNumber?: number;
+  logoUrl?: string;
 }
 
 export const PDFHero: React.FC<PDFHeroProps> = ({
@@ -178,6 +180,7 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
   isDarkMode = false,
   profileImage,
   pageNumber = 1,
+  logoUrl,
 }) => {
   const styles = createHeroStyles(isDarkMode);
 
@@ -210,6 +213,9 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
 
   return (
     <View style={styles.page}>
+      {/* Add custom logo in top right */}
+      <PDFLogo logoUrl={logoUrl} />
+      
       {/* Logo at the top center */}
       <View style={styles.logoContainer}>
         {isDarkMode ? (

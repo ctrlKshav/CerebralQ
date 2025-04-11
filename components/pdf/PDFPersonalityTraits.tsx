@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from "@react-pdf/renderer";
 import type { TraitScores } from "@/types/tests/mbti/traits";
 import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import { PDFLogo } from "./PDFLogo";
 
 // Extract styles to their own function outside the component
 const createPersonalityTraitsStyles = (isDarkMode = false) => {
@@ -11,14 +12,40 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
-      padding: 10,
+      padding: 20,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
+      justifyContent: "center", // Center content vertically
+    },
+    headerContainer: {
+      alignItems: "center",
+      marginBottom: 30,
+    },
+    gridContainer: {
+      flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      gap: 20,
+      padding: "0 15px",
     },
     traitContainer: {
-      marginTop: 10,
-      marginBottom: 10,
+      width: "45%", // Slightly narrower to account for gap
+      borderRadius: 20,
+      borderWidth: 1,
+      padding: 15,
+      paddingBottom: 20,
+      height: 220,
+    },
+    titleContainer: {
+      alignItems: "center",
+      marginBottom: 15,
+    },
+    traitTitle: {
+      fontSize: 18,
+      fontFamily: "PTSans-Bold",
+      textAlign: "center",
+      marginBottom: 5,
     },
     labelRow: {
       flexDirection: "row",
@@ -37,7 +64,7 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
       position: "relative",
       overflow: "hidden",
       marginTop: 5,
-      marginBottom: 5,
+      marginBottom: 15,
     },
     leftBar: {
       position: "absolute",
@@ -69,46 +96,27 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
       fontFamily: "PTSans-Bold",
       color: "white",
     },
-    traitDescription: {
-      marginTop: 15,
-      padding: 10,
-      backgroundColor: theme.accent,
-      borderRadius: 8,
+    traitText: {
+      fontSize: 10,
+      color: theme.foreground,
+      lineHeight: 1.4,
     },
-    traitTitle: {
-      fontSize: 14,
+    sectionTitle: {
+      fontSize: 36,
       fontFamily: "PTSans-Bold",
       color: theme.primary,
       marginBottom: 5,
+      textAlign: "center",
     },
-    traitText: {
-      fontSize: 10,
-      color: theme.mutedForeground,
-      lineHeight: 1.4,
-    },
-    badgeContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      marginBottom: 5,
-    },
-    badgeItem: {
-      padding: 2,
-      paddingHorizontal: 6,
-      borderRadius: 4,
-      borderWidth: 1,
-      borderColor: theme.border,
-      marginRight: 5,
-    },
-    badgeText: {
-      fontSize: 8,
+    sectionSubtitle: {
+      fontSize: 16,
+      fontFamily: "PTSans",
       color: theme.foreground,
-      fontFamily: "PTSans-Bold",
+      textAlign: "center",
+      maxWidth: 500,
+      alignSelf: "center",
     },
     footer: baseStyles.footer,
-    headerRow: baseStyles.headerRow,
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: baseStyles.sectionSubtitle,
   });
 };
 
@@ -120,6 +128,7 @@ interface PDFPersonalityTraitsProps {
   firstname?: string;
   isDarkMode?: boolean;
   pageNumber?: number;
+  logoUrl?: string;
 }
 
 export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
@@ -130,101 +139,130 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
   firstname,
   isDarkMode = false,
   pageNumber,
+  logoUrl,
 }) => {
   const styles = createPersonalityTraitsStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
 
+  // Convert traits object to array for easier manipulation
+  const traitsArray = Object.entries(traitScores).map(([trait, score]) => {
+    const typedTrait = trait as keyof TraitScores;
+    const description =
+      getPersonalityTraitDescriptions(personalityType)[typedTrait];
+    const leftPercentage = score.leftPercentage;
+    const rightPercentage = score.rightPercentage;
+    // Use chart colors from the theme for trait colors
+    const colorIndex = (Object.keys(traitScores).indexOf(trait) % 5) + 1;
+    const color =
+      theme[`chart${colorIndex}` as keyof typeof theme] || theme.primary;
+
+    const dominant =
+      score.dominant === "left" ? description.left : description.right;
+
+    return {
+      trait,
+      typedTrait,
+      description,
+      leftPercentage,
+      rightPercentage,
+      color,
+      dominant,
+      score
+    };
+  });
+
   return (
     <View style={styles.page}>
-      <View style={styles.headerRow}>
-        <Text style={styles.sectionNumber}>{sectionNumber}</Text>
+      {/* Add logo to top right */}
+      <PDFLogo logoUrl={logoUrl} />
+      
+      <View style={styles.headerContainer}>
         <Text style={styles.sectionTitle}>Personality Blueprint</Text>
+        <Text style={styles.sectionSubtitle}>{subtitle}</Text>
       </View>
 
-      <Text style={styles.sectionSubtitle}>{subtitle}</Text>
-
-      {Object.entries(traitScores).map(([trait, score]) => {
-        const typedTrait = trait as keyof TraitScores;
-        const description =
-          getPersonalityTraitDescriptions(personalityType)[typedTrait];
-        const leftPercentage = score.leftPercentage;
-        const rightPercentage = score.rightPercentage;
-        // Use chart colors from the theme for trait colors
-        const colorIndex = (Object.keys(traitScores).indexOf(trait) % 5) + 1;
-        const color =
-          theme[`chart${colorIndex}` as keyof typeof theme] || theme.primary;
-
-        const dominant =
-          score.dominant === "left" ? description.left : description.right;
-
-        return (
-          <View key={trait} style={styles.traitContainer}>
-            <View style={styles.labelRow}>
-              <Text style={styles.label}>{description.leftLabel}</Text>
-              <Text style={styles.label}>{description.rightLabel}</Text>
-            </View>
-
-            <View style={styles.barContainer}>
-              <View
-                style={[
-                  styles.leftBar,
-                  {
-                    width: `${leftPercentage}%`,
-                    backgroundColor: color,
-                    opacity: score.dominant === "left" ? 1 : 0.2,
-                  },
-                ]}
-              />
-              <View
-                style={[
-                  styles.rightBar,
-                  {
-                    width: `${rightPercentage}%`,
-                    backgroundColor: color,
-                    opacity: score.dominant === "right" ? 1 : 0.2,
-                  },
-                ]}
-              />
-
-              {/* Display percentages directly on the bars */}
-              <View style={styles.percentageOverlay}>
-                <Text
-                  style={[
-                    styles.percentageText,
-                    { opacity: leftPercentage > 15 ? 1 : 0 }, // Only show if there's enough space
-                  ]}
-                >
-                  {Math.round(leftPercentage)}%
-                </Text>
-                <Text
-                  style={[
-                    styles.percentageText,
-                    { opacity: rightPercentage > 15 ? 1 : 0 }, // Only show if there's enough space
-                  ]}
-                >
-                  {Math.round(rightPercentage)}%
+      <View style={styles.gridContainer}>
+        {traitsArray.map((traitData) => {
+          const dominantSide = traitData.score.dominant === "left" ? "left" : "right";
+          const dominantLabel = dominantSide === "left" 
+            ? traitData.description.leftLabel 
+            : traitData.description.rightLabel;
+          
+          return (
+            <View 
+              key={traitData.trait} 
+              style={[
+                styles.traitContainer, 
+                { 
+                  borderColor: traitData.color
+                }
+              ]}
+            >
+              <View style={styles.titleContainer}>
+                <Text style={[styles.traitTitle, { color: traitData.color }]}>
+                  {dominantLabel} ({traitData.dominant.letter})
                 </Text>
               </View>
-            </View>
 
-            <View style={styles.traitDescription}>
-              <Text style={styles.traitTitle}>
-                {score.dominant === "left"
-                  ? description.leftLabel
-                  : description.rightLabel}{" "}
-                ({dominant.letter})
-              </Text>
+              <View style={styles.labelRow}>
+                <Text style={styles.label}>{traitData.description.leftLabel}</Text>
+                <Text style={styles.label}>{traitData.description.rightLabel}</Text>
+              </View>
+
+              <View style={styles.barContainer}>
+                <View
+                  style={[
+                    styles.leftBar,
+                    {
+                      width: `${traitData.leftPercentage}%`,
+                      backgroundColor: traitData.color,
+                      opacity: traitData.score.dominant === "left" ? 1 : 0.2,
+                    },
+                  ]}
+                />
+                <View
+                  style={[
+                    styles.rightBar,
+                    {
+                      width: `${traitData.rightPercentage}%`,
+                      backgroundColor: traitData.color,
+                      opacity: traitData.score.dominant === "right" ? 1 : 0.2,
+                    },
+                  ]}
+                />
+
+                {/* Display percentages directly on the bars */}
+                <View style={styles.percentageOverlay}>
+                  <Text
+                    style={[
+                      styles.percentageText,
+                      { opacity: traitData.leftPercentage > 15 ? 1 : 0 }, // Only show if there's enough space
+                    ]}
+                  >
+                    {Math.round(traitData.leftPercentage)}%
+                  </Text>
+                  <Text
+                    style={[
+                      styles.percentageText,
+                      { opacity: traitData.rightPercentage > 15 ? 1 : 0 }, // Only show if there's enough space
+                    ]}
+                  >
+                    {Math.round(traitData.rightPercentage)}%
+                  </Text>
+                </View>
+              </View>
+
               <Text style={styles.traitText}>
-                {description.getDominantTraitDescription(firstname)}
+                {traitData.description.getDominantTraitDescription(firstname)}
               </Text>
             </View>
-          </View>
-        );
-      })}
+          );
+        })}
+      </View>
 
       {/* Add footer inside the page */}
       <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page {pageNumber}
+        Cerebral Quotient | MBTI Test Report | {firstname ? firstname : "Name"}
       </Text>
     </View>
   );

@@ -4,6 +4,7 @@ import { CareerPath, CareerSuggestion } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerSuggestionCard from "./shared/PDFCareerSuggestionCard";
 import { formatWithUsername } from "@/lib/formatWithUsername";
+import { PDFLogo } from "./PDFLogo";
 
 // Create styles with theme variants
 const createCareerSuggestionsStyles = (isDarkMode = false) => {
@@ -52,17 +53,17 @@ interface PDFCareerSuggestionsSectionProps {
   sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;
-  pageNumber: number;
+  pageNumber?: number;
+  logoUrl?: string;
 }
 
-const PDFCareerSuggestionsSection: React.FC<
-  PDFCareerSuggestionsSectionProps
-> = ({
+const PDFCareerSuggestionsSection: React.FC<PDFCareerSuggestionsSectionProps> = ({
   suggestions,
   sectionNumber,
   firstname,
   isDarkMode = false,
-  pageNumber
+  pageNumber = 1,
+  logoUrl,
 }) => {
   const styles = createCareerSuggestionsStyles(isDarkMode);
 
@@ -72,6 +73,9 @@ const PDFCareerSuggestionsSection: React.FC<
 
   return (
     <View style={styles.page}>
+      {/* Add logo to top right */}
+      <PDFLogo logoUrl={logoUrl} />
+      
       {/* Only show the header on the first page */}
       <View style={styles.headerContainer}>
         <View style={styles.headerContainer}>

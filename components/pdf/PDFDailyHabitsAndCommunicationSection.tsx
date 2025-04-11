@@ -9,6 +9,7 @@ import {
   MoonIcon,
   MessageSquareIcon,
 } from "@/components/pdf/shared/icons";
+import { PDFLogo } from "./PDFLogo";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -188,6 +189,7 @@ interface PDFDailyHabitsCommunicationSectionProps {
   firstname: string | null;
   isDarkMode?: boolean;
   pageNumber?: number;
+  logoUrl?: string;
 }
 
 const PDFDailyHabitsCommunicationSection: React.FC<
@@ -198,6 +200,7 @@ const PDFDailyHabitsCommunicationSection: React.FC<
   firstname,
   isDarkMode = false,
   pageNumber = 1,
+  logoUrl,
 }) => {
   // Use the extracted styles
   const styles = createCombinedSectionStyles(isDarkMode);
@@ -205,6 +208,9 @@ const PDFDailyHabitsCommunicationSection: React.FC<
 
   return (
     <View style={styles.page}>
+      {/* Add logo to top right */}
+      <PDFLogo logoUrl={logoUrl} />
+
       {/* Section header */}
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>

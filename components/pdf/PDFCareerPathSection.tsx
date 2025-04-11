@@ -13,6 +13,7 @@ import {
 } from "@/components/pdf/shared/icons";
 import { ICON_COLORS } from "@/lib/constants";
 import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
+import { PDFLogo } from "./PDFLogo";
 
 // Extract styles to their own object outside the component
 const createCareerSectionStyles = (isDarkMode = false) => {
@@ -78,6 +79,7 @@ interface PDFCareerPathSectionProps {
   firstname: string | null;
   isDarkMode?: boolean;
   pageNumber?: number;
+  logoUrl?: string;
 }
 
 const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
@@ -85,7 +87,8 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
   sectionNumber,
   firstname,
   isDarkMode = false,
-  pageNumber,
+  pageNumber = 1,
+  logoUrl,
 }) => {
   // Use the extracted styles
   const styles = createCareerSectionStyles(isDarkMode);
@@ -93,6 +96,9 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
 
   return (
     <View style={styles.page}>
+      {/* Add logo to top right */}
+      <PDFLogo logoUrl={logoUrl} />
+      
       {/* Section header */}
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>
