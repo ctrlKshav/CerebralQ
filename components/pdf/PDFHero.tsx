@@ -49,19 +49,12 @@ const createHeroStyles = (isDarkMode = false) => {
       color: theme.mutedForeground,
       padding: "1 6", // Reduced padding
     },
-    reportTitle: {
-      fontSize: 14,
-      color: theme.mutedForeground,
-      fontFamily: "Times-Roman",
-      marginBottom: 4,
-      textAlign: "center",
-    },
     greeting: {
       fontSize: 24, // Slightly smaller
       marginTop: 8,
       marginBottom: 8, // Reduced margin
       color: theme.foreground,
-      fontFamily: "Times-Bold", // More clinical font
+      fontFamily: "Helvetica-Bold", // More clinical font
       textAlign: "center",
       lineHeight: 1.3,
       width: "60%", // Control width
@@ -69,11 +62,11 @@ const createHeroStyles = (isDarkMode = false) => {
     },
     nameText: {
       color: theme.primary,
-      fontFamily: "Times-Bold",
+      fontFamily: "Helvetica-Bold",
     },
     personalityType: {
-      fontFamily: "Times-Bold",
-      fontSize: 28,
+      fontFamily: "Helvetica-Bold",
+      fontSize: 32,
       color: theme.primary,
     },
     subtitle: {
@@ -105,7 +98,7 @@ const createHeroStyles = (isDarkMode = false) => {
       lineHeight: 1.4,
       textAlign: "left", // Left aligned for easier reading
       width: "90%", // Control width
-      fontFamily: "Times-Roman", // More clinical font
+      fontFamily: "Helvetica", // More clinical font
     },
     encouragement: {
       fontSize: 12,
@@ -115,7 +108,7 @@ const createHeroStyles = (isDarkMode = false) => {
       lineHeight: 1.4,
       textAlign: "center",
       width: "90%", // Control width
-      fontFamily: "Times-Italic",
+      fontFamily: "Helvetica",
     },
     interpretationNote: {
       fontSize: 11,
