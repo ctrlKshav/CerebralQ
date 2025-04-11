@@ -9,10 +9,7 @@ import PDFCareerPathSection from "./PDFCareerPathSection";
 import PDFCareerSuggestionsSection from "./PDFCareerSuggestionsSection";
 import PDFRelationshipSection from "./PDFRelationshipSection";
 import PDFGrowthSection from "./PDFGrowthSection";
-import PDFDailyHabitsSection from "./PDFDailyHabitsSection";
 import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
-import PDFCommunicationSection from "./PDFCommunicationSection";
-import PDFActionImageSection from "./shared/PDFActionImageSection";
 import PDFDailyHabitsCommunicationSection from "./PDFDailyHabitsAndCommunicationSection";
 
 interface PDFDocumentProps {

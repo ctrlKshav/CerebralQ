@@ -45,14 +45,9 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
     headerRow: baseStyles.headerRow,
     sectionNumber: baseStyles.sectionNumber,
     sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: {
-      ...baseStyles.sectionSubtitle,
-      marginBottom: 8,
-    },
+    sectionSubtitle: baseStyles.sectionSubtitle,
 
-    sectionContainer: {
-      marginBottom: 24,
-    },
+    sectionContainer: {},
     sectionHeader: {
       fontSize: 15,
       color: theme.foreground,
@@ -72,7 +67,7 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
       marginBottom: 12,
     },
     sectionImage: {
-      width: "90%",
+      width: "100%",
       height: 160,
       borderRadius: 4,
       objectFit: "cover",
