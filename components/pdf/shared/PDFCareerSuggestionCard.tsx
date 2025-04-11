@@ -13,7 +13,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
   isDarkMode = false,
 }) => {
   const theme = getThemeColors(isDarkMode);
-  
+
   const styles = StyleSheet.create({
     card: {
       marginBottom: 30,
@@ -23,7 +23,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       borderColor: theme.border,
       overflow: "hidden",
       flexDirection: "row",
-      height: 300, // Fixed height for consistency
+      height: 250, // Fixed height for consistency
     },
     imageContainer: {
       width: "35%",
@@ -58,11 +58,12 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       paddingVertical: 6,
       paddingHorizontal: 8,
       borderRadius: 5,
-      backgroundColor: suggestion.matchPercentage >= 90 
-        ? "#10b981" 
-        : suggestion.matchPercentage >= 80 
-          ? "#3b82f6" 
-          : "#f59e0b",
+      backgroundColor:
+        suggestion.matchPercentage >= 90
+          ? "#10b981"
+          : suggestion.matchPercentage >= 80
+            ? "#3b82f6"
+            : "#f59e0b",
     },
     matchBadgeText: {
       color: "#ffffff",
@@ -90,7 +91,8 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       marginBottom: 8,
     },
     traitsRow: {
-      flexDirection: "column",
+      flexDirection: "row",
+      gap: 4,
     },
     traitBadge: {
       backgroundColor: theme.muted,
@@ -98,32 +100,21 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       paddingVertical: 4,
       borderRadius: 4,
       marginBottom: 8,
-    },
-    traitTitle: {
       fontSize: 10,
       color: theme.mutedForeground,
       fontFamily: "Helvetica-Bold",
-      marginBottom: 6,
-    },
-    traitDescription: {
-      fontSize: 8,
-      color: theme.mutedForeground,
-      fontFamily: "Helvetica",
-      marginBottom: 3,
-
-    },
+      },
   });
-  
+
   // Helper function to get career image
   const getCareerImage = (title: string) => {
     const images: Record<string, string> = {
       "Business Management":
         "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80",
-      "Entrepreneurship":
+      Entrepreneurship:
         "https://images.unsplash.com/photo-1523287562758-66c7fc58967f?auto=format&fit=crop&w=800&q=80",
-      "Law": 
-        "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
-      "Engineering":
+      Law: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
+      Engineering:
         "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
     };
 
@@ -146,30 +137,31 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
           cache={true}
         />
       </View>
-      
+
       {/* Right side - Content */}
       <View style={styles.contentContainer}>
         {/* Header with title and match percentage */}
         <View style={styles.headerContainer}>
           <Text style={styles.title}>{suggestion.title}</Text>
           <View style={styles.matchBadge}>
-            <Text style={styles.matchBadgeText}>{suggestion.matchPercentage}% Match</Text>
+            <Text style={styles.matchBadgeText}>
+              {suggestion.matchPercentage}% Match
+            </Text>
           </View>
         </View>
-        
+
         {/* Main content */}
         <View style={styles.content}>
           <Text style={styles.description}>{suggestion.description}</Text>
-          
+
           {displayQualityMatches.length > 0 && (
             <View style={styles.traitsContainer}>
               <Text style={styles.traitsHeader}>Your Matching Traits</Text>
               <View style={styles.traitsRow}>
                 {displayQualityMatches.map((quality, index) => (
-                  <View key={index} style={styles.traitBadge}>
-                    <Text style={styles.traitTitle}>{quality.title}</Text>
-                    <Text style={styles.traitDescription}>{quality.description}</Text>
-                  </View>
+                  <Text key={index} style={styles.traitBadge}>
+                    {quality.title}
+                  </Text>
                 ))}
               </View>
             </View>
