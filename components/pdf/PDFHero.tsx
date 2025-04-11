@@ -164,19 +164,14 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
     ISFP: "https://images.unsplash.com/photo-1507290439931-a861b5a38200?q=80&w=2000&auto=format&fit=crop",
     ESTP: "https://images.unsplash.com/photo-1522165078649-823cf4dbaf46?q=80&w=2000&auto=format&fit=crop",
     ESFP: "https://images.unsplash.com/photo-1531206715517-5c0ba140b2b8?q=80&w=2000&auto=format&fit=crop",
-    default: "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop",
+    default: "https://images.unsplash.com/photo-1522165078649-823cf4dbaf46?q=80&w=2000&auto=format&fit=crop",
   };
-
-  // Use the architect-specific image for INTJ type (as shown in the reference)
-  const architectImage = "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop";
 
   const alias = personalityDescription.alias;
   const description = personalityDescription.description(firstname, false);
 
   // Determine which image to use - prioritize the architect image for INTJ
-  const imageToUse = personalityType === "INTJ" 
-    ? architectImage 
-    : (personalityImages[personalityType] || personalityImages.default);
+  const imageToUse =  (personalityImages[personalityType] || personalityImages.default);
 
   return (
     <View style={styles.page}>
