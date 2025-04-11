@@ -12,6 +12,7 @@ import {
   UpArrowIcon,
 } from "@/components/pdf/shared/icons";
 import { ICON_COLORS } from "@/lib/constants";
+import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
 
 // Extract styles to their own object outside the component
 const createCareerSectionStyles = (isDarkMode = false) => {
@@ -39,7 +40,7 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       maxWidth: 540,
     },
     columnsContainer: {
-      flexDirection: 'row',
+      flexDirection: "row",
       marginBottom: 20,
       gap: 15, // Reduced gap
     },
@@ -105,48 +106,17 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
         </Text>
       </View>
 
-      {/* Two column layout for Superpowers and Growth Areas */}
-      <View style={styles.columnsContainer}>
-        {/* Career Superpowers Column */}
-        <View style={styles.column}>
-          <View style={styles.columnTitleContainer}>
-            <AwardIcon color={ICON_COLORS.award} size={18} />
-            <Text style={[styles.columnTitle, { marginLeft: 8 }]}>
-              Career Superpowers
-            </Text>
-          </View>
-          <View style={styles.listSection}>
-            {superpowers.map((item, index) => (
-              <PDFListItem
-                key={`superpower-${index}`}
-                text={formatWithUsername(item.description, firstname)}
-                icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-                isDarkMode={isDarkMode}
-              />
-            ))}
-          </View>
-        </View>
-
-        {/* Growth Areas Column */}
-        <View style={styles.column}>
-          <View style={styles.columnTitleContainer}>
-            <BriefcaseIcon color={ICON_COLORS.briefcase} size={18} />
-            <Text style={[styles.columnTitle, { marginLeft: 8 }]}>
-              Growth Areas
-            </Text>
-          </View>
-          <View style={styles.listSection}>
-            {growthAreas.map((item, index) => (
-              <PDFListItem
-                key={`growth-${index}`}
-                text={formatWithUsername(item.description, firstname)}
-                icon={<UpArrowIcon color={ICON_COLORS.upArrow} size={14} />}
-                isDarkMode={isDarkMode}
-              />
-            ))}
-          </View>
-        </View>
-      </View>
+      {/* Replace superpowers and growth areas with two-column section */}
+      <PDFTwoColumnSection
+        leftTitle={`Superpowers`}
+        leftIcon={<AwardIcon color={ICON_COLORS.award} size={20} />}
+        leftItems={superpowers}
+        rightTitle="Growth Areas"
+        rightIcon={<BriefcaseIcon color={ICON_COLORS.briefcase} size={20} />}
+        rightItems={growthAreas}
+        firstname={firstname}
+        isDarkMode={isDarkMode}
+      />
 
       {/* Action Steps - Using the new reusable component */}
       <PDFActionImageSection
