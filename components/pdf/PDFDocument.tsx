@@ -13,7 +13,6 @@ import PDFRelationshipActionSection from "./PDFRelationshipActionSection";
 import PDFGrowthSection from "./PDFGrowthSection";
 import PDFDailyHabitsSection from "./PDFDailyHabitsSection";
 import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
-import PDFValuesActionSection from "./PDFValuesActionSection";
 import PDFCommunicationSection from "./PDFCommunicationSection";
 import PDFActionImageSection from "./shared/PDFActionImageSection";
 

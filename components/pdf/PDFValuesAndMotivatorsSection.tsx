@@ -12,7 +12,6 @@ import {
   UpArrowIcon,
 } from "@/components/pdf/shared/icons";
 import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
-import PDFValuesActionSection from "./PDFValuesActionSection";
 import PDFActionImageSection from "./shared/PDFActionImageSection";
 
 // Define specific colors for icons
