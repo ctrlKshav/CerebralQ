@@ -2,6 +2,8 @@
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { PersonalityDescription } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import PDFPageNumber from "./shared/PDFPageNumber";
+import PDFFooter from "./shared/PDFFooter";
 
 // Extract styles to their own function outside the component
 const createHeroStyles = (isDarkMode = false) => {
@@ -224,10 +226,8 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
         </Text>
       </View>
 
-      {/* Footer */}
-      <Text style={styles.footer}>
-        Cerebral Quotient | MBTI Test Report | {firstname || "Name"}
-      </Text>
+      {/* Replace footer with centralized component */}
+      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
     </View>
   );
 };

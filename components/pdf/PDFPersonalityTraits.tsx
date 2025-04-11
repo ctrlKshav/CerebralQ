@@ -4,6 +4,7 @@ import type { TraitScores } from "@/types/tests/mbti/traits";
 import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { PDFLogo } from "./PDFLogo";
+import PDFFooter from "./shared/PDFFooter";
 
 // Extract styles to their own function outside the component
 const createPersonalityTraitsStyles = (isDarkMode = false) => {
@@ -116,7 +117,6 @@ const createPersonalityTraitsStyles = (isDarkMode = false) => {
       alignSelf: "center",
       paddingHorizontal: 35,
     },
-    footer: baseStyles.footer,
   });
 };
 
@@ -260,10 +260,8 @@ export const PDFPersonalityTraits: React.FC<PDFPersonalityTraitsProps> = ({
         })}
       </View>
 
-      {/* Add footer inside the page */}
-      <Text style={styles.footer}>
-        Cerebral Quotient | MBTI Test Report | {firstname ? firstname : "Name"}
-      </Text>
+      {/* Replace footer with centralized component */}
+      <PDFFooter pageNumber={pageNumber || 2} firstname={firstname} isDarkMode={isDarkMode} />
     </View>
   );
 };

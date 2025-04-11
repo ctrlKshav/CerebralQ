@@ -13,7 +13,7 @@ import {
 } from "@/components/pdf/shared/icons";
 import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
 import PDFActionImageSection from "./shared/PDFActionImageSection";
-import { PDFLogo } from "./PDFLogo";
+import PDFFooter from "./shared/PDFFooter";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -81,9 +81,6 @@ const PDFValuesAndMotivatorsSection: React.FC<
 
   return (
     <View style={styles.page}>
-      {/* Add logo to top right */}
-      <PDFLogo logoUrl={logoUrl} />
-      
       {/* Section header */}
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>
@@ -117,10 +114,8 @@ const PDFValuesAndMotivatorsSection: React.FC<
         isDarkMode={isDarkMode}
       />
 
-      {/* Footer inside the page */}
-      <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page {pageNumber}
-      </Text>
+      {/* Replace footer with centralized component */}
+      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
     </View>
   );
 };

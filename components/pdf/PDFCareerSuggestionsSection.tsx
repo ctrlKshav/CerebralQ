@@ -4,7 +4,7 @@ import { CareerPath, CareerSuggestion } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerSuggestionCard from "./shared/PDFCareerSuggestionCard";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import { PDFLogo } from "./PDFLogo";
+import PDFFooter from "./shared/PDFFooter";
 
 // Create styles with theme variants
 const createCareerSuggestionsStyles = (isDarkMode = false) => {
@@ -73,9 +73,6 @@ const PDFCareerSuggestionsSection: React.FC<PDFCareerSuggestionsSectionProps> = 
 
   return (
     <View style={styles.page}>
-      {/* Add logo to top right */}
-      <PDFLogo logoUrl={logoUrl} />
-      
       {/* Only show the header on the first page */}
       <View style={styles.headerContainer}>
         <View style={styles.headerContainer}>
@@ -100,10 +97,8 @@ const PDFCareerSuggestionsSection: React.FC<PDFCareerSuggestionsSectionProps> = 
         ))}
       </View>
 
-      {/* Footer */}
-      <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page {pageNumber}
-      </Text>
+      {/* Replace footer with centralized component */}
+      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
     </View>
   );
 };

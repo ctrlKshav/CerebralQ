@@ -171,7 +171,6 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
           firstname={resultData.firstname}
           isDarkMode={isDarkMode}
           pageNumber={9}
-          logoUrl={logoUrl}
         />
       </Page>
     </Document>

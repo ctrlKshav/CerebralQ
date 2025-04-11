@@ -9,7 +9,7 @@ import {
   MoonIcon,
   MessageSquareIcon,
 } from "@/components/pdf/shared/icons";
-import { PDFLogo } from "./PDFLogo";
+import PDFFooter from "./shared/PDFFooter";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -179,7 +179,6 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
       lineHeight: 1.4,
       paddingTop: 2,
     },
-    footer: baseStyles.footer,
   });
 };
 
@@ -189,7 +188,6 @@ interface PDFDailyHabitsCommunicationSectionProps {
   firstname: string | null;
   isDarkMode?: boolean;
   pageNumber?: number;
-  logoUrl?: string;
 }
 
 const PDFDailyHabitsCommunicationSection: React.FC<
@@ -200,7 +198,6 @@ const PDFDailyHabitsCommunicationSection: React.FC<
   firstname,
   isDarkMode = false,
   pageNumber = 1,
-  logoUrl,
 }) => {
   // Use the extracted styles
   const styles = createCombinedSectionStyles(isDarkMode);
@@ -208,9 +205,6 @@ const PDFDailyHabitsCommunicationSection: React.FC<
 
   return (
     <View style={styles.page}>
-      {/* Add logo to top right */}
-      <PDFLogo logoUrl={logoUrl} />
-
       {/* Section header */}
       <View style={styles.headerContainer}>
         <View style={styles.headerRow}>
@@ -317,10 +311,8 @@ const PDFDailyHabitsCommunicationSection: React.FC<
         </View>
       </View>
 
-      {/* Footer inside the page */}
-      <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page {pageNumber}
-      </Text>
+      {/* Replace footer with centralized component */}
+      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
     </View>
   );
 };
