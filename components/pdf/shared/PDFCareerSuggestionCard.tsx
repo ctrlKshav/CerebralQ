@@ -17,7 +17,6 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
   const styles = StyleSheet.create({
     card: {
       marginBottom: 30,
-      backgroundColor: theme.card,
       borderRadius: 10,
       borderWidth: 1,
       borderColor: theme.border,
