@@ -8,17 +8,19 @@ interface PDFGrowthAreasSectionProps {
   growthAreas: GrowthAreaItem[];
   firstname: string | null;
   isDarkMode?: boolean;
+  expandToFill?: boolean;
 }
 
 const PDFGrowthAreasSection: React.FC<PDFGrowthAreasSectionProps> = ({
   growthAreas,
   firstname,
   isDarkMode = false,
+  expandToFill = false,
 }) => {
-  const styles = createGrowthAreaStyles(isDarkMode);
+  const styles = createGrowthAreaStyles(isDarkMode, expandToFill);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.sectionTitle}>Growth Areas</Text>
       {growthAreas && growthAreas.length > 0 ? (
         growthAreas.map((area, index) => (
@@ -47,10 +49,13 @@ const PDFGrowthAreasSection: React.FC<PDFGrowthAreasSectionProps> = ({
 };
 
 // Styles for the component
-const createGrowthAreaStyles = (isDarkMode: boolean) => {
+const createGrowthAreaStyles = (isDarkMode: boolean, expandToFill: boolean) => {
   const theme = getThemeColors(isDarkMode);
   
   return StyleSheet.create({
+    container: {
+      ...(expandToFill && { flexGrow: 1 })
+    },
     sectionTitle: {
       fontSize: 16,
       color: theme.foreground,
@@ -59,7 +64,6 @@ const createGrowthAreaStyles = (isDarkMode: boolean) => {
     },
     listItem: {
       marginBottom: 8,
-      paddingLeft: 10,
     },
     listItemText: {
       fontSize: 13,

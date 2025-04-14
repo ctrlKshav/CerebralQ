@@ -58,21 +58,20 @@ const createActionPlanStyles = (isDarkMode: boolean) => {
       backgroundColor: theme.primary,
       padding: 20,
       borderRadius: 6,
+      flexGrow: 1,
     },
     actionPlanTitle: {
       fontSize: 20,
-      color: theme.primaryForeground,
+      color: "white",
       fontFamily: "PTSans-Bold",
       textAlign: "center",
       marginBottom: 15,
     },
     actionItem: {
-      padding: 12,
-      borderRadius: 6,
       marginBottom: 10,
     },
     actionItemText: {
-      fontSize: 12, // Reduced font size
+      fontSize: 12,
       color: "white",
       lineHeight: 1.4,
     },

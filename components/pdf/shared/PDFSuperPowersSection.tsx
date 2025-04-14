@@ -18,7 +18,7 @@ const PDFSuperPowersSection: React.FC<PDFSuperPowersSectionProps> = ({
   const styles = createSuperPowerStyles(isDarkMode);
 
   return (
-    <View>
+    <View style={styles.container}>
       <Text style={styles.sectionTitle}>Superpowers</Text>
       {superpowers && superpowers.length > 0 ? (
         superpowers.map((power, index) => (
@@ -51,15 +51,17 @@ const createSuperPowerStyles = (isDarkMode: boolean) => {
   const theme = getThemeColors(isDarkMode);
   
   return StyleSheet.create({
+    container: {
+      marginBottom: 15,
+    },
     sectionTitle: {
       fontSize: 16,
       color: theme.foreground,
       fontFamily: "PTSans-Bold",
-      marginBottom: 15,
+      marginBottom: 12,
     },
     listItem: {
       marginBottom: 8,
-      paddingLeft: 10,
     },
     listItemText: {
       fontSize: 13,
