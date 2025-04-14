@@ -24,22 +24,29 @@ const createCareerSectionStyles = (isDarkMode = false) => {
       flexDirection: "row",
       marginBottom: 25,
       marginTop: 45, // Space for logo
+      height: 270,
+    },
+    titleContainer: {
+      display: "flex",
+      flexDirection: "column",
     },
     titleSection: {
       flex: 3,
       paddingRight: 15,
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+      justifyContent: "space-between",
     },
     title: {
       fontSize: 36,
       color: theme.primary,
       fontFamily: "PTSans-Bold",
-      marginBottom: 5,
     },
     subtitle: {
       fontSize: 18,
       color: theme.foreground,
       fontFamily: "PTSans-Bold",
-      marginBottom: 20,
     },
     imageSection: {
       flex: 2,
@@ -47,7 +54,7 @@ const createCareerSectionStyles = (isDarkMode = false) => {
     headerImage: {
       marginTop: 5,
       width: "100%",
-      height: 250,
+      height: "100%",
       objectFit: "cover",
       borderRadius: 6,
     },
@@ -65,7 +72,6 @@ const createCareerSectionStyles = (isDarkMode = false) => {
     description: {
       fontSize: 14,
       color: theme.foreground,
-      marginBottom: 15,
       lineHeight: 1.5,
     },
     pageNumber: {
@@ -109,13 +115,15 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
       {/* Header section with title and image side by side */}
       <View style={styles.headerSection}>
         <View style={styles.titleSection}>
-          <Text style={styles.title}>Your Career Path</Text>
-          <Text style={styles.subtitle}>
-            {formatWithUsername(
-              "How You Shine at Work, {firstname}",
-              firstname
-            )}
-          </Text>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Your Career Path</Text>
+            <Text style={styles.subtitle}>
+              {formatWithUsername(
+                "How You Shine at Work, {firstname}",
+                firstname
+              )}
+            </Text>
+          </View>
           <Text style={styles.description}>
             {formatWithUsername(summary, firstname)}
           </Text>
