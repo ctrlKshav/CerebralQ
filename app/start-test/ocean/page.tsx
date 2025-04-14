@@ -1,10 +1,10 @@
-﻿import MBTITest from '@/components/mbti'
+import OceanTest from '@/components/ocean'
 import React from 'react'
 
 export default function TakeTestpage() {
   return (
     <div>
-      <MBTITest/>
+      <OceanTest/>
     </div>
   )
-}
+} 
