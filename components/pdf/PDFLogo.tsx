@@ -4,8 +4,8 @@ import { View, Image, StyleSheet } from "@react-pdf/renderer";
 const styles = StyleSheet.create({
   logoContainer: {
     position: "absolute",
-    top: 20,
-    right: 20,
+    top: 0,
+    right: 0,
     width: 92,
     height: 54,
     zIndex: 999,
