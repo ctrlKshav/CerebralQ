@@ -235,7 +235,7 @@ const HeroSection = () => {
                 {/* Certificate content */}
                 <div className="space-y-3">
                   {["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"].map((trait, i) => (
-                    <div key={i} className="flex items-center">
+                    <div key={i} className="flex items-center gap-4">
                       <div className="w-2 h-2 rounded-full bg-primary/70 mr-3"></div>
                       <div className="text-primary dark:text-card-foreground font-medium text-sm">{trait}</div>
                       <div className="ml-auto h-2 bg-primary/10 dark:bg-muted rounded-full w-24 lg:w-32">
