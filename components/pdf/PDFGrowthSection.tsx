@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { GrowthJourney } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
@@ -14,6 +14,10 @@ import {
 import PDFActionImageSection from "./shared/PDFActionImageSection";
 import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
 import PDFFooter from "./shared/PDFFooter";
+import { PDFLogo } from "./PDFLogo";
+import PDFSuperPowersSection from "./shared/PDFSuperPowersSection";
+import PDFGrowthAreasSection from "./shared/PDFGrowthAreasSection";
+import PDFActionPlanSection from "./shared/PDFActionPlanSection";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -25,40 +29,78 @@ const ICON_COLORS = {
 
 // Extract styles to their own object outside the component
 const createGrowthSectionStyles = (isDarkMode = false) => {
-  const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
 
   return StyleSheet.create({
     page: {
-      padding: 10,
+      padding: 30,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
-    headerContainer: {
+    headerSection: {
+      flexDirection: "row",
       marginBottom: 25,
-      alignItems: "center",
+      marginTop: 45, // Space for logo
+      height: 270,
+    },
+    titleContainer: {
+      display: "flex",
+      flexDirection: "column",
+    },
+    titleSection: {
+      flex: 3,
+      paddingRight: 15,
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+      justifyContent: "space-between",
     },
     title: {
-      fontSize: 30,
+      fontSize: 36,
+      color: theme.primary,
+      fontFamily: "PTSans-Bold",
+    },
+    subtitle: {
+      fontSize: 18,
       color: theme.foreground,
       fontFamily: "PTSans-Bold",
-      marginBottom: 12,
-      textAlign: "center",
+    },
+    imageSection: {
+      flex: 2,
+    },
+    headerImage: {
+      marginTop: 5,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: 6,
+    },
+    contentSection: {
+      flexDirection: "row",
+    },
+    leftContent: {
+      flex: 3,
+      paddingRight: 15,
+      alignSelf: "flex-end",
+    },
+    rightContent: {
+      flex: 2,
     },
     description: {
       fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 30,
-      lineHeight: 1.6,
-      textAlign: "center",
-      alignSelf: "center",
+      color: theme.foreground,
+      lineHeight: 1.5,
     },
-    footer: baseStyles.footer,
-    headerRow: baseStyles.headerRow,
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: baseStyles.sectionSubtitle,
+    pageNumber: {
+      position: "absolute",
+      bottom: 30,
+      left: 0,
+      right: 0,
+      textAlign: "center",
+      fontSize: 12,
+      color: theme.mutedForeground,
+    },
   });
 };
 
@@ -77,52 +119,76 @@ const PDFGrowthSection: React.FC<PDFGrowthSectionProps> = ({
   firstname,
   isDarkMode = false,
   pageNumber = 1,
-  logoUrl,
+  logoUrl = "/images/cq-logo.png",
 }) => {
   // Use the extracted styles
   const styles = createGrowthSectionStyles(isDarkMode);
-  const { superpowers, growthAreas } = growth;
+  const { superpowers, growthAreas, actionSteps } = growth;
 
   return (
     <View style={styles.page}>
-      {/* Section header */}
-      <View style={styles.headerContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>Your Growth Journey</Text>
+      {/* Logo in top right */}
+      <PDFLogo logoUrl={logoUrl} />
+
+      {/* Header section with title and image side by side */}
+      <View style={styles.headerSection}>
+        <View style={styles.titleSection}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Your Growth Journey</Text>
+            <Text style={styles.subtitle}>
+              {formatWithUsername(
+                "Your Path to Personal Evolution, {firstname}",
+                firstname
+              )}
+            </Text>
+          </View>
+          <Text style={styles.description}>
+            {formatWithUsername(growth.summary, firstname)}
+          </Text>
         </View>
-        <Text style={styles.sectionSubtitle}>
-          {formatWithUsername(
-            "Your Path to Personal Evolution, {firstname}",
-            firstname
-          )}
-        </Text>
-        <Text style={styles.description}>
-          {formatWithUsername(growth.summary, firstname)}
-        </Text>
+
+        <View style={styles.imageSection}>
+          <Image
+            src="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+            style={styles.headerImage}
+          />
+        </View>
       </View>
 
-      {/* Replace separate card sections with two-column layout */}
-      <PDFTwoColumnSection
-        leftTitle="Superpowers"
-        leftIcon={<AwardIcon color={ICON_COLORS.award} size={20} />}
-        leftItems={superpowers}
-        rightTitle="Growth Areas"
-        rightIcon={<LightbulbIcon color={ICON_COLORS.lightbulb} size={20} />}
-        rightItems={growthAreas}
+      {/* Main content section */}
+      <View style={styles.contentSection}>
+        <View style={styles.leftContent}>
+          {/* Superpowers section */}
+          <PDFSuperPowersSection
+            superpowers={superpowers}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+
+          {/* Growth Areas section with expandToFill to match action plan height */}
+          <PDFGrowthAreasSection
+            growthAreas={growthAreas}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+            expandToFill={true}
+          />
+        </View>
+
+        <View style={styles.rightContent}>
+          {/* Action Plan section */}
+          <PDFActionPlanSection
+            actionSteps={actionSteps}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+        </View>
+      </View>
+
+      <PDFFooter
         firstname={firstname}
         isDarkMode={isDarkMode}
+        pageNumber={pageNumber}
       />
-
-      <PDFActionImageSection
-        actionSteps={growth.actionSteps}
-        imageSrc="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-        firstname={firstname}
-        isDarkMode={isDarkMode}
-      />
-
-      {/* Replace footer with centralized component */}
-      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
     </View>
   );
 };

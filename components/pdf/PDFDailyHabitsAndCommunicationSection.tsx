@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { DailyHabits } from "@/types/tests/mbti/results";
-import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import { getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import {
   SunIcon,
@@ -10,6 +10,8 @@ import {
   MessageSquareIcon,
 } from "@/components/pdf/shared/icons";
 import PDFFooter from "./shared/PDFFooter";
+import { PDFLogo } from "./PDFLogo";
+import PDFActionPlanSection from "./shared/PDFActionPlanSection";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -21,35 +23,73 @@ const ICON_COLORS = {
 
 // Extract styles to their own object outside the component
 const createCombinedSectionStyles = (isDarkMode = false) => {
-  const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
 
   return StyleSheet.create({
     page: {
-      padding: 10,
+      padding: 30,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
-    headerContainer: {
+    headerSection: {
+      flexDirection: "row",
       marginBottom: 25,
-      alignItems: "center",
+      marginTop: 45, // Space for logo
+      height: 270,
+    },
+    titleContainer: {
+      display: "flex",
+      flexDirection: "column",
+    },
+    titleSection: {
+      flex: 3,
+      paddingRight: 15,
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+      justifyContent: "space-between",
+    },
+    title: {
+      fontSize: 36,
+      color: theme.primary,
+      fontFamily: "PTSans-Bold",
+    },
+    subtitle: {
+      fontSize: 18,
+      color: theme.foreground,
+      fontFamily: "PTSans-Bold",
+    },
+    imageSection: {
+      flex: 2,
+    },
+    headerImage: {
+      marginTop: 5,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: 6,
+    },
+    contentSection: {
+      flexDirection: "row",
+    },
+    leftContent: {
+      flex: 3,
+      paddingRight: 15,
+    },
+    rightContent: {
+      flex: 2,
     },
     description: {
       fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 30,
-      lineHeight: 1.6,
-      textAlign: "center",
-      alignSelf: "center",
+      color: theme.foreground,
+      lineHeight: 1.5,
     },
-    headerRow: baseStyles.headerRow,
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: baseStyles.sectionSubtitle,
-
-    sectionContainer: {},
-    sectionHeader: {
+    // Habits styles
+    habitsContainer: {
+      marginBottom: 20,
+    },
+    habitsTitle: {
       fontSize: 18,
       color: theme.primary,
       fontFamily: "PTSans-Bold",
@@ -61,21 +101,6 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
       flexDirection: "row",
       alignItems: "center",
     },
-    contentContainer: {
-      width: "100%",
-      marginBottom: 12,
-    },
-    imageContainer: {
-      width: "100%",
-      alignItems: "center",
-      marginBottom: 12,
-    },
-    sectionImage: {
-      width: "100%",
-      height: 160,
-      borderRadius: 4,
-      objectFit: "cover",
-    },
     habitList: {
       marginBottom: 12,
       flexDirection: "row",
@@ -83,7 +108,7 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
       justifyContent: "space-between",
     },
     habitItem: {
-      width: "48%",
+      width: "100%",
       flexDirection: "row",
       marginBottom: 16,
     },
@@ -115,16 +140,17 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
       flex: 1,
     },
     habitTitle: {
-      fontSize: 12,
+      fontSize: 14,
       fontFamily: "PTSans-Bold",
       color: theme.foreground,
       marginBottom: 4,
     },
     habitDescription: {
-      fontSize: 10,
-      color: theme.mutedForeground,
+      fontSize: 12,
+      color: theme.foreground,
       lineHeight: 1.4,
     },
+    // Communication styles
     communicationContainer: {
       marginTop: 15,
       marginBottom: 20,
@@ -143,20 +169,14 @@ const createCombinedSectionStyles = (isDarkMode = false) => {
     },
     communicationSummary: {
       fontSize: 12,
-      color: theme.mutedForeground,
+      color: theme.foreground,
       marginBottom: 14,
       lineHeight: 1.5,
-    },
-    stepsContent: {
-      flexDirection: "row",
-      flexWrap: "wrap",
-      justifyContent: "space-between",
     },
     tipItem: {
       flexDirection: "row",
       alignItems: "flex-start",
       marginBottom: 8,
-      width: "48%", // Two columns of steps
     },
     stepNumber: {
       width: 20,
@@ -188,6 +208,7 @@ interface PDFDailyHabitsCommunicationSectionProps {
   firstname: string | null;
   isDarkMode?: boolean;
   pageNumber?: number;
+  logoUrl?: string;
 }
 
 const PDFDailyHabitsCommunicationSection: React.FC<
@@ -198,121 +219,144 @@ const PDFDailyHabitsCommunicationSection: React.FC<
   firstname,
   isDarkMode = false,
   pageNumber = 1,
+  logoUrl = "/images/cq-logo.png",
 }) => {
   // Use the extracted styles
   const styles = createCombinedSectionStyles(isDarkMode);
   const { habits, communication } = dailyHabits;
 
+  // Create action steps from communication tips for the right column
+  const communicationActionSteps = communication.tips.slice(0, 3).map((tip, index) => ({
+    description: tip,
+    number: index + 1
+  }));
+
   return (
     <View style={styles.page}>
-      {/* Section header */}
-      <View style={styles.headerContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>Daily Habits & Communication</Text>
-        </View>
-        <Text style={styles.sectionSubtitle}>
-          {formatWithUsername(
-            "Your Productivity & Communication Style, {firstname}",
-            firstname
-          )}
-        </Text>
-        <Text style={styles.description}>
-          {formatWithUsername(dailyHabits.summary, firstname)}
-        </Text>
-      </View>
+      {/* Logo in top right */}
+      <PDFLogo logoUrl={logoUrl} />
 
-      {/* Daily Habits Section - Content above, Image below */}
-      <View style={styles.sectionContainer}>
-        <Text style={styles.sectionHeader}>Daily Habits</Text>
-
-        <View style={styles.contentContainer}>
-          <View style={styles.habitList}>
-            {/* Morning Routine */}
-            <View style={styles.habitItem}>
-              <View
-                style={[styles.habitIconContainer, styles.sunIconContainer]}
-              >
-                <SunIcon color={ICON_COLORS.sun} size={12} />
-              </View>
-              <View style={styles.habitContent}>
-                <Text style={styles.habitTitle}>{habits.morning.title}</Text>
-                <Text style={styles.habitDescription}>
-                  {formatWithUsername(habits.morning.description, firstname)}
-                </Text>
-              </View>
-            </View>
-
-            {/* Afternoon Approach */}
-            <View style={styles.habitItem}>
-              <View
-                style={[styles.habitIconContainer, styles.clockIconContainer]}
-              >
-                <ClockIcon color={ICON_COLORS.clock} size={12} />
-              </View>
-              <View style={styles.habitContent}>
-                <Text style={styles.habitTitle}>{habits.afternoon.title}</Text>
-                <Text style={styles.habitDescription}>
-                  {formatWithUsername(habits.afternoon.description, firstname)}
-                </Text>
-              </View>
-            </View>
-
-            {/* Evening Wind-down */}
-            <View style={styles.habitItem}>
-              <View
-                style={[styles.habitIconContainer, styles.moonIconContainer]}
-              >
-                <MoonIcon color={ICON_COLORS.moon} size={12} />
-              </View>
-              <View style={styles.habitContent}>
-                <Text style={styles.habitTitle}>{habits.evening.title}</Text>
-                <Text style={styles.habitDescription}>
-                  {formatWithUsername(habits.evening.description, firstname)}
-                </Text>
-              </View>
-            </View>
+      {/* Header section with title and image side by side */}
+      <View style={styles.headerSection}>
+        <View style={styles.titleSection}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Daily Habits & Communication</Text>
+            <Text style={styles.subtitle}>
+              {formatWithUsername(
+                "Your Productivity & Communication Style, {firstname}",
+                firstname
+              )}
+            </Text>
           </View>
+          <Text style={styles.description}>
+            {formatWithUsername(dailyHabits.summary, firstname)}
+          </Text>
         </View>
 
-        {/* Image below content */}
-        <View style={styles.imageContainer}>
+        <View style={styles.imageSection}>
           <Image
             src="https://images.unsplash.com/photo-1506784365847-bbad939e9335?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            style={styles.sectionImage}
+            style={styles.headerImage}
           />
         </View>
       </View>
 
-      {/* Communication Section - Redesigned to match action steps format */}
-      <View style={styles.communicationContainer}>
-        <Text style={styles.communicationTitle}>
-          <View style={styles.iconContainer}>
-            <MessageSquareIcon color={ICON_COLORS.message} size={16} />
-          </View>
-          Communication Style
-        </Text>
-
-        <Text style={styles.communicationSummary}>
-          {formatWithUsername(communication.summary, firstname)}
-        </Text>
-
-        <View style={styles.stepsContent}>
-          {communication.tips.slice(0, 4).map((tip, index) => (
-            <View key={`tip-${index}`} style={styles.tipItem}>
-              <View style={styles.stepNumber}>
-                <Text style={styles.stepNumberText}>{index + 1}</Text>
+      {/* Main content section */}
+      <View style={styles.contentSection}>
+        <View style={styles.leftContent}>
+          {/* Daily Habits Section */}
+          <View style={styles.habitsContainer}>
+            <Text style={styles.habitsTitle}>Daily Habits</Text>
+            <View style={styles.habitList}>
+              {/* Morning Routine */}
+              <View style={styles.habitItem}>
+                <View
+                  style={[styles.habitIconContainer, styles.sunIconContainer]}
+                >
+                  <SunIcon color={ICON_COLORS.sun} size={12} />
+                </View>
+                <View style={styles.habitContent}>
+                  <Text style={styles.habitTitle}>{habits.morning.title}</Text>
+                  <Text style={styles.habitDescription}>
+                    {formatWithUsername(habits.morning.description, firstname)}
+                  </Text>
+                </View>
               </View>
-              <Text style={styles.tipText}>
-                {formatWithUsername(tip, firstname)}
-              </Text>
+
+              {/* Afternoon Approach */}
+              <View style={styles.habitItem}>
+                <View
+                  style={[styles.habitIconContainer, styles.clockIconContainer]}
+                >
+                  <ClockIcon color={ICON_COLORS.clock} size={12} />
+                </View>
+                <View style={styles.habitContent}>
+                  <Text style={styles.habitTitle}>{habits.afternoon.title}</Text>
+                  <Text style={styles.habitDescription}>
+                    {formatWithUsername(habits.afternoon.description, firstname)}
+                  </Text>
+                </View>
+              </View>
+
+              {/* Evening Wind-down */}
+              <View style={styles.habitItem}>
+                <View
+                  style={[styles.habitIconContainer, styles.moonIconContainer]}
+                >
+                  <MoonIcon color={ICON_COLORS.moon} size={12} />
+                </View>
+                <View style={styles.habitContent}>
+                  <Text style={styles.habitTitle}>{habits.evening.title}</Text>
+                  <Text style={styles.habitDescription}>
+                    {formatWithUsername(habits.evening.description, firstname)}
+                  </Text>
+                </View>
+              </View>
             </View>
-          ))}
+          </View>
+
+          {/* Communication Section */}
+          <View style={styles.communicationContainer}>
+            <Text style={styles.communicationTitle}>
+              <View style={styles.iconContainer}>
+                <MessageSquareIcon color={ICON_COLORS.message} size={16} />
+              </View>
+              Communication Style
+            </Text>
+
+            <Text style={styles.communicationSummary}>
+              {formatWithUsername(communication.summary, firstname)}
+            </Text>
+
+            {/* First tip */}
+            {communication.tips.length > 0 && (
+              <View style={styles.tipItem}>
+                <View style={styles.stepNumber}>
+                  <Text style={styles.stepNumberText}>1</Text>
+                </View>
+                <Text style={styles.tipText}>
+                  {formatWithUsername(communication.tips[0], firstname)}
+                </Text>
+              </View>
+            )}
+          </View>
+        </View>
+
+        <View style={styles.rightContent}>
+          {/* Action Plan section with remaining communication tips */}
+          <PDFActionPlanSection
+            actionSteps={communicationActionSteps.slice(1)}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
         </View>
       </View>
 
-      {/* Replace footer with centralized component */}
-      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
+      <PDFFooter
+        firstname={firstname}
+        isDarkMode={isDarkMode}
+        pageNumber={pageNumber}
+      />
     </View>
   );
 };

@@ -1,58 +1,79 @@
 ﻿import React from "react";
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { ValuesAndMotivators } from "@/types/tests/mbti/results";
-import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import { getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import PDFCardSection from "./shared/PDFCardSection";
-import PDFListItem from "./shared/PDFListItem";
-import {
-  HeartIcon,
-  TrendingUpIcon,
-  CheckboxIcon,
-  UpArrowIcon,
-} from "@/components/pdf/shared/icons";
-import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
-import PDFActionImageSection from "./shared/PDFActionImageSection";
+import { PDFLogo } from "./PDFLogo";
+import PDFSuperPowersSection from "./shared/PDFSuperPowersSection";
+import PDFGrowthAreasSection from "./shared/PDFGrowthAreasSection";
+import PDFActionPlanSection from "./shared/PDFActionPlanSection";
 import PDFFooter from "./shared/PDFFooter";
-
-// Define specific colors for icons
-const ICON_COLORS = {
-  heart: "#ec4899", // pink-500
-  trendingUp: "#10b981", // emerald-500
-  checkbox: "#10b981", // emerald-500
-  upArrow: "#f59e0b", // amber-500
-};
 
 // Extract styles to their own object outside the component
 const createValuesSectionStyles = (isDarkMode = false) => {
-  const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
 
   return StyleSheet.create({
     page: {
-      padding: 10, // Reduced from 40
+      padding: 30,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
+    headerSection: {
+      flexDirection: "row",
+      marginBottom: 25,
+      marginTop: 45, // Space for logo
+      height: 270,
+    },
+    titleContainer: {
+      display: "flex",
+      flexDirection: "column",
+    },
+    titleSection: {
+      flex: 3,
+      paddingRight: 15,
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+      justifyContent: "space-between",
+    },
+    title: {
+      fontSize: 36,
+      color: theme.primary,
+      fontFamily: "PTSans-Bold",
+    },
+    subtitle: {
+      fontSize: 18,
+      color: theme.foreground,
+      fontFamily: "PTSans-Bold",
+    },
+    imageSection: {
+      flex: 2,
+    },
+    headerImage: {
+      marginTop: 5,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: 6,
+    },
+    contentSection: {
+      flexDirection: "row",
+    },
+    leftContent: {
+      flex: 3,
+      paddingRight: 15,
+      alignSelf: "flex-end",
+    },
+    rightContent: {
+      flex: 2,
+    },
     description: {
       fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 10,
-      lineHeight: 1.6, // Reduced from 1.6
-      textAlign: "center",
-      alignSelf: "center",
+      color: theme.foreground,
+      lineHeight: 1.5,
     },
-    headerContainer: {
-      marginBottom: 10, // Reduced from 25
-      alignItems: "center",
-    },
-
-    footer: baseStyles.footer,
-    headerRow: baseStyles.headerRow,
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: baseStyles.sectionSubtitle,
   });
 };
 
@@ -73,49 +94,73 @@ const PDFValuesAndMotivatorsSection: React.FC<
   firstname,
   isDarkMode = false,
   pageNumber = 1,
-  logoUrl,
+  logoUrl = "/images/cq-logo.png",
 }) => {
   // Use the extracted styles
   const styles = createValuesSectionStyles(isDarkMode);
-  const { coreValues, motivators } = valuesAndMotivators;
+  const { coreValues, motivators, actionItems } = valuesAndMotivators;
 
   return (
     <View style={styles.page}>
-      {/* Section header */}
-      <View style={styles.headerContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>Values & Motivators</Text>
+      {/* Logo in top right */}
+      <PDFLogo logoUrl={logoUrl} />
+
+      {/* Header section with title and image side by side */}
+      <View style={styles.headerSection}>
+        <View style={styles.titleSection}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>Values & Motivators</Text>
+            <Text style={styles.subtitle}>
+              {formatWithUsername("What Drives You, {firstname}", firstname)}
+            </Text>
+          </View>
+          <Text style={styles.description}>
+            {formatWithUsername(valuesAndMotivators.summary, firstname)}
+          </Text>
         </View>
-        <Text style={styles.sectionSubtitle}>
-          {formatWithUsername("What Drives You, {firstname}", firstname)}
-        </Text>
-        <Text style={styles.description}>
-          {formatWithUsername(valuesAndMotivators.summary, firstname)}
-        </Text>
+
+        <View style={styles.imageSection}>
+          <Image
+            src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+            style={styles.headerImage}
+          />
+        </View>
       </View>
 
-      <PDFTwoColumnSection
-        leftTitle="Your Core Values"
-        leftIcon={<HeartIcon color={ICON_COLORS.heart} size={20} />}
-        leftItems={coreValues}
-        rightTitle="What Motivates You"
-        rightIcon={<TrendingUpIcon color={ICON_COLORS.trendingUp} size={20} />}
-        rightItems={motivators}
+      {/* Main content section */}
+      <View style={styles.contentSection}>
+        <View style={styles.leftContent}>
+          {/* Core Values as Superpowers section */}
+          <PDFSuperPowersSection
+            superpowers={coreValues}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+
+          {/* Motivators as Growth Areas section */}
+          <PDFGrowthAreasSection
+            growthAreas={motivators}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+            expandToFill={true}
+          />
+        </View>
+
+        <View style={styles.rightContent}>
+          {/* Action Plan section */}
+          <PDFActionPlanSection
+            actionSteps={actionItems}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+        </View>
+      </View>
+
+      <PDFFooter
         firstname={firstname}
         isDarkMode={isDarkMode}
+        pageNumber={pageNumber}
       />
-
-      <PDFActionImageSection
-        title="Let's Get Started on this!"
-        firstname={firstname}
-        imageSrc="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        actionSteps={valuesAndMotivators.actionItems}
-        isDarkMode={isDarkMode}
-      />
-
-      {/* Replace footer with centralized component */}
-      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
     </View>
   );
 };

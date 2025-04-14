@@ -1,13 +1,12 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { RelationshipCompatibility } from "@/types/tests/mbti/results";
-import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import { getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import { ArrowRightIcon, HeartIcon, UsersIcon, MessageSquareIcon, AwardIcon, CheckboxIcon } from "./shared/icons";
-import PDFCardSection from "./shared/PDFCardSection";
-import PDFListItem from "./shared/PDFListItem";
-import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
-import PDFActionImageSection from "./shared/PDFActionImageSection";
+import { PDFLogo } from "./PDFLogo";
+import PDFSuperPowersSection from "./shared/PDFSuperPowersSection";
+import PDFGrowthAreasSection from "./shared/PDFGrowthAreasSection";
+import PDFActionPlanSection from "./shared/PDFActionPlanSection";
 import PDFFooter from "./shared/PDFFooter";
 
 // Define specific colors for icons
@@ -21,31 +20,55 @@ const ICON_COLORS = {
 
 // Create styles with theme variants
 const createRelationshipSectionStyles = (isDarkMode = false) => {
-  const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
 
   return StyleSheet.create({
     page: {
-      padding: 10,
+      padding: 30,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
-    headerContainer: {
-      marginBottom: 10,
-      alignItems: "center",
+    headerSection: {
+      flexDirection: "row",
+      marginBottom: 25,
+      marginTop: 45, // Space for logo
+      height: 270,
     },
-    description: {
-      fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 10,
-      lineHeight: 1.6,
-      textAlign: "center",
-      alignSelf: "center",
+    titleContainer: {
+      display: "flex",
+      flexDirection: "column",
+    },
+    titleSection: {
+      flex: 3,
+      paddingRight: 15,
+      display: "flex",
+      flexDirection: "column",
+      height: "100%",
+      justifyContent: "space-between",
+    },
+    title: {
+      fontSize: 36,
+      color: theme.primary,
+      fontFamily: "PTSans-Bold",
+    },
+    subtitle: {
+      fontSize: 18,
+      color: theme.foreground,
+      fontFamily: "PTSans-Bold",
+    },
+    imageSection: {
+      flex: 2,
+    },
+    headerImage: {
+      marginTop: 5,
+      width: "100%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: 6,
     },
     compatibleTypesContainer: {
-      marginBottom: 30,
-      alignItems: "center",
+      marginBottom: 20,
     },
     compatibleTypesLabel: {
       fontSize: 14,
@@ -57,7 +80,6 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
     typesRow: {
       flexDirection: "row",
       flexWrap: "wrap",
-      justifyContent: "center",
     },
     typeBadge: {
       backgroundColor: `${theme.muted}`,
@@ -71,11 +93,22 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
       color: theme.primary,
       fontFamily: "PTSans-Bold",
     },
-    footer: baseStyles.footer,
-    headerRow: baseStyles.headerRow,
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: baseStyles.sectionSubtitle,
+    contentSection: {
+      flexDirection: "row",
+    },
+    leftContent: {
+      flex: 3,
+      paddingRight: 15,
+      alignSelf: "flex-end",
+    },
+    rightContent: {
+      flex: 2,
+    },
+    description: {
+      fontSize: 14,
+      color: theme.foreground,
+      lineHeight: 1.5,
+    },
   });
 };
 
@@ -95,72 +128,88 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
   firstname,
   isDarkMode = false,
   pageNumber = 1,
-  imageSrc,
-  logoUrl,
+  imageSrc = "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop",
+  logoUrl = "/images/cq-logo.png",
 }) => {
   const styles = createRelationshipSectionStyles(isDarkMode);
-  const { superpowers, growthAreas, compatibleTypes } = relationship;
+  const { superpowers, growthAreas, compatibleTypes, actionSteps } = relationship;
   
-  // Get the appropriate icon based on relationship type
-  const getSectionIcon = (relationshipType: string) => {
-    return relationshipType === "Relationships" 
-      ? <HeartIcon color={ICON_COLORS.heart} size={20} />
-      : <UsersIcon color={ICON_COLORS.users} size={20} />;
-  };
-
   return (
     <View style={styles.page}>
-      {/* Section header */}
-      <View style={styles.headerContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>{`Your ${relationship.title}`}</Text>
-        </View>
-        <Text style={styles.sectionSubtitle}>
-          {formatWithUsername(relationship.subtitle, firstname)}
-        </Text>
-        <Text style={styles.description}>
-          {formatWithUsername(relationship.description, firstname)}
-        </Text>
-      </View>
+      {/* Logo in top right */}
+      <PDFLogo logoUrl={logoUrl} />
 
-      {/* Compatible types section */}
-      <View style={styles.compatibleTypesContainer}>
-        <Text style={styles.compatibleTypesLabel}>Compatible with:</Text>
-        <View style={styles.typesRow}>
-          {compatibleTypes.map((type, index) => (
-            <View key={`type-${index}`} style={styles.typeBadge}>
-              <Text style={styles.typeBadgeText}>{type}</Text>
+      {/* Header section with title and image side by side */}
+      <View style={styles.headerSection}>
+        <View style={styles.titleSection}>
+          <View style={styles.titleContainer}>
+            <Text style={styles.title}>{`Your ${relationship.title}`}</Text>
+            <Text style={styles.subtitle}>
+              {formatWithUsername(relationship.subtitle, firstname)}
+            </Text>
+          </View>
+          <Text style={styles.description}>
+            {formatWithUsername(relationship.description, firstname)}
+          </Text>
+          
+          {/* Compatible types section */}
+          <View style={styles.compatibleTypesContainer}>
+            <Text style={styles.compatibleTypesLabel}>Compatible with:</Text>
+            <View style={styles.typesRow}>
+              {compatibleTypes.map((type, index) => (
+                <View key={`type-${index}`} style={styles.typeBadge}>
+                  <Text style={styles.typeBadgeText}>{type}</Text>
+                </View>
+              ))}
             </View>
-          ))}
+          </View>
+        </View>
+
+        <View style={styles.imageSection}>
+          <Image
+            src={imageSrc}
+            style={styles.headerImage}
+          />
         </View>
       </View>
 
-      {/* Replace superpowers and growth areas with two-column section */}
-      <PDFTwoColumnSection
-        leftTitle={`Superpowers`}
-        leftIcon={<AwardIcon color={ICON_COLORS.award} size={20} />}
-        leftItems={superpowers}
-        rightTitle="Growth Areas"
-        rightIcon={getSectionIcon(relationship.title)}
-        rightItems={growthAreas}
+      {/* Main content section */}
+      <View style={styles.contentSection}>
+        <View style={styles.leftContent}>
+          {/* Superpowers section */}
+          <PDFSuperPowersSection
+            superpowers={superpowers}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+
+          {/* Growth Areas section with expandToFill to match action plan height */}
+          <PDFGrowthAreasSection
+            growthAreas={growthAreas}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+            expandToFill={true}
+          />
+        </View>
+
+        <View style={styles.rightContent}>
+          {/* Action Plan section */}
+          <PDFActionPlanSection
+            actionSteps={actionSteps || [
+              { description: "Reflect on your superpowers and growth areas." },
+              { description: "Discuss them with someone you trust." },
+            ]}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+        </View>
+      </View>
+
+      <PDFFooter
         firstname={firstname}
         isDarkMode={isDarkMode}
+        pageNumber={pageNumber}
       />
-
-      <PDFActionImageSection
-        actionSteps={[
-          { description: "Reflect on your superpowers and growth areas." },
-          { description: "Discuss them with someone you trust." },
-        ]}
-        imageSrc={imageSrc}
-        firstname={firstname}
-        isDarkMode={isDarkMode}
-        title="Let's Get Started on this!"
-      />
-
-      {/* Replace footer with centralized component */}
-      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
     </View>
   );
 };
