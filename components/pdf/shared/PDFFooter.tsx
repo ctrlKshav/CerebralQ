@@ -15,12 +15,12 @@ const createStyles = (isDarkMode = false) => {
   return StyleSheet.create({
     footer: {
       position: "absolute",
-      bottom: 20,
+      bottom: 0,
       left: 0,
       right: 0,
       textAlign: "center",
       fontSize: 10,
-      color: theme.mutedForeground,
+      color: theme.primary,
     }
   });
 };
