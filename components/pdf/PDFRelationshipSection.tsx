@@ -31,7 +31,7 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
     },
     headerSection: {
       flexDirection: "row",
-      marginBottom: 25,
+      marginBottom: 15, // Reduced to accommodate compatible types section
       marginTop: 45, // Space for logo
       height: 270,
     },
@@ -51,11 +51,13 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
       fontSize: 36,
       color: theme.primary,
       fontFamily: "PTSans-Bold",
+      wordBreak: "normal",
     },
     subtitle: {
       fontSize: 18,
       color: theme.foreground,
       fontFamily: "PTSans-Bold",
+      wordBreak: "normal",
     },
     imageSection: {
       flex: 2,
@@ -68,7 +70,8 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
       borderRadius: 6,
     },
     compatibleTypesContainer: {
-      marginBottom: 20,
+      marginBottom: 15,
+      marginTop: 5,
     },
     compatibleTypesLabel: {
       fontSize: 14,
@@ -95,6 +98,7 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
     },
     contentSection: {
       flexDirection: "row",
+      marginTop: 5,
     },
     leftContent: {
       flex: 3,
@@ -151,18 +155,6 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
           <Text style={styles.description}>
             {formatWithUsername(relationship.description, firstname)}
           </Text>
-          
-          {/* Compatible types section */}
-          <View style={styles.compatibleTypesContainer}>
-            <Text style={styles.compatibleTypesLabel}>Compatible with:</Text>
-            <View style={styles.typesRow}>
-              {compatibleTypes.map((type, index) => (
-                <View key={`type-${index}`} style={styles.typeBadge}>
-                  <Text style={styles.typeBadgeText}>{type}</Text>
-                </View>
-              ))}
-            </View>
-          </View>
         </View>
 
         <View style={styles.imageSection}>
@@ -170,6 +162,18 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
             src={imageSrc}
             style={styles.headerImage}
           />
+        </View>
+      </View>
+      
+      {/* Compatible types section - moved out of header section */}
+      <View style={styles.compatibleTypesContainer}>
+        <Text style={styles.compatibleTypesLabel}>Compatible with:</Text>
+        <View style={styles.typesRow}>
+          {compatibleTypes.map((type, index) => (
+            <View key={`type-${index}`} style={styles.typeBadge}>
+              <Text style={styles.typeBadgeText}>{type}</Text>
+            </View>
+          ))}
         </View>
       </View>
 
