@@ -34,6 +34,9 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
     family: "PTSans-BoldItalic",
     src: "/fonts/PT_Sans/PTSans-BoldItalic.ttf",
   });
+  Font.registerHyphenationCallback((word) => {
+    return ["", word, ""];
+  });
 
   const styles = createBaseStyles(isDarkMode);
 
@@ -58,9 +61,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   const suggestionPages = suggestions.slice(0, 3);
 
   // Logo URL for consistent branding across all pages
-  const logoUrl = isDarkMode
-    ? "/images/logoDark.png"
-    : "/images/logoLight.png";
+  const logoUrl = isDarkMode ? "/images/logoDark.png" : "/images/logoLight.png";
 
   return (
     <Document>
@@ -116,10 +117,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
         />
       </Page>
 
-      <Page
-        size="A4"
-        style={styles.page}
-      >
+      <Page size="A4" style={styles.page}>
         <PDFCareerSuggestionsSection
           suggestions={suggestionPages}
           sectionNumber={4}
