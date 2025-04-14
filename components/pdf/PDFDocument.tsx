@@ -34,6 +34,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
     family: "PTSans-BoldItalic",
     src: "/fonts/PT_Sans/PTSans-BoldItalic.ttf",
   });
+
   const styles = createBaseStyles(isDarkMode);
 
   const {

@@ -1,13 +1,13 @@
 ﻿import React from "react";
-import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
+import { View, StyleSheet } from "@react-pdf/renderer";
 import { ValuesAndMotivators } from "@/types/tests/mbti/results";
 import { getThemeColors } from "./PDFTheme";
-import { formatWithUsername } from "@/lib/formatWithUsername";
 import { PDFLogo } from "./PDFLogo";
 import PDFSuperPowersSection from "./shared/PDFSuperPowersSection";
 import PDFGrowthAreasSection from "./shared/PDFGrowthAreasSection";
 import PDFActionPlanSection from "./shared/PDFActionPlanSection";
 import PDFFooter from "./shared/PDFFooter";
+import PDFSectionHeader from "./shared/PDFSectionHeader";
 
 // Extract styles to their own object outside the component
 const createValuesSectionStyles = (isDarkMode = false) => {
@@ -20,44 +20,6 @@ const createValuesSectionStyles = (isDarkMode = false) => {
       height: "100%",
       position: "relative",
     },
-    headerSection: {
-      flexDirection: "row",
-      marginBottom: 25,
-      marginTop: 45, // Space for logo
-      height: 270,
-    },
-    titleContainer: {
-      display: "flex",
-      flexDirection: "column",
-    },
-    titleSection: {
-      flex: 3,
-      paddingRight: 15,
-      display: "flex",
-      flexDirection: "column",
-      height: "100%",
-      justifyContent: "space-between",
-    },
-    title: {
-      fontSize: 36,
-      color: theme.primary,
-      fontFamily: "PTSans-Bold",
-    },
-    subtitle: {
-      fontSize: 18,
-      color: theme.foreground,
-      fontFamily: "PTSans-Bold",
-    },
-    imageSection: {
-      flex: 2,
-    },
-    headerImage: {
-      marginTop: 5,
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      borderRadius: 6,
-    },
     contentSection: {
       flexDirection: "row",
     },
@@ -68,11 +30,6 @@ const createValuesSectionStyles = (isDarkMode = false) => {
     },
     rightContent: {
       flex: 2,
-    },
-    description: {
-      fontSize: 14,
-      color: theme.foreground,
-      lineHeight: 1.5,
     },
   });
 };
@@ -98,7 +55,7 @@ const PDFValuesAndMotivatorsSection: React.FC<
 }) => {
   // Use the extracted styles
   const styles = createValuesSectionStyles(isDarkMode);
-  const { coreValues, motivators, actionItems } = valuesAndMotivators;
+  const { coreValues, motivators, actionItems, summary } = valuesAndMotivators;
 
   return (
     <View style={styles.page}>
@@ -106,26 +63,14 @@ const PDFValuesAndMotivatorsSection: React.FC<
       <PDFLogo logoUrl={logoUrl} />
 
       {/* Header section with title and image side by side */}
-      <View style={styles.headerSection}>
-        <View style={styles.titleSection}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Values & Motivators</Text>
-            <Text style={styles.subtitle}>
-              {formatWithUsername("What Drives You, {firstname}", firstname)}
-            </Text>
-          </View>
-          <Text style={styles.description}>
-            {formatWithUsername(valuesAndMotivators.summary, firstname)}
-          </Text>
-        </View>
-
-        <View style={styles.imageSection}>
-          <Image
-            src="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-            style={styles.headerImage}
-          />
-        </View>
-      </View>
+      <PDFSectionHeader
+        title="Values & Motivators"
+        subtitle="What Drives You, {firstname}"
+        description={summary}
+        firstname={firstname}
+        isDarkMode={isDarkMode}
+        imageSrc="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+      />
 
       {/* Main content section */}
       <View style={styles.contentSection}>

@@ -8,6 +8,7 @@ import PDFSuperPowersSection from "./shared/PDFSuperPowersSection";
 import PDFGrowthAreasSection from "./shared/PDFGrowthAreasSection";
 import PDFActionPlanSection from "./shared/PDFActionPlanSection";
 import PDFFooter from "./shared/PDFFooter";
+import PDFSectionHeader from "./shared/PDFSectionHeader";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -28,46 +29,6 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
-    },
-    headerSection: {
-      flexDirection: "row",
-      marginBottom: 15, // Reduced to accommodate compatible types section
-      marginTop: 45, // Space for logo
-      height: 270,
-    },
-    titleContainer: {
-      display: "flex",
-      flexDirection: "column",
-    },
-    titleSection: {
-      flex: 3,
-      paddingRight: 15,
-      display: "flex",
-      flexDirection: "column",
-      height: "100%",
-      justifyContent: "space-between",
-    },
-    title: {
-      fontSize: 36,
-      color: theme.primary,
-      fontFamily: "PTSans-Bold",
-      wordBreak: "normal",
-    },
-    subtitle: {
-      fontSize: 18,
-      color: theme.foreground,
-      fontFamily: "PTSans-Bold",
-      wordBreak: "normal",
-    },
-    imageSection: {
-      flex: 2,
-    },
-    headerImage: {
-      marginTop: 5,
-      width: "100%",
-      height: "100%",
-      objectFit: "cover",
-      borderRadius: 6,
     },
     compatibleTypesContainer: {
       marginBottom: 15,
@@ -108,11 +69,6 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
     rightContent: {
       flex: 2,
     },
-    description: {
-      fontSize: 14,
-      color: theme.foreground,
-      lineHeight: 1.5,
-    },
   });
 };
 
@@ -136,7 +92,7 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
   logoUrl = "/images/cq-logo.png",
 }) => {
   const styles = createRelationshipSectionStyles(isDarkMode);
-  const { superpowers, growthAreas, compatibleTypes, actionSteps } = relationship;
+  const { superpowers, growthAreas, compatibleTypes, actionSteps, description } = relationship;
   
   return (
     <View style={styles.page}>
@@ -144,28 +100,16 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
       <PDFLogo logoUrl={logoUrl} />
 
       {/* Header section with title and image side by side */}
-      <View style={styles.headerSection}>
-        <View style={styles.titleSection}>
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>{`Your ${relationship.title}`}</Text>
-            <Text style={styles.subtitle}>
-              {formatWithUsername(relationship.subtitle, firstname)}
-            </Text>
-          </View>
-          <Text style={styles.description}>
-            {formatWithUsername(relationship.description, firstname)}
-          </Text>
-        </View>
-
-        <View style={styles.imageSection}>
-          <Image
-            src={imageSrc}
-            style={styles.headerImage}
-          />
-        </View>
-      </View>
+      <PDFSectionHeader
+        title={`Your ${relationship.title}`}
+        subtitle={relationship.subtitle}
+        description={description}
+        firstname={firstname}
+        isDarkMode={isDarkMode}
+        imageSrc={imageSrc}
+      />
       
-      {/* Compatible types section - moved out of header section */}
+      {/* Compatible types section - separate component */}
       <View style={styles.compatibleTypesContainer}>
         <Text style={styles.compatibleTypesLabel}>Compatible with:</Text>
         <View style={styles.typesRow}>
