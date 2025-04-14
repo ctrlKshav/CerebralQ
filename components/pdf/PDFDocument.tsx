@@ -19,7 +19,7 @@ interface PDFDocumentProps {
 
 export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
   resultData,
-  isDarkMode = false,
+  isDarkMode = true,
 }) => {
   Font.register({ family: "PTSans", src: "/fonts/PT_Sans/PTSans-Regular.ttf" });
   Font.register({

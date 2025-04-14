@@ -57,7 +57,7 @@ const createHeroStyles = (isDarkMode = false) => {
       fontFamily: "PTSans-Bold",
     },
     normalText: {
-      color: "#000000",
+      color: theme.foreground,
       fontFamily: "PTSans",
     },
     subtitle: {

@@ -23,7 +23,7 @@ const createStyles = (isDarkMode = false) => {
     pageNumber: {
       fontSize: 10,
       fontFamily: "PTSans",
-      color: theme.primary,
+      color: isDarkMode ? theme.foreground : theme.primary,
       backgroundColor: theme.muted,
       padding: 6,
       borderRadius: 12,
