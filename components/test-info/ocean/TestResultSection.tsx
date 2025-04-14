@@ -123,7 +123,7 @@ export const TestResultSection = ({
               </div>
 
               <div className="mt-auto pt-4 border-t border-border flex gap-3">
-                <Link href={`/start-test`} className="block sm:w-auto">
+                <Link href={`/start-test/mbti`} className="block sm:w-auto">
                   <Button
                     size="sm"
                     variant="default"
