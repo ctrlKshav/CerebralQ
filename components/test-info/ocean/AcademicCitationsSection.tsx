@@ -2,56 +2,44 @@ import { useRef } from "react";
 import { citations } from "@/data/test-info/ocean/citations";
 import {
   FileText,
+  PersonStanding,
+  Check,
   BookOpen,
   Award,
-  Cross,
-  X,
-  Check,
-  PersonStanding,
 } from "lucide-react";
+import SectionContainer from "./shared/SectionContainer";
+import SectionHeader from "./shared/SectionHeader";
+import CitationCard from "./shared/CitationCard";
+import { Card, CardContent } from "@/components/ui/card";
 
 const AcademicCitationsSection = () => {
   const sectionRef = useRef<HTMLElement>(null);
 
   const citationIcons = [
-    <PersonStanding className="w-6 h-6" />,
-    <Check className="w-6 h-6" />,
-    <FileText className="w-6 h-6" />,
+    <PersonStanding key="person" className="w-6 h-6" />,
+    <Check key="check" className="w-6 h-6" />,
+    <FileText key="file" className="w-6 h-6" />,
   ];
 
   return (
-    <section
-      className="py-24 md:py-32 bg-background relative overflow-hidden"
-      id="science"
+    <SectionContainer
       ref={sectionRef}
+      id="science"
+      withDecorations={true}
     >
-      {/* Background decorative elements without animation */}
-      <div className="absolute top-20 right-0 w-72 h-72 bg-primary/5 rounded-full opacity-50 translate-x-1/3"></div>
-      <div className="absolute bottom-20 left-0 w-80 h-80 bg-primary/5 rounded-full opacity-50 -translate-x-1/3"></div>
+      <SectionHeader
+        badge="Academic Research"
+        title="Science You Can Trust"
+        description="The OCEAN Test is built on decades of scientific research and academic validation. Here are some of the key studies that form its foundation."
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header without animations */}
-        <div className="text-center mb-16">
-          <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full mb-4">
-            Academic Research
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 relative inline-block">
-            Science You Can Trust
-            <div className="absolute bottom-0 left-0 right-0 h-3 bg-primary/20 -rotate-1 transform translate-y-2 z-0"></div>
-          </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            The OCEAN Test is built on decades of scientific research and
-            academic validation. Here are some of the key studies that form its
-            foundation.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-          {/* Left side card without animation */}
-          <div className="lg:col-span-2 hidden lg:block">
-            <div className="relative">
-              <div className="absolute inset-0 bg-primary/10 dark:bg-white/5 rounded-xl backdrop-blur-sm transform rotate-3"></div>
-              <div className="relative bg-card p-8 rounded-xl shadow-lg border border-muted hover:rotate-3">
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
+        {/* Left side card */}
+        <div className="lg:col-span-2 hidden lg:block">
+          <div className="relative">
+            <div className="absolute inset-0 bg-primary/10 dark:bg-white/5 rounded-xl backdrop-blur-sm transform rotate-3"></div>
+            <Card className="relative bg-card p-8 rounded-xl shadow-lg border border-muted hover:rotate-3">
+              <CardContent className="p-0">
                 <div className="flex items-center mb-6">
                   <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white mr-4">
                     <BookOpen className="w-6 h-6" />
@@ -80,46 +68,32 @@ const AcademicCitationsSection = () => {
                     </p>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Citations list without animation */}
-          <div className="lg:col-span-3 space-y-6">
-            {citations.map((citation, index) => {
-              const colorClass = index === 0 ? "bg-emerald-600" : (index === 1 ? "bg-amber-600" : "bg-rose-600")
-              return (
-                <div
-                  key={index}
-                  className="bg-card rounded-xl shadow-md overflow-hidden border border-muted transform transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1"
-                >
-                  <div className="p-6">
-                    <div className="flex items-start">
-                      <div
-                        className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center text-white mr-4 mt-1 flex-shrink-0`}
-                      >
-                        {citationIcons[index % citationIcons.length]}
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-card-foreground mb-1">
-                          {citation.title}
-                        </h3>
-                        <p className="text-primary font-medium mb-3">
-                          {citation.authors}
-                        </p>
-                        <p className="text-muted-foreground">
-                          {citation.description}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+              </CardContent>
+            </Card>
           </div>
         </div>
+
+        {/* Citations list */}
+        <div className="lg:col-span-3 space-y-6">
+          {citations.map((citation, index) => {
+            const colorClass = index === 0 
+              ? "bg-emerald-600" 
+              : (index === 1 ? "bg-amber-600" : "bg-rose-600");
+            
+            return (
+              <CitationCard
+                key={index}
+                title={citation.title}
+                authors={citation.authors}
+                description={citation.description}
+                icon={citationIcons[index % citationIcons.length]}
+                colorClass={colorClass}
+              />
+            );
+          })}
+        </div>
       </div>
-    </section>
+    </SectionContainer>
   );
 };
 
