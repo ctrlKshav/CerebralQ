@@ -36,7 +36,7 @@ const MobileTraitsAccordion = ({ traits }: MobileTraitsAccordionProps) => {
                 </div>
               </AccordionTrigger>
               <AccordionContent 
-                className="px-4 pb-6 overflow-hidden"
+                className="px-4 py-6 overflow-hidden"
               >
                 <div className="content-wrapper">
                   <TraitContent trait={trait} />
