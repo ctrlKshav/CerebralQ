@@ -9,9 +9,9 @@ export type OceanScore = {
 };
 
 export type OceanTraitScore = {
-  dominant: 'left' | 'right';
-  leftPercentage: number;
-  rightPercentage: number;
+  score: number;
+  total: number;
+  percentage: number;
 };
 
 export type OceanTraitScores = {
@@ -22,3 +22,8 @@ export type OceanRawScore = {
   traitScores: OceanTraitScores;
 };
 
+export type OceanDimensionObject = {
+  score: number;
+  total: number;
+  percentage: number;
+}

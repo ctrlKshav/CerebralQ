@@ -1,5 +1,10 @@
-import { Answers } from "@/schema/ocean";
-import type { OceanRawScore, OceanTraitKey, OceanTraitScores } from "@/types/tests/ocean/traits";
+import { Answers, OceanDimension } from "@/schema/ocean";
+import type {
+  OceanDimensionObject,
+  OceanRawScore,
+  OceanTraitKey,
+  OceanTraitScores,
+} from "@/types/tests/ocean/traits";
 import { TestQuestionsData } from "@/types/tests/testQuestions";
 
 export function calculateOcean(
@@ -7,88 +12,37 @@ export function calculateOcean(
   questionsData: TestQuestionsData
 ): OceanRawScore {
   const questions = questionsData.questions;
-  
   // Initialize dimensions with scoring
-  const dimensions: Record<OceanTraitKey, { left: number; right: number; dominant: 'left' | 'right'; leftPercentage: number; rightPercentage: number }> = {
-    "openness": { left: 0, right: 0, dominant: 'left', leftPercentage: 0, rightPercentage: 0 },
-    "conscientiousness": { left: 0, right: 0, dominant: 'left', leftPercentage: 0, rightPercentage: 0 },
-    "extraversion": { left: 0, right: 0, dominant: 'left', leftPercentage: 0, rightPercentage: 0 },
-    "agreeableness": { left: 0, right: 0, dominant: 'left', leftPercentage: 0, rightPercentage: 0 },
-    "neuroticism": { left: 0, right: 0, dominant: 'left', leftPercentage: 0, rightPercentage: 0 },
+  const dimensions: Record<OceanTraitKey, OceanDimensionObject> = {
+    openness: { score: 0, total: 5 *  questionsData.sections["Openness"].totalQuestions, percentage: 0 },
+    conscientiousness: { score: 0, total: 5 *  questionsData.sections["Conscientiousness"].totalQuestions, percentage: 0 },
+    extraversion: { score: 0, total: 5 *  questionsData.sections["Extraversion"].totalQuestions, percentage: 0 },
+    agreeableness: { score: 0, total: 5 *  questionsData.sections["Agreeableness"].totalQuestions, percentage: 0 },
+    neuroticism: { score: 0, total: 5 *  questionsData.sections["Neuroticism"].totalQuestions, percentage: 0 },
   };
 
   // Process answers for each dimension
-  questions.forEach(question => {
+  questions.forEach((question) => {
     const answer = answers[question.id];
     if (answer === undefined) return;
 
+    
+    
     const dimension = question.dimension.toLowerCase() as OceanTraitKey;
     // Convert selectedScore from string to number
     const numericScore = Number(answer.selectedScore);
-    
-    if (question.type === "likert") {
-      // For reversed questions (questions 3, 6, 9, 12, 15), we invert the scoring
-      // These are questions that represent the opposite of the trait
-      const reversedQuestions = ["3", "6", "9", "12", "15"];
-      
-      if (reversedQuestions.includes(question.id)) {
-        // For reversed questions: high score means lower trait
-        if (numericScore > 3) {
-          dimensions[dimension].left += (numericScore - 3);
-        } else if (numericScore < 3) {
-          dimensions[dimension].right += (3 - numericScore);
-        }
-      } else {
-        // For normal questions: high score means higher trait
-        if (numericScore > 3) {
-          dimensions[dimension].right += (numericScore - 3);
-        } else if (numericScore < 3) {
-          dimensions[dimension].left += (3 - numericScore);
-        }
-      }
-    }
+
+    dimensions[dimension].score += numericScore;
   });
 
   // Calculate percentages and dominant sides for each dimension
   Object.keys(dimensions).forEach((dim) => {
     const scores = dimensions[dim as OceanTraitKey];
-    const total = scores.left + scores.right;
-    
-    scores.leftPercentage = total === 0 ? 50 : (scores.left / total) * 100;
-    scores.rightPercentage = total === 0 ? 50 : (scores.right / total) * 100;
-    scores.dominant = scores.left >= scores.right ? 'left' : 'right';
+    const percentage = (scores.score / scores.total) * 100;
+    scores.percentage = percentage;
   });
 
-  // Convert to trait scores format
-  const traitScores: OceanTraitScores = {
-    openness: {
-      dominant: dimensions.openness.dominant,
-      leftPercentage: dimensions.openness.leftPercentage,
-      rightPercentage: dimensions.openness.rightPercentage
-    },
-    conscientiousness: {
-      dominant: dimensions.conscientiousness.dominant,
-      leftPercentage: dimensions.conscientiousness.leftPercentage,
-      rightPercentage: dimensions.conscientiousness.rightPercentage
-    },
-    extraversion: {
-      dominant: dimensions.extraversion.dominant,
-      leftPercentage: dimensions.extraversion.leftPercentage,
-      rightPercentage: dimensions.extraversion.rightPercentage
-    },
-    agreeableness: {
-      dominant: dimensions.agreeableness.dominant,
-      leftPercentage: dimensions.agreeableness.leftPercentage,
-      rightPercentage: dimensions.agreeableness.rightPercentage
-    },
-    neuroticism: {
-      dominant: dimensions.neuroticism.dominant,
-      leftPercentage: dimensions.neuroticism.leftPercentage,
-      rightPercentage: dimensions.neuroticism.rightPercentage
-    }
-  };
-
   return {
-    traitScores
+    traitScores: dimensions,
   };
-} 
+}
