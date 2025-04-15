@@ -41,624 +41,664 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       }
     },
     "questions": [
-      // Extraversion (8 items)
       {
         "id": "Q1",
-        "text": "I am someone who is talkative.",
+        "text": "I am talkative",
          
         "dimension": "Extraversion",
-        "section": 1,
+        "section": 2,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q2",
-        "text": "I am someone who tends to be quiet.",
+        "text": "I tend to find fault with others",
          
-        "dimension": "Extraversion",
-        "section": 1,
+        "dimension": "Agreeableness",
+        "section": 4,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q3",
-        "text": "I am someone who is full of energy.",
+        "text": "I do a thorough job",
          
-        "dimension": "Extraversion",
-        "section": 1,
+        "dimension": "Conscientiousness",
+        "section": 5,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q4",
-        "text": "I am someone who generates a lot of enthusiasm.",
+        "text": "I am depressed, blue",
          
-        "dimension": "Extraversion",
+        "dimension": "Neuroticism",
         "section": 1,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q5",
-        "text": "I am someone who tends to be reserved.",
+        "text": "I am original, come up with new ideas",
          
-        "dimension": "Extraversion",
-        "section": 1,
+        "dimension": "Openness",
+        "section": 3,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q6",
-        "text": "I am someone who has an assertive personality.",
+        "text": "I am reserved",
          
         "dimension": "Extraversion",
-        "section": 1,
+        "section": 2,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q7",
-        "text": "I am someone who is sometimes shy, inhibited.",
+        "text": "I am helpful and unselfish with others",
          
-        "dimension": "Extraversion",
-        "section": 1,
+        "dimension": "Agreeableness",
+        "section": 4,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q8",
-        "text": "I am someone who is outgoing, sociable.",
+        "text": "I can be somewhat careless",
          
-        "dimension": "Extraversion",
-        "section": 1,
+        "dimension": "Conscientiousness",
+        "section": 5,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
-      // Agreeableness (9 items)
       {
         "id": "Q9",
-        "text": "I am someone who tends to find fault with others.",
+        "text": "I am relaxed, handle stress well",
          
-        "dimension": "Agreeableness",
-        "section": 2,
+        "dimension": "Neuroticism",
+        "section": 1,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q10",
-        "text": "I am someone who is helpful and unselfish with others.",
+        "text": "I am curious about many different things",
          
-        "dimension": "Agreeableness",
-        "section": 2,
+        "dimension": "Openness",
+        "section": 3,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q11",
-        "text": "I am someone who starts quarrels with others.",
+        "text": "I am full of energy",
          
-        "dimension": "Agreeableness",
+        "dimension": "Extraversion",
         "section": 2,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q12",
-        "text": "I am someone who has a forgiving nature.",
+        "text": "I start quarrels with others",
          
         "dimension": "Agreeableness",
-        "section": 2,
+        "section": 4,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q13",
-        "text": "I am someone who is generally trusting.",
+        "text": "I am a reliable worker",
          
-        "dimension": "Agreeableness",
-        "section": 2,
+        "dimension": "Conscientiousness",
+        "section": 5,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q14",
-        "text": "I am someone who can be cold and aloof.",
+        "text": "I can be tense",
          
-        "dimension": "Agreeableness",
-        "section": 2,
+        "dimension": "Neuroticism",
+        "section": 1,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q15",
-        "text": "I am someone who is considerate and kind to almost everyone.",
+        "text": "I am ingenious, a deep thinker",
          
-        "dimension": "Agreeableness",
-        "section": 2,
+        "dimension": "Openness",
+        "section": 3,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q16",
-        "text": "I am someone who is sometimes rude to others.",
+        "text": "I generate a lot of enthusiasm",
          
-        "dimension": "Agreeableness",
+        "dimension": "Extraversion",
         "section": 2,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q17",
-        "text": "I am someone who likes to cooperate with others.",
+        "text": "I have a forgiving nature",
          
         "dimension": "Agreeableness",
-        "section": 2,
+        "section": 4,
+        "dominantSide": "right",
         "options": [
-          { "value": "adventure", "label": "Adventure" },
-          { "value": "culture", "label": "Culture" },
-          { "value": "nature", "label": "Nature" },
-          { "value": "relaxation", "label": "Relaxation" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
-      // Conscientiousness (9 items)
       {
         "id": "Q18",
-        "text": "I am someone who does a thorough job.",
+        "text": "I tend to be disorganized",
          
         "dimension": "Conscientiousness",
-        "section": 3,
+        "section": 5,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q19",
-        "text": "I am someone who can be somewhat careless.",
+        "text": "I worry a lot",
          
-        "dimension": "Conscientiousness",
-        "section": 3,
+        "dimension": "Neuroticism",
+        "section": 1,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q20",
-        "text": "I am someone who is a reliable worker.",
+        "text": "I have an active imagination",
          
-        "dimension": "Conscientiousness",
+        "dimension": "Openness",
         "section": 3,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q21",
-        "text": "I am someone who tends to be disorganized.",
+        "text": "I tend to be quiet",
          
-        "dimension": "Conscientiousness",
-        "section": 3,
+        "dimension": "Extraversion",
+        "section": 2,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q22",
-        "text": "I am someone who perseveres until the task is finished.",
+        "text": "I generally trust others",
          
-        "dimension": "Conscientiousness",
-        "section": 3,
+        "dimension": "Agreeableness",
+        "section": 4,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q23",
-        "text": "I am someone who does things efficiently.",
+        "text": "I tend to be lazy",
          
         "dimension": "Conscientiousness",
-        "section": 3,
+        "section": 5,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q24",
-        "text": "I am someone who makes plans and follows through with them.",
+        "text": "I am emotionally stable, not easily upset",
          
-        "dimension": "Conscientiousness",
-        "section": 3,
+        "dimension": "Neuroticism",
+        "section": 1,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q25",
-        "text": "I am someone who is easily distracted.",
+        "text": "I am inventive",
          
-        "dimension": "Conscientiousness",
+        "dimension": "Openness",
         "section": 3,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q26",
-        "text": "I am someone who tends to be lazy.",
+        "text": "I have an assertive personality",
          
-        "dimension": "Conscientiousness",
-        "section": 3,
+        "dimension": "Extraversion",
+        "section": 2,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
-      // Neuroticism (8 items)
       {
         "id": "Q27",
-        "text": "I am someone who is depressed, blue.",
+        "text": "I can be cold and aloof",
          
-        "dimension": "Neuroticism",
+        "dimension": "Agreeableness",
         "section": 4,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q28",
-        "text": "I am someone who is relaxed, handles stress well.",
+        "text": "I persevere until the task is finished",
          
-        "dimension": "Neuroticism",
-        "section": 4,
+        "dimension": "Conscientiousness",
+        "section": 5,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q29",
-        "text": "I am someone who can be tense.",
+        "text": "I can be moody",
          
         "dimension": "Neuroticism",
-        "section": 4,
+        "section": 1,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q30",
-        "text": "I am someone who worries a lot.",
+        "text": "I value artistic, aesthetic experiences",
          
-        "dimension": "Neuroticism",
-        "section": 4,
+        "dimension": "Openness",
+        "section": 3,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q31",
-        "text": "I am someone who is emotionally stable, not easily upset.",
+        "text": "I am sometimes shy, inhibited",
          
-        "dimension": "Neuroticism",
-        "section": 4,
+        "dimension": "Extraversion",
+        "section": 2,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q32",
-        "text": "I am someone who can be moody.",
+        "text": "I am considerate and kind to almost everyone",
          
-        "dimension": "Neuroticism",
+        "dimension": "Agreeableness",
         "section": 4,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q33",
-        "text": "I am someone who remains calm in tense situations.",
+        "text": "I do things efficiently",
          
-        "dimension": "Neuroticism",
-        "section": 4,
+        "dimension": "Conscientiousness",
+        "section": 5,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q34",
-        "text": "I am someone who gets nervous easily.",
+        "text": "I remain calm in tense situations",
          
         "dimension": "Neuroticism",
-        "section": 4,
+        "section": 1,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
-      // Openness (10 items)
       {
         "id": "Q35",
-        "text": "I am someone who is original, comes up with new ideas.",
+        "text": "I prefer work that is routine",
          
         "dimension": "Openness",
-        "section": 5,
+        "section": 3,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q36",
-        "text": "I am someone who is curious about many different things.",
+        "text": "I am outgoing, sociable",
          
-        "dimension": "Openness",
-        "section": 5,
+        "dimension": "Extraversion",
+        "section": 2,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q37",
-        "text": "I am someone who is ingenious, a deep thinker.",
+        "text": "I am sometimes rude to others",
          
-        "dimension": "Openness",
-        "section": 5,
+        "dimension": "Agreeableness",
+        "section": 4,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q38",
-        "text": "I am someone who has an active imagination.",
+        "text": "I make plans and follow through with them",
          
-        "dimension": "Openness",
+        "dimension": "Conscientiousness",
         "section": 5,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q39",
-        "text": "I am someone who is inventive.",
+        "text": "I get nervous easily",
          
-        "dimension": "Openness",
-        "section": 5,
+        "dimension": "Neuroticism",
+        "section": 1,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q40",
-        "text": "I am someone who values artistic, aesthetic experiences.",
+        "text": "I like to reflect, play with ideas",
          
         "dimension": "Openness",
-        "section": 5,
+        "section": 3,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q41",
-        "text": "I am someone who prefers work that is routine.",
+        "text": "I have few artistic interests",
          
         "dimension": "Openness",
-        "section": 5,
+        "section": 3,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q42",
-        "text": "I am someone who likes to reflect, play with ideas.",
+        "text": "I like to take charge and direct others",
          
-        "dimension": "Openness",
-        "section": 5,
+        "dimension": "Extraversion",
+        "section": 2,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q43",
-        "text": "I am someone who has few artistic interests.",
+        "text": "I have a soft heart",
          
-        "dimension": "Openness",
-        "section": 5,
+        "dimension": "Agreeableness",
+        "section": 4,
+        "dominantSide": "right",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       },
       {
         "id": "Q44",
-        "text": "I am someone who is sophisticated in art, music, or literature.",
+        "text": "I am easily distracted",
          
-        "dimension": "Openness",
+        "dimension": "Conscientiousness",
         "section": 5,
+        "dominantSide": "left",
         "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neither Agree nor Disagree" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+          { "value": "1", "label": "Disagree strongly" },
+          { "value": "2", "label": "Disagree a little" },
+          { "value": "3", "label": "Neither agree nor disagree" },
+          { "value": "4", "label": "Agree a little" },
+          { "value": "5", "label": "Agree strongly" }
         ]
       }
     ]
