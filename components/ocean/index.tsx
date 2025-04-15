@@ -3,7 +3,6 @@ import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { oceanResponseSchema, type OceanResponse } from "@/schema/ocean";
-import { oceanTestQuestionsData } from "@/data/tests/ocean/questions/ipip300";
 import { saveProgress, loadProgress } from "@/lib/oceanStorage";
 import { calculateOcean } from "@/lib/calculateOcean";
 import { smoothScrollToTop } from "@/lib/utils";
@@ -15,11 +14,12 @@ import CQLogo from "../CQLogo";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabase-operations";
 import { OCEAN_PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
+import { TestQuestionsData } from "@/types/tests/testQuestions";
 
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_ocean_results";
 
-export default function OceanTest() {
+export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuestionsData: TestQuestionsData }) {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
