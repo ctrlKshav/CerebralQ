@@ -103,8 +103,6 @@ const HeroSection = () => {
             className="mt-12 lg:mt-0"
           >
             <div className="relative w-full max-w-md mx-auto">
-              {/* Certificate shadow and rotation effect */}
-              <div className="absolute inset-0 bg-primary/10 dark:bg-white/5 rounded-xl backdrop-blur-sm transform rotate-3"></div>
               
               {/* Ocean Test Certificate */}
               <div className="relative bg-white dark:bg-card rounded-lg p-6 shadow-xl transform transition-all hover:rotate-3 border border-primary/20 dark:border-muted overflow-hidden">
