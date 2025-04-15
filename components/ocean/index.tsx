@@ -3,7 +3,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { oceanResponseSchema, type OceanResponse } from "@/schema/ocean";
-import { oceanTestQuestionsData } from "@/data/tests/ocean/questions/bfi44";
+import { oceanTestQuestionsData } from "@/data/tests/ocean/questions/ipip300";
 import { saveProgress, loadProgress } from "@/lib/oceanStorage";
 import { calculateOcean } from "@/lib/calculateOcean";
 import { smoothScrollToTop } from "@/lib/utils";
