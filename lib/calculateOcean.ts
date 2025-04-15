@@ -1,6 +1,6 @@
 import { Answers } from "@/schema/ocean";
 import type { OceanTraitScores } from "@/types/tests/ocean/traits";
-import { testData } from "@/data/tests/ocean/questions/oceanSample";
+import { oceanTestQuestionsData } from "@/data/tests/ocean/questions/oceanSample";
 
 export type OceanResult = {
   personalityType: string;
@@ -10,7 +10,7 @@ export type OceanResult = {
 export function calculateOcean(
   answers: Answers,
 ): OceanResult {
-  const questions = testData.questions;
+  const questions = oceanTestQuestionsData.questions;
   
   // Initialize dimensions with scoring
   const dimensions: Record<string, { left: number; right: number; dominant: 'left' | 'right'; leftPercentage: number; rightPercentage: number }> = {
