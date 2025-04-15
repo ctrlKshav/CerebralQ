@@ -10,38 +10,27 @@ import {
   ShieldCheck,
   Brain,
 } from "lucide-react";
+import SectionContainer from "./shared/SectionContainer";
+import SectionHeader from "./shared/SectionHeader";
+import AnimatedCard from "./shared/AnimatedCard";
 
 const TestOverviewSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section
-      className="py-20 md:py-28 bg-background dark:bg-background"
-      id="overview"
+    <SectionContainer
       ref={sectionRef}
+      id="overview"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center">
-          <div className="mb-8">
-            <span className="inline-block px-3 py-1 text-sm font-medium bg-primary/10 text-primary rounded-full mb-4">
-              Overview
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6 relative inline-block">
-              What is the{" "}
-              <span className="relative z-10 text-primary">OCEAN</span> Test?
-              <div className="absolute bottom-0 left-0 right-0 h-3 bg-primary/20 -rotate-1 transform translate-y-2 z-0"></div>
-            </h2>
+      <SectionHeader
+        badge="Overview"
+        title="What is the OCEAN Test?"
+        highlightWord="OCEAN"
+        description="OCEAN stands for Openness, Conscientiousness, Extraversion, Agreeableness, and Neuroticism – the five dimensions that form the foundation of your personality."
+      />
 
-            <p className="text-muted-foreground text-lg max-w-3xl mx-auto">
-              OCEAN stands for <strong>O</strong>penness, <strong>C</strong>
-              onscientiousness, <strong>E</strong>xtraversion,{" "}
-              <strong>A</strong>greeableness, and <strong>N</strong>euroticism –
-              the five dimensions that form the foundation of your personality.
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-card rounded-3xl p-8 md:p-12 mb-14 shadow-lg relative overflow-hidden max-w-4xl mx-auto border border-muted">
+      <AnimatedCard className="mb-14">
+        <div className="bg-card rounded-3xl p-8 md:p-12 shadow-lg relative overflow-hidden max-w-4xl mx-auto border border-muted">
           <div className="absolute top-0 right-0 h-64 w-64 bg-gradient-to-bl from-primary/20 to-primary-foreground/20 rounded-full transform translate-x-1/3 -translate-y-1/2 opacity-70"></div>
 
           <div className="relative z-10">
@@ -63,8 +52,10 @@ const TestOverviewSection = () => {
             </div>
           </div>
         </div>
+      </AnimatedCard>
 
-        {/* Test details card */}
+      {/* Test details card */}
+      <AnimatedCard delay={0.2}>
         <div className="bg-card rounded-2xl shadow-lg border border-muted overflow-hidden max-w-4xl mx-auto">
           <div className="p-8 border-b border-muted">
             <h3 className="text-2xl font-bold text-card-foreground mb-3">
@@ -165,8 +156,8 @@ const TestOverviewSection = () => {
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </AnimatedCard>
+    </SectionContainer>
   );
 };
 
