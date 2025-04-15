@@ -4,53 +4,43 @@ export const oceanTestQuestionsData: TestQuestionsData = {
   id: "6c274f8b-3fd9-4c1e-b20d-7a8c67c2b32a",
   test_name: "OCEAN Personality Test",
   totalQuestions: 20,
-  sections: [
-    {
+  sections: {
+    Extraversion: {
       id: 1,
-      title: "Openness to Experience",
-      description:
-        "Assesses your receptiveness to novel ideas, curiosity, and imagination",
-      dimension: "openness",
-      icon: "Sparkles",
-      totalQuestions: 4,
-    },
-    {
-      id: 2,
-      title: "Conscientiousness",
-      description:
-        "Measures your level of organization, responsibility, and achievement-orientation",
-      dimension: "conscientiousness",
-      icon: "CheckSquare",
-      totalQuestions: 4,
-    },
-    {
-      id: 3,
       title: "Extraversion",
-      description:
-        "Evaluates your sociability, assertiveness, and energy level",
+      description: "Measures how outgoing and social you are.",
       dimension: "extraversion",
-      icon: "Users",
-      totalQuestions: 4,
+      totalQuestions: 8,
     },
-    {
-      id: 4,
+    Agreeableness: {
+      id: 2,
       title: "Agreeableness",
-      description:
-        "Assesses your tendency toward cooperation, compassion, and trust",
+      description: "Measures how kind and trusting you are.",
       dimension: "agreeableness",
-      icon: "Heart",
-      totalQuestions: 4,
+      totalQuestions: 9,
     },
-    {
-      id: 5,
+    Conscientiousness: {
+      id: 3,
+      title: "Conscientiousness",
+      description: "Measures how organized and dependable you are.",
+      dimension: "conscientiousness",
+      totalQuestions: 9,
+    },
+    Neuroticism: {
+      id: 4,
       title: "Neuroticism",
-      description:
-        "Measures your emotional stability and tendency toward negative emotions",
+      description: "Measures how emotional and anxious you are.",
       dimension: "neuroticism",
-      icon: "CloudLightning",
-      totalQuestions: 4,
+      totalQuestions: 9,
     },
-  ],
+    Openness: {
+      id: 5,
+      title: "Openness",
+      description: "Measures how open to new experiences and ideas you are.",
+      dimension: "openness",
+      totalQuestions: 9,
+    },
+  },
   questions: [
     {
       id: "1",

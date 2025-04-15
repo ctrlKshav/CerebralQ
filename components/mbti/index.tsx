@@ -136,7 +136,7 @@ export default function MBTITest() {
     // Clear any existing errors before moving to next section
     methods.clearErrors();
 
-    if (currentSectionId < currentTest.sections.length) {
+    if (currentSectionId < Object.keys(currentTest.sections).length) {
       setCurrentSectionId((prev) => prev + 1);
       smoothScrollToTop();
     }

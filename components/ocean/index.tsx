@@ -72,9 +72,11 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
   const onSubmit = async (data: OceanResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
-    localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
-
-    const personalityResult = calculateOcean(data.answers, currentTest);
+    // localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
+    console.log(data)
+    const oceanResult = calculateOcean(data.answers, currentTest);
+    console.log('hi')
+    console.log(oceanResult);
     // Create a single unified test result object
     const testResultData = {
       // Database fields
@@ -82,7 +84,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
       user_id: userID || "demo",
       raw_score: {
         // Convert traitScores to a plain object that can be serialized to JSON
-        traitScores: personalityResult.traitScores as OceanTraitScores,
+        traitScores: oceanResult.traitScores as OceanTraitScores,
       },
       completion_time_minutes: 15, // Static for now
       validity_status: "valid", // Static for now
@@ -132,7 +134,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
     // Clear any existing errors before moving to next section
     methods.clearErrors();
 
-    if (currentSectionId < currentTest.sections.length) {
+    if (currentSectionId < Object.keys(currentTest.sections).length) {
       setCurrentSectionId((prev) => prev + 1);
       smoothScrollToTop();
     }

@@ -23,10 +23,14 @@ export interface TestQuestion {
   section: number;
 }
 
+export interface TestSections {
+  [key: string]: TestSection;
+}
+
 export interface TestQuestionsData {
   id: string;
   totalQuestions: number;
   test_name: string;
-  sections: TestSection[];
+  sections: TestSections;
   questions: TestQuestion[];
 } 

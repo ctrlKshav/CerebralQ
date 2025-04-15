@@ -5,36 +5,36 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
   id: MBTI_TEST_ID,
   test_name: "MBTI Personality Test",
   totalQuestions: 60,
-  sections: [
-    {
+  sections: {
+    "Energy":{
       id: 1,
       title: "Energy Orientation",
       description: "Choose the option that feels most natural to you",
       dimension: "E-I",
       totalQuestions: 15,
     },
-    {
+    "Information":{
       id: 2,
       title: "Information Processing",
       description: "Select the statement that resonates more",
       dimension: "S-N",
       totalQuestions: 15,
     },
-    {
+    "Decision":{
       id: 3,
       title: "Decision Making",
       description: "Which approach feels more natural?",
       dimension: "T-F",
       totalQuestions: 15,
     },
-    {
+    "Lifestyle":{
       id: 4,
       title: "Lifestyle Approach",
       description: "Choose your preferred style",
       dimension: "J-P",
       totalQuestions: 15,
     },
-  ],
+  },
   questions: [
     // Energy Orientation (E-I) - Section 1 (15 questions, Agree = I, Disagree = E)
     {

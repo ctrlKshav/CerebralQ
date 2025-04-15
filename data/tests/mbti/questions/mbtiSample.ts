@@ -5,7 +5,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
   id: MBTI_TEST_ID,
   test_name: "MBTI Personality Test",
   totalQuestions: 18,
-  sections: [
+  sections:{"Energy":
     {
       id: 1,
       title: "Energy Orientation",
@@ -14,7 +14,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
       icon: "Battery",
       totalQuestions: 4,
     },
-    {
+    "Information":{
       id: 2,
       title: "Information Processing",
       description: "Select the statement that resonates more",
@@ -22,7 +22,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
       icon: "Lightbulb",
       totalQuestions: 6,
     },
-    {
+    "Decision":{
       id: 3,
       title: "Decision Making",
       description: "Which approach feels more natural?",
@@ -30,7 +30,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
       icon: "Brain",
       totalQuestions: 4,
     },
-    {
+    "Lifestyle":{
       id: 4,
       title: "Lifestyle Approach",
       description: "Choose your preferred style",
@@ -38,7 +38,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
       icon: "Compass",
       totalQuestions: 4,
     },
-  ],
+  },
   questions: [
     {
       id: "1",
