@@ -81,7 +81,6 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
       test_type_id: data.id,
       user_id: userID || "demo",
       raw_score: {
-        personalityType: personalityResult.personalityType,
         // Convert traitScores to a plain object that can be serialized to JSON
         traitScores: personalityResult.traitScores as any,
       },

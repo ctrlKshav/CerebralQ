@@ -20,11 +20,5 @@ export type OceanTraitScores = {
 
 export type OceanRawScore = {
   traitScores: OceanTraitScores;
-  personalityType: string;
 };
 
-export type OceanPersonalityType = {
-  type: string;
-  label: string;
-  description: string;
-};

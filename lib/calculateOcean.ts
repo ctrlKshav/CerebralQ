@@ -1,16 +1,11 @@
 import { Answers } from "@/schema/ocean";
-import type { OceanTraitScores } from "@/types/tests/ocean/traits";
+import type { OceanRawScore, OceanTraitScores } from "@/types/tests/ocean/traits";
 import { TestQuestionsData } from "@/types/tests/testQuestions";
-
-export type OceanResult = {
-  personalityType: string;
-  traitScores: OceanTraitScores;
-};
 
 export function calculateOcean(
   answers: Answers,
   questionsData: TestQuestionsData
-): OceanResult {
+): OceanRawScore {
   const questions = questionsData.questions;
   
   // Initialize dimensions with scoring
@@ -64,15 +59,6 @@ export function calculateOcean(
     scores.dominant = scores.left >= scores.right ? 'left' : 'right';
   });
 
-  // Create the personality type code
-  const personalityType = [
-    dimensions.openness.dominant === 'right' ? 'O+' : 'O-',
-    dimensions.conscientiousness.dominant === 'right' ? 'C+' : 'C-',
-    dimensions.extraversion.dominant === 'right' ? 'E+' : 'E-',
-    dimensions.agreeableness.dominant === 'right' ? 'A+' : 'A-',
-    dimensions.neuroticism.dominant === 'right' ? 'N+' : 'N-'
-  ].join("");
-
   // Convert to trait scores format
   const traitScores: OceanTraitScores = {
     openness: {
@@ -103,7 +89,6 @@ export function calculateOcean(
   };
 
   return {
-    personalityType,
     traitScores
   };
 } 
