@@ -1,10 +1,10 @@
 ﻿"use client";
 
-import HeroSection from "@/components/test-info/ocean/new/HeroSection";
-import TestOverviewSection from "@/components/test-info/ocean/new/TestOverviewSection";
-import AcademicCitationsSection from "@/components/test-info/ocean/new/AcademicCitationsSection";
-import BigFiveTraitsSection from "@/components/test-info/ocean/new/BigFiveTraits";
-import MbtiTestSection from "@/components/test-info/ocean/new/MbtiTestSection";
+import HeroSection from "@/components/test-info/ocean/HeroSection";
+import TestOverviewSection from "@/components/test-info/ocean/TestOverviewSection";
+import AcademicCitationsSection from "@/components/test-info/ocean/AcademicCitationsSection";
+import BigFiveTraitsSection from "@/components/test-info/ocean/BigFiveTraits";
+import MbtiTestSection from "@/components/test-info/ocean/MbtiTestSection";
 
 export default function OceanTestInformation() {
   
