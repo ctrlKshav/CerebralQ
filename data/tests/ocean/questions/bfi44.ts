@@ -45,7 +45,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q1",
         "text": "I am someone who is talkative.",
-        "type": "likert",
+         
         "dimension": "Extraversion",
         "section": 1,
         "options": [
@@ -59,7 +59,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q2",
         "text": "I am someone who tends to be quiet.",
-        "type": "likert",
+         
         "dimension": "Extraversion",
         "section": 1,
         "options": [
@@ -73,7 +73,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q3",
         "text": "I am someone who is full of energy.",
-        "type": "likert",
+         
         "dimension": "Extraversion",
         "section": 1,
         "options": [
@@ -87,7 +87,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q4",
         "text": "I am someone who generates a lot of enthusiasm.",
-        "type": "likert",
+         
         "dimension": "Extraversion",
         "section": 1,
         "options": [
@@ -101,7 +101,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q5",
         "text": "I am someone who tends to be reserved.",
-        "type": "likert",
+         
         "dimension": "Extraversion",
         "section": 1,
         "options": [
@@ -115,7 +115,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q6",
         "text": "I am someone who has an assertive personality.",
-        "type": "likert",
+         
         "dimension": "Extraversion",
         "section": 1,
         "options": [
@@ -129,7 +129,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q7",
         "text": "I am someone who is sometimes shy, inhibited.",
-        "type": "likert",
+         
         "dimension": "Extraversion",
         "section": 1,
         "options": [
@@ -143,7 +143,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q8",
         "text": "I am someone who is outgoing, sociable.",
-        "type": "likert",
+         
         "dimension": "Extraversion",
         "section": 1,
         "options": [
@@ -158,7 +158,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q9",
         "text": "I am someone who tends to find fault with others.",
-        "type": "likert",
+         
         "dimension": "Agreeableness",
         "section": 2,
         "options": [
@@ -172,7 +172,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q10",
         "text": "I am someone who is helpful and unselfish with others.",
-        "type": "likert",
+         
         "dimension": "Agreeableness",
         "section": 2,
         "options": [
@@ -186,7 +186,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q11",
         "text": "I am someone who starts quarrels with others.",
-        "type": "likert",
+         
         "dimension": "Agreeableness",
         "section": 2,
         "options": [
@@ -200,7 +200,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q12",
         "text": "I am someone who has a forgiving nature.",
-        "type": "likert",
+         
         "dimension": "Agreeableness",
         "section": 2,
         "options": [
@@ -214,7 +214,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q13",
         "text": "I am someone who is generally trusting.",
-        "type": "likert",
+         
         "dimension": "Agreeableness",
         "section": 2,
         "options": [
@@ -228,7 +228,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q14",
         "text": "I am someone who can be cold and aloof.",
-        "type": "likert",
+         
         "dimension": "Agreeableness",
         "section": 2,
         "options": [
@@ -242,7 +242,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q15",
         "text": "I am someone who is considerate and kind to almost everyone.",
-        "type": "likert",
+         
         "dimension": "Agreeableness",
         "section": 2,
         "options": [
@@ -256,7 +256,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q16",
         "text": "I am someone who is sometimes rude to others.",
-        "type": "likert",
+         
         "dimension": "Agreeableness",
         "section": 2,
         "options": [
@@ -270,7 +270,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q17",
         "text": "I am someone who likes to cooperate with others.",
-        "type": "likert",
+         
         "dimension": "Agreeableness",
         "section": 2,
         "options": [
@@ -284,7 +284,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q18",
         "text": "I am someone who does a thorough job.",
-        "type": "likert",
+         
         "dimension": "Conscientiousness",
         "section": 3,
         "options": [
@@ -298,7 +298,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q19",
         "text": "I am someone who can be somewhat careless.",
-        "type": "likert",
+         
         "dimension": "Conscientiousness",
         "section": 3,
         "options": [
@@ -312,7 +312,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q20",
         "text": "I am someone who is a reliable worker.",
-        "type": "likert",
+         
         "dimension": "Conscientiousness",
         "section": 3,
         "options": [
@@ -326,7 +326,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q21",
         "text": "I am someone who tends to be disorganized.",
-        "type": "likert",
+         
         "dimension": "Conscientiousness",
         "section": 3,
         "options": [
@@ -340,7 +340,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q22",
         "text": "I am someone who perseveres until the task is finished.",
-        "type": "likert",
+         
         "dimension": "Conscientiousness",
         "section": 3,
         "options": [
@@ -354,7 +354,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q23",
         "text": "I am someone who does things efficiently.",
-        "type": "likert",
+         
         "dimension": "Conscientiousness",
         "section": 3,
         "options": [
@@ -368,7 +368,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q24",
         "text": "I am someone who makes plans and follows through with them.",
-        "type": "likert",
+         
         "dimension": "Conscientiousness",
         "section": 3,
         "options": [
@@ -382,7 +382,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q25",
         "text": "I am someone who is easily distracted.",
-        "type": "likert",
+         
         "dimension": "Conscientiousness",
         "section": 3,
         "options": [
@@ -396,7 +396,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q26",
         "text": "I am someone who tends to be lazy.",
-        "type": "likert",
+         
         "dimension": "Conscientiousness",
         "section": 3,
         "options": [
@@ -411,7 +411,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q27",
         "text": "I am someone who is depressed, blue.",
-        "type": "likert",
+         
         "dimension": "Neuroticism",
         "section": 4,
         "options": [
@@ -425,7 +425,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q28",
         "text": "I am someone who is relaxed, handles stress well.",
-        "type": "likert",
+         
         "dimension": "Neuroticism",
         "section": 4,
         "options": [
@@ -439,7 +439,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q29",
         "text": "I am someone who can be tense.",
-        "type": "likert",
+         
         "dimension": "Neuroticism",
         "section": 4,
         "options": [
@@ -453,7 +453,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q30",
         "text": "I am someone who worries a lot.",
-        "type": "likert",
+         
         "dimension": "Neuroticism",
         "section": 4,
         "options": [
@@ -467,7 +467,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q31",
         "text": "I am someone who is emotionally stable, not easily upset.",
-        "type": "likert",
+         
         "dimension": "Neuroticism",
         "section": 4,
         "options": [
@@ -481,7 +481,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q32",
         "text": "I am someone who can be moody.",
-        "type": "likert",
+         
         "dimension": "Neuroticism",
         "section": 4,
         "options": [
@@ -495,7 +495,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q33",
         "text": "I am someone who remains calm in tense situations.",
-        "type": "likert",
+         
         "dimension": "Neuroticism",
         "section": 4,
         "options": [
@@ -509,7 +509,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q34",
         "text": "I am someone who gets nervous easily.",
-        "type": "likert",
+         
         "dimension": "Neuroticism",
         "section": 4,
         "options": [
@@ -524,7 +524,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q35",
         "text": "I am someone who is original, comes up with new ideas.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [
@@ -538,7 +538,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q36",
         "text": "I am someone who is curious about many different things.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [
@@ -552,7 +552,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q37",
         "text": "I am someone who is ingenious, a deep thinker.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [
@@ -566,7 +566,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q38",
         "text": "I am someone who has an active imagination.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [
@@ -580,7 +580,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q39",
         "text": "I am someone who is inventive.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [
@@ -594,7 +594,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q40",
         "text": "I am someone who values artistic, aesthetic experiences.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [
@@ -608,7 +608,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q41",
         "text": "I am someone who prefers work that is routine.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [
@@ -622,7 +622,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q42",
         "text": "I am someone who likes to reflect, play with ideas.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [
@@ -636,7 +636,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q43",
         "text": "I am someone who has few artistic interests.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [
@@ -650,7 +650,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       {
         "id": "Q44",
         "text": "I am someone who is sophisticated in art, music, or literature.",
-        "type": "likert",
+         
         "dimension": "Openness",
         "section": 5,
         "options": [

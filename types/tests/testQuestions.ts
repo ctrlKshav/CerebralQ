@@ -11,7 +11,7 @@ export interface TestQuestion {
   id: string;
   text: string;
   description?: string;
-  type: "likert";
+  dominantSide?: "left" | "right";
   icon?: string;
   iconColor?: string;
   options?: Array<{

@@ -45,7 +45,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "1",
       text: "I am interested in abstract ideas and theories.",
-      type: "likert",
+       
       icon: "Lightbulb",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -60,7 +60,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "2",
       text: "I enjoy artistic and creative activities.",
-      type: "likert",
+       
       icon: "Palette",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -75,7 +75,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "3",
       text: "I prefer familiar routines over new experiences.",
-      type: "likert",
+       
       icon: "Repeat",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -90,7 +90,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "4",
       text: "I like to keep things organized and tidy.",
-      type: "likert",
+       
       icon: "FolderCheck",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -105,7 +105,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "5",
       text: "I complete tasks thoroughly and reliably.",
-      type: "likert",
+       
       icon: "Check",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -120,7 +120,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "6",
       text: "I tend to procrastinate on important tasks.",
-      type: "likert",
+       
       icon: "Clock",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -135,7 +135,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "7",
       text: "I enjoy being the center of attention in social situations.",
-      type: "likert",
+       
       icon: "Users",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -150,7 +150,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "8",
       text: "I find it easy to start conversations with strangers.",
-      type: "likert",
+       
       icon: "MessageCircle",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -165,7 +165,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "9",
       text: "I prefer spending time alone rather than with a group of people.",
-      type: "likert",
+       
       icon: "User",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -180,7 +180,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "10",
       text: "I am generally trusting of other people's intentions.",
-      type: "likert",
+       
       icon: "Shield",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -195,7 +195,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "11",
       text: "I care about how my actions affect others.",
-      type: "likert",
+       
       icon: "HeartHandshake",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -210,7 +210,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "12",
       text: "I tend to be critical of others.",
-      type: "likert",
+       
       icon: "ThumbsDown",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -225,7 +225,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "13",
       text: "I worry frequently about things that might go wrong.",
-      type: "likert",
+       
       icon: "AlertTriangle",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -240,7 +240,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "14",
       text: "I get stressed easily in challenging situations.",
-      type: "likert",
+       
       icon: "Zap",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -255,7 +255,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "15",
       text: "I remain calm in stressful situations.",
-      type: "likert",
+       
       icon: "Leaf",
       options: [
         { value: "1", label: "Strongly Disagree" },

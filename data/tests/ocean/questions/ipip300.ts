@@ -50,7 +50,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q1",
       text: "I worry about things constantly.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -64,7 +64,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q2",
       text: "I feel anxious in new situations.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -78,7 +78,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q3",
       text: "I am relaxed most of the time.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -92,7 +92,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q4",
       text: "I get nervous easily.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -106,7 +106,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q5",
       text: "I stay calm under pressure.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -120,7 +120,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q6",
       text: "I feel tense often.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -134,7 +134,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q7",
       text: "I rarely feel apprehensive.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -148,7 +148,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q8",
       text: "I am easily startled.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -162,7 +162,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q9",
       text: "I feel secure in most situations.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -176,7 +176,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q10",
       text: "I fret about small details.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -191,7 +191,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q11",
       text: "I get angry easily.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -205,7 +205,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q12",
       text: "I lose my temper quickly.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -219,7 +219,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q13",
       text: "I keep my cool in arguments.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -233,7 +233,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q14",
       text: "I feel irritated often.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -247,7 +247,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q15",
       text: "I rarely get upset.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -261,7 +261,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q16",
       text: "I snap at people when frustrated.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -275,7 +275,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q17",
       text: "I stay calm when provoked.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -289,7 +289,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q18",
       text: "I get annoyed by small things.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -303,7 +303,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q19",
       text: "I am patient with others’ mistakes.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -317,7 +317,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q20",
       text: "I feel resentful when slighted.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -332,7 +332,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q21",
       text: "I often feel sad.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -346,7 +346,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q22",
       text: "I feel hopeless at times.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -360,7 +360,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q23",
       text: "I am content with my life.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -374,7 +374,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q24",
       text: "I feel down about my future.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -388,7 +388,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q25",
       text: "I enjoy life most days.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -402,7 +402,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q26",
       text: "I feel worthless sometimes.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -416,7 +416,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q27",
       text: "I am generally cheerful.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -430,7 +430,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q28",
       text: "I dwell on my failures.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -444,7 +444,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q29",
       text: "I feel optimistic about life.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -458,7 +458,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q30",
       text: "I feel blue frequently.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -473,7 +473,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q31",
       text: "I feel shy in social settings.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -487,7 +487,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q32",
       text: "I worry about others’ opinions.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -501,7 +501,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q33",
       text: "I am comfortable in the spotlight.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -515,7 +515,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q34",
       text: "I feel awkward around strangers.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -529,7 +529,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q35",
       text: "I am at ease with myself.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -543,7 +543,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q36",
       text: "I get embarrassed easily.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -557,7 +557,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q37",
       text: "I feel confident in groups.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -571,7 +571,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q38",
       text: "I fear being judged.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -585,7 +585,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q39",
       text: "I am relaxed in conversations.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -599,7 +599,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q40",
       text: "I feel uneasy in public.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -614,7 +614,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q41",
       text: "I give in to my urges often.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -628,7 +628,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q42",
       text: "I control my cravings well.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -642,7 +642,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q43",
       text: "I indulge in temptations.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -656,7 +656,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q44",
       text: "I resist impulsive purchases.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -670,7 +670,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q45",
       text: "I act on my whims.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -684,7 +684,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q46",
       text: "I restrain my desires.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -698,7 +698,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q47",
       text: "I overindulge in pleasures.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -712,7 +712,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q48",
       text: "I practice moderation in habits.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -726,7 +726,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q49",
       text: "I seek instant gratification.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -740,7 +740,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q50",
       text: "I delay gratification when needed.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -755,7 +755,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q51",
       text: "I panic in stressful situations.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -769,7 +769,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q52",
       text: "I handle crises with ease.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -783,7 +783,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q53",
       text: "I feel helpless under pressure.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -797,7 +797,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q54",
       text: "I stay composed in tough times.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -811,7 +811,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q55",
       text: "I crumble in emergencies.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -825,7 +825,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q56",
       text: "I manage stress effectively.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -839,7 +839,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q57",
       text: "I feel overwhelmed by challenges.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -853,7 +853,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q58",
       text: "I remain steady in chaos.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -867,7 +867,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q59",
       text: "I feel fragile when stressed.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -881,7 +881,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q60",
       text: "I cope well with uncertainty.",
-      type: "likert",
+       
       dimension: "Neuroticism",
       section: 1,
       options: [
@@ -897,7 +897,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q61",
       text: "I make friends easily.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -911,7 +911,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q62",
       text: "I feel uneasy with strangers.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -925,7 +925,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q63",
       text: "I warm up quickly to others.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -939,7 +939,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q64",
       text: "I keep people at a distance.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -953,7 +953,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q65",
       text: "I enjoy meeting new people.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -967,7 +967,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q66",
       text: "I avoid close relationships.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -981,7 +981,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q67",
       text: "I connect with others quickly.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -995,7 +995,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q68",
       text: "I am reserved with new acquaintances.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1009,7 +1009,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q69",
       text: "I am approachable to others.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1023,7 +1023,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q70",
       text: "I find it hard to open up.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1038,7 +1038,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q71",
       text: "I love being around lots of people.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1052,7 +1052,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q72",
       text: "I prefer to be alone.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1066,7 +1066,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q73",
       text: "I enjoy large social gatherings.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1080,7 +1080,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q74",
       text: "I avoid crowded places.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1094,7 +1094,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q75",
       text: "I thrive in lively environments.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1108,7 +1108,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q76",
       text: "I seek quiet spaces often.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1122,7 +1122,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q77",
       text: "I love the energy of crowds.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1136,7 +1136,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q78",
       text: "I dislike big parties.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1150,7 +1150,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q79",
       text: "I enjoy group activities.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1164,7 +1164,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q80",
       text: "I prefer solitary hobbies.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1179,7 +1179,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q81",
       text: "I take charge in groups.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1193,7 +1193,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q82",
       text: "I let others lead discussions.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1207,7 +1207,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q83",
       text: "I speak up confidently.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1221,7 +1221,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q84",
       text: "I stay quiet in meetings.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1235,7 +1235,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q85",
       text: "I influence group decisions.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1249,7 +1249,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q86",
       text: "I avoid taking the lead.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1263,7 +1263,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q87",
       text: "I express my opinions firmly.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1277,7 +1277,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q88",
       text: "I defer to others’ ideas.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1291,7 +1291,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q89",
       text: "I direct group activities.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1305,7 +1305,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q90",
       text: "I prefer following others.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1320,7 +1320,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q91",
       text: "I am always on the go.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1334,7 +1334,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q92",
       text: "I prefer a slow pace.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1348,7 +1348,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q93",
       text: "I do things quickly.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1362,7 +1362,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q94",
       text: "I take my time with tasks.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1376,7 +1376,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q95",
       text: "I have a lot of energy.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1390,7 +1390,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q96",
       text: "I tire quickly.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1404,7 +1404,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q97",
       text: "I juggle many tasks at once.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1418,7 +1418,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q98",
       text: "I prefer to focus on one thing.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1432,7 +1432,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q99",
       text: "I maintain a high activity level.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1446,7 +1446,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q100",
       text: "I need time to rest often.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1460,7 +1460,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q101",
       text: "I crave thrilling experiences.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1474,7 +1474,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q102",
       text: "I avoid risky activities.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1488,7 +1488,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q103",
       text: "I enjoy high-adrenaline sports.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1502,7 +1502,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q104",
       text: "I prefer calm environments.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1516,7 +1516,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q105",
       text: "I seek out adventure.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1530,7 +1530,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q106",
       text: "I dislike taking risks.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1544,7 +1544,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q107",
       text: "I love intense sensations.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1558,7 +1558,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q108",
       text: "I steer clear of danger.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1572,7 +1572,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q109",
       text: "I enjoy spontaneous thrills.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1586,7 +1586,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q110",
       text: "I avoid unpredictable situations.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1601,7 +1601,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q111",
       text: "I am usually cheerful.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1615,7 +1615,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q112",
       text: "I often feel gloomy.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1629,7 +1629,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q113",
       text: "I radiate positive energy.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1643,7 +1643,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q114",
       text: "I rarely feel joyful.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1657,7 +1657,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q115",
       text: "I laugh easily.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1671,7 +1671,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q116",
       text: "I am often serious.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1685,7 +1685,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q117",
       text: "I bring enthusiasm to groups.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1699,7 +1699,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q118",
       text: "I feel downhearted at times.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1713,7 +1713,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q119",
       text: "I am full of optimism.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1727,7 +1727,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q120",
       text: "I struggle to stay upbeat.",
-      type: "likert",
+       
       dimension: "Extraversion",
       section: 2,
       options: [
@@ -1743,7 +1743,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q121",
       text: "I believe people are generally honest.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1757,7 +1757,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q122",
       text: "I am skeptical of others’ intentions.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1771,7 +1771,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q123",
       text: "I trust people easily.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1785,7 +1785,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q124",
       text: "I assume people might deceive me.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1799,7 +1799,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q125",
       text: "I see the best in others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1813,7 +1813,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q126",
       text: "I am cautious with new people.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1827,7 +1827,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q127",
       text: "I believe in others’ good faith.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1841,7 +1841,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q128",
       text: "I suspect hidden motives in others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1855,7 +1855,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q129",
       text: "I give people the benefit of the doubt.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1869,7 +1869,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q130",
       text: "I am wary of others’ promises.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1884,7 +1884,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q131",
       text: "I am always honest with others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1898,7 +1898,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q132",
       text: "I sometimes bend the truth.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1912,7 +1912,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q133",
       text: "I value fairness in dealings.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1926,7 +1926,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q134",
       text: "I might manipulate to get ahead.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1940,7 +1940,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q135",
       text: "I act with integrity.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1954,7 +1954,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q136",
       text: "I could exploit others for gain.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1968,7 +1968,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q137",
       text: "I am straightforward in talks.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1982,7 +1982,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q138",
       text: "I may stretch facts to win.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -1996,7 +1996,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q139",
       text: "I keep my promises faithfully.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2010,7 +2010,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q140",
       text: "I might mislead for advantage.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2025,7 +2025,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q141",
       text: "I enjoy helping others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2039,7 +2039,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q142",
       text: "I focus on my own needs first.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2053,7 +2053,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q143",
       text: "I volunteer to support causes.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2067,7 +2067,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q144",
       text: "I rarely assist strangers.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2081,7 +2081,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q145",
       text: "I put others’ needs before mine.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2095,7 +2095,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q146",
       text: "I prioritize my own goals.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2109,7 +2109,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q147",
       text: "I go out of my way to help.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2123,7 +2123,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q148",
       text: "I avoid getting involved.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2137,7 +2137,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q149",
       text: "I care about others’ well-being.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2151,7 +2151,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q150",
       text: "I look out for myself mainly.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2166,7 +2166,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q151",
       text: "I work well with others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2180,7 +2180,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q152",
       text: "I compete rather than cooperate.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2194,7 +2194,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q153",
       text: "I compromise in conflicts.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2208,7 +2208,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q154",
       text: "I insist on my own way.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2222,7 +2222,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q155",
       text: "I value team harmony.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2236,7 +2236,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q156",
       text: "I argue to win debates.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2250,7 +2250,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q157",
       text: "I share credit with others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2264,7 +2264,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q158",
       text: "I strive to outdo others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2278,7 +2278,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q159",
       text: "I adapt to others’ preferences.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2292,7 +2292,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q160",
       text: "I resist yielding in disputes.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2307,7 +2307,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q161",
       text: "I avoid boasting about myself.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2321,7 +2321,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q162",
       text: "I like to show off my strengths.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2335,7 +2335,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q163",
       text: "I downplay my achievements.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2349,7 +2349,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q164",
       text: "I enjoy being praised.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2363,7 +2363,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q165",
       text: "I feel average compared to others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2377,7 +2377,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q166",
       text: "I think I’m better than most.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2391,7 +2391,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q167",
       text: "I let others take the spotlight.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2405,7 +2405,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q168",
       text: "I seek recognition for my work.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2419,7 +2419,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q169",
       text: "I am humble about my successes.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2433,7 +2433,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q170",
       text: "I feel superior to others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2448,7 +2448,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q171",
       text: "I feel others’ pain deeply.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2462,7 +2462,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q172",
       text: "I stay detached from suffering.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2476,7 +2476,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q173",
       text: "I am moved by others’ struggles.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2490,7 +2490,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q174",
       text: "I remain unmoved by hardship.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2504,7 +2504,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q175",
       text: "I empathize with the less fortunate.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2518,7 +2518,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q176",
       text: "I am indifferent to others’ plights.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2532,7 +2532,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q177",
       text: "I care about others’ feelings.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2546,7 +2546,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q178",
       text: "I dismiss others’ emotions.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2560,7 +2560,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q179",
       text: "I am compassionate toward others.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2574,7 +2574,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q180",
       text: "I stay objective in disputes.",
-      type: "likert",
+       
       dimension: "Agreeableness",
       section: 4,
       options: [
@@ -2590,7 +2590,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q181",
       text: "I am confident in my abilities.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2604,7 +2604,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q182",
       text: "I doubt I can succeed.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2618,7 +2618,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q183",
       text: "I handle tasks competently.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2632,7 +2632,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q184",
       text: "I feel incapable at times.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2646,7 +2646,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q185",
       text: "I trust my problem-solving skills.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2660,7 +2660,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q186",
       text: "I question my effectiveness.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2674,7 +2674,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q187",
       text: "I achieve my goals reliably.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2688,7 +2688,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q188",
       text: "I worry I’ll fail at tasks.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2702,7 +2702,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q189",
       text: "I feel capable of most challenges.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2716,7 +2716,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q190",
       text: "I lack faith in my skills.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2731,7 +2731,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q191",
       text: "I keep my spaces organized.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2745,7 +2745,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q192",
       text: "My belongings are often messy.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2759,7 +2759,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q193",
       text: "I like a structured routine.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2773,7 +2773,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q194",
       text: "I am disorganized in my work.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2787,7 +2787,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q195",
       text: "I keep things in their place.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2801,7 +2801,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q196",
       text: "I leave tasks unfinished.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2815,7 +2815,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q197",
       text: "I plan my day carefully.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2829,7 +2829,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q198",
       text: "My desk is often cluttered.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2843,7 +2843,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q199",
       text: "I maintain a tidy environment.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2857,7 +2857,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q200",
       text: "I am careless with my things.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2873,7 +2873,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q201",
       text: "I honor my commitments.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2887,7 +2887,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q202",
       text: "I sometimes neglect my duties.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2901,7 +2901,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q203",
       text: "I feel obligated to do what’s right.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2915,7 +2915,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q204",
       text: "I avoid responsibilities when possible.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2929,7 +2929,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q205",
       text: "I follow through on promises.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2943,7 +2943,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q206",
       text: "I shirk my obligations at times.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2957,7 +2957,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q207",
       text: "I take my responsibilities seriously.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2971,7 +2971,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q208",
       text: "I overlook tasks I should do.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2985,7 +2985,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q209",
       text: "I uphold my moral standards.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -2999,7 +2999,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q210",
       text: "I bend rules to suit myself.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3014,7 +3014,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q211",
       text: "I work hard to achieve goals.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3028,7 +3028,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q212",
       text: "I lack ambition in my work.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3042,7 +3042,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q213",
       text: "I aim for excellence in tasks.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3056,7 +3056,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q214",
       text: "I settle for average results.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3070,7 +3070,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q215",
       text: "I push myself to succeed.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3084,7 +3084,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q216",
       text: "I lack drive to get ahead.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3098,7 +3098,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q217",
       text: "I set high standards for myself.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3112,7 +3112,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q218",
       text: "I am content with minimal effort.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3126,7 +3126,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q219",
       text: "I strive to outperform others.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3140,7 +3140,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q220",
       text: "I don’t care about top results.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3155,7 +3155,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q221",
       text: "I finish tasks despite distractions.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3169,7 +3169,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q222",
       text: "I get sidetracked easily.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3183,7 +3183,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q223",
       text: "I stay focused on my goals.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3197,7 +3197,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q224",
       text: "I procrastinate often.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3211,7 +3211,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q225",
       text: "I complete work on time.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3225,7 +3225,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q226",
       text: "I struggle to stay motivated.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3239,7 +3239,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q227",
       text: "I persist until tasks are done.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3253,7 +3253,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q228",
       text: "I give up on hard tasks.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3267,7 +3267,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q229",
       text: "I maintain strong self-control.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3281,7 +3281,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q230",
       text: "I act impulsively at times.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3296,7 +3296,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q231",
       text: "I think carefully before acting.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3310,7 +3310,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q232",
       text: "I make decisions impulsively.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3324,7 +3324,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q233",
       text: "I weigh all options thoroughly.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3338,7 +3338,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q234",
       text: "I act without much thought.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3352,7 +3352,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q235",
       text: "I plan my actions in advance.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3366,7 +3366,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q236",
       text: "I leap into things quickly.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3380,7 +3380,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q237",
       text: "I consider consequences carefully.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3394,7 +3394,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q238",
       text: "I rush into choices recklessly.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3408,7 +3408,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q239",
       text: "I take time to make decisions.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3422,7 +3422,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q240",
       text: "I decide things on a whim.",
-      type: "likert",
+       
       dimension: "Conscientiousness",
       section: 5,
       options: [
@@ -3438,7 +3438,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q241",
       text: "I have a vivid imagination.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3452,7 +3452,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q242",
       text: "I rarely daydream.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3466,7 +3466,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q243",
       text: "I enjoy creating new ideas.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3480,7 +3480,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q244",
       text: "I stick to practical thoughts.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3494,7 +3494,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q245",
       text: "I love to fantasize.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3508,7 +3508,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q246",
       text: "I avoid flights of fancy.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3522,7 +3522,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q247",
       text: "I get lost in my thoughts.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3536,7 +3536,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q248",
       text: "I focus on reality, not dreams.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3550,7 +3550,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q249",
       text: "I invent imaginative stories.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3564,7 +3564,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q250",
       text: "I prefer facts over imagination.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3579,7 +3579,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q251",
       text: "I love art and beauty.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3593,7 +3593,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q252",
       text: "I find art uninteresting.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3607,7 +3607,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q253",
       text: "I enjoy visiting museums.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3621,7 +3621,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q254",
       text: "I see little value in poetry.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3635,7 +3635,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q255",
       text: "I appreciate creative expression.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3649,7 +3649,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q256",
       text: "I am indifferent to music.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3663,7 +3663,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q257",
       text: "I am drawn to artistic pursuits.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3677,7 +3677,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q258",
       text: "I dislike abstract paintings.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3691,7 +3691,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q259",
       text: "I find beauty in design.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3705,7 +3705,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q260",
       text: "I avoid cultural events.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3720,7 +3720,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q261",
       text: "I feel emotions intensely.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3734,7 +3734,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q262",
       text: "I keep my feelings in check.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3748,7 +3748,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q263",
       text: "I am aware of my moods.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3762,7 +3762,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q264",
       text: "I rarely notice my emotions.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3776,7 +3776,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q265",
       text: "I express my feelings openly.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3790,7 +3790,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q266",
       text: "I hide my true emotions.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3804,7 +3804,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q267",
       text: "I connect with my emotions.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3818,7 +3818,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q268",
       text: "I ignore my inner feelings.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3832,7 +3832,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q269",
       text: "I am sensitive to my moods.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3846,7 +3846,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q270",
       text: "I stay emotionally neutral.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3861,7 +3861,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q271",
       text: "I love trying new things.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3875,7 +3875,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q272",
       text: "I stick to what I know.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3889,7 +3889,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q273",
       text: "I seek out new experiences.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3903,7 +3903,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q274",
       text: "I prefer familiar routines.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3917,7 +3917,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q275",
       text: "I enjoy exploring new places.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3931,7 +3931,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q276",
       text: "I avoid unfamiliar situations.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3945,7 +3945,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q277",
       text: "I am eager for new challenges.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3959,7 +3959,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q278",
       text: "I like predictable environments.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3973,7 +3973,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q279",
       text: "I try exotic foods willingly.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -3987,7 +3987,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q280",
       text: "I avoid change when possible.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4002,7 +4002,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q281",
       text: "I enjoy complex ideas.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4016,7 +4016,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q282",
       text: "I prefer simple explanations.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4030,7 +4030,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q283",
       text: "I love intellectual debates.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4044,7 +4044,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q284",
       text: "I avoid deep discussions.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4058,7 +4058,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q285",
       text: "I am curious about science.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4072,7 +4072,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q286",
       text: "I find philosophy boring.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4086,7 +4086,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q287",
       text: "I enjoy solving puzzles.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4100,7 +4100,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q288",
       text: "I dislike abstract concepts.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4114,7 +4114,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q289",
       text: "I am intrigued by new theories.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4128,7 +4128,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q290",
       text: "I prefer straightforward tasks.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4143,7 +4143,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q291",
       text: "I embrace progressive ideas.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4157,7 +4157,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q292",
       text: "I favor traditional values.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4171,7 +4171,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q293",
       text: "I support social change.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4185,7 +4185,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q294",
       text: "I resist new political views.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4199,7 +4199,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q295",
       text: "I question established norms.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4213,7 +4213,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q296",
       text: "I uphold conventional beliefs.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4227,7 +4227,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q297",
       text: "I advocate for equality.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4241,7 +4241,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q298",
       text: "I defend the status quo.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4255,7 +4255,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q299",
       text: "I welcome diverse perspectives.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [
@@ -4269,7 +4269,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
     {
       id: "Q300",
       text: "I stick to familiar ideologies.",
-      type: "likert",
+       
       dimension: "Openness",
       section: 3,
       options: [

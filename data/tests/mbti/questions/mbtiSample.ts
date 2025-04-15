@@ -43,7 +43,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "1",
       text: "I prefer spending time alone rather than interacting with many people at parties.",
-      type: "likert",
+       
       icon: "Users",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -58,7 +58,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "2",
       text: "I tend to be more speculative than realistic.",
-      type: "likert",
+       
       icon: "Clipboard",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -73,7 +73,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "3",
       text: "I prefer exploring possibilities and concepts rather than focusing on established facts.",
-      type: "likert",
+       
       icon: "AlertTriangle",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -88,7 +88,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "4",
       text: "I am more impressed by emotions than principles.",
-      type: "likert",
+       
       icon: "Award",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -103,7 +103,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "5",
       text: "I am more drawn toward the touching than the convincing.",
-      type: "likert",
+       
       icon: "Heart",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -118,7 +118,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "6",
       text: "I prefer to work flexibly rather than to strict deadlines.",
-      type: "likert",
+       
       icon: "Clock",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -133,7 +133,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "7",
       text: "I tend to make decisions somewhat impulsively rather than after careful consideration.",
-      type: "likert",
+       
       icon: "Crosshair",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -148,7 +148,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "8",
       text: "After socializing, I need quiet time alone to recharge.",
-      type: "likert",
+       
       icon: "Battery",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -163,7 +163,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "9",
       text: "I am more attracted to imaginative people than sensible people.",
-      type: "likert",
+       
       icon: "Anchor",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -178,7 +178,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "10",
       text: "I am more interested in what is possible than what is actual.",
-      type: "likert",
+       
       icon: "Map",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -193,7 +193,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "11",
       text: "I need quiet time to myself after social events.",
-      type: "likert",
+       
       icon: "Zap",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -208,7 +208,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "12",
       text: "I rely on abstract ideas more than facts and details.",
-      type: "likert",
+       
       icon: "FileText",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -223,7 +223,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "13",
       text: "I make decisions based on emotions rather than logic.",
-      type: "likert",
+       
       icon: "GitBranch",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -238,7 +238,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "14",
       text: "I prefer being spontaneous rather than planning things in advance.",
-      type: "likert",
+       
       icon: "Calendar",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -253,7 +253,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "15",
       text: "I find it difficult to initiate conversations with new people.",
-      type: "likert",
+       
       icon: "Coffee",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -268,7 +268,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "16",
       text: "I prefer metaphorical and conceptual explanations over concrete and literal ones.",
-      type: "likert",
+       
       icon: "Book",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -283,7 +283,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "17",
       text: "I prioritize personal values and harmony over objective criteria when making decisions.",
-      type: "likert",
+       
       icon: "Filter",
       options: [
         { value: "1", label: "Strongly Disagree" },
@@ -298,7 +298,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
     {
       id: "18",
       text: "I prefer flexible and adaptable environments over organized and structured ones.",
-      type: "likert",
+       
       icon: "Home",
       options: [
         { value: "1", label: "Strongly Disagree" },
