@@ -80,14 +80,14 @@ const TestOverviewSection = () => {
             {[
               {
                 icon: <Users className="w-3 h-3 text-primary-foreground" />,
-                text: "50 Questions",
+                text: "44/120/300 Questions",
                 bgClass: "bg-primary/10",
                 textClass: "text-primary",
                 iconBgClass: "bg-primary",
               },
               {
                 icon: <Clock className="w-3 h-3 text-primary-foreground" />,
-                text: "10 Minutes",
+                text: "5-30 Minutes",
                 bgClass: "bg-blue-100 dark:bg-blue-900/20",
                 textClass: "text-blue-700 dark:text-blue-400",
                 iconBgClass: "bg-blue-500 dark:bg-blue-600",
