@@ -5,12 +5,12 @@ import { OCEAN_PROGRESS_KEY } from "./constants";
  * Save in-progress test data to local storage
  * Pass null to clear the stored progress
  */
-export function saveProgress(data: OceanStorageData | null): void {
+export function saveProgress(data: OceanStorageData | null, testVariant: string): void {
   if (data === null) {
-    localStorage.removeItem(OCEAN_PROGRESS_KEY);
+    localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + testVariant);
   } else {
     try {
-      localStorage.setItem(OCEAN_PROGRESS_KEY, JSON.stringify(data));
+      localStorage.setItem(OCEAN_PROGRESS_KEY + "_" + testVariant, JSON.stringify(data));
     } catch (error) {
       console.error("Error saving Ocean test progress:", error);
     }
@@ -24,9 +24,9 @@ interface OceanStorageData extends OceanResponse {
 /**
  * Load saved test progress from local storage
  */
-export function loadProgress(): OceanStorageData | null {
+export function loadProgress(testVariant: string): OceanStorageData | null {
   try {
-    const storedData = localStorage.getItem(OCEAN_PROGRESS_KEY);
+    const storedData = localStorage.getItem(OCEAN_PROGRESS_KEY + "_" + testVariant);
     if (!storedData) return null;
     
     return JSON.parse(storedData) as OceanStorageData;
@@ -39,6 +39,6 @@ export function loadProgress(): OceanStorageData | null {
 /**
  * Check if there's any saved progress
  */
-export function hasProgress(): boolean {
-  return localStorage.getItem(OCEAN_PROGRESS_KEY) !== null;
+export function hasProgress(testVariant: string): boolean {
+  return localStorage.getItem(OCEAN_PROGRESS_KEY + "_" + testVariant) !== null;
 } 

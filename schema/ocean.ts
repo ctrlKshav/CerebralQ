@@ -20,6 +20,7 @@ export const oceanResponseSchema = z.object({
   id: z.string(),
   answers: z.record(z.string(), answerSchema),
   createdAt: z.string(),
+  testVariant: z.string(),
 });
 
 export type OceanResponse = z.infer<typeof oceanResponseSchema>; 

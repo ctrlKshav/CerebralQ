@@ -6,6 +6,9 @@ export const OCEAN_RESULTS_KEY = "cerebralq_ocean_results";
 export const SAVED_RESULTS_KEY = "cerebralq_saved_results";
 export const PROGRESS_KEY = "cerebralq_mbti_progress";
 export const OCEAN_PROGRESS_KEY = "cerebralq_ocean_progress";
+export const BFI_44_PROGRESS_KEY = "cerebralq_ocean_progress_bfi-44";
+export const IPIP_120_PROGRESS_KEY = "cerebralq_ocean_progress_ipip-neo-120";
+export const IPIP_300_PROGRESS_KEY = "cerebralq_ocean_progress_ipip-neo-300";
 export const MAX_CHARACTER_LIMIT_BIO = 150;
 export const RESERVED_ROUTES="account,forgot-password,sign-in,sign-up,api,auth,contact,privacy,protected,results,start-test"
 // Define specific colors for icons

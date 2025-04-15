@@ -33,6 +33,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
       id: currentTest.id,
       answers: {},
       createdAt: new Date().toISOString(), // set default createdAt
+      testVariant: currentTest.id,
     },
   });
 
@@ -46,7 +47,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
 
   // Load saved progress when component mounts
   useEffect(() => {
-    const savedData = loadProgress();
+    const savedData = loadProgress(currentTest.id);
     if (savedData) {
       methods.reset(savedData);
       const previousSectionId = savedData.currentSectionId;
@@ -71,9 +72,11 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
   const onSubmit = async (data: OceanResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
-    localStorage.removeItem(OCEAN_PROGRESS_KEY);
+    localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
 
+    console.log(data.answers)
     const personalityResult = calculateOcean(data.answers);
+    console.log(personalityResult)
 
     // Create a single unified test result object
     const testResultData = {
@@ -145,7 +148,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
       ...methods.getValues(),
       currentSectionId: currentSectionId,
     };
-    saveProgress(localStorageData);
+    saveProgress(localStorageData, currentTest.id);
   };
 
   const handlePrev = () => {
