@@ -2,6 +2,7 @@
 export const oceanTestQuestionsData: TestQuestionsData = {
   id: "ipip-neo-120",
   test_name: "IPIP-NEO-120 Personality Inventory",
+  totalQuestions: 120,
   sections: [
     {
       id: 1,
@@ -9,12 +10,14 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       description:
         "Measures how outgoing and social you are, including friendliness and energy.",
       dimension: "Extraversion",
+      totalQuestions: 24,
     },
     {
       id: 2,
       title: "Agreeableness",
       description: "Measures how kind, trusting, and cooperative you are.",
       dimension: "Agreeableness",
+      totalQuestions: 24,
     },
     {
       id: 3,
@@ -22,12 +25,14 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       description:
         "Measures how organized, dependable, and goal-oriented you are.",
       dimension: "Conscientiousness",
+      totalQuestions: 24,
     },
     {
       id: 4,
       title: "Neuroticism",
       description: "Measures how emotionally reactive and anxious you are.",
       dimension: "Neuroticism",
+      totalQuestions: 24,
     },
     {
       id: 5,
@@ -35,6 +40,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       description:
         "Measures how open you are to new experiences, ideas, and creativity.",
       dimension: "Openness",
+      totalQuestions: 24,
     },
   ],
   questions: [

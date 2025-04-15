@@ -3,6 +3,7 @@
 export const oceanTestQuestionsData: TestQuestionsData = {
   id: "ipip-neo-300",
   test_name: "IPIP-NEO-300 Personality Inventory",
+  totalQuestions: 300,
   sections: [
     {
       id: 1,
@@ -10,12 +11,14 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       description:
         "Measures emotional reactivity, anxiety, and vulnerability to stress.",
       dimension: "Neuroticism",
+      totalQuestions: 30,
     },
     {
       id: 2,
       title: "Extraversion",
       description: "Measures outgoingness, sociability, and energy level.",
       dimension: "Extraversion",
+      totalQuestions: 30,
     },
     {
       id: 3,
@@ -23,12 +26,14 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       description:
         "Measures creativity, curiosity, and openness to new experiences.",
       dimension: "Openness",
+      totalQuestions: 30,
     },
     {
       id: 4,
       title: "Agreeableness",
       description: "Measures kindness, trust, and cooperation.",
       dimension: "Agreeableness",
+      totalQuestions: 30,
     },
     {
       id: 5,
@@ -36,6 +41,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
       description:
         "Measures organization, dependability, and goal-directed behavior.",
       dimension: "Conscientiousness",
+      totalQuestions: 30,
     },
   ],
   questions: [

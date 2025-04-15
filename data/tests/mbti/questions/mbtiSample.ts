@@ -4,6 +4,7 @@ import { TestQuestionsData } from "@/types/tests/testQuestions";
 export const mbtiTestQuestionsData: TestQuestionsData = {
   id: MBTI_TEST_ID,
   test_name: "MBTI Personality Test",
+  totalQuestions: 18,
   sections: [
     {
       id: 1,
@@ -11,6 +12,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
       description: "Choose the option that feels most natural to you",
       dimension: "E-I",
       icon: "Battery",
+      totalQuestions: 4,
     },
     {
       id: 2,
@@ -18,6 +20,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
       description: "Select the statement that resonates more",
       dimension: "S-N",
       icon: "Lightbulb",
+      totalQuestions: 6,
     },
     {
       id: 3,
@@ -25,6 +28,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
       description: "Which approach feels more natural?",
       dimension: "T-F",
       icon: "Brain",
+      totalQuestions: 4,
     },
     {
       id: 4,
@@ -32,6 +36,7 @@ export const mbtiTestQuestionsData: TestQuestionsData = {
       description: "Choose your preferred style",
       dimension: "J-P",
       icon: "Compass",
+      totalQuestions: 4,
     },
   ],
   questions: [

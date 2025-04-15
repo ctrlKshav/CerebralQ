@@ -2,36 +2,42 @@
 export const oceanTestQuestionsData: TestQuestionsData = {
     "id": "bfi-44",
     "test_name": "Big Five Inventory (BFI-44)",
+    "totalQuestions": 44,
     "sections": [
       {
         "id": 1,
         "title": "Extraversion",
         "description": "Measures how outgoing and social you are.",
-        "dimension": "extraversion"
+        "dimension": "extraversion",
+        "totalQuestions": 8, 
       },
       {
         "id": 2,
         "title": "Agreeableness",
         "description": "Measures how kind and trusting you are.",
-        "dimension": "agreeableness"
+        "dimension": "agreeableness",
+        "totalQuestions": 9, 
       },
       {
         "id": 3,
         "title": "Conscientiousness",
         "description": "Measures how organized and dependable you are.",
-        "dimension": "conscientiousness"
+        "dimension": "conscientiousness",
+        "totalQuestions": 9, 
       },
       {
         "id": 4,
         "title": "Neuroticism",
         "description": "Measures how emotional and anxious you are.",
-        "dimension": "neuroticism"
+        "dimension": "neuroticism",
+        "totalQuestions": 9, 
       },
       {
         "id": 5,
         "title": "Openness",
         "description": "Measures how open to new experiences and ideas you are.",
-        "dimension": "openness"
+        "dimension": "openness",
+        "totalQuestions": 9, 
       }
     ],
     "questions": [

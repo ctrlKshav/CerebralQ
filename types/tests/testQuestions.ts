@@ -4,6 +4,7 @@ export interface TestSection {
   description: string;
   dimension: string;
   icon?: string;
+  totalQuestions: number;
 }
 
 export interface TestQuestion {
@@ -24,6 +25,7 @@ export interface TestQuestion {
 
 export interface TestQuestionsData {
   id: string;
+  totalQuestions: number;
   test_name: string;
   sections: TestSection[];
   questions: TestQuestion[];

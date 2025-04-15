@@ -4,30 +4,35 @@ import { TestQuestionsData } from "@/types/tests/testQuestions";
 export const mbtiTestQuestionsData: TestQuestionsData = {
   id: MBTI_TEST_ID,
   test_name: "MBTI Personality Test",
+  totalQuestions: 60,
   sections: [
     {
       id: 1,
       title: "Energy Orientation",
       description: "Choose the option that feels most natural to you",
       dimension: "E-I",
+      totalQuestions: 15,
     },
     {
       id: 2,
       title: "Information Processing",
       description: "Select the statement that resonates more",
       dimension: "S-N",
+      totalQuestions: 15,
     },
     {
       id: 3,
       title: "Decision Making",
       description: "Which approach feels more natural?",
       dimension: "T-F",
+      totalQuestions: 15,
     },
     {
       id: 4,
       title: "Lifestyle Approach",
       description: "Choose your preferred style",
       dimension: "J-P",
+      totalQuestions: 15,
     },
   ],
   questions: [

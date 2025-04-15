@@ -3,6 +3,7 @@ import { TestQuestionsData } from "@/types/tests/testQuestions";
 export const oceanTestQuestionsData: TestQuestionsData = {
   id: "6c274f8b-3fd9-4c1e-b20d-7a8c67c2b32a",
   test_name: "OCEAN Personality Test",
+  totalQuestions: 20,
   sections: [
     {
       id: 1,
@@ -11,6 +12,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
         "Assesses your receptiveness to novel ideas, curiosity, and imagination",
       dimension: "openness",
       icon: "Sparkles",
+      totalQuestions: 4,
     },
     {
       id: 2,
@@ -19,6 +21,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
         "Measures your level of organization, responsibility, and achievement-orientation",
       dimension: "conscientiousness",
       icon: "CheckSquare",
+      totalQuestions: 4,
     },
     {
       id: 3,
@@ -27,6 +30,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
         "Evaluates your sociability, assertiveness, and energy level",
       dimension: "extraversion",
       icon: "Users",
+      totalQuestions: 4,
     },
     {
       id: 4,
@@ -35,6 +39,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
         "Assesses your tendency toward cooperation, compassion, and trust",
       dimension: "agreeableness",
       icon: "Heart",
+      totalQuestions: 4,
     },
     {
       id: 5,
@@ -43,6 +48,7 @@ export const oceanTestQuestionsData: TestQuestionsData = {
         "Measures your emotional stability and tendency toward negative emotions",
       dimension: "neuroticism",
       icon: "CloudLightning",
+      totalQuestions: 4,
     },
   ],
   questions: [
