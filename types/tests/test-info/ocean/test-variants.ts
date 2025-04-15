@@ -9,7 +9,7 @@ export interface TestVariantColorScheme {
   badgeBorder: string;
   buttonHover: string;
   buttonText: string;
-  iconGradient: string; // Added explicit property for icon gradient
+  iconGradient: string; // Explicit property for icon gradient
 }
 
 export interface TestVariant {
