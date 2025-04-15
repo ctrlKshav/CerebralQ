@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
-
+import Link from "next/link";
 const HeroSection = () => {
   const isMobile = useIsMobile();
   
@@ -190,10 +190,8 @@ const HeroSection = () => {
             >
               A scientifically-validated personality assessment based on the Big Five model—revealing your true traits in just 10 minutes.
             </motion.p>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.5 }}
+            <Link
+              href="/start-test/ocean"
               className="space-y-3"
             >
               <Button 
@@ -204,7 +202,7 @@ const HeroSection = () => {
                 Take the Test Now <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <p className="text-primary/80 dark:text-foreground/80 text-sm ml-1">Free • 10 minutes • No registration required</p>
-            </motion.div>
+            </Link>
           </div>
           
           <motion.div
