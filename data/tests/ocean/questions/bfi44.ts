@@ -7,31 +7,31 @@ export const oceanTestQuestionsData: TestQuestionsData = {
         "id": 1,
         "title": "Extraversion",
         "description": "Measures how outgoing and social you are.",
-        "dimension": "Extraversion"
+        "dimension": "extraversion"
       },
       {
         "id": 2,
         "title": "Agreeableness",
         "description": "Measures how kind and trusting you are.",
-        "dimension": "Agreeableness"
+        "dimension": "agreeableness"
       },
       {
         "id": 3,
         "title": "Conscientiousness",
         "description": "Measures how organized and dependable you are.",
-        "dimension": "Conscientiousness"
+        "dimension": "conscientiousness"
       },
       {
         "id": 4,
         "title": "Neuroticism",
         "description": "Measures how emotional and anxious you are.",
-        "dimension": "Neuroticism"
+        "dimension": "neuroticism"
       },
       {
         "id": 5,
         "title": "Openness",
         "description": "Measures how open to new experiences and ideas you are.",
-        "dimension": "Openness"
+        "dimension": "openness"
       }
     ],
     "questions": [

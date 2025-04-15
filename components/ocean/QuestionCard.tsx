@@ -17,7 +17,7 @@ export function QuestionCard({ question, name, onAnswerSelected }: QuestionCardP
   const error = errors.answers?.[question.id];
   
   useEffect(() => {
-    setValue(`answers.${question.id}.dimension`, question.dimension);
+    setValue(`answers.${question.id}.dimension`, question.dimension.toLowerCase());
   }, [])
 
   return (

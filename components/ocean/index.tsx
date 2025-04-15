@@ -74,9 +74,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
     setIsCompleting(true);
     localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
 
-    console.log(data.answers)
-    const personalityResult = calculateOcean(data.answers);
-    console.log(personalityResult)
+    const personalityResult = calculateOcean(data.answers, currentTest);
 
     // Create a single unified test result object
     const testResultData = {
