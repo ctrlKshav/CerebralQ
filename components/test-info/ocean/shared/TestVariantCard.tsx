@@ -46,7 +46,7 @@ const TestVariantCard: React.FC<TestVariantCardProps> = ({
             <h3 className="text-xl font-bold text-card-foreground mb-1">{title}</h3>
             <HybridTooltip delayDuration={100}>
               <HybridTooltipTrigger asChild>
-                <button className={`inline-flex items-center justify-center rounded-full w-5 h-5 ${colorScheme.badge} ${colorScheme.badgeText} hover:${colorScheme.hover} hover:text-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors`}>
+                <button className={`inline-flex items-center justify-center rounded-full w-5 h-5 ${colorScheme.badge} ${colorScheme.badgeText} :${colorScheme.hover} hover:text-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors`}>
                   <InfoIcon className="w-3 h-3" />
                   <span className="sr-only">Test information</span>
                 </button>
@@ -88,7 +88,7 @@ const TestVariantCard: React.FC<TestVariantCardProps> = ({
           
           <div className="mt-auto">
             <Link href={testPath} className="w-full block">
-              <Button variant="outline" className={`w-full bg-transparent hover:${colorScheme.buttonHover} ${colorScheme.buttonText} hover:text-white dark:hover:text-white ${colorScheme.badgeBorder} hover:${colorScheme.border} group`}>
+              <Button variant="outline" className={`w-full bg-transparent ${colorScheme.buttonHover} ${colorScheme.buttonText} hover:text-white dark:hover:text-white ${colorScheme.badgeBorder} ${colorScheme.border} group`}>
                 Start {title} Test <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
               </Button>
             </Link>

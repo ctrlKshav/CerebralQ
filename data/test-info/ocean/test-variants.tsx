@@ -16,12 +16,12 @@ export const testVariants: TestVariant[] = [
     testOrigin: "Developed by Oliver P. John and colleagues at UC Berkeley, the BFI-44 is a well-validated brief measure of the five personality dimensions.",
     colorScheme: {
       border: "border-blue-200/50 dark:border-blue-900/30",
-      hover: "bg-blue-500/5 dark:bg-blue-500/10",
+      hover: "hover:bg-blue-500/5 dark:hover:bg-blue-500/10",
       accent: "bg-blue-100 dark:bg-blue-900/20",
       badge: "bg-blue-50 dark:bg-blue-900/20",
       badgeText: "text-blue-600 dark:text-blue-400",
       badgeBorder: "border-blue-200 dark:border-blue-800",
-      buttonHover: "bg-blue-500",
+      buttonHover: "hover:bg-blue-500",
       buttonText: "text-blue-600 dark:text-blue-400",
       iconGradient: "from-blue-500 to-blue-600 dark:from-blue-600 dark:to-blue-700"
     }
@@ -40,12 +40,12 @@ export const testVariants: TestVariant[] = [
     testOrigin: "IPIP measures were developed by Lewis R. Goldberg as a scientific, public-domain alternative to commercial personality tests, making robust personality assessment freely available for research.",
     colorScheme: {
       border: "border-purple-200/50 dark:border-purple-900/30",
-      hover: "bg-purple-500/5 dark:bg-purple-500/10",
+      hover: "hover:bg-purple-500/5 dark:hover:bg-purple-500/10",
       accent: "bg-purple-100 dark:bg-purple-900/20",
       badge: "bg-purple-50 dark:bg-purple-900/20",
       badgeText: "text-purple-600 dark:text-purple-400",
       badgeBorder: "border-purple-200 dark:border-purple-800",
-      buttonHover: "bg-purple-500",
+      buttonHover: "hover:bg-purple-500",
       buttonText: "text-purple-600 dark:text-purple-400",
       iconGradient: "from-purple-500 to-purple-600 dark:from-purple-600 dark:to-purple-700"
     }
@@ -64,12 +64,12 @@ export const testVariants: TestVariant[] = [
     testOrigin: "This comprehensive version of the IPIP provides the most detailed assessment of the 30 personality facets that make up the Big Five traits, comparable to professional psychological instruments.",
     colorScheme: {
       border: "border-green-200/50 dark:border-green-900/30",
-      hover: "bg-green-500/5 dark:bg-green-500/10",
+      hover: "hover:bg-green-500/5 dark:hover:bg-green-500/10",
       accent: "bg-green-100 dark:bg-green-900/20",
       badge: "bg-green-50 dark:bg-green-900/20",
       badgeText: "text-green-600 dark:text-green-400",
       badgeBorder: "border-green-200 dark:border-green-800",
-      buttonHover: "bg-green-500",
+      buttonHover: "hover:bg-green-500",
       buttonText: "text-green-600 dark:text-green-400",
       iconGradient: "from-green-500 to-green-600 dark:from-green-600 dark:to-green-700"
     }
