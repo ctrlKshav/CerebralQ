@@ -27,7 +27,7 @@ export function calculateOcean(
     const answer = answers[question.id];
     if (answer === undefined) return;
 
-    const dimension = question.dimension;
+    const dimension = question.dimension.toLowerCase();
     // Convert selectedScore from string to number
     const numericScore = Number(answer.selectedScore);
     
