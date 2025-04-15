@@ -163,7 +163,7 @@ export function PersonalityTraits({
 
             <div className="relative aspect-square w-full max-h-[280px] mx-auto mt-4">
               <Image
-                src="/ENTJ.jpeg"
+                src="/images/ENTJ.jpeg"
                 alt={`${traitDescriptions[selectedTrait].title} trait illustration`}
                 fill
                 sizes="(max-width: 768px) 280px, (max-width: 1200px) 250px, 280px"
