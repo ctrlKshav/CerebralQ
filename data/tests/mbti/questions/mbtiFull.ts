@@ -1,15 +1,15 @@
-﻿import { MBTI_TEST_ID } from "@/lib/constants"
-import { TestData } from "@/types/tests/mbti/testQuestions"
+﻿
+import { MBTI_TEST_ID } from "@/lib/constants";
+import { TestQuestionsData } from "@/types/tests/testQuestions"
 
 export const getTestName = () => {
-  return testData[0].id;
+  return MBTITestQuestionsData.test_name;
 }
 
-export const testData: TestData[] = [
-  {
-    "id": MBTI_TEST_ID,
-    "test_name": "MBTI Personality Test",
-    "sections": [
+  export const MBTITestQuestionsData: TestQuestionsData = {
+  id: MBTI_TEST_ID,
+  test_name: "MBTI Personality Test",
+  sections: [
       {
         "id": 1,
         "title": "Energy Orientation",
@@ -881,5 +881,4 @@ export const testData: TestData[] = [
         "section": 4
       }
     ]
-  }
-]
+  };

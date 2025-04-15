@@ -1,7 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { QuestionCard } from "./QuestionCard";
 import { FormNavigation } from "./FormNavigation";
-import { TestQuestion, TestSection } from "@/types/tests/ocean/testQuestions";
+import { TestQuestion, TestSection } from "@/types/tests/testQuestions";
 import { OceanResponse } from "@/schema/ocean";
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
