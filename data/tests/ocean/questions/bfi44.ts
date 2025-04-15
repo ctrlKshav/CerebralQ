@@ -30,14 +30,14 @@ export const oceanTestQuestionsData: TestQuestionsData = {
         "title": "Neuroticism",
         "description": "Measures how emotional and anxious you are.",
         "dimension": "neuroticism",
-        "totalQuestions": 9, 
+        "totalQuestions": 8, 
       },
       "Openness":{
         "id": 5,
         "title": "Openness",
         "description": "Measures how open to new experiences and ideas you are.",
         "dimension": "openness",
-        "totalQuestions": 9, 
+        "totalQuestions": 10, 
       }
     },
     "questions": [
