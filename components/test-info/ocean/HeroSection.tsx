@@ -1,8 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 const HeroSection = () => {
   const isMobile = useIsMobile();
   
@@ -190,19 +196,46 @@ const HeroSection = () => {
             >
               A scientifically-validated personality assessment based on the Big Five model—revealing your true traits in just 10 minutes.
             </motion.p>
-            <Link
-              href="/start-test/ocean"
-              className="space-y-3"
-            >
-              <Button 
-                size="lg"
-                variant="default"
-                className="font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.03]"
-              >
-                Take the Test Now <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-              <p className="text-primary/80 dark:text-foreground/80 text-sm ml-1">Free • 10 minutes • No registration required</p>
-            </Link>
+            <div className="space-y-3">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button 
+                    size="lg"
+                    variant="default"
+                    className="font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.03]"
+                  >
+                    Take the Test Now <ChevronDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="w-56">
+                  <Link href="/start-test/ocean/bfi-44">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <div className="flex flex-col">
+                        <span className="font-medium">BFI-44</span>
+                        <span className="text-xs text-muted-foreground">Quick (5-10 min)</span>
+                      </div>
+                    </DropdownMenuItem>
+                  </Link>
+                  <Link href="/start-test/ocean/ipip-120">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <div className="flex flex-col">
+                        <span className="font-medium">IPIP-120</span>
+                        <span className="text-xs text-muted-foreground">Standard (15-20 min)</span>
+                      </div>
+                    </DropdownMenuItem>
+                  </Link>
+                  <Link href="/start-test/ocean/ipip-300">
+                    <DropdownMenuItem className="cursor-pointer">
+                      <div className="flex flex-col">
+                        <span className="font-medium">IPIP-300</span>
+                        <span className="text-xs text-muted-foreground">Comprehensive (30-40 min)</span>
+                      </div>
+                    </DropdownMenuItem>
+                  </Link>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <p className="text-primary/80 dark:text-foreground/80 text-sm ml-1">Free • No registration required • Choose your test</p>
+            </div>
           </div>
           
           <motion.div

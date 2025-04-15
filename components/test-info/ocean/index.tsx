@@ -5,6 +5,7 @@ import TestOverviewSection from "@/components/test-info/ocean/TestOverviewSectio
 import AcademicCitationsSection from "@/components/test-info/ocean/AcademicCitationsSection";
 import BigFiveTraitsSection from "@/components/test-info/ocean/BigFiveTraits";
 import MbtiTestSection from "@/components/test-info/ocean/MbtiTestSection";
+import TestVariantsSection from "@/components/test-info/ocean/TestVariantsSection";
 
 export default function OceanTestInformation() {
   
@@ -13,6 +14,7 @@ export default function OceanTestInformation() {
       <HeroSection />
       <TestOverviewSection />
       <BigFiveTraitsSection />
+      <TestVariantsSection />
       <AcademicCitationsSection />
       <MbtiTestSection />
     </main>
