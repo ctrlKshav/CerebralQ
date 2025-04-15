@@ -49,7 +49,7 @@ export function DetailedPersonalityInsights({
 
             <div className="relative aspect-square w-full max-w-[280px]  mt-4">
               <Image
-                src="/results_artsy_board.jpeg"
+                src="/images/results_artsy_board.jpeg"
                 alt={`Personality trait illustration`}
                 fill
                 sizes="(max-width: 768px) 280px, (max-width: 1200px) 250px, 280px"

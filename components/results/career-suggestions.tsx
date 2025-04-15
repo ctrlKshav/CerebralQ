@@ -47,7 +47,7 @@ export function CareerSuggestions({
 
             <div className="relative aspect-square w-full mx-auto">
               <Image
-                src="/career_paths.jpeg"
+                src="/images/career_paths.jpeg"
                 alt="Famous personalities illustration"
                 fill
                 sizes="(max-width: 768px) 280px, (max-width: 1200px) 250px, 280px"

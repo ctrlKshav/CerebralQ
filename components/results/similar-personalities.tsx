@@ -48,7 +48,7 @@ export function SimilarPersonalities({
 
             <div className="relative aspect-square w-full mx-auto">
               <Image
-                src="/similar_personalities.jpeg"
+                src="/images/similar_personalities.jpeg"
                 alt="Famous personalities illustration"
                 fill
                 sizes="(max-width: 768px) 280px, (max-width: 1200px) 250px, 280px"
@@ -76,7 +76,7 @@ export function SimilarPersonalities({
               >
                 <div className="relative w-16 h-16 rounded-full overflow-hidden flex-shrink-0">
                   <Image
-                    src={person.image || "/profile-avatars/avatarPlaceholder.png"}
+                    src={person.image || "/images/profile-avatars/avatarPlaceholder.png"}
                     alt={`${person.name} portrait`}
                     fill
                     sizes="64px"
