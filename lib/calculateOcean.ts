@@ -1,5 +1,5 @@
 import { Answers } from "@/schema/ocean";
-import type { OceanRawScore, OceanTraitScores } from "@/types/tests/ocean/traits";
+import type { OceanRawScore, OceanTraitKey, OceanTraitScores } from "@/types/tests/ocean/traits";
 import { TestQuestionsData } from "@/types/tests/testQuestions";
 
 export function calculateOcean(
@@ -9,7 +9,7 @@ export function calculateOcean(
   const questions = questionsData.questions;
   
   // Initialize dimensions with scoring
-  const dimensions: Record<string, { left: number; right: number; dominant: 'left' | 'right'; leftPercentage: number; rightPercentage: number }> = {
+  const dimensions: Record<OceanTraitKey, { left: number; right: number; dominant: 'left' | 'right'; leftPercentage: number; rightPercentage: number }> = {
     "openness": { left: 0, right: 0, dominant: 'left', leftPercentage: 0, rightPercentage: 0 },
     "conscientiousness": { left: 0, right: 0, dominant: 'left', leftPercentage: 0, rightPercentage: 0 },
     "extraversion": { left: 0, right: 0, dominant: 'left', leftPercentage: 0, rightPercentage: 0 },
@@ -22,7 +22,7 @@ export function calculateOcean(
     const answer = answers[question.id];
     if (answer === undefined) return;
 
-    const dimension = question.dimension.toLowerCase();
+    const dimension = question.dimension.toLowerCase() as OceanTraitKey;
     // Convert selectedScore from string to number
     const numericScore = Number(answer.selectedScore);
     
@@ -50,8 +50,8 @@ export function calculateOcean(
   });
 
   // Calculate percentages and dominant sides for each dimension
-  Object.keys(dimensions).forEach(dim => {
-    const scores = dimensions[dim];
+  Object.keys(dimensions).forEach((dim) => {
+    const scores = dimensions[dim as OceanTraitKey];
     const total = scores.left + scores.right;
     
     scores.leftPercentage = total === 0 ? 50 : (scores.left / total) * 100;

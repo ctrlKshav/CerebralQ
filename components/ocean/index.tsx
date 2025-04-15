@@ -15,7 +15,7 @@ import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabase-operations";
 import { OCEAN_PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import { TestQuestionsData } from "@/types/tests/testQuestions";
-
+import type { OceanTraitScores } from "@/types/tests/ocean/traits";
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_ocean_results";
 
@@ -82,7 +82,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
       user_id: userID || "demo",
       raw_score: {
         // Convert traitScores to a plain object that can be serialized to JSON
-        traitScores: personalityResult.traitScores as any,
+        traitScores: personalityResult.traitScores as OceanTraitScores,
       },
       completion_time_minutes: 15, // Static for now
       validity_status: "valid", // Static for now
@@ -93,10 +93,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
 
-    // Redirect to results page
-    setTimeout(() => {
-      router.push("/result");
-    }, 0);
+    router.push("/result");
   };
 
   const handleNext = async () => {
