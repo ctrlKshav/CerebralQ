@@ -83,6 +83,7 @@ const AcademicCitationsSection = () => {
             return (
               <CitationCard
                 key={index}
+                url={citation.url}
                 title={citation.title}
                 authors={citation.authors}
                 description={citation.description}

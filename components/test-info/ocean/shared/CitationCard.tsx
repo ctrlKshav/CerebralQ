@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 interface CitationCardProps {
   title: string;
@@ -7,9 +8,11 @@ interface CitationCardProps {
   description: string;
   icon: React.ReactNode;
   colorClass?: string;
+  url: string;
 }
 
 const CitationCard: React.FC<CitationCardProps> = ({
+  url,
   title,
   authors,
   description,
@@ -19,24 +22,26 @@ const CitationCard: React.FC<CitationCardProps> = ({
   return (
     <Card className="shadow-md overflow-hidden border border-muted transform transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1">
       <CardContent className="p-6">
-        <div className="flex items-start">
-          <div
-            className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center text-white mr-4 mt-1 flex-shrink-0`}
-          >
-            {icon}
+        <Link href={url} target="_blank" rel="noopener noreferrer">
+          <div className="flex items-start">
+            <div
+              className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center text-white mr-4 mt-1 flex-shrink-0`}
+            >
+              {icon}
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-card-foreground mb-1">
+                {title}
+              </h3>
+              <p className="text-primary font-medium mb-3">
+                {authors}
+              </p>
+              <p className="text-muted-foreground">
+                {description}
+              </p>
+            </div>
           </div>
-          <div>
-            <h3 className="text-lg font-bold text-card-foreground mb-1">
-              {title}
-            </h3>
-            <p className="text-primary font-medium mb-3">
-              {authors}
-            </p>
-            <p className="text-muted-foreground">
-              {description}
-            </p>
-          </div>
-        </div>
+        </Link>
       </CardContent>
     </Card>
   );
