@@ -16,17 +16,15 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
 
   const styles = StyleSheet.create({
     card: {
-      marginBottom: 30,
+      flex: 1,
       borderRadius: 10,
       borderWidth: 1,
       borderColor: theme.border,
       overflow: "hidden",
-      flexDirection: "row",
-      height: 250, // Fixed height for consistency
     },
     imageContainer: {
-      width: "35%",
-      height: "100%", // Full height of the card
+      width: "100%",
+      height: 150, // Reduced height for image
     },
     image: {
       objectFit: "cover",
@@ -34,75 +32,41 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
       height: "100%",
     },
     contentContainer: {
-      width: "65%",
-      padding: 0,
-      position: "relative",
+      padding: 5,
     },
-    headerContainer: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-      padding: 8,
-      borderBottomWidth: 1,
-      borderBottomColor: theme.border,
-      marginBottom: 12,
+    roleContainer: {
+      marginBottom: 6,
     },
     title: {
-      fontSize: 16,
+      fontSize: 18, // Reduced font size
       fontFamily: "PTSans-Bold",
-      color: theme.foreground,
-      maxWidth: "70%", // Prevent title from running into match badge
-    },
-    matchBadge: {
-      paddingVertical: 6,
-      paddingHorizontal: 8,
-      borderRadius: 5,
-      backgroundColor:
-        suggestion.matchPercentage >= 90
-          ? "#10b981"
-          : suggestion.matchPercentage >= 80
-            ? "#3b82f6"
-            : "#f59e0b",
-    },
-    matchBadgeText: {
-      color: "#ffffff",
-      fontSize: 9,
-      fontFamily: "PTSans",
-    },
-    content: {
-      padding: 16,
-      paddingBottom: 8,
-      paddingTop: 0,
+      color: theme.primary,
+      textAlign: "center",
     },
     description: {
-      fontSize: 11,
+      fontSize: 9, // Small font for description
+      lineHeight: 1.4,
       color: theme.mutedForeground,
-      lineHeight: 1.6,
-      marginBottom: 14,
+      textAlign: "left",
+      paddingHorizontal: 5,
+      marginBottom: 5,
     },
     traitsContainer: {
-      marginTop: 2,
-    },
-    traitsHeader: {
-      fontSize: 11,
-      color: theme.mutedForeground,
-      fontFamily: "PTSans-Bold",
-      marginBottom: 8,
-    },
-    traitsRow: {
       flexDirection: "row",
+      flexWrap: "wrap",
+      justifyContent: "center",
       gap: 4,
+      marginBottom: 8,
     },
     traitBadge: {
       backgroundColor: theme.muted,
-      paddingHorizontal: 8,
-      paddingVertical: 4,
+      paddingHorizontal: 6,
+      paddingVertical: 2,
       borderRadius: 4,
-      marginBottom: 8,
-      fontSize: 10,
+      fontSize: 8, // Smaller font size
       color: theme.mutedForeground,
-      fontFamily: "PTSans-Bold",
-      },
+      textAlign: "center",
+    },
   });
 
   // Helper function to get career image
@@ -110,11 +74,15 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     const images: Record<string, string> = {
       "Business Management":
         "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80",
+      Entrepreneur:
+        "https://images.unsplash.com/photo-1523287562758-66c7fc58967f?auto=format&fit=crop&w=800&q=80",
       Entrepreneurship:
         "https://images.unsplash.com/photo-1523287562758-66c7fc58967f?auto=format&fit=crop&w=800&q=80",
       Law: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
       Engineering:
         "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
+      "Role Here":
+        "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?auto=format&fit=crop&w=800&q=80",
     };
 
     return (
@@ -123,12 +91,18 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     );
   };
 
-  // Ensure we only show the first 3-4 quality matches to avoid overflow
-  const displayQualityMatches = suggestion.qualityMatches?.slice(0, 3) || [];
+  // We will only display up to 3 traits per card
+  const displayTraits = suggestion?.qualityMatches?.slice(0, 3) || [];
+
+  // Create a shorter description if needed
+  const shortDescription = suggestion?.description
+    ? suggestion.description.length > 150
+      ? suggestion.description.substring(0, 147) + "..."
+      : suggestion.description
+    : "Career path that naturally complements your personality traits and abilities.";
 
   return (
     <View style={styles.card}>
-      {/* Left side - Image */}
       <View style={styles.imageContainer}>
         <Image
           src={getCareerImage(suggestion.title)}
@@ -136,36 +110,18 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
           cache={true}
         />
       </View>
-
-      {/* Right side - Content */}
       <View style={styles.contentContainer}>
-        {/* Header with title and match percentage */}
-        <View style={styles.headerContainer}>
+        <View style={styles.roleContainer}>
           <Text style={styles.title}>{suggestion.title}</Text>
-          <View style={styles.matchBadge}>
-            <Text style={styles.matchBadgeText}>
-              {suggestion.matchPercentage}% Match
+        </View>
+        <View style={styles.traitsContainer}>
+          {displayTraits.map((trait, index) => (
+            <Text key={index} style={styles.traitBadge}>
+              {trait.title}
             </Text>
-          </View>
+          ))}
         </View>
-
-        {/* Main content */}
-        <View style={styles.content}>
-          <Text style={styles.description}>{suggestion.description}</Text>
-
-          {displayQualityMatches.length > 0 && (
-            <View style={styles.traitsContainer}>
-              <Text style={styles.traitsHeader}>Your Matching Traits</Text>
-              <View style={styles.traitsRow}>
-                {displayQualityMatches.map((quality, index) => (
-                  <Text key={index} style={styles.traitBadge}>
-                    {quality.title}
-                  </Text>
-                ))}
-              </View>
-            </View>
-          )}
-        </View>
+        <Text style={styles.description}>{shortDescription}</Text>
       </View>
     </View>
   );

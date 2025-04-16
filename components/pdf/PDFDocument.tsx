@@ -57,8 +57,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
     communityConnection,
     actionItems,
   } = resultData.personalityData;
-  const suggestions = career.suggestions || [];
-  const suggestionPages = suggestions.slice(0, 3);
+  const suggestionPages = career.suggestions || [];
 
   // Logo URL for consistent branding across all pages
   const logoUrl = isDarkMode ? "/images/logoDark.png" : "/images/logoLight.png";

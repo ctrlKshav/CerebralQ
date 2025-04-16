@@ -15,12 +15,14 @@ import { ReportSidebar } from "@/components/results/report/Sidebar";
 import { User } from "@/types/supabase/users";
 import { PDFViewer } from "@react-pdf/renderer";
 import { PDFResultsDocument } from "@/components/pdf/PDFDocument";
+import { useTheme } from "next-themes";
 
 export interface ReportComponentProps {
   userData: User | null;
   resultData: ResultData | null;
 }
 export default function Report({userData, resultData}: ReportComponentProps) {
+  const isDarkMode = useTheme();
   const {
     personalityType,
     personalityDescription,
@@ -30,7 +32,7 @@ export default function Report({userData, resultData}: ReportComponentProps) {
   return (
     <div className="min-h-screen bg-background [--header-height:6rem]">
       <PDFViewer className="min-h-screen w-full">
-        <PDFResultsDocument resultData={resultData || sampleResultData} />
+        <PDFResultsDocument resultData={sampleResultData} isDarkMode={isDarkMode.theme === "dark"} />
       </PDFViewer>
     </div>
   );
