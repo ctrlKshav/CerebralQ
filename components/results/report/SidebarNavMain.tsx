@@ -24,9 +24,7 @@ export function SidebarNavMain({
   const { activeSection, setActiveSection, isMobile, setOpenMobile } =
     useSidebar();
 
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-
-  const handleScroll = useCallback(() => {
+  const handleScroll = () => {
     const sections = items.map((item) => ({
       id: item.url.replace("#", ""),
       title: item.title,
@@ -48,7 +46,7 @@ export function SidebarNavMain({
       behavior: "smooth",
       block: "center",
     });
-  }, [activeSection, items]);
+  };
 
   // Update active item based on scroll position
   useEffect(() => {
@@ -66,7 +64,6 @@ export function SidebarNavMain({
       <SidebarMenu className="gap-2">
         {items.map((item) => {
           const isActive = item.title === activeSection;
-          const isHovered = item.title === hoveredItem;
 
           return (
             <SidebarMenuItem
@@ -86,8 +83,6 @@ export function SidebarNavMain({
                     setActiveSection(item.title);
                   }
                 }}
-                onMouseEnter={() => setHoveredItem(item.title)}
-                onMouseLeave={() => setHoveredItem(null)}
                 className={cn(
                   "h-12 px-3 py-3 text-base font-medium transition-all duration-200 rounded-xl relative overflow-hidden",
                   "hover:translate-x-1",
@@ -113,8 +108,7 @@ export function SidebarNavMain({
                     <item.icon
                       className="size-5 flex-shrink-0"
                       style={{
-                        color:
-                          isActive || isHovered ? item.color : "currentColor",
+                        color: isActive ? item.color : "currentColor",
                         transition: "color 0.2s ease, transform 0.2s ease",
                         transform: isActive ? "scale(1.1)" : "scale(1)",
                       }}
