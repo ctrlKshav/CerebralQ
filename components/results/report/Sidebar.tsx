@@ -1,23 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  BookOpen,
-  Brain,
-  Briefcase,
-  Heart,
-  Lightbulb,
-  ListChecks,
-  Settings2,
-  Sparkles,
-  Users,
-  Clock,
-  Coffee,
-  Star,
-  Handshake,
-  Smile,
-} from "lucide-react";
-
+import { useEffect } from "react";
 import { SidebarNavMain } from "@/components/results/report/SidebarNavMain";
 import {
   Sidebar,
@@ -36,12 +20,46 @@ import { sidebarNavData } from "@/data/report/sidebarNav";
 export function ReportSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
-  const { isMobile, state } = useSidebar();
-  const triggerButtonTopPosition = "calc(var(--header-height) + 1.5rem)";
+  const { isMobile, state, activeSection, setActiveSection } = useSidebar();
 
+  const triggerButtonTopPosition = "calc(var(--header-height) + 1.5rem)";
   // Common button styles
   const buttonStyle =
     "h-9 w-9 bg-white hover:bg-white dark:bg-slate-950/80 dark:hover:bg-slate-950/80 z-50";
+
+  const sections = sidebarNavData.navMain.map((item) => ({
+    id: item.url.replace("#", ""),
+    title: item.title,
+  }));
+
+  const handleScroll = () => {
+    const currentSection = sections.find((section) => {
+      const element = document.getElementById(section.id);
+      if (!element) return false;
+
+      const rect = element.getBoundingClientRect();
+      return rect.top <= 100 && rect.bottom > 100;
+    });
+
+    if (currentSection) {
+      setActiveSection(currentSection.title);
+    }
+  };
+
+  // Update active item based on scroll position
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [handleScroll]);
+
+  useEffect(() => {
+    document.getElementById(activeSection)?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }, [activeSection]);
 
   return (
     <>
