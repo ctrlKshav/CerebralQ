@@ -1,6 +1,4 @@
-﻿"use client";
-
-import React from "react";
+﻿import React from "react";
 import { ResultData, ValuesAndMotivators } from "@/types/tests/mbti/results";
 import { Heart, Star, TrendingUp, Target, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";

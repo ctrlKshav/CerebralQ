@@ -5,7 +5,7 @@ import { ReportHeader } from "@/components/results/report/SiteHeader";
 import { ReportSidebar } from "@/components/results/report/Sidebar";
 import { User } from "@/types/supabase/users";
 import { CQReport } from "./CQReport";
-
+import { useEffect } from "react";
 export interface ReportComponentProps {
   userData: User | null;
   resultData: ResultData | null;

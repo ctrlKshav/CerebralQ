@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { RelationshipCompatibility, ResultData } from "@/types/tests/mbti/results";
 import {
   Heart,
