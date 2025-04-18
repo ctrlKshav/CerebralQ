@@ -41,7 +41,6 @@ export function SidebarNavMain({
     if (currentSection) {
       setActiveSection(currentSection.title);
     }
-
   };
 
   // Update active item based on scroll position
@@ -57,7 +56,7 @@ export function SidebarNavMain({
       behavior: "smooth",
       block: "center",
     });
-  }, [activeSection])
+  }, [activeSection]);
 
   return (
     <SidebarGroup>
@@ -79,13 +78,7 @@ export function SidebarNavMain({
                 asChild
                 tooltip={item.title}
                 isActive={isActive}
-                onClick={() => {
-                  if (isMobile) {
-                    setOpenMobile(false);
-                  } else {
-                    setActiveSection(item.title);
-                  }
-                }}
+                onClick={() => setOpenMobile(false)}
                 className={cn(
                   "h-12 px-3 py-3 text-base font-medium transition-all duration-200 rounded-xl relative overflow-hidden",
                   "hover:translate-x-1",
