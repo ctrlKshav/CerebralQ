@@ -9,10 +9,7 @@ const TestVariantsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   return (
-    <SectionContainer
-      ref={sectionRef}
-      id="test-variants"
-    >
+    <SectionContainer ref={sectionRef}>
       <SectionHeader
         badge="Test Options"
         title="Choose Your Ideal Test"
@@ -34,4 +31,4 @@ const TestVariantsSection = () => {
   );
 };
 
-export default TestVariantsSection; 
+export default TestVariantsSection;

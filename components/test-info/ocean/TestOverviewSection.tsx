@@ -21,7 +21,6 @@ const TestOverviewSection = () => {
   return (
     <SectionContainer
       ref={sectionRef}
-      id="overview"
     >
       <SectionHeader
         badge="Overview"

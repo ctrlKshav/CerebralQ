@@ -12,9 +12,13 @@ export default function OceanTestInformation() {
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:bg-gradient-to-b dark:from-gray-950 dark:to-background">
       <TooltipProvider>
         <HeroSection />
-        <TestOverviewSection />
+        <div id="test-overview">
+          <TestOverviewSection />
+        </div>
         <BigFiveTraitsSection />
-        <TestVariantsSection />
+        <div id="test-variants">
+          <TestVariantsSection />
+        </div>
         <AcademicCitationsSection />
         <MbtiTestSection />
       </TooltipProvider>

@@ -1,37 +1,62 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
+import { useInView } from "react-intersection-observer";
 import { traits } from "@/data/test-info/ocean/traits";
 import MobileTraitsAccordion from "./MobileTraitsAccordion";
 import TraitSidebar from "./TraitSidebar";
 import TraitContent from "./TraitContent";
 import TraitHeader from "./TraitHeader";
+import { useIsMobile } from "@/hooks/use-mobile";
+
 const BigFiveTraitsSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // For responsive design - detect mobile view
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useIsMobile();
 
-  // Refs for each trait section
+  // Refs for each trait section and IntersectionObserver for each trait
   const traitRefs = useRef<(HTMLDivElement | null)[]>([]);
-  // Active trait for the sticky sidebar
+
+  // State for active trait index
   const [activeTraitIndex, setActiveTraitIndex] = useState(0);
-  // Track whether the traits section is in view for sidebar visibility
-  const [isSectionInView, setIsSectionInView] = useState(false);
 
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
+  // Ref for observing BigFiveTraitsSection itself
+  const [bigFiveTraitsSectionRef, isBigFiveTraitsSectionInView] = useInView({
+    threshold: 0.1, // Consider the section visible when at least 10% is visible
+  });
 
-    // Check on mount
-    checkMobile();
+  // Refs for observing TestOverviewSection and TestVariantsSection
+  const [testOverviewRef, isTestOverviewInView] = useInView({
+    threshold: 0,
+    rootMargin: "-100px 0px 0px 0px", // Trigger when the overview section goes out of viewport
+  });
 
-    // Add resize listener
-    window.addEventListener("resize", checkMobile);
+  const [testVariantsRef, isTestVariantsInView] = useInView({
+    threshold: 0,
+    rootMargin: "0px 0px -100px 0px", // Trigger before variants section comes fully into view
+  });
 
-    // Clean up
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+  // Determine sidebar visibility based on the visibility of all three sections
+  const isSectionInView =
+    isBigFiveTraitsSectionInView &&
+    !isTestOverviewInView &&
+    !isTestVariantsInView;
+
+  // Setup refs for each trait with intersection observer
+  const traitObservers = traits.map((_, index) => {
+    // Create a separate observer for each trait
+    const [ref, inView] = useInView({
+      threshold: 0.5, // Trigger when 50% of the trait is visible
+    });
+
+    // Update active trait when it comes into view
+    useEffect(() => {
+      if (inView && !isMobile) {
+        setActiveTraitIndex(index);
+      }
+    }, [inView]);
+
+    return { ref, inView };
+  });
 
   // Scroll to a trait section when clicking on a tab
   const scrollToSection = (index: number) => {
@@ -58,62 +83,31 @@ const BigFiveTraitsSection = () => {
     }
   };
 
-  // Check if the Big Five Traits section is in view and update active trait
+  // Find refs for TestOverviewSection and TestVariantsSection
   useEffect(() => {
-    if (isMobile) return; // Only run on desktop
+    // Find the elements by ID
+    const testOverviewElement = document.getElementById("test-overview");
+    const testVariantsElement = document.getElementById("test-variants");
 
-    const handleScroll = () => {
-      // Check if section is in view - we need to show/hide the sidebar
-      if (sectionRef.current) {
-        const rect = sectionRef.current.getBoundingClientRect();
-        const sectionTop = rect.top;
-        const sectionBottom = rect.bottom;
+    // Assign refs if elements exist
+    if (testOverviewElement) {
+      (testOverviewRef as any)(testOverviewElement);
+    }
 
-        // Show sidebar only when the section is visible on screen
-        const buffer = 700; // Buffer to keep sidebar visible slightly past the section
-        const isVisible =
-          sectionTop < window.innerHeight - buffer && sectionBottom > buffer;
-        setIsSectionInView(isVisible);
-      }
-
-      // Check which trait is most visible in the viewport to update active index
-      let maxVisibility = 0;
-      let mostVisibleIndex = activeTraitIndex;
-
-      traitRefs.current.forEach((ref, index) => {
-        if (!ref) return;
-
-        const rect = ref.getBoundingClientRect();
-        // Calculate how much of the element is visible in the viewport
-        const visibleHeight =
-          Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-        const visibilityRatio = visibleHeight / rect.height;
-
-        if (visibilityRatio > maxVisibility && visibilityRatio > 0.2) {
-          // Element must be at least 20% visible
-          maxVisibility = visibilityRatio;
-          mostVisibleIndex = index;
-        }
-      });
-
-      if (mostVisibleIndex !== activeTraitIndex) {
-        setActiveTraitIndex(mostVisibleIndex);
-      }
-    };
-
-    // Initial check
-    setTimeout(handleScroll, 200);
-
-    // Add scroll listener
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [isMobile, activeTraitIndex]);
+    if (testVariantsElement) {
+      (testVariantsRef as any)(testVariantsElement);
+    }
+  }, [testOverviewRef, testVariantsRef]);
 
   return (
     <section
       id="traits"
       className="py-20 md:py-28 bg-background dark:bg-background relative overflow-hidden"
-      ref={sectionRef}
+      ref={(el: HTMLDivElement | null) => {
+        // Set both the local ref and the intersection observer ref
+        sectionRef.current = el;
+        if (el) (bigFiveTraitsSectionRef as any)(el);
+      }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Title */}
@@ -135,7 +129,7 @@ const BigFiveTraitsSection = () => {
         {isMobile && <MobileTraitsAccordion traits={traits} />}
         {!isMobile && (
           <div className="relative">
-            {/* Fixed position sidebar that's vertically centered - only shown when the traits section is in view */}
+            {/* Fixed position sidebar that's vertically centered - only shown when all three conditions are met */}
             <TraitSidebar
               isSectionInView={isSectionInView}
               scrollToSection={scrollToSection}
@@ -148,7 +142,10 @@ const BigFiveTraitsSection = () => {
                 <div
                   key={index}
                   ref={(el) => {
+                    // Store the element in traitRefs for direct DOM access
                     traitRefs.current[index] = el;
+                    // Also pass the element to the IntersectionObserver ref
+                    if (el) traitObservers[index].ref(el);
                   }}
                   id={`trait-${trait.name.toLowerCase()}`}
                   className="mb-14 last:mb-0 scroll-mt-20"
@@ -170,7 +167,3 @@ const BigFiveTraitsSection = () => {
 };
 
 export default BigFiveTraitsSection;
-
-
-
-
