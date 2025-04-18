@@ -46,8 +46,10 @@ export function SidebarNavMain({
   // Update active item based on scroll position
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("touchmove", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchmove", handleScroll);
     };
   }, [handleScroll]);
 
