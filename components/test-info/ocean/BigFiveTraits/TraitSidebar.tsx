@@ -2,15 +2,14 @@
 import TraitSvgIcon from "./TraitSvgIcon";
 import { ChevronRight } from "lucide-react";
 import { traits } from "@/data/test-info/ocean/traits";
+import Link from "next/link";
 
 interface TraitSidebarProps {
   isSectionInView: boolean;
-  scrollToSection: (index: number) => void;
   activeTraitIndex: number;
 }
 const TraitSidebar = ({
   isSectionInView,
-  scrollToSection,
   activeTraitIndex,
 }: TraitSidebarProps) => {
   // Add state to track animation state
@@ -50,9 +49,9 @@ const TraitSidebar = ({
           </h3>
           <div className="flex flex-col space-y-1.5 overflow-hidden">
             {traits.map((trait, index) => (
-              <button
+              <Link
                 key={index}
-                onClick={() => scrollToSection(index)}
+                href={`#trait-${trait.name.toLowerCase()}`}
                 className={`flex items-center p-3 rounded-lg cursor-pointer transition-all duration-500
                   ${
                     activeTraitIndex === index
@@ -91,7 +90,7 @@ const TraitSidebar = ({
                     }}>
                   <ChevronRight className="h-4 w-4" />
                 </div>
-              </button>
+              </Link>
             ))}
           </div>
         </div>

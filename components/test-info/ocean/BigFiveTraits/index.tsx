@@ -58,46 +58,6 @@ const BigFiveTraitsSection = () => {
     return { ref, inView };
   });
 
-  // Scroll to a trait section when clicking on a tab
-  const scrollToSection = (index: number) => {
-    if (traitRefs.current[index]) {
-      // Get the element's position
-      const element = traitRefs.current[index];
-      if (!element) return;
-
-      const rect = element.getBoundingClientRect();
-      const elementTop = rect.top + window.scrollY;
-
-      // Calculate target scroll position (center element in viewport)
-      const offset = 120; // Account for header and some padding
-      const targetScrollPos = elementTop - offset;
-
-      // Set the active index before the scroll animation
-      setActiveTraitIndex(index);
-
-      // Scroll to position
-      window.scrollTo({
-        top: targetScrollPos,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  // Find refs for TestOverviewSection and TestVariantsSection
-  useEffect(() => {
-    // Find the elements by ID
-    const testOverviewElement = document.getElementById("test-overview");
-    const testVariantsElement = document.getElementById("test-variants");
-
-    // Assign refs if elements exist
-    if (testOverviewElement) {
-      (testOverviewRef as any)(testOverviewElement);
-    }
-
-    if (testVariantsElement) {
-      (testVariantsRef as any)(testVariantsElement);
-    }
-  }, [testOverviewRef, testVariantsRef]);
 
   return (
     <section
@@ -132,7 +92,6 @@ const BigFiveTraitsSection = () => {
             {/* Fixed position sidebar that's vertically centered - only shown when all three conditions are met */}
             <TraitSidebar
               isSectionInView={isSectionInView}
-              scrollToSection={scrollToSection}
               activeTraitIndex={activeTraitIndex}
             />
 
@@ -148,7 +107,7 @@ const BigFiveTraitsSection = () => {
                     if (el) traitObservers[index].ref(el);
                   }}
                   id={`trait-${trait.name.toLowerCase()}`}
-                  className="mb-14 last:mb-0 scroll-mt-20"
+                  className="mb-14 last:mb-0 scroll-mt-24"
                 >
                   <div className="bg-card rounded-lg shadow-sm border border-muted overflow-hidden transition-all hover:border-primary/20 hover:shadow-md">
                     <TraitHeader trait={trait} />
