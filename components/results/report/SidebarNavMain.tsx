@@ -42,10 +42,6 @@ export function SidebarNavMain({
       setActiveSection(currentSection.title);
     }
 
-    document.getElementById(activeSection)?.scrollIntoView({
-      behavior: "smooth",
-      block: "center",
-    });
   };
 
   // Update active item based on scroll position
@@ -55,6 +51,13 @@ export function SidebarNavMain({
       window.removeEventListener("scroll", handleScroll);
     };
   }, [handleScroll]);
+
+  useEffect(() => {
+    document.getElementById(activeSection)?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+  }, [activeSection])
 
   return (
     <SidebarGroup>
