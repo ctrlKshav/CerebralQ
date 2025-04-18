@@ -1,3 +1,4 @@
+"use client";
 import { useRef } from "react";
 import { citations } from "@/data/test-info/ocean/citations";
 import {

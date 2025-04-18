@@ -1,3 +1,4 @@
+"use client";
 import { useRef, useState, useEffect } from "react";
 import { traits } from "@/data/test-info/ocean/traits";
 import MobileTraitsAccordion from "./MobileTraitsAccordion";

@@ -1,3 +1,4 @@
+"use client";
 import { useRef } from "react";
 import { testDetails } from "@/data/test-info/ocean/test-overview";
 import {

@@ -1,6 +1,4 @@
-﻿"use client";
-
-import HeroSection from "@/components/test-info/ocean/HeroSection";
+﻿import HeroSection from "@/components/test-info/ocean/HeroSection";
 import TestOverviewSection from "@/components/test-info/ocean/TestOverviewSection";
 import AcademicCitationsSection from "@/components/test-info/ocean/AcademicCitationsSection";
 import BigFiveTraitsSection from "@/components/test-info/ocean/BigFiveTraits";
