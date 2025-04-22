@@ -1,6 +1,6 @@
 ﻿import { Badge } from "@/components/ui/badge";
 import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
-import { TraitKey } from "@/types/tests/mbti/traits";
+import { TraitKey, TraitScore } from "@/types/tests/mbti/traits";
 
 export const TraitExplanation = ({
   traitKey,
@@ -8,11 +8,11 @@ export const TraitExplanation = ({
   personalityType,
 }: {
   traitKey: TraitKey;
-  score: any;
-  personalityType: string;
+  score: TraitScore;
+  personalityType?: string;
 }) => {
   const traitInfo =
-    getPersonalityTraitDescriptions(personalityType)[traitKey]
+    getPersonalityTraitDescriptions(personalityType ?? "INTJ")[traitKey];
   const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
 
   return (

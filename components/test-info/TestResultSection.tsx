@@ -4,12 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { TraitExplanation } from "./TraitExplanation";
 import { TraitKey } from "@/types/tests/mbti/traits";
+import { FormattedTestResult } from "@/types/supabase/user-test-history";
 
 export const TestResultSection = ({
   result,
 
 }: {
-  result: any;
+  result: FormattedTestResult;
 
 }) => (
   <div className=" rounded-xl p-6">
