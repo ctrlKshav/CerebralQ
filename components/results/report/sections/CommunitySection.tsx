@@ -63,7 +63,7 @@ const CommunitySection = ({
                     size="sm"
                     className="text-primary-foreground py-4 px-4 sm:px-8 rounded-full text-md md:text-lg font-medium"
                   >
-                    Join Our Community!
+                    Coming Soon!
                   </Button>
                 </Link>
               </div>
