@@ -91,19 +91,25 @@ export function FormNavigation({
 
         {isLastStep ? (
           // Render submit button without motion wrapper when complete
-          <Button type="submit" variant={"default"} className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200">
+          <Button
+            type="submit"
+            variant={"default"}
+            className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200"
+          >
             {isCompleting ? "Submitting..." : "Complete"}
           </Button>
         ) : (
-          <Button
-            type="button"
-            onClick={handleNextClick}
-            variant={"default"}
-            className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200 "
-          >
-            Next
-            <ArrowRight className="h-4 w-4" />
-          </Button>
+          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <Button
+              type="button"
+              onClick={handleNextClick}
+              variant={"default"}
+              className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200 "
+            >
+              Next
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </motion.div>
         )}
       </div>
     </div>
