@@ -41,8 +41,7 @@ export default function CareerSuggestionsCard({
     };
 
     return (
-      images[title] ||
-      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=800&q=80"
+      "/images/reportSections/careerSuggestions.jpg"
     );
   };
 

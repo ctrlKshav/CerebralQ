@@ -15,6 +15,7 @@ interface ActionStepsCardProps {
   imageSrc?: string;
   imageAlt?: string;
   className?: string;
+  objectFit?: string;
 }
 
 const ActionStepsCard = ({
@@ -24,6 +25,7 @@ const ActionStepsCard = ({
   imageSrc,
   imageAlt = "Action steps",
   className = "",
+  objectFit = "object-cover",
 }: ActionStepsCardProps) => {
   return (
     <Card className={`h-full ${className} shadow-none border-0 sm:border overflow-hidden`}>
@@ -56,7 +58,7 @@ const ActionStepsCard = ({
               alt={imageAlt}
               width={1470}
               height={640}
-              className="object-cover w-full h-auto"
+              className={`w-full h-auto ${objectFit}`}
               priority={false}
             />
           </div>
