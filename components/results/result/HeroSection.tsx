@@ -42,13 +42,13 @@ const HeroSection = ({
     "ISTJ": "/images/personalityTypes/istj.jpg",
     "ISTP": "/images/personalityTypes/istp.jpg",
     "ENTP": "/images/personalityTypes/entp.jpg",
-    "ENTJ": "/images/personalityTypes/entj.jpeg",
+    "ENTJ": "/images/personalityTypes/entj.jpg",
     "ENFJ": "/images/personalityTypes/enfj.jpg",
-    "ENFP": "/images/personalityTypes/enfp.jpeg",
-    "ESFJ": "/images/personalityTypes/esfj.jpeg",
+    "ENFP": "/images/personalityTypes/enfp.jpg",
+    "ESFJ": "/images/personalityTypes/esfj.jpg",
     "ESFP": "/images/personalityTypes/esfp.jpg",
     "ESTJ": "/images/personalityTypes/estj.jpg",
-    "ESTP": "/images/personalityTypes/estp.jpeg",
+    "ESTP": "/images/personalityTypes/estp.jpg",
     default: "/images/personalityTypes/infj.jpg",
   };
 
