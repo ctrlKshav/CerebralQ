@@ -135,7 +135,7 @@ export const PDFResultsDocument: React.FC<PDFDocumentProps> = ({
             <PDFRelationshipSection
               imageSrc={
                 index === 0
-                  ? "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop"
+                  ? "/images/reportSections/relationship.jpeg"
                   : "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000&auto=format&fit=crop"
               }
               relationship={relationship}

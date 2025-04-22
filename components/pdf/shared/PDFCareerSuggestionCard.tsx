@@ -69,26 +69,18 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     },
   });
 
-  // Helper function to get career image
   const getCareerImage = (title: string) => {
     const images: Record<string, string> = {
       "Business Management":
         "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80",
-      Entrepreneur:
-        "https://images.unsplash.com/photo-1523287562758-66c7fc58967f?auto=format&fit=crop&w=800&q=80",
       Entrepreneurship:
         "https://images.unsplash.com/photo-1523287562758-66c7fc58967f?auto=format&fit=crop&w=800&q=80",
       Law: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
       Engineering:
         "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
-      "Role Here":
-        "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?auto=format&fit=crop&w=800&q=80",
     };
 
-    return (
-      images[title] ||
-      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=800&q=80"
-    );
+    return "/images/reportSections/careerSuggestions.jpg";
   };
 
   // We will only display up to 3 traits per card
