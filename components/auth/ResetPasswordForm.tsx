@@ -143,7 +143,7 @@ export function ResetPasswordForm({
             </div>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <Image src="/images/signin1_glasses.png" alt="Cerebral Quotient" layout="fill" objectFit="cover" />
+            <Image src="/images/resetpassword1_glasses.png" alt="Cerebral Quotient" layout="fill" objectFit="cover" />
           </div>
         </CardContent>
       </Card>
