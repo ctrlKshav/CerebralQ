@@ -1,4 +1,4 @@
-﻿import { TestData, PersonalityTypeInsights } from "@/types/tests/mbti";
+﻿import { TestData } from "@/types/tests/mbti/testQuestions";
 
 export const testData: TestData[] = [
   {

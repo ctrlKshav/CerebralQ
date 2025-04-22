@@ -3,7 +3,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
-import { testData } from "@/data/mbti/testQuestionsFull";
+import { testData } from "@/data/mbti/testQuestionsSample";
 import { saveProgress, loadProgress } from "@/lib/mbtiStorage";
 import { calculateMBTI } from "@/lib/calculateMbti";
 import { smoothScrollToTop } from "@/lib/utils";
@@ -96,7 +96,7 @@ export default function MBTITest() {
 
     // Redirect to results page
     setTimeout(() => {
-      router.push("/results");
+      router.push("/result");
     }, 0);
   };
 

@@ -1,27 +1,36 @@
-﻿import React, { useEffect, useState } from 'react';
-import { BlobProvider } from '@react-pdf/renderer';
-import { Button } from '@/components/ui/button';
-import { Download } from 'lucide-react';
-import { PDFResultsDocument } from '@/components/pdf/PDFDocument';
-import { ResultData } from '@/types/tests/mbti';
-import { useTheme } from 'next-themes';
+﻿import React, { useEffect, useState } from "react";
+import { BlobProvider, PDFViewer } from "@react-pdf/renderer";
+import { Button } from "@/components/ui/button";
+import { Download, Eye } from "lucide-react";
+import { PDFResultsDocument } from "@/components/pdf/PDFDocument";
+import { ResultData } from "@/types/tests/mbti/results";
+import { useTheme } from "next-themes";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface PDFGeneratorProps {
   resultData: ResultData;
   fileName?: string;
 }
 
-export const PDFGenerator: React.FC<PDFGeneratorProps> = ({ 
-  resultData, 
-  fileName = 'personality-results.pdf' 
+export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
+  resultData,
+  fileName = "personality-results.pdf",
 }) => {
   // Using client-side rendering
   const [isClient, setIsClient] = useState(false);
+  const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const { theme, resolvedTheme } = useTheme();
-  
+
   // Determine if dark mode is active
-  const isDarkMode = theme === 'dark' || (theme === 'system' && resolvedTheme === 'dark');
-  
+  const isDarkMode =
+    theme === "dark" || (theme === "system" && resolvedTheme === "dark");
+
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -30,29 +39,31 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
     try {
       // Create a blob from the PDF document
       const blob = await renderToBlob();
-      
+
       // Create a URL for the blob
       const url = URL.createObjectURL(blob);
-      
+
       // Create an anchor element and trigger download
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
       link.download = fileName;
       document.body.appendChild(link);
       link.click();
-      
+
       // Clean up
       document.body.removeChild(link);
       setTimeout(() => URL.revokeObjectURL(url), 100);
     } catch (error) {
-      console.error('Error generating PDF:', error);
+      console.error("Error generating PDF:", error);
     }
   };
 
   // Function to render PDF to blob using @react-pdf/renderer
   const renderToBlob = async () => {
-    const { pdf } = await import('@react-pdf/renderer');
-    return await pdf(<PDFResultsDocument resultData={resultData} isDarkMode={isDarkMode} />).toBlob();
+    const { pdf } = await import("@react-pdf/renderer");
+    return await pdf(
+      <PDFResultsDocument resultData={resultData} isDarkMode={isDarkMode} />
+    ).toBlob();
   };
 
   if (!isClient) {
@@ -65,11 +76,7 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
   }
 
   return (
-    <Button 
-      variant="outline" 
-      size="sm" 
-      onClick={handleDownload}
-    >
+    <Button variant="outline" size="sm" onClick={handleDownload}>
       <Download className="w-4 h-4 mr-2" />
       Download Report
     </Button>
