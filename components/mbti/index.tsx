@@ -175,7 +175,6 @@ export default function MBTITest() {
             sections={currentTest.sections}
             onNext={handleNext}
             onPrev={handlePrev}
-            onSubmit={onSubmit}
             isCompleting={isCompleting}
           />
         </form>

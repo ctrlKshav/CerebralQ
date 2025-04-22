@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
 import { MBTIResponse } from "@/schema/mbti";
 import { motion } from "framer-motion";
@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface FormNavigationProps {
-  onSubmit: (data: MBTIResponse) => void;
   onNext: () => void;
   onPrev: () => void;
   isFirstStep: boolean;
@@ -19,20 +18,22 @@ interface FormNavigationProps {
   isCompleting?: boolean;
 }
 
-export function FormNavigation({ 
-  onSubmit,
-  onNext, 
-  onPrev, 
-  isFirstStep, 
+export function FormNavigation({
+  onNext,
+  onPrev,
+  isFirstStep,
   isLastStep,
   currentSectionId,
   totalSections,
   currentQuestionCount,
   totalQuestions,
-  isCompleting = false
+  isCompleting = false,
 }: FormNavigationProps) {
-  const { formState: { errors }, trigger } = useFormContext();
-  
+  const {
+    formState: { errors },
+    trigger,
+  } = useFormContext();
+
   // Only show errors that were triggered by the Next button
   const currentErrors = Object.keys(errors.answers || {}).length > 0;
 
@@ -41,11 +42,10 @@ export function FormNavigation({
   };
 
   const [progressPercentage, setProgressPercentage] = useState(0);
-  
 
   useEffect(() => {
     setProgressPercentage((currentQuestionCount / totalQuestions) * 100);
-  }, [currentQuestionCount])
+  }, [currentQuestionCount]);
 
   return (
     <div className="flex flex-col gap-4">
@@ -53,19 +53,23 @@ export function FormNavigation({
       <div className="flex flex-col gap-1 mb-2">
         {/* Progress bar - improved transition */}
         <div className="w-full h-1 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
-          <div 
+          <div
             className="h-full bg-purple-400 dark:bg-purple-500 transition-all duration-700 ease-out"
             style={{ width: `${progressPercentage}%` }}
           ></div>
         </div>
-        
+
         {/* Question counter */}
         <div className="flex justify-between text-xs text-gray-500 dark:text-gray-400">
-          <span>Section {currentSectionId} of {totalSections}</span>
-          <span>Question {currentQuestionCount} of {totalQuestions}</span>
+          <span>
+            Section {currentSectionId} of {totalSections}
+          </span>
+          <span>
+            Question {currentQuestionCount} of {totalQuestions}
+          </span>
         </div>
       </div>
-      
+
       {currentErrors && (
         <div className="text-sm text-red-500 text-center">
           Please answer all questions before proceeding
@@ -87,25 +91,19 @@ export function FormNavigation({
 
         {isLastStep ? (
           // Render submit button without motion wrapper when complete
-          <Button
-            type="submit"
-            variant={"default"}
-            className="gap-2"
-          >
-            Complete
+          <Button type="submit" variant={"default"} className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200">
+            {isCompleting ? "Submitting..." : "Complete"}
           </Button>
         ) : (
-          <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-            <Button
-              type="button"
-              onClick={handleNextClick}
-              variant={"default"}
-              className="gap-2"
-            >
-              Next
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </motion.div>
+          <Button
+            type="button"
+            onClick={handleNextClick}
+            variant={"default"}
+            className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200 "
+          >
+            Next
+            <ArrowRight className="h-4 w-4" />
+          </Button>
         )}
       </div>
     </div>

@@ -12,7 +12,6 @@ interface TestFormProps {
   sections: TestSection[];
   onNext: () => void;
   onPrev: () => void;
-  onSubmit: (data: MBTIResponse) => void;
   isCompleting?: boolean;
 }
 
@@ -22,7 +21,6 @@ export function TestForm({
   sections,
   onNext,
   onPrev,
-  onSubmit,
   isCompleting = false
 }: TestFormProps) {
   const { watch } = useFormContext();
@@ -88,7 +86,6 @@ export function TestForm({
         <div className="fixed bottom-0 left-0 right-0 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-md">
           <div className="max-w-3xl mx-auto px-8 py-6">
             <FormNavigation
-              onSubmit={onSubmit}
               onNext={onNext}
               onPrev={onPrev}
               isFirstStep={currentSectionId === 1}
