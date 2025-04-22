@@ -8,6 +8,7 @@ import SectionHeader from "../../../shared/SectionHeader";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import TraitCard from "./TraitCard";
 import TraitDetail from "./TraitDetail";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface PersonalityTraitsProps {
   personalityType: string;
@@ -35,8 +36,34 @@ export default function PersonalityTraits({
   // Media query hook to determine if we're on mobile
   const isMobile = useMediaQuery("(max-width: 768px)");
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2,
+        duration: 0.5
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4 }
+    }
+  };
+
   return (
-    <section
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
       className="py-12 px-4 sm:px-8 lg:px-16 relative overflow-hidden bg-background scroll-mt-16"
       id={id}
     >
@@ -47,7 +74,11 @@ export default function PersonalityTraits({
         sectionNumber={sectionNumber}
       />
 
-      <div
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
         className={cn(
           "grid gap-8 ",
           isMobile ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
@@ -56,21 +87,27 @@ export default function PersonalityTraits({
         {/* Trait scores list */}
         <Card className="shadow-none border-0 py-8 sm:p-8 sm:border sm:shadow space-y-10 flex flex-col justify-between">
           {Object.entries(traitScores).map(
-            ([trait, score]: [string, TraitScore]) => {
+            ([trait, score]: [string, TraitScore], index) => {
               const typedTrait = trait as keyof TraitScores;
 
               return (
-                <TraitCard
+                <motion.div
                   key={trait}
-                  trait={typedTrait}
-                  score={score}
-                  isSelected={selectedTrait === typedTrait}
-                  onSelect={setSelectedTrait}
-                  isMobile={isMobile}
-                  personalityType={personalityType}
-                  firstname={firstname}
-                  dashboardView={dashboardView}
-                />
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                >
+                  <TraitCard
+                    trait={typedTrait}
+                    score={score}
+                    isSelected={selectedTrait === typedTrait}
+                    onSelect={setSelectedTrait}
+                    isMobile={isMobile}
+                    personalityType={personalityType}
+                    firstname={firstname}
+                    dashboardView={dashboardView}
+                  />
+                </motion.div>
               );
             }
           )}
@@ -78,33 +115,44 @@ export default function PersonalityTraits({
 
         {/* Trait details card - only show on desktop */}
         {!isMobile && (
-          <Card className="p-8 flex flex-col">
-            <div className="space-y-6 flex flex-col h-full">
-              {(() => {
-                const traitKey = selectedTrait;
-                const score = traitScores[traitKey];
-                score;
-                const traitInfo =
-                  getPersonalityTraitDescriptions(personalityType)[traitKey];
-                const themedColor = !isLightTheme
-                  ? traitInfo.lightColor
-                  : traitInfo.darkColor;
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={selectedTrait}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4 }}
+              className="p-8 flex flex-col"
+            >
+              <Card className="h-full">
+                <div className="space-y-6 flex flex-col h-full p-8">
+                  {(() => {
+                    const traitKey = selectedTrait;
+                    const score = traitScores[traitKey];
+                    score;
+                    const traitInfo =
+                      getPersonalityTraitDescriptions(personalityType)[traitKey];
+                    const themedColor = !isLightTheme
+                      ? traitInfo.lightColor
+                      : traitInfo.darkColor;
 
-                return (
-                  <TraitDetail
-                    traitKey={traitKey}
-                    score={score}
-                    traitInfo={traitInfo}
-                    themedColor={themedColor}
-                    firstname={firstname}
-                    dashboardView={dashboardView}
-                  />
-                );
-              })()}
-            </div>
-          </Card>
+                    return (
+                      <TraitDetail
+                        traitKey={traitKey}
+                        score={score}
+                        traitInfo={traitInfo}
+                        themedColor={themedColor}
+                        firstname={firstname}
+                        dashboardView={dashboardView}
+                      />
+                    );
+                  })()}
+                </div>
+              </Card>
+            </motion.div>
+          </AnimatePresence>
         )}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }

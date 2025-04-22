@@ -14,7 +14,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar-custom";
-
+import { motion, AnimatePresence } from "framer-motion";
 import { sidebarNavData } from "@/data/report/sidebarNav";
 
 export function ReportSidebar({
@@ -63,18 +63,29 @@ export function ReportSidebar({
 
   return (
     <>
-      <div
-        className={`${isMobile ? "hidden" : "fixed"} z-50 transition-all duration-300 ease-in-out`}
-        style={{
-          top:
-            state === "expanded"
-              ? "calc(var(--header-height) + 1.7rem)"
-              : triggerButtonTopPosition,
-          left: state === "expanded" ? "calc(20rem - 4rem)" : "16px",
-        }}
-      >
-        <SidebarTrigger className={buttonStyle} />
-      </div>
+      <AnimatePresence>
+        <motion.div
+          className={`${isMobile ? "hidden" : "fixed"} z-50`}
+          style={{
+            top:
+              state === "expanded"
+                ? "calc(var(--header-height) + 1.7rem)"
+                : triggerButtonTopPosition,
+            left: state === "expanded" ? "calc(20rem - 4rem)" : "16px",
+          }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ 
+            opacity: 1, 
+            scale: 1,
+            transition: { duration: 0.3, ease: "easeOut" },
+          }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <SidebarTrigger className={buttonStyle} />
+        </motion.div>
+      </AnimatePresence>
 
       <Sidebar
         className="top-[--header-height] !h-[calc(100svh-var(--header-height))] w-[20rem] bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 border-r border-slate-200 dark:border-slate-800"
@@ -82,19 +93,34 @@ export function ReportSidebar({
         side={isMobile ? "right" : "left"}
         {...props}
       >
-        <SidebarHeader className="mb-4">
-          <SidebarMenu>
-            <SidebarMenuItem className="px-4 pt-6">
-              <div className="flex items-center justify-between w-full">
-                <span className="font-semibold text-xl text-slate-800 dark:text-white">
-                  CQ Report
-                </span>
-                {/* Empty placeholder to maintain spacing */}
-                <div className="w-9"></div>
-              </div>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarHeader>
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
+        >
+          <SidebarHeader className="mb-4">
+            <SidebarMenu>
+              <SidebarMenuItem className="px-4 pt-6">
+                <motion.div 
+                  className="flex items-center justify-between w-full"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.1, duration: 0.4 }}
+                >
+                  <motion.span 
+                    className="font-semibold text-xl text-slate-800 dark:text-white"
+                    whileHover={{ scale: 1.03 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    CQ Report
+                  </motion.span>
+                  {/* Empty placeholder to maintain spacing */}
+                  <div className="w-9"></div>
+                </motion.div>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarHeader>
+        </motion.div>
         <SidebarContent className="px-4">
           <SidebarNavMain items={sidebarNavData.navMain} />
         </SidebarContent>
