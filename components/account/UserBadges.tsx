@@ -17,7 +17,7 @@ export function UserBadges({ rank, isInsider }: UserBadgesProps) {
         className="text-sm border-none"
       >
         <Brain className="w-3 h-3 mr-1" />
-        {rank}
+        {rank ? rank?.charAt(0).toUpperCase() + rank?.slice(1).toLowerCase() : "NA"}
       </Badge>
       {isInsider && <InsiderBadge />}
     </div>
