@@ -23,7 +23,7 @@ export default function TestCard({ result, onViewDetailedReport }: TestCardProps
     switch (type) {
       
       default:
-        return "bg-gray-100/80 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300 border-gray-200 dark:border-gray-700/20";
+        return "bg-gray-100/30 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300 border-gray-200 dark:border-gray-700/20";
     }
   };
 
