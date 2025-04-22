@@ -254,7 +254,7 @@ export function SignupForm({
               src={
                 isNewsletterSignup
                   ? "/images/signup2_nl_creative.png"
-                  : "/images/signup1_book.jpeg"
+                  : "/images/signup1_illustration.jpg"
               }
               alt={
                 isNewsletterSignup
