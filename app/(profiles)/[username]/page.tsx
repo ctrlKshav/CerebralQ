@@ -34,7 +34,7 @@ export default function ProfilePage({
   }
   const { userData, setUserData } = userDataContext;
 
-  const profileUsername = searchParams.username;
+  const profileUsername = decodeURIComponent(searchParams.username);
   const [profileData, setProfileData] = useState<UserProfile | null>(null);
 
   const [loading, setLoading] = useState(true);
