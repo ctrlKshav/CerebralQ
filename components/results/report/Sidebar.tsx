@@ -23,7 +23,7 @@ export function ReportSidebar({
   const { isMobile, state, activeSection, setActiveSection } = useSidebar();
   const [hasAnimated, setHasAnimated] = useState(false);
 
-  const triggerButtonTopPosition = "calc(var(--header-height) + 1.5rem)";
+  const triggerButtonTopPosition = "calc(var(--header-height) + 1.7rem)";
   // Common button styles
   const buttonStyle =
     "h-9 w-9 bg-white hover:bg-white dark:bg-slate-950/80 dark:hover:bg-slate-950/80 z-50";
@@ -68,7 +68,7 @@ export function ReportSidebar({
     const timer = setTimeout(() => {
       setHasAnimated(true);
     }, 300);
-    
+
     return () => clearTimeout(timer);
   }, []);
 
@@ -79,14 +79,18 @@ export function ReportSidebar({
         style={{
           top: triggerButtonTopPosition,
           left: state === "expanded" ? "calc(20rem - 4rem)" : "16px",
-          transition: "left 0.3s ease-out"
+          transition: "left 0.3s ease-out",
         }}
         initial={!hasAnimated ? { opacity: 0, scale: 0.9 } : false}
-        animate={!hasAnimated ? { 
-          opacity: 1, 
-          scale: 1,
-          transition: { duration: 0.3, ease: "easeOut" },
-        } : {}}
+        animate={
+          !hasAnimated
+            ? {
+                opacity: 1,
+                scale: 1,
+                transition: { duration: 0.3, ease: "easeOut" },
+              }
+            : {}
+        }
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
@@ -99,34 +103,18 @@ export function ReportSidebar({
         side={isMobile ? "right" : "left"}
         {...props}
       >
-        <motion.div
-          initial={!hasAnimated ? { opacity: 0, x: -20 } : false}
-          animate={!hasAnimated ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-        >
-          <SidebarHeader className="mb-4">
-            <SidebarMenu>
-              <SidebarMenuItem className="px-4 pt-6">
-                <motion.div 
-                  className="flex items-center justify-between w-full"
-                  initial={!hasAnimated ? { opacity: 0 } : false}
-                  animate={!hasAnimated ? { opacity: 1 } : {}}
-                  transition={{ delay: 0.1, duration: 0.4 }}
-                >
-                  <motion.span 
-                    className="font-semibold text-xl text-slate-800 dark:text-white"
-                    whileHover={{ scale: 1.03 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    CQ Report
-                  </motion.span>
-                  {/* Empty placeholder to maintain spacing */}
-                  <div className="w-9"></div>
-                </motion.div>
-              </SidebarMenuItem>
-            </SidebarMenu>
-          </SidebarHeader>
-        </motion.div>
+        <SidebarHeader className="mb-4">
+          <SidebarMenu>
+            <SidebarMenuItem className="px-4 pt-6">
+              <div className="flex items-center justify-between w-full">
+                <span className="font-semibold text-xl text-slate-800 dark:text-white">
+                  CQ Report
+                </span>
+                
+              </div>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarHeader>
         <SidebarContent className="px-4">
           <SidebarNavMain items={sidebarNavData.navMain} />
         </SidebarContent>
