@@ -1,310 +1,285 @@
-﻿import { TestData } from "@/types/tests/mbti/testQuestions";
+﻿import { MBTI_TEST_ID } from "@/lib/constants";
+import { TestData } from "@/types/tests/mbti/testQuestions";
+
+export const getTestName = () => {
+  return testData[0].id;
+};
 
 export const testData: TestData[] = [
   {
-    "id": "ecf371b1-f39e-4f37-9c19-4b722f9adfc6",
-    "test_name": "MBTI Personality Test",
-    "sections": [
+    id: MBTI_TEST_ID,
+    test_name: "MBTI Personality Test",
+    sections: [
       {
-        "id": 1,
-        "title": "Energy Orientation",
-        "description": "Choose the option that feels most natural to you",
-        "dimension": "E-I",
-        "icon": "Battery"
+        id: 1,
+        title: "Energy Orientation",
+        description: "Choose what feels most natural to you",
+        dimension: "E-I",
       },
       {
-        "id": 2,
-        "title": "Information Processing",
-        "description": "Select the statement that resonates more",
-        "dimension": "S-N",
-        "icon": "Lightbulb"
+        id: 2,
+        title: "Information Processing",
+        description: "Select the option that resonates most",
+        dimension: "S-N",
       },
       {
-        "id": 3,
-        "title": "Decision Making",
-        "description": "Which approach feels more natural?",
-        "dimension": "T-F",
-        "icon": "Brain"
+        id: 3,
+        title: "Decision Making",
+        description: "Pick your preferred approach",
+        dimension: "T-F",
       },
       {
-        "id": 4,
-        "title": "Lifestyle Approach",
-        "description": "Choose your preferred style",
-        "dimension": "J-P",
-        "icon": "Compass"
-      }
+        id: 4,
+        title: "Lifestyle Approach",
+        description: "Choose your typical style",
+        dimension: "J-P",
+      },
     ],
-    "questions": [
+    questions: [
+      // Energy Orientation (E-I) - Section 1 (4 questions, left = E, right = I)
       {
-        "id": "1",
-        "text": "I prefer spending time alone rather than interacting with many people at parties.",
-        "type": "likert",
-        "icon": "Users",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "1",
+        text: "I love engaging with new people at social events.",
+        type: "likert",
+        dominantSide: "left",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: "Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "E-I",
-        "section": 1
+        dimension: "E-I",
+        section: 1,
       },
       {
-        "id": "2",
-        "text": "I tend to be more speculative than realistic.",
-        "type": "likert",
-        "icon": "Clipboard",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "2",
+        text: "I feel most at ease when spending time alone.",
+        type: "likert",
+        dominantSide: "right",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "S-N",
-        "section": 2
+        dimension: "E-I",
+        section: 1,
       },
       {
-        "id": "3",
-        "text": "I prefer exploring possibilities and concepts rather than focusing on established facts.",
-        "type": "likert",
-        "icon": "AlertTriangle",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "3",
+        text: "I enjoy group activities more than solo tasks.",
+        type: "likert",
+        dominantSide: "left",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "S-N",
-        "section": 2
+        dimension: "E-I",
+        section: 1,
       },
       {
-        "id": "4",
-        "text": "I am more impressed by emotions than principles.",
-        "type": "likert",
-        "icon": "Award",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "4",
+        text: "I prefer quiet settings over bustling environments.",
+        type: "likert",
+        dominantSide: "right",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "T-F",
-        "section": 3
+        dimension: "E-I",
+        section: 1,
+      },
+      // Information Processing (S-N) - Section 2 (4 questions, left = S, right = N)
+      {
+        id: "5",
+        text: "I focus on what’s happening now rather than what could be.",
+        type: "likert",
+        dominantSide: "left",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
+        ],
+        dimension: "S-N",
+        section: 2,
       },
       {
-        "id": "5",
-        "text": "I am more drawn toward the touching than the convincing.",
-        "type": "likert",
-        "icon": "Heart",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "6",
+        text: "I enjoy pondering future possibilities over current realities.",
+        type: "likert",
+        dominantSide: "right",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "T-F",
-        "section": 3
+        dimension: "S-N",
+        section: 2,
       },
       {
-        "id": "6",
-        "text": "I prefer to work flexibly rather than to strict deadlines.",
-        "type": "likert",
-        "icon": "Clock",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "7",
+        text: "I trust tangible evidence more than intuitive hunches.",
+        type: "likert",
+        dominantSide: "left",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "J-P",
-        "section": 4
+        dimension: "S-N",
+        section: 2,
       },
       {
-        "id": "7",
-        "text": "I tend to make decisions somewhat impulsively rather than after careful consideration.",
-        "type": "likert",
-        "icon": "Crosshair",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "8",
+        text: "I prefer exploring creative ideas over sticking to facts.",
+        type: "likert",
+        dominantSide: "right",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "J-P",
-        "section": 4
+        dimension: "S-N",
+        section: 2,
+      },
+      // Decision Making (T-F) - Section 3 (4 questions, left = T, right = F)
+      {
+        id: "9",
+        text: "I rely on logical reasoning over emotions when deciding.",
+        type: "likert",
+        dominantSide: "left",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
+        ],
+        dimension: "T-F",
+        section: 3,
       },
       {
-        "id": "8",
-        "text": "After socializing, I need quiet time alone to recharge.",
-        "type": "likert",
-        "icon": "Battery",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "10",
+        text: "I prioritize my values over logic in tough choices.",
+        type: "likert",
+        dominantSide: "right",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "E-I",
-        "section": 1
+        dimension: "T-F",
+        section: 3,
       },
       {
-        "id": "9",
-        "text": "I am more attracted to imaginative people than sensible people.",
-        "type": "likert",
-        "icon": "Anchor",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "11",
+        text: "I value fairness over emotional harmony in decisions.",
+        type: "likert",
+        dominantSide: "left",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "S-N",
-        "section": 2
+        dimension: "T-F",
+        section: 3,
       },
       {
-        "id": "10",
-        "text": "I am more interested in what is possible than what is actual.",
-        "type": "likert",
-        "icon": "Map",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "12",
+        text: "I consider others’ feelings more than objective facts.",
+        type: "likert",
+        dominantSide: "right",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "S-N",
-        "section": 2
+        dimension: "T-F",
+        section: 3,
+      },
+      // Lifestyle Approach (J-P) - Section 4 (4 questions, left = J, right = P)
+      {
+        id: "13",
+        text: "I prefer a well-planned day over a spontaneous one.",
+        type: "likert",
+        dominantSide: "left",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
+        ],
+        dimension: "J-P",
+        section: 4,
       },
       {
-        "id": "11",
-        "text": "I need quiet time to myself after social events.",
-        "type": "likert",
-        "icon": "Zap",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "14",
+        text: "I enjoy going with the flow rather than sticking to plans.",
+        type: "likert",
+        dominantSide: "right",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "E-I",
-        "section": 1
+        dimension: "J-P",
+        section: 4,
       },
       {
-        "id": "12",
-        "text": "I rely on abstract ideas more than facts and details.",
-        "type": "likert",
-        "icon": "FileText",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "15",
+        text: "I feel best when my tasks are organized and completed.",
+        type: "likert",
+        dominantSide: "left",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "S-N",
-        "section": 2
+        dimension: "J-P",
+        section: 4,
       },
       {
-        "id": "13",
-        "text": "I make decisions based on emotions rather than logic.",
-        "type": "likert",
-        "icon": "GitBranch",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
+        id: "16",
+        text: "I prefer flexibility over a rigid schedule.",
+        type: "likert",
+        dominantSide: "right",
+        options: [
+          { value: "1", label: "Strongly Disagree" },
+          { value: "2", label: "Disagree" },
+          { value: "3", label: "Neutral" },
+          { value: "4", label: " Agree" },
+          { value: "5", label: "Strongly Agree" },
         ],
-        "dimension": "T-F",
-        "section": 3
+        dimension: "J-P",
+        section: 4,
       },
-      {
-        "id": "14",
-        "text": "I prefer being spontaneous rather than planning things in advance.",
-        "type": "likert",
-        "icon": "Calendar",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
-        ],
-        "dimension": "J-P",
-        "section": 4
-      },
-      {
-        "id": "15",
-        "text": "I find it difficult to initiate conversations with new people.",
-        "type": "likert",
-        "icon": "Coffee",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
-        ],
-        "dimension": "E-I",
-        "section": 1
-      },
-      {
-        "id": "16",
-        "text": "I prefer metaphorical and conceptual explanations over concrete and literal ones.",
-        "type": "likert",
-        "icon": "Book",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
-        ],
-        "dimension": "S-N",
-        "section": 2
-      },
-      {
-        "id": "17",
-        "text": "I prioritize personal values and harmony over objective criteria when making decisions.",
-        "type": "likert",
-        "icon": "Filter",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
-        ],
-        "dimension": "T-F",
-        "section": 3
-      },
-      {
-        "id": "18",
-        "text": "I prefer flexible and adaptable environments over organized and structured ones.",
-        "type": "likert",
-        "icon": "Home",
-        "options": [
-          { "value": "1", "label": "Strongly Disagree" },
-          { "value": "2", "label": "Disagree" },
-          { "value": "3", "label": "Neutral" },
-          { "value": "4", "label": "Agree" },
-          { "value": "5", "label": "Strongly Agree" }
-        ],
-        "dimension": "J-P",
-        "section": 4
-      }
-    ]
-  }
+    ],
+  },
 ];
