@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { SidebarNavMain } from "@/components/results/report/SidebarNavMain";
 import {
   Sidebar,
@@ -21,6 +21,7 @@ export function ReportSidebar({
   ...props
 }: React.ComponentProps<typeof Sidebar>) {
   const { isMobile, state, activeSection, setActiveSection } = useSidebar();
+  const [hasAnimated, setHasAnimated] = useState(false);
 
   const triggerButtonTopPosition = "calc(var(--header-height) + 1.5rem)";
   // Common button styles
@@ -61,31 +62,36 @@ export function ReportSidebar({
     });
   }, [activeSection]);
 
+  // Set hasAnimated to true after initial animation
+  useEffect(() => {
+    // Set hasAnimated to true after a small delay to ensure animation runs once
+    const timer = setTimeout(() => {
+      setHasAnimated(true);
+    }, 300);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
-      <AnimatePresence>
-        <motion.div
-          className={`${isMobile ? "hidden" : "fixed"} z-50`}
-          style={{
-            top:
-              state === "expanded"
-                ? "calc(var(--header-height) + 1.7rem)"
-                : triggerButtonTopPosition,
-            left: state === "expanded" ? "calc(20rem - 4rem)" : "16px",
-          }}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ 
-            opacity: 1, 
-            scale: 1,
-            transition: { duration: 0.3, ease: "easeOut" },
-          }}
-          exit={{ opacity: 0, scale: 0.9 }}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <SidebarTrigger className={buttonStyle} />
-        </motion.div>
-      </AnimatePresence>
+      <motion.div
+        className={`${isMobile ? "hidden" : "fixed"} z-50`}
+        style={{
+          top: triggerButtonTopPosition,
+          left: state === "expanded" ? "calc(20rem - 4rem)" : "16px",
+          transition: "left 0.3s ease-out"
+        }}
+        initial={!hasAnimated ? { opacity: 0, scale: 0.9 } : false}
+        animate={!hasAnimated ? { 
+          opacity: 1, 
+          scale: 1,
+          transition: { duration: 0.3, ease: "easeOut" },
+        } : {}}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.95 }}
+      >
+        <SidebarTrigger className={buttonStyle} />
+      </motion.div>
 
       <Sidebar
         className="top-[--header-height] !h-[calc(100svh-var(--header-height))] w-[20rem] bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 border-r border-slate-200 dark:border-slate-800"
@@ -94,8 +100,8 @@ export function ReportSidebar({
         {...props}
       >
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={!hasAnimated ? { opacity: 0, x: -20 } : false}
+          animate={!hasAnimated ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.4, ease: "easeOut" }}
         >
           <SidebarHeader className="mb-4">
@@ -103,8 +109,8 @@ export function ReportSidebar({
               <SidebarMenuItem className="px-4 pt-6">
                 <motion.div 
                   className="flex items-center justify-between w-full"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  initial={!hasAnimated ? { opacity: 0 } : false}
+                  animate={!hasAnimated ? { opacity: 1 } : {}}
                   transition={{ delay: 0.1, duration: 0.4 }}
                 >
                   <motion.span 
