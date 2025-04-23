@@ -32,7 +32,6 @@ export async function POST(request: Request) {
               MESSAGE:
               ---------------------------
               ${message}`,
-      replyTo: email,
     });
 
     if (error) {
