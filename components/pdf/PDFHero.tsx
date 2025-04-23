@@ -31,8 +31,8 @@ const createHeroStyles = (isDarkMode = false) => {
     },
     logoContainer: {
       width: 92,
-      height: 68,
-      marginBottom: 20,
+      height: 60,
+      marginBottom: 15,
     },
     logo: {
       width: "100%",

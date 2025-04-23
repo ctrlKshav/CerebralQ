@@ -67,7 +67,7 @@ const PDFGrowthSection: React.FC<PDFGrowthSectionProps> = ({
         description={summary}
         firstname={firstname}
         isDarkMode={isDarkMode}
-        imageSrc="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/growthJourney_zqyq0y.jpg"
+        imageSrc="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393725/growthJourney_xq7axf.jpg"
       />
 
       {/* Main content section */}
