@@ -10,6 +10,7 @@ export interface TestQuestion {
   id: string;
   text: string;
   description?: string;
+  dominantSide?: "left" | "right";
   type: "likert";
   icon?: string;
   iconColor?: string;
