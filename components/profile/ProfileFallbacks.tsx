@@ -36,7 +36,7 @@ export function NoTestsFallback({ username, profileImageUrl, bio }: { username: 
         <div className="text-center mb-12">
           <Avatar className="h-24 w-24 mx-auto mb-4">
             <AvatarImage 
-              src={profileImageUrl || "/images/profile-avatars/avatarPlaceholder.png"}
+              src={profileImageUrl || "/images/profileAvatars/avatarPlaceholder.png"}
               alt={`${username}'s profile`}
             />
             <AvatarFallback className="text-3xl font-bold">
@@ -75,7 +75,7 @@ export function IncompleteDataFallback({ username, profileImageUrl, bio }: { use
         <div className="text-center mb-12">
           <Avatar className="h-24 w-24 mx-auto mb-4">
             <AvatarImage 
-              src={profileImageUrl || "/images/profile-avatars/avatarPlaceholder.png"}
+              src={profileImageUrl || "/images/profileAvatars/avatarPlaceholder.png"}
               alt={`${username}'s profile`}
             />
             <AvatarFallback className="text-3xl font-bold">

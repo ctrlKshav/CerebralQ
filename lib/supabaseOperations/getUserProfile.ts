@@ -55,7 +55,7 @@ export async function getUserProfileByUsername(
           username: userData.username || "",
           firstname: userData.first_name || "",
           profile_image_url:
-            userData.profile_image_url || "/placeholder.svg?height=128&width=128",
+            userData.profile_image_url || "/images/placeholder.svg?height=128&width=128",
           bio: userData.bio || "",
           tests_taken: userData.tests_taken || 0,
           last_test_date: userData.last_test_date || "",
@@ -104,7 +104,7 @@ export async function getUserProfileByUsername(
           username: userData.username || "",
           firstname: userData.first_name || "",
           profile_image_url:
-            userData.profile_image_url || "/placeholder.svg?height=128&width=128",
+            userData.profile_image_url || "/images/placeholder.svg?height=128&width=128",
           bio: userData.bio || "",
           tests_taken: userData.tests_taken || 0,
           last_test_date: userData.last_test_date || "",
@@ -163,7 +163,7 @@ export async function getUserProfileByUsername(
         username: userData.username || "",
         firstname: userData.first_name || "",
         profile_image_url:
-          userData.profile_image_url || "/placeholder.svg?height=128&width=128",
+          userData.profile_image_url || "/images/placeholder.svg?height=128&width=128",
         bio: userData.bio || "",
         tests_taken: userData.tests_taken || 0,
         last_test_date: userData.last_test_date || "",

@@ -38,10 +38,10 @@ export function AvatarEditor({
 
   // Predefined avatar options
   const avatarOptions = [
-    "/images/profile-avatars/avatar1.svg",
-    "/images/profile-avatars/avatar2.svg",
-    "/images/profile-avatars/avatar3.svg",
-    "/images/profile-avatars/avatar4.svg",
+    "/images/profileAvatars/avatar1.svg",
+    "/images/profileAvatars/avatar2.svg",
+    "/images/profileAvatars/avatar3.svg",
+    "/images/profileAvatars/avatar4.svg",
   ];
 
   const handleSaveAvatar = async () => {
@@ -132,7 +132,7 @@ export function AvatarEditor({
   return (
     <div className="relative self-center md:self-auto">
       <Avatar className="h-24 w-24 md:h-32 md:w-32 ring-3 md:ring-4 ring-primary/50 ring-offset-2 md:ring-offset-4 ring-offset-background shadow-md">
-        <AvatarImage src={profileImage || "/images/profile-avatars/avatarPlaceholder.png"} alt={username || "Avatar"} />
+        <AvatarImage src={profileImage || "/images/profileAvatars/avatarPlaceholder.png"} alt={username || "Avatar"} />
         <AvatarFallback>
           <User className="h-12 w-12 md:h-16 md:w-16" />
         </AvatarFallback>

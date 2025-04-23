@@ -253,8 +253,8 @@ export function SignupForm({
             <Image
               src={
                 isNewsletterSignup
-                  ? "/images/signup2_nl_creative.png"
-                  : "/images/signup1_illustration.jpg"
+                  ? "/images/authPages/signup2_nl_creative.png"
+                  : "/images/authPages/signup1_illustration.jpg"
               }
               alt={
                 isNewsletterSignup
