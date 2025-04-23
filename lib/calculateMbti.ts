@@ -25,13 +25,24 @@ export function calculateMBTI(answers: Answers): MBTIResult {
     const answer = answers[question.id];
     if (answer === undefined) return;
 
-    const dimension = question.dimension;
-    // Convert selectedScore from string to number
-    const numericScore = Number(answer.selectedScore);
-    if (numericScore > 3) {
-      dimensions[dimension].right += numericScore - 3;
-    } else if (numericScore < 3) {
-      dimensions[dimension].left += 3 - numericScore;
+    if (question.dominantSide && question.dominantSide === "right") {
+      const dimension = question.dimension;
+      // Convert selectedScore from string to number
+      const numericScore = Number(answer.selectedScore);
+      if (numericScore > 3) {
+        dimensions[dimension].right += numericScore - 3;
+      } else if (numericScore < 3) {
+        dimensions[dimension].left += 3 - numericScore;
+      }
+    } else {
+      const dimension = question.dimension;
+      // Convert selectedScore from string to number
+      const numericScore = Number(answer.selectedScore);
+      if (numericScore > 3) {
+        dimensions[dimension].left += numericScore - 3;
+      } else if (numericScore < 3) {
+        dimensions[dimension].right += 3 - numericScore;
+      }
     }
   });
 
