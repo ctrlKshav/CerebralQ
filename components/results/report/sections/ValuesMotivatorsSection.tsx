@@ -63,7 +63,7 @@ const ValuesMotivatorSection = ({
         <ActionStepsCard
           firstname={firstname}
           steps={actionItems}
-          imageSrc="/images/reportSections/valuesMotivators.jpg"
+          imageSrc="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393724/valuesMotivators_l2yvwd.jpg"
           imageAlt="Values and motivators"
           className="mb-16 mx-auto"
           objectFit="object-cover object-bottom"

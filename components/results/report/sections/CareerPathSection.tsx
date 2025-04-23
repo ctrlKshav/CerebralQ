@@ -73,7 +73,7 @@ const CareerPathSection = ({
           <ActionStepsCard
             firstname={firstname}
             steps={actionSteps}
-            imageSrc="/images/reportSections/careerPath.jpg"
+            imageSrc="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393727/careerPath_orckon.jpg"
             imageAlt="Team collaboration"
             className="mb-16"
             objectFit="object-fit"

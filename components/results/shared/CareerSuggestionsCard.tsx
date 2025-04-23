@@ -41,7 +41,7 @@ export default function CareerSuggestionsCard({
     };
 
     return (
-      "/images/reportSections/careerSuggestions.jpg"
+      "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393726/careerSuggestions_utvtsq.jpg"
     );
   };
 

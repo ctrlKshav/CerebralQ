@@ -94,7 +94,7 @@ const RelationshipSection = ({
               steps={relationship.actionSteps}
               imageSrc={
                 relationship.title === "Relationships"
-                  ? "/images/reportSections/relationship.jpeg"
+                  ? "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393725/relationship_xvrs0h.jpg"
                   : relationship.title === "Friendships"
                     ? "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000&auto=format&fit=crop"
                     : "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop"
