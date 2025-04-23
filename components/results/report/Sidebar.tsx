@@ -14,7 +14,7 @@ import {
   SidebarTrigger,
   useSidebar,
 } from "@/components/ui/sidebar-custom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { sidebarNavData } from "@/data/report/sidebarNav";
 
 export function ReportSidebar({
@@ -68,9 +68,19 @@ export function ReportSidebar({
     const timer = setTimeout(() => {
       setHasAnimated(true);
     }, 300);
-
+    
     return () => clearTimeout(timer);
   }, []);
+
+  // Header animation variants
+  const headerVariants = {
+    hidden: { y: -10, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { duration: 0.4, ease: "easeOut", delay: 0.1 }
+    }
+  };
 
   return (
     <>
@@ -103,18 +113,28 @@ export function ReportSidebar({
         side={isMobile ? "right" : "left"}
         {...props}
       >
-        <SidebarHeader className="mb-4">
-          <SidebarMenu>
-            <SidebarMenuItem className="px-4 pt-6">
-              <div className="flex items-center justify-between w-full">
-                <span className="font-semibold text-xl text-slate-800 dark:text-white">
-                  CQ Report
-                </span>
-                
-              </div>
-            </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarHeader>
+        <motion.div
+          initial={!hasAnimated ? "hidden" : false}
+          animate={!hasAnimated ? "visible" : false}
+          variants={headerVariants}
+        >
+          <SidebarHeader className="mb-4">
+            <SidebarMenu>
+              <SidebarMenuItem className="px-4 pt-6">
+                <div className="flex items-center justify-between w-full">
+                  <motion.span 
+                    className="font-semibold text-xl text-slate-800 dark:text-white"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    CQ Report
+                  </motion.span>
+                  <div className="w-9"></div>
+                </div>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarHeader>
+        </motion.div>
         <SidebarContent className="px-4">
           <SidebarNavMain items={sidebarNavData.navMain} />
         </SidebarContent>
