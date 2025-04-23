@@ -40,12 +40,11 @@ export function SignupForm({
   } | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  
+
   // making sure we are always on the top of the scroll when the page loads
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   // Check if user came from newsletter link
   const source = searchParams.get("source");
@@ -253,8 +252,8 @@ export function SignupForm({
             <Image
               src={
                 isNewsletterSignup
-                  ? "/images/authPages/signup2_nl_creative.png"
-                  : "/images/authPages/signup1_illustration.jpg"
+                  ? "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393435/signup2_nl_creative_ht3plc.png"
+                  : "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393435/signup1_illustration_b3amci.jpg"
               }
               alt={
                 isNewsletterSignup

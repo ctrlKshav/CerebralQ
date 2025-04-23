@@ -144,7 +144,7 @@ export function SigninForm({
           </form>
           <div className="relative hidden bg-muted md:block">
             <Image
-              src="/images/authPages/signin1_illustration.jpg"
+              src="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393436/signin1_illustration_uk5gwz.jpg"
               alt="Cerebral Quotient "
               layout="fill"
               objectFit="cover"

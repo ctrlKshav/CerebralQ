@@ -100,7 +100,7 @@ export function ForgotPasswordForm({
             </div>
           </form>
           <div className="relative hidden bg-muted md:block">
-            <Image src="/images/authPages/forgotpassword_tablecoat.jpeg" alt="Cerebral Quotient" layout="fill" objectFit="cover" />
+            <Image src="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393435/forgotpassword_tablecoat_oo68q5.jpg" alt="Cerebral Quotient" layout="fill" objectFit="cover" />
           </div>
         </CardContent>
       </Card>
