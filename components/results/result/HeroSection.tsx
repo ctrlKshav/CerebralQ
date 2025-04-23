@@ -29,27 +29,28 @@ const HeroSection = ({
   historyPage = false,
 }: HeroSectionProps) => {
   const alias = personalityDescription.alias;
-  const description = personalityDescription.description(firstname,false);
+  const description = personalityDescription.description(firstname, false);
 
-  // Map personality types to their respective image paths
+  // Use high-quality professional Unsplash images for each personality type
   const personalityImages: Record<string, string> = {
-    "INTJ": "/images/personalityTypes/intj.jpg",
-    "INTP": "/images/personalityTypes/intp.jpg",
-    "INFJ": "/images/personalityTypes/infj.jpg",
-    "INFP": "/images/personalityTypes/infp.jpg",
-    "ISFJ": "/images/personalityTypes/isfj.jpg",
-    "ISFP": "/images/personalityTypes/isfp.jpg",
-    "ISTJ": "/images/personalityTypes/istj.jpg",
-    "ISTP": "/images/personalityTypes/istp.jpg",
-    "ENTP": "/images/personalityTypes/entp.jpg",
-    "ENTJ": "/images/personalityTypes/entj.jpg",
-    "ENFJ": "/images/personalityTypes/enfj.jpg",
-    "ENFP": "/images/personalityTypes/enfp.jpg",
-    "ESFJ": "/images/personalityTypes/esfj.jpg",
-    "ESFP": "/images/personalityTypes/esfp.jpg",
-    "ESTJ": "/images/personalityTypes/estj.jpg",
-    "ESTP": "/images/personalityTypes/estp.jpg",
-    default: "/images/personalityTypes/infj.jpg",
+    INTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/intj_tvtwmy.jpg",
+    INTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/intp_njepy8.jpg",
+    ISFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/isfp_vk5cdp.jpg",
+    INFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/infj_ytry83.jpg",
+    ISFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/isfj_qhxdy3.jpg",
+    ISTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/istp_zpck32.jpg",
+    ISTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/istj_myx8ge.jpg",
+    INFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/infp_vir8zp.jpg",
+    ENFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/enfp_mj348n.jpg",
+    ENFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/enfj_ytry83.jpg",
+    ESTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/estj_i4o71p.jpg",
+    ENTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/entp_utpbo4.jpg",
+    ENTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/entj_wcww09.jpg",
+    ESFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/esfj_d2jmws.jpg",
+    ESTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/estp_xgu6es.jpg",
+    ESFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/esfp_eycynf.jpg",
+    default:
+      "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/enfj_ytry83.jpg",
   };
 
   const imagePath =
@@ -149,9 +150,7 @@ const HeroSection = ({
                     : "Share Results"}
               </Button>
               <Link href={`${historyPage ? "/account/report" : "/report"}`}>
-                <Button variant="outline">
-                  View Detailed Report
-                </Button>
+                <Button variant="outline">View Detailed Report</Button>
               </Link>
             </div>
           </div>

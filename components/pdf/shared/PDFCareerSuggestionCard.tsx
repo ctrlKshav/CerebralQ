@@ -80,7 +80,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
         "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
     };
 
-    return "/images/reportSections/careerSuggestions.jpg";
+    return "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/careerSuggestions_zqyq0y.jpg";
   };
 
   // We will only display up to 3 traits per card

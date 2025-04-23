@@ -69,7 +69,7 @@ const PDFValuesAndMotivatorsSection: React.FC<
         description={summary}
         firstname={firstname}
         isDarkMode={isDarkMode}
-        imageSrc="/images/reportSections/valuesMotivators.jpg"
+        imageSrc="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/valuesMotivators_zqyq0y.jpg"
       />
 
       {/* Main content section */}

@@ -88,7 +88,7 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
   firstname,
   isDarkMode = false,
   pageNumber = 1,
-  imageSrc = "/images/reportSections/relationship.jpeg",
+  imageSrc = "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/relationship_zqyq0y.jpg",
   logoUrl = "/images/cq-logo.png",
 }) => {
   const styles = createRelationshipSectionStyles(isDarkMode);
