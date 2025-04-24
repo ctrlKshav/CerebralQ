@@ -90,7 +90,7 @@ const HeroSection = ({
   return (
     <section
       id={id}
-      className="bg-background flex flex-col justify-center items-center py-16 px-4 overflow-hidden relative"
+      className="bg-background flex flex-col justify-center items-center py-20 px-4 overflow-hidden relative"
     >
       <div className="max-w-6xl mx-auto text-center md:text-left">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center  ">
@@ -156,13 +156,13 @@ const HeroSection = ({
           </div>
 
           {/* Main personality image */}
-          <div className="justify-self-end relative w-fit max-w-full h-fit md:h-full max-h-[80vh] flex items-center justify-center">
+          <div className="justify-self-center mt-4 md:mt-0 md:justify-self-end relative w-fit max-w-full h-fit md:h-full max-h-[80vh] flex items-center justify-center">
             <Image
               src={imagePath}
               quality={100}
               alt={`${personalityType} - ${alias} personality type illustration`}
-              width={400}
-              height={400}
+              width={500}
+              height={500}
               priority
               className="w-full h-full object-cover z-10 rounded-md shadow-lg"
             />
