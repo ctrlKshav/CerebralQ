@@ -49,7 +49,7 @@ export function ReportSidebar({
 
   // Update active item based on scroll position
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, {passive: true});
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
