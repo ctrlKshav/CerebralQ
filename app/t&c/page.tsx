@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { PrivacyPolicy } from "@/components/privacy-policy/PrivacyPolicy";
+import { TermsConditions } from "@/components/privacy-policy/TermsConditions";
 import CQLogo from "@/components/CQLogo";
 import Link from "next/link";
 
@@ -10,7 +10,7 @@ export default function Page() {
         <CQLogo className="w-24 h-24 sm:w-28 sm:h-28" />
       </Link>
       <div className="container py-10">
-        <PrivacyPolicy />
+        <TermsConditions />
       </div>
     </div>
   );
