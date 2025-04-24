@@ -3,78 +3,93 @@
 export const ISFPData: PersonalityDatabase = {
   career: {
     summary:
-      "You’re a total gem in jobs where you can express yourself and make things beautiful—like graphic design, photography, or even something hands-on like gardening. You love roles that let you create and explore, but you might feel stuck if you’re forced into a strict routine or a job that doesn’t let you be yourself.",
+      `You thrive in creative, independent roles that allow you to express your values, {firstname}. Your gentle authenticity and eye for beauty make you valuable in artistic fields and helping professions. You prefer flexible environments that respect individuality and allow you to make a tangible difference.`,
     superpowers: [
       {
-        title: "Being Creative",
+        title: `Aesthetic Sensitivity`,
         description:
-          "You bring a unique touch to everything, {firstname}—like designing a poster that everyone loves.",
+          `You have a natural eye for beauty and design—instinctively knowing how to create visually pleasing arrangements or spaces.`,
       },
       {
-        title: "Staying Present",
+        title: `Value-Driven Actions`,
         description:
-          "You’re great at focusing on the task at hand, like perfecting a photo edit without distractions.",
+          `You live your values through your work—like choosing assignments that align with your personal ethics and passions.`,
       },
     ],
     growthAreas: [
       {
-        title: "Planning Ahead",
+        title: `Long-term Planning`,
         description:
-          "You might avoid long-term plans—like not thinking about next month’s deadlines.",
+          `You might focus on present enjoyment over future goals—like pursuing interesting projects without considering career trajectory.`,
       },
       {
-        title: "Speaking Up",
+        title: `Self-Promotion`,
         description:
-          "You might hold back your ideas—like not sharing a cool concept in a team meeting.",
+          `You may understate your achievements—like downplaying your contributions during performance reviews.`,
       },
     ],
     suggestions: [
       {
-        title: "Interior Designer",
+        title: `Art Director`,
+        matchPercentage: 92,
+        description:
+          `Your artistic vision and attention to aesthetic detail make you perfect for guiding the visual elements of creative projects.`,
+        qualityMatches: [
+          {
+            title: `Creativity`,
+            description: `You naturally envision unique artistic directions.`,
+          },
+          {
+            title: `Aesthetic Sensibility`,
+            description: `You have an innate understanding of visual harmony.`,
+          },
+        ],
+      },
+      {
+        title: `Veterinary Technician`,
         matchPercentage: 90,
         description:
-          "Your eye for beauty and harmony makes you a natural at transforming spaces into stunning, functional works of art.",
+          `Your gentle nature and practical caring approach make you ideal for working hands-on with animals in need.`,
         qualityMatches: [
           {
-            title: "Creativity",
-            description: "You bring unique flair to every project.",
+            title: `Compassion`,
+            description: `You connect deeply with animals and their needs.`,
           },
           {
-            title: "Attention to Detail",
-            description:
-              "You notice the little things that make a big difference.",
+            title: `Practical Care`,
+            description: `You excel at providing tangible comfort and support.`,
           },
         ],
       },
       {
-        title: "Florist",
+        title: `Massage Therapist`,
         matchPercentage: 88,
         description:
-          "Arranging flowers lets you blend your love for nature and creativity, crafting beauty that brightens people's days.",
+          `Your sensitivity to others' needs and your hands-on approach make you excellent at providing therapeutic touch.`,
         qualityMatches: [
           {
-            title: "Artistic Expression",
-            description: "You create living art with every bouquet.",
+            title: `Physical Awareness`,
+            description: `You intuitively sense physical tension and how to release it.`,
           },
           {
-            title: "Sensory Awareness",
-            description: "You intuitively know what looks and feels right.",
+            title: `Personalized Approach`,
+            description: `You tailor your technique to each individual client.`,
           },
         ],
       },
       {
-        title: "Art Therapist",
-        matchPercentage: 86,
+        title: `Interior Designer`,
+        matchPercentage: 91,
         description:
-          "Helping others heal through creative expression aligns perfectly with your empathetic and artistic soul.",
+          `Your natural aesthetic sense and ability to create harmonious environments make you excellent at transforming spaces to reflect clients' personalities and needs.`,
         qualityMatches: [
           {
-            title: "Empathy",
-            description: "You connect deeply with others' emotions.",
+            title: `Spatial Creativity`,
+            description: `You can visualize how elements will work together in a space.`,
           },
           {
-            title: "Creativity",
-            description: "You use art to unlock healing.",
+            title: `Client Connection`,
+            description: `You excel at translating others' preferences into beautiful, functional designs.`,
           },
         ],
       },
@@ -83,255 +98,255 @@ export const ISFPData: PersonalityDatabase = {
       {
         number: 1,
         description:
-          "Set a quick 5-minute plan for your week—like jotting down one work goal you want to tackle.",
+          `Create a simple portfolio of your work—even informal projects count—to help you showcase your talents when opportunities arise.`,
       },
       {
         number: 2,
         description:
-          "Share one idea at work this week—like saying, “I think we could try this design for the project.”",
+          `Practice using one phrase to describe your strengths in professional settings—like "I bring creativity and attention to detail to my projects."`,
       },
       {
         number: 3,
         description:
-          "Look for jobs that let you create and explore, like being an artist or a stylist—your kind of vibe!",
+          `Look for roles that value your aesthetic sense and allow you to work independently—your unique perspective will be appreciated.`,
       },
     ],
   },
   relationships: [
     {
-      title: "Relationships",
-      subtitle: "How You Show Up in Relationships, {firstname}",
+      title: `Relationships`,
+      subtitle: `How You Connect in Close Relationships, {firstname}`,
       description:
-        "You’re the sweet, creative one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love through thoughtful gestures, like making a playlist for your partner or drawing a picture for your sibling, but you might need some space to recharge after being so emotionally open.",
-      compatibleTypes: ["ESFJ", "ESTJ", "ENFJ", "ENTJ", "ISTP", "ESTP", "ESFP"],
+        `In close relationships, you bring warmth, authenticity, and a deeply caring nature, {firstname}. You show love through thoughtful gestures and creating special moments rather than grand declarations. While you may take time to fully open up, once committed, you're devoted and supportive, appreciating partners who respect your need for personal space and emotional safety.`,
+      compatibleTypes: [`ENFJ`, `ESFJ`, `ESTJ`, `ENTJ`, `ISFP`, `ESFP`],
       superpowers: [
         {
-          title: "Being Thoughtful",
+          title: `Genuine Connection`,
           description:
-            "You always know how to make people feel special—like remembering your friend’s favorite flower.",
+            `You create authentic bonds based on acceptance—like remembering your partner's preferences and accommodating them without being asked.`,
         },
         {
-          title: "Living in the Moment",
+          title: `Emotional Support`,
           description:
-            "You bring a fun, spontaneous energy, like suggesting a late-night drive to see the stars.",
+            `You offer calming presence during difficult times—providing quiet understanding when your partner is stressed.`,
         },
       ],
       growthAreas: [
         {
-          title: "Opening Up",
+          title: `Verbal Expression`,
           description:
-            "You might keep your deeper feelings to yourself—like not saying when you’re feeling down.",
+            `You might struggle to put feelings into words—finding it easier to show love through actions than discussing emotions.`,
         },
         {
-          title: "Handling Conflict",
+          title: `Conflict Resolution`,
           description:
-            "You might avoid tough conversations—like brushing off a disagreement instead of talking it out.",
+            `You tend to withdraw during disagreements—sometimes needing space before addressing issues directly.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "This week, share one feeling with someone you care about—like “I felt so happy when we hung out.”",
+            `Practice expressing one feeling verbally each day—even something simple like "I felt happy when we had breakfast together."`,
         },
         {
           number: 2,
           description:
-            "If something’s bothering you, start a gentle conversation—like “Can we talk about what happened? I want to understand.”",
+            `When conflicts arise, try saying "I need some time to think, but I'd like to talk about this in an hour"—this acknowledges the issue while honoring your process.`,
         },
         {
           number: 3,
           description:
-            "Look for people who love your creative spirit, {firstname}—someone who’s down for your spontaneous adventures.",
+            `Look for partners who appreciate your thoughtful gestures and give you space to process emotions—your depth of feeling is a gift.`,
         },
       ],
     },
     {
-      title: "Friendships",
-      subtitle: "How You Shine with Friends, {firstname}",
+      title: `Friendships`,
+      subtitle: `Your Friendship Style, {firstname}`,
       description:
-        "You’re the friend who brings a chill, artsy vibe to the group, {firstname}—always down for a new experience or a creative project. You love having a small crew who appreciates your unique style and is up for low-key adventures.",
-      compatibleTypes: ["ESFP", "ISFJ", "INFJ", "INFP", "ENFJ", "ISTP", "ISFP"],
+        `As a friend, you're loyal and attentive, preferring deep connections with a few people over large social circles. You bond through shared experiences and creative activities rather than extended conversations. Friends value your accepting nature, authentic presence, and ability to notice what really matters to them.`,
+      compatibleTypes: [`ESFP`, `ESTP`, `ENFP`, `ENTP`, `ISFP`, `INFP`],
       superpowers: [
         {
-          title: "Being Spontaneous",
+          title: `Thoughtful Gestures`,
           description:
-            "Your friends love your “let’s try this!” energy—like suggesting a last-minute trip to a new café.",
+            `You remember what matters to friends—like bringing their favorite snack on a road trip or creating a playlist that matches their taste.`,
         },
         {
-          title: "Sharing Your Creativity",
+          title: `Non-judgmental Listening`,
           description:
-            "You make the best memories, like taking your friends on a photo walk to capture cool shots.",
+            `You create safe spaces for friends to be themselves—accepting them without trying to change who they are.`,
         },
       ],
       growthAreas: [
         {
-          title: "Staying Connected",
+          title: `Initiating Plans`,
           description:
-            "You might get caught up in your own world—like forgetting to reply to a group chat for a few days.",
+            `You might wait for others to suggest get-togethers rather than organizing them yourself.`,
         },
         {
-          title: "Speaking Up",
+          title: `Expressing Needs`,
           description:
-            "You might not always say what you need—like keeping quiet when you’d rather do something else.",
+            `You sometimes accommodate others at the expense of your own preferences without communicating your wishes.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "Set a reminder to check in with a friend once a week—like sending a quick “Hey, let’s catch up soon!” text.",
+            `Reach out to one friend this week with a specific activity suggestion—like "Would you like to check out that new café on Saturday?"`,
         },
         {
           number: 2,
           description:
-            "If you’re not feeling a plan, speak up gently—like “I’d love to do something more chill, what do you think?”",
+            `Practice expressing a preference when asked—rather than saying "Whatever you want is fine," share what you'd genuinely enjoy.`,
         },
       ],
     },
   ],
   growth: {
     summary:
-      "Growth for you is all about embracing your creativity while finding ways to share more of yourself, {firstname}. You’re amazing at living in the moment and creating beauty, but you might need to work on planning ahead and opening up to others.",
+      `Personal growth for you, {firstname}, comes from honoring your artistic nature while developing confidence in your unique contributions. Finding balance between living in the moment and planning for the future will help you create a life that feels both authentic and purposeful.`,
     superpowers: [
       {
-        title: "Being Creative",
+        title: `Authenticity`,
         description:
-          "Your artistic side helps you grow in such a unique way, {firstname}—like finding new ways to express yourself.",
+          `You naturally stay true to yourself—like choosing paths that align with your inner values even when it's difficult.`,
       },
       {
-        title: "Staying True to Yourself",
+        title: `Present Awareness`,
         description:
-          "You always follow your heart, which makes your growth journey so authentic.",
+          `You fully experience the moment—noticing beauty and sensory details others might miss.`,
       },
     ],
     growthAreas: [
       {
-        title: "Thinking Long-Term",
+        title: `Self-Confidence`,
         description:
-          "You might focus on the now and miss bigger goals—like not planning for a future project.",
+          `You might undervalue your contributions—like dismissing compliments on your creative work.`,
       },
       {
-        title: "Being Confident",
+        title: `Future Focus`,
         description:
-          "You might doubt your talents—like wondering if your art is good enough to share.",
+          `You tend to prioritize immediate experiences over long-term planning.`,
       },
     ],
     actionSteps: [
       {
         number: 1,
         description:
-          "Set one small goal for the month—like “I want to finish a new art piece by the end of the month.”",
+          `Keep a "wins journal" and write down one accomplishment each day—even small ones count—to build recognition of your strengths.`,
       },
       {
         number: 2,
         description:
-          "Try a new creative outlet this week, like writing a song or trying pottery, to boost your confidence.",
+          `Set one tangible goal for three months from now and identify one small action you can take each week toward it.`,
       },
       {
         number: 3,
         description:
-          "Write down three things you love about being an ISFP when you’re feeling unsure, {firstname}.",
+          `Practice accepting compliments with a simple "thank you" rather than deflecting—this honors both your work and the person appreciating it.`,
       },
     ],
   },
   actionItems: [
     {
-      task: "Set a quick 5-minute plan for your week",
+      task: `Create a simple portfolio of your work`,
       completed: false,
-      description: "Jot down one work goal to tackle.",
+      description: `Collect examples that showcase your talents.`,
     },
     {
-      task: "Share a feeling with a loved one",
+      task: `Practice a phrase to describe your strengths`,
       completed: false,
-      description: "Say “I felt so happy when we hung out.”",
+      description: `Try using it in a conversation this week.`,
     },
     {
-      task: "Set a reminder to text a friend",
+      task: `Share one feeling verbally with someone close to you`,
       completed: false,
-      description: "Send a quick “Hey, let’s catch up soon!”",
+      description: `Express an emotion you'd typically keep to yourself.`,
     },
     {
-      task: "Reflect on what keeps you going",
+      task: `Write down one accomplishment in your wins journal`,
       completed: false,
-      description: "Journal about one creative thing you’ve done lately.",
+      description: `Record something you're proud of, no matter how small.`,
     },
     {
-      task: "Join our community chat and say hi to another ISFP",
+      task: `Connect with other ISFPs in our community`,
       completed: false,
-      description: "You’ll love connecting!",
+      description: `Share experiences and learn from others.`,
     },
   ],
   dailyHabits: {
     summary:
-      "You love a routine that gives you space to create, {firstname}, and it totally works for you—your days are relaxed and inspired, and you feel best when you can follow your flow. Adding a little structure can help you make the most of your creativity.",
+      `Creating daily routines that honor your need for both creativity and structure can help you thrive, {firstname}. Building habits that connect you to your values while gently stretching your comfort zone will support your personal growth journey.`,
     habits: {
       morning: {
-        title: "Creative Warm-Up",
+        title: `Sensory Moment`,
         description:
-          "Start your morning with a 5-minute creative warm-up—like doodling something fun to get your ideas flowing.",
+          `Begin your day with 5 minutes of sensory engagement—whether savoring your tea, appreciating morning light, or feeling the texture of your favorite blanket.`,
       },
       afternoon: {
-        title: "Inspiring Habit",
+        title: `Creative Expression`,
         description:
-          "Add a small, inspiring habit—like taking a quick walk to notice the beauty around you—to spark your day.",
+          `Dedicate 15 minutes to creating something—sketching, arranging objects, taking photos, or any hands-on activity that feels fulfilling.`,
       },
       evening: {
-        title: "Wind Down",
+        title: `Value Reflection`,
         description:
-          "Wind down with a 10-minute habit, like listening to your favorite playlist, to relax before bed.",
+          `End your day by noting one way you expressed your values today and one opportunity for tomorrow.`,
       },
     },
     communication: {
       summary:
-        "You’re warm and gentle when you talk, {firstname}, always making people feel comfortable. You like conversations that feel real, but sometimes you might hold back to avoid rocking the boat.",
+        `Your communication style tends to be gentle and authentic, {firstname}. You express yourself best through actions and creative expression, though you may sometimes struggle to find words for your deeper feelings, especially in group settings or during conflict.`,
       tips: [
-        "Share a little more in conversations—like saying “I made this cool thing recently…” to open up.",
-        "Ask a friend a creative question, like “What’s the most beautiful thing you’ve seen lately?”—it’ll spark a great chat.",
+        `When you need to express something important, try writing your thoughts first—this gives you time to find the right words without pressure.`,
+        `In group settings, set a small goal to share one idea or observation—your perspective is valuable even if it differs from the majority.`,
       ],
     },
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about living authentically and finding beauty in the world, {firstname}. You value creativity, freedom, and kindness, and you’re motivated by expressing yourself and making the world a little brighter with your unique touch.",
+      `At your core, {firstname}, you value authenticity, harmony, and freedom to express yourself. You're motivated by opportunities to create beauty, make a tangible difference in others' lives, and align your actions with your personal values.`,
     coreValues: [
       {
-        title: "Creativity",
-        description: "You express yourself through art and beauty.",
+        title: `Authenticity`,
+        description: `You prize being true to yourself above conforming to expectations.`,
       },
       {
-        title: "Freedom",
-        description: "You thrive when you can follow your own flow.",
+        title: `Harmony`,
+        description: `You value peaceful, aesthetically pleasing environments and relationships.`,
       },
       {
-        title: "Kindness",
-        description: "You bring warmth to every interaction.",
+        title: `Freedom`,
+        description: `You need space to express yourself and follow your inspirations.`,
       },
     ],
     motivators: [
       {
-        title: "Expressing Yourself",
-        description: "Creating and sharing your art keeps you inspired.",
+        title: `Creative Expression`,
+        description: `You're energized by opportunities to create and appreciate beauty.`,
       },
       {
-        title: "Making the World Brighter",
-        description: "You’re driven by adding beauty to the world.",
+        title: `Making a Difference`,
+        description: `You're driven to help others in practical, tangible ways.`,
       },
     ],
     actionItems: [
       {
         number: 1,
         description:
-          "Take 10 minutes each week to jot down your thoughts on these questions in a journal—it’ll keep you connected to what matters most to you.",
+          `Before making major decisions this week, ask yourself: "Does this align with my values of authenticity, harmony, and freedom?"`,
       },
     ],
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, {firstname}! Come hang out with other ISFPs and career starters in our growing community. Share your creative ideas, swap inspiration, and let’s build something awesome together.",
+      `You're not alone in your ISFP journey, {firstname}! There's a whole community of people who share your creative spirit and value-driven approach to life. Connecting with them can help you embrace your strengths and navigate challenges with fresh perspective.`,
     suggestions: [
-      "Drop your MBTI type in our community chat—say hi to other Adventurers who get you!",
-      "Join our weekly “Creative Vibes” chat to share your latest projects or ideas.",
+      `Join our ISFP channel in the community—we discuss everything from creative projects to navigating relationships as a sensitive artistic type.`,
+      `Check out our monthly "Creative Showcase" where fellow ISFPs share their artistic expressions, from traditional art to cooking, photography, and fashion.`,
     ],
   },
 };

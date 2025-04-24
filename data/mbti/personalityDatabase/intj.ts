@@ -3,78 +3,93 @@
 export const INTJData: PersonalityDatabase = {
   career: {
     summary:
-      "You’re a total powerhouse in jobs where you can strategize and innovate—like tech, research, or entrepreneurship. You love roles that let you plan ahead and solve complex problems, but you might get annoyed if you’re stuck with repetitive tasks or working with people who don’t share your vision.",
+      `You excel in roles requiring strategy and vision, {firstname}. Your analytical mind and future-focused thinking make you exceptional at creating systems and implementing long-term plans. You quickly see inefficiencies in processes and can develop innovative solutions to complex problems. While you thrive in environments that value competence and allow for autonomy, you might find highly social or chaotic workplaces draining.`,
     superpowers: [
       {
-        title: "Thinking Ahead",
+        title: `Strategic Vision`,
         description:
-          "You’re always planning for the future, {firstname}—like mapping out a project before anyone else even starts.",
+          `You naturally see the big picture and can map out the steps to get there—like planning a multi-year project roadmap that others can't envision.`,
       },
       {
-        title: "Solving Problems",
+        title: `Analytical Thinking`,
         description:
-          "You’re a pro at finding smart solutions, like figuring out a better way to organize a team’s workflow.",
+          `You excel at breaking down complex problems into solvable parts—spotting patterns and solutions others miss.`,
       },
     ],
     growthAreas: [
       {
-        title: "Being Patient",
+        title: `Team Communication`,
         description:
-          "You might get frustrated with slow progress—like when a team isn’t moving as fast as you’d like.",
+          `You might sometimes struggle to explain your insights to others—like when your team doesn't immediately grasp your vision.`,
       },
       {
-        title: "Connecting with Others",
+        title: `Patience with Process`,
         description:
-          "You might focus so much on your goals that you forget to check in with your team—like missing a chance to bond over lunch.",
+          `You can become frustrated when implementation doesn't match your vision—like when bureaucracy slows down your innovative ideas.`,
       },
     ],
     suggestions: [
       {
-        title: "Data Scientist",
+        title: `Systems Architect`,
+        matchPercentage: 92,
+        description:
+          `Your ability to see the big picture and design elegant solutions makes you ideal for creating and refining complex systems.`,
+        qualityMatches: [
+          {
+            title: `Strategic Thinking`,
+            description: `You excel at designing comprehensive systems that work well over time.`,
+          },
+          {
+            title: `Problem Solving`,
+            description: `You naturally identify inefficiencies and develop innovative solutions.`,
+          },
+        ],
+      },
+      {
+        title: `Management Consultant`,
+        matchPercentage: 89,
+        description:
+          `Your analytical skills and ability to see what others miss make you excellent at diagnosing organizational issues and recommending improvements.`,
+        qualityMatches: [
+          {
+            title: `Process Improvement`,
+            description: `You quickly identify inefficiencies in systems and operations.`,
+          },
+          {
+            title: `Strategic Analysis`,
+            description: `You excel at evaluating complex situations and developing actionable insights.`,
+          },
+        ],
+      },
+      {
+        title: `Financial Analyst`,
+        matchPercentage: 87,
+        description:
+          `Your analytical mindset and attention to detail make you well-suited for analyzing market trends and making sound investment recommendations.`,
+        qualityMatches: [
+          {
+            title: `Data Analysis`,
+            description: `You excel at interpreting complex financial information.`,
+          },
+          {
+            title: `Long-term Planning`,
+            description: `You naturally consider future implications of current decisions.`,
+          },
+        ],
+      },
+      {
+        title: `Research Scientist`,
         matchPercentage: 90,
         description:
-          "Your analytical mind and love for solving complex problems make you a natural at turning data into insights—like uncovering trends no one else sees.",
+          `Your intellectual curiosity and methodical approach make you ideal for pursuing advanced research and developing groundbreaking theories or technologies. You thrive when given independence to explore complex problems.`,
         qualityMatches: [
           {
-            title: "Analytical Skills",
-            description: "You excel at dissecting complex datasets.",
+            title: `Conceptual Thinking`,
+            description: `You excel at developing theoretical frameworks and testing hypotheses.`,
           },
           {
-            title: "Strategic Thinking",
-            description: "You see the big picture in data patterns.",
-          },
-        ],
-      },
-      {
-        title: "Software Architect",
-        matchPercentage: 88,
-        description:
-          "Designing systems and planning software structures aligns perfectly with your strategic and independent nature.",
-        qualityMatches: [
-          {
-            title: "System Design",
-            description:
-              "You thrive on creating efficient, scalable solutions.",
-          },
-          {
-            title: "Independence",
-            description: "You shine when working on big ideas solo.",
-          },
-        ],
-      },
-      {
-        title: "Entrepreneur",
-        matchPercentage: 86,
-        description:
-          "Building something from the ground up lets you innovate and bring your visions to life—like turning a bold idea into a successful startup.",
-        qualityMatches: [
-          {
-            title: "Visionary Thinking",
-            description: "You’re driven to create and innovate.",
-          },
-          {
-            title: "Problem-Solving",
-            description: "You tackle challenges head-on.",
+            title: `Innovation`,
+            description: `You're driven to discover new approaches and challenge conventional wisdom.`,
           },
         ],
       },
@@ -83,255 +98,255 @@ export const INTJData: PersonalityDatabase = {
       {
         number: 1,
         description:
-          "Take a moment this week to chat with a coworker—like asking, “How’s your project going?”—to build a stronger connection.",
+          `Practice explaining your ideas using analogies or visual aids to help others understand your vision more easily.`,
       },
       {
         number: 2,
         description:
-          "If things are moving slowly, break your goal into smaller steps and celebrate each win to stay motivated.",
+          `When implementing a project, build in checkpoints to gather feedback from stakeholders, even if it seems unnecessary to you.`,
       },
       {
         number: 3,
         description:
-          "Look for jobs that let you lead and innovate, like being a data scientist or a startup founder—your kind of vibe!",
+          `Look for roles that value your strategic thinking and allow you independence to implement your ideas—your visionary approach will be appreciated.`,
       },
     ],
   },
   relationships: [
     {
-      title: "Relationships",
-      subtitle: "How You Show Up in Relationships, {firstname}",
+      title: `Relationships`,
+      subtitle: `How You Connect in Close Relationships, {firstname}`,
       description:
-        "You’re the thoughtful, driven one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by supporting others’ goals, like helping your partner brainstorm their next career move, but you might need to work on opening up about your own feelings.",
-      compatibleTypes: ["ENTJ", "INTP", "INTJ", "INFJ", "ISTJ", "ENTP", "ENFP"],
+        `In close relationships, you value depth and intellectual connection, {firstname}. You're selective about who you let in, but once committed, you're deeply loyal and devoted. You show your love through thoughtful gestures and meaningful conversations rather than grand displays of emotion. You need a partner who respects your independence while forming a strong bond with you.`,
+      compatibleTypes: [`ENFP`, `ENTP`, `INFP`, `INTP`, `INTJ`, `ENTJ`, `INFJ`],
       superpowers: [
         {
-          title: "Being Supportive",
+          title: `Unwavering Loyalty`,
           description:
-            "You’re great at helping loved ones achieve their dreams—like giving your friend advice on their big project.",
+            `Once you commit to someone, you're all in—like remembering every important date and being there through life's challenges.`,
         },
         {
-          title: "Staying Committed",
+          title: `Intellectual Connection`,
           description:
-            "You’re in it for the long haul, {firstname}, building deep, meaningful connections.",
+            `You create deep bonds through meaningful conversations—discussing ideas, theories, and life's big questions.`,
         },
       ],
       growthAreas: [
         {
-          title: "Sharing Your Feelings",
+          title: `Emotional Expression`,
           description:
-            "You might keep your emotions to yourself—like not saying how much you appreciated a sweet gesture.",
+            `You might find it challenging to verbalize your feelings—like saying "I love you" even when you deeply care.`,
         },
         {
-          title: "Being Flexible",
+          title: `Flexibility`,
           description:
-            "You love your plans, but a spontaneous date night might catch you off guard.",
+            `You may struggle with unexpected changes in plans or routines within your relationship.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "This week, share one feeling with someone you care about—like “I felt so proud when you nailed that presentation.”",
+            `Set a reminder to express appreciation to your partner once a day—even a simple "I value how you handled that situation."`,
         },
         {
           number: 2,
           description:
-            "Say “yes” to a last-minute plan, like grabbing coffee with a friend—it’ll feel good to mix things up!",
+            `When your partner wants to try something spontaneous, practice saying yes at least half the time, even if it disrupts your plans.`,
         },
         {
           number: 3,
           description:
-            "Look for people who get your visionary side, {firstname}—someone who loves your big ideas as much as you do.",
+            `Look for a partner who appreciates your depth and strategic mind but can also help you open up emotionally.`,
         },
       ],
     },
     {
-      title: "Friendships",
-      subtitle: "How You Shine with Friends, {firstname}",
+      title: `Friendships`,
+      subtitle: `Your Friendship Style, {firstname}`,
       description:
-        "You’re the friend with the big ideas, {firstname}—always there to help your crew think through their goals or solve a problem. You love having a small, trusted group of friends who share your passion for growth and deep conversations.",
-      compatibleTypes: ["ENTJ", "INTP", "INTJ", "INFJ", "ISTJ", "ENTP", "ENFP"],
+        `As a friend, you're selective but intensely loyal. You prefer a small circle of deep connections over a wide network of acquaintances. Your friendships are built on mutual respect, intellectual stimulation, and shared values rather than just social activities.`,
+      compatibleTypes: [`ENFP`, `ENTP`, `INFP`, `INTP`, `INTJ`, `ENTJ`, `INFJ`],
       superpowers: [
         {
-          title: "Giving Smart Advice",
+          title: `Insightful Support`,
           description:
-            "Your friends know they can count on you for solid ideas—like helping them plan their next career step.",
+            `You offer friends valuable perspective and advice—like helping them see the bigger picture when they're stuck on a problem.`,
         },
         {
-          title: "Being Reliable",
+          title: `Long-term Loyalty`,
           description:
-            "You’re the one they call when they need someone steady, like when they’re stressed about a deadline.",
+            `You maintain friendships over decades, staying connected even through long distances or life changes.`,
         },
       ],
       growthAreas: [
         {
-          title: "Opening Up More",
+          title: `Initiating Social Contact`,
           description:
-            "You might not always share what’s on your mind—like keeping quiet when you’re feeling overwhelmed.",
+            `You might wait for others to reach out rather than organizing get-togethers yourself.`,
         },
         {
-          title: "Having Fun",
+          title: `Casual Conversation`,
           description:
-            "You might focus so much on goals that you forget to just chill—like skipping a fun game night.",
+            `You might find small talk challenging, preferring to dive straight into deeper topics.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "Share something personal with a friend this month—like “I’ve been feeling a bit stressed about work.”",
+            `Take the initiative to plan one social event this month—it doesn't need to be elaborate, even a coffee meet-up counts.`,
         },
         {
           number: 2,
           description:
-            "Plan a low-key hangout, like a board game night, to relax and have fun with your crew.",
+            `Practice active listening in conversations—ask follow-up questions about topics your friends bring up, even if they seem mundane to you.`,
         },
       ],
     },
   ],
   growth: {
     summary:
-      "Growth for you is all about chasing your big dreams while learning to balance your drive with a little more connection, {firstname}. You’re amazing at setting goals and making them happen, but you might put a lot of pressure on yourself to be perfect.",
+      `Personal growth for you, {firstname}, involves balancing your natural strategic thinking with emotional awareness and interpersonal skills. Developing your already impressive intellectual abilities while expanding your comfort with emotions can lead to powerful personal transformation.`,
     superpowers: [
       {
-        title: "Staying Focused",
+        title: `Self-Improvement`,
         description:
-          "You’re a pro at sticking to your goals, {firstname}—like working toward a big dream step by step.",
+          `You're naturally driven to enhance your capabilities—constantly seeking new knowledge and skills.`,
       },
       {
-        title: "Thinking Deeply",
+        title: `Independent Learning`,
         description:
-          "Your love for big ideas helps you grow in such a unique way.",
+          `You excel at teaching yourself new concepts—diving deep into subjects that interest you.`,
       },
     ],
     growthAreas: [
       {
-        title: "Taking Breaks",
+        title: `Emotional Awareness`,
         description:
-          "You might push yourself too hard—like staying up late to finish a project.",
+          `You might sometimes overlook the emotional aspects of life—like focusing on solutions when a friend just needs empathy.`,
       },
       {
-        title: "Being Kinder to Yourself",
+        title: `Celebrating Small Wins`,
         description:
-          "You can be tough on yourself—like stressing if you don’t meet your high standards.",
+          `You tend to focus on the next goal rather than acknowledging current achievements.`,
       },
     ],
     actionSteps: [
       {
         number: 1,
         description:
-          "Take a 15-minute break each day just for you—like listening to a podcast you love to unwind.",
+          `Set aside 5 minutes each day to reflect on your emotions—not analyzing them, but simply acknowledging how you feel.`,
       },
       {
         number: 2,
         description:
-          "Try a new hobby this week, like sketching or coding, to channel your ideas in a fun way.",
+          `After completing a project or reaching a milestone, take time to celebrate before moving to the next goal—even a small acknowledgment helps.`,
       },
       {
         number: 3,
         description:
-          "Write down three things you love about being an INTJ when you’re feeling hard on yourself, {firstname}.",
+          `Join a group activity that pushes you slightly outside your comfort zone—like a discussion group or workshop on emotional intelligence.`,
       },
     ],
   },
   actionItems: [
     {
-      task: "Chat with a coworker this week",
+      task: `Use visuals or analogies to explain your ideas`,
       completed: false,
-      description: "Ask “How’s your project going?” to connect.",
+      description: `Help others understand your concepts more easily.`,
     },
     {
-      task: "Share a feeling with a loved one",
+      task: `Express appreciation to someone close to you`,
       completed: false,
-      description: "Say “I felt so proud when you nailed that presentation.”",
+      description: `Something simple like "I value your perspective."`,
     },
     {
-      task: "Plan a low-key hangout with friends",
+      task: `Initiate a get-together with a friend`,
       completed: false,
-      description: "Like a board game night.",
+      description: `Suggest coffee or a virtual chat.`,
     },
     {
-      task: "Reflect on what keeps you going",
+      task: `Reflect on your emotions for 5 minutes`,
       completed: false,
-      description: "Journal about one big goal you’re working toward.",
+      description: `Simply acknowledge feelings without analysis.`,
     },
     {
-      task: "Join our community chat and say hi to another INTJ",
+      task: `Connect with other INTJs in our community`,
       completed: false,
-      description: "You’ll love connecting!",
+      description: `Share your experiences and learn from others.`,
     },
   ],
   dailyHabits: {
     summary:
-      "You love a routine that keeps you on track, {firstname}, and it totally works for you—your days are focused and productive, and you feel best when you’ve got a plan. Adding a little downtime can help you recharge for your big goals.",
+      `Your natural tendency toward structure and efficiency can be channeled into powerful daily habits, {firstname}. By thoughtfully designing your routines, you can maximize your productivity while also creating space for personal growth and relationships.`,
     habits: {
       morning: {
-        title: "Goal Check",
+        title: `Strategic Planning`,
         description:
-          "Start your morning with a 5-minute goal check—like writing down one thing you want to achieve today.",
+          `Start your day with 10 minutes of planning—reviewing your goals and prioritizing tasks for maximum impact.`,
       },
       afternoon: {
-        title: "Relaxing Habit",
+        title: `Knowledge Acquisition`,
         description:
-          "Add a small, relaxing habit—like taking a quick walk after lunch—to give your mind a break.",
+          `Block 30 minutes to learn something new related to your goals or interests—like reading research or taking an online course.`,
       },
       evening: {
-        title: "Wind Down",
+        title: `Reflection Period`,
         description:
-          "Wind down with a 10-minute habit, like reading a chapter of a book, to relax before bed.",
+          `End your day with 5 minutes to evaluate what went well and what could be improved tomorrow.`,
       },
     },
     communication: {
       summary:
-        "You’re clear and thoughtful when you talk, {firstname}, always sharing your ideas with confidence. You love deep, meaningful conversations, but sometimes you might come across as too serious without meaning to.",
+        `Your communication style tends to be direct and logical, {firstname}. You convey ideas clearly and precisely, though sometimes you might forget that others don't process information the same way you do.`,
       tips: [
-        "Add a warm touch to your conversations—like starting with “I’m really excited to talk about this!”",
-        "Ask a friend a big-picture question, like “Where do you see yourself in five years?”—it’ll spark a great chat.",
+        `Before important conversations, consider your audience and how they might best receive your message—some people need context before conclusions.`,
+        `When sharing ideas, start with the "why" before diving into the "how"—this helps others understand your reasoning.`,
       ],
     },
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about chasing your vision and making things happen, {firstname}. You value independence, growth, and excellence, and you’re motivated by turning your ideas into reality and achieving your long-term goals.",
+      `At your core, {firstname}, you value knowledge, competence, and independence. You're motivated by intellectual challenges, creating effective systems, and the freedom to pursue your vision without unnecessary constraints.`,
     coreValues: [
       {
-        title: "Independence",
-        description: "You thrive when you can work on your own terms.",
+        title: `Competence`,
+        description: `You value excellence and mastery in yourself and others.`,
       },
       {
-        title: "Growth",
-        description: "You’re always looking to improve and learn.",
+        title: `Intellectual Growth`,
+        description: `You're committed to continuous learning and improvement.`,
       },
       {
-        title: "Excellence",
-        description: "You set high standards for yourself and others.",
+        title: `Autonomy`,
+        description: `You value the freedom to pursue goals your own way.`,
       },
     ],
     motivators: [
       {
-        title: "Turning Ideas into Reality",
-        description: "You’re driven by seeing your plans come to life.",
+        title: `Complex Challenges`,
+        description: `You're energized by solving difficult problems that require strategic thinking.`,
       },
       {
-        title: "Achieving Long-Term Goals",
-        description: "You’re motivated by reaching your big dreams.",
+        title: `Creating Order`,
+        description: `You're driven to improve systems and bring clarity to chaos.`,
       },
     ],
     actionItems: [
       {
         number: 1,
         description:
-          "Take 10 minutes each week to jot down your thoughts on these questions in a journal—it’ll keep you connected to what matters most to you.",
+          `When making decisions this week, ask yourself: "Does this align with my values of competence, growth, and autonomy?"`,
       },
     ],
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, {firstname}! Come hang out with other INTJs and career starters in our growing community. Share your big ideas, swap strategies, and let’s build something awesome together.",
+      `You're not alone in your INTJ journey, {firstname}! There's a whole community of people who share your strategic thinking and vision. Connecting with them can help you learn new approaches to leveraging your strengths and navigating challenges.`,
     suggestions: [
-      "Drop your MBTI type in our community chat—say hi to other Architects who get you!",
-      "Join our weekly “Big Thinkers” chat to share your latest plans and ideas.",
+      `Join our INTJ channel in the community—we discuss everything from productivity systems to navigating social situations as an introvert.`,
+      `Check out our weekly "Strategic Thinking" workshops where fellow INTJs share their approaches to problem-solving and long-term planning.`,
     ],
   },
 };

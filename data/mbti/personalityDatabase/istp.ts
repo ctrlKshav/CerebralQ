@@ -3,77 +3,93 @@
 export const ISTPData: PersonalityDatabase = {
   career: {
     summary:
-      "You’re a total rockstar in jobs where you can get hands-on and solve problems—like engineering, tech support, or even something creative like photography. You love roles that let you figure things out in the moment, but you might get bored if you’re stuck doing the same thing every day or dealing with too many rules.",
+      `You excel in roles requiring practical problem-solving and technical expertise, {firstname}. Your hands-on approach and ability to stay calm under pressure make you invaluable in fields that demand troubleshooting skills and quick thinking. You prefer work environments that offer variety, autonomy, and tangible results over abstract theories or rigid structures.`,
     superpowers: [
       {
-        title: "Fixing Things",
+        title: `Technical Problem-Solving`,
         description:
-          "You’re a pro at solving problems, {firstname}—like troubleshooting a tech issue faster than anyone else.",
+          `You have an innate ability to understand how things work—like figuring out why a system is malfunctioning when others are stumped.`,
       },
       {
-        title: "Staying Cool Under Pressure",
+        title: `Crisis Management`,
         description:
-          "You handle chaos like a champ, like fixing a last-minute glitch during a project.",
+          `You remain cool-headed in emergencies—like calmly addressing an unexpected technical failure during a critical moment.`,
       },
     ],
     growthAreas: [
       {
-        title: "Planning Ahead",
+        title: `Long-term Planning`,
         description:
-          "You might wing it too much—like forgetting to prep for a big meeting.",
+          `You might focus so much on immediate solutions that you overlook future implications—like fixing a problem without documenting the solution for others.`,
       },
       {
-        title: "Working with Others",
+        title: `Team Communication`,
         description:
-          "You might prefer doing things solo—like skipping team brainstorming sessions.",
+          `You sometimes prefer to work independently rather than explaining your process—like diving into a repair without updating your team.`,
       },
     ],
     suggestions: [
       {
-        title: "Electrician",
+        title: `Mechanical Engineer`,
+        matchPercentage: 92,
+        description:
+          `Your natural understanding of mechanical systems and hands-on approach make you ideal for designing and troubleshooting machinery.`,
+        qualityMatches: [
+          {
+            title: `Technical Aptitude`,
+            description: `You excel at understanding how complex systems work.`,
+          },
+          {
+            title: `Practical Problem-Solving`,
+            description: `You naturally find efficient solutions to technical challenges.`,
+          },
+        ],
+      },
+      {
+        title: `Emergency Medical Technician`,
         matchPercentage: 90,
         description:
-          "Your knack for understanding how things work makes you a natural at fixing electrical systems—like a real-life puzzle solver.",
+          `Your ability to stay calm under pressure and make quick decisions makes you well-suited for emergency medical situations.`,
         qualityMatches: [
           {
-            title: "Problem-Solving",
-            description: "You love tackling tricky wiring issues.",
+            title: `Crisis Response`,
+            description: `You thrive in high-pressure situations requiring fast action.`,
           },
           {
-            title: "Hands-On Skills",
-            description: "You thrive when you can work with your hands.",
+            title: `Tactical Thinking`,
+            description: `You can quickly assess situations and determine the best course of action.`,
           },
         ],
       },
       {
-        title: "Forensic Scientist",
+        title: `Computer Systems Analyst`,
         matchPercentage: 88,
         description:
-          "Solving mysteries with science is right up your alley—perfect for your analytical and detail-oriented mind.",
+          `Your analytical skills and technical mindset are perfect for evaluating computer systems and implementing improvements.`,
         qualityMatches: [
           {
-            title: "Attention to Detail",
-            description: "You spot clues others miss.",
+            title: `Technical Analysis`,
+            description: `You can quickly identify and solve system inefficiencies.`,
           },
           {
-            title: "Logical Thinking",
-            description: "You piece together evidence like a pro.",
+            title: `Practical Implementation`,
+            description: `You excel at putting solutions into action effectively.`,
           },
         ],
       },
       {
-        title: "Video Game Designer",
-        matchPercentage: 86,
+        title: `Forensic Investigator`,
+        matchPercentage: 89,
         description:
-          "Creating immersive worlds lets you blend your creativity with your love for problem-solving—like crafting the ultimate player experience.",
+          `Your keen observation skills and logical approach make you excellent at analyzing evidence and reconstructing scenarios. Your ability to notice details others miss is invaluable in this field.`,
         qualityMatches: [
           {
-            title: "Creativity",
-            description: "You design unique game mechanics.",
+            title: `Analytical Precision`,
+            description: `You excel at examining physical evidence with meticulous attention to detail.`,
           },
           {
-            title: "Technical Skills",
-            description: "You understand the tech behind the fun.",
+            title: `Objective Reasoning`,
+            description: `You can analyze situations without letting emotions cloud your judgment.`,
           },
         ],
       },
@@ -82,255 +98,255 @@ export const ISTPData: PersonalityDatabase = {
       {
         number: 1,
         description:
-          "Set a quick 5-minute plan before a big task this week—like jotting down three things you need to do for a project.",
+          `After solving a problem, take five minutes to document your solution in a way that would help someone else understand your process.`,
       },
       {
         number: 2,
         description:
-          "Join a team activity at work, like a quick group huddle, to connect with your coworkers and share your ideas.",
+          `Practice explaining your technical reasoning to non-technical people—try describing your current project to a friend in simple terms.`,
       },
       {
         number: 3,
         description:
-          "Look for jobs that let you use your hands and problem-solve, like being a mechanic or a graphic designer—your kind of vibe!",
+          `Look for roles that value your hands-on skills and give you freedom to solve problems your own way—your practical approach will be appreciated.`,
       },
     ],
   },
   relationships: [
     {
-      title: "Relationships",
-      subtitle: "How You Show Up in Relationships, {firstname}",
+      title: `Relationships`,
+      subtitle: `How You Connect in Close Relationships, {firstname}`,
       description:
-        "You’re the chill, dependable one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by doing practical things, like fixing your friend’s phone or taking your partner on a spontaneous adventure, but you might not always open up about your deeper feelings.",
-      compatibleTypes: ["ESFJ", "ESTJ", "ENFJ", "ENTJ", "ISFP", "ESTP", "ESFP"],
+        `In close relationships, you show care through practical actions rather than words, {firstname}. You're loyal and dependable, preferring to demonstrate your feelings by fixing problems, creating things, or sharing experiences rather than talking about emotions. You need space for independence while appreciating partners who understand your more reserved way of showing affection.`,
+      compatibleTypes: [`ESTJ`, `ESFJ`, `ENFJ`, `ISTJ`, `ISFJ`, `ENTJ`],
       superpowers: [
         {
-          title: "Being Handy",
+          title: `Practical Support`,
           description:
-            "You’re always there to help, {firstname}—like fixing something for your partner without them even asking.",
+            `You show love through helpful actions—like fixing your partner's car or building something they mentioned wanting.`,
         },
         {
-          title: "Keeping It Real",
+          title: `Calm Presence`,
           description:
-            "You’re honest and straightforward, making people feel they can trust you.",
+            `You provide stability during emotional storms—remaining level-headed when your partner is stressed.`,
         },
       ],
       growthAreas: [
         {
-          title: "Sharing Emotions",
+          title: `Emotional Expression`,
           description:
-            "You might keep your feelings to yourself—like not saying how much you appreciated a sweet moment.",
+            `You might find it challenging to put feelings into words—like struggling to verbalize how much someone means to you.`,
         },
         {
-          title: "Sticking to Plans",
+          title: `Future Planning`,
           description:
-            "You might change plans last minute—like bailing on a dinner to try something new—which can throw others off.",
+            `You tend to take relationships day by day rather than discussing long-term plans.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "This week, share one feeling with someone you care about—like “I had so much fun with you today.”",
+            `Practice saying one thing you appreciate about your partner each day—it doesn't need to be elaborate, just genuine.`,
         },
         {
           number: 2,
           description:
-            "If you’re tempted to switch plans, check in with your loved one first—like “Hey, I had an idea, you cool with a change?”",
+            `When your partner shares feelings, resist the urge to immediately solve the problem—sometimes they just want you to listen.`,
         },
         {
           number: 3,
           description:
-            "Look for people who love your adventurous side, {firstname}—someone who’s down for spontaneous مفهوم fun as much as you are.",
+            `Look for partners who appreciate your actions as expressions of love but who can also help you grow in emotional communication.`,
         },
       ],
     },
     {
-      title: "Friendships",
-      subtitle: "How You Shine with Friends, {firstname}",
+      title: `Friendships`,
+      subtitle: `Your Friendship Style, {firstname}`,
       description:
-        "You’re the friend who’s always up for an adventure, {firstname}—whether it’s trying a new hobby or fixing something for your crew. You love having a small group of friends who are down to explore and keep things low-key.",
-      compatibleTypes: ["ESTP", "ISTJ", "ISTP", "ISFP", "INTP", "ENTJ", "ENTP"],
+        `As a friend, you're reliable and straightforward, preferring quality connections over a large social circle. You bond best through shared activities and experiences rather than deep conversations about feelings. Friends value your loyalty, practical help, and drama-free approach to relationships.`,
+      compatibleTypes: [`ESTP`, `ESTJ`, `ENTJ`, `ISFP`, `INFP`, `ENFP`],
       superpowers: [
         {
-          title: "Being Spontaneous",
+          title: `Reliable Presence`,
           description:
-            "Your friends love your “let’s do this!” vibe—like suggesting a last-minute road trip.",
+            `Friends know they can count on you when it matters—like helping them move or coming through in an emergency.`,
         },
         {
-          title: "Helping Out",
+          title: `Skill Sharing`,
           description:
-            "You’re the one they call for practical help, like fixing their bike or setting up their new gadget.",
+            `You enjoy teaching friends your practical skills—like showing a friend how to fix their bike or upgrade their computer.`,
         },
       ],
       growthAreas: [
         {
-          title: "Opening Up",
+          title: `Staying Connected`,
           description:
-            "You might not always share what’s going on with you—like keeping quiet when you’re stressed.",
+            `You might not reach out regularly if there's no specific reason to connect.`,
         },
         {
-          title: "Staying Connected",
+          title: `Opening Up`,
           description:
-            "You might go off the grid sometimes—like forgetting to text back for a few days.",
+            `You may keep personal struggles to yourself rather than sharing with friends.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "Share something personal with a friend this month—like “I’ve been feeling a bit off lately, can we chat?”",
+            `Set a reminder to check in with one friend each week—even a quick message shows you're thinking of them.`,
         },
         {
           number: 2,
           description:
-            "Set a reminder to check in with a friend once a week—like sending a quick “Hey, how’s it going?” text.",
+            `The next time you face a challenge, share it with a trusted friend—allow yourself to be supported occasionally.`,
         },
       ],
     },
   ],
   growth: {
     summary:
-      "Growth for you is all about mastering new skills and finding ways to connect a bit more, {firstname}. You’re amazing at figuring things out and staying calm, but you might need to work on slowing down and sharing more with others.",
+      `Personal growth for you, {firstname}, involves balancing your natural practicality with emotional awareness and long-term thinking. Exploring your feelings more deeply while maintaining your hands-on approach to life can lead to more fulfilling relationships and expanded perspective.`,
     superpowers: [
       {
-        title: "Learning Fast",
+        title: `Adaptability`,
         description:
-          "You pick up new skills like a pro, {firstname}—like teaching yourself how to edit videos in a weekend.",
+          `You easily adjust to changing situations—like quickly pivoting when plans fall through.`,
       },
       {
-        title: "Staying Chill",
+        title: `Self-Reliance`,
         description:
-          "You handle challenges with a cool head, which helps you grow without stress.",
+          `You're comfortable handling challenges independently—learning new skills as needed.`,
       },
     ],
     growthAreas: [
       {
-        title: "Thinking Long-Term",
+        title: `Emotional Awareness`,
         description:
-          "You might focus on the now and miss the bigger picture—like not planning for a future goal.",
+          `You might sometimes overlook the emotional aspects of situations—like focusing on solutions when others need empathy.`,
       },
       {
-        title: "Being Vulnerable",
+        title: `Long-Term Vision`,
         description:
-          "You might keep your guard up—like not sharing when you’re feeling down.",
+          `You tend to focus on present actions rather than future implications or goals.`,
       },
     ],
     actionSteps: [
       {
         number: 1,
         description:
-          "Set one long-term goal this month—like “I want to learn a new skill by the end of the year”—and break it into small steps.",
+          `Take five minutes each day to check in with yourself emotionally—simply naming what you're feeling without judgment.`,
       },
       {
         number: 2,
         description:
-          "Try a new hands-on hobby this week, like woodworking or cooking a new dish, to channel your energy in a fun way.",
+          `Create one long-term goal and break it down into monthly action steps—this bridges your preference for immediate action with future planning.`,
       },
       {
         number: 3,
         description:
-          "Write down three things you love about being an ISTP when you’re feeling unsure, {firstname}.",
+          `When someone shares a problem, ask "How are you feeling about that?" before offering solutions—this builds your emotional intelligence.`,
       },
     ],
   },
   actionItems: [
     {
-      task: "Set a quick 5-minute plan before a big task",
+      task: `Document a solution you implemented`,
       completed: false,
-      description: "Jot down three things you need to do.",
+      description: `Take notes on how you solved a recent problem.`,
     },
     {
-      task: "Share a feeling with a loved one",
+      task: `Express appreciation to someone close to you`,
       completed: false,
-      description: "Say “I had so much fun with you today.”",
+      description: `Tell them specifically what you value about them.`,
     },
     {
-      task: "Set a reminder to text a friend",
+      task: `Check in with a friend you haven't talked to recently`,
       completed: false,
-      description: "Send a quick “Hey, how’s it going?”",
+      description: `Send a message asking how they're doing.`,
     },
     {
-      task: "Reflect on what keeps you going",
+      task: `Reflect on your emotions for 5 minutes`,
       completed: false,
-      description: "Journal about one skill you’re proud of learning.",
+      description: `Simply notice how you're feeling without trying to change anything.`,
     },
     {
-      task: "Join our community chat and say hi to another ISTP",
+      task: `Connect with other ISTPs in our community`,
       completed: false,
-      description: "You’ll love connecting!",
+      description: `Share experiences and learn from others.`,
     },
   ],
   dailyHabits: {
     summary:
-      "You love a routine that gives you freedom, {firstname}, and it totally works for you—your days are chill and flexible, and you feel best when you can do things your way. Adding a little structure can help you make the most of your energy.",
+      `Your natural tendency toward action and efficiency can be channeled into effective daily habits, {firstname}. Creating space for both hands-on activities and moments of reflection will help you maintain your energy while growing in areas that don't come as naturally.`,
     habits: {
       morning: {
-        title: "Stretch",
+        title: `Physical Engagement`,
         description:
-          "Start your morning with a 5-minute stretch—like loosening up before heading out for the day.",
+          `Start your day with 15 minutes of physical activity—whether it's a quick workout, bike ride, or hands-on project.`,
       },
       afternoon: {
-        title: "Fun Habit",
+        title: `Skill Development`,
         description:
-          "Add a small, fun habit—like watching a quick tutorial on something you’re curious about—to spark your interest.",
+          `Dedicate 20 minutes to improving a practical skill—something tangible that you can see progress in.`,
       },
       evening: {
-        title: "Wind Down",
+        title: `Brief Reflection`,
         description:
-          "Wind down with a 10-minute habit, like listening to music while you chill, to relax before bed.",
+          `End your day with 5 minutes to consider what went well and what you accomplished—acknowledging both actions and interactions.`,
       },
     },
     communication: {
       summary:
-        "You’re straightforward and relaxed when you talk, {firstname}, always keeping things real. You like conversations that get to the point, but sometimes you might not share enough to keep the chat going.",
+        `Your communication style tends to be concise and straightforward, {firstname}. You express yourself clearly without unnecessary details, though sometimes you might skip sharing your thought process, leaving others wondering how you reached your conclusions.`,
       tips: [
-        "Share a little more in conversations—like saying “I tried this new thing recently…” to keep the vibe going.",
-        "Ask a friend a fun question, like “What’s the coolest thing you’ve done lately?”—it’ll spark a great chat.",
+        `When explaining your ideas, include one or two steps of your thinking process—this helps others follow your reasoning.`,
+        `If someone seems emotional, acknowledge their feelings before offering solutions—a simple "That sounds frustrating" goes a long way.`,
       ],
     },
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about freedom and mastering new skills, {firstname}. You value independence, practicality, and action, and you’re motivated by solving problems and exploring new experiences that keep life exciting.",
+      `At your core, {firstname}, you value freedom, efficiency, and tangible results. You're motivated by solving concrete problems, mastering skills, and having the autonomy to approach situations in your own way.`,
     coreValues: [
       {
-        title: "Independence",
-        description: "You thrive when you can do things your way.",
+        title: `Practical Utility`,
+        description: `You appreciate things that serve a clear, useful purpose.`,
       },
       {
-        title: "Practicality",
-        description: "You value solutions that work in the real world.",
+        title: `Personal Freedom`,
+        description: `You value the autonomy to make your own decisions and set your own pace.`,
       },
       {
-        title: "Action",
-        description: "You’re driven by doing, not just thinking.",
+        title: `Efficiency`,
+        description: `You believe in finding the most direct path to results without unnecessary complications.`,
       },
     ],
     motivators: [
       {
-        title: "Solving Problems",
-        description: "Tackling challenges keeps you sharp and engaged.",
+        title: `Hands-On Challenges`,
+        description: `You're energized by problems you can tackle directly and see immediate results.`,
       },
       {
-        title: "Exploring New Experiences",
-        description: "You’re motivated by trying new things and learning.",
+        title: `Skill Mastery`,
+        description: `You're driven to continually improve your abilities and technical expertise.`,
       },
     ],
     actionItems: [
       {
         number: 1,
         description:
-          "Take 10 minutes each week to jot down your thoughts on these questions in a journal—it’ll keep you connected to what matters most to you.",
+          `When making decisions this week, ask yourself: "Does this align with my values of freedom, efficiency, and practical results?"`,
       },
     ],
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, {firstname}! Come hang out with other ISTPs and career starters in our growing community. Share your best tips for solving problems, swap ideas, and let’s build something awesome together.",
+      `You're not alone in your ISTP journey, {firstname}! There's a whole community of people who share your practical approach and independent spirit. Connecting with them can help you learn new approaches to leveraging your strengths and navigating challenges.`,
     suggestions: [
-      "Drop your MBTI type in our community chat—say hi to other Virtuosos who get you!",
-      "Join our weekly “Hands-On Hacks” chat to share your latest fix-it tricks or projects.",
+      `Join our ISTP channel in the community—we discuss everything from technical skills to navigating relationships as a practical problem-solver.`,
+      `Check out our monthly "Hands-On Projects" showcase where fellow ISTPs share their latest builds, repairs, and practical solutions.`,
     ],
   },
 };

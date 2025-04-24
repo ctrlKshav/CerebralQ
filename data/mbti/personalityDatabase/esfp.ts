@@ -3,7 +3,7 @@
 export const ESFPData: PersonalityDatabase = {
   career: {
     summary:
-      "You’re a total star in jobs where you can connect with people and have fun—like event planning, teaching, or even something creative like acting. You love roles that let you be social and spontaneous, but you might get bored if the work feels too serious or doesn’t let you shine.",
+      "You're a total star in jobs where you can connect with people and have fun—like event planning, teaching, or even something creative like acting. You love roles that let you be social and spontaneous, but you might get bored if the work feels too serious or doesn't let you shine.",
     superpowers: [
       {
         title: "Bringing Energy",
@@ -13,7 +13,7 @@ export const ESFPData: PersonalityDatabase = {
       {
         title: "Connecting with People",
         description:
-          "You’re great at making others feel included, like chatting with a shy coworker to bring them out of their shell.",
+          "You're great at making others feel included, like chatting with a shy coworker to bring them out of their shell.",
       },
     ],
     growthAreas: [
@@ -33,7 +33,7 @@ export const ESFPData: PersonalityDatabase = {
         title: "Event Planner",
         matchPercentage: 90,
         description:
-          "Your flair for fun and knack for connecting people make this a perfect fit. You’d shine creating unforgettable experiences.",
+          "Your flair for fun and knack for connecting people make this a perfect fit. You'd shine creating unforgettable experiences.",
         qualityMatches: [
           {
             title: "Sociability",
@@ -49,7 +49,7 @@ export const ESFPData: PersonalityDatabase = {
         title: "Social Media Influencer",
         matchPercentage: 87,
         description:
-          "Sharing your vibrant personality online is your stage. You’d thrive engaging followers with your charm and spontaneity.",
+          "Sharing your vibrant personality online is your stage. You'd thrive engaging followers with your charm and spontaneity.",
         qualityMatches: [
           {
             title: "Charisma",
@@ -65,7 +65,7 @@ export const ESFPData: PersonalityDatabase = {
         title: "Fitness Instructor",
         matchPercentage: 85,
         description:
-          "Leading fun, energetic classes lets you shine. You’d love motivating people with your upbeat vibe.",
+          "Leading fun, energetic classes lets you shine. You'd love motivating people with your upbeat vibe.",
         qualityMatches: [
           {
             title: "Motivation",
@@ -74,6 +74,22 @@ export const ESFPData: PersonalityDatabase = {
           {
             title: "Spontaneity",
             description: "You keep classes lively and unpredictable.",
+          },
+        ],
+      },
+      {
+        title: "Sales Representative",
+        matchPercentage: 88,
+        description:
+          "Your natural charm and ability to connect instantly with people makes you a sales superstar. You'd thrive in dynamic, people-focused sales environments.",
+        qualityMatches: [
+          {
+            title: "People Skills",
+            description: "You build rapport effortlessly with customers.",
+          },
+          {
+            title: "Enthusiasm",
+            description: "Your genuine excitement about products is contagious.",
           },
         ],
       },
@@ -87,7 +103,7 @@ export const ESFPData: PersonalityDatabase = {
       {
         number: 2,
         description:
-          "If you’re feeling distracted, set a 25-minute timer to focus on one task, then reward yourself with a quick break.",
+          "If you're feeling distracted, set a 25-minute timer to focus on one task, then reward yourself with a quick break.",
       },
       {
         number: 3,
@@ -101,7 +117,7 @@ export const ESFPData: PersonalityDatabase = {
       title: "Relationships",
       subtitle: "How You Show Up in Relationships, {firstname}",
       description:
-        "You’re the fun, loving one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by making people laugh and creating happy moments, like throwing a surprise party for your partner or cheering up your sibling with a silly dance, but you might need to work on slowing down to connect more deeply.",
+        "You're the fun, loving one in your relationships, {firstname}—whether it's with your partner, family, or friends. You show love by making people laugh and creating happy moments, like throwing a surprise party for your partner or cheering up your sibling with a silly dance, but you might need to work on slowing down to connect more deeply.",
       compatibleTypes: ["ISFJ", "ISTJ", "ESFJ", "ISTP", "ISFP", "ESTP", "ENFP"],
       superpowers: [
         {
@@ -112,14 +128,14 @@ export const ESFPData: PersonalityDatabase = {
         {
           title: "Being Present",
           description:
-            "You’re fully in the moment, like giving your full attention to a friend who needs to talk.",
+            "You're fully in the moment, like giving your full attention to a friend who needs to talk.",
         },
       ],
       growthAreas: [
         {
           title: "Listening Deeply",
           description:
-            "You might get so excited that you miss the deeper stuff—like talking over someone who’s trying to share.",
+            "You might get so excited that you miss the deeper stuff—like talking over someone who's trying to share.",
         },
         {
           title: "Thinking Long-Term",
@@ -136,12 +152,12 @@ export const ESFPData: PersonalityDatabase = {
         {
           number: 2,
           description:
-            "Before making a big spontaneous plan, check in—like “I’d love to do this, does it work for you too?”",
+            `Before making a big spontaneous plan, check in—like "I'd love to do this, does it work for you too?"`,
         },
         {
           number: 3,
           description:
-            "Look for people who love your fun side, {firstname}—someone who’s down for your lively energy.",
+            "Look for people who love your fun side, {firstname}—someone who's down for your lively energy.",
         },
       ],
     },
@@ -149,7 +165,7 @@ export const ESFPData: PersonalityDatabase = {
       title: "Friendships",
       subtitle: "How You Shine with Friends, {firstname}",
       description:
-        "You’re the friend who makes every hangout a blast, {firstname}—always ready to get everyone laughing or plan a fun night out. You love having a big group of friends who are down for your spontaneous ideas and good vibes.",
+        "You're the friend who makes every hangout a blast, {firstname}—always ready to get everyone laughing or plan a fun night out. You love having a big group of friends who are down for your spontaneous ideas and good vibes.",
       compatibleTypes: ["ISFP", "ESFJ", "ENFP", "ESTP", "ESFP", "ISFJ", "ENFJ"],
       superpowers: [
         {
@@ -160,7 +176,7 @@ export const ESFPData: PersonalityDatabase = {
         {
           title: "Making Everyone Feel Included",
           description:
-            "You’re great at bringing people together, like inviting a new friend to join the group.",
+            "You're great at bringing people together, like inviting a new friend to join the group.",
         },
       ],
       growthAreas: [
@@ -179,19 +195,19 @@ export const ESFPData: PersonalityDatabase = {
         {
           number: 1,
           description:
-            "Have a deeper chat with a friend this month—like asking, “How have you been feeling lately?”",
+            `Have a deeper chat with a friend this month—like asking, "How have you been feeling lately?"`,
         },
         {
           number: 2,
           description:
-            "Set a reminder to check in with a friend after a hangout—like sending a quick “Last night was a blast, let’s do it again!” text.",
+            `Set a reminder to check in with a friend after a hangout—like sending a quick "Last night was a blast, let's do it again!" text.`,
         },
       ],
     },
   ],
   growth: {
     summary:
-      "Growth for you is all about balancing your love for fun with a little more reflection, {firstname}. You’re amazing at living in the moment and spreading joy, but you might need to work on thinking ahead and connecting more deeply with yourself and others.",
+      "Growth for you is all about balancing your love for fun with a little more reflection, {firstname}. You're amazing at living in the moment and spreading joy, but you might need to work on thinking ahead and connecting more deeply with yourself and others.",
     superpowers: [
       {
         title: "Being Positive",
@@ -220,7 +236,7 @@ export const ESFPData: PersonalityDatabase = {
       {
         number: 1,
         description:
-          "Set one long-term goal this month—like “I want to save up for a fun trip”—and break it into small steps.",
+          `Set one long-term goal this month—like "I want to save up for a fun trip"—and break it into small steps.`,
       },
       {
         number: 2,
@@ -230,7 +246,7 @@ export const ESFPData: PersonalityDatabase = {
       {
         number: 3,
         description:
-          "Write down three things you love about being an ESFP when you’re feeling unsure, {firstname}.",
+          "Write down three things you love about being an ESFP when you're feeling unsure, {firstname}.",
       },
     ],
   },
@@ -248,22 +264,22 @@ export const ESFPData: PersonalityDatabase = {
     {
       task: "Set a reminder to check in after a hangout",
       completed: false,
-      description: "Send a “Last night was a blast, let’s do it again!” text.",
+      description: `Send a "Last night was a blast, let's do it again!" text.`,
     },
     {
       task: "Reflect on what keeps you going",
       completed: false,
-      description: "Journal about one fun moment you’ve had lately.",
+      description: "Journal about one fun moment you've had lately.",
     },
     {
       task: "Join our community chat and say hi to another ESFP",
       completed: false,
-      description: "You’ll love connecting!",
+      description: "You'll love connecting!",
     },
   ],
   dailyHabits: {
     summary:
-      "You love a routine that keeps you energized, {firstname}, and it totally works for you—your days are full of fun and connection, and you feel best when you’re surrounded by people. Adding a little structure can help you make the most of your vibrant energy.",
+      "You love a routine that keeps you energized, {firstname}, and it totally works for you—your days are full of fun and connection, and you feel best when you're surrounded by people. Adding a little structure can help you make the most of your vibrant energy.",
     habits: {
       morning: {
         title: "Dance Party",
@@ -283,16 +299,16 @@ export const ESFPData: PersonalityDatabase = {
     },
     communication: {
       summary:
-        "You’re lively and warm when you talk, {firstname}, always making people laugh and feel good. You love conversations that are fun and engaging, but sometimes you might miss the deeper stuff if you’re too focused on keeping things light.",
+        "You're lively and warm when you talk, {firstname}, always making people laugh and feel good. You love conversations that are fun and engaging, but sometimes you might miss the deeper stuff if you're too focused on keeping things light.",
       tips: [
-        "Slow down in conversations—like pausing to really hear what someone’s saying before jumping in.",
-        "Ask a friend a deeper question, like “What’s been making you feel happy lately?”—it’ll spark a more meaningful chat.",
+        "Slow down in conversations—like pausing to really hear what someone's saying before jumping in.",
+        `Ask a friend a deeper question, like "What's been making you feel happy lately?"—it'll spark a more meaningful chat.`,
       ],
     },
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about living in the moment and spreading joy, {firstname}. You value fun, connection, and freedom, and you’re motivated by making people happy and creating memories that last a lifetime.",
+      "You're all about living in the moment and spreading joy, {firstname}. You value fun, connection, and freedom, and you're motivated by making people happy and creating memories that last a lifetime.",
     coreValues: [
       {
         title: "Fun",
@@ -317,16 +333,16 @@ export const ESFPData: PersonalityDatabase = {
       {
         number: 1,
         description:
-          "Take 10 minutes each week to jot down your thoughts on these questions in a journal—it’ll keep you connected to what matters most to you.",
+          "Take 10 minutes each week to jot down your thoughts on these questions in a journal—it'll keep you connected to what matters most to you.",
       },
     ],
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, {firstname}! Come hang out with other ESFPs and career starters in our growing community. Share your best ideas for having fun, swap stories, and let’s build something awesome together.",
+      "You don't have to figure this out alone, {firstname}! Come hang out with other ESFPs and career starters in our growing community. Share your best ideas for having fun, swap stories, and let's build something awesome together.",
     suggestions: [
-      "Drop your MBTI type in our community chat—say hi to other Entertainers who get you!",
-      "Join our weekly “Party Starters” chat to share your latest fun ideas and adventures.",
+      `Drop your MBTI type in our community chat—say hi to other Entertainers who get you!`,
+      `Join our weekly "Party Starters" chat to share your latest fun ideas and adventures.`,
     ],
   },
 };

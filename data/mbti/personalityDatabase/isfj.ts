@@ -3,77 +3,93 @@
 export const ISFJData: PersonalityDatabase = {
   career: {
     summary:
-      "You’re a total gem in jobs where you can help others and keep things running smoothly—like teaching, nursing, or office management. You love creating a warm, organized space for your team, but you might feel a bit overwhelmed if things get too chaotic or if you don’t get the appreciation you deserve.",
+      `You thrive in roles where you can help others in practical ways, {firstname}. Your natural attention to detail and reliability make you invaluable in positions requiring organization, consistency, and compassionate support. You excel when your work directly improves people's lives and your contributions are appreciated.`,
     superpowers: [
       {
-        title: "Caring for Others",
+        title: `Practical Caregiving`,
         description:
-          "You make everyone feel supported, {firstname}—like checking in on a coworker who’s stressed.",
+          `You excel at providing tangible support to others—like remembering a team member needs specific accommodations and quietly arranging them.`,
       },
       {
-        title: "Staying on Top of Things",
+        title: `Detailed Follow-Through`,
         description:
-          "You’re amazing at keeping everything in order, like making sure a project stays on track.",
+          `You ensure nothing falls through the cracks—like maintaining thorough records that prove invaluable when unexpected questions arise.`,
       },
     ],
     growthAreas: [
       {
-        title: "Saying No",
+        title: `Setting Boundaries`,
         description:
-          "You might take on too much to help others—like staying late to finish someone else’s work.",
+          `You might take on too many responsibilities—like agreeing to additional tasks even when already overloaded.`,
       },
       {
-        title: "Handling Change",
+        title: `Embracing Change`,
         description:
-          "Sudden changes can throw you off—like a last-minute shift in your schedule.",
+          `You may prefer established procedures—like feeling uncomfortable when new systems replace familiar ones.`,
       },
     ],
     suggestions: [
       {
-        title: "Teacher",
-        matchPercentage: 90,
+        title: `Healthcare Administrator`,
+        matchPercentage: 91,
         description:
-          "Your nurturing nature and organizational skills make you a natural at guiding and supporting students.",
+          `Your organizational skills and genuine concern for people's wellbeing make you perfect for managing the details that keep health services running smoothly.`,
         qualityMatches: [
           {
-            title: "Empathy",
-            description: "You understand and connect with students’ needs.",
+            title: `Patient Focus`,
+            description: `You naturally put patient needs at the center of all processes.`,
           },
           {
-            title: "Organization",
-            description: "You keep lessons and classrooms running smoothly.",
+            title: `Systematic Organization`,
+            description: `You excel at creating reliable systems that support quality care.`,
           },
         ],
       },
       {
-        title: "Nurse",
+        title: `HR Specialist`,
         matchPercentage: 88,
         description:
-          "Your caring heart and attention to detail make you a perfect fit for providing compassionate healthcare.",
+          `Your attention to detail and genuine interest in supporting others make you excellent at managing employee relations and benefits.`,
         qualityMatches: [
           {
-            title: "Compassion",
-            description: "You provide comfort and care to patients.",
+            title: `Employee Advocacy`,
+            description: `You're skilled at understanding and addressing individual needs.`,
           },
           {
-            title: "Attention to Detail",
-            description: "You ensure nothing is overlooked in patient care.",
+            title: `Process Management`,
+            description: `You maintain accurate records and ensure proper procedures are followed.`,
           },
         ],
       },
       {
-        title: "Office Manager",
+        title: `Librarian`,
         matchPercentage: 86,
         description:
-          "Your organizational skills and ability to create a harmonious environment make you a pro at keeping an office running efficiently.",
+          `Your organizational abilities and service-oriented nature make you ideal for preserving knowledge and helping others access information.`,
         qualityMatches: [
           {
-            title: "Organization",
-            description: "You keep schedules and tasks on track.",
+            title: `Systematic Thinking`,
+            description: `You excel at organizing information logically and accessibly.`,
           },
           {
-            title: "Team Support",
-            description: "You make sure everyone feels valued and supported.",
+            title: `Helpful Service`,
+            description: `You genuinely enjoy helping others find what they need.`,
+          },
+        ],
+      },
+      {
+        title: `Dental Hygienist`,
+        matchPercentage: 89,
+        description:
+          `Your meticulous attention to detail and warm, reassuring presence make you excellent at providing both technical care and patient comfort in dental settings.`,
+        qualityMatches: [
+          {
+            title: `Precise Technique`,
+            description: `You excel at performing detailed procedures with consistent accuracy.`,
+          },
+          {
+            title: `Patient Comfort`,
+            description: `You naturally put anxious patients at ease with your calming manner.`,
           },
         ],
       },
@@ -82,255 +98,255 @@ export const ISFJData: PersonalityDatabase = {
       {
         number: 1,
         description:
-          "Practice saying “no” once this week—like “I’d love to help, but I’m swamped right now.”",
+          `Practice saying "Let me check my schedule before committing" when asked to take on new responsibilities—this gives you space to consider your bandwidth.`,
       },
       {
         number: 2,
         description:
-          "If something changes at work, write down three small steps to tackle it, so you feel more in control.",
+          `Identify one area where you can share your knowledge with others—your attention to detail makes you an excellent mentor.`,
       },
       {
         number: 3,
         description:
-          "Look for jobs that let you care for others, like being a teacher or a healthcare assistant—your kind of vibe!",
+          `Look for roles that value consistency and care—your reliability and thoughtfulness are tremendous assets.`,
       },
     ],
   },
   relationships: [
     {
-      title: "Relationships",
-      subtitle: "How You Show Up in Relationships, {firstname}",
+      title: `Relationships`,
+      subtitle: `How You Connect in Close Relationships, {firstname}`,
       description:
-        "You’re the nurturing, dependable one in your relationships, {firstname}—whether it’s with your partner, family, or friends. You show love by doing thoughtful things, like making your partner’s favorite breakfast or calling your mom just to chat, but you might not always ask for the support you need in return.",
-      compatibleTypes: ["ESFP", "ESTP", "ENTP", "ESTJ", "ISTJ", "ISFP", "ISFJ"],
+        `In close relationships, you bring warmth, loyalty, and consistent support, {firstname}. You show love through practical acts of caring—remembering preferences, creating comfortable environments, and being there during difficult times. You value harmony and may prioritize others' needs above your own, though you flourish with partners who reciprocate your thoughtfulness.`,
+      compatibleTypes: [`ESTP`, `ESFP`, `ENTP`, `ENFP`, `ESTJ`, `ISTJ`],
       superpowers: [
         {
-          title: "Being Thoughtful",
+          title: `Thoughtful Caretaking`,
           description:
-            "You always remember the little things—like your friend’s birthday or your partner’s favorite song.",
+            `You remember what matters to your partner—like preparing their favorite meal after a tough day without being asked.`,
         },
         {
-          title: "Staying Loyal",
+          title: `Steady Commitment`,
           description:
-            "You’re there through thick and thin, {firstname}, making people feel so loved.",
+            `You provide reliable emotional support—being a constant presence your partner can depend on through life's ups and downs.`,
         },
       ],
       growthAreas: [
         {
-          title: "Asking for Help",
+          title: `Expressing Needs`,
           description:
-            "You might keep your own needs quiet—like not saying you’re feeling overwhelmed.",
+            `You might put your own needs aside—like not mentioning when you're feeling overwhelmed.`,
         },
         {
-          title: "Letting Go of Small Stuff",
+          title: `Confronting Issues`,
           description:
-            "You might hold onto little mistakes—like worrying if you said the wrong thing.",
+            `You may avoid addressing problems to maintain peace—like letting frustrations build rather than discussing them.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "This week, ask someone you trust for a small favor—like “Can you help me with this errand?”",
+            `Practice sharing one need or preference each day—starting with small things like "I'd prefer to eat at 6:00 tonight."`,
         },
         {
           number: 2,
           description:
-            "If you’re overthinking something, write it down and ask yourself, “Will this matter in a week?”—it’ll help you let go.",
+            `When tensions arise, try the phrase: "I care about our relationship, so I'd like to talk about something that's bothering me."`,
         },
         {
           number: 3,
           description:
-            "Look for people who appreciate your caring nature, {firstname}—someone who gives back as much as you give.",
+            `Look for partners who notice and appreciate your efforts—your caring nature deserves to be valued and reciprocated.`,
         },
       ],
     },
     {
-      title: "Friendships",
-      subtitle: "How You Shine with Friends, {firstname}",
+      title: `Friendships`,
+      subtitle: `Your Friendship Style, {firstname}`,
       description:
-        "You’re the friend who makes everyone feel at home, {firstname}—always there with a listening ear or a homemade treat. You love having a close-knit group you can count on, and you’re the one who keeps everyone connected.",
-      compatibleTypes: ["ESFJ", "ISTJ", "ISFP", "ESTJ", "ISFJ", "INFP", "ENFP"],
+        `As a friend, you're loyal and dependable, often serving as the glue that holds groups together. You remember birthdays, check in during tough times, and create comfortable spaces for gatherings. Your friendships tend to be long-lasting, with depth developing gradually through shared experiences and consistent presence.`,
+      compatibleTypes: [`ESFP`, `ESTP`, `ENFP`, `ENTP`, `ISFP`, `INFP`],
       superpowers: [
         {
-          title: "Being Supportive",
+          title: `Reliable Support`,
           description:
-            "Your friends know you’ve got their back—like when you stayed up late to help them study.",
+            `Friends know they can count on you—like when you're the first person they call during a crisis.`,
         },
         {
-          title: "Creating Memories",
+          title: `Thoughtful Gestures`,
           description:
-            "You make the best plans, like organizing a movie night with all their favorite snacks.",
+            `You remember what matters to each friend—like bringing their favorite snack to a gathering or checking in on significant days.`,
         },
       ],
       growthAreas: [
         {
-          title: "Speaking Up",
+          title: `Expanding Your Circle`,
           description:
-            "You might not always share your own struggles—like keeping quiet when you’re feeling down.",
+            `You might stick with familiar friends rather than opening up to new connections.`,
         },
         {
-          title: "Trying New Things",
+          title: `Setting Boundaries`,
           description:
-            "You might stick to the same routines—like always hosting at your place—when a new spot could be fun.",
+            `You sometimes take on too much responsibility in friendships—becoming the default organizer or emotional supporter.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "Open up to a friend this month about something you’re going through—like “I’ve been feeling a bit stressed lately.”",
+            `Challenge yourself to attend one new social event this month—you might find connections with unexpected people.`,
         },
         {
           number: 2,
           description:
-            "Plan a new kind of hangout, like a picnic in the park, to mix things up with your crew.",
+            `Practice asking friends for help occasionally—allowing others to support you deepens reciprocal bonds.`,
         },
       ],
     },
   ],
   growth: {
     summary:
-      "Growth for you is all about becoming an even better version of your amazing self while learning to take care of you too, {firstname}. You’re so good at supporting others, but you might forget to give yourself the same love and care you give everyone else.",
+      `Personal growth for you, {firstname}, involves balancing your natural caregiving tendencies with self-care and assertiveness. Learning to value your own needs as much as others' will help you maintain energy for the relationships and causes you care deeply about.`,
     superpowers: [
       {
-        title: "Being Kind",
+        title: `Consistent Effort`,
         description:
-          "Your big heart helps you grow in such a genuine way, {firstname}—like always learning from your experiences.",
+          `You excel at making steady progress—like developing habits that gradually lead to significant positive changes.`,
       },
       {
-        title: "Staying Grounded",
+        title: `Practical Application`,
         description:
-          "You approach growth with a practical mindset, keeping it real and doable.",
+          `You naturally translate concepts into real-world action—taking advice and immediately finding ways to apply it.`,
       },
     ],
     growthAreas: [
       {
-        title: "Putting Yourself First",
+        title: `Self-Prioritization`,
         description:
-          "You might put others’ needs before your own—like skipping a break to help a friend.",
+          `You might place others' needs before your own—like postponing self-care to help someone else.`,
       },
       {
-        title: "Embracing Change",
+        title: `Trying New Approaches`,
         description:
-          "New situations can feel tricky—like trying a new hobby that’s out of your comfort zone.",
+          `You may stick with familiar methods—sometimes missing opportunities for beneficial changes.`,
       },
     ],
     actionSteps: [
       {
         number: 1,
         description:
-          "Take 10 minutes each day just for you—like sipping tea while listening to your favorite playlist.",
+          `Schedule 15 minutes of personal time each day—put it in your calendar and treat it with the same importance as commitments to others.`,
       },
       {
         number: 2,
         description:
-          "Try one new thing this week, like joining a yoga class or trying a new recipe—it’ll feel exciting!",
+          `When facing a challenge, brainstorm three possible approaches before moving forward—this expands your comfort with different methods.`,
       },
       {
         number: 3,
         description:
-          "Write down three things you love about being an ISFJ when you’re feeling hard on yourself, {firstname}.",
+          `Practice saying "no" to one request this week that would overextend you—remember that maintaining your energy ultimately helps you better serve others.`,
       },
     ],
   },
   actionItems: [
     {
-      task: "Practice saying “no” once this week",
+      task: `Practice checking your schedule before committing`,
       completed: false,
-      description: "Try “I’d love to help, but I’m swamped right now.”",
+      description: `Pause before saying yes to new responsibilities.`,
     },
     {
-      task: "Ask a loved one for a small favor",
+      task: `Share one personal need or preference`,
       completed: false,
-      description: "Like “Can you help me with this errand?”",
+      description: `Express what you want, even if it feels uncomfortable.`,
     },
     {
-      task: "Plan a new hangout with friends",
+      task: `Schedule 15 minutes of personal time`,
       completed: false,
-      description: "Like a picnic in the park.",
+      description: `Put it on your calendar and protect this time.`,
     },
     {
-      task: "Reflect on what keeps you going",
+      task: `Try saying "no" to one request that would overextend you`,
       completed: false,
-      description: "Journal about one kind thing you did recently.",
+      description: `Practice setting a boundary to protect your energy.`,
     },
     {
-      task: "Join our community chat and say hi to another ISFJ",
+      task: `Connect with other ISFJs in our community`,
       completed: false,
-      description: "You’ll love connecting!",
+      description: `Share experiences and learn from others like you.`,
     },
   ],
   dailyHabits: {
     summary:
-      "You love a good routine, {firstname}, and it totally works for you—your days are calm and organized, and you feel best when everything’s in place. Adding a little self-care can make your routine even more special.",
+      `Creating daily routines that include self-care alongside caring for others will help you maintain balance, {firstname}. Building in moments of reflection and personal enjoyment ensures you'll have the energy to continue supporting the people and causes important to you.`,
     habits: {
       morning: {
-        title: "Gratitude List",
+        title: `Intention Setting`,
         description:
-          "Start your morning with a 5-minute gratitude list—like writing down three things you’re thankful for today.",
+          `Start your day by identifying one personal need you'll attend to—before focusing on responsibilities to others.`,
       },
       afternoon: {
-        title: "Cozy Habit",
+        title: `Connection Check`,
         description:
-          "Add a small, cozy habit—like lighting a candle while you study or work—to make your day feel extra nice.",
+          `Take a moment to connect with someone who energizes rather than drains you—even a brief positive exchange can refresh your perspective.`,
       },
       evening: {
-        title: "Wind Down",
+        title: `Appreciation Practice`,
         description:
-          "Wind down with a 10-minute habit, like journaling about your day, to relax before bed.",
+          `End your day by acknowledging something you did well and something you appreciate about yourself—not just what you did for others.`,
       },
     },
     communication: {
       summary:
-        "You’re warm and thoughtful when you talk, {firstname}, always making sure people feel heard. You love connecting through kind words, but sometimes you might hold back on sharing your own thoughts.",
+        `Your communication style tends to be warm and supportive, {firstname}. You excel at listening carefully and responding thoughtfully, though you might sometimes hold back your opinions to maintain harmony or avoid drawing attention to yourself.`,
       tips: [
-        "Share a little more in conversations—like saying “I really loved that movie because…” to open up.",
-        "Ask a friend how they’re doing with a question like “What’s been making you smile lately?”—it’ll spark a deeper chat.",
+        `When you have a different perspective, try prefacing it with "I see this a bit differently" rather than staying silent—your insights are valuable.`,
+        `Practice asking for what you need directly—instead of hinting, try saying "Would you be able to help me with this?"`,
       ],
     },
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about taking care of the people you love and creating a sense of calm, {firstname}. You value kindness, loyalty, and keeping things steady, and you’re motivated by making others feel safe and supported while building a life you’re proud of.",
+      `At your core, {firstname}, you value security, harmony, and making a tangible difference in people's lives. You're motivated by creating stable, supportive environments and seeing the practical results of your care for others.`,
     coreValues: [
       {
-        title: "Kindness",
-        description: "You bring warmth and care to every interaction.",
+        title: `Reliability`,
+        description: `You believe in being someone others can count on completely.`,
       },
       {
-        title: "Loyalty",
-        description: "You’re always there for the people you love.",
+        title: `Practical Kindness`,
+        description: `You value tangible acts of service over grand gestures or words.`,
       },
       {
-        title: "Steadiness",
-        description: "You create a sense of calm and reliability.",
+        title: `Tradition`,
+        description: `You appreciate the security and meaning found in established customs and systems.`,
       },
     ],
     motivators: [
       {
-        title: "Caring for Loved Ones",
-        description: "You’re driven by making others feel safe and supported.",
+        title: `Making a Difference`,
+        description: `You're energized when you can see the positive impact of your efforts on others.`,
       },
       {
-        title: "Creating Calm",
-        description: "You’re motivated by building a peaceful, organized life.",
+        title: `Creating Stability`,
+        description: `You're driven to build and maintain secure, harmonious environments.`,
       },
     ],
     actionItems: [
       {
         number: 1,
         description:
-          "Take 10 minutes each week to jot down your thoughts on these questions in a journal—it’ll keep you connected to what matters most to you.",
+          `When making decisions this week, ask yourself: "Does this align with my values of reliability, kindness, and creating stability?"`,
       },
     ],
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, {firstname}! Come hang out with other ISFJs and career starters in our growing community. Share your best tips for spreading kindness, swap ideas, and let’s build something awesome together.",
+      `You're not alone in your ISFJ journey, {firstname}! There's a whole community of people who share your caring nature and attention to detail. Connecting with them can help you learn new approaches to leveraging your strengths while caring for yourself.`,
     suggestions: [
-      "Drop your MBTI type in our community chat—say hi to other Defenders who get you!",
-      "Join our weekly “Spread the Love” chat to share your favorite ways to make others smile.",
+      `Join our ISFJ channel in the community—we discuss everything from setting healthy boundaries to finding fulfilling ways to help others.`,
+      `Check out our monthly "Care Exchange" where fellow ISFJs share their best practices for balancing self-care with caring for others.`,
     ],
   },
 };
