@@ -278,7 +278,7 @@ export function SignupForm({
 
       <div className="text-center text-balance text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
         By signing up, you agree to our{" "}
-        <Link href="/privacy">Terms of Service</Link> and{" "}
+        <Link href="/t&c">Terms of Service</Link> and{" "}
         <Link href="/privacy">Privacy Policy</Link>
       </div>
       <Button variant="outline" className="mx-auto" asChild>
