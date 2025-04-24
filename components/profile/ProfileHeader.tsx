@@ -29,8 +29,6 @@ export default function ProfileHeader({
 
   return (
     <section className="relative">
-      {/* Simple background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-background rounded-3xl -z-10" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
