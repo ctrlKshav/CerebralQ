@@ -15,7 +15,7 @@ import CQLogo from "../CQLogo";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabaseOperations";
 import { PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-
+import { MBTIResponseData } from "@/types/tests/mbti/responseData";
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_mbti_results";
 
@@ -32,7 +32,7 @@ export default function MBTITest() {
     defaultValues: {
       id: currentTest.id,
       answers: {},
-      createdAt: new Date().toISOString(), // set default createdAt
+      takenAt: new Date().toISOString(), // set default createdAt
     },
   });
 
@@ -76,18 +76,19 @@ export default function MBTITest() {
     const personalityResult = calculateMBTI(data.answers);
 
     // Create a single unified test result object
-    const testResultData = {
+    const testResultData : MBTIResponseData = {
       // Database fields
       test_type_id: data.id,
       user_id: userID || "demo",
       raw_score: {
         personalityType: personalityResult.personalityType,
         // Convert traitScores to a plain object that can be serialized to JSON
-        traitScores: personalityResult.traitScores as any,
+        traitScores: personalityResult.traitScores ,
       },
       completion_time_minutes: 15, // Static for now
       validity_status: "valid", // Static for now
       is_public: true,
+      taken_at: data.takenAt,
     };
 
     // Store results in local storage
