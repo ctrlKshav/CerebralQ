@@ -49,12 +49,6 @@ export function TestForm({
       sectionQuestions.length); // All answered in section
       
   const totalQuestions = questions.length;
-  
-  // Handle answer selection to update question count
-  const handleAnswerSelected = (questionId: string) => {
-    // The component will re-render with updated answeredQuestionIds
-    // which will recalculate currentQuestionCount
-  };
 
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
@@ -74,8 +68,6 @@ export function TestForm({
                   <QuestionCard
                     key={question.id}
                     question={question}
-                    name={`answers.${question.id}`}
-                    onAnswerSelected={handleAnswerSelected}
                   />
                 ))}
               </motion.div>
