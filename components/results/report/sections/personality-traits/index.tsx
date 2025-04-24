@@ -44,9 +44,9 @@ export default function PersonalityTraits({
       transition: {
         when: "beforeChildren",
         staggerChildren: 0.2,
-        duration: 0.5
-      }
-    }
+        duration: 0.5,
+      },
+    },
   };
 
   const cardVariants = {
@@ -54,8 +54,8 @@ export default function PersonalityTraits({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.4 }
-    }
+      transition: { duration: 0.4 },
+    },
   };
 
   return (
@@ -80,12 +80,12 @@ export default function PersonalityTraits({
         whileInView="visible"
         viewport={{ once: true }}
         className={cn(
-          "grid gap-8 ",
-          isMobile ? "grid-cols-1" : "grid-cols-1 md:grid-cols-2"
+          "flex gap-8  h-full ",
+          isMobile ? "flex-col" : "flex-col md:flex-row items-stretch"
         )}
       >
         {/* Trait scores list */}
-        <Card className="shadow-none border-0 py-8 sm:p-8 sm:border sm:shadow space-y-10 flex flex-col justify-between">
+        <Card className=" w-full  shadow-none border-0 py-8 sm:p-8 sm:border sm:shadow space-y-10 flex flex-col justify-between">
           {Object.entries(traitScores).map(
             ([trait, score]: [string, TraitScore], index) => {
               const typedTrait = trait as keyof TraitScores;
@@ -96,6 +96,7 @@ export default function PersonalityTraits({
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.4, delay: index * 0.1 }}
+                  className=""
                 >
                   <TraitCard
                     trait={typedTrait}
@@ -122,7 +123,7 @@ export default function PersonalityTraits({
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="p-8 flex flex-col"
+              className=" w-full flex flex-col"
             >
               <Card className="h-full">
                 <div className="space-y-6 flex flex-col h-full p-8">
@@ -131,11 +132,12 @@ export default function PersonalityTraits({
                     const score = traitScores[traitKey];
                     score;
                     const traitInfo =
-                      getPersonalityTraitDescriptions(personalityType)[traitKey];
+                      getPersonalityTraitDescriptions(personalityType)[
+                        traitKey
+                      ];
                     const themedColor = !isLightTheme
                       ? traitInfo.lightColor
                       : traitInfo.darkColor;
-
                     return (
                       <TraitDetail
                         traitKey={traitKey}
