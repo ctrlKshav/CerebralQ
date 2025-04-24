@@ -25,33 +25,6 @@ export function SidebarNavMain({
   const { activeSection, setActiveSection, isMobile, setOpenMobile } =
     useSidebar();
 
-  const handleScroll = () => {
-    const sections = items.map((item) => ({
-      id: item.url.replace("#", ""),
-      title: item.title,
-    }));
-
-    const currentSection = sections.find((section) => {
-      const element = document.getElementById(section.id);
-      if (!element) return false;
-
-      const rect = element.getBoundingClientRect();
-      return rect.top <= 100 && rect.bottom > 100;
-    });
-
-    if (currentSection) {
-      setActiveSection(currentSection.title);
-    }
-  };
-
-  // Update active item based on scroll position
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
-
   useEffect(() => {
     document.getElementById(activeSection)?.scrollIntoView({
       behavior: "smooth",
