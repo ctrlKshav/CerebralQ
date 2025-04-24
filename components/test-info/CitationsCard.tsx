@@ -11,7 +11,7 @@ export const TestCitationsCard = ({ citations }: { citations: any[] }) => (
               href={citation.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-primary hover:underline"
+              className="text-primary hover:underline break-words"
             >
               {new URL(citation.link).hostname}
             </Link>
