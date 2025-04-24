@@ -53,7 +53,7 @@ export function TestForm({
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
       <div className="min-h-screen relative">
-        <div className="p-8 pb-32">
+        <div className="p-0 xs:p-8 pb-32">
           <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center ">
             <AnimatePresence mode="wait">
               <motion.div
@@ -76,7 +76,7 @@ export function TestForm({
         </div>
         {/* Fixed Bottom Navigation */}
         <div className="fixed bottom-0 left-0 right-0 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-md">
-          <div className="max-w-3xl mx-auto px-8 py-6">
+          <div className="max-w-3xl mx-auto px-4 xs:px-8 py-6">
             <FormNavigation
               onNext={onNext}
               onPrev={onPrev}

@@ -34,7 +34,7 @@ export const TestResultSection = ({
   };
   const imagePath = personalityImages[result.personalityType || result.type] || personalityImages.default;
   return (
-    <div className=" rounded-xl p-6">
+    <div className="rounded-xl xs:p-6">
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left Column - Type, Alias, Date, Description, Image */}
         <div className="lg:w-2/5 flex flex-col text-center">
