@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Page() {
   return (
     <div className="">
-      <Link href="/" className="fixed top-4 left-12 ">
+      <Link href="/" className="fixed top-0 left-8 ">
         <CQLogo className="w-24 h-24 sm:w-28 sm:h-28" />
       </Link>
       <div className="container py-10">
