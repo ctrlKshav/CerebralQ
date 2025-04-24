@@ -1,7 +1,11 @@
 ﻿import * as React from "react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import type { TraitDescription, TraitScore, TraitScores } from "@/types/tests/mbti/traits";
+import type {
+  TraitDescription,
+  TraitScore,
+  TraitScores,
+} from "@/types/tests/mbti/traits";
 import { useState } from "react";
 
 interface TraitDetailProps {
@@ -20,22 +24,25 @@ export const TraitDetail = ({
   traitInfo,
   themedColor,
   firstname,
-  dashboardView
+  dashboardView,
 }: TraitDetailProps) => {
   const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
-  const imageName = dominant.name.toLowerCase();
-  const [imageError, setImageError] = useState(false);
-  
-  // Function to get the correct image path with format fallback
-  const getImagePath = () => {
-    // If first format failed, try the alternative
-    if (imageError) {
-      return `/images/personalityTraits/${imageName}.jpeg`;
-    }
-    // Default format to try first
-    return `/images/personalityTraits/${imageName}.jpg`;
+
+  // Use high-quality professional Unsplash images for each personality type
+  const traitImages: Record<string, string> = {
+    E: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491076/extraversion_m9nqlf.jpg",
+    I: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491070/introversion_n86qkf.jpg",
+    S: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491070/sensing_ndbcqi.jpg",
+    N: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491069/intuition_gqrpcc.jpg",
+    T: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491072/thinking_duqsog.jpg",
+    F: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491070/feeling_tnw8ce.jpg",
+    J: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491069/judging_wfluvv.jpg",
+    P: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491069/perceiving_awrm6c.jpg",
+    default:
+      "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491069/perceiving_awrm6c.jpg",
   };
 
+  const imagePath = traitImages[dominant.letter] || traitImages.default;
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -43,13 +50,12 @@ export const TraitDetail = ({
         <span className=" font-bold text-muted-foreground">
           {traitInfo.title}
         </span>
-        <h3
-          className="text-3xl font-bold"
-          style={{ color: themedColor }}
-        >
+        <h3 className="text-3xl font-bold" style={{ color: themedColor }}>
           {score[`${score.dominant}Percentage`].toFixed(0)}%{" "}
           <span className="text-base font-medium">
-            {score.dominant === "left" ? traitInfo.leftLabel : traitInfo.rightLabel}
+            {score.dominant === "left"
+              ? traitInfo.leftLabel
+              : traitInfo.rightLabel}
           </span>
         </h3>
       </div>
@@ -58,15 +64,14 @@ export const TraitDetail = ({
       <div className="bg-background shadow-lg rounded-xl overflow-hidden">
         {/* Image Section */}
         <div className="relative w-full h-[18rem]">
-          <Image 
-            src={getImagePath()}
+          <Image
+            src={imagePath}
             alt={`${dominant.name} trait illustration`}
             fill
             className="object-cover"
-            onError={() => !imageError && setImageError(true)}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40"></div>
-          
+
           {/* Trait Badge - Displayed on image */}
           <div className="absolute bottom-4 left-4 flex items-center space-x-3">
             <Badge
@@ -80,7 +85,7 @@ export const TraitDetail = ({
             </h5>
           </div>
         </div>
-        
+
         {/* Description Section */}
         <div className="p-5">
           <p className="text-muted-foreground leading-relaxed">
