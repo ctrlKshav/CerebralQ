@@ -1,5 +1,8 @@
 import React from "react";
-import { CareerPathFull } from "@/types/tests/mbti/personalityDatabase";
+import {
+  CareerPathFull,
+  CareerPathFree,
+} from "@/types/tests/mbti/personalityDatabase";
 import {
   CheckCircle,
   Briefcase,
@@ -16,7 +19,7 @@ import { formatWithUsername } from "../../../../lib/formatWithUsername";
 
 interface CareerPathSectionProps {
   firstname: string | null;
-  career: CareerPathFull;
+  career: CareerPathFull | CareerPathFree;
   sectionNumber?: number;
   id?: string;
 }
@@ -28,6 +31,10 @@ const CareerPathSection = ({
   id = "career-path",
 }: CareerPathSectionProps) => {
   const { superpowers, growthAreas, actionSteps } = career;
+
+  // Check if career is CareerPathFull (has suggestions)
+  const hasSuggestions =
+    "suggestions" in career && career.suggestions?.length > 0;
 
   return (
     <section
@@ -52,7 +59,7 @@ const CareerPathSection = ({
         {/* Career Superpowers and Growth Areas */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           {/* Career Superpowers */}
-          <SuperpowersCard 
+          <SuperpowersCard
             firstname={firstname}
             title="Your Career Superpowers"
             items={superpowers}
@@ -80,13 +87,15 @@ const CareerPathSection = ({
           />
         </div>
 
-        {/* Career Suggestions Section */}
-        <div className="">
-          <CareerSuggestionsCard
-            careerSuggestions={career.suggestions}
-            className=""
-          />
-        </div>
+        {/* Career Suggestions - render if available */}
+        {hasSuggestions && (
+          <div className="mb-16">
+            <CareerSuggestionsCard
+              careerSuggestions={(career as CareerPathFull).suggestions}
+            />
+          </div>
+        )}
+        
       </div>
     </section>
   );

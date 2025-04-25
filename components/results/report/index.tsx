@@ -4,17 +4,21 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar-custom";
 import { ReportHeader } from "@/components/results/report/SiteHeader";
 import { ReportSidebar } from "@/components/results/report/Sidebar";
 import { User } from "@/types/supabase/users";
-import { CQReport } from "./CQReport";
+import { CQReportFull } from "./CQReportFull";
 import { useEffect } from "react";
+import { CQReportFree } from "./CQReportFree";
 export interface ReportComponentProps {
   userData: User | null;
   resultData: FullResultData | FreeResultData | null;
 }
 export default function Report({ userData, resultData }: ReportComponentProps) {
-const {
-    personalityType,
-    traitScores,
-  } = resultData || sampleResultData;
+  if (resultData === null) {
+    resultData = sampleResultData;
+  }
+
+  const { personalityType, traitScores } = resultData;
+
+  const isFull = "relationships" in resultData;
   return (
     <div className="min-h-screen bg-background [--header-height:6rem]">
       <SidebarProvider className="flex flex-col">
@@ -22,11 +26,19 @@ const {
         <div className="flex flex-1">
           <ReportSidebar />
           <SidebarInset>
-            <CQReport
-              traitScores={traitScores}
-              personalityType={personalityType}
-              resultData={resultData as FullResultData || sampleResultData}
-            />  
+            {isFull ? (
+              <CQReportFull
+                traitScores={traitScores}
+                personalityType={personalityType}
+                resultData={(resultData as FullResultData) || sampleResultData}
+              />
+            ) : (
+              <CQReportFree
+                traitScores={traitScores}
+                personalityType={personalityType}
+                resultData={(resultData as FreeResultData) || sampleResultData}
+              />
+            )}
           </SidebarInset>
         </div>
       </SidebarProvider>

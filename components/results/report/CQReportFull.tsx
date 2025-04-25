@@ -10,9 +10,7 @@ import DailyHabitsSection from "@/components/results/report/sections/DailyHabits
 import ValuesMotivatorSection from "@/components/results/report/sections/ValuesMotivatorsSection";
 import CommunitySection from "@/components/results/report/sections/CommunitySection";
 import ActionPlanSection from "@/components/results/report/sections/ActionPlanSection";
-import { useSidebar } from "@/components/ui/sidebar-custom";
-import { sidebarNavData } from "@/data/report/sidebarNav";
-export function CQReport({
+export function CQReportFull({
   traitScores,
   personalityType,
   resultData,
