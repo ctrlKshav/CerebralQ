@@ -24,7 +24,7 @@ export default function Report({ userData, resultData }: ReportComponentProps) {
       <SidebarProvider className="flex flex-col">
         <ReportHeader firstname={resultData?.firstname} />
         <div className="flex flex-1">
-          <ReportSidebar />
+          <ReportSidebar isPaidUser={isFull} />
           <SidebarInset>
             {isFull ? (
               <CQReportFull

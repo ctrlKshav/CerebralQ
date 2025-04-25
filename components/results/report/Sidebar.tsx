@@ -17,9 +17,7 @@ import {
 import { motion } from "framer-motion";
 import { sidebarNavData } from "@/data/report/sidebarNav";
 
-export function ReportSidebar({
-  ...props
-}: React.ComponentProps<typeof Sidebar>) {
+export function ReportSidebar({ isPaidUser = false }: { isPaidUser: boolean }) {
   const { isMobile, state, activeSection, setActiveSection } = useSidebar();
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -49,7 +47,7 @@ export function ReportSidebar({
 
   // Update active item based on scroll position
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll, {passive: true});
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -68,18 +66,18 @@ export function ReportSidebar({
     const timer = setTimeout(() => {
       setHasAnimated(true);
     }, 300);
-    
+
     return () => clearTimeout(timer);
   }, []);
 
   // Header animation variants
   const headerVariants = {
     hidden: { y: -10, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { duration: 0.4, ease: "easeOut", delay: 0.1 }
-    }
+      transition: { duration: 0.4, ease: "easeOut", delay: 0.1 },
+    },
   };
 
   return (
@@ -111,7 +109,6 @@ export function ReportSidebar({
         className="top-[--header-height] !h-[calc(100svh-var(--header-height))] w-[20rem] bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 border-r border-slate-200 dark:border-slate-800"
         style={{ "--sidebar-width": "20rem" } as React.CSSProperties}
         side={isMobile ? "right" : "left"}
-        {...props}
       >
         <motion.div
           initial={!hasAnimated ? "hidden" : false}
@@ -122,7 +119,7 @@ export function ReportSidebar({
             <SidebarMenu>
               <SidebarMenuItem className="px-4 pt-6">
                 <div className="flex items-center justify-between w-full">
-                  <motion.span 
+                  <motion.span
                     className="font-semibold text-xl text-slate-800 dark:text-white"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.2 }}
@@ -136,7 +133,7 @@ export function ReportSidebar({
           </SidebarHeader>
         </motion.div>
         <SidebarContent className="px-4">
-          <SidebarNavMain items={sidebarNavData.navMain} />
+          <SidebarNavMain items={sidebarNavData.navMain} isPaidUser={isPaidUser} />
         </SidebarContent>
       </Sidebar>
     </>

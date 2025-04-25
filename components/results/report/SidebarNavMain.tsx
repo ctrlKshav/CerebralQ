@@ -20,8 +20,10 @@ import Link from "next/link";
 
 export function SidebarNavMain({
   items,
+  isPaidUser,
 }: {
   items: SidebarNavDataType["navMain"];
+  isPaidUser: boolean;
 }) {
   const { activeSection, setActiveSection, isMobile, setOpenMobile } =
     useSidebar();
@@ -38,20 +40,20 @@ export function SidebarNavMain({
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         delayChildren: 0.1,
-        staggerChildren: 0.07
-      }
-    }
+        staggerChildren: 0.07,
+      },
+    },
   };
-  
+
   const itemVariants = {
     hidden: { opacity: 0, x: -20 },
-    visible: { 
-      opacity: 1, 
+    visible: {
+      opacity: 1,
       x: 0,
-      transition: { duration: 0.3 }
-    }
+      transition: { duration: 0.3 },
+    },
   };
 
   return (
@@ -65,7 +67,7 @@ export function SidebarNavMain({
           Sections
         </SidebarGroupLabel>
       </motion.div>
-      
+
       <motion.div
         variants={containerVariants}
         initial="hidden"
@@ -74,7 +76,7 @@ export function SidebarNavMain({
         <SidebarMenu className="gap-2">
           {items.map((item, index) => {
             const isActive = item.title === activeSection;
-            const isDisabled = item.disabled === true;
+            const isDisabled = item.disabled && !isPaidUser;
 
             return (
               <motion.div
@@ -83,27 +85,31 @@ export function SidebarNavMain({
                 whileHover={{ x: isDisabled ? 0 : 5 }}
                 transition={{ duration: 0.2 }}
               >
-                <SidebarMenuItem
-                  className="my-1.5"
-                  id={item.title}
-                >
+                <SidebarMenuItem className="my-1.5" id={item.title}>
                   <SidebarMenuButton
                     variant={"default"}
                     asChild
-                    tooltip={isDisabled ? `${item.title} (Coming Soon)` : item.title}
+                    tooltip={
+                      isDisabled ? `${item.title} (Coming Soon)` : item.title
+                    }
                     isActive={isActive && !isDisabled}
-                    onClick={isDisabled ? undefined : () => setOpenMobile(false)}
+                    onClick={
+                      isDisabled ? undefined : () => setOpenMobile(false)
+                    }
                     className={cn(
                       "h-12 px-3 py-3 text-base font-medium transition-all duration-200 rounded-xl relative overflow-hidden",
                       !isDisabled && "hover:translate-x-1",
                       isActive && !isDisabled
                         ? "bg-white dark:bg-slate-800 shadow-md"
-                        : !isDisabled 
+                        : !isDisabled
                           ? "hover:bg-white/50 dark:hover:bg-slate-800/50"
                           : "opacity-60 cursor-not-allowed"
                     )}
                     style={{
-                      boxShadow: isActive && !isDisabled ? `0 4px 12px ${item.bgColor}` : "",
+                      boxShadow:
+                        isActive && !isDisabled
+                          ? `0 4px 12px ${item.bgColor}`
+                          : "",
                     }}
                   >
                     {isDisabled ? (
@@ -115,9 +121,7 @@ export function SidebarNavMain({
                             backgroundColor: "transparent",
                           }}
                         >
-                          <item.icon
-                            className="size-5 flex-shrink-0 text-slate-400 dark:text-slate-500"
-                          />
+                          <item.icon className="size-5 flex-shrink-0 text-slate-400 dark:text-slate-500" />
                         </motion.div>
 
                         {/* Title with custom styling */}
@@ -141,13 +145,18 @@ export function SidebarNavMain({
                           }}
                           whileHover={{ scale: 1.2 }}
                           animate={isActive ? { scale: 1.1 } : { scale: 1 }}
-                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                          transition={{
+                            type: "spring",
+                            stiffness: 400,
+                            damping: 10,
+                          }}
                         >
                           <item.icon
                             className="size-5 flex-shrink-0"
                             style={{
                               color: isActive ? item.color : "currentColor",
-                              transition: "color 0.2s ease, transform 0.2s ease",
+                              transition:
+                                "color 0.2s ease, transform 0.2s ease",
                               transform: isActive ? "scale(1.1)" : "scale(1)",
                             }}
                           />
