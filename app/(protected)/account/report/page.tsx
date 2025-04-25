@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { FullResultData, FreeResultData } from "@/types/tests/mbti/results";
 import { TEST_RESULTS_KEY } from "@/lib/constants";
-import { getFullPersonalityData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
 import { useUserDataContext } from "@/context/user-data";
+import { fetchPersonalityData } from "@/lib/fetchPersonalityData";
 
 export default function ReportPage() {
   const userDataContext = useUserDataContext();
@@ -16,7 +16,7 @@ export default function ReportPage() {
   }
   const { userData, loading: authLoading } = userDataContext;
 
-  const [resultData, setResultData] = useState<FullResultData | null>(null);
+  const [resultData, setResultData] = useState<FullResultData | FreeResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -52,9 +52,10 @@ export default function ReportPage() {
           return;
         }
 
-        const personalityData = getFullPersonalityData(personalityType);
         const personalityDescription =
           getPersonalityDescription(personalityType);
+          
+        const personalityData = await fetchPersonalityData(personalityType);
 
         // Set all result data at once
         setResultData({
