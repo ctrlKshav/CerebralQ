@@ -1,6 +1,7 @@
 "use client";
 
 import { type LucideIcon } from "lucide-react";
+import { Lock } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
@@ -73,12 +74,13 @@ export function SidebarNavMain({
         <SidebarMenu className="gap-2">
           {items.map((item, index) => {
             const isActive = item.title === activeSection;
+            const isDisabled = item.disabled === true;
 
             return (
               <motion.div
                 key={item.title}
                 variants={itemVariants}
-                whileHover={{ x: 5 }}
+                whileHover={{ x: isDisabled ? 0 : 5 }}
                 transition={{ duration: 0.2 }}
               >
                 <SidebarMenuItem
@@ -88,73 +90,99 @@ export function SidebarNavMain({
                   <SidebarMenuButton
                     variant={"default"}
                     asChild
-                    tooltip={item.title}
-                    isActive={isActive}
-                    onClick={() => setOpenMobile(false)}
+                    tooltip={isDisabled ? `${item.title} (Coming Soon)` : item.title}
+                    isActive={isActive && !isDisabled}
+                    onClick={isDisabled ? undefined : () => setOpenMobile(false)}
                     className={cn(
                       "h-12 px-3 py-3 text-base font-medium transition-all duration-200 rounded-xl relative overflow-hidden",
-                      "hover:translate-x-1",
-                      isActive
+                      !isDisabled && "hover:translate-x-1",
+                      isActive && !isDisabled
                         ? "bg-white dark:bg-slate-800 shadow-md"
-                        : "hover:bg-white/50 dark:hover:bg-slate-800/50"
+                        : !isDisabled 
+                          ? "hover:bg-white/50 dark:hover:bg-slate-800/50"
+                          : "opacity-60 cursor-not-allowed"
                     )}
                     style={{
-                      boxShadow: isActive ? `0 4px 12px ${item.bgColor}` : "",
+                      boxShadow: isActive && !isDisabled ? `0 4px 12px ${item.bgColor}` : "",
                     }}
                   >
-                    <Link href={item.url} className="flex items-center gap-3">
-                      {/* Icon wrapper with background */}
-                      <motion.div
-                        className={cn(
-                          "flex items-center justify-center rounded-lg p-2 transition-all duration-200",
-                          isActive ? "scale-110" : "scale-100"
-                        )}
-                        style={{
-                          backgroundColor: "transparent",
-                        }}
-                        whileHover={{ scale: 1.2 }}
-                        animate={isActive ? { scale: 1.1 } : { scale: 1 }}
-                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                      >
-                        <item.icon
-                          className="size-5 flex-shrink-0"
+                    {isDisabled ? (
+                      <div className="flex items-center gap-3">
+                        {/* Icon wrapper with background */}
+                        <motion.div
+                          className="flex items-center justify-center rounded-lg p-2 transition-all duration-200"
+                          style={{
+                            backgroundColor: "transparent",
+                          }}
+                        >
+                          <item.icon
+                            className="size-5 flex-shrink-0 text-slate-400 dark:text-slate-500"
+                          />
+                        </motion.div>
+
+                        {/* Title with custom styling */}
+                        <span className="truncate text-slate-400 dark:text-slate-500">
+                          {item.title}
+                        </span>
+
+                        {/* Lock icon */}
+                        <Lock className="ml-auto size-4 text-slate-400 dark:text-slate-500" />
+                      </div>
+                    ) : (
+                      <Link href={item.url} className="flex items-center gap-3">
+                        {/* Icon wrapper with background */}
+                        <motion.div
+                          className={cn(
+                            "flex items-center justify-center rounded-lg p-2 transition-all duration-200",
+                            isActive ? "scale-110" : "scale-100"
+                          )}
+                          style={{
+                            backgroundColor: "transparent",
+                          }}
+                          whileHover={{ scale: 1.2 }}
+                          animate={isActive ? { scale: 1.1 } : { scale: 1 }}
+                          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                        >
+                          <item.icon
+                            className="size-5 flex-shrink-0"
+                            style={{
+                              color: isActive ? item.color : "currentColor",
+                              transition: "color 0.2s ease, transform 0.2s ease",
+                              transform: isActive ? "scale(1.1)" : "scale(1)",
+                            }}
+                          />
+                        </motion.div>
+
+                        {/* Title with custom styling */}
+                        <motion.span
+                          className={cn(
+                            "truncate transition-all duration-200",
+                            isActive ? "font-semibold" : ""
+                          )}
                           style={{
                             color: isActive ? item.color : "currentColor",
-                            transition: "color 0.2s ease, transform 0.2s ease",
-                            transform: isActive ? "scale(1.1)" : "scale(1)",
                           }}
-                        />
-                      </motion.div>
+                          whileHover={{ scale: 1.03 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {item.title}
+                        </motion.span>
 
-                      {/* Title with custom styling */}
-                      <motion.span
-                        className={cn(
-                          "truncate transition-all duration-200",
-                          isActive ? "font-semibold" : ""
-                        )}
-                        style={{
-                          color: isActive ? item.color : "currentColor",
-                        }}
-                        whileHover={{ scale: 1.03 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        {item.title}
-                      </motion.span>
-
-                      {/* Active indicator */}
-                      <AnimatePresence>
-                        {isActive && (
-                          <motion.div
-                            className="absolute right-0 top-0 h-full w-1 rounded-l-full"
-                            style={{ backgroundColor: item.color }}
-                            initial={{ opacity: 0, scaleY: 0 }}
-                            animate={{ opacity: 1, scaleY: 1 }}
-                            exit={{ opacity: 0, scaleY: 0 }}
-                            transition={{ duration: 0.3 }}
-                          />
-                        )}
-                      </AnimatePresence>
-                    </Link>
+                        {/* Active indicator */}
+                        <AnimatePresence>
+                          {isActive && (
+                            <motion.div
+                              className="absolute right-0 top-0 h-full w-1 rounded-l-full"
+                              style={{ backgroundColor: item.color }}
+                              initial={{ opacity: 0, scaleY: 0 }}
+                              animate={{ opacity: 1, scaleY: 1 }}
+                              exit={{ opacity: 0, scaleY: 0 }}
+                              transition={{ duration: 0.3 }}
+                            />
+                          )}
+                        </AnimatePresence>
+                      </Link>
+                    )}
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               </motion.div>
