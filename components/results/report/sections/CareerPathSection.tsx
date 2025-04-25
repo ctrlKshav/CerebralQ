@@ -16,12 +16,15 @@ import ActionStepsCard from "../../shared/ActionStepsCard";
 import SectionHeader from "../../shared/SectionHeader";
 import { formatWithUsername } from "../../../../lib/formatWithUsername";
 import CareeerSuggestions from "./CareerSuggestionsSection";
+import BlurredCareerSuggestionsCard from "../../shared/BlurredCareerSuggestionsCard";
 
 interface CareerPathSectionProps {
   firstname: string | null;
   career: CareerPathFull | CareerPathFree;
   sectionNumber?: number;
   id?: string;
+  isPaidUser?: boolean;
+  onUpgradeClick?: () => void;
 }
 
 const CareerPathSection = ({
@@ -29,6 +32,7 @@ const CareerPathSection = ({
   career,
   sectionNumber = 3,
   id = "career-path",
+  isPaidUser = false,
 }: CareerPathSectionProps) => {
   const { superpowers, growthAreas, actionSteps } = career;
 
@@ -88,14 +92,15 @@ const CareerPathSection = ({
         </div>
 
         {/* Career Suggestions - render if available */}
-        {hasSuggestions && (
+        {hasSuggestions ? (
           <div className="mb-16">
             <CareeerSuggestions
               careerSuggestions={(career as CareerPathFull).suggestions}
             />
           </div>
+        ) : (
+          <BlurredCareerSuggestionsCard />
         )}
-        
       </div>
     </section>
   );
