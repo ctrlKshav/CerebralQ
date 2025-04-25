@@ -1,5 +1,5 @@
 ﻿import { useEffect, useState } from "react";
-import { FullResultData } from "@/types/tests/mbti/results";
+import { FreeResultData, FullResultData } from "@/types/tests/mbti/results";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +12,7 @@ import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 interface ResultCertificateProps {
   userData: User | null;
-  resultData: FullResultData | null;
+  resultData: FullResultData | FreeResultData | null;
   historyPage: boolean,
 }
 

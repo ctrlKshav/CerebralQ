@@ -9,8 +9,8 @@ import { saveTestResults } from "@/lib/supabaseOperations";
 import { Card, CardContent } from "@/components/ui/card";
 import { FullResultData } from "@/types/tests/mbti/results";
 import { Button } from "@/components/ui/button";
-import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
+import { getFullPersonalityData } from "@/data/mbti/mbtiResultData";
 
 export default function ResultCertificatePage() {
   const userDataContext = useUserDataContext();
@@ -56,7 +56,7 @@ export default function ResultCertificatePage() {
           return;
         }
 
-        const personalityData = getPersonalityData(personalityType);
+        const personalityData = getFullPersonalityData(personalityType);
         const personalityDescription =
           getPersonalityDescription(personalityType);
 

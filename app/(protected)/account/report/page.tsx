@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { FullResultData, FreeResultData } from "@/types/tests/mbti/results";
 import { TEST_RESULTS_KEY } from "@/lib/constants";
-import { getPersonalityData } from "@/data/mbti/mbtiResultData";
+import { getFullPersonalityData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
 import { useUserDataContext } from "@/context/user-data";
 
@@ -52,7 +52,7 @@ export default function ReportPage() {
           return;
         }
 
-        const personalityData = getPersonalityData(personalityType);
+        const personalityData = getFullPersonalityData(personalityType);
         const personalityDescription =
           getPersonalityDescription(personalityType);
 

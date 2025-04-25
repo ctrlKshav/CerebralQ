@@ -1,4 +1,8 @@
-﻿import { FullPersonalityDatabase, FullResultData } from "@/types/tests/mbti/results";
+﻿import {
+  FreePersonalityDatabase,
+  FullPersonalityDatabase,
+  FullResultData,
+} from "@/types/tests/mbti/results";
 import { ENTJData } from "./personalityDatabase/entj";
 import { ENFJData } from "./personalityDatabase/enfj";
 import { ENTPData } from "./personalityDatabase/entp";
@@ -471,7 +475,9 @@ export const sampleResultData: FullResultData = {
   },
 };
 
-export const personalityDatabase: { [key: string]: FullPersonalityDatabase } = {
+export const fullPersonalityDatabase: {
+  [key: string]: FullPersonalityDatabase;
+} = {
   ENTJ: ENTJData,
   ENFJ: ENFJData,
   ENTP: ENTPData,
@@ -490,8 +496,38 @@ export const personalityDatabase: { [key: string]: FullPersonalityDatabase } = {
   ISTJ: ISTJData,
 };
 
-export const getPersonalityData = (
+export const freePersonalityDatabase: {
+  [key: string]: FreePersonalityDatabase;
+} = {
+  ENTJ: ENTJData,
+  ENFJ: ENFJData,
+  ENTP: ENTPData,
+  ENFP: ENFPData,
+  ESTJ: ESTJData,
+  ESTP: ESTPData,
+  ESFJ: ESFJData,
+  ESFP: ESFPData,
+  INTP: INTPData,
+  INFP: INFPData,
+  ISFP: ISFPData,
+  ISTP: ISTPData,
+  INTJ: INTJData,
+  INFJ: INFJData,
+  ISFJ: ISFJData,
+  ISTJ: ISTJData,
+};
+export const getFullPersonalityData = (
   personalityType: string
 ): FullPersonalityDatabase => {
-  return personalityDatabase[personalityType] || personalityDatabase["ENTJ"];
+  return (
+    fullPersonalityDatabase[personalityType] || fullPersonalityDatabase["ENTJ"]
+  );
+};
+
+export const getFreePersonalityData = (
+  personalityType: string
+): FreePersonalityDatabase => {
+  return (
+    freePersonalityDatabase[personalityType] || freePersonalityDatabase["ENTJ"]
+  );
 };

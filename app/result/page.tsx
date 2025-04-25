@@ -7,13 +7,13 @@ import { useEffect, useState } from "react";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import { saveTestResults } from "@/lib/supabaseOperations";
 import { Card, CardContent } from "@/components/ui/card";
-import { FullResultData } from "@/types/tests/mbti/results";
+import { FreeResultData, FullResultData } from "@/types/tests/mbti/results";
 import { Button } from "@/components/ui/button";
-import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
 import { MBTIResponseData } from "@/types/tests/mbti/responseData";
 import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
 import { Json } from "@/types/supabase";
+import { fetchPersonalityData } from "@/lib/fetchPersonalityData";
 export default function ResultCertificatePage() {
   const userDataContext = useUserDataContext();
   if (userDataContext === null) {
@@ -21,7 +21,7 @@ export default function ResultCertificatePage() {
   }
   const { userData, loading: authLoading } = userDataContext;
 
-  const [resultData, setResultData] = useState<FullResultData | null>(null);
+  const [resultData, setResultData] = useState<FullResultData | FreeResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,18 +38,17 @@ export default function ResultCertificatePage() {
           return;
         }
 
-        const data : MBTIResponseData = JSON.parse(storedData);
+        const data: MBTIResponseData = JSON.parse(storedData);
 
         // Extract required data from localStorage format
         const personalityType = data.raw_score?.personalityType;
         const traitScores = data.raw_score?.traitScores;
         const testId = data.test_type_id;
-        const completionDate =
-          (data.taken_at
+        const completionDate = data.taken_at
+          ? new Date(data.taken_at).toLocaleDateString()
+          : data.taken_at
             ? new Date(data.taken_at).toLocaleDateString()
-            : data.taken_at
-              ? new Date(data.taken_at).toLocaleDateString()
-              : new Date().toLocaleDateString());
+            : new Date().toLocaleDateString();
 
         if (!personalityType) {
           setError("Invalid test result data. Please retake the test.");
@@ -57,10 +56,10 @@ export default function ResultCertificatePage() {
           return;
         }
 
-        const personalityData = getPersonalityData(personalityType);
         const personalityDescription =
           getPersonalityDescription(personalityType);
 
+        const personalityData = await fetchPersonalityData();
         // Set all result data at once
         setResultData({
           firstname: userData?.first_name || null,
@@ -83,7 +82,7 @@ export default function ResultCertificatePage() {
           if (!savedResults) {
             try {
               // Prepare test data with correct user ID
-              const testData : UserTestHistoryInsert = {
+              const testData: UserTestHistoryInsert = {
                 ...data,
                 user_id: userData.id,
                 raw_score: data.raw_score as unknown as Json,
@@ -150,7 +149,11 @@ export default function ResultCertificatePage() {
       <Link href="/" className="fixed z-50 top-0 left-4 sm:left-8  ">
         <CQLogo className="w-24 h-24 sm:w-28 sm:h-28" />
       </Link>
-      <ResultCertificate userData={userData} resultData={resultData} historyPage={false} />
+      <ResultCertificate
+        userData={userData}
+        resultData={resultData}
+        historyPage={false}
+      />
     </div>
   );
 }
