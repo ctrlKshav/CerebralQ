@@ -16,7 +16,7 @@ import ActionStepsCard from "../../shared/ActionStepsCard";
 import SectionHeader from "../../shared/SectionHeader";
 import { formatWithUsername } from "../../../../lib/formatWithUsername";
 import CareeerSuggestions from "./CareerSuggestionsSection";
-import BlurredCareerSuggestionsCard from "../../shared/BlurredCareerSuggestionsCard";
+import BlurredCareerSuggestionsCard from "../../shared/CareerSuggestion/BlurredCareerSuggestionsCard";
 
 interface CareerPathSectionProps {
   firstname: string | null;

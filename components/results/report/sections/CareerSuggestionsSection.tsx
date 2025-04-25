@@ -1,8 +1,8 @@
 ﻿"use client";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { CareerSuggestion } from "@/types/tests/mbti/personalityDatabase";
-import { CareerSectionHeader } from "../../shared/CareerSectionHeader";
-import { CareerSuggestionCard } from "../../shared/CareerSuggestionCard";
+import { CareerSectionHeader } from "../../shared/CareerSuggestion/CareerSectionHeader";
+import { CareerSuggestionCard } from "../../shared/CareerSuggestion/CareerSuggestionCard";
 
 interface CareerSuggestionsCardProps {
   careerSuggestions?: CareerSuggestion[];
