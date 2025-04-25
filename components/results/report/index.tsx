@@ -18,7 +18,7 @@ export default function Report({ userData, resultData }: ReportComponentProps) {
 
   const { personalityType, traitScores } = resultData;
 
-  const isFull = "relationships" in resultData;
+  const isFull = "relationships" in resultData.personalityData;
   return (
     <div className="min-h-screen bg-background [--header-height:6rem]">
       <SidebarProvider className="flex flex-col">
