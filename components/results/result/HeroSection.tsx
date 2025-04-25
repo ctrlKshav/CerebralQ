@@ -161,8 +161,8 @@ const HeroSection = ({
               src={imagePath}
               quality={100}
               alt={`${personalityType} - ${alias} personality type illustration`}
-              width={500}
-              height={500}
+              width={600}
+              height={600}
               priority
               className="w-full h-full object-cover z-10 rounded-md shadow-lg"
             />
