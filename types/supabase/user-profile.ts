@@ -23,5 +23,5 @@ export interface UserTestHistorySummary {
   details?: any
 }
 
-export type CognitiveMetricsType = Pick<User, 'mbti_personality_type' | 'ocean_type' | 'iq'>
+export type CognitiveMetricsType = Pick<User, 'mbti_personality_type' | 'ocean_traits' | 'iq'>
 
