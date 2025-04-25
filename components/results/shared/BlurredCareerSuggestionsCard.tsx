@@ -219,7 +219,7 @@ export default function BlurredCareerSuggestionsCard({
       <div className="relative">
         <UpgradeOverlay />
         
-        <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-2"} gap-16 items-center justify-center filter blur-[12px]`}>
+        <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-2"} gap-16 items-center justify-center `}>
           {sampleCareerData.map((suggestion, index) => (
             <motion.div
               key={index}
