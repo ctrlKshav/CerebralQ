@@ -1,5 +1,5 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
-export const ESTPData: PersonalityDatabase = {
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+export const ESTPData: FullPersonalityDatabase = {
   career: {
     summary: `You're a total rockstar in jobs where you can take action and think on your feet—like sales, event planning, or even something hands-on like construction. You love roles that keep you moving and let you solve problems in the moment, but you might get bored if the work feels too slow or doesn't give you enough freedom.`,
     superpowers: [

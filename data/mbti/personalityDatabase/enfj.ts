@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const ENFJData: PersonalityDatabase = {
+export const ENFJData: FullPersonalityDatabase = {
   career: {
     summary:
       "You're a total star in jobs where you can inspire and support others—like teaching, counseling, or even something creative like public speaking. You love roles that let you lead and make a difference, but you might feel drained if the work doesn't align with your values or if you don't get the appreciation you deserve.",

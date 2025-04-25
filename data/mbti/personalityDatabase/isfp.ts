@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const ISFPData: PersonalityDatabase = {
+export const ISFPData: FullPersonalityDatabase = {
   career: {
     summary:
       `You thrive in creative, independent roles that allow you to express your values, {firstname}. Your gentle authenticity and eye for beauty make you valuable in artistic fields and helping professions. You prefer flexible environments that respect individuality and allow you to make a tangible difference.`,

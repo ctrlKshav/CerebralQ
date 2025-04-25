@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const ENTPData: PersonalityDatabase = {
+export const ENTPData: FullPersonalityDatabase = {
   career: {
     summary:
       `You're a total rockstar in jobs where you can brainstorm and innovate—like marketing, tech startups, or even something creative like comedy writing. You love roles that let you think on your feet and explore new ideas, but you might get bored if the work feels too repetitive or doesn't challenge your mind.`,

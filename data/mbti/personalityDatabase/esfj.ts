@@ -1,5 +1,5 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
-export const ESFJData: PersonalityDatabase = {
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+export const ESFJData: FullPersonalityDatabase = {
   career: {
     summary:
       `You're a total gem in jobs where you can connect with people and keep things running smoothly—like teaching, nursing, or event planning. You love roles that let you support others and create a sense of community, but you might feel stressed if the work environment feels cold or if you don't get the appreciation you deserve.`,

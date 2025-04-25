@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const INTPData: PersonalityDatabase = {
+export const INTPData: FullPersonalityDatabase = {
   career: {
     summary:
       `You're a total rockstar in jobs where you can think deeply and solve problems—like research, programming, or even something creative like game design. You love roles that let you explore ideas and work independently, but you might get bored if the work feels too repetitive or doesn't challenge your mind.`,

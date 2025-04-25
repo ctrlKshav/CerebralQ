@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const ISFJData: PersonalityDatabase = {
+export const ISFJData: FullPersonalityDatabase = {
   career: {
     summary:
       `You thrive in roles where you can help others in practical ways, {firstname}. Your natural attention to detail and reliability make you invaluable in positions requiring organization, consistency, and compassionate support. You excel when your work directly improves people's lives and your contributions are appreciated.`,

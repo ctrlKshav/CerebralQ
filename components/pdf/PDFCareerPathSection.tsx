@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
-import { CareerPath } from "@/types/tests/mbti/results";
+import { CareerPathFull } from "@/types/tests/mbti/personalityDatabase";
 import { getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import { PDFLogo } from "./PDFLogo";
@@ -36,7 +36,7 @@ const createCareerSectionStyles = (isDarkMode = false) => {
 };
 
 interface PDFCareerPathSectionProps {
-  career: CareerPath;
+  career: CareerPathFull;
   sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;

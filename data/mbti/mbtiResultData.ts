@@ -1,4 +1,4 @@
-﻿import { PersonalityDatabase, ResultData } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase, FullResultData } from "@/types/tests/mbti/results";
 import { ENTJData } from "./personalityDatabase/entj";
 import { ENFJData } from "./personalityDatabase/enfj";
 import { ENTPData } from "./personalityDatabase/entp";
@@ -16,7 +16,7 @@ import { INFJData } from "./personalityDatabase/infj";
 import { ISFJData } from "./personalityDatabase/isfj";
 import { ISTJData } from "./personalityDatabase/istj";
 
-export const sampleResultData: ResultData = {
+export const sampleResultData: FullResultData = {
   username: null,
   firstname: null,
   personalityType: "ENTJ",
@@ -471,7 +471,7 @@ export const sampleResultData: ResultData = {
   },
 };
 
-export const personalityDatabase: { [key: string]: PersonalityDatabase } = {
+export const personalityDatabase: { [key: string]: FullPersonalityDatabase } = {
   ENTJ: ENTJData,
   ENFJ: ENFJData,
   ENTP: ENTPData,
@@ -492,6 +492,6 @@ export const personalityDatabase: { [key: string]: PersonalityDatabase } = {
 
 export const getPersonalityData = (
   personalityType: string
-): PersonalityDatabase => {
+): FullPersonalityDatabase => {
   return personalityDatabase[personalityType] || personalityDatabase["ENTJ"];
 };

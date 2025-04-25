@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const ISTPData: PersonalityDatabase = {
+export const ISTPData: FullPersonalityDatabase = {
   career: {
     summary:
       `You excel in roles requiring practical problem-solving and technical expertise, {firstname}. Your hands-on approach and ability to stay calm under pressure make you invaluable in fields that demand troubleshooting skills and quick thinking. You prefer work environments that offer variety, autonomy, and tangible results over abstract theories or rigid structures.`,

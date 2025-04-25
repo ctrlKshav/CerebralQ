@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
-import { RelationshipCompatibility } from "@/types/tests/mbti/results";
+import { RelationshipCompatibility } from "@/types/tests/mbti/personalityDatabase";
 import { getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import { PDFLogo } from "./PDFLogo";

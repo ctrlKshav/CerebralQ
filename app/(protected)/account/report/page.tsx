@@ -3,7 +3,7 @@ import Report from "@/components/results/report";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { ResultData } from "@/types/tests/mbti/results";
+import { FullResultData, FreeResultData } from "@/types/tests/mbti/results";
 import { TEST_RESULTS_KEY } from "@/lib/constants";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
@@ -16,7 +16,7 @@ export default function ReportPage() {
   }
   const { userData, loading: authLoading } = userDataContext;
 
-  const [resultData, setResultData] = useState<ResultData | null>(null);
+  const [resultData, setResultData] = useState<FullResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

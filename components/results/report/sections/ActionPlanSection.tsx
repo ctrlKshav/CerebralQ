@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Download, Save } from "lucide-react";
-import { ActionItem, ResultData } from "@/types/tests/mbti/results";
+import { FullResultData } from "@/types/tests/mbti/results";
 import { Card } from "@/components/ui/card";
 import SectionHeader from "../../shared/SectionHeader";
 import { formatWithUsername } from "../../../../lib/formatWithUsername";
@@ -12,11 +12,12 @@ import { PDFGenerator } from "@/components/pdf/PDFGenerator";
 import { Share2 } from "lucide-react";
 import { sampleResultData } from "@/data/mbti/mbtiResultData";
 import { useRouter } from "next/navigation";
+import { ActionItem } from "@/types/tests/mbti/personalityDatabase";
 
 interface ActionPlanSectionProps {
   username: string | null;
   firstname: string | null;
-  resultData: ResultData;
+  resultData: FullResultData;
   personalityType: string;
   actionItems: ActionItem[];
   sectionNumber?: number;

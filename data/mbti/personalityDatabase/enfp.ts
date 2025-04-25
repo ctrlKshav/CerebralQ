@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const ENFPData: PersonalityDatabase = {
+export const ENFPData: FullPersonalityDatabase = {
   career: {
     summary:
       `You're a total star in jobs where you can be creative and connect with others—like teaching, counseling, or even something entrepreneurial. You love roles that let you bring fresh ideas and work with all kinds of people, but you might get bored if the work feels too repetitive or restricted by too many rules.`,

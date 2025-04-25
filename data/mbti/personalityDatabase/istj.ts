@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const ISTJData: PersonalityDatabase = {
+export const ISTJData: FullPersonalityDatabase = {
   career: {
     summary:
       `You excel in roles requiring organization and reliability, {firstname}. Your methodical approach to solving problems and attention to detail make you invaluable in roles that require precision and consistency. While you thrive in structured environments with clear expectations, you might find overly chaotic or constantly changing workplaces draining.`,

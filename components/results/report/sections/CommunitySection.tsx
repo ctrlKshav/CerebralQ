@@ -4,7 +4,7 @@ import { Circle, MessageCircle, Users } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SectionHeader from "../../shared/SectionHeader";
 import { formatWithUsername } from "../../../../lib/formatWithUsername";
-import { CommunityConnection, ResultData } from "@/types/tests/mbti/results";
+import { CommunityConnection } from "@/types/tests/mbti/personalityDatabase";
 import Image from "next/image";
 import Link from "next/link";
 

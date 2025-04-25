@@ -1,4 +1,4 @@
-﻿import { PersonalityDescription } from "@/types/tests/mbti/results";
+﻿import { PersonalityDescription } from "@/types/tests/mbti/personalityDatabase";
 
 export const personalityDescriptions: Record<string, PersonalityDescription> = {
   ENTJ: {

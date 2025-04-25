@@ -1,5 +1,5 @@
 import React from "react";
-import { GrowthJourney, ResultData } from "@/types/tests/mbti/results";
+import { GrowthJourney } from "@/types/tests/mbti/personalityDatabase";
 import { CheckCircle, Award, MessageSquare, Lightbulb } from "lucide-react";
 import SuperpowersCard from "../../shared/SuperpowersCard";
 import GrowthAreasCard from "../../shared/GrowthAreasCard";

@@ -1,5 +1,5 @@
 import React from "react";
-import { CareerPath } from "@/types/tests/mbti/results";
+import { CareerPathFull } from "@/types/tests/mbti/personalityDatabase";
 import {
   CheckCircle,
   Briefcase,
@@ -16,7 +16,7 @@ import { formatWithUsername } from "../../../../lib/formatWithUsername";
 
 interface CareerPathSectionProps {
   firstname: string | null;
-  career: CareerPath;
+  career: CareerPathFull;
   sectionNumber?: number;
   id?: string;
 }

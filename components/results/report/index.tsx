@@ -1,4 +1,4 @@
-﻿import { ResultData } from "@/types/tests/mbti/results";
+﻿import { FullResultData } from "@/types/tests/mbti/results";
 import { sampleResultData } from "@/data/mbti/mbtiResultData";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar-custom";
 import { ReportHeader } from "@/components/results/report/SiteHeader";
@@ -8,10 +8,10 @@ import { CQReport } from "./CQReport";
 import { useEffect } from "react";
 export interface ReportComponentProps {
   userData: User | null;
-  resultData: ResultData | null;
+  resultData: FullResultData | null;
 }
 export default function Report({ userData, resultData }: ReportComponentProps) {
-  const {
+const {
     personalityType,
     traitScores,
   } = resultData || sampleResultData;

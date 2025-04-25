@@ -1,6 +1,6 @@
 ﻿import React, { useEffect } from "react";
 import { sampleResultData } from "@/data/mbti/mbtiResultData";
-import { ResultData } from "@/types/tests/mbti/results";
+import { FullResultData } from "@/types/tests/mbti/results";
 import { TraitScores } from "@/types/tests/mbti/traits";
 import PersonalityTraits from "@/components/results/report/sections/personality-traits";
 import CareerPathSection from "@/components/results/report/sections/CareerPathSection";
@@ -19,7 +19,7 @@ export function CQReport({
 }: {
   traitScores: TraitScores | null;
   personalityType: string;
-  resultData: ResultData;
+  resultData: FullResultData;
 }) {
  
   return (

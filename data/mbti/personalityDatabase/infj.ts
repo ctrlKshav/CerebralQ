@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const INFJData: PersonalityDatabase = {
+export const INFJData: FullPersonalityDatabase = {
   career: {
     summary:
       "You're a total star in jobs where you can make a difference and connect with people—like counseling, writing, or working for a nonprofit. You love roles that let you use your creativity and empathy, but you might feel drained if the work doesn't align with your values or if there's too much conflict.",

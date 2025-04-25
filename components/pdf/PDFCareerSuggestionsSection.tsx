@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { View, Text, StyleSheet, Image } from "@react-pdf/renderer";
-import { CareerSuggestion } from "@/types/tests/mbti/results";
+import { CareerSuggestion } from "@/types/tests/mbti/personalityDatabase";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerSuggestionCard from "./shared/PDFCareerSuggestionCard";
 import PDFFooter from "./shared/PDFFooter";

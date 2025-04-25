@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const INFPData: PersonalityDatabase = {
+export const INFPData: FullPersonalityDatabase = {
   career: {
     summary: `You're a total star in jobs where you can express your creativity and make a difference—like writing, counseling, or working for a cause you care about. You love roles that let you follow your values, but you might feel drained if the work feels too rigid or doesn't match your ideals.`,
     superpowers: [

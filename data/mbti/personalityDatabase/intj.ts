@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const INTJData: PersonalityDatabase = {
+export const INTJData: FullPersonalityDatabase = {
   career: {
     summary:
       `You excel in roles requiring strategy and vision, {firstname}. Your analytical mind and future-focused thinking make you exceptional at creating systems and implementing long-term plans. You quickly see inefficiencies in processes and can develop innovative solutions to complex problems. While you thrive in environments that value competence and allow for autonomy, you might find highly social or chaotic workplaces draining.`,

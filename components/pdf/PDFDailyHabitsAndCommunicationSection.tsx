@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
-import { DailyHabits } from "@/types/tests/mbti/results";
+import { DailyHabits } from "@/types/tests/mbti/personalityDatabase";
 import { getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
 import {

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
-import { PersonalityDescription } from "@/types/tests/mbti/results";
+import { PersonalityDescription } from "@/types/tests/mbti/personalityDatabase";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";

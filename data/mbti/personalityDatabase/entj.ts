@@ -1,5 +1,5 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
-export const ENTJData: PersonalityDatabase = {
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+export const ENTJData: FullPersonalityDatabase = {
   
     career: {
       summary: "You're a total force in jobs where you can lead and strategize—like business management, entrepreneurship, or even something high-stakes like law. You love roles that let you take charge and achieve big goals, but you might get frustrated if the work feels inefficient or if others don't keep up with your pace.",

@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const ESFPData: PersonalityDatabase = {
+export const ESFPData: FullPersonalityDatabase = {
   career: {
     summary:
       "You're a total star in jobs where you can connect with people and have fun—like event planning, teaching, or even something creative like acting. You love roles that let you be social and spontaneous, but you might get bored if the work feels too serious or doesn't let you shine.",

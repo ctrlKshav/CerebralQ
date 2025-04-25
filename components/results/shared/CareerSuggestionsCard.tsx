@@ -12,7 +12,7 @@ import {
   HybridTooltipContent,
   HybridTooltipTrigger,
 } from "@/components/ui/tooltip-hybrid";
-import { CareerSuggestion } from "@/types/tests/mbti/results";
+import { CareerSuggestion } from "@/types/tests/mbti/personalityDatabase";
 // Add this near your imports
 import { Info, ChevronDown } from "lucide-react";
 import { useMediaQuery } from "@/hooks/useMediaQuery";

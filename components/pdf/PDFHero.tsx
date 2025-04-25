@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
-import { PersonalityDescription } from "@/types/tests/mbti/results";
+import { PersonalityDescription } from "@/types/tests/mbti/personalityDatabase";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFPageNumber from "./shared/PDFPageNumber";
 import PDFFooter from "./shared/PDFFooter";

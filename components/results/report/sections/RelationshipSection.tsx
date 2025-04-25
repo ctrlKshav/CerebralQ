@@ -1,5 +1,5 @@
 import React from "react";
-import { RelationshipCompatibility, ResultData } from "@/types/tests/mbti/results";
+import { RelationshipCompatibility } from "@/types/tests/mbti/personalityDatabase";
 import {
   Heart,
   Users,

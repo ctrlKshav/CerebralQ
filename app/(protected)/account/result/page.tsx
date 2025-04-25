@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import { saveTestResults } from "@/lib/supabaseOperations";
 import { Card, CardContent } from "@/components/ui/card";
-import { ResultData } from "@/types/tests/mbti/results";
+import { FullResultData } from "@/types/tests/mbti/results";
 import { Button } from "@/components/ui/button";
 import { getPersonalityData } from "@/data/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
@@ -19,7 +19,7 @@ export default function ResultCertificatePage() {
   }
   const { userData, loading: authLoading } = userDataContext;
 
-  const [resultData, setResultData] = useState<ResultData | null>(null);
+  const [resultData, setResultData] = useState<FullResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

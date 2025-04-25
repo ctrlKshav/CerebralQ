@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { View, StyleSheet } from "@react-pdf/renderer";
-import { GrowthJourney } from "@/types/tests/mbti/results";
+import { GrowthJourney } from "@/types/tests/mbti/personalityDatabase";
 import { getThemeColors } from "./PDFTheme";
 import { PDFLogo } from "./PDFLogo";
 import PDFSuperPowersSection from "./shared/PDFSuperPowersSection";

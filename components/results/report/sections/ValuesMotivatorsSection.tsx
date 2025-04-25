@@ -1,5 +1,5 @@
 ﻿import React from "react";
-import { ResultData, ValuesAndMotivators } from "@/types/tests/mbti/results";
+import { ValuesAndMotivators } from "@/types/tests/mbti/personalityDatabase";
 import { Heart, Star, TrendingUp, Target, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import SuperpowersCard from "../../shared/SuperpowersCard";

@@ -1,6 +1,6 @@
-﻿import { PersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
-export const ESTJData: PersonalityDatabase = {
+export const ESTJData: FullPersonalityDatabase = {
   career: {
     summary:
       "You're a total powerhouse in jobs where you can lead and keep things on track—like management, teaching, or even something structured like accounting. You love roles that let you take charge and get results, but you might get frustrated if the work feels chaotic or if others don't follow through.",

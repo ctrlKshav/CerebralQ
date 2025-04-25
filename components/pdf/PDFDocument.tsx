@@ -2,7 +2,7 @@
 import { Document, Page, Font } from "@react-pdf/renderer";
 import { PDFHero } from "@/components/pdf/PDFHero";
 import { PDFPersonalityTraits } from "@/components/pdf/PDFPersonalityTraits";
-import { ResultData } from "@/types/tests/mbti/results";
+import { FullResultData } from "@/types/tests/mbti/results";
 import { getPersonalityInsights } from "@/data/mbti/oldData/personalityInsights";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerPathSection from "./PDFCareerPathSection";
@@ -13,7 +13,7 @@ import PDFValuesAndMotivatorsSection from "./PDFValuesAndMotivatorsSection";
 import PDFDailyHabitsCommunicationSection from "./PDFDailyHabitsAndCommunicationSection";
 
 interface PDFDocumentProps {
-  resultData: ResultData;
+  resultData: FullResultData;
   isDarkMode?: boolean;
 }
 
