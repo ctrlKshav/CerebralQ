@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase, FreePersonalityDatabase } from "@/types/tests/mbti/results";
 export const ENTJData: FullPersonalityDatabase = {
   
     career: {
@@ -303,3 +303,13 @@ export const ENTJData: FullPersonalityDatabase = {
       ]
     }
   }
+
+export const ENTJDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: ENTJData.valuesAndMotivators,
+  career: {
+    summary: ENTJData.career.summary,
+    superpowers: ENTJData.career.superpowers,
+    growthAreas: ENTJData.career.growthAreas,
+    actionSteps: ENTJData.career.actionSteps,
+  },
+};

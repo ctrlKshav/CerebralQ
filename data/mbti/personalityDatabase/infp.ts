@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase, FreePersonalityDatabase } from "@/types/tests/mbti/results";
 
 export const INFPData: FullPersonalityDatabase = {
   career: {
@@ -324,5 +324,15 @@ export const INFPData: FullPersonalityDatabase = {
       `Drop your MBTI type in our community chat—say hi to other Mediators who get you!`,
       `Join our weekly "Dreamy Ideas" chat to share your latest thoughts and inspirations.`,
     ],
+  },
+};
+
+export const INFPDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: INFPData.valuesAndMotivators,
+  career: {
+    summary: INFPData.career.summary,
+    superpowers: INFPData.career.superpowers,
+    growthAreas: INFPData.career.growthAreas,
+    actionSteps: INFPData.career.actionSteps,
   },
 };

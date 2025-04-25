@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase, FreePersonalityDatabase } from "@/types/tests/mbti/results";
 
 export const ISFPData: FullPersonalityDatabase = {
   career: {
@@ -348,5 +348,15 @@ export const ISFPData: FullPersonalityDatabase = {
       `Join our ISFP channel in the community—we discuss everything from creative projects to navigating relationships as a sensitive artistic type.`,
       `Check out our monthly "Creative Showcase" where fellow ISFPs share their artistic expressions, from traditional art to cooking, photography, and fashion.`,
     ],
+  },
+};
+
+export const ISFPDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: ISFPData.valuesAndMotivators,
+  career: {
+    summary: ISFPData.career.summary,
+    superpowers: ISFPData.career.superpowers,
+    growthAreas: ISFPData.career.growthAreas,
+    actionSteps: ISFPData.career.actionSteps,
   },
 };

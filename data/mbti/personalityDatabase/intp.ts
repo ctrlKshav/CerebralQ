@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FreePersonalityDatabase, FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
 export const INTPData: FullPersonalityDatabase = {
   career: {
@@ -348,6 +348,86 @@ export const INTPData: FullPersonalityDatabase = {
     suggestions: [
       `Drop your MBTI type in our community chat—say hi to other Logicians who get you!`,
       `Join our weekly "Big Questions" chat to share your latest thoughts and curiosities.`,
+    ],
+  },
+};
+
+export const INTPDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: {
+    summary:
+      `You're all about seeking truth and understanding the world, {firstname}. You value curiosity, independence, and honesty, and you're motivated by exploring new ideas and finding answers to the questions that keep you up at night.`,
+    coreValues: [
+      {
+        title: `Curiosity`,
+        description: `You're always eager to learn and explore new ideas.`,
+      },
+      {
+        title: `Independence`,
+        description:
+          `You value thinking for yourself and following your own path.`,
+      },
+    ],
+    motivators: [
+      {
+        title: `Exploring New Ideas`,
+        description: `Diving into fresh concepts keeps your mind buzzing.`,
+      },
+      {
+        title: `Finding Answers`,
+        description: `You're driven by solving the puzzles that fascinate you.`,
+      },
+    ],
+    actionItems: [
+      {
+        number: 1,
+        description:
+          `Take 10 minutes each week to jot down your thoughts on these questions in a journal—it'll keep you connected to what matters most to you.`,
+      },
+    ],
+  },
+  career: {
+    summary:
+      `You're a total rockstar in jobs where you can think deeply and solve problems—like research, programming, or even something creative like game design. You love roles that let you explore ideas and work independently, but you might get bored if the work feels too repetitive or doesn't challenge your mind.`,
+    superpowers: [
+      {
+        title: `Thinking Deeply`,
+        description:
+          `You're a pro at analyzing things, {firstname}—like breaking down a complex problem into manageable parts.`,
+      },
+      {
+        title: `Being Curious`,
+        description:
+          `You bring fresh ideas to the table, like suggesting a new way to approach a project.`,
+      },
+    ],
+    growthAreas: [
+      {
+        title: `Staying Organized`,
+        description:
+          `You might get lost in your thoughts—like forgetting to check a deadline while researching.`,
+      },
+      {
+        title: `Working with Others`,
+        description:
+          `You might prefer working solo—like skipping team meetings to focus on your own ideas.`,
+      },
+    ],
+    actionSteps: [
+      {
+        number: 1,
+        description:
+          `Set a quick 5-minute plan for your day—like jotting down three tasks you need to tackle.`,
+      },
+      {
+        number: 2,
+        description:
+          `Join a team discussion this week—like sharing one of your ideas in a group meeting to connect with others.`,
+      },
+      {
+        number: 3,
+        description:
+          `Look for jobs that let you think and explore, like being a scientist or a software developer—your kind of vibe!`,
+      },
     ],
   },
 };

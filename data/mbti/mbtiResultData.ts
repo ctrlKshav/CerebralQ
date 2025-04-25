@@ -3,22 +3,22 @@
   FullPersonalityDatabase,
   FullResultData,
 } from "@/types/tests/mbti/results";
-import { ENTJData } from "./personalityDatabase/entj";
-import { ENFJData } from "./personalityDatabase/enfj";
-import { ENTPData } from "./personalityDatabase/entp";
-import { ESTJData } from "./personalityDatabase/estj";
-import { ESTPData } from "./personalityDatabase/estp";
-import { ESFJData } from "./personalityDatabase/esfj";
-import { ENFPData } from "./personalityDatabase/enfp";
-import { ESFPData } from "./personalityDatabase/esfp";
-import { INTPData } from "./personalityDatabase/intp";
-import { INFPData } from "./personalityDatabase/infp";
-import { ISFPData } from "./personalityDatabase/isfp";
-import { ISTPData } from "./personalityDatabase/istp";
-import { INTJData } from "./personalityDatabase/intj";
-import { INFJData } from "./personalityDatabase/infj";
-import { ISFJData } from "./personalityDatabase/isfj";
-import { ISTJData } from "./personalityDatabase/istj";
+import { ENTJData, ENTJDataFree } from "./personalityDatabase/entj";
+import { ENFJData, ENFJDataFree } from "./personalityDatabase/enfj";
+import { ENTPData, ENTPDataFree } from "./personalityDatabase/entp";
+import { ESTJData, ESTJDataFree } from "./personalityDatabase/estj";
+import { ESTPData, ESTPDataFree } from "./personalityDatabase/estp";
+import { ESFJData, ESFJDataFree } from "./personalityDatabase/esfj";
+import { ENFPData, ENFPDataFree } from "./personalityDatabase/enfp";
+import { ESFPData, ESFPDataFree } from "./personalityDatabase/esfp";
+import { INTPData, INTPDataFree } from "./personalityDatabase/intp";
+import { INFPData, INFPDataFree } from "./personalityDatabase/infp";
+import { ISFPData, ISFPDataFree } from "./personalityDatabase/isfp";
+import { ISTPData, ISTPDataFree } from "./personalityDatabase/istp";
+import { INTJData, INTJDataFree } from "./personalityDatabase/intj";
+import { INFJData, INFJDataFree } from "./personalityDatabase/infj";
+import { ISFJData, ISFJDataFree } from "./personalityDatabase/isfj";
+import { ISTJData, ISTJDataFree } from "./personalityDatabase/istj";
 
 export const sampleResultData: FullResultData = {
   username: null,
@@ -499,22 +499,22 @@ export const fullPersonalityDatabase: {
 export const freePersonalityDatabase: {
   [key: string]: FreePersonalityDatabase;
 } = {
-  ENTJ: ENTJData,
-  ENFJ: ENFJData,
-  ENTP: ENTPData,
-  ENFP: ENFPData,
-  ESTJ: ESTJData,
-  ESTP: ESTPData,
-  ESFJ: ESFJData,
-  ESFP: ESFPData,
-  INTP: INTPData,
-  INFP: INFPData,
-  ISFP: ISFPData,
-  ISTP: ISTPData,
-  INTJ: INTJData,
-  INFJ: INFJData,
-  ISFJ: ISFJData,
-  ISTJ: ISTJData,
+  ENTJ: ENTJDataFree,
+  ENFJ: ENFJDataFree,
+  ENTP: ENTPDataFree,
+  ENFP: ENFPDataFree,
+  ESTJ: ESTJDataFree,
+  ESTP: ESTPDataFree,
+  ESFJ: ESFJDataFree,
+  ESFP: ESFPDataFree,
+  INTP: INTPDataFree,
+  INFP: INFPDataFree,
+  ISFP: ISFPDataFree,
+  ISTP: ISTPDataFree,
+  INTJ: INTJDataFree,
+  INFJ: INFJDataFree,
+  ISFJ: ISFJDataFree,
+  ISTJ: ISTJDataFree,
 };
 export const getFullPersonalityData = (
   personalityType: string

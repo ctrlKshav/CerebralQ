@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase, FreePersonalityDatabase } from "@/types/tests/mbti/results";
 
 export const ESTJData: FullPersonalityDatabase = {
   career: {
@@ -344,5 +344,15 @@ export const ESTJData: FullPersonalityDatabase = {
       `Drop your MBTI type in our community chat—say hi to other Executives who get you!`,
       `Join our weekly "Leadership Vibes" chat to share your go-to strategies for getting things done.`,
     ],
+  },
+};
+
+export const ESTJDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: ESTJData.valuesAndMotivators,
+  career: {
+    summary: ESTJData.career.summary,
+    superpowers: ESTJData.career.superpowers,
+    growthAreas: ESTJData.career.growthAreas,
+    actionSteps: ESTJData.career.actionSteps,
   },
 };

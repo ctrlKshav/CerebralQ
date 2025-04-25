@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FreePersonalityDatabase, FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
 export const ISTPData: FullPersonalityDatabase = {
   career: {
@@ -348,5 +348,15 @@ export const ISTPData: FullPersonalityDatabase = {
       `Join our ISTP channel in the community—we discuss everything from technical skills to navigating relationships as a practical problem-solver.`,
       `Check out our monthly "Hands-On Projects" showcase where fellow ISTPs share their latest builds, repairs, and practical solutions.`,
     ],
+  },
+};
+
+export const ISTPDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: ISTPData.valuesAndMotivators,
+  career: {
+    summary: ISTPData.career.summary,
+    superpowers: ISTPData.career.superpowers,
+    growthAreas: ISTPData.career.growthAreas,
+    actionSteps: ISTPData.career.actionSteps,
   },
 };

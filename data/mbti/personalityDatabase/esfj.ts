@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase, FreePersonalityDatabase } from "@/types/tests/mbti/results";
 export const ESFJData: FullPersonalityDatabase = {
   career: {
     summary:
@@ -349,5 +349,15 @@ export const ESFJData: FullPersonalityDatabase = {
       "Drop your MBTI type in our community chat—say hi to other Consuls who get you!",
       "Join our weekly \"Community Builders\" chat to share your favorite ways to connect with others.",
     ],
+  },
+};
+
+export const ESFJDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: ESFJData.valuesAndMotivators,
+  career: {
+    summary: ESFJData.career.summary,
+    superpowers: ESFJData.career.superpowers,
+    growthAreas: ESFJData.career.growthAreas,
+    actionSteps: ESFJData.career.actionSteps,
   },
 };

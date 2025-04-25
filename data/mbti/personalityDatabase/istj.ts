@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FreePersonalityDatabase, FullPersonalityDatabase } from "@/types/tests/mbti/results";
 
 export const ISTJData: FullPersonalityDatabase = {
   career: {
@@ -348,5 +348,15 @@ export const ISTJData: FullPersonalityDatabase = {
       `Join our ISTJ channel in the community—we discuss everything from productivity systems to how to balance work and personal life.`,
       `Check out our weekly "Ask Me Anything" sessions where experienced ISTJs share how they've navigated career decisions and relationship dynamics.`,
     ],
+  },
+};
+
+export const ISTJDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: ISTJData.valuesAndMotivators,
+  career: {
+    summary: ISTJData.career.summary,
+    superpowers: ISTJData.career.superpowers,
+    growthAreas: ISTJData.career.growthAreas,
+    actionSteps: ISTJData.career.actionSteps,
   },
 };

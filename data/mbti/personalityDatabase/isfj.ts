@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase, FreePersonalityDatabase } from "@/types/tests/mbti/results";
 
 export const ISFJData: FullPersonalityDatabase = {
   career: {
@@ -348,5 +348,15 @@ export const ISFJData: FullPersonalityDatabase = {
       `Join our ISFJ channel in the community—we discuss everything from setting healthy boundaries to finding fulfilling ways to help others.`,
       `Check out our monthly "Care Exchange" where fellow ISFJs share their best practices for balancing self-care with caring for others.`,
     ],
+  },
+};
+
+export const ISFJDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: ISFJData.valuesAndMotivators,
+  career: {
+    summary: ISFJData.career.summary,
+    superpowers: ISFJData.career.superpowers,
+    growthAreas: ISFJData.career.growthAreas,
+    actionSteps: ISFJData.career.actionSteps,
   },
 };

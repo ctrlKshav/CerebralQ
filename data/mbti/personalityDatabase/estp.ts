@@ -1,4 +1,4 @@
-﻿import { FullPersonalityDatabase } from "@/types/tests/mbti/results";
+﻿import { FullPersonalityDatabase, FreePersonalityDatabase } from "@/types/tests/mbti/results";
 export const ESTPData: FullPersonalityDatabase = {
   career: {
     summary: `You're a total rockstar in jobs where you can take action and think on your feet—like sales, event planning, or even something hands-on like construction. You love roles that keep you moving and let you solve problems in the moment, but you might get bored if the work feels too slow or doesn't give you enough freedom.`,
@@ -314,5 +314,15 @@ export const ESTPData: FullPersonalityDatabase = {
       `What strategies have helped you develop more patience for slower-moving situations?`,
       `How do you balance your in-the-moment lifestyle with making plans for the future?`,
     ],
+  },
+};
+
+export const ESTPDataFree: FreePersonalityDatabase = {
+  valuesAndMotivators: ESTPData.valuesAndMotivators,
+  career: {
+    summary: ESTPData.career.summary,
+    superpowers: ESTPData.career.superpowers,
+    growthAreas: ESTPData.career.growthAreas,
+    actionSteps: ESTPData.career.actionSteps,
   },
 };
