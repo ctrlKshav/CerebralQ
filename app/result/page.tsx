@@ -59,7 +59,7 @@ export default function ResultCertificatePage() {
         const personalityDescription =
           getPersonalityDescription(personalityType);
 
-        const personalityData = await fetchPersonalityData();
+        const personalityData = await fetchPersonalityData(personalityType);
         // Set all result data at once
         setResultData({
           firstname: userData?.first_name || null,
