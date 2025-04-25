@@ -17,6 +17,11 @@ import {
 import { SidebarNavDataType } from "@/data/report/sidebarNav";
 import { useCallback } from "react";
 import Link from "next/link";
+import {
+  HybridTooltip,
+  HybridTooltipContent,
+  HybridTooltipTrigger,
+} from "@/components/ui/tooltip-hybrid";
 
 export function SidebarNavMain({
   items,
@@ -129,8 +134,24 @@ export function SidebarNavMain({
                           {item.title}
                         </span>
 
-                        {/* Lock icon */}
-                        <Lock className="ml-auto size-4 text-slate-400 dark:text-slate-500" />
+                        {/* Lock icon with hybrid tooltip */}
+                        <HybridTooltip>
+                          <HybridTooltipTrigger asChild>
+                            <div className="ml-auto cursor-pointer">
+                              <Lock className="size-4 text-slate-400 dark:text-slate-500" />
+                            </div>
+                          </HybridTooltipTrigger>
+                          <HybridTooltipContent
+                            side="right"
+                            align="center"
+                            className="max-w-[280px] p-4 text-sm"
+                          >
+                            <p className="font-medium">{item.title} (Premium Feature)</p>
+                            <p className="mt-1.5">
+                              Purchase the full report to unlock detailed insights about your {item.title.toLowerCase()} and personalized recommendations.
+                            </p>
+                          </HybridTooltipContent>
+                        </HybridTooltip>
                       </div>
                     ) : (
                       <Link href={item.url} className="flex items-center gap-3">
