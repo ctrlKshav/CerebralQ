@@ -9,7 +9,7 @@ interface CareerSuggestionsCardProps {
   className?: string;
 }
 
-export default function CareerSuggestionsCard({
+export default function CareeerSuggestions({
   careerSuggestions,
   className = "",
 }: CareerSuggestionsCardProps) {

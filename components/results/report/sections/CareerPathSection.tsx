@@ -14,8 +14,8 @@ import SuperpowersCard from "../../shared/SuperpowersCard";
 import GrowthAreasCard from "../../shared/GrowthAreasCard";
 import ActionStepsCard from "../../shared/ActionStepsCard";
 import SectionHeader from "../../shared/SectionHeader";
-import CareerSuggestionsCard from "../../shared/CareerSuggestionsCard";
 import { formatWithUsername } from "../../../../lib/formatWithUsername";
+import CareeerSuggestions from "./CareerSuggestionsSection";
 
 interface CareerPathSectionProps {
   firstname: string | null;
@@ -90,7 +90,7 @@ const CareerPathSection = ({
         {/* Career Suggestions - render if available */}
         {hasSuggestions && (
           <div className="mb-16">
-            <CareerSuggestionsCard
+            <CareeerSuggestions
               careerSuggestions={(career as CareerPathFull).suggestions}
             />
           </div>
