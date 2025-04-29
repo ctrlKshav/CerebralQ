@@ -95,7 +95,6 @@ export function FormNavigation({
               isCompleting={isCompleting}
               onPrev={onPrev}
               onNext={handleNextClick}
-              highlightNext={true}
             />
           </motion.div>
         )}

@@ -8,7 +8,6 @@ interface NavigationButtonsProps {
   isCompleting: boolean;
   onPrev: () => void;
   onNext: () => void;
-  highlightNext?: boolean;
 }
 
 export function NavigationButtons({
@@ -17,7 +16,6 @@ export function NavigationButtons({
   isCompleting,
   onPrev,
   onNext,
-  highlightNext = false,
 }: NavigationButtonsProps) {
   return (
     <div className="flex justify-between">
@@ -42,26 +40,16 @@ export function NavigationButtons({
           {isCompleting ? "Submitting..." : "Complete"}
         </Button>
       ) : (
-        <motion.div
-          animate={highlightNext ? { scale: [1, 1.06, 1] } : { scale: 1 }}
-          transition={
-            highlightNext
-              ? { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
-              : {}
-          }
-       
+        <Button
+          type="button"
+          onClick={onNext}
+          variant={"default"}
+          className={`gap-2 flex items-center justify-center px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium focus:outline-none `}
+          autoFocus={true}
         >
-          <Button
-            type="button"
-            onClick={onNext}
-            variant={"default"}
-            className={`gap-2 flex items-center justify-center px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium focus:outline-none `}
-            autoFocus={highlightNext}
-          >
-            <span className="inline-block">Next</span>
-            <ArrowRight className="h-4 w-4 ml-1" />
-          </Button>
-        </motion.div>
+          <span className="inline-block">Next</span>
+          <ArrowRight className="h-4 w-4 ml-1" />
+        </Button>
       )}
     </div>
   );
