@@ -1,6 +1,6 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
 import { QuestionCard } from "./QuestionCard";
-import { FormNavigation } from "./FormNavigation";
+import { FormNavigation } from "./FormNavigation/index";
 import { TestQuestion, TestSection } from "@/types/tests/mbti/testQuestions";
 import { MBTIResponse } from "@/schema/mbti";
 import { useState, useEffect } from "react";
