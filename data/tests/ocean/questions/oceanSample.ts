@@ -1,0 +1,271 @@
+import { TestQuestionsData } from "@/types/tests/testQuestions";
+
+export const oceanTestQuestionsData: TestQuestionsData = {
+  id: "6c274f8b-3fd9-4c1e-b20d-7a8c67c2b32a",
+  test_name: "OCEAN Personality Test",
+  totalQuestions: 20,
+  sections: {
+    Extraversion: {
+      id: 1,
+      title: "Extraversion",
+      description: "Measures how outgoing and social you are.",
+      dimension: "extraversion",
+      totalQuestions: 8,
+    },
+    Agreeableness: {
+      id: 2,
+      title: "Agreeableness",
+      description: "Measures how kind and trusting you are.",
+      dimension: "agreeableness",
+      totalQuestions: 9,
+    },
+    Conscientiousness: {
+      id: 3,
+      title: "Conscientiousness",
+      description: "Measures how organized and dependable you are.",
+      dimension: "conscientiousness",
+      totalQuestions: 9,
+    },
+    Neuroticism: {
+      id: 4,
+      title: "Neuroticism",
+      description: "Measures how emotional and anxious you are.",
+      dimension: "neuroticism",
+      totalQuestions: 9,
+    },
+    Openness: {
+      id: 5,
+      title: "Openness",
+      description: "Measures how open to new experiences and ideas you are.",
+      dimension: "openness",
+      totalQuestions: 9,
+    },
+  },
+  questions: [
+    {
+      id: "1",
+      text: "I am interested in abstract ideas and theories.",
+       
+      icon: "Lightbulb",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "openness",
+      section: 1,
+    },
+    {
+      id: "2",
+      text: "I enjoy artistic and creative activities.",
+       
+      icon: "Palette",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "openness",
+      section: 1,
+    },
+    {
+      id: "3",
+      text: "I prefer familiar routines over new experiences.",
+       
+      icon: "Repeat",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "openness",
+      section: 1,
+    },
+    {
+      id: "4",
+      text: "I like to keep things organized and tidy.",
+       
+      icon: "FolderCheck",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "conscientiousness",
+      section: 2,
+    },
+    {
+      id: "5",
+      text: "I complete tasks thoroughly and reliably.",
+       
+      icon: "Check",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "conscientiousness",
+      section: 2,
+    },
+    {
+      id: "6",
+      text: "I tend to procrastinate on important tasks.",
+       
+      icon: "Clock",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "conscientiousness",
+      section: 2,
+    },
+    {
+      id: "7",
+      text: "I enjoy being the center of attention in social situations.",
+       
+      icon: "Users",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "extraversion",
+      section: 3,
+    },
+    {
+      id: "8",
+      text: "I find it easy to start conversations with strangers.",
+       
+      icon: "MessageCircle",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "extraversion",
+      section: 3,
+    },
+    {
+      id: "9",
+      text: "I prefer spending time alone rather than with a group of people.",
+       
+      icon: "User",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "extraversion",
+      section: 3,
+    },
+    {
+      id: "10",
+      text: "I am generally trusting of other people's intentions.",
+       
+      icon: "Shield",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "agreeableness",
+      section: 4,
+    },
+    {
+      id: "11",
+      text: "I care about how my actions affect others.",
+       
+      icon: "HeartHandshake",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "agreeableness",
+      section: 4,
+    },
+    {
+      id: "12",
+      text: "I tend to be critical of others.",
+       
+      icon: "ThumbsDown",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "agreeableness",
+      section: 4,
+    },
+    {
+      id: "13",
+      text: "I worry frequently about things that might go wrong.",
+       
+      icon: "AlertTriangle",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "neuroticism",
+      section: 5,
+    },
+    {
+      id: "14",
+      text: "I get stressed easily in challenging situations.",
+       
+      icon: "Zap",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "neuroticism",
+      section: 5,
+    },
+    {
+      id: "15",
+      text: "I remain calm in stressful situations.",
+       
+      icon: "Leaf",
+      options: [
+        { value: "1", label: "Strongly Disagree" },
+        { value: "2", label: "Disagree" },
+        { value: "3", label: "Neutral" },
+        { value: "4", label: "Agree" },
+        { value: "5", label: "Strongly Agree" },
+      ],
+      dimension: "neuroticism",
+      section: 5,
+    },
+  ],
+};

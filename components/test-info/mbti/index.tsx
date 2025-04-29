@@ -20,7 +20,6 @@ import { personalityDescriptions } from "@/data/tests/mbti/personalityDescriptio
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { SectionHeader } from "@/components/test-info/mbti/SectionHeader";
 import { mbtiTestInfo } from "@/data/tests/mbti/testInfo";
-import { TestRecommendationsSection } from "../shared/TestRecommendationsSection";
 
 export default function MBTITestInformation() {
   const supabase = createClient();
