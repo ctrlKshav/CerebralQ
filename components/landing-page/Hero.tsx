@@ -26,12 +26,12 @@ export default function Header() {
             uncover something cool.
           </h1>
           <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-2xl mx-auto">
-            Discover yourself with tests like MBTI, Big Five, and IQ
+            Discover yourself with tests like MBTI and OCEAN
             <br />
             all in one
             place.
           </p>
-          <Link href={"/"}>
+          <Link href={"/tests"}>
             <Button size="lg" className="group">
               Start Exploring
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
