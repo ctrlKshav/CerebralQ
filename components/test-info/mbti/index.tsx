@@ -132,8 +132,8 @@ export default function MBTITestInformation() {
   return (
     <div className="">
       {/* Hero Section */}
-      <section className="px-4 py-4 sm:py-0 min-h-screen flex flex-col justify-start sm:justify-center">
-        <div className="mb-12 max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
+      <section className="px-4 py-8 min-h-screen ">
+        <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-10">
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl text-primary">
             {mbtiTestInfo.name}{" "}
             <span className="text-2xl">
@@ -154,7 +154,7 @@ export default function MBTITestInformation() {
             ))}
           </div>
           <div className="pt-4 ">
-            <Link href={`/start-test/mbti`}>
+            <Link href={`/start-test`}>
               <Button size="lg" className="text-lg px-8 py-6">
                 Begin Test →
               </Button>
@@ -176,15 +176,13 @@ export default function MBTITestInformation() {
           {/* Test Overview Card */}
           <TestOverviewCard testData={mbtiTestInfo} />
           {/* Personality Dimensions Card */}
-          <TestDimensionsCard
-            dimensions={mbtiTestInfo.personality_dimensions}
-          />
+          <TestDimensionsCard dimensions={mbtiTestInfo.personality_dimensions} />
         </div>
       </section>
 
       {user && latestResult && !loading && (
         <section
-          className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
+          className="max-w-7xl mx-auto xs:px-4 pb-20 scroll-mt-36 mb-12"
           id="latest-result"
         >
           <SectionHeader
@@ -192,7 +190,9 @@ export default function MBTITestInformation() {
             description="Pick up where you left off and rediscover your unique personality type. A quick flashback to your previous insights."
           />
           {/* Past Results Section - Only show if user is logged in and has results */}
-          <TestResultSection result={latestResult} />
+          <TestResultSection
+            result={latestResult}
+          />
         </section>
       )}
 
@@ -208,18 +208,8 @@ export default function MBTITestInformation() {
         <TestCitationsCard citations={mbtiTestInfo.citations} />
       </section>
 
-      {/* <section
-        className="max-w-7xl mx-auto px-4 pb-20 scroll-mt-36 mb-12"
-        id="recommendations-section"
-      >
-        <SectionHeader
-          title="Complementary Assessments"
-          description="Enhance your self-awareness with these complementary tests that work well with your OCEAN results."
-        />
-        <TestRecommendationsSection
-          recommendations={mbtiTestInfo.complementary_tests}
-        />
-      </section> */}
+      {/* Related Tests Section */}
+      {/* <TestRecommendationsSection recommendations={mbtiTestInfo.complementary_tests} /> */}
     </div>
   );
 }
