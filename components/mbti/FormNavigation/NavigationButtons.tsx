@@ -8,6 +8,7 @@ interface NavigationButtonsProps {
   isCompleting: boolean;
   onPrev: () => void;
   onNext: () => void;
+  highlightNext?: boolean;
 }
 
 export function NavigationButtons({
@@ -16,6 +17,7 @@ export function NavigationButtons({
   isCompleting,
   onPrev,
   onNext,
+  highlightNext = false,
 }: NavigationButtonsProps) {
   return (
     <div className="flex justify-between">
@@ -45,7 +47,8 @@ export function NavigationButtons({
             type="button"
             onClick={onNext}
             variant={"default"}
-            className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200 "
+            className={`gap-2 hover:scale-105 active:scale-95 `}
+            autoFocus={highlightNext}
           >
             Next
             <ArrowRight className="h-4 w-4" />
