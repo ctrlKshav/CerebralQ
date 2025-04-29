@@ -1,6 +1,6 @@
 ﻿import { Answers } from "@/schema/mbti";
 import type { TraitScores } from "@/types/tests/mbti/traits";
-import { mbtiTestQuestionsData } from "@/data/tests/mbti/questions/mbtiSample";
+import { testData } from "@/data/mbti/testQuestionsFull";
 
 export type MBTIResult = {
   personalityType: string;
@@ -8,7 +8,7 @@ export type MBTIResult = {
 };
 
 export function calculateMBTI(answers: Answers): MBTIResult {
-  const questions = mbtiTestQuestionsData.questions;
+  const questions = testData[0].questions;
   // Initialize dimensions with scoring
   const dimensions: Record<
     string,

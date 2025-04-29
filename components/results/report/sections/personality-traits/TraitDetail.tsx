@@ -1,7 +1,12 @@
 ﻿import * as React from "react";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import type { TraitDescription, TraitScore, TraitScores } from "@/types/tests/mbti/traits";
+import type {
+  TraitDescription,
+  TraitScore,
+  TraitScores,
+} from "@/types/tests/mbti/traits";
+import { useState } from "react";
 
 interface TraitDetailProps {
   traitKey: keyof TraitScores;
@@ -19,59 +24,74 @@ export const TraitDetail = ({
   traitInfo,
   themedColor,
   firstname,
-  dashboardView
+  dashboardView,
 }: TraitDetailProps) => {
-    const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
+  const dominant = score.dominant === "left" ? traitInfo.left : traitInfo.right;
 
+  // Use high-quality professional Unsplash images for each personality type
+  const traitImages: Record<string, string> = {
+    E: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491076/extraversion_m9nqlf.jpg",
+    I: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491070/introversion_n86qkf.jpg",
+    S: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491070/sensing_ndbcqi.jpg",
+    N: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491069/intuition_gqrpcc.jpg",
+    T: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491072/thinking_duqsog.jpg",
+    F: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491070/feeling_tnw8ce.jpg",
+    J: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491069/judging_wfluvv.jpg",
+    P: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491069/perceiving_awrm6c.jpg",
+    default:
+      "https://res.cloudinary.com/dhix3y82h/image/upload/v1745491069/perceiving_awrm6c.jpg",
+  };
+
+  const imagePath = traitImages[dominant.letter] || traitImages.default;
   return (
-    <div className="space-y-8">
-      <div className="space-y-2">
-        <span className="text-base text-muted-foreground">
+    <div className="space-y-6">
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <span className=" font-bold text-muted-foreground">
           {traitInfo.title}
         </span>
-        <h3
-          className="text-3xl font-bold"
-          style={{ color: themedColor }}
-        >
+        <h3 className="text-3xl font-bold" style={{ color: themedColor }}>
           {score[`${score.dominant}Percentage`].toFixed(0)}%{" "}
-          {score.dominant === "left"
-            ? traitInfo.leftLabel
-            : traitInfo.rightLabel}
+          <span className="text-base font-medium">
+            {score.dominant === "left"
+              ? traitInfo.leftLabel
+              : traitInfo.rightLabel}
+          </span>
         </h3>
       </div>
 
-      <div className="mt-4 p-4 bg-primary/5 rounded-lg">
-        <div className="space-y-4">
-          <div className="flex items-start justify-start gap-4">
+      {/* Main Card */}
+      <div className="bg-background shadow-lg rounded-xl overflow-hidden">
+        {/* Image Section */}
+        <div className="relative w-full h-[18rem]">
+          <Image
+            src={imagePath}
+            alt={`${dominant.name} trait illustration`}
+            fill
+            className="object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/40"></div>
+
+          {/* Trait Badge - Displayed on image */}
+          <div className="absolute bottom-4 left-4 flex items-center space-x-3">
             <Badge
-              variant="outline"
-              className="text-sm py-0.5 px-2 font-semibold"
+              style={{ backgroundColor: themedColor }}
+              className="text-white py-1 px-3 text-xs font-bold"
             >
               {dominant.letter}
             </Badge>
-            <div>
-              <h5 className="text-base font-medium">
-                {dominant.name}
-              </h5>
-           
-            </div>
+            <h5 className="text-white text-xl font-bold drop-shadow-md">
+              {dominant.name}
+            </h5>
           </div>
-          <p className="text-base text-muted-foreground leading-relaxed">
+        </div>
+
+        {/* Description Section */}
+        <div className="p-5">
+          <p className="text-muted-foreground leading-relaxed">
             {traitInfo.getDominantTraitDescription(firstname, dashboardView)}
           </p>
         </div>
-      </div>
-
-      <div className="relative aspect-square w-full max-h-[200px] mx-auto mt-4">
-        <Image
-          src="/images/career_paths.jpeg"
-          alt={`${traitInfo.title} trait illustration`}
-          fill
-          sizes="(max-width: 768px) 200px, (max-width: 1200px) 200px, 280px"
-          className="object-cover rounded-lg"
-          quality={85}
-          priority={false}
-        />
       </div>
     </div>
   );

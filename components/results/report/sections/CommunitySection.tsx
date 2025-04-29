@@ -56,13 +56,14 @@ const CommunitySection = ({
                 ))}
               </ul>
 
-              <div className="mt-10">
+              <div className="mt-10 text-center md:text-left">
                 <Link href={"/sign-up?source=newsletter"}>
                   <Button
-                    size="lg"
-                    className="text-primary-foreground py-6 px-8 rounded-full text-lg font-medium"
+                    variant={"default"}
+                    size="sm"
+                    className="text-primary-foreground py-4 px-4 sm:px-8 rounded-full text-md md:text-lg font-medium"
                   >
-                    Join Our Community!
+                    Coming Soon!
                   </Button>
                 </Link>
               </div>

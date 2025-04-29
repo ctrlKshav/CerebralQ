@@ -1,5 +1,5 @@
-﻿import { TeamGrid } from "../team/TeamGrid"
-import { SectionHeader } from "../test-info/mbti/SectionHeader"
+﻿import { TeamGrid } from "@/components/team/TeamGrid"
+import { SectionHeader } from "@/components/test-info/mbti/SectionHeader"
 import { teamMembers } from "@/data/team"
 
 export default function Team() {

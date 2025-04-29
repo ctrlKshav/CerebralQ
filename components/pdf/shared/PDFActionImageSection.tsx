@@ -4,7 +4,7 @@ import { formatWithUsername } from "@/lib/formatWithUsername";
 import { createBaseStyles, getThemeColors } from "../PDFTheme";
 
 // Extract styles to their own object outside the component
-const createActionSectionStyles = (isDarkMode = false) => {
+const createActionSectionStyles = (isDarkMode = false, totalSteps = 1) => {
   const theme = getThemeColors(isDarkMode);
 
   return StyleSheet.create({
@@ -26,7 +26,7 @@ const createActionSectionStyles = (isDarkMode = false) => {
     title: {
       fontSize: 18,
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
       marginBottom: 12,
       paddingBottom: 4,
       borderBottomWidth: 1,
@@ -35,7 +35,7 @@ const createActionSectionStyles = (isDarkMode = false) => {
     stepsContent: {
       flexDirection: 'row',
       flexWrap: 'wrap',
-      justifyContent: 'space-between',
+      justifyContent: totalSteps < 3 ? 'space-between' : 'center',
     },
     step: {
       flexDirection: "row",
@@ -55,7 +55,7 @@ const createActionSectionStyles = (isDarkMode = false) => {
     stepNumberText: {
       color: theme.primaryForeground,
       fontSize: 11,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
     },
     stepText: {
       flex: 1,
@@ -87,7 +87,7 @@ const PDFActionImageSection: React.FC<PDFActionImageSectionProps> = ({
   firstname,
   isDarkMode = false,
 }) => {
-  const styles = createActionSectionStyles(isDarkMode);
+  const styles = createActionSectionStyles(isDarkMode, actionSteps.length);
 
   return (
     <View style={styles.container}>

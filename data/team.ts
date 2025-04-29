@@ -6,7 +6,7 @@ export const teamMembers: TeamMember[] = [
     role: "Boss Woman",
     bio: "What are we building next?",  
     imageUrl:
-      "/images/team/ak.jpg",
+      "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393594/ak_ersl17.jpg",
 
     socialLinks: {
       twitter: "https://x.com/akforthevibe ",
@@ -20,7 +20,7 @@ export const teamMembers: TeamMember[] = [
     role: "Content Manager",
     bio: "Hi! I’m Brishti, and at 19 I think I've found my muse.",
     imageUrl:
-      "/images/team/bri.jpeg",
+      "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393594/bri_catses.jpg",
     socialLinks: {
       twitter: "https://x.com/brishtiatc4e",
       linkedin: "https://www.linkedin.com/in/brishtisharma",
@@ -32,7 +32,7 @@ export const teamMembers: TeamMember[] = [
     role: "Content Manager",
     bio: "Hi, Sneha here! I'm helping to build C4E",
     imageUrl:
-      "/images/team/sneha.jpg",
+      "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393594/sneha_pq8jzx.jpg",
     socialLinks: {
       twitter: "https://x.com/sneh_1101?s=09",
       linkedin: "https://www.linkedin.com/in/snehajanthe11?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
@@ -44,7 +44,7 @@ export const teamMembers: TeamMember[] = [
     role: "Lead Developer",
     bio: "I build websites.",
     imageUrl:
-      "/images/team/keshav.jpeg",
+      "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393594/keshav_flnchs.jpg",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/keshav3511/",
       website: "https://realk.site",

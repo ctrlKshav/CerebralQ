@@ -1,6 +1,4 @@
-﻿"use client";
-
-import React from "react";
+﻿import React from "react";
 import { ResultData, ValuesAndMotivators } from "@/types/tests/mbti/results";
 import { Heart, Star, TrendingUp, Target, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
@@ -65,9 +63,10 @@ const ValuesMotivatorSection = ({
         <ActionStepsCard
           firstname={firstname}
           steps={actionItems}
-          imageSrc="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+          imageSrc="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393724/valuesMotivators_l2yvwd.jpg"
           imageAlt="Values and motivators"
           className="mb-16 mx-auto"
+          objectFit="object-cover object-bottom"
         />
       </div>
     </section>

@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/server";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { ForgotPasswordPayload, ResetPasswordPayload, SignInPayload, SignUpPayload } from "@/lib/authActionsPayload";
-import { checkUsernameExists } from "@/lib/supabase-operations";
+import { checkUsernameExists } from "@/lib/supabaseOperations";
 import { RESERVED_ROUTES } from "@/lib/constants";
 
 // Parse reserved paths from environment variable

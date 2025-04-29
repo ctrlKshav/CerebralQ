@@ -1,5 +1,5 @@
 ﻿import { MBTIRawScore } from "@/types/supabase/user-test-history";
-import { personalityDescriptions } from "@/data/tests/mbti/personalityDescription";
+import { personalityDescriptions } from "@/data/mbti/personalityDescription";
 import { FormattedTestResult } from "@/types/supabase/user-test-history";
 
 /**

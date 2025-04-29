@@ -1,6 +1,6 @@
 ﻿import React from "react";
 import { EmailTemplate } from "@/components/contact/EmailTemplate";
-import { Resend } from 'resend';
+import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -8,7 +8,7 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { name, email, message } = body;
-    
+
     // Validate form data
     if (!name || !email || !message) {
       return Response.json(
@@ -19,11 +19,19 @@ export async function POST(request: Request) {
 
     // Send email using Resend with simple HTML template
     const { data, error } = await resend.emails.send({
-      from: 'Cerebral Quotient <updates@contact.cerebralquotient.com>',
-      to: ['keshavm9978@gmail.com', 'labs@c4e.in'],
+      from: "Cerebral Quotient <updates@contact.cerebralquotient.com>",
+      to: ["keshavm9978@gmail.com", "labs@c4e.in"],
       subject: `New contact form submission on cerebralquotient.com from ${name}`,
       react: EmailTemplate({ name, email, message }),
-      replyTo: email,
+      text: `New contact form submission on cerebralquotient.com from ${name}
+              ---------------------------
+
+              Name: ${name}
+              Email: ${email}
+
+              MESSAGE:
+              ---------------------------
+              ${message}`,
     });
 
     if (error) {

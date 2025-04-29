@@ -52,7 +52,7 @@ const GrowthSection = ({ firstname, growth, sectionNumber = 5, id = "growth-sect
         <ActionStepsCard
           firstname={firstname}
           steps={growthActionSteps}
-          imageSrc="https://images.unsplash.com/photo-1541364983171-a8ba01e95cfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+          imageSrc="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393725/growthJourney_xq7axf.jpg"
           imageAlt="Personal growth journey"
           className="mb-16 mx-auto"
         />

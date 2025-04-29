@@ -29,11 +29,28 @@ const HeroSection = ({
   historyPage = false,
 }: HeroSectionProps) => {
   const alias = personalityDescription.alias;
-  const description = personalityDescription.description(firstname,false);
+  const description = personalityDescription.description(firstname, false);
 
-  // Map personality types to their respective image paths
+  // Use high-quality professional Unsplash images for each personality type
   const personalityImages: Record<string, string> = {
-    default: "/images/ENTJ.jpeg",
+    INTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/intj_tvtwmy.jpg",
+    INTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/intp_njepy8.jpg",
+    ISFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/isfp_vk5cdp.jpg",
+    INFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/infj_ytry83.jpg",
+    ISFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/isfj_qhxdy3.jpg",
+    ISTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/istp_zpck32.jpg",
+    ISTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/istj_myx8ge.jpg",
+    INFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/infp_vir8zp.jpg",
+    ENFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/enfp_mj348n.jpg",
+    ENFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/enfj_ytry83.jpg",
+    ESTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/estj_i4o71p.jpg",
+    ENTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/entp_utpbo4.jpg",
+    ENTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/entj_wcww09.jpg",
+    ESFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/esfj_d2jmws.jpg",
+    ESTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/estp_xgu6es.jpg",
+    ESFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/esfp_eycynf.jpg",
+    default:
+      "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/enfj_ytry83.jpg",
   };
 
   const imagePath =
@@ -73,10 +90,10 @@ const HeroSection = ({
   return (
     <section
       id={id}
-      className="bg-background flex flex-col justify-center items-center py-16 px-4 overflow-hidden relative"
+      className="bg-background flex flex-col justify-center items-center py-20 px-4 overflow-hidden relative"
     >
       <div className="max-w-6xl mx-auto text-center md:text-left">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center  ">
           <div className="space-y-6 max-w-lg animate-fade-in">
             <Badge className="bg-primary text-primary-foreground py-1.5 px-4 rounded-full">
               Completed on {completionDate}
@@ -133,23 +150,21 @@ const HeroSection = ({
                     : "Share Results"}
               </Button>
               <Link href={`${historyPage ? "/account/report" : "/report"}`}>
-                <Button variant="outline">
-                  View Detailed Report
-                </Button>
+                <Button variant="outline">View Detailed Report</Button>
               </Link>
             </div>
           </div>
 
           {/* Main personality image */}
-          <div className="relative w-full h-full flex items-center justify-center">
+          <div className="justify-self-center mt-4 md:mt-0 md:justify-self-end relative w-fit max-w-full h-fit md:h-full max-h-[80vh] flex items-center justify-center">
             <Image
               src={imagePath}
+              quality={100}
               alt={`${personalityType} - ${alias} personality type illustration`}
-              width={400}
-              height={400}
+              width={600}
+              height={600}
               priority
-              className="object-contain z-10"
-              sizes="(max-width: 768px) 80vw, 400px"
+              className="w-full h-full object-cover z-10 rounded-md shadow-lg"
             />
           </div>
         </div>

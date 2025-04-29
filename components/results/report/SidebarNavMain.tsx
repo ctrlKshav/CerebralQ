@@ -3,6 +3,7 @@
 import { type LucideIcon } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   SidebarGroup,
@@ -24,129 +25,143 @@ export function SidebarNavMain({
   const { activeSection, setActiveSection, isMobile, setOpenMobile } =
     useSidebar();
 
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
-
-  const handleScroll = useCallback(() => {
-    const sections = items.map((item) => ({
-      id: item.url.replace("#", ""),
-      title: item.title,
-    }));
-
-    const currentSection = sections.find((section) => {
-      const element = document.getElementById(section.id);
-      if (!element) return false;
-
-      const rect = element.getBoundingClientRect();
-      return rect.top <= 100 && rect.bottom > 100;
-    });
-
-    if (currentSection) {
-      setActiveSection(currentSection.title);
-    }
-
+  useEffect(() => {
     document.getElementById(activeSection)?.scrollIntoView({
       behavior: "smooth",
       block: "center",
     });
-  }, [activeSection, items]);
+  }, [activeSection]);
 
-  // Update active item based on scroll position
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [handleScroll]);
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { 
+        delayChildren: 0.1,
+        staggerChildren: 0.07
+      }
+    }
+  };
+  
+  const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { duration: 0.3 }
+    }
+  };
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel className="text-sm font-semibold mb-4 pl-3 tracking-wide text-slate-600 dark:text-slate-300">
-        Sections
-      </SidebarGroupLabel>
-      <SidebarMenu className="gap-2">
-        {items.map((item) => {
-          const isActive = item.title === activeSection;
-          const isHovered = item.title === hoveredItem;
+      <motion.div
+        initial={{ opacity: 0, y: -10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4, delay: 0.2 }}
+      >
+        <SidebarGroupLabel className="text-sm font-semibold mb-4 pl-3 tracking-wide text-slate-600 dark:text-slate-300">
+          Sections
+        </SidebarGroupLabel>
+      </motion.div>
+      
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <SidebarMenu className="gap-2">
+          {items.map((item, index) => {
+            const isActive = item.title === activeSection;
 
-          return (
-            <SidebarMenuItem
-              key={item.title}
-              className="my-1.5"
-              id={item.title}
-            >
-              <SidebarMenuButton
-                variant={"default"}
-                asChild
-                tooltip={item.title}
-                isActive={isActive}
-                onClick={() => {
-                  if (isMobile) {
-                    setOpenMobile(false);
-                  } else {
-                    setActiveSection(item.title);
-                  }
-                }}
-                onMouseEnter={() => setHoveredItem(item.title)}
-                onMouseLeave={() => setHoveredItem(null)}
-                className={cn(
-                  "h-12 px-3 py-3 text-base font-medium transition-all duration-200 rounded-xl relative overflow-hidden",
-                  "hover:translate-x-1",
-                  isActive
-                    ? "bg-white dark:bg-slate-800 shadow-md"
-                    : "hover:bg-white/50 dark:hover:bg-slate-800/50"
-                )}
-                style={{
-                  boxShadow: isActive ? `0 4px 12px ${item.bgColor}` : "",
-                }}
+            return (
+              <motion.div
+                key={item.title}
+                variants={itemVariants}
+                whileHover={{ x: 5 }}
+                transition={{ duration: 0.2 }}
               >
-                <Link href={item.url} className="flex items-center gap-3">
-                  {/* Icon wrapper with background */}
-                  <div
+                <SidebarMenuItem
+                  className="my-1.5"
+                  id={item.title}
+                >
+                  <SidebarMenuButton
+                    variant={"default"}
+                    asChild
+                    tooltip={item.title}
+                    isActive={isActive}
+                    onClick={() => setOpenMobile(false)}
                     className={cn(
-                      "flex items-center justify-center rounded-lg p-2 transition-all duration-200",
-                      isActive ? "scale-110" : "scale-100"
+                      "h-12 px-3 py-3 text-base font-medium transition-all duration-200 rounded-xl relative overflow-hidden",
+                      "hover:translate-x-1",
+                      isActive
+                        ? "bg-white dark:bg-slate-800 shadow-md"
+                        : "hover:bg-white/50 dark:hover:bg-slate-800/50"
                     )}
                     style={{
-                      backgroundColor: "transparent",
+                      boxShadow: isActive ? `0 4px 12px ${item.bgColor}` : "",
                     }}
                   >
-                    <item.icon
-                      className="size-5 flex-shrink-0"
-                      style={{
-                        color:
-                          isActive || isHovered ? item.color : "currentColor",
-                        transition: "color 0.2s ease, transform 0.2s ease",
-                        transform: isActive ? "scale(1.1)" : "scale(1)",
-                      }}
-                    />
-                  </div>
+                    <Link href={item.url} className="flex items-center gap-3">
+                      {/* Icon wrapper with background */}
+                      <motion.div
+                        className={cn(
+                          "flex items-center justify-center rounded-lg p-2 transition-all duration-200",
+                          isActive ? "scale-110" : "scale-100"
+                        )}
+                        style={{
+                          backgroundColor: "transparent",
+                        }}
+                        whileHover={{ scale: 1.2 }}
+                        animate={isActive ? { scale: 1.1 } : { scale: 1 }}
+                        transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                      >
+                        <item.icon
+                          className="size-5 flex-shrink-0"
+                          style={{
+                            color: isActive ? item.color : "currentColor",
+                            transition: "color 0.2s ease, transform 0.2s ease",
+                            transform: isActive ? "scale(1.1)" : "scale(1)",
+                          }}
+                        />
+                      </motion.div>
 
-                  {/* Title with custom styling */}
-                  <span
-                    className={cn(
-                      "truncate transition-all duration-200",
-                      isActive ? "font-semibold" : ""
-                    )}
-                    style={{
-                      color: isActive ? item.color : "currentColor",
-                    }}
-                  >
-                    {item.title}
-                  </span>
+                      {/* Title with custom styling */}
+                      <motion.span
+                        className={cn(
+                          "truncate transition-all duration-200",
+                          isActive ? "font-semibold" : ""
+                        )}
+                        style={{
+                          color: isActive ? item.color : "currentColor",
+                        }}
+                        whileHover={{ scale: 1.03 }}
+                        transition={{ duration: 0.2 }}
+                      >
+                        {item.title}
+                      </motion.span>
 
-                  {/* Active indicator */}
-                  {isActive && (
-                    <div
-                      className="absolute right-0 top-0 h-full w-1 rounded-l-full"
-                      style={{ backgroundColor: item.color }}
-                    />
-                  )}
-                </Link>
-              </SidebarMenuButton>
-            </SidebarMenuItem>
-          );
-        })}
-      </SidebarMenu>
+                      {/* Active indicator */}
+                      <AnimatePresence>
+                        {isActive && (
+                          <motion.div
+                            className="absolute right-0 top-0 h-full w-1 rounded-l-full"
+                            style={{ backgroundColor: item.color }}
+                            initial={{ opacity: 0, scaleY: 0 }}
+                            animate={{ opacity: 1, scaleY: 1 }}
+                            exit={{ opacity: 0, scaleY: 0 }}
+                            transition={{ duration: 0.3 }}
+                          />
+                        )}
+                      </AnimatePresence>
+                    </Link>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </motion.div>
+            );
+          })}
+        </SidebarMenu>
+      </motion.div>
     </SidebarGroup>
   );
 }

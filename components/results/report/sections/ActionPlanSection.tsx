@@ -10,7 +10,7 @@ import { formatWithUsername } from "../../../../lib/formatWithUsername";
 import { handleShare } from "@/lib/shareUtils";
 import { PDFGenerator } from "@/components/pdf/PDFGenerator";
 import { Share2 } from "lucide-react";
-import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
+import { sampleResultData } from "@/data/mbti/mbtiResultData";
 import { useRouter } from "next/navigation";
 
 interface ActionPlanSectionProps {

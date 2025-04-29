@@ -1,4 +1,4 @@
-import OceanTest from '@/components/ocean'
+import OceanTest from '@/components/start-test/ocean'
 import { oceanTestQuestionsData } from '@/data/tests/ocean/questions/ipip120'
 import React from 'react'
 

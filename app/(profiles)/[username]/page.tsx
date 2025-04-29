@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect, use } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { getUserProfileByUsername } from "@/lib/supabase-operations/getUserProfile";
+import { getUserProfileByUsername } from "@/lib/supabaseOperations/getUserProfile";
 import { useRouter } from "next/navigation";
 
 // Components
@@ -34,7 +34,7 @@ export default function ProfilePage({
   }
   const { userData, setUserData } = userDataContext;
 
-  const profileUsername = searchParams.username;
+  const profileUsername = decodeURIComponent(searchParams.username);
   const [profileData, setProfileData] = useState<UserProfile | null>(null);
 
   const [loading, setLoading] = useState(true);
@@ -109,8 +109,7 @@ export default function ProfilePage({
   return (
     <div className="min-h-screen bg-background ">
       {userData ? <Navbar user={userData} /> : <Navbar />}
-      <main className="container mt-24 mx-auto px-4 py-8 lg:px-8">
-        <div className="max-w-7xl mx-auto space-y-10">
+      <main className="mt-24 px-4 py-8 lg:px-16 space-y-10">
           {/* Profile header with basic user information */}
           <ProfileHeader
             profileData={profileData}
@@ -129,7 +128,6 @@ export default function ProfilePage({
 
           {/* Test history  */}
           <TestHistory fullTestHistory={profileData.user_test_history} />
-        </div>
       </main>
     </div>
   );

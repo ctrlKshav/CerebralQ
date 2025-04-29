@@ -92,7 +92,7 @@ const Slide = ({ slide, index, current, handleSlideClick }: SlideProps) => {
               opacity: current === index ? 1 : 0.5,
             }}
             alt={title}
-            src={src || "/placeholder.svg"}
+            src={src || "/images/placeholder.svg"}
             onLoad={imageLoaded}
             loading="eager"
             decoding="sync"

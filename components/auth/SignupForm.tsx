@@ -40,12 +40,11 @@ export function SignupForm({
   } | null>(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  
+
   // making sure we are always on the top of the scroll when the page loads
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
 
   // Check if user came from newsletter link
   const source = searchParams.get("source");
@@ -253,8 +252,8 @@ export function SignupForm({
             <Image
               src={
                 isNewsletterSignup
-                  ? "/images/signup2_nl_creative.png"
-                  : "/images/signup1_book.jpeg"
+                  ? "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393435/signup2_nl_creative_ht3plc.png"
+                  : "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393435/signup1_illustration_b3amci.jpg"
               }
               alt={
                 isNewsletterSignup
@@ -279,7 +278,7 @@ export function SignupForm({
 
       <div className="text-center text-balance text-xs text-muted-foreground [&_a]:underline [&_a]:underline-offset-4 hover:[&_a]:text-primary">
         By signing up, you agree to our{" "}
-        <Link href="/privacy">Terms of Service</Link> and{" "}
+        <Link href="/t&c">Terms of Service</Link> and{" "}
         <Link href="/privacy">Privacy Policy</Link>
       </div>
       <Button variant="outline" className="mx-auto" asChild>

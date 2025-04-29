@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Edit2, X, Check } from "lucide-react";
 import { Textarea } from "@/components/ui/textarea";
-import { updateUserProfile } from "@/lib/supabase-operations";
+import { updateUserProfile } from "@/lib/supabaseOperations";
 import { toast } from "sonner";
 import { MAX_CHARACTER_LIMIT_BIO } from "@/lib/constants";
 

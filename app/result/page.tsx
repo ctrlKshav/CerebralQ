@@ -5,13 +5,15 @@ import Link from "next/link";
 import { useUserDataContext } from "@/context/user-data";
 import { useEffect, useState } from "react";
 import { TEST_RESULTS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-import { saveTestResults } from "@/lib/supabase-operations";
+import { saveTestResults } from "@/lib/supabaseOperations";
 import { Card, CardContent } from "@/components/ui/card";
 import { ResultData } from "@/types/tests/mbti/results";
 import { Button } from "@/components/ui/button";
-import { getPersonalityData } from "@/data/tests/mbti/mbtiResultData";
-import { getPersonalityDescription } from "@/data/tests/mbti/personalityDescription";
-
+import { getPersonalityData } from "@/data/mbti/mbtiResultData";
+import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
+import { MBTIResponseData } from "@/types/tests/mbti/responseData";
+import type { UserTestHistoryInsert } from "@/types/supabase/user-test-history";
+import { Json } from "@/types/supabase";
 export default function ResultCertificatePage() {
   const userDataContext = useUserDataContext();
   if (userDataContext === null) {
@@ -36,16 +38,15 @@ export default function ResultCertificatePage() {
           return;
         }
 
-        const data = JSON.parse(storedData);
+        const data : MBTIResponseData = JSON.parse(storedData);
 
         // Extract required data from localStorage format
         const personalityType = data.raw_score?.personalityType;
-        const traitScores = data.traitScores || data.raw_score?.traitScores;
-        const testId = data.testId || data.test_type_id;
+        const traitScores = data.raw_score?.traitScores;
+        const testId = data.test_type_id;
         const completionDate =
-          data.completionDate ||
-          (data.timestamp
-            ? new Date(data.timestamp).toLocaleDateString()
+          (data.taken_at
+            ? new Date(data.taken_at).toLocaleDateString()
             : data.taken_at
               ? new Date(data.taken_at).toLocaleDateString()
               : new Date().toLocaleDateString());
@@ -82,9 +83,10 @@ export default function ResultCertificatePage() {
           if (!savedResults) {
             try {
               // Prepare test data with correct user ID
-              const testData = {
+              const testData : UserTestHistoryInsert = {
                 ...data,
                 user_id: userData.id,
+                raw_score: data.raw_score as unknown as Json,
               };
 
               // Save to Supabase

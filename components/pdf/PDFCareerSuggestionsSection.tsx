@@ -1,9 +1,9 @@
 ﻿import React from "react";
-import { View, Text, StyleSheet } from "@react-pdf/renderer";
-import { CareerPath, CareerSuggestion } from "@/types/tests/mbti/results";
+import { View, Text, StyleSheet, Image } from "@react-pdf/renderer";
+import { CareerSuggestion } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import PDFCareerSuggestionCard from "./shared/PDFCareerSuggestionCard";
-import { formatWithUsername } from "@/lib/formatWithUsername";
+import PDFFooter from "./shared/PDFFooter";
 
 // Create styles with theme variants
 const createCareerSuggestionsStyles = (isDarkMode = false) => {
@@ -12,45 +12,62 @@ const createCareerSuggestionsStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
-      padding: 40,
+      padding: 20,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
-    headerContainer: {
-      marginBottom: 25,
+    header: {
+      marginBottom: 20,
       alignItems: "center",
     },
-    headerRow: baseStyles.headerRow,
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
     title: {
-      fontSize: 30,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
+      fontSize: 40,
+      color: theme.primary,
+      fontFamily: "PTSans-Bold",
       marginBottom: 12,
-      textAlign: "center",
-    },
-    subtitle: {
-      fontSize: 20,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 20,
       textAlign: "center",
     },
     description: {
       fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 30,
+      color: theme.foreground,
+      marginBottom: 20,
       lineHeight: 1.6,
       textAlign: "center",
       alignSelf: "center",
-      maxWidth: 480,
+      paddingHorizontal: 50,
     },
-    cardsContainer: {
+    grid: {
       flexDirection: "column",
+      marginHorizontal: 15,
+      gap: 20,
     },
-    footer: baseStyles.footer,
+    row: {
+      flexDirection: "row",
+      gap: 20,
+      marginBottom: 5,
+    },
+    footer: {
+      position: "absolute",
+      bottom: 15,
+      left: 0,
+      right: 0,
+      textAlign: "center",
+      fontSize: 10,
+      color: theme.mutedForeground,
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    footerText: {
+      fontSize: 10,
+      color: theme.mutedForeground,
+    },
+    heartIcon: {
+      width: 20,
+      height: 20,
+      marginLeft: 5,
+    },
   });
 };
 
@@ -59,58 +76,68 @@ interface PDFCareerSuggestionsSectionProps {
   sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;
-  pageNumber: number;
-  isFirstPage?: boolean;
+  pageNumber?: number;
+  logoUrl?: string;
 }
 
-const PDFCareerSuggestionsSection: React.FC<
-  PDFCareerSuggestionsSectionProps
-> = ({
+const PDFCareerSuggestionsSection: React.FC<PDFCareerSuggestionsSectionProps> = ({
   suggestions,
   sectionNumber,
   firstname,
   isDarkMode = false,
-  pageNumber,
-  isFirstPage = false,
+  pageNumber = 1,
+  logoUrl,
 }) => {
   const styles = createCareerSuggestionsStyles(isDarkMode);
 
-  if (!suggestions || suggestions.length === 0) {
-    return null;
-  }
+  // Ensure we always have suggestions to display, even if empty
+  const displaySuggestions = suggestions || [];
+  
+  // Function to chunk the array into pairs for grid layout
+  const chunkArray = (array: CareerSuggestion[], size: number) => {
+    const chunks = [];
+    for (let i = 0; i < array.length; i += size) {
+      chunks.push(array.slice(i, i + size));
+    }
+    return chunks;
+  };
+
+  // Create rows of 2 items each
+  const rows = chunkArray(displaySuggestions, 2);
 
   return (
     <View style={styles.page}>
-      {/* Only show the header on the first page */}
-      {isFirstPage && (
-        <View style={styles.headerContainer}>
-          <View style={styles.headerContainer}>
-            <Text style={styles.sectionTitle}>Career Suggestions</Text>
+      {/* Header */}
+      <View style={styles.header}>
+        <Text style={styles.title}>Career Suggestions</Text>
+        <Text style={styles.description}>
+          These career paths naturally complement your personality traits and abilities, 
+          offering environments where you're likely to thrive and find fulfillment.
+        </Text>
+      </View>
+
+      {/* Grid of career cards - dynamic layout */}
+      <View style={styles.grid}>
+        {rows.map((row, rowIndex) => (
+          <View key={`row-${rowIndex}`} style={styles.row}>
+            {row.map((suggestion, colIndex) => (
+              <PDFCareerSuggestionCard
+                key={`suggestion-${rowIndex}-${colIndex}`}
+                suggestion={suggestion}
+                isDarkMode={isDarkMode}
+              />
+            ))}
+            
+            {/* Add a placeholder if there's only one item in the row */}
+            {row.length === 1 && (
+              <View style={{ flex: 1 }} />
+            )}
           </View>
-
-          <Text style={styles.description}>
-            These career paths naturally complement your personality traits and
-            abilities, offering environments where you're likely to thrive and
-            find fulfillment.
-          </Text>
-        </View>
-      )}
-
-      {/* Show one card per row, maximum 3 per page */}
-      <View style={styles.cardsContainer}>
-        {suggestions.map((suggestion, index) => (
-          <PDFCareerSuggestionCard
-            key={`suggestion-${index}`}
-            suggestion={suggestion}
-            isDarkMode={isDarkMode}
-          />
         ))}
       </View>
 
-      {/* Footer */}
-      <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page {pageNumber}
-      </Text>
+      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
+
     </View>
   );
 };

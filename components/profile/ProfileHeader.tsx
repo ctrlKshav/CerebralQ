@@ -29,8 +29,6 @@ export default function ProfileHeader({
 
   return (
     <section className="relative">
-      {/* Simple background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-background rounded-3xl -z-10" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -42,7 +40,7 @@ export default function ProfileHeader({
         <div className="flex-shrink-0">
           <Avatar className="h-40 w-40 md:h-48 md:w-48 border-4 border-background">
             <AvatarImage 
-              src={profileData.profile_image_url || "/images/profile-avatars/avatarPlaceholder.png"}
+              src={profileData.profile_image_url || "/images/profileAvatars/avatarPlaceholder.png"}
               alt={`${profileData.username}'s profile`}
             />
             <AvatarFallback className="text-4xl">

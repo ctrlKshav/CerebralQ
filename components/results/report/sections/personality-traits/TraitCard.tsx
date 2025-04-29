@@ -1,7 +1,7 @@
 ﻿import * as React from "react";
 import { useTheme } from "next-themes";
 import type { TraitScores } from "@/types/tests/mbti/traits";
-import { getPersonalityTraitDescriptions } from "@/data/tests/mbti/traitDescriptions";
+import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
 import TraitBar from "./TraitBar";
 import TraitDetail from "./TraitDetail";
 

@@ -1,65 +1,36 @@
 ﻿import React from "react";
-import { Text, View, StyleSheet } from "@react-pdf/renderer";
+import { View, StyleSheet } from "@react-pdf/renderer";
 import { ValuesAndMotivators } from "@/types/tests/mbti/results";
-import { createBaseStyles, getThemeColors } from "./PDFTheme";
-import { formatWithUsername } from "@/lib/formatWithUsername";
-import PDFCardSection from "./shared/PDFCardSection";
-import PDFListItem from "./shared/PDFListItem";
-import {
-  HeartIcon,
-  TrendingUpIcon,
-  CheckboxIcon,
-  UpArrowIcon,
-} from "@/components/pdf/shared/icons";
-import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
-import PDFValuesActionSection from "./PDFValuesActionSection";
-import PDFActionImageSection from "./shared/PDFActionImageSection";
-
-// Define specific colors for icons
-const ICON_COLORS = {
-  heart: "#ec4899", // pink-500
-  trendingUp: "#10b981", // emerald-500
-  checkbox: "#10b981", // emerald-500
-  upArrow: "#f59e0b", // amber-500
-};
+import { getThemeColors } from "./PDFTheme";
+import { PDFLogo } from "./PDFLogo";
+import PDFSuperPowersSection from "./shared/PDFSuperPowersSection";
+import PDFGrowthAreasSection from "./shared/PDFGrowthAreasSection";
+import PDFActionPlanSection from "./shared/PDFActionPlanSection";
+import PDFFooter from "./shared/PDFFooter";
+import PDFSectionHeader from "./shared/PDFSectionHeader";
 
 // Extract styles to their own object outside the component
 const createValuesSectionStyles = (isDarkMode = false) => {
-  const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
 
   return StyleSheet.create({
     page: {
-      padding: 20, // Reduced from 40
+      padding: 30,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
-    headerContainer: {
-      marginBottom: 15, // Reduced from 25
-      alignItems: "center",
+    contentSection: {
+      flexDirection: "row",
     },
-    title: {
-      fontSize: 30,
-      color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
-      marginBottom: 12,
-      textAlign: "center",
+    leftContent: {
+      flex: 3,
+      paddingRight: 15,
+      alignSelf: "flex-end",
     },
-    description: {
-      fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 30,
-      lineHeight: 1.4, // Reduced from 1.6
-      textAlign: "center",
-      alignSelf: "center",
-      maxWidth: 480,
+    rightContent: {
+      flex: 2,
     },
-    footer: baseStyles.footer,
-    headerRow: baseStyles.headerRow,
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: baseStyles.sectionSubtitle,
   });
 };
 
@@ -69,6 +40,7 @@ interface PDFValuesAndMotivatorsSectionProps {
   firstname: string | null;
   isDarkMode?: boolean;
   pageNumber?: number;
+  logoUrl?: string;
 }
 
 const PDFValuesAndMotivatorsSection: React.FC<
@@ -79,50 +51,61 @@ const PDFValuesAndMotivatorsSection: React.FC<
   firstname,
   isDarkMode = false,
   pageNumber = 1,
+  logoUrl = "/images/cq-logo.png",
 }) => {
   // Use the extracted styles
   const styles = createValuesSectionStyles(isDarkMode);
-  const { coreValues, motivators } = valuesAndMotivators;
+  const { coreValues, motivators, actionItems, summary } = valuesAndMotivators;
 
   return (
     <View style={styles.page}>
-      {/* Section header */}
-      <View style={styles.headerContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>Values & Motivators</Text>
+      {/* Logo in top right */}
+      <PDFLogo logoUrl={logoUrl} />
+
+      {/* Header section with title and image side by side */}
+      <PDFSectionHeader
+        title="Values & Motivators"
+        subtitle="What Drives You, {firstname}"
+        description={summary}
+        firstname={firstname}
+        isDarkMode={isDarkMode}
+        imageSrc="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393724/valuesMotivators_l2yvwd.jpg"
+      />
+
+      {/* Main content section */}
+      <View style={styles.contentSection}>
+        <View style={styles.leftContent}>
+          {/* Core Values as Superpowers section */}
+          <PDFSuperPowersSection
+            superpowers={coreValues}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+
+          {/* Motivators as Growth Areas section */}
+          <PDFGrowthAreasSection
+            growthAreas={motivators}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+            expandToFill={true}
+          />
         </View>
-        <Text style={styles.sectionSubtitle}>
-          {formatWithUsername("What Drives You, {firstname}", firstname)}
-        </Text>
-        <Text style={styles.description}>
-          {formatWithUsername(valuesAndMotivators.summary, firstname)}
-        </Text>
+
+        <View style={styles.rightContent}>
+          {/* Action Plan section */}
+          <PDFActionPlanSection
+            actionSteps={actionItems}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+        </View>
       </View>
 
-      <PDFTwoColumnSection
-        leftTitle="Your Core Values"
-        leftIcon={<HeartIcon color={ICON_COLORS.heart} size={20} />}
-        leftItems={coreValues}
-        rightTitle="What Motivates You"
-        rightIcon={<TrendingUpIcon color={ICON_COLORS.trendingUp} size={20} />}
-        rightItems={motivators}
+      <PDFFooter
         firstname={firstname}
         isDarkMode={isDarkMode}
+        pageNumber={pageNumber}
       />
-
-      <PDFActionImageSection
-        title="Let's Get Started on this!"
-        firstname={firstname}
-        imageSrc="https://images.unsplash.com/photo-1499209974431-9dddcece7f88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-        actionSteps={valuesAndMotivators.actionItems}
-        isDarkMode={isDarkMode}
-      />
-
-      {/* Footer inside the page */}
-      <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page {pageNumber}
-      </Text>
     </View>
   );
 };

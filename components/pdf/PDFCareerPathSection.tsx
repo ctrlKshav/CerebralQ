@@ -1,73 +1,36 @@
 ﻿import React from "react";
-import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
+import { Text, View, StyleSheet } from "@react-pdf/renderer";
 import { CareerPath } from "@/types/tests/mbti/results";
-import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import { getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import PDFListItem from "./shared/PDFListItem";
-import PDFActionImageSection from "./shared/PDFActionImageSection";
-import {
-  AwardIcon,
-  BriefcaseIcon,
-  CheckboxIcon,
-  UpArrowIcon,
-} from "@/components/pdf/shared/icons";
-import { ICON_COLORS } from "@/lib/constants";
+import { PDFLogo } from "./PDFLogo";
+import PDFSuperPowersSection from "./shared/PDFSuperPowersSection";
+import PDFGrowthAreasSection from "./shared/PDFGrowthAreasSection";
+import PDFActionPlanSection from "./shared/PDFActionPlanSection";
+import PDFFooter from "./shared/PDFFooter";
+import PDFSectionHeader from "./shared/PDFSectionHeader";
 
 // Extract styles to their own object outside the component
 const createCareerSectionStyles = (isDarkMode = false) => {
-  const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
 
   return StyleSheet.create({
     page: {
-      padding: 20, // Reduced padding to use more width
+      padding: 30,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
-    headerContainer: {
-      marginBottom: 20,
-      alignItems: "center",
-    },
-    description: {
-      fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 20,
-      lineHeight: 1.6,
-      textAlign: "center",
-      alignSelf: "center",
-      maxWidth: 540,
-    },
-    columnsContainer: {
-      flexDirection: 'row',
-      marginBottom: 20,
-      gap: 15, // Reduced gap
-    },
-    column: {
-      flex: 1,
-    },
-    columnTitle: {
-      fontSize: 18,
-      color: theme.primary,
-      fontFamily: "Helvetica-Bold",
-      textAlign: "center",
-    },
-    columnTitleContainer: {
+    contentSection: {
       flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      marginBottom: 12,
-      paddingBottom: 8,
-      borderBottomWidth: 1,
-      borderBottomColor: theme.border,
     },
-    footer: baseStyles.footer,
-    headerRow: baseStyles.headerRow,
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: baseStyles.sectionSubtitle,
-    listSection: {
-      marginBottom: 5,
+    leftContent: {
+      flex: 3,
+      paddingRight: 15,
+      alignSelf: "flex-end",
+    },
+    rightContent: {
+      flex: 2,
     },
   });
 };
@@ -77,6 +40,8 @@ interface PDFCareerPathSectionProps {
   sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;
+  pageNumber?: number;
+  logoUrl?: string;
 }
 
 const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
@@ -84,82 +49,62 @@ const PDFCareerPathSection: React.FC<PDFCareerPathSectionProps> = ({
   sectionNumber,
   firstname,
   isDarkMode = false,
+  pageNumber = 1,
+  logoUrl = "/images/cq-logo.png",
 }) => {
   // Use the extracted styles
   const styles = createCareerSectionStyles(isDarkMode);
-  const { superpowers, growthAreas, actionSteps } = career;
+  const { summary, superpowers, growthAreas, actionSteps } = career;
 
   return (
     <View style={styles.page}>
-      {/* Section header */}
-      <View style={styles.headerContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>Your Career Path</Text>
-        </View>
-        <Text style={styles.sectionSubtitle}>
-          {formatWithUsername("How You Shine at Work, {firstname}", firstname)}
-        </Text>
-        <Text style={styles.description}>
-          {formatWithUsername(career.summary, firstname)}
-        </Text>
-      </View>
+      {/* Logo in top right */}
+      <PDFLogo logoUrl={logoUrl} />
 
-      {/* Two column layout for Superpowers and Growth Areas */}
-      <View style={styles.columnsContainer}>
-        {/* Career Superpowers Column */}
-        <View style={styles.column}>
-          <View style={styles.columnTitleContainer}>
-            <AwardIcon color={ICON_COLORS.award} size={18} />
-            <Text style={[styles.columnTitle, { marginLeft: 8 }]}>
-              Career Superpowers
-            </Text>
-          </View>
-          <View style={styles.listSection}>
-            {superpowers.map((item, index) => (
-              <PDFListItem
-                key={`superpower-${index}`}
-                text={formatWithUsername(item.description, firstname)}
-                icon={<CheckboxIcon color={ICON_COLORS.checkbox} size={14} />}
-                isDarkMode={isDarkMode}
-              />
-            ))}
-          </View>
-        </View>
-
-        {/* Growth Areas Column */}
-        <View style={styles.column}>
-          <View style={styles.columnTitleContainer}>
-            <BriefcaseIcon color={ICON_COLORS.briefcase} size={18} />
-            <Text style={[styles.columnTitle, { marginLeft: 8 }]}>
-              Growth Areas
-            </Text>
-          </View>
-          <View style={styles.listSection}>
-            {growthAreas.map((item, index) => (
-              <PDFListItem
-                key={`growth-${index}`}
-                text={formatWithUsername(item.description, firstname)}
-                icon={<UpArrowIcon color={ICON_COLORS.upArrow} size={14} />}
-                isDarkMode={isDarkMode}
-              />
-            ))}
-          </View>
-        </View>
-      </View>
-
-      {/* Action Steps - Using the new reusable component */}
-      <PDFActionImageSection
-        actionSteps={actionSteps || []}
-        imageSrc="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+      {/* Header section with title and image side by side */}
+      <PDFSectionHeader
+        title="Your Career Path"
+        subtitle="How You Shine at Work, {firstname}"
+        description={summary}
         firstname={firstname}
         isDarkMode={isDarkMode}
+        imageSrc="https://res.cloudinary.com/dhix3y82h/image/upload/v1745393727/careerPath_orckon.jpg"
       />
 
-      {/* Footer inside the page */}
-      <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page 3
-      </Text>
+      {/* Main content section */}
+      <View style={styles.contentSection}>
+        <View style={styles.leftContent}>
+          {/* Superpowers section */}
+          <PDFSuperPowersSection
+            superpowers={superpowers}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+
+          {/* Growth Areas section with expandToFill to match action plan height */}
+          <PDFGrowthAreasSection
+            growthAreas={growthAreas}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+            expandToFill={true}
+          />
+        </View>
+
+        <View style={styles.rightContent}>
+          {/* Action Plan section */}
+          <PDFActionPlanSection
+            actionSteps={actionSteps}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+        </View>
+      </View>
+
+      <PDFFooter
+        firstname={firstname}
+        isDarkMode={isDarkMode}
+        pageNumber={pageNumber}
+      />
     </View>
   );
 };

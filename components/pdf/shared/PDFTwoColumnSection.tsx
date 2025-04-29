@@ -39,7 +39,7 @@ const PDFTwoColumnSection: React.FC<PDFTwoColumnSectionProps> = ({
       <View style={styles.column}>
         <View style={styles.columnTitleContainer}>
           {leftIcon}
-          <Text style={[styles.columnTitle, { marginLeft: 8 }]}>
+          <Text style={styles.columnTitle}>
             {leftTitle}
           </Text>
         </View>
@@ -58,7 +58,7 @@ const PDFTwoColumnSection: React.FC<PDFTwoColumnSectionProps> = ({
       <View style={styles.column}>
         <View style={styles.columnTitleContainer}>
           {rightIcon}
-          <Text style={[styles.columnTitle, { marginLeft: 8 }]}>
+          <Text style={styles.columnTitle}>
             {rightTitle}
           </Text>
         </View>

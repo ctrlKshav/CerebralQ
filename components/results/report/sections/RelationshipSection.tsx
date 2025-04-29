@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { RelationshipCompatibility, ResultData } from "@/types/tests/mbti/results";
 import {
   Heart,
@@ -94,13 +94,14 @@ const RelationshipSection = ({
               steps={relationship.actionSteps}
               imageSrc={
                 relationship.title === "Relationships"
-                  ? "https://images.unsplash.com/photo-1522844990619-4951c40f7eda?q=80&w=2000&auto=format&fit=crop"
+                  ? "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393725/relationship_xvrs0h.jpg"
                   : relationship.title === "Friendships"
                     ? "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=2000&auto=format&fit=crop"
                     : "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=2000&auto=format&fit=crop"
               }
               imageAlt={`${relationship.title}`}
               className="mb-16"
+              objectFit="object-cover"
             />
           </div>
         </section>

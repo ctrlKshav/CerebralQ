@@ -40,10 +40,7 @@ export default function CareerSuggestionsCard({
         "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
     };
 
-    return (
-      images[title] ||
-      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=800&q=80"
-    );
+    return "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393726/careerSuggestions_utvtsq.jpg";
   };
 
   return (
@@ -68,7 +65,9 @@ export default function CareerSuggestionsCard({
         </p>
       </div>
 
-      <div className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-3"} gap-8 items-center justify-center`}>
+      <div
+        className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-2"} gap-16 items-center justify-center`}
+      >
         {careerData?.map((suggestion, index) => (
           <motion.div
             key={index}

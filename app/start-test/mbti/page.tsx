@@ -1,4 +1,4 @@
-﻿import MBTITest from '@/components/mbti'
+﻿import MBTITest from '@/components/start-test/mbti'
 import React from 'react'
 
 export default function TakeTestpage() {

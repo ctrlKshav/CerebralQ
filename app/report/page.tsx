@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { ResultData } from "@/types/tests/mbti/results";
 import { TEST_RESULTS_KEY } from "@/lib/constants";
-import { getPersonalityData } from "@/data/tests/mbti/mbtiResultData";
-import { getPersonalityDescription } from "@/data/tests/mbti/personalityDescription";
+import { getPersonalityData } from "@/data/mbti/mbtiResultData";
+import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
 import { useUserDataContext } from "@/context/user-data";
+import { MBTIResponseData } from "@/types/tests/mbti/responseData";
 
 export default function ReportPage() {
   const userDataContext = useUserDataContext();
@@ -33,18 +34,14 @@ export default function ReportPage() {
           return;
         }
 
-        const data = JSON.parse(storedData);
+        const data: MBTIResponseData = JSON.parse(storedData);
 
         // Extract required data from localStorage format
         const personalityType = data.raw_score?.personalityType;
-        const traitScores = data.traitScores || data.raw_score?.traitScores;
-        const completionDate =
-          data.completionDate ||
-          (data.timestamp
-            ? new Date(data.timestamp).toLocaleDateString()
-            : data.taken_at
-              ? new Date(data.taken_at).toLocaleDateString()
-              : new Date().toLocaleDateString());
+        const traitScores = data.raw_score?.traitScores;
+        const completionDate = data.taken_at
+          ? new Date(data.taken_at).toLocaleDateString()
+          : new Date().toLocaleDateString();
 
         if (!personalityType) {
           setError("Invalid test result data. Please retake the test.");

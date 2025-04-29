@@ -81,12 +81,12 @@ export interface TestHistoryWithTestType extends UserTestHistory {
 export interface FormattedTestResult {
   id: string;
   type: string;
-  personalityType?: string;
+  personalityType: string;
   label?: string;
   description?: string;
   date: string;
   score?: number;
-  traitScores?: TraitScores;
+  traitScores: TraitScores;
   details?: any;
 }
 

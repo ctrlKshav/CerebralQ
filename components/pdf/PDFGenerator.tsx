@@ -26,6 +26,7 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
   const [isClient, setIsClient] = useState(false);
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const { theme, resolvedTheme } = useTheme();
+  const [isDownloading, setIsDownloading] = useState(false);
 
   // Determine if dark mode is active
   const isDarkMode =
@@ -37,6 +38,7 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
 
   const handleDownload = async () => {
     try {
+      setIsDownloading(true);
       // Create a blob from the PDF document
       const blob = await renderToBlob();
 
@@ -52,10 +54,12 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
 
       // Clean up
       document.body.removeChild(link);
-      setTimeout(() => URL.revokeObjectURL(url), 100);
+      URL.revokeObjectURL(url);
     } catch (error) {
       console.error("Error generating PDF:", error);
-    }
+    } finally {
+      setIsDownloading(false);
+    } 
   };
 
   // Function to render PDF to blob using @react-pdf/renderer
@@ -78,7 +82,7 @@ export const PDFGenerator: React.FC<PDFGeneratorProps> = ({
   return (
     <Button variant="outline" size="sm" onClick={handleDownload}>
       <Download className="w-4 h-4 mr-2" />
-      Download Report
+      {isDownloading ? "Downloading..." : "Download Report"}
     </Button>
   );
 };

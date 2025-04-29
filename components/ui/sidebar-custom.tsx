@@ -71,7 +71,7 @@ const SidebarProvider = React.forwardRef<
       defaultOpen = true,
       open: openProp,
       onOpenChange: setOpenProp,
-      defaultActiveSection = "Report",
+      defaultActiveSection = "Personality Traits",
       className,
       style,
       children,

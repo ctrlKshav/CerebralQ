@@ -2,6 +2,8 @@
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { PersonalityDescription } from "@/types/tests/mbti/results";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import PDFPageNumber from "./shared/PDFPageNumber";
+import PDFFooter from "./shared/PDFFooter";
 
 // Extract styles to their own function outside the component
 const createHeroStyles = (isDarkMode = false) => {
@@ -10,148 +12,113 @@ const createHeroStyles = (isDarkMode = false) => {
 
   return StyleSheet.create({
     page: {
+      padding: 0,
+      backgroundColor: theme.background,
+      height: "100%",
+      position: "relative",
       display: "flex",
       flexDirection: "column",
+      justifyContent: "space-between",
       alignItems: "center",
-      justifyContent: "flex-start",
-      height: "100%",
-      position: "relative", // Important for absolute positioning
     },
     contentContainer: {
       width: "100%",
+      padding: 20,
+      paddingTop: 20,
+      display: "flex",
+      flexDirection: "column",
       alignItems: "center",
-      marginBottom: 15,
-      paddingTop: 20, // Add padding to account for the logo at the top
     },
     logoContainer: {
-      position: "absolute",
-      top: 10, // Position at the very top of the page
-      left: 10, // Position at the very left of the page
-      width: 86,
-      height: 52,
-      zIndex: 10,
+      width: 92,
+      height: 60,
+      marginBottom: 15,
     },
     logo: {
       width: "100%",
       height: "100%",
     },
-    badge: {
-      padding: 3,
-      backgroundColor: theme.muted,
-      borderRadius: 10,
-      marginTop: 0,
-      marginBottom: 12,
-      textAlign: "center",
-      width: "auto",
-      alignSelf: "center",
+    personalityContainer: {
+      marginBottom: 20,
+      alignItems: "center",
     },
-    badgeText: {
-      fontSize: 8, // Smaller font
-      fontWeight: "normal",
-      color: theme.mutedForeground,
-      padding: "1 6", // Reduced padding
-    },
-    reportTitle: {
-      fontSize: 14,
-      color: theme.mutedForeground,
-      fontFamily: "Times-Roman",
-      marginBottom: 4,
+    nameTypeText: {
+      fontSize: 42,
+      fontFamily: "PTSans",
       textAlign: "center",
-    },
-    greeting: {
-      fontSize: 24, // Slightly smaller
-      marginTop: 8,
-      marginBottom: 8, // Reduced margin
-      color: theme.foreground,
-      fontFamily: "Times-Bold", // More clinical font
-      textAlign: "center",
-      lineHeight: 1.3,
-      width: "60%", // Control width
-      wordBreak: "normal", // Prevent overflow
+      marginBottom: 10,
     },
     nameText: {
       color: theme.primary,
-      fontFamily: "Times-Bold",
+      fontFamily: "PTSans-Bold",
     },
-    personalityType: {
-      fontFamily: "Times-Bold",
-      fontSize: 28,
+    typeText: {
       color: theme.primary,
+      fontFamily: "PTSans-Bold",
+    },
+    normalText: {
+      color: theme.foreground,
+      fontFamily: "PTSans",
     },
     subtitle: {
-      fontSize: 18,
+      fontSize: 28,
       color: theme.foreground,
-      fontFamily: "Times-Italic", // Italics for the alias
-      marginBottom: 12,
+      fontFamily: "PTSans-Italic",
       textAlign: "center",
     },
     imageContainer: {
-      width: "90%",
-      height: "200",
-      alignItems: "center",
-      justifyContent: "center",
-      marginTop: 5,
-      marginBottom: 12,
-      padding: 2,
+      width: "100%",
+      height: 340,
+      marginTop: 20,
+      marginBottom: 20,
+      overflow: "hidden",
+      borderRadius: 20,
     },
     personalityImage: {
-      width: "100%", // Wider image
-      height: "100%", // Adjusted height for better aspect ratio
+      width: "100%",
+      height: "100%",
       objectFit: "cover",
     },
     description: {
-      fontSize: 12,
-      color: theme.foreground, // Darker text for better readability
-      marginBottom: 5,
-      marginTop: 16,
-      lineHeight: 1.4,
-      textAlign: "left", // Left aligned for easier reading
-      width: "90%", // Control width
-      fontFamily: "Times-Roman", // More clinical font
-    },
-    encouragement: {
-      fontSize: 12,
+      fontSize: 14,
       color: theme.foreground,
-      marginBottom: 8,
-      marginTop: 8,
-      lineHeight: 1.4,
+      lineHeight: 1.6,
       textAlign: "center",
-      width: "90%", // Control width
-      fontFamily: "Times-Italic",
+      width: "80%",
+      marginBottom: 40,
+      alignSelf: "center",
     },
-    interpretationNote: {
-      fontSize: 11,
-      color: theme.mutedForeground,
-      marginTop: 12,
-      marginBottom: 8,
-      lineHeight: 1.4,
-      textAlign: "left",
-      width: "90%",
-      padding: 10,
-      backgroundColor: theme.muted,
-      borderRadius: 4,
-      borderLeftWidth: 3,
-      borderLeftColor: theme.primary,
-      fontFamily: "Helvetica",
+    badgeContainer: {
+      marginTop: 10,
+      marginBottom: 40,
+      alignSelf: "center",
     },
-    assessmentInfo: {
+    badgeText: {
+      fontSize: 8,
+      color: "white",
+      textAlign: "center",
+      lineHeight: 1.2,
+      paddingTop: 8,
+      paddingBottom: 15,
+      paddingLeft: 15,
+      paddingRight: 15,
+      borderRadius: 10,
+      backgroundColor: theme.primary,
+    },
+    footer: {
       fontSize: 10,
       color: theme.mutedForeground,
+      textAlign: "center",
+      marginBottom: 20,
+      width: "100%",
+    },
+    interpretationNote: {
+      fontSize: 9,
+      color: theme.mutedForeground,
       lineHeight: 1.4,
       textAlign: "center",
-      marginTop: 8,
-      borderTopWidth: 1,
-      borderTopColor: theme.border,
-      paddingTop: 8,
       width: "80%",
-    },
-    footer: baseStyles.footer,
-    headerContainer: {
-      width: "100%",
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
-      marginBottom: 10,
+      marginBottom: 20,
     },
   });
 };
@@ -163,6 +130,8 @@ interface PDFHeroProps {
   firstname: string | null;
   isDarkMode?: boolean;
   profileImage?: string;
+  pageNumber?: number;
+  logoUrl?: string;
 }
 
 export const PDFHero: React.FC<PDFHeroProps> = ({
@@ -172,98 +141,88 @@ export const PDFHero: React.FC<PDFHeroProps> = ({
   firstname,
   isDarkMode = false,
   profileImage,
+  pageNumber = 1,
+  logoUrl,
 }) => {
   const styles = createHeroStyles(isDarkMode);
 
-  // Use a more professional image URL for personality types
+  // Use high-quality professional Unsplash images for each personality type
   const personalityImages: Record<string, string> = {
-    INTJ: "https://cdn.pixabay.com/photo/2018/03/10/09/45/businessman-3213659_1280.jpg",
-    INTP: "https://cdn.pixabay.com/photo/2017/08/30/12/45/girl-2696947_1280.jpg",
-    ENTJ: "https://cdn.pixabay.com/photo/2017/08/06/09/50/people-2590997_1280.jpg",
-    ENTP: "https://cdn.pixabay.com/photo/2015/07/31/15/01/man-869215_1280.jpg",
-    // Add other types with appropriate images
-    default: "/images/results_artsy_board.jpeg",
+   INTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/intj_tvtwmy.jpg",
+   INTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/intp_njepy8.jpg",
+   ISFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/isfp_vk5cdp.jpg",
+   INFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/infj_ytry83.jpg",
+   ISFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/isfj_qhxdy3.jpg",
+   ISTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/istp_zpck32.jpg",
+   ISTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/istj_myx8ge.jpg",
+   INFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/infp_vir8zp.jpg",
+   ENFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/enfp_mj348n.jpg",
+   ENFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/enfj_ytry83.jpg",
+   ESTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/estj_i4o71p.jpg",
+   ENTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/entp_utpbo4.jpg",
+   ENTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/entj_wcww09.jpg",
+   ESFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/esfj_d2jmws.jpg",
+   ESTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/estp_xgu6es.jpg",
+   ESFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/esfp_eycynf.jpg",
+   default: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/enfj_ytry83.jpg",
   };
-
-  const imagePath =
-    personalityImages[personalityType] || personalityImages.default;
 
   const alias = personalityDescription.alias;
   const description = personalityDescription.description(firstname, false);
 
+  // Determine which image to use - prioritize the architect image for INTJ
+  const imageToUse =  (personalityImages[personalityType] || personalityImages.default);
+
   return (
     <View style={styles.page}>
-      {/* Logo absolutely positioned to the page (not the content container) */}
-      <View style={styles.logoContainer}>
-        {isDarkMode ? (
-          <Image src="/images/logoDark.png" style={styles.logo} />
-        ) : (
-          <Image src="/images/logoLight.png" style={styles.logo} />
-        )}
-      </View>
-
       <View style={styles.contentContainer}>
-        <View style={styles.badge}>
-          <Text style={styles.badgeText}>
-            Assessment Completed: {completionDate}
+        {/* Logo at the top center */}
+        <View style={styles.logoContainer}>
+          <Image 
+            src={logoUrl || "/images/cq-logo.png"} 
+            style={styles.logo} 
+          />
+        </View>
+
+        {/* Personality title with name */}
+        <View style={styles.personalityContainer}>
+          <Text style={styles.nameTypeText}>
+            <Text style={styles.nameText}>{firstname || "Hey there"}, </Text>
+            <Text style={styles.normalText}>you are an </Text>
+            <Text style={styles.typeText}>{personalityType}!</Text>
           </Text>
+          <Text style={styles.subtitle}>{alias}</Text>
         </View>
 
-        <Text style={styles.greeting}>
-          {firstname ? (
-            <>
-              Welcome, <Text style={styles.nameText}>{firstname}!</Text>
-            </>
-          ) : (
-            <>Welcome, User!</>
-          )}
-        </Text>
-
-        <Text style={styles.personalityType}>You are an {personalityType}</Text>
-        <Text style={styles.subtitle}>{alias}</Text>
-
+        {/* Full-width personality image */}
         <View style={styles.imageContainer}>
-          <Image src={imagePath} style={styles.personalityImage} />
+          <Image
+            src={imageToUse}
+            style={styles.personalityImage}
+          />
         </View>
 
+        {/* Personality description */}
         <Text style={styles.description}>{description}</Text>
 
-        <Text style={styles.encouragement}>
-          Does this personality profile resonate with you
-          {firstname ? (
-            <Text>
-              , <Text style={styles.nameText}>{firstname}</Text>
-            </Text>
-          ) : (
-            ""
-          )}
-          ? The following pages will provide deeper insights into your unique
-          traits and tendencies.
-        </Text>
-
-        <Text style={styles.interpretationNote}>
-          <Text style={{ fontFamily: "Helvetica-Bold" }}>
-            How to Interpret Your Results:{" "}
+        {/* Assessment date badge */}
+        <View style={styles.badgeContainer}>
+          <Text style={styles.badgeText}>
+            Assessment Completed on: {completionDate}
           </Text>
-          This assessment identifies your primary personality type based on
-          cognitive preferences. While these results represent your dominant
-          traits, remember that personality exists on a spectrum. Use these
-          insights as a framework for self-understanding rather than a rigid
-          categorization.
-        </Text>
+        </View>
 
-        <Text style={styles.assessmentInfo}>
-          This assessment is based on the Myers-Briggs Type Indicator®
-          framework and complementary personality research. The insights
-          provided are designed to help you understand your natural preferences
-          and tendencies.
+        {/* Legal/interpretation note at bottom */}
+        <Text style={styles.interpretationNote}>
+          This report will provide deeper insights into your unique traits and tendencies.
+          This assessment is based on the Myers-Briggs Type Indicator® framework and
+          complementary personality research. The insights provided are designed to
+          help you understand your natural preferences and tendencies.
         </Text>
       </View>
 
-      {/* Add footer inside the page */}
-      <Text style={styles.footer}>
-        Cerebral Quotient | Personality Assessment | Page 1
-      </Text>
+      {/* Replace footer with centralized component */}
+      <PDFFooter pageNumber={pageNumber} firstname={firstname} isDarkMode={isDarkMode} />
     </View>
   );
 };

@@ -1,13 +1,14 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet, Image } from "@react-pdf/renderer";
 import { RelationshipCompatibility } from "@/types/tests/mbti/results";
-import { createBaseStyles, getThemeColors } from "./PDFTheme";
+import { getThemeColors } from "./PDFTheme";
 import { formatWithUsername } from "@/lib/formatWithUsername";
-import { ArrowRightIcon, HeartIcon, UsersIcon, MessageSquareIcon, AwardIcon, CheckboxIcon } from "./shared/icons";
-import PDFCardSection from "./shared/PDFCardSection";
-import PDFListItem from "./shared/PDFListItem";
-import PDFTwoColumnSection from "./shared/PDFTwoColumnSection";
-import PDFActionImageSection from "./shared/PDFActionImageSection";
+import { PDFLogo } from "./PDFLogo";
+import PDFSuperPowersSection from "./shared/PDFSuperPowersSection";
+import PDFGrowthAreasSection from "./shared/PDFGrowthAreasSection";
+import PDFActionPlanSection from "./shared/PDFActionPlanSection";
+import PDFFooter from "./shared/PDFFooter";
+import PDFSectionHeader from "./shared/PDFSectionHeader";
 
 // Define specific colors for icons
 const ICON_COLORS = {
@@ -20,48 +21,32 @@ const ICON_COLORS = {
 
 // Create styles with theme variants
 const createRelationshipSectionStyles = (isDarkMode = false) => {
-  const baseStyles = createBaseStyles(isDarkMode);
   const theme = getThemeColors(isDarkMode);
 
   return StyleSheet.create({
     page: {
-      padding: 40,
+      padding: 30,
       backgroundColor: theme.background,
       height: "100%",
       position: "relative",
     },
-    headerContainer: {
-      marginBottom: 25,
-      alignItems: "center",
-    },
-    description: {
-      fontSize: 14,
-      color: theme.mutedForeground,
-      marginBottom: 30,
-      lineHeight: 1.6,
-      textAlign: "center",
-      alignSelf: "center",
-      maxWidth: 480,
-    },
     compatibleTypesContainer: {
-      marginBottom: 25,
-      alignItems: "center",
+      marginBottom: 15,
+      marginTop: 5,
     },
     compatibleTypesLabel: {
       fontSize: 14,
+      fontFamily: "PTSans",
       color: theme.foreground,
-      fontFamily: "Helvetica-Bold",
       marginRight: 8,
       marginBottom: 10,
     },
     typesRow: {
       flexDirection: "row",
       flexWrap: "wrap",
-      justifyContent: "center",
-      maxWidth: 480,
     },
     typeBadge: {
-      backgroundColor: `${theme.primary}20`,
+      backgroundColor: `${theme.muted}`,
       paddingVertical: 4,
       paddingHorizontal: 8,
       borderRadius: 4,
@@ -70,60 +55,61 @@ const createRelationshipSectionStyles = (isDarkMode = false) => {
     typeBadgeText: {
       fontSize: 12,
       color: theme.primary,
-      fontFamily: "Helvetica-Bold",
+      fontFamily: "PTSans-Bold",
     },
-    footer: baseStyles.footer,
-    headerRow: baseStyles.headerRow,
-    sectionNumber: baseStyles.sectionNumber,
-    sectionTitle: baseStyles.sectionTitle,
-    sectionSubtitle: baseStyles.sectionSubtitle,
+    contentSection: {
+      flexDirection: "row",
+      marginTop: 5,
+    },
+    leftContent: {
+      flex: 3,
+      paddingRight: 15,
+      alignSelf: "flex-end",
+    },
+    rightContent: {
+      flex: 2,
+    },
   });
 };
 
 interface PDFRelationshipSectionProps {
-  imageSrc: string;
   relationship: RelationshipCompatibility;
   sectionNumber: number;
   firstname: string | null;
   isDarkMode?: boolean;
-  pageNumber: number;
+  pageNumber?: number;
+  imageSrc?: string;
+  logoUrl?: string;
 }
 
 const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
-  imageSrc,
   relationship,
   sectionNumber,
   firstname,
   isDarkMode = false,
-  pageNumber,
+  pageNumber = 1,
+  imageSrc = "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393725/relationship_xvrs0h.jpg",
+  logoUrl = "/images/cq-logo.png",
 }) => {
   const styles = createRelationshipSectionStyles(isDarkMode);
-  const { superpowers, growthAreas, compatibleTypes } = relationship;
+  const { superpowers, growthAreas, compatibleTypes, actionSteps, description } = relationship;
   
-  // Get the appropriate icon based on relationship type
-  const getSectionIcon = (relationshipType: string) => {
-    return relationshipType === "Relationships" 
-      ? <HeartIcon color={ICON_COLORS.heart} size={20} />
-      : <UsersIcon color={ICON_COLORS.users} size={20} />;
-  };
-
   return (
     <View style={styles.page}>
-      {/* Section header */}
-      <View style={styles.headerContainer}>
-        <View style={styles.headerRow}>
-          <Text style={styles.sectionNumber}>{sectionNumber}</Text>
-          <Text style={styles.sectionTitle}>{`Your ${relationship.title}`}</Text>
-        </View>
-        <Text style={styles.sectionSubtitle}>
-          {formatWithUsername(relationship.subtitle, firstname)}
-        </Text>
-        <Text style={styles.description}>
-          {formatWithUsername(relationship.description, firstname)}
-        </Text>
-      </View>
+      {/* Logo in top right */}
+      <PDFLogo logoUrl={logoUrl} />
 
-      {/* Compatible types section */}
+      {/* Header section with title and image side by side */}
+      <PDFSectionHeader
+        title={`Your ${relationship.title}`}
+        subtitle={relationship.subtitle}
+        description={description}
+        firstname={firstname}
+        isDarkMode={isDarkMode}
+        imageSrc={imageSrc}
+      />
+      
+      {/* Compatible types section - separate component */}
       <View style={styles.compatibleTypesContainer}>
         <Text style={styles.compatibleTypesLabel}>Compatible with:</Text>
         <View style={styles.typesRow}>
@@ -135,33 +121,43 @@ const PDFRelationshipSection: React.FC<PDFRelationshipSectionProps> = ({
         </View>
       </View>
 
-      {/* Replace superpowers and growth areas with two-column section */}
-      <PDFTwoColumnSection
-        leftTitle={`Superpowers`}
-        leftIcon={<AwardIcon color={ICON_COLORS.award} size={20} />}
-        leftItems={superpowers}
-        rightTitle="Growth Areas"
-        rightIcon={getSectionIcon(relationship.title)}
-        rightItems={growthAreas}
+      {/* Main content section */}
+      <View style={styles.contentSection}>
+        <View style={styles.leftContent}>
+          {/* Superpowers section */}
+          <PDFSuperPowersSection
+            superpowers={superpowers}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+
+          {/* Growth Areas section with expandToFill to match action plan height */}
+          <PDFGrowthAreasSection
+            growthAreas={growthAreas}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+            expandToFill={true}
+          />
+        </View>
+
+        <View style={styles.rightContent}>
+          {/* Action Plan section */}
+          <PDFActionPlanSection
+            actionSteps={actionSteps || [
+              { description: "Reflect on your superpowers and growth areas." },
+              { description: "Discuss them with someone you trust." },
+            ]}
+            firstname={firstname}
+            isDarkMode={isDarkMode}
+          />
+        </View>
+      </View>
+
+      <PDFFooter
         firstname={firstname}
         isDarkMode={isDarkMode}
+        pageNumber={pageNumber}
       />
-
-      <PDFActionImageSection
-        actionSteps={[
-          { description: "Reflect on your superpowers and growth areas." },
-          { description: "Discuss them with someone you trust." },
-        ]}
-        imageSrc={imageSrc}
-        firstname={firstname}
-        isDarkMode={isDarkMode}
-        title="Let's Get Started on this!"
-      />
-
-      {/* Footer inside the page */}
-      <Text style={styles.footer}>
-        Cerebral Quotient Personality Assessment | Page {pageNumber}
-      </Text>
     </View>
   );
 };
