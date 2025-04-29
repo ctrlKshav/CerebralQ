@@ -1,6 +1,6 @@
 ﻿import { Badge } from "@/components/ui/badge";
 import { getPersonalityTraitDescriptions } from "@/data/tests/mbti/traitDescriptions";
-import { TraitKey } from "@/types/tests/mbti/traits";
+import { TraitKey, TraitScore } from "@/types/tests/mbti/traits";
 
 export const TraitExplanation = ({
   traitKey,
@@ -8,7 +8,7 @@ export const TraitExplanation = ({
   personalityType,
 }: {
   traitKey: TraitKey;
-  score: any;
+  score: TraitScore;
   personalityType: string;
 }) => {
   const traitInfo =
