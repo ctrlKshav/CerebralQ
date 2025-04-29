@@ -21,34 +21,26 @@ export function TestForm({
   sections,
   onNext,
   onPrev,
-  isCompleting = false
+  isCompleting = false,
 }: TestFormProps) {
   const { watch } = useFormContext();
-  const answers = watch("answers") || {};
-  
-  const sectionQuestions = questions.filter(q => q.section === currentSectionId);
-  
+  const answers = watch("answers", {}) as MBTIResponse["answers"];
+
+  const sectionQuestions = questions.filter(
+    (q) => q.section === currentSectionId
+  );
+
   // Track which questions have been answered
-  const answeredQuestionIds = Object.keys(answers)
-    .filter(id => answers[id]?.selectedScore);
-    
-  // Count questions answered in previous sections
-  const previousAnsweredCount = questions
-    .filter(q => q.section < currentSectionId)
-    .length;
-    
-  // Count questions answered in current section
-  const currentSectionAnsweredCount = sectionQuestions
-    .filter(q => answeredQuestionIds.includes(q.id))
-    .length;
-    
-  // Calculate current question position
-  const currentQuestionCount = previousAnsweredCount + 
-    (currentSectionAnsweredCount < sectionQuestions.length ? 
-      currentSectionAnsweredCount + 1 : // Next unanswered question
-      sectionQuestions.length); // All answered in section
-      
+  const answeredQuestionIds = Object.keys(answers).filter(
+    (id) => answers[id]?.selectedScore
+  );
+
   const totalQuestions = questions.length;
+
+  const currentQuestionCount =
+    answeredQuestionIds.length < sectionQuestions.length * currentSectionId
+      ? answeredQuestionIds.length + 1
+      : answeredQuestionIds.length;
 
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
@@ -65,10 +57,7 @@ export function TestForm({
                 className="w-full"
               >
                 {sectionQuestions.map((question) => (
-                  <QuestionCard
-                    key={question.id}
-                    question={question}
-                  />
+                  <QuestionCard key={question.id} question={question} />
                 ))}
               </motion.div>
             </AnimatePresence>
