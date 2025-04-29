@@ -14,6 +14,7 @@ interface FormNavigationProps {
   currentSectionId: number;
   totalSections: number;
   currentQuestionCount: number;
+  currentSectionQuestionsLength: number;
   totalQuestions: number;
   isCompleting?: boolean;
 }
@@ -24,11 +25,16 @@ export function FormNavigation({
   isFirstStep,
   isLastStep,
   currentSectionId,
+  currentSectionQuestionsLength,
   totalSections,
   currentQuestionCount,
   totalQuestions,
   isCompleting = false,
 }: FormNavigationProps) {
+  const currentQuestion =
+    currentQuestionCount <= currentSectionQuestionsLength * currentSectionId
+      ? currentQuestionCount
+      : currentQuestionCount - 1;
   const {
     formState: { errors },
     trigger,
@@ -41,11 +47,8 @@ export function FormNavigation({
     onNext();
   };
 
-  const [progressPercentage, setProgressPercentage] = useState(0);
-
-  useEffect(() => {
-    setProgressPercentage((currentQuestionCount / totalQuestions) * 100);
-  }, [currentQuestionCount]);
+  const progressPercentage =
+    ((currentQuestionCount - 1) / totalQuestions) * 100;
 
   return (
     <div className="flex flex-col gap-4">
@@ -65,7 +68,7 @@ export function FormNavigation({
             Section {currentSectionId} of {totalSections}
           </span>
           <span>
-            Question {currentQuestionCount} of {totalQuestions}
+            Question {currentQuestion} of {totalQuestions}
           </span>
         </div>
       </div>

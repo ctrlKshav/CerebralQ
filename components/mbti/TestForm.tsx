@@ -37,10 +37,7 @@ export function TestForm({
 
   const totalQuestions = questions.length;
 
-  const currentQuestionCount =
-    answeredQuestionIds.length < sectionQuestions.length * currentSectionId
-      ? answeredQuestionIds.length + 1
-      : answeredQuestionIds.length;
+  const currentQuestionCount = answeredQuestionIds.length + 1;
 
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
@@ -72,6 +69,7 @@ export function TestForm({
               isFirstStep={currentSectionId === 1}
               isLastStep={currentSectionId === sections.length}
               currentSectionId={currentSectionId}
+              currentSectionQuestionsLength={sectionQuestions.length}
               totalSections={sections.length}
               currentQuestionCount={currentQuestionCount}
               totalQuestions={totalQuestions}
