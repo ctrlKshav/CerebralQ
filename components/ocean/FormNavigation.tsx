@@ -1,13 +1,13 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
-import { MBTIResponse } from "@/schema/mbti";
+import { OceanResponse } from "@/schema/ocean";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface FormNavigationProps {
-  onSubmit: (data: MBTIResponse) => void;
+  onSubmit: (data: OceanResponse) => void;
   onNext: () => void;
   onPrev: () => void;
   isFirstStep: boolean;
@@ -110,4 +110,4 @@ export function FormNavigation({
       </div>
     </div>
   );
-}
+} 

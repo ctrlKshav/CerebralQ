@@ -1,11 +1,10 @@
-﻿"use client";
+"use client";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
-import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
-import { mbtiTestQuestionsData } from "@/data/tests/mbti/questions/mbtiSample";
-import { saveProgress, loadProgress } from "@/lib/mbtiStorage";
-import { calculateMBTI } from "@/lib/calculateMbti";
+import { oceanResponseSchema, type OceanResponse } from "@/schema/ocean";
+import { saveProgress, loadProgress } from "@/lib/oceanStorage";
+import { calculateOcean } from "@/lib/calculateOcean";
 import { smoothScrollToTop } from "@/lib/utils";
 import { TestForm } from "./TestForm";
 import { useRouter } from "next/navigation";
@@ -14,25 +13,27 @@ import MobileTopbar from "./MobileTopbar";
 import CQLogo from "../CQLogo";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabase-operations";
-import { PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-
+import { OCEAN_PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
+import { TestQuestionsData } from "@/types/tests/testQuestions";
+import type { OceanTraitScores } from "@/types/tests/ocean/traits";
 // Local storage keys
-const TEST_RESULTS_KEY = "cerebralq_mbti_results";
+const TEST_RESULTS_KEY = "cerebralq_ocean_results";
 
-export default function MBTITest() {
+export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuestionsData: TestQuestionsData }) {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
-  const currentTest = mbtiTestQuestionsData;
+  const currentTest = oceanTestQuestionsData;
   const supabase = createClient();
   const [userID, setUserId] = useState<string | null>(null);
 
-  const methods = useForm<MBTIResponse>({
-    resolver: zodResolver(mbtiResponseSchema),
+  const methods = useForm<OceanResponse>({
+    resolver: zodResolver(oceanResponseSchema),
     defaultValues: {
       id: currentTest.id,
       answers: {},
       createdAt: new Date().toISOString(), // set default createdAt
+      testVariant: currentTest.id,
     },
   });
 
@@ -44,9 +45,9 @@ export default function MBTITest() {
     func();
   }, []);
 
-  // // Load saved progress when component mounts
+  // Load saved progress when component mounts
   useEffect(() => {
-    const savedData = loadProgress();
+    const savedData = loadProgress(currentTest.id);
     if (savedData) {
       methods.reset(savedData);
       const previousSectionId = savedData.currentSectionId;
@@ -68,22 +69,22 @@ export default function MBTITest() {
     }
   }, [methods]);
 
-  const onSubmit = async (data: MBTIResponse) => {
+  const onSubmit = async (data: OceanResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
-    localStorage.removeItem(PROGRESS_KEY);
-
-    const personalityResult = calculateMBTI(data.answers);
-
+    // localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
+    console.log(data)
+    const oceanResult = calculateOcean(data.answers, currentTest);
+    console.log('hi')
+    console.log(oceanResult);
     // Create a single unified test result object
     const testResultData = {
       // Database fields
       test_type_id: data.id,
       user_id: userID || "demo",
       raw_score: {
-        personalityType: personalityResult.personalityType,
         // Convert traitScores to a plain object that can be serialized to JSON
-        traitScores: personalityResult.traitScores as any,
+        traitScores: oceanResult.traitScores as OceanTraitScores,
       },
       completion_time_minutes: 15, // Static for now
       validity_status: "valid", // Static for now
@@ -94,10 +95,7 @@ export default function MBTITest() {
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
 
-    // Redirect to results page
-    setTimeout(() => {
-      router.push("/result");
-    }, 0);
+    router.push("/result");
   };
 
   const handleNext = async () => {
@@ -145,7 +143,7 @@ export default function MBTITest() {
       ...methods.getValues(),
       currentSectionId: currentSectionId,
     };
-    saveProgress(localStorageData);
+    saveProgress(localStorageData, currentTest.id);
   };
 
   const handlePrev = () => {
@@ -164,7 +162,7 @@ export default function MBTITest() {
       <Link href="/" className="hidden lg:block fixed z-50  left-8  ">
         <CQLogo className="w-28 h-28" />
       </Link>
-      <MobileTopbar currentStepText={currentStepText} testName={mbtiTestQuestionsData.test_name} />
+      <MobileTopbar currentStepText={currentStepText} testName={oceanTestQuestionsData.test_name} />
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
@@ -182,4 +180,4 @@ export default function MBTITest() {
       </FormProvider>
     </div>
   );
-}
+} 

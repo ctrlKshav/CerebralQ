@@ -1,8 +1,8 @@
-﻿import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { QuestionCard } from "./QuestionCard";
 import { FormNavigation } from "./FormNavigation";
 import { TestQuestion, TestSections } from "@/types/tests/testQuestions";
-import { MBTIResponse } from "@/schema/mbti";
+import { OceanResponse } from "@/schema/ocean";
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
@@ -12,7 +12,7 @@ interface TestFormProps {
   sections: TestSections;
   onNext: () => void;
   onPrev: () => void;
-  onSubmit: (data: MBTIResponse) => void;
+  onSubmit: (data: OceanResponse) => void;
   isCompleting?: boolean;
 }
 
@@ -104,4 +104,4 @@ export function TestForm({
       </div>
     </div>
   );
-}
+} 

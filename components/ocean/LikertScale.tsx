@@ -1,5 +1,19 @@
+"use client";
+import React from "react";
 import { useFormContext } from "react-hook-form";
+import { OceanResponse } from "@/schema/ocean";
 import { motion } from "framer-motion";
+
+interface LikertOption {
+  value: string;
+  label: string;
+  description?: string;
+}
+
+interface LikertScaleProps {
+  name: string;
+  onAnswerSelected?: (questionId: string) => void;
+}
 
 const options = [
   { value: 1, label: "Strongly Disagree" },
@@ -8,11 +22,6 @@ const options = [
   { value: 4, label: "Agree" },
   { value: 5, label: "Strongly Agree" },
 ];
-
-interface LikertScaleProps {
-  name: string;
-  onAnswerSelected?: (questionId: string) => void;
-}
 
 export function LikertScale({ name, onAnswerSelected }: LikertScaleProps) {
   const { register, watch, clearErrors } = useFormContext();
@@ -80,4 +89,4 @@ export function LikertScale({ name, onAnswerSelected }: LikertScaleProps) {
       </div>
     </div>
   );
-}
+} 
