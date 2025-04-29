@@ -39,6 +39,10 @@ export function TestForm({
 
   const currentQuestionCount = answeredQuestionIds.length + 1;
 
+  const isSectionComplete = sectionQuestions.every(
+    (q) => answers[q.id]?.selectedScore
+  );
+
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
       <div className="min-h-screen relative">
@@ -74,6 +78,7 @@ export function TestForm({
               currentQuestionCount={currentQuestionCount}
               totalQuestions={totalQuestions}
               isCompleting={isCompleting}
+              isSectionComplete={isSectionComplete}
             />
           </div>
         </div>

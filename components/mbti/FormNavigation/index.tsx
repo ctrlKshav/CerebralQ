@@ -21,6 +21,7 @@ interface FormNavigationProps {
   currentSectionQuestionsLength: number;
   totalQuestions: number;
   isCompleting?: boolean;
+  isSectionComplete: boolean;
 }
 
 export function FormNavigation({
@@ -34,6 +35,7 @@ export function FormNavigation({
   currentQuestionCount,
   totalQuestions,
   isCompleting = false,
+  isSectionComplete,
 }: FormNavigationProps) {
   const currentQuestion =
     currentQuestionCount <= currentSectionQuestionsLength * currentSectionId
@@ -56,7 +58,7 @@ export function FormNavigation({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1 mb-2">
+      <div className="flex flex-col gap-1 mb-2 sticky bottom-0 z-20  backdrop-blur-md pt-2">
         <ProgressBar value={progressPercentage} />
         <SectionAndQuestionCounter
           currentSection={currentSectionId}
@@ -66,13 +68,15 @@ export function FormNavigation({
         />
       </div>
       <ErrorMessage message={currentErrors ? "Please answer all questions before proceeding" : undefined} />
-      <NavigationButtons
-        isFirstStep={isFirstStep}
-        isLastStep={isLastStep}
-        isCompleting={isCompleting}
-        onPrev={onPrev}
-        onNext={handleNextClick}
-      />
+      {isSectionComplete && (
+        <NavigationButtons
+          isFirstStep={isFirstStep}
+          isLastStep={isLastStep}
+          isCompleting={isCompleting}
+          onPrev={onPrev}
+          onNext={handleNextClick}
+        />
+      )}
     </div>
   );
 }
