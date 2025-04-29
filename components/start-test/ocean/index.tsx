@@ -10,7 +10,7 @@ import { TestForm } from "./TestForm";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import MobileTopbar from "./MobileTopbar";
-import CQLogo from "../CQLogo";
+import CQLogo from "../../CQLogo";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabase-operations";
 import { OCEAN_PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";

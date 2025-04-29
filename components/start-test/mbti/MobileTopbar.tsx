@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 import React from "react";
 import Link from "next/link";
-import CQLogo from "../CQLogo";
+import CQLogo from "../../CQLogo";
 
 export default function MobileTopbar({
   currentStepText,
@@ -29,4 +29,4 @@ export default function MobileTopbar({
       </div>
     </div>
   );
-} 
+}
