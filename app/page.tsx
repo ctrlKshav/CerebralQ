@@ -1,27 +1,19 @@
-"use client";
+import Hero from "@/components/landing-page/Hero";
+import DataVisuals from "@/components/landing-page/DataVisuals";
+import Features from "@/components/landing-page/Features";
+import TestsCarousel  from "@/components/landing-page/TestsCarousel";
 import Navbar from "@/components/navbar";
-import TestInformation from "@/components/test-info";
-import React from "react";
-import { useUserDataContext } from "@/context/user-data";
-import LoadingSkeleton from "@/components/LoadingSkeleton";
+import Team from "@/components/landing-page/Team";
 
-export default function TestInformationPage() {
-  const userDataContext = useUserDataContext();
-
-  if (userDataContext === null) {
-    return null;
-  }
-
-  const { userData, setUserData, loading } = userDataContext;
-
-  if(loading) return <LoadingSkeleton />
-  
+export default async function Home() {
   return (
     <>
-      <Navbar user={userData} />
-      <div className="mt-24">
-        <TestInformation testId={"mbti"} />
-      </div>
+      <Navbar className="" />
+      <Hero />
+      <TestsCarousel />
+      <Features />
+      <DataVisuals />
+      <Team />
     </>
   );
 }
