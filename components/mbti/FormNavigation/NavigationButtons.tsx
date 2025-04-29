@@ -42,16 +42,24 @@ export function NavigationButtons({
           {isCompleting ? "Submitting..." : "Complete"}
         </Button>
       ) : (
-        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <motion.div
+          animate={highlightNext ? { scale: [1, 1.06, 1] } : { scale: 1 }}
+          transition={
+            highlightNext
+              ? { repeat: Infinity, duration: 1.5, ease: "easeInOut" }
+              : {}
+          }
+       
+        >
           <Button
             type="button"
             onClick={onNext}
             variant={"default"}
-            className={`gap-2 hover:scale-105 active:scale-95 `}
+            className={`gap-2 flex items-center justify-center px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium focus:outline-none `}
             autoFocus={highlightNext}
           >
-            Next
-            <ArrowRight className="h-4 w-4" />
+            <span className="inline-block">Next</span>
+            <ArrowRight className="h-4 w-4 ml-1" />
           </Button>
         </motion.div>
       )}
