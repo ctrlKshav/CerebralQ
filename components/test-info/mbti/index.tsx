@@ -81,20 +81,20 @@ export default function MBTITestInformation() {
               traitScores: orderedTraitScores,
               personalityType: testData.raw_score.personalityType,
             } as MBTIRawScore;
-            const personalityType = mbtiResult?.personalityType || "Unknown";
+            const personalityType = mbtiResult.personalityType;
 
             setLatestResult({
               id: testData.id,
               type: testData.test_type?.short_code || "MBTI",
               personalityType: personalityType,
               label:
-                personalityDescriptions[personalityType].alias || "Unknown",
+                personalityDescriptions[personalityType].alias,
               description: personalityDescriptions[personalityType].description(
                 null,
                 false
               ),
               date: testData.taken_at || new Date().toISOString(),
-              traitScores: mbtiResult?.traitScores,
+              traitScores: mbtiResult.traitScores,
               details: testData.raw_score,
             });
           }
