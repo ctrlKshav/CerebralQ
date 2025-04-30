@@ -2,7 +2,7 @@
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import type { TraitScore, TraitScores } from "@/types/tests/mbti/traits";
-import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
+import { getPersonalityTraitDescriptions } from "@/data/tests/mbti/traitDescriptions";
 import { useTheme } from "next-themes";
 import SectionHeader from "../../../shared/SectionHeader";
 import { useMediaQuery } from "@/hooks/useMediaQuery";

@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 // Import our components
-import { sampleResultData } from "@/data/mbti/mbtiResultData";
+import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
 
 import HeroSection from "@/components/results/result/HeroSection";
 import { User } from "@/types/supabase/users";

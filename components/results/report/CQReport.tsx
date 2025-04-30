@@ -1,5 +1,5 @@
 ﻿import React, { useEffect } from "react";
-import { sampleResultData } from "@/data/mbti/mbtiResultData";
+import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
 import { ResultData } from "@/types/tests/mbti/results";
 import { TraitScores } from "@/types/tests/mbti/traits";
 import PersonalityTraits from "@/components/results/report/sections/personality-traits";

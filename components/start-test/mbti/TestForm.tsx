@@ -1,7 +1,7 @@
 ﻿import { motion, AnimatePresence } from "framer-motion";
 import { QuestionCard } from "./QuestionCard";
 import { FormNavigation } from "./FormNavigation/index";
-import { TestQuestion, TestSection } from "@/types/tests/mbti/testQuestions";
+import { TestQuestion, TestSections } from "@/types/tests/testQuestions";
 import { MBTIResponse } from "@/schema/mbti";
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
@@ -9,7 +9,7 @@ import { useFormContext } from "react-hook-form";
 interface TestFormProps {
   currentSectionId: number;
   questions: TestQuestion[];
-  sections: TestSection[];
+  sections: TestSections;
   onNext: () => void;
   onPrev: () => void;
   isCompleting?: boolean;
@@ -71,10 +71,10 @@ export function TestForm({
               onNext={onNext}
               onPrev={onPrev}
               isFirstStep={currentSectionId === 1}
-              isLastStep={currentSectionId === sections.length}
+              isLastStep={currentSectionId === Object.keys(sections).length}
               currentSectionId={currentSectionId}
               currentSectionQuestionsLength={sectionQuestions.length}
-              totalSections={sections.length}
+              totalSections={Object.keys(sections).length}
               currentQuestionCount={currentQuestionCount}
               totalQuestions={totalQuestions}
               isCompleting={isCompleting}

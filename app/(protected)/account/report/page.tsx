@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { ResultData } from "@/types/tests/mbti/results";
 import { TEST_RESULTS_KEY } from "@/lib/constants";
-import { getPersonalityData } from "@/data/mbti/mbtiResultData";
-import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
+import { getPersonalityData } from "@/data/tests/mbti/mbtiResultData";
+import { getPersonalityDescription } from "@/data/tests/mbti/personalityDescription";
 import { useUserDataContext } from "@/context/user-data";
 
 export default function ReportPage() {

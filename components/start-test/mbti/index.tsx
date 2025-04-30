@@ -3,7 +3,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
-import { testData } from "@/data/mbti/testQuestionsFull";
+import { mbtiTestQuestionsData } from "@/data/tests/mbti/questions/mbtiFull";
 import { saveProgress, loadProgress } from "@/lib/mbtiStorage";
 import { calculateMBTI } from "@/lib/calculateMbti";
 import { smoothScrollToTop } from "@/lib/utils";
@@ -23,7 +23,7 @@ export default function MBTITest() {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
-  const currentTest = testData[0];
+  const currentTest = mbtiTestQuestionsData;
   const supabase = createClient();
   const [userID, setUserId] = useState<string | null>(null);
 
@@ -135,7 +135,7 @@ export default function MBTITest() {
     // Clear any existing errors before moving to next section
     methods.clearErrors();
 
-    if (currentSectionId < currentTest.sections.length) {
+    if (currentSectionId < Object.keys(currentTest.sections).length) {
       setCurrentSectionId((prev) => prev + 1);
       smoothScrollToTop();
     }
@@ -165,7 +165,7 @@ export default function MBTITest() {
       </Link>
       <MobileTopbar
         currentStepText={currentStepText}
-        testName={testData[0].test_name}
+        testName={currentTest.test_name}
       />
 
       <FormProvider {...methods}>
