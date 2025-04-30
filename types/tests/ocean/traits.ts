@@ -18,9 +18,6 @@ export type OceanTraitScores = {
   [key in OceanTraitKey]: OceanTraitScore;
 };
 
-export type OceanRawScore = {
-  traitScores: OceanTraitScores;
-};
 
 export type OceanDimensionObject = {
   score: number;

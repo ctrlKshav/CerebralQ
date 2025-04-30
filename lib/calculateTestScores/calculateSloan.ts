@@ -1,10 +1,8 @@
-﻿import type { OceanRawScore, OceanTraitKey } from "@/types/tests/ocean/traits";
+﻿import type { OceanTraitKey, OceanTraitScores } from "@/types/tests/ocean/traits";
 
 // Interface for the SLOAN type result
 interface SloanTypeResult {
   sloanCode: string;
-  alias?: string;
-  notes?: string[];
 }
 
 // Mapping of trait scores to SLOAN letters
@@ -19,10 +17,9 @@ const sloanMapping: Record<
   openness: { high: "I", low: "N", trait: "Openness" },
 };
 
-export function calculateSloanType(oceanScore: OceanRawScore): SloanTypeResult {
-  const { traitScores } = oceanScore;
+export function calculateSloanType(oceanScore: OceanTraitScores): SloanTypeResult {
+  const traitScores = oceanScore
   const sloanLetters: string[] = [];
-  const notes: string[] = [];
 
   // Process each trait in the order: Extraversion, Neuroticism, Conscientiousness, Agreeableness, Openness
   const traits: OceanTraitKey[] = [
@@ -39,14 +36,8 @@ export function calculateSloanType(oceanScore: OceanRawScore): SloanTypeResult {
 
     if (score > 50) {
       sloanLetters.push(mapping.high);
-    } else if (score < 50) {
-      sloanLetters.push(mapping.low);
     } else {
-      // Handle edge case: score exactly at 50%
-      sloanLetters.push("X");
-      notes.push(
-        `${mapping.trait} score is exactly 50%, which is ambiguous. Consider retesting for a clearer result.`
-      );
+      sloanLetters.push(mapping.low);
     }
   });
 
@@ -54,6 +45,5 @@ export function calculateSloanType(oceanScore: OceanRawScore): SloanTypeResult {
 
   return {
     sloanCode,
-    notes: notes.length > 0 ? notes : undefined,
   };
 }

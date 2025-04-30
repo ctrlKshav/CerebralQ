@@ -14,8 +14,6 @@ import {
   TEST_RESULTS_KEY,
 } from "@/lib/constants";
 import { UserTestHistoryData } from "@/types/userTestHistory";
-import { MBTIResponse } from "@/schema/mbti";
-import { calculateMBTI } from "@/lib/calculateMbti";
 import { useRouter } from "next/navigation";
 
 export default function Page() {

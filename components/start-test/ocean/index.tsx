@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { oceanResponseSchema, type OceanResponse } from "@/schema/ocean";
 import { saveProgress, loadProgress } from "@/lib/oceanStorage";
-import { calculateOcean } from "@/lib/calculateOcean";
+import { calculateOcean } from "@/lib/calculateTestScores/calculateOcean";
 import { smoothScrollToTop } from "@/lib/utils";
 import { TestForm } from "./TestForm";
 import { useRouter } from "next/navigation";
@@ -98,8 +98,8 @@ export default function OceanTest({
     // Store results in local storage
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
-
-    router.push("/result");
+    setIsCompleting(false);
+    // router.push("/result");
   };
 
   const handleNext = async () => {

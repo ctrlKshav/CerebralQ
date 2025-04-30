@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
 import { mbtiTestQuestionsData } from "@/data/tests/mbti/questions/mbtiFull";
 import { saveProgress, loadProgress } from "@/lib/mbtiStorage";
-import { calculateMBTI } from "@/lib/calculateMbti";
+import { calculateMBTI } from "@/lib/calculateTestScores/calculateMbti";
 import { smoothScrollToTop } from "@/lib/utils";
 import { TestForm } from "./TestForm";
 import { useRouter } from "next/navigation";

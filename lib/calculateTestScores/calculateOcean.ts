@@ -1,42 +1,42 @@
-import { Answers, OceanDimension } from "@/schema/ocean";
+import { Answers } from "@/schema/ocean";
+import { CalculatedOceanResult } from "@/types/tests/ocean/responseData";
 import type {
-  OceanDimensionObject,
-  OceanRawScore,
   OceanTraitKey,
   OceanTraitScores,
 } from "@/types/tests/ocean/traits";
 import { OceanTestQuestionsData } from "@/types/tests/testQuestions";
+import { calculateSloanType } from "./calculateSloan";
 
 export function calculateOcean(
   answers: Answers,
   questionsData: OceanTestQuestionsData
-): OceanRawScore {
+): CalculatedOceanResult {
   const questions = questionsData.questions;
   // Initialize dimensions with scoring
-  const dimensions: Record<OceanTraitKey, OceanDimensionObject> = {
+  const dimensions: OceanTraitScores = {
     openness: {
       score: 0,
-      total: 5 * questionsData.sections["Openness"].totalQuestions,
+      total: 5 * questionsData.sections["openness"].totalQuestions,
       percentage: 0,
     },
     conscientiousness: {
       score: 0,
-      total: 5 * questionsData.sections["Conscientiousness"].totalQuestions,
+      total: 5 * questionsData.sections["conscientiousness"].totalQuestions,
       percentage: 0,
     },
     extraversion: {
       score: 0,
-      total: 5 * questionsData.sections["Extraversion"].totalQuestions,
+      total: 5 * questionsData.sections["extraversion"].totalQuestions,
       percentage: 0,
     },
     agreeableness: {
       score: 0,
-      total: 5 * questionsData.sections["Agreeableness"].totalQuestions,
+      total: 5 * questionsData.sections["agreeableness"].totalQuestions,
       percentage: 0,
     },
     neuroticism: {
       score: 0,
-      total: 5 * questionsData.sections["Neuroticism"].totalQuestions,
+      total: 5 * questionsData.sections["neuroticism"].totalQuestions,
       percentage: 0,
     },
   };
@@ -50,7 +50,7 @@ export function calculateOcean(
       const dimension = question.dimension.toLowerCase() as OceanTraitKey;
       // Convert selectedScore from string to number
       const numericScore = Number(answer.selectedScore);
-      dimensions[dimension].score += (6 - numericScore);
+      dimensions[dimension].score += 6 - numericScore;
     } else {
       const dimension = question.dimension.toLowerCase() as OceanTraitKey;
       // Convert selectedScore from string to number
@@ -66,7 +66,10 @@ export function calculateOcean(
     scores.percentage = percentage;
   });
 
+  const sloanType = calculateSloanType(dimensions);
+
   return {
+    sloanCode: sloanType.sloanCode,
     traitScores: dimensions,
   };
 }
