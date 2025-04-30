@@ -37,10 +37,9 @@ export function FormNavigation({
   isCompleting = false,
   isSectionComplete,
 }: FormNavigationProps) {
-  const currentQuestion =
-    currentQuestionCount <= currentSectionQuestionsLength * currentSectionId
-      ? currentQuestionCount
-      : currentQuestionCount - 1;
+  const currentQuestion = isSectionComplete
+    ? currentQuestionCount - 1
+    : currentQuestionCount;
   const {
     formState: { errors },
     trigger,
