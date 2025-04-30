@@ -1,6 +1,6 @@
-﻿import { TestQuestionsData } from "@/types/tests/testQuestions";
+﻿import { OceanTestQuestionsData } from "@/types/tests/testQuestions";
 
-export const oceanTestQuestionsData: TestQuestionsData = {
+export const oceanTestQuestionsData: OceanTestQuestionsData = {
   id: "ipip-neo-300",
   test_name: "IPIP-NEO-300 Personality Inventory",
   totalQuestions: 300,

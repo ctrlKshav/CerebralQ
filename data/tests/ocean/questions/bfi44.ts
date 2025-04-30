@@ -1,5 +1,5 @@
-﻿import { TestQuestionsData } from "@/types/tests/testQuestions"
-export const oceanTestQuestionsData: TestQuestionsData = {
+﻿import { OceanTestQuestionsData } from "@/types/tests/testQuestions"
+export const oceanTestQuestionsData: OceanTestQuestionsData = {
     "id": "bfi-44",
     "test_name": "Big Five Inventory (BFI-44)",
     "totalQuestions": 44,

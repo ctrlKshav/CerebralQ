@@ -1,7 +1,7 @@
 ﻿import { MBTI_TEST_ID } from "@/lib/constants";
-import { TestQuestionsData } from "@/types/tests/testQuestions";
+import { MBTITestQuestionsData } from "@/types/tests/testQuestions";
 
-export const mbtiTestQuestionsData: TestQuestionsData = {
+export const mbtiTestQuestionsData: MBTITestQuestionsData = {
   id: MBTI_TEST_ID,
   test_name: "MBTI Personality Test",
   totalQuestions: 60,

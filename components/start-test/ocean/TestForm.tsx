@@ -1,14 +1,14 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { QuestionCard } from "./QuestionCard";
 import { FormNavigation } from "./FormNavigation/index";
-import { TestQuestion, TestSections } from "@/types/tests/testQuestions";
+import { OceanTestQuestion, TestSections } from "@/types/tests/testQuestions";
 import { OceanResponse } from "@/schema/ocean";
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface TestFormProps {
   currentSectionId: number;
-  questions: TestQuestion[];
+  questions: OceanTestQuestion[];
   sections: TestSections;
   onNext: () => void;
   onPrev: () => void;
