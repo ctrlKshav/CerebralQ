@@ -1,17 +1,15 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { LikertScale } from "./LikertScale";
-import { TestQuestion } from "@/types/tests/testQuestions";
+import { TestQuestion } from "@/types/tests/mbti/testQuestions";
 import { useFormContext } from "react-hook-form";
 import { useEffect } from "react";
 import Icon from "@/components/Icon";
 
 interface QuestionCardProps {
   question: TestQuestion;
-  name: string;
-  onAnswerSelected?: (questionId: string) => void;
 }
 
-export function QuestionCard({ question, name, onAnswerSelected }: QuestionCardProps) {
+export function QuestionCard({ question }: QuestionCardProps) {
   const { formState: { errors }, setValue } = useFormContext<{ answers: Record<string, any> }>();
   const iconClass = question.iconColor || "text-primary";
   const error = errors.answers?.[question.id];
@@ -38,7 +36,6 @@ export function QuestionCard({ question, name, onAnswerSelected }: QuestionCardP
         {/* Likert scale for score */}
         <LikertScale 
           name={`answers.${question.id}.selectedScore`} 
-          onAnswerSelected={onAnswerSelected}
         />
         {error && (
           <p className="mt-2 text-sm text-red-500">

@@ -19,7 +19,7 @@ const answerSchema = z.object({
 export const mbtiResponseSchema = z.object({
   id: z.string(),
   answers: z.record(z.string(), answerSchema),
-  createdAt: z.string(),
+  takenAt: z.string(),
 });
 
 export type MBTIResponse = z.infer<typeof mbtiResponseSchema>;

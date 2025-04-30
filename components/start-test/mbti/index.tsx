@@ -1,9 +1,9 @@
 ﻿"use client";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, SubmitErrorHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
-import { mbtiTestQuestionsData } from "@/data/tests/mbti/questions/mbtiSample";
+import { testData } from "@/data/mbti/testQuestionsFull";
 import { saveProgress, loadProgress } from "@/lib/mbtiStorage";
 import { calculateMBTI } from "@/lib/calculateMbti";
 import { smoothScrollToTop } from "@/lib/utils";
@@ -13,9 +13,9 @@ import Link from "next/link";
 import MobileTopbar from "./MobileTopbar";
 import CQLogo from "../../CQLogo";
 import { createClient } from "@/utils/supabase/client";
-import { getCurrentUser } from "@/lib/supabase-operations";
+import { getCurrentUser } from "@/lib/supabaseOperations";
 import { PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-
+import { MBTIResponseData } from "@/types/tests/mbti/responseData";
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_mbti_results";
 
@@ -23,7 +23,7 @@ export default function MBTITest() {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
-  const currentTest = mbtiTestQuestionsData;
+  const currentTest = testData[0];
   const supabase = createClient();
   const [userID, setUserId] = useState<string | null>(null);
 
@@ -32,7 +32,7 @@ export default function MBTITest() {
     defaultValues: {
       id: currentTest.id,
       answers: {},
-      createdAt: new Date().toISOString(), // set default createdAt
+      takenAt: new Date().toISOString(), // set default createdAt
     },
   });
 
@@ -76,18 +76,19 @@ export default function MBTITest() {
     const personalityResult = calculateMBTI(data.answers);
 
     // Create a single unified test result object
-    const testResultData = {
+    const testResultData: MBTIResponseData = {
       // Database fields
       test_type_id: data.id,
       user_id: userID || "demo",
       raw_score: {
         personalityType: personalityResult.personalityType,
         // Convert traitScores to a plain object that can be serialized to JSON
-        traitScores: personalityResult.traitScores as any,
+        traitScores: personalityResult.traitScores,
       },
       completion_time_minutes: 15, // Static for now
       validity_status: "valid", // Static for now
       is_public: true,
+      taken_at: data.takenAt,
     };
 
     // Store results in local storage
@@ -136,7 +137,7 @@ export default function MBTITest() {
     // Clear any existing errors before moving to next section
     methods.clearErrors();
 
-    if (currentSectionId < Object.keys(currentTest.sections).length) {
+    if (currentSectionId < currentTest.sections.length) {
       setCurrentSectionId((prev) => prev + 1);
       smoothScrollToTop();
     }
@@ -157,14 +158,17 @@ export default function MBTITest() {
     }
   };
 
-  const currentStepText = `Section ${currentSectionId} of ${Object.keys(currentTest.sections).length}`;
+  const currentStepText = `Section ${currentSectionId} of ${currentTest.sections.length}`;
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800">
       <Link href="/" className="hidden lg:block fixed z-50  left-8  ">
         <CQLogo className="w-28 h-28" />
       </Link>
-      <MobileTopbar currentStepText={currentStepText} testName={mbtiTestQuestionsData.test_name} />
+      <MobileTopbar
+        currentStepText={currentStepText}
+        testName={testData[0].test_name}
+      />
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
@@ -175,7 +179,6 @@ export default function MBTITest() {
             sections={currentTest.sections}
             onNext={handleNext}
             onPrev={handlePrev}
-            onSubmit={onSubmit}
             isCompleting={isCompleting}
           />
         </form>
