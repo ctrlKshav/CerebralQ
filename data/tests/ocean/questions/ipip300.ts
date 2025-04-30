@@ -1,51 +1,54 @@
 ﻿import { OceanTestQuestionsData } from "@/types/tests/testQuestions";
 
-export const oceanTestQuestionsData: OceanTestQuestionsData = {
+export const ipip300: OceanTestQuestionsData = {
   id: "ipip-neo-300",
-  test_name: "IPIP-NEO-300 Personality Inventory",
   totalQuestions: 300,
+  test_name: "IPIP-NEO-300",
   sections: {
-    Extraversion: {
+    neuroticism: {
       id: 1,
-      title: "Extraversion",
-      description: "Measures how outgoing and social you are.",
-      dimension: "extraversion",
-      totalQuestions: 8,
-    },
-    Agreeableness: {
-      id: 2,
-      title: "Agreeableness",
-      description: "Measures how kind and trusting you are.",
-      dimension: "agreeableness",
-      totalQuestions: 9,
-    },
-    Conscientiousness: {
-      id: 3,
-      title: "Conscientiousness",
-      description: "Measures how organized and dependable you are.",
-      dimension: "conscientiousness",
-      totalQuestions: 9,
-    },
-    Neuroticism: {
-      id: 4,
       title: "Neuroticism",
-      description: "Measures how emotional and anxious you are.",
-      dimension: "neuroticism",
-      totalQuestions: 9,
+      description:
+        "Measures emotional stability and tendency toward negative emotions.",
+      dimension: "Neuroticism",
+      totalQuestions: 60,
     },
-    Openness: {
-      id: 5,
+    extraversion: {
+      id: 2,
+      title: "Extraversion",
+      description: "Measures sociability, energy, and positive emotions.",
+      dimension: "Extraversion",
+      totalQuestions: 60,
+    },
+    openness: {
+      id: 3,
       title: "Openness",
-      description: "Measures how open to new experiences and ideas you are.",
-      dimension: "openness",
-      totalQuestions: 9,
+      description:
+        "Measures openness to new experiences, creativity, and imagination.",
+      dimension: "Openness",
+      totalQuestions: 60,
+    },
+    agreeableness: {
+      id: 4,
+      title: "Agreeableness",
+      description: "Measures compassion, cooperation, and trust toward others.",
+      dimension: "Agreeableness",
+      totalQuestions: 60,
+    },
+    conscientiousness: {
+      id: 5,
+      title: "Conscientiousness",
+      description: "Measures organization, responsibility, and dependability.",
+      dimension: "Conscientiousness",
+      totalQuestions: 60,
     },
   },
   questions: [
     {
       id: "Q1",
-      text: "I worry about things",
+      text: "I am someone who worries about things",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
       dominantSide: "right",
       options: [
@@ -58,8 +61,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q2",
-      text: "I am easily disturbed",
+      text: "I am easily frightened",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
       dominantSide: "right",
       options: [
@@ -72,8 +76,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q3",
-      text: "I get upset easily",
+      text: "I am someone who feels anxious often",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
       dominantSide: "right",
       options: [
@@ -86,8 +91,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q4",
-      text: "I change my mood a lot",
+      text: "I am nervous in new situations",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
       dominantSide: "right",
       options: [
@@ -100,8 +106,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q5",
-      text: "I feel threatened easily",
+      text: "I am someone who anticipates problems",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
       dominantSide: "right",
       options: [
@@ -114,8 +121,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q6",
-      text: "I am relaxed most of the time",
+      text: "I am not easily bothered by things",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
       dominantSide: "left",
       options: [
@@ -128,10 +136,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q7",
-      text: "I get stressed out easily",
+      text: "I am rarely nervous",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -142,8 +151,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q8",
-      text: "I seldom feel blue",
+      text: "I am someone who stays calm under pressure",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
       dominantSide: "left",
       options: [
@@ -156,10 +166,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q9",
-      text: "I panic easily",
+      text: "I am relaxed most of the time",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -170,8 +181,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q10",
-      text: "I feel comfortable with myself",
+      text: "I am someone who rarely feels tense",
       dimension: "Neuroticism",
+      facet: "Anxiety",
       section: 1,
       dominantSide: "left",
       options: [
@@ -184,9 +196,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q11",
-      text: "I am the life of the party",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who gets angry easily",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -198,10 +211,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q12",
-      text: "I don’t talk a lot",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "left",
+      text: "I am often irritated",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -212,9 +226,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q13",
-      text: "I feel comfortable around people",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who loses my temper quickly",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -226,10 +241,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q14",
-      text: "I keep in the background",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "left",
+      text: "I am easily frustrated",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -240,9 +256,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q15",
-      text: "I start conversations",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who snaps at others",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -254,9 +271,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q16",
-      text: "I am quiet around strangers",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am rarely annoyed",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -268,10 +286,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q17",
-      text: "I make friends easily",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "right",
+      text: "I am someone who stays calm when provoked",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -282,9 +301,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q18",
-      text: "I don’t like to draw attention to myself",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am patient with others",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -296,10 +316,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q19",
-      text: "I am skilled in handling social situations",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "right",
+      text: "I am someone who rarely gets upset",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -310,9 +331,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q20",
-      text: "I have little to say",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am even-tempered",
+      dimension: "Neuroticism",
+      facet: "Anger",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -324,9 +346,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q21",
-      text: "I have a vivid imagination",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who often feels sad",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -338,10 +361,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q22",
-      text: "I am not interested in abstract ideas",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "left",
+      text: "I am frequently blue",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -352,9 +376,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q23",
-      text: "I spend time reflecting on things",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who feels worthless at times",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -366,10 +391,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q24",
-      text: "I do not have a good imagination",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "left",
+      text: "I am often discouraged",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -380,9 +406,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q25",
-      text: "I carry the conversation to a higher level",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who experiences low moods",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -394,9 +421,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q26",
-      text: "I am not interested in theoretical discussions",
-      dimension: "Openness",
-      section: 3,
+      text: "I am generally cheerful",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -408,10 +436,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q27",
-      text: "I enjoy hearing new ideas",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "right",
+      text: "I am someone who rarely feels down",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -422,9 +451,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q28",
-      text: "I have difficulty understanding abstract ideas",
-      dimension: "Openness",
-      section: 3,
+      text: "I am optimistic about life",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -436,10 +466,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q29",
-      text: "I love to think up new ways of doing things",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "right",
+      text: "I am someone who feels confident in myself",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -450,9 +481,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q30",
-      text: "I prefer traditional approaches",
-      dimension: "Openness",
-      section: 3,
+      text: "I am rarely hopeless",
+      dimension: "Neuroticism",
+      facet: "Depression",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -464,9 +496,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q31",
-      text: "I sympathize with others’ feelings",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who feels shy in groups",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -478,10 +511,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q32",
-      text: "I am not interested in other people’s problems",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "left",
+      text: "I am easily embarrassed",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -492,9 +526,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q33",
-      text: "I feel others’ emotions",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who feels awkward socially",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -506,10 +541,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q34",
-      text: "I am not really interested in others",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "left",
+      text: "I am uncomfortable in the spotlight",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -520,9 +556,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q35",
-      text: "I inquire about others’ well-being",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who worries about others’ opinions",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -534,9 +571,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q36",
-      text: "I feel little concern for others",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am confident in social settings",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -548,10 +586,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q37",
-      text: "I make people feel at ease",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "right",
+      text: "I am someone who feels at ease with others",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -562,9 +601,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q38",
-      text: "I insult people",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am rarely self-conscious",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -576,10 +616,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q39",
-      text: "I respect others",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "right",
+      text: "I am someone who enjoys being the center of attention",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -590,9 +631,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q40",
-      text: "I get back at others",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am unconcerned about others’ judgments",
+      dimension: "Neuroticism",
+      facet: "Self-Consciousness",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -604,9 +646,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q41",
-      text: "I am always prepared",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who craves indulgences",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -618,10 +661,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q42",
-      text: "I leave my belongings around",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "left",
+      text: "I am unable to resist temptations",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -632,9 +676,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q43",
-      text: "I pay attention to details",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who overindulges in pleasures",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -646,10 +691,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q44",
-      text: "I make a mess of things",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "left",
+      text: "I am impulsive with my desires",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -660,9 +706,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q45",
-      text: "I get chores done right away",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who seeks instant gratification",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -674,9 +721,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q46",
-      text: "I often forget to put things back in their proper place",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am disciplined about my impulses",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -688,10 +736,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q47",
-      text: "I like order",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "right",
+      text: "I am someone who resists urges easily",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -702,9 +751,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q48",
-      text: "I shirk my duties",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am moderate in my habits",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -716,10 +766,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q49",
-      text: "I follow a schedule",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "right",
+      text: "I am someone who avoids overindulgence",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -730,9 +781,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q50",
-      text: "I am not very dependable",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am restrained in my desires",
+      dimension: "Neuroticism",
+      facet: "Immoderation",
+      section: 1,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -744,8 +796,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q51",
-      text: "I fear for the worst",
+      text: "I am someone who panics easily",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
       dominantSide: "right",
       options: [
@@ -758,8 +811,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q52",
-      text: "I am often troubled by negative thoughts",
+      text: "I am overwhelmed by stress",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
       dominantSide: "right",
       options: [
@@ -772,8 +826,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q53",
-      text: "I get irritated easily",
+      text: "I am someone who feels helpless in crises",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
       dominantSide: "right",
       options: [
@@ -786,10 +841,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q54",
-      text: "I rarely get caught up in the moment",
+      text: "I am easily rattled",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -800,8 +856,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q55",
-      text: "I often feel blue",
+      text: "I am someone who struggles under pressure",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
       dominantSide: "right",
       options: [
@@ -814,8 +871,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q56",
-      text: "I am calm even in tense situations",
+      text: "I am resilient in tough situations",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
       dominantSide: "left",
       options: [
@@ -828,10 +886,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q57",
-      text: "I lose my temper",
+      text: "I am someone who handles stress well",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -842,8 +901,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q58",
-      text: "I rarely get irritated",
+      text: "I am calm in emergencies",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
       dominantSide: "left",
       options: [
@@ -856,10 +916,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q59",
-      text: "I dislike myself",
+      text: "I am someone who rarely feels overwhelmed",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -870,10 +931,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q60",
-      text: "I feel that I’m unable to deal with things",
+      text: "I am steady in challenging times",
       dimension: "Neuroticism",
+      facet: "Vulnerability",
       section: 1,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -884,8 +946,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q61",
-      text: "I take charge",
+      text: "I am someone who makes friends easily",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
       dominantSide: "right",
       options: [
@@ -898,10 +961,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q62",
-      text: "I wait for others to lead the way",
+      text: "I am warm toward others",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -912,8 +976,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q63",
-      text: "I am a good leader",
+      text: "I am someone who connects quickly with people",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
       dominantSide: "right",
       options: [
@@ -926,10 +991,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q64",
-      text: "I avoid taking charge",
+      text: "I am approachable to strangers",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -940,8 +1006,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q65",
-      text: "I seek adventure",
+      text: "I am someone who enjoys meeting new people",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
       dominantSide: "right",
       options: [
@@ -954,8 +1021,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q66",
-      text: "I avoid exciting situations",
+      text: "I am reserved with others",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
       dominantSide: "left",
       options: [
@@ -968,10 +1036,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q67",
-      text: "I love excitement",
+      text: "I am someone who keeps people at a distance",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -982,8 +1051,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q68",
-      text: "I prefer to stay home",
+      text: "I am aloof in social situations",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
       dominantSide: "left",
       options: [
@@ -996,10 +1066,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q69",
-      text: "I radiate joy",
+      text: "I am someone who avoids forming close bonds",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1010,8 +1081,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q70",
-      text: "I rarely smile",
+      text: "I am distant with new acquaintances",
       dimension: "Extraversion",
+      facet: "Friendliness",
       section: 2,
       dominantSide: "left",
       options: [
@@ -1024,9 +1096,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q71",
-      text: "I am quick to understand things",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who loves large gatherings",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1038,10 +1111,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q72",
-      text: "I find it hard to grasp new ideas",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "left",
+      text: "I am sociable at parties",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1052,9 +1126,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q73",
-      text: "I enjoy intellectual challenges",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who enjoys crowded events",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1066,10 +1141,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q74",
-      text: "I avoid philosophical discussions",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "left",
+      text: "I am energized by group interactions",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1080,9 +1156,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q75",
-      text: "I believe in the importance of art",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who thrives in social settings",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1094,9 +1171,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q76",
-      text: "I do not like poetry",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who prefers solitude",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1108,10 +1186,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q77",
-      text: "I love to daydream",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "right",
+      text: "I am uncomfortable in large groups",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1122,9 +1201,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q78",
-      text: "I am not interested in aesthetics",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who avoids social events",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1136,10 +1216,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q79",
-      text: "I am open to new experiences",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "right",
+      text: "I am quiet in group settings",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1150,9 +1231,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q80",
-      text: "I avoid change",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who dislikes crowded places",
+      dimension: "Extraversion",
+      facet: "Gregariousness",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1164,9 +1246,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q81",
-      text: "I accept people as they are",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who takes charge in groups",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1178,10 +1261,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q82",
-      text: "I am hard to get along with",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "left",
+      text: "I am confident when speaking",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1192,9 +1276,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q83",
-      text: "I love to help others",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who leads conversations",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1206,10 +1291,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q84",
-      text: "I look down on others",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "left",
+      text: "I am bold in expressing my opinions",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1220,9 +1306,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q85",
-      text: "I am concerned about others",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who influences others easily",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1234,9 +1321,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q86",
-      text: "I seek conflict",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am hesitant to take charge",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1248,10 +1336,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q87",
-      text: "I trust others",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "right",
+      text: "I am someone who avoids leadership roles",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1262,9 +1351,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q88",
-      text: "I believe others have hidden motives",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am quiet during discussions",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1276,10 +1366,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q89",
-      text: "I believe people are good",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "right",
+      text: "I am someone who rarely speaks up",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1290,9 +1381,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q90",
-      text: "I am skeptical of others’ intentions",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am reluctant to influence others",
+      dimension: "Extraversion",
+      facet: "Assertiveness",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1304,9 +1396,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q91",
-      text: "I am exacting in my work",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who maintains a busy schedule",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1318,10 +1411,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q92",
-      text: "I neglect my obligations",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "left",
+      text: "I am energetic in my daily life",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1332,9 +1426,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q93",
-      text: "I work hard",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who moves quickly through tasks",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1346,10 +1441,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q94",
-      text: "I waste my time",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "left",
+      text: "I am always on the go",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1360,9 +1456,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q95",
-      text: "I carry out my plans",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who enjoys a fast-paced lifestyle",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1374,9 +1471,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q96",
-      text: "I find it hard to get started on tasks",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who prefers a slow pace",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1388,10 +1486,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q97",
-      text: "I strive for excellence",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "right",
+      text: "I am leisurely in my activities",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1402,9 +1501,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q98",
-      text: "I settle for good enough",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who takes my time with tasks",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1416,10 +1516,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q99",
-      text: "I complete tasks successfully",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "right",
+      text: "I am relaxed in my daily routine",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1430,9 +1531,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q100",
-      text: "I avoid responsibilities",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who avoids rushing",
+      dimension: "Extraversion",
+      facet: "Activity Level",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1444,9 +1546,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q101",
-      text: "I get nervous easily",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who seeks adventure",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1458,10 +1561,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q102",
-      text: "I remain calm under pressure",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "left",
+      text: "I am thrilled by risky activities",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1472,9 +1576,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q103",
-      text: "I am often anxious",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who craves excitement",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1486,10 +1591,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q104",
-      text: "I am emotionally stable",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "left",
+      text: "I am drawn to thrilling experiences",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1500,9 +1606,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q105",
-      text: "I feel overwhelmed by stress",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who enjoys high-energy activities",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1514,9 +1621,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q106",
-      text: "I handle difficult situations with ease",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who avoids risky situations",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1528,10 +1636,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q107",
-      text: "I am prone to mood swings",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "right",
+      text: "I am cautious about new experiences",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1542,9 +1651,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q108",
-      text: "I maintain emotional balance",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who prefers calm activities",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1556,10 +1666,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q109",
-      text: "I often feel sad",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "right",
+      text: "I am uninterested in thrills",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1570,9 +1681,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q110",
-      text: "I am rarely depressed",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who dislikes high-risk adventures",
+      dimension: "Extraversion",
+      facet: "Excitement-Seeking",
+      section: 2,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1584,8 +1696,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q111",
-      text: "I feel energetic most of the time",
+      text: "I am someone who is full of joy",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
       dominantSide: "right",
       options: [
@@ -1598,10 +1711,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q112",
-      text: "I often feel tired",
+      text: "I am upbeat most of the time",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1612,8 +1726,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q113",
-      text: "I am enthusiastic about life",
+      text: "I am someone who radiates positivity",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
       dominantSide: "right",
       options: [
@@ -1626,10 +1741,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q114",
-      text: "I lack energy",
+      text: "I am happy in most situations",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1640,8 +1756,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q115",
-      text: "I am full of pep",
+      text: "I am someone who spreads enthusiasm",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
       dominantSide: "right",
       options: [
@@ -1654,8 +1771,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q116",
-      text: "I am often lethargic",
+      text: "I am rarely cheerful",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
       dominantSide: "left",
       options: [
@@ -1668,10 +1786,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q117",
-      text: "I approach life with intensity",
+      text: "I am someone who feels gloomy often",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1682,8 +1801,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q118",
-      text: "I am low-key in my approach",
+      text: "I am subdued in my emotions",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
       dominantSide: "left",
       options: [
@@ -1696,10 +1816,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q119",
-      text: "I am outgoing",
+      text: "I am someone who lacks enthusiasm",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1710,8 +1831,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q120",
-      text: "I prefer to be alone",
+      text: "I am not often joyful",
       dimension: "Extraversion",
+      facet: "Cheerfulness",
       section: 2,
       dominantSide: "left",
       options: [
@@ -1724,8 +1846,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q121",
-      text: "I appreciate beauty in art",
+      text: "I am someone who has a vivid imagination",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
       dominantSide: "right",
       options: [
@@ -1738,10 +1861,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q122",
-      text: "I find art boring",
+      text: "I am creative in my thinking",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1752,8 +1876,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q123",
-      text: "I enjoy exploring new ideas",
+      text: "I am someone who enjoys daydreaming",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
       dominantSide: "right",
       options: [
@@ -1766,10 +1891,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q124",
-      text: "I stick to familiar concepts",
+      text: "I am inspired by fantastical ideas",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1780,8 +1906,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q125",
-      text: "I am fascinated by abstract thinking",
+      text: "I am someone who thinks in abstract terms",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
       dominantSide: "right",
       options: [
@@ -1794,8 +1921,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q126",
-      text: "I prefer practical solutions",
+      text: "I am someone who prefers practical thoughts",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
       dominantSide: "left",
       options: [
@@ -1808,10 +1936,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q127",
-      text: "I enjoy visiting museums",
+      text: "I am not interested in fantasy",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1822,8 +1951,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q128",
-      text: "I dislike cultural activities",
+      text: "I am someone who avoids imaginative ideas",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
       dominantSide: "left",
       options: [
@@ -1836,10 +1966,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q129",
-      text: "I am creative",
+      text: "I am grounded in reality",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1850,8 +1981,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q130",
-      text: "I lack originality",
+      text: "I am someone who dislikes abstract thinking",
       dimension: "Openness",
+      facet: "Imagination",
       section: 3,
       dominantSide: "left",
       options: [
@@ -1864,9 +1996,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q131",
-      text: "I am kind to others",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who loves art",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1878,10 +2011,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q132",
-      text: "I am cold toward others",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "left",
+      text: "I am inspired by music",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1892,9 +2026,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q133",
-      text: "I cooperate with others",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who appreciates beauty",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1906,10 +2041,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q134",
-      text: "I compete rather than cooperate",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "left",
+      text: "I am moved by poetry",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1920,9 +2056,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q135",
-      text: "I am considerate of others",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who enjoys museums",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1934,9 +2071,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q136",
-      text: "I disregard others’ needs",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who dislikes art galleries",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1948,10 +2086,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q137",
-      text: "I am polite",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "right",
+      text: "I am uninterested in music",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1962,9 +2101,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q138",
-      text: "I am rude to others",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who finds art boring",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -1976,10 +2116,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q139",
-      text: "I show compassion",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "right",
+      text: "I am indifferent to beauty",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -1990,9 +2131,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q140",
-      text: "I am indifferent to others’ suffering",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who avoids cultural events",
+      dimension: "Openness",
+      facet: "Artistic Interests",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2004,9 +2146,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q141",
-      text: "I plan ahead carefully",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who feels emotions deeply",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2018,10 +2161,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q142",
-      text: "I act without thinking",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "left",
+      text: "I am in touch with my feelings",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2032,9 +2176,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q143",
-      text: "I set high goals for myself",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who expresses emotions openly",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2046,10 +2191,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q144",
-      text: "I give up easily",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "left",
+      text: "I am sensitive to others’ emotions",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2060,9 +2206,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q145",
-      text: "I am good at managing tasks",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who empathizes easily",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2074,9 +2221,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q146",
-      text: "I procrastinate",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who keeps emotions private",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2088,10 +2236,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q147",
-      text: "I keep things organized",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "right",
+      text: "I am detached from my feelings",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2102,9 +2251,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q148",
-      text: "I am careless with my work",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who rarely feels emotional",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2116,10 +2266,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q149",
-      text: "I am reliable",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "right",
+      text: "I am indifferent to others’ emotions",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2130,9 +2281,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q150",
-      text: "I am inconsistent in my efforts",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who avoids emotional connections",
+      dimension: "Openness",
+      facet: "Emotionality",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2144,9 +2296,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q151",
-      text: "I am easily discouraged",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who loves new experiences",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2158,10 +2311,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q152",
-      text: "I stay optimistic in tough times",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "left",
+      text: "I am open to trying new things",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2172,9 +2326,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q153",
-      text: "I feel helpless at times",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who enjoys traveling",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2186,10 +2341,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q154",
-      text: "I feel in control of my life",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "left",
+      text: "I am eager for new challenges",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2200,9 +2356,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q155",
-      text: "I worry about my future",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who seeks variety",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2214,9 +2371,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q156",
-      text: "I am confident in my abilities",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who prefers routine",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2228,10 +2386,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q157",
-      text: "I feel embarrassed easily",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "right",
+      text: "I am hesitant about change",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2242,9 +2401,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q158",
-      text: "I am comfortable in social settings",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who dislikes new environments",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2256,10 +2416,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q159",
-      text: "I feel inadequate",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "right",
+      text: "I am cautious about new activities",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2270,9 +2431,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q160",
-      text: "I have high self-esteem",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who avoids novelty",
+      dimension: "Openness",
+      facet: "Adventurousness",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2284,9 +2446,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q161",
-      text: "I enjoy large gatherings",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who loves intellectual challenges",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2298,10 +2461,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q162",
-      text: "I avoid crowds",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "left",
+      text: "I am curious about complex ideas",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2312,9 +2476,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q163",
-      text: "I thrive in social settings",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who enjoys philosophical discussions",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2326,10 +2491,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q164",
-      text: "I feel uneasy in groups",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "left",
+      text: "I am fascinated by abstract concepts",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2340,9 +2506,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q165",
-      text: "I seek out new people to meet",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who seeks deep understanding",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2354,9 +2521,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q166",
-      text: "I keep others at a distance",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who avoids complex ideas",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2368,10 +2536,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q167",
-      text: "I love being the center of attention",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "right",
+      text: "I am uninterested in theoretical debates",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2382,9 +2551,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q168",
-      text: "I shy away from the spotlight",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who dislikes intellectual pursuits",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2396,10 +2566,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q169",
-      text: "I am talkative",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "right",
+      text: "I am bored by abstract discussions",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2410,9 +2581,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q170",
-      text: "I am reserved",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who prefers simple ideas",
+      dimension: "Openness",
+      facet: "Intellect",
+      section: 3,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2424,8 +2596,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q171",
-      text: "I am open to unconventional ideas",
+      text: "I am someone who embraces progressive values",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
       dominantSide: "right",
       options: [
@@ -2438,10 +2611,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q172",
-      text: "I prefer conventional thinking",
+      text: "I am open to unconventional beliefs",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2452,8 +2626,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q173",
-      text: "I enjoy intellectual discussions",
+      text: "I am someone who supports social change",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
       dominantSide: "right",
       options: [
@@ -2466,10 +2641,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q174",
-      text: "I avoid deep conversations",
+      text: "I am accepting of diverse perspectives",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2480,8 +2656,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q175",
-      text: "I value creativity in others",
+      text: "I am someone who challenges traditional norms",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
       dominantSide: "right",
       options: [
@@ -2494,8 +2671,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q176",
-      text: "I am skeptical of imaginative ideas",
+      text: "I am someone who prefers traditional values",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
       dominantSide: "left",
       options: [
@@ -2508,10 +2686,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q177",
-      text: "I am curious about the world",
+      text: "I am skeptical of progressive ideas",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2522,8 +2701,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q178",
-      text: "I stick to what I know",
+      text: "I am someone who resists social change",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
       dominantSide: "left",
       options: [
@@ -2536,22 +2716,24 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q179",
-      text: "I enjoy trying new things",
+      text: "I am rigid in my beliefs",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
         { value: "3", label: "Neither Accurate nor Inaccurate" },
-        { value: "4", label: "Moderately Accurate" },
+        { value: "4", label: "Moderately Inaccurate" },
         { value: "5", label: "Very Accurate" },
       ],
     },
     {
       id: "Q180",
-      text: "I resist new experiences",
+      text: "I am someone who dislikes unconventional ideas",
       dimension: "Openness",
+      facet: "Liberalism",
       section: 3,
       dominantSide: "left",
       options: [
@@ -2564,8 +2746,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q181",
-      text: "I forgive others easily",
+      text: "I am someone who trusts others easily",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
       dominantSide: "right",
       options: [
@@ -2578,10 +2761,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q182",
-      text: "I hold grudges",
+      text: "I am optimistic about people’s intentions",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2592,8 +2776,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q183",
-      text: "I am patient with others",
+      text: "I am someone who believes in others’ goodness",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
       dominantSide: "right",
       options: [
@@ -2606,10 +2791,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q184",
-      text: "I get frustrated with others",
+      text: "I am open to relying on others",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2620,8 +2806,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q185",
-      text: "I am generous",
+      text: "I am someone who assumes others are honest",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
       dominantSide: "right",
       options: [
@@ -2634,8 +2821,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q186",
-      text: "I am selfish at times",
+      text: "I am someone who is skeptical of others",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
       dominantSide: "left",
       options: [
@@ -2648,10 +2836,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q187",
-      text: "I listen to others",
+      text: "I am cautious about trusting people",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2662,8 +2851,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q188",
-      text: "I ignore others’ opinions",
+      text: "I am someone who doubts others’ intentions",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
       dominantSide: "left",
       options: [
@@ -2676,10 +2866,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q189",
-      text: "I am supportive",
+      text: "I am wary of others’ motives",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2690,8 +2881,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q190",
-      text: "I am critical of others",
+      text: "I am someone who rarely trusts strangers",
       dimension: "Agreeableness",
+      facet: "Trust",
       section: 4,
       dominantSide: "left",
       options: [
@@ -2704,9 +2896,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q191",
-      text: "I stick to my principles",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who is always honest",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2718,10 +2911,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q192",
-      text: "I bend my principles",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "left",
+      text: "I am straightforward with others",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2732,9 +2926,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q193",
-      text: "I am punctual",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who values integrity",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2746,10 +2941,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q194",
-      text: "I am often late",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "left",
+      text: "I am ethical in my actions",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2760,9 +2956,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q195",
-      text: "I am thorough in my work",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who acts with fairness",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2774,9 +2971,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q196",
-      text: "I rush through tasks",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who manipulates others for gain",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2788,10 +2986,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q197",
-      text: "I am disciplined",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "right",
+      text: "I am deceptive when it suits me",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2802,9 +3001,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q198",
-      text: "I lack self-control",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am someone who bends the truth",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2816,23 +3016,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q199",
-      text: "I meet my deadlines",
-      dimension: "Conscientiousness",
-      section: 5,
-      dominantSide: "right",
-      options: [
-        { value: "1", label: "Very Inaccurate" },
-        { value: "2", label: "Moderately Inaccurate" },
-        { value: "3", label: "Neither Accurate nor Inaccurate" },
-        { value: "4", label: "Moderately Accurate" },
-        { value: "5", label: "Very Accurate" },
-      ],
-    },
-    {
-      id: "Q200",
-      text: "I miss deadlines",
-      dimension: "Conscientiousness",
-      section: 5,
+      text: "I am willing to cheat for advantage",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2843,10 +3030,27 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
       ],
     },
     {
+      id: "Q200",
+      text: "I am someone who disregards ethical standards",
+      dimension: "Agreeableness",
+      facet: "Morality",
+      section: 4,
+      dominantSide: "left",
+      options: [
+        { value: "1", label: "Very Inaccurate" },
+        { value: "2", label: "Moderately Inaccurate" },
+        { value: "3", label: "Neither Accurate nor Inaccurate" },
+        { value: "4", label: "Moderately Accurate" },
+        { value: "5", label: "Very Accurate" },
+      ],
+    },
+
+    {
       id: "Q201",
-      text: "I am easily shaken",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who helps others willingly",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2858,10 +3062,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q202",
-      text: "I stay composed under stress",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "left",
+      text: "I am generous with my time",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2872,9 +3077,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q203",
-      text: "I feel vulnerable",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who puts others’ needs first",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2886,10 +3092,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q204",
-      text: "I feel secure in myself",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "left",
+      text: "I am eager to assist those in need",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2900,9 +3107,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q205",
-      text: "I am sensitive to criticism",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who volunteers readily",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2914,9 +3122,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q206",
-      text: "I take criticism well",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who prioritizes my own needs",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2928,10 +3137,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q207",
-      text: "I dwell on my mistakes",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "right",
+      text: "I am reluctant to help others",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2942,9 +3152,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q208",
-      text: "I move on from setbacks",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who avoids assisting others",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2956,10 +3167,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q209",
-      text: "I feel anxious in new situations",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "right",
+      text: "I am indifferent to others’ struggles",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -2970,9 +3182,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q210",
-      text: "I adapt easily to change",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who rarely volunteers",
+      dimension: "Agreeableness",
+      facet: "Altruism",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2984,9 +3197,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q211",
-      text: "I influence others easily",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who works well with others",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -2998,10 +3212,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q212",
-      text: "I follow others’ lead",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "left",
+      text: "I am accommodating in conflicts",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3012,9 +3227,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q213",
-      text: "I take initiative",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who compromises easily",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3026,10 +3242,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q214",
-      text: "I hesitate to act",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "left",
+      text: "I am cooperative in team settings",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3040,9 +3257,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q215",
-      text: "I am assertive",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who values teamwork",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3054,9 +3272,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q216",
-      text: "I am passive",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who insists on my own way",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3068,10 +3287,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q217",
-      text: "I motivate others",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "right",
+      text: "I am stubborn in disagreements",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3082,9 +3302,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q218",
-      text: "I avoid leadership roles",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who resists compromise",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3096,10 +3317,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q219",
-      text: "I am confident in groups",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "right",
+      text: "I am uncooperative in groups",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3110,9 +3332,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q220",
-      text: "I am shy in groups",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who dislikes teamwork",
+      dimension: "Agreeableness",
+      facet: "Cooperation",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3124,9 +3347,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q221",
-      text: "I am imaginative",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who is humble",
+      dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3138,10 +3362,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q222",
-      text: "I lack a vivid imagination",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "left",
+      text: "I am unassuming in my demeanor",
+      dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3152,9 +3377,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q223",
-      text: "I enjoy philosophical debates",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who avoids boasting",
+      dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3166,10 +3392,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q224",
-      text: "I find abstract ideas confusing",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "left",
+      text: "I am modest about my achievements",
+      dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3180,9 +3407,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q225",
-      text: "I am open-minded",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who downplays my success",
+      dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3194,9 +3422,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q226",
-      text: "I am close-minded",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who brags about my accomplishments",
+      dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3208,10 +3437,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q227",
-      text: "I enjoy artistic expression",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "right",
+      text: "I am proud of my abilities",
+      dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3220,12 +3450,12 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
         { value: "5", label: "Very Accurate" },
       ],
     },
-
     {
       id: "Q228",
-      text: "I find art unappealing",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who seeks recognition",
+      dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3237,23 +3467,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q229",
-      text: "I seek new experiences",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "right",
-      options: [
-        { value: "1", label: "Very Inaccurate" },
-        { value: "2", label: "Moderately Inaccurate" },
-        { value: "3", label: "Neither Accurate nor Inaccurate" },
-        { value: "4", label: "Moderately Accurate" },
-        { value: "5", label: "Very Accurate" },
-      ],
-    },
-    {
-      id: "Q230",
-      text: "I avoid unfamiliar situations",
-      dimension: "Openness",
-      section: 3,
+      text: "I am boastful about my skills",
+      dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3264,9 +3481,25 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
       ],
     },
     {
-      id: "Q231",
-      text: "I trust others easily",
+      id: "Q230",
+      text: "I am someone who craves admiration",
       dimension: "Agreeableness",
+      facet: "Modesty",
+      section: 4,
+      dominantSide: "left",
+      options: [
+        { value: "1", label: "Very Inaccurate" },
+        { value: "2", label: "Moderately Inaccurate" },
+        { value: "3", label: "Neither Accurate nor Inaccurate" },
+        { value: "4", label: "Universit Accurate" },
+        { value: "5", label: "Very Accurate" },
+      ],
+    },
+    {
+      id: "Q231",
+      text: "I am someone who empathizes with others",
+      dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
       dominantSide: "right",
       options: [
@@ -3279,10 +3512,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q232",
-      text: "I am suspicious of others",
+      text: "I am compassionate toward those in need",
       dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3293,8 +3527,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q233",
-      text: "I am warm toward others",
+      text: "I am someone who feels others’ pain",
       dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
       dominantSide: "right",
       options: [
@@ -3307,10 +3542,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q234",
-      text: "I am distant with people",
+      text: "I am moved by others’ struggles",
       dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3321,8 +3557,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q235",
-      text: "I empathize with others",
+      text: "I am someone who cares deeply about others",
       dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
       dominantSide: "right",
       options: [
@@ -3335,8 +3572,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q236",
-      text: "I am detached from others’ feelings",
+      text: "I am someone who is unmoved by others’ suffering",
       dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
       dominantSide: "left",
       options: [
@@ -3349,10 +3587,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q237",
-      text: "I respect others’ opinions",
+      text: "I am indifferent to others’ emotions",
       dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3363,8 +3602,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q238",
-      text: "I dismiss others’ views",
+      text: "I am someone who lacks compassion",
       dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
       dominantSide: "left",
       options: [
@@ -3377,10 +3617,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q239",
-      text: "I am friendly",
+      text: "I am detached from others’ hardships",
       dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3391,8 +3632,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q240",
-      text: "I am unfriendly at times",
+      text: "I am someone who rarely feels sympathy",
       dimension: "Agreeableness",
+      facet: "Sympathy",
       section: 4,
       dominantSide: "left",
       options: [
@@ -3405,8 +3647,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q241",
-      text: "I strive for excellence",
+      text: "I am someone who believes in my abilities",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
       dominantSide: "right",
       options: [
@@ -3419,10 +3662,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q242",
-      text: "I settle for mediocrity",
+      text: "I am confident in my skills",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3433,8 +3677,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q243",
-      text: "I am hardworking",
+      text: "I am someone who trusts my competence",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
       dominantSide: "right",
       options: [
@@ -3447,10 +3692,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q244",
-      text: "I avoid hard work",
+      text: "I am capable of handling challenges",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3461,8 +3707,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q245",
-      text: "I pay attention to details",
+      text: "I am someone who feels effective",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
       dominantSide: "right",
       options: [
@@ -3475,8 +3722,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q246",
-      text: "I overlook details",
+      text: "I am someone who doubts my abilities",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
       dominantSide: "left",
       options: [
@@ -3489,10 +3737,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q247",
-      text: "I am dependable",
+      text: "I am insecure about my skills",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3503,8 +3752,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q248",
-      text: "I am unreliable",
+      text: "I am someone who feels incompetent",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
       dominantSide: "left",
       options: [
@@ -3517,10 +3767,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q249",
-      text: "I am goal-oriented",
+      text: "I am overwhelmed by challenges",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3531,8 +3782,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q250",
-      text: "I lack ambition",
+      text: "I am someone who lacks confidence",
       dimension: "Conscientiousness",
+      facet: "Self-Efficacy",
       section: 5,
       dominantSide: "left",
       options: [
@@ -3545,9 +3797,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q251",
-      text: "I feel nervous easily",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who is well-organized",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3559,10 +3812,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q252",
-      text: "I stay calm under pressure",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "left",
+      text: "I am tidy in my surroundings",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3573,9 +3827,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q253",
-      text: "I am moody",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who keeps things neat",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3587,10 +3842,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q254",
-      text: "I am even-tempered",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "left",
+      text: "I am structured in my routines",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3601,9 +3857,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q255",
-      text: "I feel depressed at times",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who plans meticulously",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3615,9 +3872,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q256",
-      text: "I maintain a positive outlook",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who is disorganized",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3629,10 +3887,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q257",
-      text: "I am self-conscious",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "right",
+      text: "I am messy in my environment",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3643,9 +3902,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q258",
-      text: "I am confident in my appearance",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who dislikes structure",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3657,10 +3917,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q259",
-      text: "I worry about others’ opinions",
-      dimension: "Neuroticism",
-      section: 1,
-      dominantSide: "right",
+      text: "I am careless with my belongings",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3671,9 +3932,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q260",
-      text: "I am indifferent to others’ views",
-      dimension: "Neuroticism",
-      section: 1,
+      text: "I am someone who avoids planning",
+      dimension: "Conscientiousness",
+      facet: "Orderliness",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3685,9 +3947,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q261",
-      text: "I am energetic",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who honors my commitments",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3699,10 +3962,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q262",
-      text: "I am often tired",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "left",
+      text: "I am reliable in my duties",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3713,9 +3977,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q263",
-      text: "I enjoy lively discussions",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who follows through on promises",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3727,10 +3992,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q264",
-      text: "I avoid arguments",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "left",
+      text: "I am responsible in my obligations",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3741,9 +4007,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q265",
-      text: "I am sociable",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who values duty",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3755,9 +4022,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q266",
-      text: "I am withdrawn",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who neglects my responsibilities",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3769,10 +4037,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q267",
-      text: "I enjoy group activities",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "right",
+      text: "I am unreliable in my tasks",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3783,9 +4052,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q268",
-      text: "I prefer solitary tasks",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who breaks promises",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3797,10 +4067,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q269",
-      text: "I am animated in conversations",
-      dimension: "Extraversion",
-      section: 2,
-      dominantSide: "right",
+      text: "I am careless about obligations",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3811,9 +4082,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q270",
-      text: "I am quiet in discussions",
-      dimension: "Extraversion",
-      section: 2,
+      text: "I am someone who disregards duty",
+      dimension: "Conscientiousness",
+      facet: "Dutifulness",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3825,9 +4097,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q271",
-      text: "I am adventurous",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who strives for success",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3839,10 +4112,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q272",
-      text: "I am cautious by nature",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "left",
+      text: "I am driven to achieve my goals",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3853,9 +4127,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q273",
-      text: "I enjoy brainstorming",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who works hard for rewards",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3867,10 +4142,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q274",
-      text: "I prefer routine tasks",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "left",
+      text: "I am ambitious in my pursuits",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3881,9 +4157,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q275",
-      text: "I am inventive",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who sets high goals",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3895,9 +4172,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q276",
-      text: "I lack creativity",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who lacks ambition",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3909,10 +4187,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q277",
-      text: "I enjoy learning new things",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "right",
+      text: "I am unmotivated to succeed",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3923,9 +4202,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q278",
-      text: "I avoid intellectual challenges",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who avoids challenging goals",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3937,10 +4217,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q279",
-      text: "I am open to change",
-      dimension: "Openness",
-      section: 3,
-      dominantSide: "right",
+      text: "I am indifferent to achievement",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3951,9 +4232,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q280",
-      text: "I resist change",
-      dimension: "Openness",
-      section: 3,
+      text: "I am someone who sets modest goals",
+      dimension: "Conscientiousness",
+      facet: "Achievement-Striving",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3965,9 +4247,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q281",
-      text: "I am helpful",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who stays focused on tasks",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -3979,10 +4262,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q282",
-      text: "I avoid helping others",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "left",
+      text: "I am persistent in my efforts",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -3993,9 +4277,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q283",
-      text: "I am considerate",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who completes tasks promptly",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -4007,10 +4292,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q284",
-      text: "I am inconsiderate",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "left",
+      text: "I am disciplined in my work",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -4021,9 +4307,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q285",
-      text: "I am altruistic",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who avoids distractions",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
       dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -4035,9 +4322,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q286",
-      text: "I prioritize my own needs",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who procrastinates often",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -4049,10 +4337,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q287",
-      text: "I am cooperative",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "right",
+      text: "I am easily distracted",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -4063,9 +4352,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q288",
-      text: "I am argumentative",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who struggles to finish tasks",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -4077,10 +4367,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q289",
-      text: "I am kind-hearted",
-      dimension: "Agreeableness",
-      section: 4,
-      dominantSide: "right",
+      text: "I am undisciplined in my work",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -4091,9 +4382,10 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q290",
-      text: "I am harsh with others",
-      dimension: "Agreeableness",
-      section: 4,
+      text: "I am someone who delays starting tasks",
+      dimension: "Conscientiousness",
+      facet: "Self-Discipline",
+      section: 5,
       dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
@@ -4105,8 +4397,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q291",
-      text: "I am persistent",
+      text: "I am someone who thinks before acting",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
       dominantSide: "right",
       options: [
@@ -4119,10 +4412,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q292",
-      text: "I give up quickly",
+      text: "I am careful in my decisions",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -4133,8 +4427,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q293",
-      text: "I am organized",
+      text: "I am someone who weighs options thoroughly",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
       dominantSide: "right",
       options: [
@@ -4147,10 +4442,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q294",
-      text: "I am disorganized",
+      text: "I am prudent in my actions",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
-      dominantSide: "left",
+      dominantSide: "right",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -4161,8 +4457,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q295",
-      text: "I am responsible",
+      text: "I am someone who plans for risks",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
       dominantSide: "right",
       options: [
@@ -4175,8 +4472,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q296",
-      text: "I am irresponsible",
+      text: "I am someone who acts impulsively",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
       dominantSide: "left",
       options: [
@@ -4189,10 +4487,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q297",
-      text: "I am diligent",
+      text: "I am reckless in my decisions",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -4203,8 +4502,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q298",
-      text: "I am lazy at times",
+      text: "I am someone who ignores risks",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
       dominantSide: "left",
       options: [
@@ -4217,10 +4517,11 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q299",
-      text: "I am careful",
+      text: "I am hasty in my choices",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
-      dominantSide: "right",
+      dominantSide: "left",
       options: [
         { value: "1", label: "Very Inaccurate" },
         { value: "2", label: "Moderately Inaccurate" },
@@ -4231,8 +4532,9 @@ export const oceanTestQuestionsData: OceanTestQuestionsData = {
     },
     {
       id: "Q300",
-      text: "I am reckless",
+      text: "I am someone who rushes into decisions",
       dimension: "Conscientiousness",
+      facet: "Cautiousness",
       section: 5,
       dominantSide: "left",
       options: [
