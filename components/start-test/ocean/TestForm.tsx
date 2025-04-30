@@ -23,35 +23,39 @@ export function TestForm({
   onNext,
   onPrev,
   onSubmit,
-  isCompleting = false
+  isCompleting = false,
 }: TestFormProps) {
   const { watch } = useFormContext();
   const answers = watch("answers") || {};
-  
-  const sectionQuestions = questions.filter(q => q.section === currentSectionId);
-  
+
+  const sectionQuestions = questions.filter(
+    (q) => q.section === currentSectionId
+  );
+
   // Track which questions have been answered
-  const answeredQuestionIds = Object.keys(answers)
-    .filter(id => answers[id]?.selectedScore);
-    
+  const answeredQuestionIds = Object.keys(answers).filter(
+    (id) => answers[id]?.selectedScore
+  );
+
   // Count questions answered in previous sections
-  const previousAnsweredCount = questions
-    .filter(q => q.section < currentSectionId)
-    .length;
-    
+  const previousAnsweredCount = questions.filter(
+    (q) => q.section < currentSectionId
+  ).length;
+
   // Count questions answered in current section
-  const currentSectionAnsweredCount = sectionQuestions
-    .filter(q => answeredQuestionIds.includes(q.id))
-    .length;
-    
+  const currentSectionAnsweredCount = sectionQuestions.filter((q) =>
+    answeredQuestionIds.includes(q.id)
+  ).length;
+
   // Calculate current question position
-  const currentQuestionCount = previousAnsweredCount + 
-    (currentSectionAnsweredCount < sectionQuestions.length ? 
-      currentSectionAnsweredCount + 1 : // Next unanswered question
-      sectionQuestions.length); // All answered in section
-      
+  const currentQuestionCount =
+    previousAnsweredCount +
+    (currentSectionAnsweredCount < sectionQuestions.length
+      ? currentSectionAnsweredCount + 1 // Next unanswered question
+      : sectionQuestions.length); // All answered in section
+
   const totalQuestions = questions.length;
-  
+
   // Handle answer selection to update question count
   const handleAnswerSelected = (questionId: string) => {
     // The component will re-render with updated answeredQuestionIds
@@ -73,12 +77,7 @@ export function TestForm({
                 className="w-full"
               >
                 {sectionQuestions.map((question) => (
-                  <QuestionCard
-                    key={question.id}
-                    question={question}
-                    name={`answers.${question.id}`}
-                    onAnswerSelected={handleAnswerSelected}
-                  />
+                  <QuestionCard key={question.id} question={question} />
                 ))}
               </motion.div>
             </AnimatePresence>
@@ -104,4 +103,4 @@ export function TestForm({
       </div>
     </div>
   );
-} 
+}
