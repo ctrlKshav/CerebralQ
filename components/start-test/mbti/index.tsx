@@ -1,5 +1,5 @@
 ﻿"use client";
-import { useForm, FormProvider, SubmitErrorHandler } from "react-hook-form";
+import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
@@ -96,9 +96,7 @@ export default function MBTITest() {
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
 
     // Redirect to results page
-    setTimeout(() => {
-      router.push("/result");
-    }, 0);
+    router.push("/result");
   };
 
   const handleNext = async () => {
