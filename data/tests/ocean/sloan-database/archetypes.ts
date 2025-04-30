@@ -1,18 +1,6 @@
-﻿interface SLOANArchetype {
-  code: string;
-  alias: string;
-  description: string;
-  characteristics: string[];
-  traitThresholds: {
-    Extraversion: string;
-    Neuroticism: string;
-    Conscientiousness: string;
-    Agreeableness: string;
-    Openness: string;
-  };
-}
+﻿import { SLOANArchetype } from "@/types/tests/ocean/sloan";
 
-const sloanArchetypes: SLOANArchetype[] = [
+export const sloanArchetypes: SLOANArchetype[] = [
   {
     code: "SCOAI",
     alias: "The Leader",
