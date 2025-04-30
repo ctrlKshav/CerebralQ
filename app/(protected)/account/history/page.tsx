@@ -5,7 +5,7 @@ import Account from "@/components/account";
 import Navbar from "@/components/navbar";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 import TestHistory from "@/components/test-history";
-import { getUsersTestHistory } from "@/lib/supabaseOperations/getUsersTestHistory";
+import { getUsersTestHistory } from "@/lib/supabase-operations/getUsersTestHistory";
 import { User } from "@/types/supabase/users";
 import {
   MBTI_TEST_ID,
