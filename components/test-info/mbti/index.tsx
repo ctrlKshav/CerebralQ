@@ -154,7 +154,7 @@ export default function MBTITestInformation() {
             ))}
           </div>
           <div className="pt-4 ">
-            <Link href={`/start-test`}>
+            <Link href={`/start-test/mbti`}>
               <Button size="lg" className="text-lg px-8 py-6">
                 Begin Test →
               </Button>
