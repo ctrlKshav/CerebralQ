@@ -14,7 +14,7 @@ import CQLogo from "../../CQLogo";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabase-operations";
 import { OCEAN_PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-import { TestQuestionsData } from "@/types/tests/testQuestions";
+import { OceanTestQuestionsData } from "@/types/tests/testQuestions";
 import type { OceanTraitScores } from "@/types/tests/ocean/traits";
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_ocean_results";
@@ -22,7 +22,7 @@ const TEST_RESULTS_KEY = "cerebralq_ocean_results";
 export default function OceanTest({
   oceanTestQuestionsData,
 }: {
-  oceanTestQuestionsData: TestQuestionsData;
+  oceanTestQuestionsData: OceanTestQuestionsData;
 }) {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);

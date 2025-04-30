@@ -1,12 +1,12 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { LikertScale } from "./LikertScale";
-import { TestQuestion } from "@/types/tests/testQuestions";
+import { MBTITestQuestion } from "@/types/tests/testQuestions";
 import { useFormContext } from "react-hook-form";
 import { useEffect } from "react";
 import Icon from "@/components/Icon";
 
 interface QuestionCardProps {
-  question: TestQuestion;
+  question: MBTITestQuestion;
 }
 
 export function QuestionCard({ question }: QuestionCardProps) {

@@ -1,6 +1,6 @@
-import { TestQuestionsData } from "@/types/tests/testQuestions";
+import { OceanTestQuestionsData } from "@/types/tests/testQuestions";
 
-export const oceanTestQuestionsData: TestQuestionsData = {
+export const oceanTestQuestionsData: OceanTestQuestionsData = {
   id: "6c274f8b-3fd9-4c1e-b20d-7a8c67c2b32a",
   test_name: "OCEAN Personality Test",
   totalQuestions: 20,

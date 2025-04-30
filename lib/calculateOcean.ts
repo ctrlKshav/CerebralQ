@@ -5,11 +5,11 @@ import type {
   OceanTraitKey,
   OceanTraitScores,
 } from "@/types/tests/ocean/traits";
-import { TestQuestionsData } from "@/types/tests/testQuestions";
+import { OceanTestQuestionsData } from "@/types/tests/testQuestions";
 
 export function calculateOcean(
   answers: Answers,
-  questionsData: TestQuestionsData
+  questionsData: OceanTestQuestionsData
 ): OceanRawScore {
   const questions = questionsData.questions;
   // Initialize dimensions with scoring
