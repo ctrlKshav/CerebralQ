@@ -19,7 +19,11 @@ import type { OceanTraitScores } from "@/types/tests/ocean/traits";
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_ocean_results";
 
-export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuestionsData: TestQuestionsData }) {
+export default function OceanTest({
+  oceanTestQuestionsData,
+}: {
+  oceanTestQuestionsData: TestQuestionsData;
+}) {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
@@ -32,7 +36,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
     defaultValues: {
       id: currentTest.id,
       answers: {},
-      createdAt: new Date().toISOString(), // set default createdAt
+      takenAt: new Date().toISOString(), // set default takenAt
       testVariant: currentTest.id,
     },
   });
@@ -73,9 +77,9 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
     // localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
-    console.log(data)
+    console.log(data);
     const oceanResult = calculateOcean(data.answers, currentTest);
-    console.log('hi')
+    console.log("hi");
     console.log(oceanResult);
     // Create a single unified test result object
     const testResultData = {
@@ -162,7 +166,10 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
       <Link href="/" className="hidden lg:block fixed z-50  left-8  ">
         <CQLogo className="w-28 h-28" />
       </Link>
-      <MobileTopbar currentStepText={currentStepText} testName={oceanTestQuestionsData.test_name} />
+      <MobileTopbar
+        currentStepText={currentStepText}
+        testName={oceanTestQuestionsData.test_name}
+      />
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
@@ -180,4 +187,4 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
       </FormProvider>
     </div>
   );
-} 
+}
