@@ -2,14 +2,14 @@
 import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
 import { ResultData } from "@/types/tests/mbti/results";
 import { TraitScores } from "@/types/tests/mbti/traits";
-import PersonalityTraits from "@/components/results/report/sections/personality-traits";
-import CareerPathSection from "@/components/results/report/sections/CareerPathSection";
-import RelationshipSection from "@/components/results/report/sections/RelationshipSection";
-import GrowthSection from "@/components/results/report/sections/GrowthSection";
-import DailyHabitsSection from "@/components/results/report/sections/DailyHabitsSection";
-import ValuesMotivatorSection from "@/components/results/report/sections/ValuesMotivatorsSection";
-import CommunitySection from "@/components/results/report/sections/CommunitySection";
-import ActionPlanSection from "@/components/results/report/sections/ActionPlanSection";
+import PersonalityTraits from "@/components/results/report/mbti/sections/personality-traits";
+import CareerPathSection from "@/components/results/report/mbti/sections/CareerPathSection";
+import RelationshipSection from "@/components/results/report/mbti/sections/RelationshipSection";
+import GrowthSection from "@/components/results/report/mbti/sections/GrowthSection";
+import DailyHabitsSection from "@/components/results/report/mbti/sections/DailyHabitsSection";
+import ValuesMotivatorSection from "@/components/results/report/mbti/sections/ValuesMotivatorsSection";
+import CommunitySection from "@/components/results/report/mbti/sections/CommunitySection";
+import ActionPlanSection from "@/components/results/report/mbti/sections/ActionPlanSection";
 import { useSidebar } from "@/components/ui/sidebar-custom";
 import { sidebarNavData } from "@/data/report/sidebarNav";
 export function CQReport({

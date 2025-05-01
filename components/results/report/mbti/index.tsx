@@ -1,8 +1,8 @@
 ﻿import { ResultData } from "@/types/tests/mbti/results";
 import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar-custom";
-import { ReportHeader } from "@/components/results/report/SiteHeader";
-import { ReportSidebar } from "@/components/results/report/Sidebar";
+import { ReportHeader } from "@/components/results/report/mbti/SiteHeader";
+import { ReportSidebar } from "@/components/results/report/mbti/Sidebar";
 import { User } from "@/types/supabase/users";
 import { CQReport } from "./CQReport";
 import { useEffect } from "react";

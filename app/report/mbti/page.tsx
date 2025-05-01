@@ -1,5 +1,5 @@
 ﻿"use client";
-import Report from "@/components/results/report";
+import Report from "@/components/results/report/mbti";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";

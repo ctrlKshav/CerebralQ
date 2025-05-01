@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 // Import our components
 import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
 
-import HeroSection from "@/components/results/result/HeroSection";
+import HeroSection from "@/components/results/result/mbti/HeroSection";
 import { User } from "@/types/supabase/users";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 

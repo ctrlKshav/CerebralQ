@@ -1,5 +1,5 @@
 ﻿"use client";
-import ResultCertificate from "@/components/results/result";
+import ResultCertificate from "@/components/results/result/mbti";
 import CQLogo from "@/components/CQLogo";
 import Link from "next/link";
 import { useUserDataContext } from "@/context/user-data";
