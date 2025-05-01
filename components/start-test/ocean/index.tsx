@@ -76,7 +76,8 @@ export default function OceanTest({
   const onSubmit = async (data: OceanResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
-    // localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
+
+    localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
     console.log(data);
     const oceanResult = calculateOcean(data.answers, currentTest);
     console.log("hi");
