@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { PersonalityDescription } from "@/types/tests/ocean/results";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { handleShare } from "@/lib/shareUtils";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Share2 } from "lucide-react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList } from "recharts";
 import { sampleResultData } from "@/data/tests/ocean/oceanSampleData";
+import OceanTraitChart from "./OceanTraitChart";
 
 interface HeroSectionProps {
   personalityType: string;
@@ -27,76 +26,7 @@ interface HeroSectionProps {
   };
 }
 
-const OceanTraitChart = ({ traitScores }: { traitScores: HeroSectionProps["traitScores"] }) => {
-  // Transform trait scores into a format suitable for recharts
-  const data = [
-    {
-      trait: "Openness",
-      score: traitScores?.openness.percentage || 0,
-      fill: "#4f46e5" // indigo
-    },
-    {
-      trait: "Conscientiousness",
-      score: traitScores?.conscientiousness.percentage || 0,
-      fill: "#ec4899" // pink
-    },
-    {
-      trait: "Extraversion",
-      score: traitScores?.extraversion.percentage || 0,
-      fill: "#3b82f6" // blue
-    },
-    {
-      trait: "Agreeableness",
-      score: traitScores?.agreeableness.percentage || 0,
-      fill: "#10b981" // emerald
-    },
-    {
-      trait: "Neuroticism",
-      score: traitScores?.neuroticism.percentage || 0,
-      fill: "#f59e0b" // amber
-    }
-  ];
 
-  return (
-    <Card className="w-full h-full p-2 shadow-lg bg-card/80 backdrop-blur-sm">
-      <CardHeader className="py-5 px-6">
-        <div className="text-center space-y-2">
-          <h3 className="text-4xl font-extrabold tracking-tight bg-clip-text text-primary">
-            Your OCEAN Certificate
-          </h3>
-          <p className="text-muted-foreground font-semibold">Big Five Traits Breakdown</p>
-        </div>
-      </CardHeader>
-      <CardContent className="p-6">
-        <ResponsiveContainer width="100%" height={350}>
-          <BarChart
-            data={data}
-            layout="vertical"
-            margin={{ top: 20, right: 30, left: 20, bottom: 10 }}
-          >
-            <XAxis type="number" domain={[0, 100]} tickFormatter={(value) => `${value}%`} />
-            <YAxis type="category" dataKey="trait" width={140} />
-            <Tooltip
-              formatter={(value: number) => [`${value}%`, 'Score']}
-              labelFormatter={(label: string) => `${label} Trait`}
-              contentStyle={{ borderRadius: '8px' }}
-            />
-            <Bar
-              dataKey="score"
-              barSize={40}
-              radius={[4, 4, 4, 4]}
-            >
-              {data.map((entry, index) => (
-                <Bar key={`bar-${index}`} dataKey="score" fill={entry.fill} />
-              ))}
-              <LabelList dataKey="score" position="right" formatter={(value: number) => `${value}%`} />
-            </Bar>
-          </BarChart>
-        </ResponsiveContainer>
-      </CardContent>
-    </Card>
-  );
-};
 
 const HeroSection = ({
   personalityType,
@@ -145,11 +75,12 @@ const HeroSection = ({
   return (
     <section
       id={id}
-      className=" flex flex-col justify-center items-center py-20 px-4 overflow-hidden relative max-w-[90vw] mx-auto"
+      className="flex flex-col justify-center items-center py-16 px-4 overflow-hidden relative max-w-[95vw] mx-auto"
     >
-      <div className="w-full mx-auto text-center md:text-left ">
-        <div className="flex flex-col md:flex-row justify-center items-stretch gap-8 lg:gap-16   ">
-          <div className="w-1/2 space-y-6 animate-fade-in md:mr-4">
+      <div className="w-full mx-auto text-center md:text-left">
+        {/* Desktop layout: Two columns side by side */}
+        <div className="hidden md:flex flex-row justify-between items-stretch gap-8 lg:gap-16">
+          <div className="w-1/2 space-y-6 animate-fade-in">
             <Badge className="bg-primary text-primary-foreground py-1.5 px-4 rounded-full">
               Completed on {completionDate}
             </Badge>
@@ -158,8 +89,7 @@ const HeroSection = ({
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 Hey{" "}
                 <span
-                  className={`${firstname ? "text-primary decoration-2" : "decoration-1"
-                    }`}
+                  className={`${firstname ? "text-primary decoration-2" : "decoration-1"}`}
                 >
                   {firstname || "there"}!
                 </span>{" "}
@@ -169,7 +99,7 @@ const HeroSection = ({
                   {personalityType}.
                 </span>
                 <br />
-                <span className=" font-semibold">{alias}.</span>
+                <span className="font-semibold">{alias}.</span>
               </h1>
             </div>
 
@@ -210,8 +140,78 @@ const HeroSection = ({
             </div>
           </div>
 
-          <div className="flex-grow-1 w-1/2  md:flex items-center justify-center hidden animate-fade-in">
+          <div className="w-1/2 flex items-center justify-center animate-fade-in">
             <OceanTraitChart traitScores={traitScores} />
+          </div>
+        </div>
+        
+        {/* Mobile layout: Stacked (two rows) */}
+        <div className="flex flex-col md:hidden gap-8">
+          <div className="space-y-5 animate-fade-in">
+            <Badge className="bg-primary text-primary-foreground py-1.5 px-4 rounded-full">
+              Completed on {completionDate}
+            </Badge>
+
+            <div className="space-y-2">
+              <h1 className="text-3xl sm:text-4xl font-bold text-foreground">
+                Hey{" "}
+                <span
+                  className={`${firstname ? "text-primary decoration-2" : "decoration-1"}`}
+                >
+                  {firstname || "there"}!
+                </span>
+                <br />
+                You're a{" "}
+                <span className="text-primary decoration-2">
+                  {personalityType}.
+                </span>
+                <br />
+                <span className="font-semibold">{alias}.</span>
+              </h1>
+            </div>
+
+            <p className="text-base text-muted-foreground">{description}</p>
+          </div>
+
+          <div className="w-full animate-fade-in">
+            <OceanTraitChart traitScores={traitScores} className="max-w-full" />
+          </div>
+          
+          <div className="space-y-4 animate-fade-in">
+            <p className="text-base text-muted-foreground">
+              Does that sound like you
+              {firstname ? (
+                <>
+                  ,{" "}
+                  <span className="font-semibold text-primary">
+                    {firstname}
+                  </span>
+                </>
+              ) : (
+                ""
+              )}
+              ? Let's dive into what makes you so incredible!
+            </p>
+
+            <div className="pt-2 flex flex-col gap-3 items-center justify-center">
+              <Button
+                variant="default"
+                size="sm"
+                onClick={shareResults}
+                disabled={isSharing}
+                className="w-full"
+              >
+                <Share2 className="w-4 h-4 mr-2" />
+                {isSharing
+                  ? "Processing..."
+                  : !username
+                    ? "Save & Share"
+                    : "Share Results"}
+              </Button>
+              <Link href={`${historyPage ? "/account/report/mbti" : "/report/mbti"}`} className="w-full">
+                <Button variant="outline" className="w-full">View Detailed Report</Button>
+              </Link>
+            </div>
           </div>
         </div>
       </div>
