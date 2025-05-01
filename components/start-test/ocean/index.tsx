@@ -99,7 +99,7 @@ export default function OceanTest({
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
     setIsCompleting(false);
-    // router.push("/result");
+    // router.push("/result/ocean");
   };
 
   const handleNext = async () => {

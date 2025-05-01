@@ -42,7 +42,7 @@ export default function Page() {
     // Store results in local storage
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
-    router.push("/result");
+    router.push("/result/mbti");
   };
 
   const userDataContext = useUserDataContext();

@@ -96,7 +96,7 @@ export default function MBTITest() {
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
 
     // Redirect to results page
-    router.push("/result");
+    router.push("/result/mbti");
   };
 
   const handleNext = async () => {
