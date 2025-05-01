@@ -112,7 +112,7 @@ export function TestCard({ test }: TestCardProps) {
           <div className="h-full">
             <div className="space-y-4 mt-6">
               {test.features.map((feature, index) => (
-                <div className="flex items-center">
+                <div className="flex items-center" key={index}>
                   <span
                     className={`w-8 h-8 flex items-center justify-center rounded-full ${feature.iconColorClass} mr-3`}
                   >
