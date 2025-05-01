@@ -8,11 +8,11 @@ export const sampleResultData: ResultData = {
         alias: "The Social Organizer",
         description: (firstname, thirdPerson): string => {
             if (firstname && thirdPerson) {
-                return `${firstname} is a highly social and organized individual who thrives in structured environments. They make plans and stick to them, always striving to finish tasks ahead of schedule. Their emotional nature makes them empathetic and easy to connect with, but they may also be prone to worry and frustration. They value tradition and familiarity, preferring group activities and maintaining strong relationships.`;
+                return `${firstname} is a highly social and organized individual who thrives in structured environments. They make plans and stick to them, always striving to finish tasks ahead of schedule. Their emotional nature makes them empathetic and relatable, but they may also be prone to frustration. They prefer maintaining strong relationships.`;
             } else if (firstname && !thirdPerson) {
-                return `You are a highly social and organized individual who thrives in structured environments. You make plans and stick to them, always striving to finish tasks ahead of schedule. Your emotional nature makes you empathetic and easy to connect with, but you may also be prone to worry and frustration. You value tradition and familiarity, preferring group activities and maintaining strong relationships, ${firstname}.`;
+                return `You are a highly social and organized individual who thrives in structured environments. You make plans and stick to them, always striving to finish tasks ahead of schedule. Your emotional nature makes you empathetic and relatable, but you may also be prone to frustration. You prefer maintaining strong relationships, ${firstname}.`;
             } else {
-                return `You are a highly social and organized individual who thrives in structured environments. You make plans and stick to them, always striving to finish tasks ahead of schedule. Your emotional nature makes you empathetic and easy to connect with, but you may also be prone to worry and frustration. You value tradition and familiarity, preferring group activities and maintaining strong relationships.`;
+                return `You are a highly social and organized individual who thrives in structured environments. You make plans and stick to them, always striving to finish tasks ahead of schedule. Your emotional nature makes you empathetic and relatable, but you may also be prone to frustration. You prefer maintaining strong relationships.`;
             }
         },
     },

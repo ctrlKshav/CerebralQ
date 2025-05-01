@@ -77,7 +77,7 @@ const HeroSection = ({
       if (!username) {
         router.push(
           "/sign-up?info=" +
-            encodeURIComponent("You need an account to share your profile.")
+          encodeURIComponent("You need an account to share your profile.")
         );
       }
     } catch (error) {
@@ -103,12 +103,12 @@ const HeroSection = ({
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 Hey{" "}
                 <span
-                  className={`${
-                    firstname ? "text-primary decoration-2" : "decoration-1"
-                  }`}
+                  className={`${firstname ? "text-primary decoration-2" : "decoration-1"
+                    }`}
                 >
                   {firstname || "there"}!
                 </span>{" "}
+                <br />
                 You're an{" "}
                 <span className="text-primary decoration-2">
                   {personalityType}.
