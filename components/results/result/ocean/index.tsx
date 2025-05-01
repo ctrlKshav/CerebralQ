@@ -32,6 +32,7 @@ export default function ResultCertificate({ resultData, historyPage = false }: R
           firstname={resultData?.firstname || null}
           username={resultData?.username || null}
           historyPage={historyPage}
+          traitScores={resultData?.traitScores || null}
         />
       </main>
     </div>

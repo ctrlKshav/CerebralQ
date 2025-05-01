@@ -1,39 +1,27 @@
 ﻿import React, { useEffect } from "react";
-import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
-import { ResultData } from "@/types/tests/mbti/results";
-import { TraitScores } from "@/types/tests/mbti/traits";
-import PersonalityTraits from "@/components/results/report/mbti/sections/personality-traits";
+import { sampleResultData } from "@/data/tests/ocean/oceanSampleData";
+import { ResultData } from "@/types/tests/ocean/results";
+import { OceanTraitScores } from "@/types/tests/ocean/traits";
 import CareerPathSection from "@/components/results/report/shared/CareerPathSection";
 import RelationshipSection from "@/components/results/report/shared/RelationshipSection";
 import GrowthSection from "@/components/results/report/shared/GrowthSection";
 import DailyHabitsSection from "@/components/results/report/shared/DailyHabitsSection";
 import ValuesMotivatorSection from "@/components/results/report/shared/ValuesMotivatorsSection";
 import CommunitySection from "@/components/results/report/shared/CommunitySection";
-import ActionPlanSection from "@/components/results/report/mbti/sections/ActionPlanSection";
-import { useSidebar } from "@/components/ui/sidebar-custom";
-import { sidebarNavData } from "@/data/report/sidebarNav";
+import ActionPlanSection from "@/components/results/report/ocean/sections/ActionPlanSection";
 export function CQReport({
   traitScores,
   personalityType,
   resultData,
 }: {
-  traitScores: TraitScores | null;
+  traitScores: OceanTraitScores | null;
   personalityType: string;
   resultData: ResultData;
 }) {
  
   return (
     <main className="flex-1 mt-12 mx-auto transition-all duration-300 space-y-8 p-4">
-      {/* Personality Traits */}
-      {traitScores && (
-        <PersonalityTraits
-          personalityType={personalityType}
-          traitScores={traitScores}
-          sectionNumber={1}
-          firstname={resultData?.firstname ?? undefined}
-          id="explore-traits"
-        />
-      )}
+      
 
       {/* Values & Motivators */}
       <ValuesMotivatorSection

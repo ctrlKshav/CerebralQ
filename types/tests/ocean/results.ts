@@ -1,171 +1,126 @@
-﻿
-import { OceanTraitKey, OceanTraitScore, OceanTraitScores } from "@/types/tests/ocean/traits";
-// Personality description type
-export type PersonalityDescription = {
+﻿import { OceanTraitScores } from "@/types/tests/ocean/traits";
+
+
+
+export interface PersonalityDescription {
     alias: string;
-    description: (firstname: string | null, thirdPerson: boolean) => string;
-};
+    description: (firstname: string | null, thirdPerson?: boolean) => string;
+}
 
-// Career-related types
-export type CareerSuperpower = {
-    title: string;
-    description: string;
-};
+export interface CareerPath {
+    summary: string;
+    superpowers: SuperpowerItem[];
+    growthAreas: GrowthAreaItem[];
+    suggestions: CareerSuggestion[];
+    actionSteps: ActionStepItem[];
+}
 
-export type CareerGrowthArea = {
-    title: string;
-    description: string;
-};
-
-export type CareerQualityMatch = {
-    title: string;
-    description: string;
-};
-
-export type CareerSuggestion = {
+export interface CareerSuggestion {
     title: string;
     matchPercentage: number;
     description: string;
     qualityMatches: CareerQualityMatch[];
-};
+}
 
-export type CareerActionStep = {
-    number: number;
-    description: string;
-};
-
-export type CareerData = {
-    summary: string;
-    superpowers: CareerSuperpower[];
-    growthAreas: CareerGrowthArea[];
-    suggestions: CareerSuggestion[];
-    actionSteps: CareerActionStep[];
-};
-
-// Relationship-related types
-export type RelationshipSuperpower = {
+export interface CareerQualityMatch {
     title: string;
     description: string;
-};
+}
 
-export type RelationshipGrowthArea = {
-    title: string;
-    description: string;
-};
+export type RelationshipSectionTitle = "Relationships" | "Friendships"
 
-export type RelationshipActionStep = {
-    number: number;
-    description: string;
-};
-
-export type RelationshipData = {
-    title: string;
+export interface RelationshipCompatibility {
+    title: RelationshipSectionTitle;
     subtitle: string;
     description: string;
     compatibleTypes: string[];
-    superpowers: RelationshipSuperpower[];
-    growthAreas: RelationshipGrowthArea[];
-    actionSteps: RelationshipActionStep[];
-};
+    superpowers: SuperpowerItem[];
+    growthAreas: GrowthAreaItem[];
+    actionSteps: ActionStepItem[];
+}
 
-// Growth-related types
-export type GrowthSuperpower = {
-    title: string;
-    description: string;
-};
-
-export type GrowthArea = {
-    title: string;
-    description: string;
-};
-
-export type GrowthActionStep = {
-    number: number;
-    description: string;
-};
-
-export type GrowthData = {
+export interface GrowthJourney {
     summary: string;
-    superpowers: GrowthSuperpower[];
-    growthAreas: GrowthArea[];
-    actionSteps: GrowthActionStep[];
-};
+    superpowers: SuperpowerItem[];
+    growthAreas: GrowthAreaItem[];
+    actionSteps: ActionStepItem[];
+}
 
-// Daily habits-related types
-export type Habit = {
+export interface GrowthMilestone {
     title: string;
     description: string;
-};
+    completed: boolean;
+}
 
-export type Communication = {
-    summary: string;
-    tips: string[];
-};
-
-export type DailyHabitsData = {
+export interface DailyHabits {
     summary: string;
     habits: {
-        morning: Habit;
-        afternoon: Habit;
-        evening: Habit;
+        morning: HabitItem;
+        afternoon: HabitItem;
+        evening: HabitItem;
     };
-    communication: Communication;
-};
+    communication: CommunicationStyle;
+}
 
-// Values and motivators-related types
-export type CoreValue = {
-    title: string;
-    description: string;
-};
-
-export type Motivator = {
-    title: string;
-    description: string;
-};
-
-export type ValuesActionItem = {
-    number: number;
-    description: string;
-};
-
-export type ValuesAndMotivatorsData = {
+export interface CommunicationStyle {
     summary: string;
-    coreValues: CoreValue[];
-    motivators: Motivator[];
-    actionItems: ValuesActionItem[];
-};
+    tips: string[];
+}
 
-// Community connection-related types
-export type CommunityConnectionData = {
+export interface ValuesAndMotivators {
+    summary: string;
+    coreValues: SuperpowerItem[];
+    motivators: GrowthAreaItem[];
+    actionItems: ActionStepItem[];
+}
+
+export interface CommunityConnection {
     summary: string;
     suggestions: string[];
-};
+}
 
-// Action items type
-export type ActionItem = {
+export interface ActionItem {
     task: string;
     completed: boolean;
+    description?: string;
+}
+
+export interface SuperpowerItem {
+    title: string;
     description: string;
-};
+}
 
-// Personality data type
-export type PersonalityDatabase = {
-    career: CareerData;
-    relationships: RelationshipData[];
-    growth: GrowthData;
-    dailyHabits: DailyHabitsData;
-    valuesAndMotivators: ValuesAndMotivatorsData;
-    communityConnection: CommunityConnectionData;
-    actionItems: ActionItem[];
-};
+export interface GrowthAreaItem {
+    title: string;
+    description: string;
+}
 
-// Main result data type
-export type ResultData = {
+export interface HabitItem {
+    title: string;
+    description: string;
+}
+
+export interface ActionStepItem {
+    number: number;
+    description: string;
+}
+
+export interface ResultData {
     username: string | null;
     firstname: string | null;
     personalityType: string;
     personalityDescription: PersonalityDescription;
     completionDate: string;
-    traitScores: OceanTraitScores;
+    traitScores: OceanTraitScores | null;
     personalityData: PersonalityDatabase;
-};
+}
+
+export interface PersonalityDatabase {
+    career: CareerPath;
+    relationships: RelationshipCompatibility[];
+    growth: GrowthJourney;
+    actionItems: ActionItem[];
+    dailyHabits: DailyHabits;
+    valuesAndMotivators: ValuesAndMotivators;
+    communityConnection: CommunityConnection;
+}

@@ -1,13 +1,5 @@
 ﻿export type OceanTraitKey = 'openness' | 'conscientiousness' | 'extraversion' | 'agreeableness' | 'neuroticism';
 
-export type OceanScore = {
-  openness: number;
-  conscientiousness: number;
-  extraversion: number;
-  agreeableness: number;
-  neuroticism: number;
-};
-
 export type OceanTraitScore = {
   score: number;
   total: number;
@@ -24,3 +16,11 @@ export type OceanDimensionObject = {
   total: number;
   percentage: number;
 }
+
+export type OceanScore = {
+  openness: number;
+  conscientiousness: number;
+  extraversion: number;
+  agreeableness: number;
+  neuroticism: number;
+};

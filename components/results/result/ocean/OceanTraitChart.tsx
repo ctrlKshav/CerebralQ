@@ -2,27 +2,17 @@ import React from "react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, LabelList, CartesianGrid, Cell } from "recharts";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { OceanTraitScores } from "@/types/tests/ocean/traits";
 
-interface TraitScore {
-  score: number;
-  total: number;
-  percentage: number;
-}
 
 export interface OceanTraitChartProps {
-  traitScores: {
-    openness: TraitScore;
-    conscientiousness: TraitScore;
-    extraversion: TraitScore;
-    agreeableness: TraitScore;
-    neuroticism: TraitScore;
-  };
+  traitScores: OceanTraitScores | null;
   className?: string;
 }
 
 const OceanTraitChart: React.FC<OceanTraitChartProps> = ({ traitScores, className = "" }) => {
   const isMobile = useIsMobile();
-  
+
   // Transform trait scores into a format suitable for recharts
   const data = [
     {
@@ -75,22 +65,22 @@ const OceanTraitChart: React.FC<OceanTraitChartProps> = ({ traitScores, classNam
               barGap={8}
             >
               <CartesianGrid strokeDasharray="3 3" horizontal={false} opacity={0.2} />
-              <XAxis 
-                type="number" 
-                domain={[0, 100]} 
-                tickFormatter={(value) => `${value}%`} 
+              <XAxis
+                type="number"
+                domain={[0, 100]}
+                tickFormatter={(value) => `${value}%`}
                 tick={{ fill: 'var(--foreground)' }}
               />
-              <YAxis 
-                type="category" 
-                dataKey="trait" 
-                width={140} 
+              <YAxis
+                type="category"
+                dataKey="trait"
+                width={140}
                 tick={{ fill: 'var(--foreground)', fontSize: 14, fontWeight: 500 }}
               />
               <Tooltip
                 formatter={(value: number) => [`${value}%`, 'Score']}
                 labelFormatter={(label: string) => `${label} Trait`}
-                contentStyle={{ 
+                contentStyle={{
                   borderRadius: '8px',
                   backgroundColor: 'var(--card)',
                   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
@@ -105,17 +95,17 @@ const OceanTraitChart: React.FC<OceanTraitChartProps> = ({ traitScores, classNam
                 {data.map((entry, index) => (
                   <Cell key={`cell-${index}`} fill={entry.fill} />
                 ))}
-                <LabelList 
-                  dataKey="score" 
-                  position="right" 
-                  formatter={(value: number) => `${value}%`} 
+                <LabelList
+                  dataKey="score"
+                  position="right"
+                  formatter={(value: number) => `${value}%`}
                   style={{ fill: 'var(--foreground)', fontWeight: 600 }}
                 />
               </Bar>
             </BarChart>
           </ResponsiveContainer>
         )}
-        
+
         {/* Mobile view: Custom layout with trait names above each bar */}
         {isMobile && (
           <div className="space-y-8">
@@ -123,7 +113,7 @@ const OceanTraitChart: React.FC<OceanTraitChartProps> = ({ traitScores, classNam
               <div key={`trait-${index}`} className="space-y-2">
                 {/* Trait name displayed separately above the bar */}
                 <div className="text-sm font-medium text-foreground">{entry.trait}</div>
-                
+
                 {/* Individual bar chart for each trait */}
                 <ResponsiveContainer width="100%" height={40}>
                   <BarChart
@@ -131,15 +121,15 @@ const OceanTraitChart: React.FC<OceanTraitChartProps> = ({ traitScores, classNam
                     layout="vertical"
                     margin={{ top: 0, right: 40, left: 0, bottom: 0 }}
                   >
-                    <XAxis 
-                      type="number" 
-                      domain={[0, 100]} 
-                      hide 
+                    <XAxis
+                      type="number"
+                      domain={[0, 100]}
+                      hide
                     />
-                    <YAxis 
-                      type="category" 
-                      dataKey="trait" 
-                      hide 
+                    <YAxis
+                      type="category"
+                      dataKey="trait"
+                      hide
                     />
                     <Bar
                       dataKey="score"
@@ -147,8 +137,8 @@ const OceanTraitChart: React.FC<OceanTraitChartProps> = ({ traitScores, classNam
                       barSize={30}
                       radius={[4, 4, 4, 4]}
                     >
-                      <LabelList 
-                        dataKey="score" 
+                      <LabelList
+                        dataKey="score"
                         position="right"
                         formatter={(value: number) => `${value}%`}
                         style={{ fill: 'var(--foreground)', fontSize: 12, fontWeight: 600 }}

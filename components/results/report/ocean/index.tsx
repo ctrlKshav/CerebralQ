@@ -1,5 +1,5 @@
-﻿import { ResultData } from "@/types/tests/mbti/results";
-import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
+﻿import { ResultData } from "@/types/tests/ocean/results";
+import { sampleResultData } from "@/data/tests/ocean/oceanSampleData";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar-custom";
 import { ReportHeader } from "@/components/results/report/shared/sidebar/SiteHeader";
 import { ReportSidebar } from "@/components/results/report/shared/sidebar/Sidebar";

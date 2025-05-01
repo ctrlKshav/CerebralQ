@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation";
 import { Share2 } from "lucide-react";
 import { sampleResultData } from "@/data/tests/ocean/oceanSampleData";
 import OceanTraitChart from "./OceanTraitChart";
+import { OceanTraitScores } from "@/types/tests/ocean/traits";
 
 interface HeroSectionProps {
   personalityType: string;
@@ -17,13 +18,7 @@ interface HeroSectionProps {
   id?: string;
   username: string | null;
   historyPage: boolean;
-  traitScores?: {
-    openness: { score: number; total: number; percentage: number };
-    conscientiousness: { score: number; total: number; percentage: number };
-    extraversion: { score: number; total: number; percentage: number };
-    agreeableness: { score: number; total: number; percentage: number };
-    neuroticism: { score: number; total: number; percentage: number };
-  };
+  traitScores: OceanTraitScores | null;
 }
 
 

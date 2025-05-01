@@ -1,14 +1,15 @@
 ﻿"use client";
-import Report from "@/components/results/report/mbti";
+import Report from "@/components/results/report/ocean";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
-import { ResultData } from "@/types/tests/mbti/results";
+import { ResultData } from "@/types/tests/ocean/results";
 import { TEST_RESULTS_KEY } from "@/lib/constants";
 import { getPersonalityData } from "@/data/tests/mbti/mbtiResultData";
 import { getPersonalityDescription } from "@/data/tests/mbti/personalityDescription";
 import { useUserDataContext } from "@/context/user-data";
 import { MBTIResponseData } from "@/types/tests/mbti/responseData";
+import { sampleResultData } from "@/data/tests/ocean/oceanSampleData";
 
 export default function ReportPage() {
   const userDataContext = useUserDataContext();
@@ -25,43 +26,43 @@ export default function ReportPage() {
     // Get data from localStorage and handle saving to database
     const loadResultsAndSaveToDatabase = async () => {
       try {
-        // Get stored test results
-        const storedData = localStorage.getItem(TEST_RESULTS_KEY);
+        // // Get stored test results
+        // const storedData = localStorage.getItem(TEST_RESULTS_KEY);
 
-        if (!storedData) {
-          setError("No test results found. Please take the test first.");
-          setLoading(false);
-          return;
-        }
+        // if (!storedData) {
+        //   setError("No test results found. Please take the test first.");
+        //   setLoading(false);
+        //   return;
+        // }
 
-        const data: MBTIResponseData = JSON.parse(storedData);
+        // const data: MBTIResponseData = JSON.parse(storedData);
 
-        // Extract required data from localStorage format
-        const personalityType = data.raw_score?.personalityType;
-        const traitScores = data.raw_score?.traitScores;
-        const completionDate = data.taken_at
-          ? new Date(data.taken_at).toLocaleDateString()
-          : new Date().toLocaleDateString();
+        // // Extract required data from localStorage format
+        // const personalityType = data.raw_score?.personalityType;
+        // const traitScores = data.raw_score?.traitScores;
+        // const completionDate = data.taken_at
+        //   ? new Date(data.taken_at).toLocaleDateString()
+        //   : new Date().toLocaleDateString();
 
-        if (!personalityType) {
-          setError("Invalid test result data. Please retake the test.");
-          setLoading(false);
-          return;
-        }
+        // if (!personalityType) {
+        //   setError("Invalid test result data. Please retake the test.");
+        //   setLoading(false);
+        //   return;
+        // }
 
-        const personalityData = getPersonalityData(personalityType);
-        const personalityDescription =
-          getPersonalityDescription(personalityType);
+        // const personalityData = getPersonalityData(personalityType);
+        // const personalityDescription =
+        //   getPersonalityDescription(personalityType);
 
         // Set all result data at once
         setResultData({
           firstname: userData?.first_name || null,
           username: userData?.username || null,
-          personalityType: personalityType,
-          personalityDescription: personalityDescription,
-          completionDate,
-          traitScores,
-          personalityData,
+          personalityType: sampleResultData.personalityType,
+          personalityDescription: sampleResultData.personalityDescription,
+          completionDate: sampleResultData.completionDate,
+          traitScores: sampleResultData.traitScores,
+          personalityData: sampleResultData.personalityData,
         });
 
         setLoading(false);

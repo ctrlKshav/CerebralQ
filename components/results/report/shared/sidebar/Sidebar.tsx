@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useEffect, useState } from "react";
-import { SidebarNavMain } from "@/components/results/report/mbti/SidebarNavMain";
+import { SidebarNavMain } from "@/components/results/report/shared/sidebar/SidebarNavMain";
 import {
   Sidebar,
   SidebarContent,
