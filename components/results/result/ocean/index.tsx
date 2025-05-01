@@ -1,22 +1,21 @@
 ﻿import { useEffect, useState } from "react";
-import { ResultData } from "@/types/tests/mbti/results";
+import { ResultData } from "@/types/tests/ocean/results";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 // Import our components
-import { sampleResultData } from "@/data/tests/mbti/mbtiResultData";
+import { sampleResultData } from "@/data/tests/ocean/oceanSampleData";
 
-import HeroSection from "@/components/results/result/mbti/HeroSection";
+import HeroSection from "@/components/results/result/ocean/HeroSection";
 import { User } from "@/types/supabase/users";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 
 interface ResultCertificateProps {
-  userData: User | null;
   resultData: ResultData | null;
   historyPage: boolean,
 }
 
-export default function ResultCertificate({userData, resultData, historyPage = false}: ResultCertificateProps) {
+export default function ResultCertificate({ resultData, historyPage = false }: ResultCertificateProps) {
   const {
     personalityType,
     personalityDescription,
