@@ -17,9 +17,6 @@ const fadeIn = {
 export function MBTISection() {
   return (
     <section className="relative py-20 px-6 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30 dark:from-background dark:to-secondary/20 -z-10"></div>
-      <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(250,180,120,0.05),transparent_40%)] pointer-events-none"></div>
       
       <div className="container mx-auto max-w-6xl">
         <SectionHeader

@@ -27,7 +27,7 @@ export function SectionHeader({ icon, label, title, description }: SectionHeader
       variants={fadeIn}
     >
       <div className="flex items-center justify-center gap-3 mb-4">
-        <div className="bg-primary/10 p-2 rounded-full">
+        <div className=" p-2 rounded-full">
           {icon}
         </div>
         <span className="text-sm font-medium uppercase tracking-wider text-primary">{label}</span>

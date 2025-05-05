@@ -17,9 +17,6 @@ const fadeIn = {
 export function OCEANSection() {
   return (
     <section className="relative py-20 px-6 overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 to-background dark:from-secondary/20 dark:to-background -z-10"></div>
-      <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_20%,rgba(120,250,120,0.05),transparent_40%)] pointer-events-none"></div>
       
       <div className="container mx-auto max-w-6xl">
         <SectionHeader
