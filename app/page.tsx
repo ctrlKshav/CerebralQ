@@ -1,12 +1,14 @@
 "use client";
 import Hero from "@/components/landing-page/Hero";
-import DataVisuals from "@/components/landing-page/DataVisuals";
-import Features from "@/components/landing-page/Features";
-import TestsCarousel from "@/components/landing-page/TestsCarousel";
+import { Features } from "@/components/landing-page/Features";
 import Navbar from "@/components/navbar";
 import Team from "@/components/landing-page/Team";
 import { useUserDataContext } from "@/context/user-data";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
+import { VideoDemo } from "@/components/landing-page/VideoDemo";
+import { FinalCTA } from "@/components/landing-page/CTA";
+import { MBTISection } from "@/components/landing-page/MBTISection";
+import { OCEANSection } from "@/components/landing-page/OCEANSection";
 
 export default function Home() {
   const userDataContext = useUserDataContext();
@@ -22,10 +24,12 @@ export default function Home() {
     <>
       <Navbar user={userData} />
       <Hero />
-      <TestsCarousel />
+      <MBTISection />
+      <OCEANSection />
       <Features />
-      <DataVisuals />
+      <VideoDemo />
       <Team />
+      <FinalCTA />
     </>
   );
 }
