@@ -1,20 +1,79 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Layers } from "lucide-react";
+import { BadgeCheck, Fingerprint, Layers, Lightbulb, Users } from "lucide-react";
 
-const personalityTypes = [
-  { id: "INTJ", label: "The Architect", color: "from-violet-500/20 to-indigo-500/20" },
-  { id: "INFJ", label: "The Advocate", color: "from-blue-500/20 to-teal-500/20" },
-  { id: "ENFP", label: "The Campaigner", color: "from-amber-500/20 to-orange-500/20" },
-  { id: "ESTP", label: "The Entrepreneur", color: "from-red-500/20 to-orange-500/20" },
+const fadeIn = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0,
+    transition: { duration: 0.5 }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
+
+// The 4 MBTI dimensions
+const dimensions = [
+  {
+    title: "Mind",
+    types: ["Introversion (I)", "Extraversion (E)"],
+    description: "How we interact with our surroundings",
+    icon: <Users size={18} className="text-primary" />,
+    color: "border-l-primary/40"
+  },
+  {
+    title: "Energy",
+    types: ["Sensing (S)", "Intuition (N)"],
+    description: "How we see the world & process information",
+    icon: <Lightbulb size={18} className="text-amber-500" />,
+    color: "border-l-amber-500/40"
+  },
+  {
+    title: "Nature",
+    types: ["Thinking (T)", "Feeling (F)"],
+    description: "How we make decisions & cope with emotions",
+    icon: <BadgeCheck size={18} className="text-emerald-500" />,
+    color: "border-l-emerald-500/40"
+  },
+  {
+    title: "Tactics",
+    types: ["Judging (J)", "Perceiving (P)"],
+    description: "How we approach work, planning & decision-making",
+    icon: <Fingerprint size={18} className="text-violet-500" />,
+    color: "border-l-violet-500/40"
+  }
 ];
 
-const traits = [
-  { name: "Introversion (I)", color: "bg-cerebral-soft-blue/30", position: "left-[10%] top-[20%]" },
-  { name: "Extraversion (E)", color: "bg-cerebral-soft-orange/30", position: "right-[10%] top-[20%]" },
-  { name: "Sensing (S)", color: "bg-cerebral-soft-green/30", position: "left-[10%] bottom-[20%]" },
-  { name: "Intuition (N)", color: "bg-cerebral-soft-purple/30", position: "right-[10%] bottom-[20%]" },
+const typeCategories = [
+  { 
+    name: "Analysts", 
+    types: ["INTJ", "INTP", "ENTJ", "ENTP"],
+    description: "Strategic thinkers using logic & rationality"
+  },
+  { 
+    name: "Diplomats", 
+    types: ["INFJ", "INFP", "ENFJ", "ENFP"],
+    description: "Empathetic idealists guided by values & principles"
+  },
+  { 
+    name: "Sentinels", 
+    types: ["ISTJ", "ISFJ", "ESTJ", "ESFJ"],
+    description: "Practical organizers valuing cooperation & security"
+  },
+  { 
+    name: "Explorers", 
+    types: ["ISTP", "ISFP", "ESTP", "ESFP"],
+    description: "Versatile experimenters seeking freedom & excitement"
+  }
 ];
 
 export function MBTISection() {
@@ -22,150 +81,161 @@ export function MBTISection() {
     <section className="relative py-24 px-6 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-background to-secondary/30 dark:from-background dark:to-secondary/20 -z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_20%,rgba(120,120,250,0.05),transparent_40%)] pointer-events-none"></div>
+      <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_70%_80%,rgba(250,180,120,0.05),transparent_40%)] pointer-events-none"></div>
       
       <div className="container mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left content */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="bg-primary/10 p-2 rounded-lg">
-                <Layers className="h-6 w-6 text-primary" />
-              </div>
-              <h2 className="text-sm font-semibold uppercase tracking-wider text-primary">MBTI Assessment</h2>
+        {/* Header */}
+        <motion.div 
+          className="text-center mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="bg-primary/10 p-2 rounded-full">
+              <Layers className="h-5 w-5 text-primary" />
             </div>
-            
-            <h3 className="text-3xl md:text-4xl font-bold mb-6">Discover Your Personality Type</h3>
-            
-            <p className="text-lg text-muted-foreground mb-6">
-              The Myers-Briggs Type Indicator (MBTI) identifies how you perceive the world and make decisions, 
-              classifying personalities into 16 distinct types based on four key dichotomies.
-            </p>
-            
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              {traits.map((trait) => (
-                <motion.div
-                  key={trait.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                  className={`${trait.color} p-4 rounded-lg`}
-                >
-                  <h4 className="font-medium mb-1">{trait.name}</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {trait.name.includes("(I)") ? "Internal focus" : 
-                     trait.name.includes("(E)") ? "External focus" : 
-                     trait.name.includes("(S)") ? "Concrete details" : "Patterns & possibilities"}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-            
-            <Button className="rounded-full px-6">
-              Take the MBTI Assessment
-            </Button>
-          </motion.div>
+            <span className="text-sm font-medium uppercase tracking-wider text-primary">Personality Assessment</span>
+          </div>
           
-          {/* Right visualization */}
-          <div className="relative h-[500px]">
-            {/* Central circle */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center z-10"
-            >
-              <span className="text-xl font-semibold">16<br/>Types</span>
-            </motion.div>
-            
-            {/* Orbiting personality types */}
-            {personalityTypes.map((type, index) => (
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 tracking-tight">
+            Discover Your MBTI Profile
+          </h2>
+          
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
+            The Myers-Briggs Type Indicator® helps you understand your unique psychological preferences
+            and how you perceive the world and make decisions.
+          </p>
+        </motion.div>
+        
+        {/* MBTI Dimensions - Modern, horizontal layout */}
+        <motion.div 
+          className="mb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+        >
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold mb-3">The Four Key Dimensions</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              MBTI is based on four psychological dimensions, each representing two opposite preferences. 
+              Your unique combination forms your personality type.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-5">
+            {dimensions.map((dimension, index) => (
               <motion.div
-                key={type.id}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 * index, duration: 0.8 }}
-                className={`absolute glass-card rounded-lg p-4 shadow-lg border border-white/10 w-[140px] ${index === 0 ? 'left-0 top-[30%]' : 
-                                                                index === 1 ? 'left-[20%] top-[10%]' :
-                                                                index === 2 ? 'right-[20%] top-[10%]' :
-                                                                'right-0 top-[30%]'}`}
+                key={dimension.title}
+                variants={fadeIn}
+                className="bg-card/30 backdrop-blur-sm border border-border rounded-xl overflow-hidden"
               >
-                <div className={`h-16 rounded-lg mb-3 bg-gradient-to-br ${type.color} flex items-center justify-center text-2xl font-bold`}>
-                  {type.id}
+                <div className="px-6 py-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="p-1.5 rounded-full bg-background">
+                      {dimension.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold">{dimension.title}</h3>
+                  </div>
+                  
+                  <p className="text-sm text-muted-foreground mb-4">{dimension.description}</p>
+                  
+                  <div className="space-y-2">
+                    {dimension.types.map((type, i) => (
+                      <div 
+                        key={type} 
+                        className={`pl-3 py-2 border-l-2 ${dimension.color} text-sm font-medium`}
+                      >
+                        {type}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <h4 className="text-center text-sm font-medium">{type.label}</h4>
               </motion.div>
             ))}
-            
-            {/* Connecting lines */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <motion.path 
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.2 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.2 }}
-                d="M140 250 L250 250" 
-                stroke="currentColor" 
-                strokeWidth="1"
-              />
-              <motion.path 
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.2 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.4 }}
-                d="M250 250 L110 155" 
-                stroke="currentColor" 
-                strokeWidth="1"
-              />
-              <motion.path 
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.2 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.6 }}
-                d="M250 250 L390 155" 
-                stroke="currentColor" 
-                strokeWidth="1"
-              />
-              <motion.path 
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.2 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, delay: 0.8 }}
-                d="M250 250 L360 250" 
-                stroke="currentColor" 
-                strokeWidth="1"
-              />
-            </svg>
-            
-            {/* Additional personality types floating/rotating in background */}
-            <div className="absolute inset-0 overflow-hidden">
-              {["ISFP", "ESFJ", "ENTJ", "ISFJ", "INTP", "ENTP"].map((type, idx) => (
-                <motion.div
-                  key={type}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 0.15 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.7 + (idx * 0.1), duration: 0.8 }}
-                  className="absolute text-xl font-bold"
-                  style={{
-                    left: `${20 + (idx * 10)}%`,
-                    top: `${50 + (idx % 3 * 15)}%`,
-                    transform: `rotate(${(idx % 2) * 10}deg)`
-                  }}
-                >
-                  {type}
-                </motion.div>
-              ))}
-            </div>
           </div>
-        </div>
+        </motion.div>
+        
+        {/* 16 Personality Types - More professional table */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="mb-12"
+        >
+          <div className="text-center mb-10">
+            <h3 className="text-2xl font-bold mb-3">The 16 Personality Types</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Each personality type is a unique combination of the four dimensions, 
+              resulting in 16 distinctive personality profiles.
+            </p>
+          </div>
+          
+          <div className="space-y-8">
+            {typeCategories.map((category, index) => (
+              <motion.div
+                key={category.name}
+                variants={fadeIn}
+                className="relative"
+              >
+                <div className="bg-card/30 border border-border rounded-lg overflow-hidden">
+                  <div className="border-b border-border bg-muted/30 px-6 py-4">
+                    <h4 className="text-lg font-semibold">{category.name}</h4>
+                    <p className="text-xs text-muted-foreground mt-1">{category.description}</p>
+                  </div>
+                  
+                  <div className="p-6">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                      {category.types.map((type) => (
+                        <div 
+                          key={type} 
+                          className="bg-background border border-border rounded-md p-4 hover:border-primary/30 hover:shadow-sm transition-all"
+                        >
+                          <div className="text-xl font-bold mb-1">{type}</div>
+                          <div className="text-xs text-muted-foreground capitalize">
+                            {type === "INTJ" ? "The Architect" :
+                             type === "INTP" ? "The Logician" : 
+                             type === "ENTJ" ? "The Commander" :
+                             type === "ENTP" ? "The Debater" :
+                             type === "INFJ" ? "The Advocate" :
+                             type === "INFP" ? "The Mediator" :
+                             type === "ENFJ" ? "The Protagonist" :
+                             type === "ENFP" ? "The Campaigner" :
+                             type === "ISTJ" ? "The Logistician" :
+                             type === "ISFJ" ? "The Defender" :
+                             type === "ESTJ" ? "The Executive" :
+                             type === "ESFJ" ? "The Consul" :
+                             type === "ISTP" ? "The Virtuoso" :
+                             type === "ISFP" ? "The Artist" :
+                             type === "ESTP" ? "The Entrepreneur" :
+                             "The Entertainer"}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+        
+        {/* CTA */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="flex justify-center"
+        >
+          <Button className="rounded-full px-8 py-6 h-auto text-base shadow-lg shadow-primary/20">
+            Take the MBTI Assessment
+          </Button>
+        </motion.div>
       </div>
     </section>
   );
