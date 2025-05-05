@@ -16,7 +16,7 @@ import { CareerSuggestion } from "@/types/tests/mbti/results";
 // Add this near your imports
 import { Info, ChevronDown } from "lucide-react";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-
+import { CareerSuggestionsURL, CareerSuggestionsURLType } from "@/data/tests/mbti/careerSuggestionsUrls";
 interface CareerSuggestionsCardProps {
   careerSuggestions?: CareerSuggestion[];
   className?: string;
@@ -28,20 +28,27 @@ export default function CareerSuggestionsCard({
 }: CareerSuggestionsCardProps) {
   const careerData = careerSuggestions;
   const isMobile = useMediaQuery("(max-width: 968px)");
+  function getCareerImage(careerName: string, imageData: CareerSuggestionsURLType): string {
+    // Clean the career name: remove spaces, special characters and convert to lowercase
+    const words = careerName
+      .toLowerCase()
+      .replace(/[^a-z\s]/g, '')
+      .split(/\s+/);
 
-  const getCareerImage = (title: string) => {
-    const images: Record<string, string> = {
-      "Business Management":
-        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80",
-      Entrepreneurship:
-        "https://images.unsplash.com/photo-1523287562758-66c7fc58967f?auto=format&fit=crop&w=800&q=80",
-      Law: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
-      Engineering:
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
-    };
+    // Search through the resources to find a matching resource based on tags
+    const matchingResource = imageData.resources.find((resource) => {
+      // Check if any of the career name words match any of the resource's tags
+      return words.some(word => 
+        resource.tags.some(tag => 
+          tag.toLowerCase().includes(word)
+        )
+      );
+    });
 
-    return "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393726/careerSuggestions_utvtsq.jpg";
-  };
+    // Return the secure_url if found, otherwise return default image
+    return matchingResource ? matchingResource.secure_url : "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393726/careerSuggestions_utvtsq.jpg";
+  }
+
 
   return (
     <div className={`${className} py-12  mx-auto`}>
@@ -79,7 +86,7 @@ export default function CareerSuggestionsCard({
             <Card className="group overflow-hidden border bg-card h-full w-full flex flex-col hover:shadow-xl transition-all duration-300">
               <div className="relative h-56 md:h-64 overflow-hidden">
                 <Image
-                  src={getCareerImage(suggestion.title)}
+                  src={getCareerImage(suggestion.title, CareerSuggestionsURL)}
                   alt={suggestion.title}
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -90,13 +97,12 @@ export default function CareerSuggestionsCard({
                 <div className="absolute top-4 right-4">
                   <Badge
                     variant="secondary"
-                    className={`py-1.5 px-3 font-medium bg-background/90 backdrop-blur-sm text-sm ${
-                      suggestion.matchPercentage >= 90
-                        ? "bg-green-500/20 text-green-600"
-                        : suggestion.matchPercentage >= 80
-                          ? "bg-blue-500/20 text-blue-600"
-                          : "bg-orange-500/20 text-orange-600"
-                    }`}
+                    className={`py-1.5 px-3 font-medium bg-background/90 backdrop-blur-sm text-sm ${suggestion.matchPercentage >= 90
+                      ? "bg-green-500/20 text-green-600"
+                      : suggestion.matchPercentage >= 80
+                        ? "bg-blue-500/20 text-blue-600"
+                        : "bg-orange-500/20 text-orange-600"
+                      }`}
                   >
                     {suggestion.matchPercentage}% Match
                   </Badge>
