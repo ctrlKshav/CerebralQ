@@ -36,7 +36,7 @@ const HeroSection = ({
     INTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/intj_tvtwmy.jpg",
     INTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/intp_njepy8.jpg",
     ISFP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/isfp_vk5cdp.jpg",
-    INFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/infj_ytry83.jpg",
+    INFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393680/infj_t8zhg7.jpg",
     ISFJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/isfj_qhxdy3.jpg",
     ISTP: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/istp_zpck32.jpg",
     ISTJ: "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393691/istj_myx8ge.jpg",
