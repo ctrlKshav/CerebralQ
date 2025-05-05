@@ -2,6 +2,7 @@
 import { View, Text, StyleSheet, Image } from "@react-pdf/renderer";
 import { CareerSuggestion } from "@/types/tests/mbti/results";
 import { getThemeColors } from "../PDFTheme";
+import { CareerSuggestionsURL, CareerSuggestionsURLType } from "@/data/mbti/careerSuggestionsUrls";
 
 interface PDFCareerSuggestionCardProps {
   suggestion: CareerSuggestion;
@@ -69,19 +70,27 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     },
   });
 
-  const getCareerImage = (title: string) => {
-    const images: Record<string, string> = {
-      "Business Management":
-        "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80",
-      Entrepreneurship:
-        "https://images.unsplash.com/photo-1523287562758-66c7fc58967f?auto=format&fit=crop&w=800&q=80",
-      Law: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
-      Engineering:
-        "https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=800&q=80",
-    };
+  function getCareerImage(careerName: string, imageData: CareerSuggestionsURLType): string {
+    // Clean the career name: remove spaces, special characters and convert to lowercase
+    const words = careerName
+      .toLowerCase()
+      .replace(/[^a-z\s]/g, '')
+      .split(/\s+/);
 
-    return "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393726/careerSuggestions_utvtsq.jpg";
-  };
+    // Search through the resources to find a matching resource based on tags
+    const matchingResource = imageData.resources.find((resource) => {
+      // Check if any of the career name words match any of the resource's tags
+      return words.some(word => 
+        resource.tags.some(tag => 
+          tag.toLowerCase().includes(word)
+        )
+      );
+    });
+
+    // Return the secure_url if found, otherwise return default image
+    return matchingResource ? matchingResource.secure_url : "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393726/careerSuggestions_utvtsq.jpg";
+  }
+
 
   // We will only display up to 3 traits per card
   const displayTraits = suggestion?.qualityMatches?.slice(0, 3) || [];
@@ -97,7 +106,7 @@ const PDFCareerSuggestionCard: React.FC<PDFCareerSuggestionCardProps> = ({
     <View style={styles.card}>
       <View style={styles.imageContainer}>
         <Image
-          src={getCareerImage(suggestion.title)}
+          src={getCareerImage(suggestion.title, CareerSuggestionsURL)}
           style={styles.image}
           cache={true}
         />
