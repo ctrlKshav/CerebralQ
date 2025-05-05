@@ -29,25 +29,23 @@ export default function CareerSuggestionsCard({
   const careerData = careerSuggestions;
   const isMobile = useMediaQuery("(max-width: 968px)");
   function getCareerImage(careerName: string, imageData: CareerSuggestionsURLType): string {
-    // Clean the career name: remove spaces, underscores, and convert to lowercase
-    const cleanedCareerName = careerName
+    // Clean the career name: remove spaces, special characters and convert to lowercase
+    const words = careerName
       .toLowerCase()
-      .replace(/[\s_]+/g, '');
+      .replace(/[^a-z\s]/g, '')
+      .split(/\s+/);
 
-    // Search through the resources to find a matching public_id
+    // Search through the resources to find a matching resource based on tags
     const matchingResource = imageData.resources.find((resource) => {
-      // Clean the public_id: remove underscores, MBTI types, and random suffixes
-      const cleanedPublicId = resource.filename
-        .toLowerCase()
-        .replace(/(_\w{6}$)/, '') // Remove random suffixes like _zwipnn
-        .replace(/(_{1,2}(enfj|enfp|entj|entp|esfj|esfp|estj|estp|infj|infp|intj|intp|isfj|isfp|istj|istp))/, '') // Remove MBTI types
-        .replace(/(_{1,2}\d)/, '') // Remove numbers like _2, _4
-        .replace(/[\s_]+/g, '');
-
-      return cleanedPublicId === cleanedCareerName;
+      // Check if any of the career name words match any of the resource's tags
+      return words.some(word => 
+        resource.tags.some(tag => 
+          tag.toLowerCase().includes(word)
+        )
+      );
     });
 
-    // Return the secure_url if found, otherwise null
+    // Return the secure_url if found, otherwise return default image
     return matchingResource ? matchingResource.secure_url : "https://res.cloudinary.com/dhix3y82h/image/upload/v1745393726/careerSuggestions_utvtsq.jpg";
   }
 
