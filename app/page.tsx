@@ -7,8 +7,8 @@ import { useUserDataContext } from "@/context/user-data";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 import { VideoDemo } from "@/components/landing-page/VideoDemo";
 import { FinalCTA } from "@/components/landing-page/CTA";
-import { MBTISection } from "@/components/landing-page/MBTISection";
-import { OCEANSection } from "@/components/landing-page/OCEANSection";
+import { MBTISection } from "@/components/landing-page/MBTIInfo";
+import { OCEANSection } from "@/components/landing-page/OCEANInfo";
 
 export default function Home() {
   const userDataContext = useUserDataContext();
