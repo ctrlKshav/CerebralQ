@@ -7,7 +7,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { cn } from "@/lib/utils"
 import { features } from "@/data/features"
 import { useIsMobile } from "@/hooks/use-mobile"
-import { Icon } from "lucide-react"
+import { SectionHeader } from "./SectionHeader"
+import { ChartBar } from "lucide-react"
 
 export function Features() {
     const [activeFeature, setActiveFeature] = useState(features[0].id)
@@ -17,35 +18,16 @@ export function Features() {
 
 
     return (
-        <section className="w-full py-12 md:py-24 lg:py-32 overflow-hidden relative bg-background">
-            {/* Decorative background elements */}
-            <div className="absolute inset-0 -z-10 overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-[0.02] dark:opacity-[0.03]" />
-                <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
-                <div className="absolute -bottom-40 -left-40 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
-            </div>
+        <section className="relative py-24 px-6 overflow-hidden ">
+
+            <SectionHeader
+                icon={<ChartBar className="h-5 w-5 text-primary" />}
+                label="Premium Features"
+                title="What's included?"
+                description="Explore the powerful tools and visualizations that make Cerebral Quotient the premier personality assessment platform."
+            />
 
             <div className="container px-4 md:px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                    viewport={{ once: true }}
-                    className="flex flex-col items-center justify-center space-y-4 text-center mb-12"
-                >
-                    <div className="inline-block rounded-lg bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
-                        Platform Features
-                    </div>
-                    <div className="space-y-3 max-w-3xl">
-                        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl">
-                            Unlock Your True Personality
-                        </h2>
-                        <p className="text-muted-foreground md:text-xl/relaxed">
-                            Cerebral Quotient delivers comprehensive personality insights through scientifically validated
-                            assessments, detailed reports, and powerful analytics.
-                        </p>
-                    </div>
-                </motion.div>
 
                 {/* Mobile view: Stacked layout */}
                 {isMobile && (
