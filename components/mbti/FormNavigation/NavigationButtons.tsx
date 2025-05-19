@@ -44,8 +44,7 @@ export function NavigationButtons({
           type="button"
           onClick={onNext}
           variant={"default"}
-          className={`gap-2 flex items-center justify-center px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium focus:outline-none `}
-          autoFocus={true}
+          className={`gap-2 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 `}
         >
           <span className="inline-block">Next</span>
           <ArrowRight className="h-4 w-4 ml-1" />
