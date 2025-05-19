@@ -19,7 +19,7 @@ export function QuestionCard({ question }: QuestionCardProps) {
   }, [])
 
   return (
-    <Card className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-m-16
+    <Card className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-mt-24
       ${error ? 'ring-2 ring-red-500' : ''}`}>
       <CardHeader className="space-y-3 p-8">
         <div className="flex items-center gap-4">
