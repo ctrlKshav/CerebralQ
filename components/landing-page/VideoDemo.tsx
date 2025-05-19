@@ -6,7 +6,6 @@ import { SectionHeader } from "./SectionHeader";
 export function VideoDemo() {
   return (
     <section className="relative py-24 px-6 overflow-hidden">
-      <div className="container mx-auto max-w-6xl">
         <SectionHeader
           icon={<Film className="h-5 w-5 text-primary" />}
           label="Video Demo"
@@ -89,7 +88,6 @@ export function VideoDemo() {
           <div className="absolute bottom-0 left-0 w-8 h-8 border-l-2 border-b-2 border-white/20 rounded-bl-lg"></div>
           <div className="absolute bottom-0 right-0 w-8 h-8 border-r-2 border-b-2 border-white/20 rounded-br-lg"></div>
         </motion.div>
-      </div>
     </section>
   );
 }

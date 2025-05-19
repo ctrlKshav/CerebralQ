@@ -22,7 +22,6 @@ export function Features() {
 
   return (
     <section className="relative py-24 px-6 bg-secondary/50 dark:bg-secondary/20 overflow-hidden">
-      <div className="container mx-auto max-w-6xl">
         <SectionHeader
           icon={<ChartBar className="h-5 w-5 text-primary" />}
           label="Premium Features"
@@ -198,7 +197,6 @@ export function Features() {
             </TabsContent>
           ))}
         </Tabs>
-      </div>
     </section>
   );
 }

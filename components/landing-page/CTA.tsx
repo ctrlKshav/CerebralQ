@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 export function FinalCTA() {
   return (
     <section className="relative py-24 px-6">
-      <div className="container mx-auto max-w-4xl">
         <motion.div
           className="text-center space-y-8"
           initial={{ opacity: 0, y: 20 }}
@@ -48,7 +47,6 @@ export function FinalCTA() {
             </Button>
           </motion.div>
         </motion.div>
-      </div>
     </section>
   );
 }

@@ -17,9 +17,8 @@ const fadeIn = {
 
 export function OCEANSection() {
   return (
-    <section className="relative py-20 px-6 overflow-hidden">
+    <section className="relative py-20 px-6 overflow-hidden sm:container">
       
-      <div className="container mx-auto max-w-6xl">
         <SectionHeader
           icon={<Layers3 className="h-5 w-5 text-primary" />}
           label="Personality Assessment"
@@ -91,7 +90,6 @@ export function OCEANSection() {
             <OCEANIllustration />
           </motion.div>
         </div>
-      </div>
     </section>
   );
 } 
