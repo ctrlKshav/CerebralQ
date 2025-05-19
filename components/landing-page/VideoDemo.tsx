@@ -28,7 +28,6 @@ export function VideoDemo() {
             className="w-full h-full"
             allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
             allowFullScreen
-            frameBorder="0"
           />
         </div>
 
