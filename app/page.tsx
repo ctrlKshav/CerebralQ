@@ -8,7 +8,7 @@ import { VideoDemo } from "@/components/landing-page/VideoDemo";
 import { FinalCTA } from "@/components/landing-page/CTA";
 import { MBTISection } from "@/components/landing-page/MBTIInfo";
 import { OCEANSection } from "@/components/landing-page/OCEANInfo";
-import { Features } from "@/components/landing-page/Features";
+import { Features } from "@/components/landing-page/features";
 
 export default function Home() {
   const userDataContext = useUserDataContext();
