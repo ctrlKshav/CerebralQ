@@ -66,7 +66,7 @@ export function TestForm({
         </div>
         {/* Fixed Bottom Navigation */}
         <div className="fixed bottom-0 left-0 right-0 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-md">
-          <div className="max-w-3xl mx-auto px-4 xs:px-8 py-6">
+          <div className="max-w-3xl mx-auto px-4 xs:px-8 pt-6 pb-4">
             <FormNavigation
               onNext={onNext}
               onPrev={onPrev}

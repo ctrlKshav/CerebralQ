@@ -41,6 +41,7 @@ export function FormNavigation({
     currentQuestionCount <= currentSectionQuestionsLength * currentSectionId
       ? currentQuestionCount
       : currentQuestionCount - 1;
+
   const {
     formState: { errors },
     trigger,
@@ -70,35 +71,51 @@ export function FormNavigation({
 
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-col gap-1 mb-2 sticky bottom-0 z-20 pt-2">
-        <ProgressBar value={progressPercentage} />
-        <SectionAndQuestionCounter
-          currentSection={currentSectionId}
-          totalSections={totalSections}
-          currentQuestion={currentQuestion}
-          totalQuestions={totalQuestions}
-        />
-      </div>
       <ErrorMessage message={currentErrors ? "Please answer all questions before proceeding" : undefined} />
-      <AnimatePresence mode="wait">
-        {isSectionComplete && (
-          <motion.div
-            key="nav-buttons"
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 40 }}
-            transition={{ type: "spring", stiffness: 300, damping: 24 }}
-          >
-            <NavigationButtons
-              isFirstStep={isFirstStep}
-              isLastStep={isLastStep}
-              isCompleting={isCompleting}
-              onPrev={onPrev}
-              onNext={handleNextClick}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      
+      <motion.div 
+        layout
+        className="sticky bottom-0 z-20 pt-2"
+        transition={{ type: "spring", stiffness: 300, damping: 24 }}
+      >
+        <div className="flex flex-col gap-1">
+          <ProgressBar value={progressPercentage} />
+          <SectionAndQuestionCounter
+            currentSection={currentSectionId}
+            totalSections={totalSections}
+            currentQuestion={currentQuestion}
+            totalQuestions={totalQuestions}
+          />
+        </div>
+        
+        <motion.div
+          layout
+          initial={false}
+          transition={{ type: "spring", stiffness: 300, damping: 24 }}
+          className=""
+        >
+          <AnimatePresence mode="wait">
+            {isSectionComplete && (
+              <motion.div
+                key="nav-buttons"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ type: "spring", stiffness: 300, damping: 24 }}
+                className="mt-4"
+              >
+                <NavigationButtons
+                  isFirstStep={isFirstStep}
+                  isLastStep={isLastStep}
+                  isCompleting={isCompleting}
+                  onPrev={onPrev}
+                  onNext={handleNextClick}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
