@@ -22,7 +22,7 @@ export function Features() {
                 description="Explore the powerful tools and visualizations that make Cerebral Quotient the premier personality assessment platform."
             />
 
-            <div className="container px-4 md:px-6">
+            <div className="">
                 {isMobile ? (
                     <MobileFeatureList features={features} />
                 ) : (

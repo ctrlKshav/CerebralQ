@@ -1,22 +1,20 @@
-
 import { Feature } from "@/types/features"
 import { Brain, FileText, Share2, BarChart3, Lightbulb } from "lucide-react"
 
-// Feature data structure with enhanced copy and styling
+// Feature data structure with enhanced copy and styling for Cerebral Quotient
 export const features: Feature[] = [
   {
     id: "comprehensive-assessments",
-    title: "Complete Assessment Suite",
+    title: "Comprehensive Assessment Suite",
     description:
-      "Access all major personality frameworks in one platform. Get insights from MBTI, Big Five, HEXACO, and DISC to understand your complete psychological profile.",
+      "Take scientifically validated personality assessments including MBTI, Big Five, HEXACO, and DISC. Discover your cognitive patterns, behavioral tendencies, and psychological preferences in one comprehensive platform.",
     details: [
-      "Myers-Briggs Type Indicator (MBTI)",
-      "Big Five Personality Dimensions",
-      "HEXACO Personality Inventory",
-      "DISC Behavioral Assessment",
-      "Unified results across all frameworks",
+      "MBTI (Myers-Briggs Type Indicator) - 16 personality types",
+      "Big Five Personality Traits - Openness, Conscientiousness, Extraversion, Agreeableness, Neuroticism",
+      "HEXACO Personality Model - Six-factor personality assessment",
+      "DISC Assessment - Dominance, Influence, Steadiness, Conscientiousness",
     ],
-    image: "/placeholder.svg?height=500&width=600&text=Assessments",
+    image: "/placeholder.svg?height=500&width=600&text=Personality+Tests",
     icon: Brain,
     color: "bg-violet-600",
     textColor: "text-violet-600",
@@ -24,17 +22,17 @@ export const features: Feature[] = [
   },
   {
     id: "detailed-reports",
-    title: "In-Depth PDF Reports",
+    title: "Professional PDF Reports",
     description:
-      "Receive beautifully designed reports with actionable insights. Each report includes career guidance, relationship compatibility, and personal growth recommendations.",
+      "Receive comprehensive PDF reports with detailed analysis of your personality profile. Our reports provide actionable insights for personal development, career planning, and relationship building.",
     details: [
-      "Comprehensive personality analysis",
-      "Career path recommendations",
-      "Relationship compatibility insights",
-      "Personal growth strategies",
-      "Downloadable and shareable formats",
+      "Detailed personality type analysis and explanations",
+      "Strengths and growth areas identification",
+      "Career recommendations based on personality fit",
+      "Relationship and communication style insights",
+      "Professional-quality PDF format for easy sharing",
     ],
-    image: "/placeholder.svg?height=500&width=600&text=Reports",
+    image: "/placeholder.svg?height=500&width=600&text=PDF+Reports",
     icon: FileText,
     color: "bg-emerald-600",
     textColor: "text-emerald-600",
@@ -42,56 +40,38 @@ export const features: Feature[] = [
   },
   {
     id: "shareable-profiles",
-    title: "Custom Profile Pages",
+    title: "Shareable Personality Profiles",
     description:
-      "Create your digital personality identity with a custom URL. Share your profile with employers, partners, or friends to help them understand your unique traits.",
+      "Create your unique personality profile page at cerebralquotient.com/username. Share your results with friends, colleagues, or potential employers to help them understand your personality better.",
     details: [
-      "Personal URL (cerebralquotient.com/username)",
-      "Interactive personality visualizations",
-      "Social media integration",
-      "Privacy control settings",
-      "Professional presentation options",
+      "Custom URL: cerebralquotient.com/your-username",
+      "Beautiful, interactive personality visualizations",
+      "Easy sharing with friends and colleagues",
+      "Privacy settings to control what others see",
+      "Professional presentation for career networking",
     ],
-    image: "/placeholder.svg?height=500&width=600&text=Profiles",
+    image: "/placeholder.svg?height=500&width=600&text=Profile+Sharing",
     icon: Share2,
     color: "bg-rose-600",
     textColor: "text-rose-600",
     borderColor: "border-rose-600",
   },
   {
-    id: "advanced-analytics",
-    title: "Powerful Analytics Dashboard",
+    id: "personality-insights",
+    title: "Deep Personality Insights",
     description:
-      "Track your psychological evolution over time. Our analytics platform shows how life events shape your personality and helps you understand your behavioral patterns.",
+      "Unlock deeper understanding of your psychological makeup with our advanced analysis algorithms. Get insights into your behavioral patterns, cognitive preferences, and potential areas for growth.",
     details: [
-      "Longitudinal trait tracking",
-      "Comparative analysis tools",
-      "Behavioral pattern recognition",
-      "Historical data visualization",
-      "Personalized insight reports",
+      "Cognitive function stack analysis (MBTI)",
+      "Trait-level breakdowns with percentile scores",
+      "Behavioral predictions and tendencies",
+      "Personalized growth recommendations",
+      "Compatibility insights with other personality types",
     ],
-    image: "/placeholder.svg?height=500&width=600&text=Analytics",
+    image: "/placeholder.svg?height=500&width=600&text=Personality+Insights",
     icon: BarChart3,
     color: "bg-amber-600",
     textColor: "text-amber-600",
     borderColor: "border-amber-600",
-  },
-  {
-    id: "expert-science",
-    title: "Research-Backed Methodology",
-    description:
-      "Trust assessments built on solid psychological science. Our platform uses validated methodologies developed with leading researchers and academic institutions.",
-    details: [
-      "Psychometrically validated instruments",
-      "Evidence-based assessment design",
-      "Ongoing validation studies",
-      "Academic research partnerships",
-      "Transparent reliability metrics",
-    ],
-    image: "/placeholder.svg?height=500&width=600&text=Science",
-    icon: Lightbulb,
-    color: "bg-blue-600",
-    textColor: "text-blue-600",
-    borderColor: "border-blue-600",
   },
 ]
