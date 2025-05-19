@@ -1,6 +1,5 @@
 "use client";
 import Hero from "@/components/landing-page/Hero";
-import { Features } from "@/components/landing-page/Features";
 import Navbar from "@/components/navbar";
 import Team from "@/components/landing-page/Team";
 import { useUserDataContext } from "@/context/user-data";
@@ -9,6 +8,7 @@ import { VideoDemo } from "@/components/landing-page/VideoDemo";
 import { FinalCTA } from "@/components/landing-page/CTA";
 import { MBTISection } from "@/components/landing-page/MBTIInfo";
 import { OCEANSection } from "@/components/landing-page/OCEANInfo";
+import FeaturesComponent from "@/components/landing-page/Features";
 
 export default function Home() {
   const userDataContext = useUserDataContext();
@@ -26,7 +26,7 @@ export default function Home() {
       <Hero />
       <MBTISection />
       <OCEANSection />
-      <Features />
+      <FeaturesComponent />
       <VideoDemo />
       <Team />
       <FinalCTA />
