@@ -48,14 +48,20 @@ export function TestForm({
       <div className="min-h-screen relative">
         <div className="p-0 xs:p-8 pb-32">
           <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center ">
-            <div
-              key={currentSectionId}
-              className="w-full"
-            >
-              {sectionQuestions.map((question) => (
-                <QuestionCard key={question.id} question={question} />
-              ))}
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSectionId}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+                className="w-full"
+              >
+                {sectionQuestions.map((question) => (
+                  <QuestionCard key={question.id} question={question} />
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
         {/* Fixed Bottom Navigation */}
