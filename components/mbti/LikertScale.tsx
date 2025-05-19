@@ -20,18 +20,18 @@ export function LikertScale({ name }: LikertScaleProps) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearErrors(name);
     register(name).onChange(e);
-    
+
     // Find the current question card container
     const currentCard = e.currentTarget.closest('.question-card');
     // Find the next question card
     const nextCard = currentCard?.nextElementSibling;
-    
+
     // If there's a next question, scroll to it
     if (nextCard) {
-        nextCard.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
+      nextCard.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
   };
 
@@ -58,11 +58,10 @@ export function LikertScale({ name }: LikertScaleProps) {
                   className="form-control h-6 w-6"
                 />
                 <span
-                  className={`font-semibold ${
-                    isSelected 
-                      ? 'text-purple-600 dark:text-purple-400' 
+                  className={`font-semibold ${isSelected
+                      ? 'text-purple-600 dark:text-purple-400'
                       : 'text-gray-700 dark:text-gray-300'
-                  }`}
+                    }`}
                 >
                   {option.label}
                 </span>
