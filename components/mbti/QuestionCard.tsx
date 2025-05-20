@@ -9,17 +9,13 @@ import { MBTIResponse } from "@/schema/mbti";
 interface QuestionCardProps {
   question: TestQuestion;
   currentSectionId: number;
-  setIslastQuestionAnswered: (isLast: boolean) => void;
 }
 
 export function QuestionCard({
   question,
   currentSectionId,
-  setIslastQuestionAnswered,
 }: QuestionCardProps) {
-  const {
-    setValue,
-  } = useFormContext<MBTIResponse>();
+  const { setValue } = useFormContext<MBTIResponse>();
   const iconClass = question.iconColor || "text-primary";
 
   useEffect(() => {
@@ -57,7 +53,6 @@ export function QuestionCard({
         <LikertScale
           name={`answers.${question.id}.selectedScore`}
           currentSectionId={currentSectionId}
-          setIsLastQuestionAnswered={setIslastQuestionAnswered}
         />
       </CardContent>
     </Card>

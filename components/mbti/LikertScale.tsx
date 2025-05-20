@@ -14,14 +14,9 @@ const options = [
 interface LikertScaleProps {
   name: `answers.${string}.selectedScore`;
   currentSectionId: number;
-  setIsLastQuestionAnswered: (isLast: boolean) => void;
 }
 
-export function LikertScale({
-  name,
-  currentSectionId,
-  setIsLastQuestionAnswered,
-}: LikertScaleProps) {
+export function LikertScale({ name, currentSectionId }: LikertScaleProps) {
   const { register, watch, setError, clearErrors, getValues } =
     useFormContext<MBTIResponse>();
   const selectedValue = watch(name);

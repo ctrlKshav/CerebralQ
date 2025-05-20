@@ -23,9 +23,6 @@ export function TestForm({
   onPrev,
   isCompleting = false,
 }: TestFormProps) {
-  const [isLastQuestionAnswered, setIslastQuestionAnswered] =
-    useState<boolean>(false);
-
   const { watch, getValues } = useFormContext<MBTIResponse>();
   const answers = watch("answers", {}) as MBTIResponse["answers"];
 
@@ -81,7 +78,6 @@ export function TestForm({
                     key={question.id}
                     question={question}
                     currentSectionId={currentSectionId}
-                    setIslastQuestionAnswered={setIslastQuestionAnswered}
                   />
                 ))}
               </motion.div>
