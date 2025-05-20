@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useRef } from "react"
-import { features } from "@/data/features"
+import { features } from "@/data/landing-page/features"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { SectionHeader } from "../SectionHeader"
 import { ChartBar } from "lucide-react"

@@ -1,5 +1,5 @@
 "use client";
-import Hero from "@/components/landing-page/Hero";
+import Hero from "@/components/landing-page/hero";
 import Navbar from "@/components/navbar";
 import Team from "@/components/landing-page/Team";
 import { useUserDataContext } from "@/context/user-data";
