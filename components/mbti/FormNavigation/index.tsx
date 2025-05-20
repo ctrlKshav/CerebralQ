@@ -65,11 +65,11 @@ export function FormNavigation({
   return (
     <div className="flex flex-col gap-4">
       <ErrorMessage message={currentErrors ? "Please answer all questions before proceeding" : undefined} />
-      
-      <motion.div 
+
+      <motion.div
         layout
         className="sticky bottom-0 z-20 pt-2"
-        transition={{ type: "spring", stiffness: 300, damping: 24 }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
       >
         <div className="flex flex-col gap-1">
           <ProgressBar value={progressPercentage} />
@@ -80,21 +80,17 @@ export function FormNavigation({
             totalQuestions={totalQuestions}
           />
         </div>
-        
-        <motion.div
-          layout
-          initial={false}
-          transition={{ type: "spring", stiffness: 300, damping: 24 }}
-          className=""
-        >
+
+        <div>
           <AnimatePresence mode="wait">
             {isSectionComplete && (
               <motion.div
                 key="nav-buttons"
+                layout
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                transition={{ type: "spring", stiffness: 300, damping: 24 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="mt-4"
               >
                 <NavigationButtons
@@ -107,7 +103,7 @@ export function FormNavigation({
               </motion.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </div>
       </motion.div>
     </div>
   );
