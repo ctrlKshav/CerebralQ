@@ -58,7 +58,11 @@ export function TestForm({
                 className="w-full"
               >
                 {sectionQuestions.map((question) => (
-                  <QuestionCard key={question.id} question={question} />
+                  <QuestionCard
+                    key={question.id}
+                    question={question}
+                    currentSectionId={currentSectionId}
+                  />
                 ))}
               </motion.div>
             </AnimatePresence>

@@ -50,20 +50,6 @@ export default function MBTITest() {
     if (savedData) {
       methods.reset(savedData);
       const previousSectionId = savedData.currentSectionId;
-      if (previousSectionId && previousSectionId > 0) {
-        requestAnimationFrame(() => {
-          // Find all question cards for the current section
-          const questionCards = document.querySelectorAll(".question-card");
-          // If there are question cards, scroll to the last one
-          if (questionCards.length > 0) {
-            const lastQuestionCard = questionCards[questionCards.length - 1];
-            lastQuestionCard.scrollIntoView({
-              behavior: "smooth",
-              block: "center",
-            });
-          }
-        });
-      }
       setCurrentSectionId(previousSectionId);
     }
   }, [methods]);
@@ -145,12 +131,6 @@ export default function MBTITest() {
       setCurrentSectionId((prev) => prev + 1);
       smoothScrollToTop();
     }
-
-    const localStorageData = {
-      ...methods.getValues(),
-      currentSectionId: currentSectionId,
-    };
-    saveProgress(localStorageData);
   };
 
   const handlePrev = () => {
@@ -169,10 +149,16 @@ export default function MBTITest() {
       <Link href="/" className="hidden lg:block fixed z-50  left-8  ">
         <CQLogo className="w-28 h-28" />
       </Link>
-      <MobileTopbar currentStepText={currentStepText} testName={testData[0].test_name} />
+      <MobileTopbar
+        currentStepText={currentStepText}
+        testName={testData[0].test_name}
+      />
 
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit, onError)} className="flex">
+        <form
+          onSubmit={methods.handleSubmit(onSubmit, onError)}
+          className="flex"
+        >
           {/* Main Content */}
           <TestForm
             currentSectionId={currentSectionId}
