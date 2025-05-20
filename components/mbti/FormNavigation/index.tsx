@@ -1,8 +1,5 @@
 "use client";
-import { Button } from "@/components/ui/button";
-import { MBTIResponse } from "@/schema/mbti";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 import { ProgressBar } from "./ProgressBar";
@@ -49,10 +46,6 @@ export function FormNavigation({
 
   // Only show errors that were triggered by the Next button
   const currentErrors = Object.keys(errors.answers || {}).length > 0;
-
-  const handleNextClick = async () => {
-    onNext();
-  };
 
   const progressPercentage =
     ((currentQuestionCount - 1) / totalQuestions) * 100;
@@ -109,7 +102,7 @@ export function FormNavigation({
                   isLastStep={isLastStep}
                   isCompleting={isCompleting}
                   onPrev={onPrev}
-                  onNext={handleNextClick}
+                  onNext={onNext}
                 />
               </motion.div>
             )}
