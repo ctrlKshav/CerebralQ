@@ -4,6 +4,7 @@ import { TestQuestion } from "@/types/tests/mbti/testQuestions";
 import { useFormContext } from "react-hook-form";
 import { useEffect } from "react";
 import Icon from "@/components/Icon";
+import { MBTIResponse } from "@/schema/mbti";
 
 interface QuestionCardProps {
   question: TestQuestion;
@@ -17,12 +18,15 @@ export function QuestionCard({
   const {
     formState: { errors },
     setValue,
-  } = useFormContext<{ answers: Record<string, any> }>();
+  } = useFormContext<MBTIResponse>();
   const iconClass = question.iconColor || "text-primary";
   const error = errors.answers?.[question.id];
 
   useEffect(() => {
-    setValue(`answers.${question.id}.dimension`, question.dimension);
+    setValue(
+      `answers.${question.id}.dimension`,
+      question.dimension as MBTIResponse["answers"][string]["dimension"]
+    );
   }, []);
 
   return (
