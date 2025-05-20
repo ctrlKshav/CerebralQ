@@ -1,5 +1,5 @@
 ﻿"use client";
-import { useForm, FormProvider } from "react-hook-form";
+import { useForm, FormProvider, FieldErrors } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { mbtiResponseSchema, type MBTIResponse } from "@/schema/mbti";
@@ -76,14 +76,14 @@ export default function MBTITest() {
     const personalityResult = calculateMBTI(data.answers);
 
     // Create a single unified test result object
-    const testResultData : MBTIResponseData = {
+    const testResultData: MBTIResponseData = {
       // Database fields
       test_type_id: data.id,
       user_id: userID || "demo",
       raw_score: {
         personalityType: personalityResult.personalityType,
         // Convert traitScores to a plain object that can be serialized to JSON
-        traitScores: personalityResult.traitScores ,
+        traitScores: personalityResult.traitScores,
       },
       completion_time_minutes: 15, // Static for now
       validity_status: "valid", // Static for now
@@ -99,6 +99,10 @@ export default function MBTITest() {
     setTimeout(() => {
       router.push("/result");
     }, 0);
+  };
+
+  const onError = (error: FieldErrors<MBTIResponse>) => {
+    console.log(error);
   };
 
   const handleNext = async () => {
@@ -168,7 +172,7 @@ export default function MBTITest() {
       <MobileTopbar currentStepText={currentStepText} testName={testData[0].test_name} />
 
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
+        <form onSubmit={methods.handleSubmit(onSubmit, onError)} className="flex">
           {/* Main Content */}
           <TestForm
             currentSectionId={currentSectionId}
