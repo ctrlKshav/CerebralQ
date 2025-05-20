@@ -92,38 +92,6 @@ export default function MBTITest() {
   };
 
   const handleNext = async () => {
-    // Get all questions for the current section
-    const currentSectionQuestions = currentTest.questions.filter(
-      (q) => q.section === currentSectionId
-    );
-
-    // Check if all questions in current section are answered
-    const unansweredQuestions = currentSectionQuestions.filter(
-      (question) => !methods.getValues().answers[question.id]?.selectedScore
-    );
-
-    // If there are unanswered questions, set errors and scroll to first error
-    if (unansweredQuestions.length > 0) {
-      unansweredQuestions.forEach((question) => {
-        methods.setError(`answers.${question.id}.selectedScore`, {
-          type: "required",
-          message: "Please answer this question",
-        });
-      });
-
-      // Use requestAnimationFrame to ensure the error card is rendered before scrolling
-      requestAnimationFrame(() => {
-        const firstErrorCard = document.querySelector(".question-card.ring-2");
-        if (firstErrorCard) {
-          firstErrorCard.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-          });
-        }
-      });
-      return;
-    }
-
     // Clear any existing errors before moving to next section
     methods.clearErrors();
 

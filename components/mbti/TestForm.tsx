@@ -23,7 +23,10 @@ export function TestForm({
   onPrev,
   isCompleting = false,
 }: TestFormProps) {
-  const { watch } = useFormContext();
+  const [isLastQuestionAnswered, setIslastQuestionAnswered] =
+    useState<boolean>(false);
+
+  const { watch, getValues } = useFormContext<MBTIResponse>();
   const answers = watch("answers", {}) as MBTIResponse["answers"];
 
   const sectionQuestions = questions.filter(
@@ -42,6 +45,22 @@ export function TestForm({
   const isSectionComplete = sectionQuestions.every(
     (q) => answers[q.id]?.selectedScore
   );
+
+  useEffect(() => {
+    // Find the first unanswered question in the current section
+    const unanswered = sectionQuestions.find(
+      (question) => !getValues().answers[question.id]?.selectedScore
+    );
+    if (unanswered) {
+      // Find the corresponding question card in the DOM
+      const card = document.querySelector(
+        `.question-card[data-question-id='${unanswered.id}']`
+      );
+      if (card) {
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [sectionQuestions]);
 
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
@@ -62,6 +81,7 @@ export function TestForm({
                     key={question.id}
                     question={question}
                     currentSectionId={currentSectionId}
+                    setIslastQuestionAnswered={setIslastQuestionAnswered}
                   />
                 ))}
               </motion.div>

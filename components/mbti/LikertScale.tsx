@@ -14,10 +14,15 @@ const options = [
 interface LikertScaleProps {
   name: `answers.${string}.selectedScore`;
   currentSectionId: number;
+  setIsLastQuestionAnswered: (isLast: boolean) => void;
 }
 
-export function LikertScale({ name, currentSectionId }: LikertScaleProps) {
-  const { register, watch, clearErrors, getValues } =
+export function LikertScale({
+  name,
+  currentSectionId,
+  setIsLastQuestionAnswered,
+}: LikertScaleProps) {
+  const { register, watch, setError, clearErrors, getValues } =
     useFormContext<MBTIResponse>();
   const selectedValue = watch(name);
 
@@ -30,19 +35,6 @@ export function LikertScale({ name, currentSectionId }: LikertScaleProps) {
       currentSectionId: currentSectionId,
     };
     saveProgress(localStorageData);
-
-    // Find the current question card container
-    const currentCard = e.currentTarget.closest(".question-card");
-    // Find the next question card
-    const nextCard = currentCard?.nextElementSibling;
-
-    // If there's a next question, scroll to it
-    if (nextCard) {
-      nextCard.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
-    }
   };
 
   return (

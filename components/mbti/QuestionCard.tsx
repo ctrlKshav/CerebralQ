@@ -9,18 +9,18 @@ import { MBTIResponse } from "@/schema/mbti";
 interface QuestionCardProps {
   question: TestQuestion;
   currentSectionId: number;
+  setIslastQuestionAnswered: (isLast: boolean) => void;
 }
 
 export function QuestionCard({
   question,
   currentSectionId,
+  setIslastQuestionAnswered,
 }: QuestionCardProps) {
   const {
-    formState: { errors },
     setValue,
   } = useFormContext<MBTIResponse>();
   const iconClass = question.iconColor || "text-primary";
-  const error = errors.answers?.[question.id];
 
   useEffect(() => {
     setValue(
@@ -31,8 +31,8 @@ export function QuestionCard({
 
   return (
     <Card
-      className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-mt-24
-      ${error ? "ring-2 ring-red-500" : ""}`}
+      className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-mt-24`}
+      data-question-id={question.id}
     >
       <CardHeader className="space-y-3 p-8">
         <div className="flex items-center gap-4">
@@ -57,12 +57,8 @@ export function QuestionCard({
         <LikertScale
           name={`answers.${question.id}.selectedScore`}
           currentSectionId={currentSectionId}
+          setIsLastQuestionAnswered={setIslastQuestionAnswered}
         />
-        {error && (
-          <p className="mt-2 text-sm text-red-500">
-            {error.message?.toString()}
-          </p>
-        )}
       </CardContent>
     </Card>
   );
