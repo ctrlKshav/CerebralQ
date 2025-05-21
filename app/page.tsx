@@ -1,5 +1,5 @@
 "use client";
-import Hero from "@/components/landing-page/hero";
+import HeroSection from "@/components/landing-page/hero";
 import Navbar from "@/components/navbar";
 import Team from "@/components/landing-page/Team";
 import { useUserDataContext } from "@/context/user-data";
@@ -23,7 +23,9 @@ export default function Home() {
   return (
     <>
       <Navbar user={userData} />
-      <Hero />
+      <main className="mt-24">
+        <HeroSection />
+      </main>
       <MBTISection />
       <OCEANSection />
       <Features />
