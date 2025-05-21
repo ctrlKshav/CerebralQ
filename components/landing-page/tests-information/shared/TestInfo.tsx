@@ -53,7 +53,7 @@ export function TestInfo({
         description={description}
       />
 
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
         {/* Left side: Text content */}
         <motion.div
           initial="hidden"
@@ -75,7 +75,7 @@ export function TestInfo({
                 {benefitsContent}
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 text-center">
                 <Button size="lg" asChild>
                   <Link href={`/tests/${urlID}`}>{ctaText}</Link>
                 </Button>

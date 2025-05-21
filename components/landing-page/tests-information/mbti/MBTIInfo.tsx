@@ -47,7 +47,7 @@ export function MBTISection() {
       benefitsTitle="Benefits of MBTI Assessment"
       benefitsContent={benefitsContent}
       illustration={
-        <div className="relative w-full min-h-[300px] overflow-hidden border border-border shadow-lg rounded-lg">
+        <div className="relative w-full max-h-[400px] overflow-hidden border border-border shadow-lg rounded-lg">
           <Image
             src="/images/landingPage/MBTIResultCertificate.png"
             alt="MBTI Personality Assessment"
