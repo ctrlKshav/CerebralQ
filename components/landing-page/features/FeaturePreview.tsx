@@ -15,8 +15,8 @@ export function FeaturePreview({ features, activeFeature }: FeaturePreviewProps)
       className="w-1/2"
       style={{
         position: "sticky",
-        top: "6rem",
-        height: "500px",
+        top: "2rem",
+        height: "calc(100vh - 4rem)",
         alignSelf: "flex-start",
       }}
     >
@@ -25,7 +25,7 @@ export function FeaturePreview({ features, activeFeature }: FeaturePreviewProps)
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
-        className="h-full rounded-2xl overflow-hidden shadow-xl border"
+        className="h-full rounded-2xl overflow-hidden shadow-xl border relative"
       >
         <AnimatePresence mode="wait">
           {features.map(
