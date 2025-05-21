@@ -53,7 +53,56 @@ export function TestInfo({
         description={description}
       />
 
-      <div className="grid md:grid-cols-2 gap-12 items-center">
+      {/* Mobile layout (flex column) */}
+      <div className="lg:hidden flex flex-col gap-8">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+        >
+          <Card className="border-none shadow-none bg-transparent">
+            <CardContent className="p-0 space-y-6">
+              <div>
+                <h3 className="text-xl font-semibold mb-3">{whatIsTitle}</h3>
+                {whatIsContent}
+              </div>
+
+              <Separator />
+
+              <div>
+                <h3 className="text-xl font-semibold mb-3">{benefitsTitle}</h3>
+                {benefitsContent}
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="flex justify-center"
+        >
+          {illustration}
+        </motion.div>
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeIn}
+          className="text-center"
+        >
+          <Button size="lg" asChild>
+            <Link href={`/tests/${urlID}`}>{ctaText}</Link>
+          </Button>
+        </motion.div>
+      </div>
+
+      {/* Desktop layout (grid) */}
+      <div className="hidden lg:grid lg:grid-cols-2 gap-12 items-center">
         {/* Left side: Text content */}
         <motion.div
           initial="hidden"
@@ -75,7 +124,7 @@ export function TestInfo({
                 {benefitsContent}
               </div>
 
-              <div className="pt-4">
+              <div className="pt-4 text-center lg:text-left ">
                 <Button size="lg" asChild>
                   <Link href={`/tests/${urlID}`}>{ctaText}</Link>
                 </Button>
