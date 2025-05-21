@@ -1,25 +1,24 @@
 ﻿export const heroData = {
-    title: {
-      prefix: "Empower Your Creativity",
-      highlight: "Innovative",
-      suffix: "Tools",
+  title: {
+    prefix: "Discover Your",
+    highlight: "True Self",
+    suffix: "Through Science",
+  },
+  description:
+    "Take professional personality assessments like MBTI, Big Five, DISC and more to gain deep insights into your personality. Get detailed PDF reports and share your unique profile with friends.",
+  cta: {
+    primary: {
+      text: "Explore assessments",
+      href: "/tests",
     },
-    description:
-      "Unlock your potential with a suite of tools designed to transform your ideas into reality. Create, build, and inspire with ease while achieving stunning results that truly stand out.",
-    cta: {
-      primary: {
-        text: "Get started",
-        href: "/",
-      },
-      secondary: {
-        text: "Watch video",
-        href: "/",
-      },
+    secondary: {
+      text: "View Demo",
+      href: "/sample-report",
     },
-    announcement: {
-      label: "New",
-      text: "v2.2 is out now!",
-      href: "/",
-    },
-  }
-  
+  },
+  announcement: {
+    label: "New",
+    text: "Ocean Test Now Available!",
+    href: "/tests/ocean",
+  },
+};

@@ -9,11 +9,11 @@ export default function HeroSection() {
 
   return (
     <section className="min-h-screen w-full relative overflow-hidden py-8">
-      <div className="container px-4 mx-auto flex flex-col items-center text-center max-w-4xl">
+      <div className="container px-4 mx-auto flex flex-col items-center text-center max-w-4xl gap-10">
         {announcement && (
           <Link
             href={announcement.href}
-            className="inline-flex items-center mb-8 group"
+            className="inline-flex items-center group"
           >
             <Badge
               variant="outline"
@@ -28,7 +28,7 @@ export default function HeroSection() {
           </Link>
         )}
 
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight ">
           {title.prefix}{" "}
           <span className="relative inline-block">
             <span className="relative z-10 text-primary-foreground">
@@ -39,7 +39,7 @@ export default function HeroSection() {
           {title.suffix}
         </h1>
 
-        <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-3xl">
+        <p className="text-lg md:text-xl text-muted-foreground  max-w-3xl">
           {description}
         </p>
 
