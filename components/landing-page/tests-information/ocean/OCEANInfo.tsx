@@ -43,6 +43,7 @@ export function OCEANSection() {
 
   return (
     <TestInfo
+      urlID="ocean"
       icon={<Layers3 className="h-5 w-5 text-primary" />}
       label="Personality Assessment"
       title="The Big Five (OCEAN) Model"
@@ -53,7 +54,6 @@ export function OCEANSection() {
       benefitsContent={benefitsContent}
       illustration={<OCEANIllustration />}
       ctaText="Take OCEAN Assessment"
-      onCtaClick={() => console.log("OCEAN assessment clicked")}
     />
   );
 }

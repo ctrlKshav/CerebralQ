@@ -37,6 +37,7 @@ export function MBTISection() {
 
   return (
     <TestInfo
+      urlID="mbti"
       icon={<Layers className="h-5 w-5 text-primary" />}
       label="Personality Assessment"
       title="Myers-Briggs Type Indicator (MBTI)"
@@ -58,7 +59,6 @@ export function MBTISection() {
         </div>
       }
       ctaText="Take MBTI Assessment"
-      onCtaClick={() => console.log("MBTI assessment clicked")}
     />
   );
 }
