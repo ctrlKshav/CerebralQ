@@ -1,14 +1,14 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { QuestionCard } from "./QuestionCard";
-import { FormNavigation } from "./FormNavigation";
-import { TestQuestion, TestSections } from "@/types/tests/testQuestions";
+import { FormNavigation } from "./FormNavigation/index";
+import { OceanTestQuestion, TestSections } from "@/types/tests/testQuestions";
 import { OceanResponse } from "@/schema/ocean";
 import { useState, useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface TestFormProps {
   currentSectionId: number;
-  questions: TestQuestion[];
+  questions: OceanTestQuestion[];
   sections: TestSections;
   onNext: () => void;
   onPrev: () => void;
@@ -23,40 +23,27 @@ export function TestForm({
   onNext,
   onPrev,
   onSubmit,
-  isCompleting = false
+  isCompleting = false,
 }: TestFormProps) {
   const { watch } = useFormContext();
-  const answers = watch("answers") || {};
-  
-  const sectionQuestions = questions.filter(q => q.section === currentSectionId);
-  
+  const answers = watch("answers", {}) as OceanResponse["answers"];
+
+  const sectionQuestions = questions.filter(
+    (q) => q.section === currentSectionId
+  );
+
   // Track which questions have been answered
-  const answeredQuestionIds = Object.keys(answers)
-    .filter(id => answers[id]?.selectedScore);
-    
-  // Count questions answered in previous sections
-  const previousAnsweredCount = questions
-    .filter(q => q.section < currentSectionId)
-    .length;
-    
-  // Count questions answered in current section
-  const currentSectionAnsweredCount = sectionQuestions
-    .filter(q => answeredQuestionIds.includes(q.id))
-    .length;
-    
-  // Calculate current question position
-  const currentQuestionCount = previousAnsweredCount + 
-    (currentSectionAnsweredCount < sectionQuestions.length ? 
-      currentSectionAnsweredCount + 1 : // Next unanswered question
-      sectionQuestions.length); // All answered in section
-      
+  const answeredQuestionIds = Object.keys(answers).filter(
+    (id) => answers[id]?.selectedScore
+  );
+
   const totalQuestions = questions.length;
-  
-  // Handle answer selection to update question count
-  const handleAnswerSelected = (questionId: string) => {
-    // The component will re-render with updated answeredQuestionIds
-    // which will recalculate currentQuestionCount
-  };
+
+  const currentQuestionCount = answeredQuestionIds.length + 1;
+
+  const isSectionComplete = sectionQuestions.every(
+    (q) => answers[q.id]?.selectedScore
+  );
 
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
@@ -73,12 +60,7 @@ export function TestForm({
                 className="w-full"
               >
                 {sectionQuestions.map((question) => (
-                  <QuestionCard
-                    key={question.id}
-                    question={question}
-                    name={`answers.${question.id}`}
-                    onAnswerSelected={handleAnswerSelected}
-                  />
+                  <QuestionCard key={question.id} question={question} />
                 ))}
               </motion.div>
             </AnimatePresence>
@@ -88,20 +70,21 @@ export function TestForm({
         <div className="fixed bottom-0 left-0 right-0 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-md">
           <div className="max-w-3xl mx-auto px-8 py-6">
             <FormNavigation
-              onSubmit={onSubmit}
               onNext={onNext}
               onPrev={onPrev}
               isFirstStep={currentSectionId === 1}
               isLastStep={currentSectionId === Object.keys(sections).length}
               currentSectionId={currentSectionId}
               totalSections={Object.keys(sections).length}
+              currentSectionQuestionsLength={sectionQuestions.length}
               currentQuestionCount={currentQuestionCount}
               totalQuestions={totalQuestions}
               isCompleting={isCompleting}
+              isSectionComplete={isSectionComplete}
             />
           </div>
         </div>
       </div>
     </div>
   );
-} 
+}

@@ -1,4 +1,5 @@
 ﻿import { MBTIRawScore } from "@/types/supabase/user-test-history";
+import { TraitScores } from "@/types/tests/mbti/traits";
 
 export interface MBTIResponseData {
   test_type_id: string;
@@ -8,5 +9,10 @@ export interface MBTIResponseData {
   validity_status: string;
   is_public: boolean;
   taken_at: string;
-    
 }
+
+export type CalculatedMBTIResult = {
+  personalityType: string;
+  traitScores: TraitScores;
+};
+  

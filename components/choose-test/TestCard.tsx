@@ -84,21 +84,21 @@ export function TestCard({ test }: TestCardProps) {
               <div className="flex mt-2 gap-2">
                 <Badge
                   variant="default"
-                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} opacity-80 text-white`}
+                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} hover:${test.colorClass} opacity-80 text-white`}
                 >
                   <Clock className="h-3 w-3 mr-1" />
                   {test.badges.testDuration}
                 </Badge>
                 <Badge
                   variant="default"
-                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} opacity-80 text-white`}
+                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} hover:${test.colorClass} opacity-80 text-white`}
                 >
                   <Users className="h-3 w-3 mr-1" />
                   {test.badges.traitCount}
                 </Badge>
                 <Badge
                   variant="default"
-                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} opacity-80 text-white`}
+                  className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} hover:${test.colorClass} opacity-80 text-white`}
                 >
                   {test.badges.quality}
                 </Badge>
@@ -112,7 +112,7 @@ export function TestCard({ test }: TestCardProps) {
           <div className="h-full">
             <div className="space-y-4 mt-6">
               {test.features.map((feature, index) => (
-                <div className="flex items-center">
+                <div className="flex items-center" key={index}>
                   <span
                     className={`w-8 h-8 flex items-center justify-center rounded-full ${feature.iconColorClass} mr-3`}
                   >

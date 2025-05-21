@@ -96,7 +96,7 @@ export default function TestCard({ result, onViewDetailedReport }: TestCardProps
       </CardContent>
 
       <CardFooter className="relative z-10 pt-4 px-8 pb-10 flex justify-center md:justify-end">
-        <Link href={"/account/result"}>
+        <Link href={"/account/result/mbti"}>
           <Button
             className={`relative overflow-hidden group/button bg-gradient-to-r ${result.color} text-white shadow-lg hover:shadow-xl border-0 px-6 py-6`}
             onClick={() => {

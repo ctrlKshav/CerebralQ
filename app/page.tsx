@@ -1,19 +1,37 @@
-import Hero from "@/components/landing-page/Hero";
-import DataVisuals from "@/components/landing-page/DataVisuals";
-import Features from "@/components/landing-page/Features";
-import TestsCarousel  from "@/components/landing-page/TestsCarousel";
+"use client";
+import HeroSection from "@/components/landing-page/Hero";
 import Navbar from "@/components/navbar";
 import Team from "@/components/landing-page/Team";
+import { useUserDataContext } from "@/context/user-data";
+import LoadingSkeleton from "@/components/LoadingSkeleton";
+import { VideoDemo } from "@/components/landing-page/VideoDemo";
+import { FinalCTA } from "@/components/landing-page/CTA";
+import { MBTISection } from "@/components/landing-page/tests-information/mbti/MBTIInfo";
+import { OCEANSection } from "@/components/landing-page/tests-information/ocean/OCEANInfo";
+import { Features } from "@/components/landing-page/features";
 
-export default async function Home() {
+export default function Home() {
+  const userDataContext = useUserDataContext();
+
+  if (userDataContext === null) {
+    return null;
+  }
+
+  const { userData, loading } = userDataContext;
+
+  if (loading) return <LoadingSkeleton />;
   return (
     <>
-      <Navbar className="" />
-      <Hero />
-      <TestsCarousel />
+      <Navbar user={userData} />
+      <main className="mt-24">
+        <HeroSection />
+      </main>
+      <MBTISection />
+      <OCEANSection />
       <Features />
-      <DataVisuals />
+      <VideoDemo />
       <Team />
+      <FinalCTA />
     </>
   );
 }

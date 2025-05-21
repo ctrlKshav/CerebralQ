@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { oceanResponseSchema, type OceanResponse } from "@/schema/ocean";
 import { saveProgress, loadProgress } from "@/lib/oceanStorage";
-import { calculateOcean } from "@/lib/calculateOcean";
+import { calculateOcean } from "@/lib/calculateTestScores/calculateOcean";
 import { smoothScrollToTop } from "@/lib/utils";
 import { TestForm } from "./TestForm";
 import { useRouter } from "next/navigation";
@@ -14,12 +14,16 @@ import CQLogo from "../../CQLogo";
 import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabase-operations";
 import { OCEAN_PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
-import { TestQuestionsData } from "@/types/tests/testQuestions";
+import { OceanTestQuestionsData } from "@/types/tests/testQuestions";
 import type { OceanTraitScores } from "@/types/tests/ocean/traits";
 // Local storage keys
 const TEST_RESULTS_KEY = "cerebralq_ocean_results";
 
-export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuestionsData: TestQuestionsData }) {
+export default function OceanTest({
+  oceanTestQuestionsData,
+}: {
+  oceanTestQuestionsData: OceanTestQuestionsData;
+}) {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
   const [isCompleting, setIsCompleting] = useState(false);
@@ -32,7 +36,7 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
     defaultValues: {
       id: currentTest.id,
       answers: {},
-      createdAt: new Date().toISOString(), // set default createdAt
+      takenAt: new Date().toISOString(), // set default takenAt
       testVariant: currentTest.id,
     },
   });
@@ -72,10 +76,11 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
   const onSubmit = async (data: OceanResponse) => {
     // Set completing state to true to show full progress bar
     setIsCompleting(true);
-    // localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
-    console.log(data)
+
+    localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
+    console.log(data);
     const oceanResult = calculateOcean(data.answers, currentTest);
-    console.log('hi')
+    console.log("hi");
     console.log(oceanResult);
     // Create a single unified test result object
     const testResultData = {
@@ -94,8 +99,8 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
     // Store results in local storage
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
-
-    router.push("/result");
+    setIsCompleting(false);
+    // router.push("/result/ocean");
   };
 
   const handleNext = async () => {
@@ -162,7 +167,10 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
       <Link href="/" className="hidden lg:block fixed z-50  left-8  ">
         <CQLogo className="w-28 h-28" />
       </Link>
-      <MobileTopbar currentStepText={currentStepText} testName={oceanTestQuestionsData.test_name} />
+      <MobileTopbar
+        currentStepText={currentStepText}
+        testName={oceanTestQuestionsData.test_name}
+      />
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
@@ -180,4 +188,4 @@ export default function OceanTest( { oceanTestQuestionsData }: { oceanTestQuesti
       </FormProvider>
     </div>
   );
-} 
+}

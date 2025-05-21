@@ -1,7 +1,7 @@
 ﻿import React from "react";
 import { Text, View, StyleSheet } from "@react-pdf/renderer";
 import type { TraitScores } from "@/types/tests/mbti/traits";
-import { getPersonalityTraitDescriptions } from "@/data/mbti/traitDescriptions";
+import { getPersonalityTraitDescriptions } from "@/data/tests/mbti/traitDescriptions";
 import { createBaseStyles, getThemeColors } from "./PDFTheme";
 import { PDFLogo } from "./PDFLogo";
 import PDFFooter from "./shared/PDFFooter";

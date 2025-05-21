@@ -4,7 +4,7 @@ import { useState } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Users, Sparkles, LucideIcon, Briefcase, Heart, Brain, ChevronDown, ChevronUp } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
-import { personalityDatabase } from "@/data/mbti/oldData/personalityDatabase"
+import { personalityDatabase } from "@/data/tests/mbti/oldData/personalityDatabase"
 import { Button } from "@/components/ui/button"
 
 interface MBTIInsightsProps {

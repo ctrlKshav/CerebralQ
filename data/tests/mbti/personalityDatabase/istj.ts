@@ -3,79 +3,93 @@
 export const ISTJData: PersonalityDatabase = {
   career: {
     summary:
-      "You’re a total pro in jobs that need someone to keep things on track—like organizing events, crunching numbers, or managing a team’s schedule. You love having a clear to-do list and checking things off, but you might feel a bit thrown off if someone changes the game plan without warning.",
+      `You excel in roles requiring organization and reliability, {firstname}. Your methodical approach to solving problems and attention to detail make you invaluable in roles that require precision and consistency. While you thrive in structured environments with clear expectations, you might find overly chaotic or constantly changing workplaces draining.`,
     superpowers: [
       {
-        title: "Getting Stuff Done",
+        title: `Organization`,
         description:
-          "You’re the one who always delivers, {firstname}—like finishing a project way before the deadline.",
+          `You can bring order to chaos, like taking a messy project and creating a clear plan forward.`,
       },
       {
-        title: "Keeping It Organized",
+        title: `Reliability`,
         description:
-          "You make sure nothing slips through the cracks, like color-coding your notes for a big meeting.",
+          `People know they can count on you—always following through on commitments.`,
       },
     ],
     growthAreas: [
       {
-        title: "Rolling with Changes",
+        title: `Adaptability`,
         description:
-          "Last-minute shifts can stress you out—like when a boss switches up a deadline.",
+          `You might find unexpected changes challenging—like when project requirements shift suddenly.`,
       },
       {
-        title: "Trying New Things",
+        title: `Big-Picture Thinking`,
         description:
-          "You might stick to what you know, but trying a new idea can lead to cool opportunities.",
+          `You sometimes focus so much on details that you miss broader implications or strategic opportunities.`,
       },
     ],
     suggestions: [
       {
-        title: "Project Coordinator",
+        title: `Project Coordinator`,
         matchPercentage: 90,
         description:
-          "Your organizational skills and attention to detail make you a natural at managing projects and keeping teams on track.",
+          `Your organizational skills and reliability make you perfect for ensuring projects stay on track and meet deadlines.`,
         qualityMatches: [
           {
-            title: "Organization",
-            description: "You excel at creating structure and order.",
+            title: `Organization`,
+            description: `You excel at tracking details and maintaining order.`,
           },
           {
-            title: "Reliability",
-            description:
-              "You ensure deadlines are met and tasks are completed.",
+            title: `Dependability`,
+            description: `Team members can count on you to follow through.`,
           },
         ],
       },
       {
-        title: "Data Analyst",
+        title: `Data Analyst`,
         matchPercentage: 88,
         description:
-          "Your logical thinking and precision make you a pro at analyzing data and finding patterns.",
+          `Your analytical mindset and attention to detail make you excellent at finding patterns in data and providing accurate insights.`,
         qualityMatches: [
           {
-            title: "Analytical Skills",
-            description: "You’re great at breaking down complex information.",
+            title: `Precision`,
+            description: `You're meticulous and thorough in your analysis.`,
           },
           {
-            title: "Attention to Detail",
-            description:
-              "You spot errors and inconsistencies others might miss.",
+            title: `Logic`,
+            description: `You apply clear reasoning to complex information.`,
           },
         ],
       },
       {
-        title: "Accountant",
+        title: `Accountant`,
         matchPercentage: 86,
         description:
-          "Your methodical approach and trustworthiness make you a perfect fit for managing finances and ensuring accuracy.",
+          `Your precision and dependability make you well-suited for maintaining financial records and ensuring compliance with regulations.`,
         qualityMatches: [
           {
-            title: "Precision",
-            description: "You handle numbers with care and accuracy.",
+            title: `Attention to Detail`,
+            description: `You catch discrepancies others might miss.`,
           },
           {
-            title: "Dependability",
-            description: "You’re trusted to manage important financial tasks.",
+            title: `Process Orientation`,
+            description: `You follow established procedures meticulously.`,
+          },
+        ],
+      },
+      {
+        title: `Quality Assurance Specialist`,
+        matchPercentage: 89,
+        description:
+          `Your eye for detail and commitment to standards make you exceptional at ensuring products and processes meet quality requirements. You excel at creating and implementing thorough testing procedures.`,
+        qualityMatches: [
+          {
+            title: `Methodical Approach`,
+            description: `You develop comprehensive testing protocols that leave no stone unturned.`,
+          },
+          {
+            title: `Consistency`,
+            description: `You maintain high standards across all your work, ensuring reliable outcomes.`,
           },
         ],
       },
@@ -84,255 +98,255 @@ export const ISTJData: PersonalityDatabase = {
       {
         number: 1,
         description:
-          "Pick one small new thing to try at work this week—like joining a team brainstorm or testing a new app for your tasks.",
+          `Try a small experiment this week: when a plan changes, take three deep breaths before responding and look for one positive in the change.`,
       },
       {
         number: 2,
         description:
-          "If plans change, take a deep breath and break the new task into small steps you can tackle one at a time.",
+          `During your next project, schedule 15 minutes to think about how your work connects to larger goals or impacts others.`,
       },
       {
         number: 3,
         description:
-          "Look for jobs that love your skills, like being a project coordinator or data analyst—your kind of vibe!",
+          `Look for jobs that value precision and follow-through—your detail-oriented approach will shine!`,
       },
     ],
   },
   relationships: [
     {
-      title: "Relationships",
-      subtitle: "How You Show Up in Relationships, {firstname}",
+      title: `Relationships`,
+      subtitle: `How You Connect in Close Relationships, {firstname}`,
       description:
-        "You’re the steady, loyal one in your relationships, {firstname}—whether it’s with your partner, family, or besties. You show you care by being there, like helping a friend move or remembering your sibling’s big day, but you might not always share what’s going on inside your heart.",
-        compatibleTypes: ['ESFP', 'ESTP', 'ENFP', 'ESTJ', 'ISFJ', 'ENTJ', 'ISTP'],
+        `In close relationships, you're loyal and dependable, {firstname}—someone people can truly count on. You show your love through practical acts like making sure your partner's car is maintained or remembering important dates. You value stability and commitment, and once you're in, you're all in.`,
+      compatibleTypes: [`ESFP`, `ESTP`, `ENFP`, `ENTP`, `ISTJ`, `ISFJ`, `ESTJ`],
       superpowers: [
         {
-          title: "Being There",
+          title: `Steadfast Loyalty`,
           description:
-            "People know they can count on you—like when you’re the first to show up for a friend in need.",
+            `Once you commit to someone, you're there through thick and thin—like making soup when they're sick or helping them move across town.`,
         },
         {
-          title: "Staying True",
+          title: `Practical Support`,
           description:
-            "You’re all about loyalty, {firstname}, building trust with the people you love most.",
+            `You show love through tangible help, like fixing things around the house or making sure bills are paid on time.`,
         },
       ],
       growthAreas: [
         {
-          title: "Opening Up",
+          title: `Emotional Expression`,
           description:
-            "You might keep your feelings to yourself—like not saying how much you appreciated a sweet gesture.",
+            `You might find it challenging to share your deeper feelings—like telling your partner when something is bothering you instead of keeping it inside.`,
         },
         {
-          title: "Going with the Flow",
+          title: `Embracing Spontaneity`,
           description:
-            "You love your routines, but a spontaneous date night might catch you off guard.",
+            `You prefer structure and might resist last-minute plans—like when your partner suggests an impromptu weekend trip.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "This week, tell someone you care about how you feel—like “I loved how you cheered me up yesterday.”",
+            `Practice sharing one feeling each day with someone close to you, even something simple like "I felt happy when we had dinner together."`,
         },
         {
           number: 2,
           description:
-            "Say “yes” to a last-minute plan, like grabbing ice cream with your partner or a friend—it’ll feel good to mix things up!",
+            `Once a month, say yes to a spontaneous activity your partner or friend suggests, even if it feels out of your comfort zone.`,
         },
         {
           number: 3,
           description:
-            "Look for people who get your practical side, {firstname}—someone who loves your dependability as much as you do.",
+            `Look for someone who appreciates your loyalty and practical nature but can also gently encourage you to open up emotionally.`,
         },
       ],
     },
     {
-      title: "Friendships",
-      subtitle: "How You Shine with Friends, {firstname}",
+      title: `Friendships`,
+      subtitle: `Your Friendship Style, {firstname}`,
       description:
-        "You’re the friend everyone knows they can rely on, {firstname}—always there to help with a study session or plan a chill hangout. You love having a tight-knit crew you can trust, rather than a huge group of acquaintances.",
-        compatibleTypes: ['ESTJ', 'ISFJ', 'ENTJ', 'INTJ', 'ISTP', 'ISTJ', 'ESTP'],
+        `As a friend, you're reliable and genuine. You may have a smaller circle of friends, but your connections are deep and long-lasting. You'll be there when your friends need practical help or sound advice, and they know they can count on you to follow through.`,
+      compatibleTypes: [`ESFP`, `ESTP`, `ENFP`, `ENTP`, `ISTJ`, `ISFJ`, `ESTJ`],
       superpowers: [
         {
-          title: "Being Solid",
+          title: `Reliable Presence`,
           description:
-            "Your friends know you’ll show up—like when you helped them finish a last-minute project.",
+            `Your friends know they can count on you—like when you always show up to help them move or drive them to the airport at 5 am.`,
         },
         {
-          title: "Giving Real Help",
+          title: `Thoughtful Advice`,
           description:
-            "You’re the one they call for practical advice, like figuring out a budget for a trip.",
+            `You give practical, well-considered guidance that actually helps people solve their problems.`,
         },
       ],
       growthAreas: [
         {
-          title: "Sharing More",
+          title: `Initiating Get-Togethers`,
           description:
-            "You might not always tell your friends what’s on your mind—like how you’re feeling about a tough day.",
+            `You might wait for others to make plans rather than suggesting activities yourself.`,
         },
         {
-          title: "Mixing It Up",
+          title: `Opening Up`,
           description:
-            "You might stick to the same hangouts—like always going to the same café—when a new spot could be fun.",
+            `You might keep conversations on the surface rather than sharing what's really on your mind or asking deeper questions.`,
         },
       ],
       actionSteps: [
         {
           number: 1,
           description:
-            "Share something personal with a friend this month—like how you’re feeling about a new job or class.",
+            `Take the initiative to plan one friendship activity this month, like inviting a friend for coffee or organizing a small gathering.`,
         },
         {
           number: 2,
           description:
-            "Suggest a new hangout spot, like a local park or a new coffee shop, to switch things up with your crew.",
+            `During your next conversation with a close friend, share something you've been thinking about lately that you normally wouldn't bring up.`,
         },
       ],
     },
   ],
   growth: {
     summary:
-      "Growth for you is all about building on what you’re already great at while finding ways to loosen up a bit, {firstname}. You’re amazing at staying focused and getting things done, but you might put a lot of pressure on yourself to be perfect.",
+      `Personal growth for you, {firstname}, involves building on your natural strengths while gently pushing yourself to try new experiences. It's about being a little kinder to yourself when things don't go according to plan and recognizing that sometimes the most valuable learning comes from unexpected detours.`,
     superpowers: [
       {
-        title: "Staying Committed",
+        title: `Systematic Approach`,
         description:
-          "You never give up on your goals, {firstname}—like sticking to a study schedule all semester.",
+          `You excel at breaking down goals into manageable steps—like creating a detailed plan to learn a new skill.`,
       },
       {
-        title: "Being Real",
+        title: `Commitment`,
         description:
-          "You approach growth with a practical mindset, keeping it grounded and doable.",
+          `Once you decide to grow in an area, you stick with it—consistently showing up to practice or study.`,
       },
     ],
     growthAreas: [
       {
-        title: "Being Kinder to Yourself",
+        title: `Self-Compassion`,
         description:
-          "You might stress if things aren’t perfect—like beating yourself up over a small mistake.",
+          `You might be too hard on yourself when things don't go perfectly—like when you make a minor mistake on a project.`,
       },
       {
-        title: "Trying New Vibes",
+        title: `Comfort with Uncertainty`,
         description:
-          "Letting go of control sometimes can open up new possibilities for you.",
+          `You might avoid growth opportunities that don't have clear paths or outcomes—like declining a position that has evolving responsibilities.`,
       },
     ],
     actionSteps: [
       {
         number: 1,
         description:
-          "At the end of each day, write down one thing you’re proud of—like “I nailed that presentation today.”",
+          `When you make a mistake this week, practice saying to yourself: "This is a normal part of learning, and it doesn't define my worth."`,
       },
       {
         number: 2,
         description:
-          "Do one spontaneous thing each week, like taking a new route to class or trying a new food—it’ll feel refreshing!",
+          `Try one new activity this month that doesn't have a clear "right way" to do it—maybe an art class or improv workshop.`,
       },
       {
         number: 3,
         description:
-          "Set a fun goal, like learning to bake your favorite dessert, to balance your practical side with something new.",
+          `Create a small, consistent practice that builds a skill you want to develop—even just 10 minutes daily can lead to meaningful growth.`,
       },
     ],
   },
   actionItems: [
     {
-      task: "Try one new thing at work this week",
+      task: `Practice taking deep breaths when plans change`,
       completed: false,
-      description: "Join a brainstorm or test a new app for your tasks.",
+      description: `Three deep breaths, then find one positive aspect.`,
     },
     {
-      task: "Tell a loved one how you feel",
+      task: `Share a feeling with someone close to you`,
       completed: false,
-      description: "Say “I loved how you cheered me up yesterday.”",
+      description: `Even a simple one like "I enjoyed our conversation."`,
     },
     {
-      task: "Suggest a new hangout spot for your friends",
+      task: `Initiate plans with a friend`,
       completed: false,
-      description: "Like a local park or coffee shop.",
+      description: `Invite someone for coffee or a walk.`,
     },
     {
-      task: "Reflect on what keeps you going",
+      task: `Practice self-compassion after a mistake`,
       completed: false,
-      description: "Journal about one thing you’re proud of doing lately.",
+      description: `Remind yourself that everyone makes mistakes.`,
     },
     {
-      task: "Join our community chat and say hi to another ISTJ",
+      task: `Connect with other ISTJs in our community`,
       completed: false,
-      description: "You’ll love connecting!",
+      description: `Share your experiences and learn from others.`,
     },
   ],
   dailyHabits: {
     summary:
-      "You’re all about routine, {firstname}, and it totally works for you—your days are organized, and you love knowing what’s next. Adding a little twist can keep things exciting while still keeping you in your comfort zone.",
+      `Your natural preference for structure and routine can be a tremendous asset, {firstname}. By thoughtfully designing your daily habits, you can create a life that feels both productive and meaningful. The key is to maintain the structure you thrive in while building in small variations that keep things fresh.`,
     habits: {
       morning: {
-        title: "To-Do List",
+        title: `Mindful Morning`,
         description:
-          "Kick off your morning by writing a quick 5-minute to-do list—it’ll set you up for a productive day.",
+          `Start your day with 5 minutes of planning—reviewing your calendar and setting your top 3 priorities for the day.`,
       },
       afternoon: {
-        title: "Fun Habit",
+        title: `Reflection Break`,
         description:
-          "Add a small, fun habit—like listening to a new song while you get ready—to bring some variety.",
+          `Take a 10-minute break to step back from details and consider the bigger picture of what you're working on.`,
       },
       evening: {
-        title: "Wind Down",
+        title: `Preparation Period`,
         description:
-          "Wind down with a 10-minute habit, like sipping tea while reading a book, to relax before bed.",
+          `Spend 15 minutes preparing for tomorrow—laying out clothes, prepping lunch, or reviewing your schedule.`,
       },
     },
     communication: {
       summary:
-        "You’re super clear and honest when you talk, {firstname}, always saying what you mean. You like keeping things straightforward, but sometimes you might sound a bit serious without meaning to.",
+        `Your communication style tends to be clear and direct, {firstname}. You say what you mean and mean what you say, which people appreciate. However, you might sometimes come across as overly blunt or miss emotional cues in conversations.`,
       tips: [
-        "Start conversations with a warm opener—like “I’m so glad we’re catching up!”—to set a friendly tone.",
-        "Ask a question to get others talking, like “What’s been the best part of your week?”—it’ll make chats more fun.",
+        `Before important conversations, take a moment to consider not just what you need to say, but how the other person might feel hearing it.`,
+        `When someone shares a problem, try asking "Do you want suggestions or just someone to listen?" before offering solutions.`,
       ],
     },
   },
   valuesAndMotivators: {
     summary:
-      "You’re all about doing the right thing and keeping things steady, {firstname}. You value honesty, reliability, and sticking to what’s tried-and-true, and you’re motivated by creating a solid foundation for yourself and the people you care about.",
+      `At your core, {firstname}, you value honesty, responsibility, and creating order from chaos. You're motivated by doing the right thing, being depended upon, and building a solid foundation for yourself and those you care about.`,
     coreValues: [
       {
-        title: "Honesty",
-        description: "You value truth and integrity in all you do.",
+        title: `Integrity`,
+        description: `You believe in being honest and following through on commitments.`,
       },
       {
-        title: "Reliability",
-        description: "You’re dependable and trustworthy.",
+        title: `Structure`,
+        description: `You value creating systems that bring efficiency and predictability.`,
       },
       {
-        title: "Steadiness",
-        description: "You create stability and order.",
+        title: `Competence`,
+        description: `You believe in developing mastery and doing things well.`,
       },
     ],
     motivators: [
       {
-        title: "Doing the Right Thing",
-        description: "You’re driven by integrity and responsibility.",
+        title: `Creating Security`,
+        description: `You're driven to build stable, reliable foundations.`,
       },
       {
-        title: "Creating a Solid Foundation",
-        description: "You’re motivated by building a secure, stable life.",
+        title: `Solving Problems`,
+        description: `You're energized by finding practical solutions to real-world challenges.`,
       },
     ],
     actionItems: [
       {
         number: 1,
         description:
-          "Take 10 minutes each week to jot down your thoughts on these questions in a journal—it’ll keep you connected to what matters most to you.",
+          `When making decisions this week, pause to ask yourself: "Does this align with my values of integrity, structure, and competence?"`,
       },
     ],
   },
   communityConnection: {
     summary:
-      "You don’t have to figure this out alone, {firstname}! Come hang out with other ISTJs and career starters in our growing community. Share your best tips for staying organized, swap ideas, and let’s build something awesome together.",
+      `You're not alone in your ISTJ journey, {firstname}! There's a whole community of people who share your practical approach to life and value systems. Connecting with them can help you learn new strategies for leveraging your strengths and navigating challenges.`,
     suggestions: [
-      "Drop your MBTI type in our community chat—say hi to other Logisticians who get you!",
-      "Join our weekly “Get It Done” chat to share your go-to productivity tricks with the crew.",
+      `Join our ISTJ channel in the community—we discuss everything from productivity systems to how to balance work and personal life.`,
+      `Check out our weekly "Ask Me Anything" sessions where experienced ISTJs share how they've navigated career decisions and relationship dynamics.`,
     ],
   },
 };

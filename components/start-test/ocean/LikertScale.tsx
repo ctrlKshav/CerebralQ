@@ -1,19 +1,5 @@
-"use client";
-import React from "react";
 import { useFormContext } from "react-hook-form";
-import { OceanResponse } from "@/schema/ocean";
 import { motion } from "framer-motion";
-
-interface LikertOption {
-  value: string;
-  label: string;
-  description?: string;
-}
-
-interface LikertScaleProps {
-  name: string;
-  onAnswerSelected?: (questionId: string) => void;
-}
 
 const options = [
   { value: 1, label: "Strongly Disagree" },
@@ -23,19 +9,17 @@ const options = [
   { value: 5, label: "Strongly Agree" },
 ];
 
-export function LikertScale({ name, onAnswerSelected }: LikertScaleProps) {
+interface LikertScaleProps {
+  name: string;
+}
+
+export function LikertScale({ name }: LikertScaleProps) {
   const { register, watch, clearErrors } = useFormContext();
   const selectedValue = watch(name);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearErrors(name);
     register(name).onChange(e);
-    
-    // Extract the question ID from the name (format: answers.{questionId}.selectedScore)
-    const questionId = name.split('.')[1];
-    if (onAnswerSelected) {
-      onAnswerSelected(questionId);
-    }
     
     // Find the current question card container
     const currentCard = e.currentTarget.closest('.question-card');
@@ -89,4 +73,4 @@ export function LikertScale({ name, onAnswerSelected }: LikertScaleProps) {
       </div>
     </div>
   );
-} 
+}

@@ -5,7 +5,7 @@ import EmptyState from "./empty-state";
 import TestCard from "./test-card";
 import { Badge } from "../ui/badge";
 import { UserTestHistoryData } from "@/types/userTestHistory";
-import { getPersonalityDescription } from "@/data/mbti/personalityDescription";
+import { getPersonalityDescription } from "@/data/tests/mbti/personalityDescription";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
 import { MBTIRawScore } from "@/types/supabase/user-test-history";
 import { MBTIResponse } from "@/schema/mbti";

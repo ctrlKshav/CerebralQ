@@ -17,14 +17,14 @@ export default function MobileTopbar({
       <div className="lg:hidden fixed top-0 left-0 right-0 z-10 dark:bg-gray-800/50 backdrop-blur-sm px-4 flex justify-between items-center h-24">
         <div className="order-2">
           <div className="flex flex-col items-end ">
-            <span className="font-bold text-xl">{testName}</span>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
+            <span className="font-bold text-sm xs:text-md sm:text-xl">{testName}</span>
+            <div className="text-xs xs:text-sm text-gray-600 dark:text-gray-400">
               {currentStepText}
             </div>
           </div>
         </div>
         <Link href="/" className="order-1 ">
-          <CQLogo className="w-24 h-24 sm:w-28 sm:h-28" />
+          <CQLogo className="w-20 h-20 xs:w-24 xs:h-24 sm:w-28 sm:h-28" />
         </Link>
       </div>
     </div>

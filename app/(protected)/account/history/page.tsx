@@ -5,7 +5,7 @@ import Account from "@/components/account";
 import Navbar from "@/components/navbar";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 import TestHistory from "@/components/test-history";
-import { getUsersTestHistory } from "@/lib/supabaseOperations/getUsersTestHistory";
+import { getUsersTestHistory } from "@/lib/supabase-operations/getUsersTestHistory";
 import { User } from "@/types/supabase/users";
 import {
   MBTI_TEST_ID,
@@ -14,8 +14,6 @@ import {
   TEST_RESULTS_KEY,
 } from "@/lib/constants";
 import { UserTestHistoryData } from "@/types/userTestHistory";
-import { MBTIResponse } from "@/schema/mbti";
-import { calculateMBTI } from "@/lib/calculateMbti";
 import { useRouter } from "next/navigation";
 
 export default function Page() {
@@ -44,7 +42,7 @@ export default function Page() {
     // Store results in local storage
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
-    router.push("/result");
+    router.push("/result/mbti");
   };
 
   const userDataContext = useUserDataContext();

@@ -11,22 +11,15 @@ const options = [
 
 interface LikertScaleProps {
   name: string;
-  onAnswerSelected?: (questionId: string) => void;
 }
 
-export function LikertScale({ name, onAnswerSelected }: LikertScaleProps) {
+export function LikertScale({ name }: LikertScaleProps) {
   const { register, watch, clearErrors } = useFormContext();
   const selectedValue = watch(name);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearErrors(name);
     register(name).onChange(e);
-    
-    // Extract the question ID from the name (format: answers.{questionId}.selectedScore)
-    const questionId = name.split('.')[1];
-    if (onAnswerSelected) {
-      onAnswerSelected(questionId);
-    }
     
     // Find the current question card container
     const currentCard = e.currentTarget.closest('.question-card');

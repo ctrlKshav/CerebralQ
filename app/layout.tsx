@@ -18,7 +18,8 @@ const defaultUrl =
 export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "Cerebral Quotient",
-  description: "Discover yourself with MBTI personality test!",
+  description:
+    "Discover yourself with tests like MBTI and OCEAN, all in one place!",
 };
 
 const geistSans = Geist({

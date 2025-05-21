@@ -1,44 +1,60 @@
-"use client";
-import React from "react";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { ArrowRight, Play } from "lucide-react";
+import { heroData } from "@/data/landing-page/hero";
 
-export default function Header() {
+export default function HeroSection() {
+  const { title, description, cta, announcement } = heroData;
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 dark:from-slate-950 dark:to-slate-900">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-blue-500/10 animate-gradient" />
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1519681393784-d120267933ba')] bg-cover bg-center opacity-5" />
-        </div>
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="container mx-auto px-4 text-center z-10"
-        >
-          <h1 className="text-5xl md:text-6xl font-bold mb-8 bg-clip-text text-primary">
-            Answer a few questions,
-            <br />
-            uncover something cool.
-          </h1>
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-12 max-w-2xl mx-auto">
-            Discover yourself with tests like MBTI and OCEAN
-            <br />
-            all in one
-            place.
-          </p>
-          <Link href={"/tests"}>
-            <Button size="lg" className="group">
-              Start Exploring
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+    <section className="min-h-screen w-full relative overflow-hidden py-8">
+      <div className="container px-4 mx-auto flex flex-col items-center text-center max-w-4xl gap-10">
+        {announcement && (
+          <Link
+            href={announcement.href}
+            className="inline-flex items-center group"
+          >
+            <Badge
+              variant="outline"
+              className="rounded-full bg-primary/10 text-primary border-transparent px-3 py-1 text-xs"
+            >
+              {announcement.label}
+            </Badge>
+            <span className="ml-2 text-sm font-medium">
+              {announcement.text}
+            </span>
+            <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
           </Link>
-        </motion.div>
-      </section>
-    </div>
+        )}
+
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight ">
+          {title.prefix}{" "}
+          <span className="relative inline-block">
+            <span className="relative z-10 text-primary-foreground">
+              {title.highlight}
+            </span>
+            <span className="absolute inset-0 bg-purple-500 -rotate-1 z-0"></span>
+          </span>{" "}
+          {title.suffix}
+        </h1>
+
+        <p className="text-lg md:text-xl text-muted-foreground  max-w-3xl">
+          {description}
+        </p>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button asChild size="lg" className="font-medium">
+            <Link href={cta.primary.href}>{cta.primary.text}</Link>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="font-medium">
+            <Link href={cta.secondary.href} className="flex items-center">
+              <Play className="mr-2 h-4 w-4 fill-current" />
+              {cta.secondary.text}
+            </Link>
+          </Button>
+        </div>
+      </div>
+    </section>
   );
 }
