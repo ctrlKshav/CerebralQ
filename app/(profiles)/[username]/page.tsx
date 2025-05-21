@@ -6,10 +6,6 @@ import { useRouter } from "next/navigation";
 
 // Components
 import Navbar from "@/components/navbar";
-import ProfileHeader from "@/components/profile/ProfileHeader";
-import PersonalityShowcase from "@/components/profile/PersonalityShowcase";
-import TestHistory from "@/components/profile/TestHistory";
-import MBTIInsights from "@/components/profile/MBTIInsights";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 import {
   UserNotFoundFallback,
@@ -109,26 +105,7 @@ export default function ProfilePage({
   return (
     <div className="min-h-screen bg-background ">
       {userData ? <Navbar user={userData} /> : <Navbar />}
-      <main className="mt-24 px-4 py-8 lg:px-16 space-y-10">
-          {/* Profile header with basic user information */}
-          <ProfileHeader
-            profileData={profileData}
-            isOwner={userData?.username === profileUsername}
-          />
-
-          {/* Detailed personality analysis */}
-          <PersonalityShowcase
-            personalityType={profileData.raw_score.personalityType}
-            traitScores={profileData.raw_score.traitScores}
-            firstname={profileData.firstname}
-          />
-
-          {/* MBTI-specific insights and comparisons */}
-          <MBTIInsights personalityType={profileData.raw_score.personalityType} />
-
-          {/* Test history  */}
-          <TestHistory fullTestHistory={profileData.user_test_history} />
-      </main>
+      <main className="mt-24 px-4 py-8 lg:px-16 space-y-10"></main>
     </div>
   );
 }
