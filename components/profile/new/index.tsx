@@ -9,36 +9,37 @@ import HEXACOAssessment from "@/components/profile/new/HEXACOAssessment";
 import TestHistory from "@/components/profile/new/TestHistory";
 import InsightsSection from "@/components/profile/new/InsightsSection";
 import RecommendedTests from "@/components/profile/new/RecommendedTests";
+import BadgeDisplay from "./BadgeDisplay";
 
 export default function Profile() {
-  const handleDownloadReport = () => {
-    // In a real implementation, this would generate and download a PDF report
-    alert("Downloading profile report...");
-  };
 
   return (
-    <div className="w-full mx-auto py-12 bg-background">
-      <div className="max-w-[1400px] mx-auto px-4">
-        <ProfileHeader
-          user={profileData.user}
-          proficiencyLevel={profileData.proficiencyLevel}
-          isInsider={profileData.isInsider}
-          assessmentResults={profileData.assessmentResults}
-        />
+    <div className="w-full mx-auto p-12 bg-background">
+      <ProfileHeader
+        user={profileData.user}
+        proficiencyLevel={profileData.proficiencyLevel}
+        isInsider={profileData.isInsider}
+        assessmentResults={profileData.assessmentResults}
+      />
 
-        {/* Main Assessment Results - Full Width Layout */}
-        <div className="space-y-16 mt-16">
-          <MBTIAssessment result={profileData.mbtiResult} />
-          <DISCAssessment result={profileData.discResult} />
-          <OCEANAssessment result={profileData.oceanResult} />
-          <HEXACOAssessment result={profileData.mbtiResult} />{" "}
-          {/* Using MBTI data as placeholder */}
-          <InsightsSection insights={profileData.insights} />
-          <TestHistory history={profileData.testHistory} />
-          <RecommendedTests tests={profileData.recommendedTests} />
-        </div>
+      {/* Bottom Section: Badges */}
+      <BadgeDisplay
+        proficiencyLevel={profileData.proficiencyLevel}
+        isInsider={false} /* Not showing insider badge here */
+        testCount={12}
+      />
+
+      {/* Main Assessment Results - Full Width Layout */}
+      <div className="space-y-16 mt-16">
+        <MBTIAssessment result={profileData.mbtiResult} />
+        <DISCAssessment result={profileData.discResult} />
+        <OCEANAssessment result={profileData.oceanResult} />
+        <HEXACOAssessment result={profileData.mbtiResult} />{" "}
+        {/* Using MBTI data as placeholder */}
+        <InsightsSection insights={profileData.insights} />
+        <TestHistory history={profileData.testHistory} />
+        <RecommendedTests tests={profileData.recommendedTests} />
       </div>
-
     </div>
   );
 }
