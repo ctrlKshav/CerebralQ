@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export function VideoDemo() {
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
+    <section className="relative py-24 px-6 overflow-hidden" id="video-demo">
       <SectionHeader
         icon={<Film className="h-5 w-5 text-primary" />}
         label="Video Demo"

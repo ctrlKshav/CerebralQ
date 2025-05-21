@@ -13,7 +13,7 @@
     },
     secondary: {
       text: "View Demo",
-      href: "/sample-report",
+      href: "/#video-demo",
     },
   },
   announcement: {
