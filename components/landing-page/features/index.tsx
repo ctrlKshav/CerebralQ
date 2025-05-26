@@ -1,39 +1,32 @@
-"use client"
-
-import { useState, useRef } from "react"
-import { features } from "@/data/landing-page/features"
-import { useIsMobile } from "@/hooks/use-mobile"
-import { SectionHeader } from "../SectionHeader"
-import { ChartBar } from "lucide-react"
-import { MobileFeatureList } from "./MobileFeatureList"
-import { DesktopFeatureList } from "./DesktopFeatureList"
+﻿import { features } from "@/data/landing-page/features";
+import FeatureCard from "./FeaturesCard";
+import { cn } from "@/lib/utils";
+import { SectionHeader } from "@/components/landing-page/SectionHeader";
+import { ChartBar } from "lucide-react";
 
 export function Features() {
-    const [activeFeature, setActiveFeature] = useState(features[0].id)
-    const isMobile = useIsMobile()
-    const featuresRef = useRef<HTMLDivElement>(null)
-
-    return (
-        <section className="relative py-24 px-6 overflow-hidden">
-            <SectionHeader
-                icon={<ChartBar className="h-5 w-5 text-primary" />}
-                label="Premium Features"
-                title="What's included?"
-                description="Explore the powerful tools and visualizations that make Cerebral Quotient the premier personality assessment platform."
-            />
-
-            <div className="">
-                {isMobile ? (
-                    <MobileFeatureList features={features} />
-                ) : (
-                    <DesktopFeatureList
-                        features={features}
-                        activeFeature={activeFeature}
-                        setActiveFeature={setActiveFeature}
-                        featuresRef={featuresRef}
-                    />
-                )}
-            </div>
-        </section>
-    )
+  return (
+    <section className="relative py-24 px-6 overflow-hidden">
+      <SectionHeader
+        icon={<ChartBar className="h-5 w-5 text-primary" />}
+        label="Premium Features"
+        title="Personality Insights"
+        description="Discover the powerful features that make Cerebral Quotient the leading personality assessment platform."
+      />
+      <div className="space-y-16 md:space-y-24 ">
+        {features.map((feature, index) => (
+          <FeatureCard
+            key={feature.id}
+            feature={feature}
+            reverse={index % 2 !== 0}
+            className={cn(
+              "transition-all duration-700",
+              index % 2 === 0 ? "translate-x-[-20px]" : "translate-x-[20px]"
+            )}
+            id={`feature-${feature.id}`}
+          />
+        ))}
+      </div>
+    </section>
+  );
 }

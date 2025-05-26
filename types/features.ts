@@ -1,15 +1,7 @@
-import { ForwardRefExoticComponent } from "react";
-import { LucideProps } from "lucide-react";
-
-
-export type Feature = {
-  id: string;
+export interface Feature {
+  id: number;
   title: string;
-  description: string;
-  details: string[];
-  image: string;
-  icon: ForwardRefExoticComponent<LucideProps>;
-  color: string;
-  textColor: string;
-  borderColor: string;
-};
+  subtitle: string;
+  bulletPoints: string[];
+  imageSrc: string;
+}
