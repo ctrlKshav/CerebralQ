@@ -9,7 +9,7 @@ export default function HeroSection() {
 
   return (
     <main className="min-h-screen w-full mt-24">
-      <section className="py-8 px-6 sm:container">
+      <section className="px-6 py-2 sm:container">
         <div className="mx-auto flex flex-col items-center text-center max-w-4xl gap-10">
           {announcement && (
             <Link
@@ -39,7 +39,12 @@ export default function HeroSection() {
             {title.suffix}
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground  max-w-3xl">
-            {description}
+            {description.split("\n\n").map((paragraph, index) => (
+              <span key={index}>
+                {paragraph}
+                {index < description.split("\n\n").length - 1 && <br />}
+              </span>
+            ))}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" className="font-medium">

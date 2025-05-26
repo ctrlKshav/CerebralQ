@@ -87,8 +87,7 @@ export default function MBTITestInformation() {
               id: testData.id,
               type: testData.test_type?.short_code || "MBTI",
               personalityType: personalityType,
-              label:
-                personalityDescriptions[personalityType].alias,
+              label: personalityDescriptions[personalityType].alias,
               description: personalityDescriptions[personalityType].description(
                 null,
                 false
@@ -176,7 +175,9 @@ export default function MBTITestInformation() {
           {/* Test Overview Card */}
           <TestOverviewCard testData={mbtiTestInfo} />
           {/* Personality Dimensions Card */}
-          <TestDimensionsCard dimensions={mbtiTestInfo.personality_dimensions} />
+          <TestDimensionsCard
+            dimensions={mbtiTestInfo.personality_dimensions}
+          />
         </div>
       </section>
 
@@ -190,9 +191,7 @@ export default function MBTITestInformation() {
             description="Pick up where you left off and rediscover your unique personality type. A quick flashback to your previous insights."
           />
           {/* Past Results Section - Only show if user is logged in and has results */}
-          <TestResultSection
-            result={latestResult}
-          />
+          <TestResultSection result={latestResult} />
         </section>
       )}
 
