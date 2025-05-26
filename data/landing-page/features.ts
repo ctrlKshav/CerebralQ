@@ -14,7 +14,7 @@ export const features: Feature[] = [
       "DISC Assessment",
       "Additional emerging personality frameworks",
     ],
-    imageSrc: "/images/landingPage/TestSuite.jpeg",
+    imageSrc: "/images/landingPage/features/TestSuite.png",
   },
   {
     id: 2,

@@ -37,7 +37,7 @@ export default function FeatureCard({
           src={feature.imageSrc || "/placeholder.svg"}
           alt={feature.title}
           fill
-          className="transition-transform duration-500 hover:scale-105"
+          className="object-contain transition-transform duration-500 hover:scale-105"
           sizes="(max-width: 768px) 100vw, 50vw"
           priority={feature.id === 1}
           quality={100}
