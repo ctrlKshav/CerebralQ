@@ -1,5 +1,5 @@
-import { Feature } from "@/types/features"
-import { Brain, FileText, Share2, BarChart3, Lightbulb } from "lucide-react"
+import { Feature } from "@/types/features";
+import { Brain, FileText, Share2, BarChart3, Lightbulb } from "lucide-react";
 
 export const features: Feature[] = [
   {
@@ -14,7 +14,7 @@ export const features: Feature[] = [
       "DISC Assessment",
       "Additional emerging personality frameworks",
     ],
-    imageSrc: "/placeholder.svg?height=600&width=800",
+    imageSrc: "/images/landingPage/TestSuite.jpeg",
   },
   {
     id: 2,
@@ -28,24 +28,10 @@ export const features: Feature[] = [
       "Cognitive preferences and decision-making style",
       "Personalized insights based on your results",
     ],
-    imageSrc: "/placeholder.svg?height=600&width=800",
+    imageSrc: "/images/landingPage/features/PersonalityAnalysis.png",
   },
   {
     id: 3,
-    title: "Career Path & Life Guidance",
-    subtitle:
-      "Unlock your potential with personalized career and relationship insights",
-    bulletPoints: [
-      "Ideal career paths and job roles",
-      "Relationship compatibility insights",
-      "Communication style preferences",
-      "Leadership and teamwork dynamics",
-      "Personal growth recommendations",
-    ],
-    imageSrc: "/placeholder.svg?height=600&width=800",
-  },
-  {
-    id: 4,
     title: "Professional PDF Reports",
     subtitle:
       "Download beautifully designed reports for personal use or sharing",
@@ -56,10 +42,10 @@ export const features: Feature[] = [
       "Perfect for career development",
       "Share with mentors, coaches, or employers",
     ],
-    imageSrc: "/placeholder.svg?height=600&width=800",
+    imageSrc: "/images/landingPage/features/PDFReport.png",
   },
   {
-    id: 5,
+    id: 4,
     title: "Shareable Personality Profiles",
     subtitle:
       "Create your unique personality profile and share it with the world",
@@ -70,6 +56,6 @@ export const features: Feature[] = [
       "Connect with like-minded individuals",
       "Build your personal brand around your personality",
     ],
-    imageSrc: "/placeholder.svg?height=600&width=800",
+    imageSrc: "/images/landingPage/features/PersonalityDashboard.png",
   },
-]
+];

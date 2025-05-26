@@ -7,7 +7,7 @@ interface FeatureContentProps {
 
 export default function FeatureContent({ feature }: FeatureContentProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 order-2">
       <div className="space-y-2">
         <h3 className="text-2xl font-bold tracking-tight sm:text-3xl">
           {feature.title}

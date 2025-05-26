@@ -27,34 +27,22 @@ export default function FeatureCard({
         className
       )}
     >
-      {!reverse ? (
-        <>
-          <FeatureContent feature={feature} />
-          <div className="relative h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src={feature.imageSrc || "/placeholder.svg"}
-              alt={feature.title}
-              fill
-              className="object-cover transition-transform duration-500 hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 50vw"
-              priority={feature.id === 1}
-            />
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="relative h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg order-1 md:order-none">
-            <Image
-              src={feature.imageSrc || "/placeholder.svg"}
-              alt={feature.title}
-              fill
-              className="object-cover transition-transform duration-500 hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 50vw"
-            />
-          </div>
-          <FeatureContent feature={feature} />
-        </>
-      )}
+      <FeatureContent feature={feature} />
+      <div
+        className={`relative h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg ${
+          reverse ? "order-1" : "order-2"
+        }`}
+      >
+        <Image
+          src={feature.imageSrc || "/placeholder.svg"}
+          alt={feature.title}
+          fill
+          className="transition-transform duration-500 hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority={feature.id === 1}
+          quality={100}
+        />
+      </div>
     </div>
   );
 }
