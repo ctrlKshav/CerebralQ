@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import Image from "next/image";
-import type { Feature } from "@/types/features";
+import type { Feature } from "@/types/landing-page/features";
 import { cn } from "@/lib/utils";
 import FeatureContent from "./FeaturesContent";
 

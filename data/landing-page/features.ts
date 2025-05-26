@@ -1,4 +1,4 @@
-import { Feature } from "@/types/features";
+import { Feature } from "@/types/landing-page/features";
 import { Brain, FileText, Share2, BarChart3, Lightbulb } from "lucide-react";
 
 export const features: Feature[] = [
