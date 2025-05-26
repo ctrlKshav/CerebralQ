@@ -5,7 +5,7 @@ import Team from "@/components/landing-page/Team";
 import { useUserDataContext } from "@/context/user-data";
 import LoadingSkeleton from "@/components/LoadingSkeleton";
 import { VideoDemo } from "@/components/landing-page/VideoDemo";
-import { FinalCTA } from "@/components/landing-page/CTA";
+import { CTA } from "@/components/landing-page/CTA";
 import { MBTISection } from "@/components/landing-page/tests-information/mbti/MBTIInfo";
 import { OCEANSection } from "@/components/landing-page/tests-information/ocean/OCEANInfo";
 import { Features } from "@/components/landing-page/features";
@@ -29,7 +29,7 @@ export default function Home() {
       <Features />
       <VideoDemo />
       <Team />
-      <FinalCTA />
+      <CTA />
     </>
   );
 }

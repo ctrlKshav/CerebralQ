@@ -1,7 +1,7 @@
 ﻿import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export function FinalCTA() {
+export function CTA() {
   return (
     <section className="py-12 sm:py-24 px-6 sm:container">
       <div
