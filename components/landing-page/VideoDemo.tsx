@@ -2,16 +2,18 @@ import { motion } from "framer-motion";
 import { Play, Film } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeader } from "./SectionHeader";
-import { useState } from "react";
+import { videoDemoData } from "@/data/landing-page/video-demo";
 
 export function VideoDemo() {
+  const { label, title, description, video } = videoDemoData;
+
   return (
     <section className="py-12 sm:py-24 px-6 sm:container" id="video-demo">
       <SectionHeader
         icon={<Film className="h-5 w-5 text-primary" />}
-        label="Video Demo"
-        title="Personality Insights, Visualized"
-        description="Watch how Cerebral Quotient transforms complex personality data into intuitive, actionable insights through our interactive platform."
+        label={label}
+        title={title}
+        description={description}
       />
 
       <motion.div
@@ -24,7 +26,7 @@ export function VideoDemo() {
         {/* Video container */}
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/80 to-gray-900/60 backdrop-blur-sm">
           <iframe
-            src={`https://player.cloudinary.com/embed/?cloud_name=${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}&public_id=${process.env.NEXT_PUBLIC_CLOUDINARY_PUBLIC_ID_DEMO}`}
+            src={`https://player.cloudinary.com/embed/?cloud_name=${video.cloudName}&public_id=${video.publicId}`}
             className="w-full h-full"
             allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
             allowFullScreen

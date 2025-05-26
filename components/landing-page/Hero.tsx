@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowRight, Play } from "lucide-react";
 import { heroData } from "@/data/landing-page/hero";
-
 export default function HeroSection() {
   const { title, description, cta, announcement } = heroData;
 
@@ -25,7 +24,7 @@ export default function HeroSection() {
               <span className="ml-2 text-sm font-medium">
                 {announcement.text}
               </span>
-              <ArrowRight className="ml-1 h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+              <ArrowRight className="ml-1 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           )}
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight ">

@@ -1,7 +1,9 @@
-﻿// Enhanced Hero Data
-export const heroData = {
+﻿import { HeroData } from "@/types/landing-page/hero";
+
+// Enhanced Hero Data
+export const heroData: HeroData = {
   title: {
-    prefix: "Answer a few questions,",
+    prefix: "Answer a few questions,  ",
     highlight: "Uncover something cool",
     suffix: "about yourself",
   },
@@ -15,7 +17,7 @@ export const heroData = {
     },
     secondary: {
       text: "See How It Works",
-      href: "/#video-demo",
+      href: "#video-demo",
     },
   },
   announcement: {
@@ -23,9 +25,4 @@ export const heroData = {
     text: "Big Five Ocean Assessment - The Gold Standard in Psychology",
     href: "/tests/ocean",
   },
-  stats: [
-    { number: "50,000+", label: "Profiles Created" },
-    { number: "12", label: "Assessment Types" },
-    { number: "98%", label: "User Satisfaction" },
-  ],
 };
