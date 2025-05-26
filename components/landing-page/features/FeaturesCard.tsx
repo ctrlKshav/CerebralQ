@@ -29,26 +29,26 @@ export default function FeatureCard({
       {!reverse ? (
         <>
           <FeatureContent feature={feature} />
-          <div className="relative h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg">
+          <div className="relative h-fit w-fit rounded-xl overflow-hidden shadow-lg">
             <Image
               src={feature.imageSrc || "/placeholder.svg"}
               alt={feature.title}
-              fill
+              width={500}
+              height={500}
               className=" transition-transform duration-500 hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 50vw"
               priority={feature.id === 1}
             />
           </div>
         </>
       ) : (
         <>
-          <div className="relative h-[300px] sm:h-[400px] rounded-xl overflow-hidden shadow-lg order-1 md:order-none">
+          <div className="relative h-fit w-fit rounded-xl overflow-hidden shadow-lg order-1 md:order-none">
             <Image
               src={feature.imageSrc || "/placeholder.svg"}
               alt={feature.title}
-              fill
+              width={600}
+              height={600}
               className=" transition-transform duration-500 hover:scale-105"
-              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
           <FeatureContent feature={feature} />
