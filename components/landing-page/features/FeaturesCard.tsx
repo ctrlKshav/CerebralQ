@@ -22,14 +22,14 @@ export default function FeatureCard({
     <div
       id={id}
       className={cn(
-        "grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 items-center",
+        "grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 items-center ",
         className
       )}
     >
       {!reverse ? (
         <>
           <FeatureContent feature={feature} />
-          <div className="relative h-fit w-fit rounded-xl overflow-hidden shadow-lg">
+          <div className="relative h-fit w-fit rounded-xl overflow-hidden shadow-lg justify-self-center">
             <Image
               src={feature.imageSrc || "/placeholder.svg"}
               alt={feature.title}
@@ -42,7 +42,7 @@ export default function FeatureCard({
         </>
       ) : (
         <>
-          <div className="relative h-fit w-fit rounded-xl overflow-hidden shadow-lg order-1 md:order-none">
+          <div className="relative h-fit w-fit rounded-xl overflow-hidden shadow-lg order-1 md:order-none justify-self-center">
             <Image
               src={feature.imageSrc || "/placeholder.svg"}
               alt={feature.title}
