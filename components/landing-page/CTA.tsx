@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export function FinalCTA() {
   return (
-    <section className="relative py-24 px-6">
+    <section className="py-12 sm:py-24 px-6 sm:container">
       <div
         className="text-center space-y-8"
       >

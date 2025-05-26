@@ -44,7 +44,7 @@ export function TestInfo({
 }: TestInfoProps) {
   return (
     <section
-      className={`relative ${urlID === "mbti" ? "pt-0" : "pt-20"} pb-20 px-6 overflow-hidden sm:container`}
+      className={`${urlID === "mbti" ? "pt-0" : "pt-24"} pb-24 px-6 sm:container`}
     >
       <SectionHeader
         icon={icon}

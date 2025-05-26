@@ -23,12 +23,10 @@ export default function FeatureCard({
     <div
       id={id}
       className={cn(
-        "grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 items-center",
+        "w-full grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 items-center",
         className
       )}
-
     >
-
       {!reverse ? (
         <>
           <FeatureContent feature={feature} />

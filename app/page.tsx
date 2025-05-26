@@ -23,9 +23,7 @@ export default function Home() {
   return (
     <>
       <Navbar user={userData} />
-      <main className="mt-24">
-        <HeroSection />
-      </main>
+      <HeroSection />
       <MBTISection />
       <OCEANSection />
       <Features />

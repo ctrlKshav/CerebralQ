@@ -6,14 +6,14 @@ import { ChartBar } from "lucide-react";
 
 export function Features() {
   return (
-    <section className="relative py-24 px-6 overflow-hidden">
+    <section className="py-12 sm:py-24 px-6 sm:container ">
       <SectionHeader
         icon={<ChartBar className="h-5 w-5 text-primary" />}
         label="Premium Features"
         title="Personality Insights"
         description="Discover the powerful features that make Cerebral Quotient the leading personality assessment platform."
       />
-      <div className="space-y-16 md:space-y-24 ">
+      <div className="space-y-16 md:space-y-24  overflow-hidden">
         {features.map((feature, index) => (
           <FeatureCard
             key={feature.id}
@@ -21,7 +21,6 @@ export function Features() {
             reverse={index % 2 !== 0}
             className={cn(
               "transition-all duration-700",
-              index % 2 === 0 ? "translate-x-[-20px]" : "translate-x-[20px]"
             )}
             id={`feature-${feature.id}`}
           />
