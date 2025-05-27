@@ -11,7 +11,7 @@ export interface TestSection {
   totalQuestions: number;
 }
 
-export interface MBTITestQuestion {
+export interface TestQuestion {
   id: string;
   text: string;
   description?: string;
@@ -25,24 +25,13 @@ export interface MBTITestQuestion {
   }>;
   dimension: string;
   section: number;
+  facet?: string; // Optional for Ocean test questions
 }
 
-export interface MBTITestQuestionsData {
+export interface TestQuestionsData {
   id: string;
   totalQuestions: number;
   test_name: string;
   sections: TestSections;
-  questions: MBTITestQuestion[];
-}
-
-export interface OceanTestQuestion extends MBTITestQuestion {
-  facet: string;
-}
-
-export interface OceanTestQuestionsData {
-  id: string;
-  totalQuestions: number;
-  test_name: string;
-  sections: TestSections;
-  questions: OceanTestQuestion[];
+  questions: TestQuestion[];
 }

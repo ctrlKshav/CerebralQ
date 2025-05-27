@@ -3,9 +3,6 @@
 import { motion } from "framer-motion";
 import PersonalityTraits from "@/components/results/report/mbti/sections/personality-traits";
 import type { TraitScores } from "@/types/tests/mbti/traits";
-import AboutPersonalityType from "./AboutPersonalityType";
-import BigFiveConstellation from "./BigFiveConstellation";
-import { personalityDatabase } from "@/data/tests/mbti/oldData/personalityDatabase";
 
 interface PersonalityShowcaseProps {
   personalityType: string;
@@ -36,11 +33,6 @@ export default function PersonalityShowcase({
         </motion.h2>
 
         <div className="space-y-10">
-          {/* About Personality Type Card */}
-          <AboutPersonalityType
-            personalityType={personalityType}
-            sectionNumber={1}
-          />
           {/* Use the PersonalityTraits component */}
           <PersonalityTraits personalityType={personalityType} traitScores={traitScores} sectionNumber={2} firstname={firstname} dashboardView={true} />
         </div>
