@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { CheckCircle, Calendar, MoreHorizontal } from "lucide-react";
 import { MBTIResult } from "@/types/profileTypes";
-
+import SectionHeader from "./shared/SectionHeader";
 interface MBTIAssessmentProps {
   result: MBTIResult;
 }
@@ -10,23 +10,12 @@ export default function MBTIAssessment({ result }: MBTIAssessmentProps) {
   return (
     <Card className="card-spacious">
       {/* Header */}
-      <div className="flex items-center pb-6 mb-8 border-b border-gray-200 dark:border-gray-700">
-        <div className="flex-shrink-0 w-1.5 h-10 bg-blue-500 rounded-full mr-4"></div>
-        <div>
-          <h2 className="text-2xl font-bold">MBTI Assessment</h2>
-          <p className="text-muted-foreground mt-1">Myers-Briggs Type Indicator</p>
-        </div>
-        <div className="ml-auto flex items-center space-x-4">
-          <div className="flex items-center text-muted-foreground">
-            <Calendar className="h-4 w-4 mr-2" />
-            <span className="text-sm">{result.updatedAt}</span>
-          </div>
-          <button className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-            <MoreHorizontal className="h-5 w-5 text-gray-400" />
-          </button>
-        </div>
-      </div>
-      
+      <SectionHeader
+        updatedAt={result.updatedAt}
+        title="MBTI Assessment"
+        description="Myers-Briggs Type Indicator"
+      />
+
       {/* Main content */}
       <div className="space-y-12">
         {/* Type overview */}
