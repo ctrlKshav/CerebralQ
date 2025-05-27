@@ -49,7 +49,7 @@ export default function BadgeDisplay({
   const proficiencyTitle = `${proficiencyLevel} Analyst`;
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <h2 className="text-2xl font-bold mb-6">Achievements</h2>
       
       <div className="flex flex-wrap gap-5">

@@ -13,7 +13,7 @@ import BadgeDisplay from "./BadgeDisplay";
 
 export default function Profile() {
   return (
-    <div className="w-full mx-auto px-6 sm:container">
+    <div className="w-full  mx-auto px-6 sm:px-24">
       <ProfileHeader
         user={profileData.user}
         proficiencyLevel={profileData.proficiencyLevel}
@@ -33,8 +33,7 @@ export default function Profile() {
         <MBTIAssessment result={profileData.mbtiResult} />
         <DISCAssessment result={profileData.discResult} />
         <OCEANAssessment result={profileData.oceanResult} />
-        <HEXACOAssessment result={profileData.mbtiResult} />{" "}
-        {/* Using MBTI data as placeholder */}
+        <HEXACOAssessment result={profileData.mbtiResult} />
         <InsightsSection insights={profileData.insights} />
         <TestHistory history={profileData.testHistory} />
         <RecommendedTests tests={profileData.recommendedTests} />
