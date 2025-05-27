@@ -12,9 +12,8 @@ import RecommendedTests from "@/components/profile/new/RecommendedTests";
 import BadgeDisplay from "./BadgeDisplay";
 
 export default function Profile() {
-
   return (
-    <div className="w-full mx-auto p-12 bg-background">
+    <div className="w-full mx-auto px-6 sm:container">
       <ProfileHeader
         user={profileData.user}
         proficiencyLevel={profileData.proficiencyLevel}

@@ -23,7 +23,7 @@ export default function ProfileHeader({
   assessmentResults,
 }: ProfileHeaderProps) {
   return (
-    <section className="min-h-screen p-8 md:p-10">
+    <section className="min-h-screen flex flex-col justify-center py-24">
       <div className="flex flex-col gap-12 items-start">
         {/* Top Section: User Info */}
         <div className="flex flex-col md:flex-row w-full gap-8 md:gap-16 items-center md:items-start">

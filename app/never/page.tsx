@@ -5,9 +5,7 @@ export default function page() {
   return (
     <>
       <Navbar />
-      <div className="mt-24">
-        <Profile />
-      </div>
+      <Profile />
     </>
   );
 }
