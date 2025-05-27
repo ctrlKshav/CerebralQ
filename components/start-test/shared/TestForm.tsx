@@ -1,14 +1,13 @@
-﻿import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { QuestionCard } from "./QuestionCard";
-import { FormNavigation } from "./FormNavigation/index";
-import { MBTITestQuestion, TestSections } from "@/types/tests/testQuestions";
-import { MBTIResponse } from "@/schema/mbti";
-import { useState, useEffect } from "react";
+import { FormNavigation } from "@/components/start-test/shared/form-navigation";
+import { TestQuestion, TestSections } from "@/types/tests/testQuestions";
+import { OceanResponse } from "@/schema/ocean";
 import { useFormContext } from "react-hook-form";
 
 interface TestFormProps {
   currentSectionId: number;
-  questions: MBTITestQuestion[];
+  questions: TestQuestion[];
   sections: TestSections;
   onNext: () => void;
   onPrev: () => void;
@@ -24,8 +23,7 @@ export function TestForm({
   isCompleting = false,
 }: TestFormProps) {
   const { watch } = useFormContext();
-  const answers = watch("answers", {}) as MBTIResponse["answers"];
-
+  const answers = watch("answers", {}) as OceanResponse["answers"];
   const sectionQuestions = questions.filter(
     (q) => q.section === currentSectionId
   );
@@ -46,7 +44,7 @@ export function TestForm({
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
       <div className="min-h-screen relative">
-        <div className="p-0 xs:p-8 pb-32">
+        <div className="p-8 pb-32">
           <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center ">
             <AnimatePresence mode="wait">
               <motion.div
@@ -66,15 +64,15 @@ export function TestForm({
         </div>
         {/* Fixed Bottom Navigation */}
         <div className="fixed bottom-0 left-0 right-0 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-md">
-          <div className="max-w-3xl mx-auto px-4 xs:px-8 py-6">
+          <div className="max-w-3xl mx-auto px-8 py-6">
             <FormNavigation
               onNext={onNext}
               onPrev={onPrev}
               isFirstStep={currentSectionId === 1}
               isLastStep={currentSectionId === Object.keys(sections).length}
               currentSectionId={currentSectionId}
-              currentSectionQuestionsLength={sectionQuestions.length}
               totalSections={Object.keys(sections).length}
+              currentSectionQuestionsLength={sectionQuestions.length}
               currentQuestionCount={currentQuestionCount}
               totalQuestions={totalQuestions}
               isCompleting={isCompleting}

@@ -4,12 +4,12 @@ import type {
   OceanTraitKey,
   OceanTraitScores,
 } from "@/types/tests/ocean/traits";
-import { OceanTestQuestionsData } from "@/types/tests/testQuestions";
+import { TestQuestionsData } from "@/types/tests/testQuestions";
 import { calculateSloanType } from "./calculateSloan";
 
 export function calculateOcean(
   answers: Answers,
-  questionsData: OceanTestQuestionsData
+  questionsData: TestQuestionsData
 ): CalculatedOceanResult {
   const questions = questionsData.questions;
   // Initialize dimensions with scoring

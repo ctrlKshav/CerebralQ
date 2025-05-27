@@ -1,6 +1,7 @@
 ﻿import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { MouseEvent } from "react";
 
 interface NavigationButtonsProps {
   isFirstStep: boolean;
@@ -17,24 +18,32 @@ export function NavigationButtons({
   onPrev,
   onNext,
 }: NavigationButtonsProps) {
+
+  const handleNext = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+    onNext();
+  };
+
   return (
     <div className="flex justify-between">
-      <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
         <Button
           type="button"
           variant="outline"
           onClick={onPrev}
           disabled={isFirstStep}
-          className="gap-2"
+          aria-disabled={isFirstStep}
+          className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200"
         >
           <ArrowLeft className="h-4 w-4" />
           Previous
         </Button>
-      </motion.div>
       {isLastStep ? (
         <Button
           type="submit"
           variant={"default"}
+          disabled={isCompleting || !isLastStep}
+          aria-disabled={isCompleting || !isLastStep}
           className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200"
         >
           {isCompleting ? "Submitting..." : "Complete"}
@@ -42,10 +51,11 @@ export function NavigationButtons({
       ) : (
         <Button
           type="button"
-          onClick={onNext}
+          onClick={handleNext}
           variant={"default"}
-          className={`gap-2 flex items-center justify-center px-4 py-2 rounded-md bg-primary text-primary-foreground font-medium focus:outline-none `}
-          autoFocus={true}
+          disabled={isCompleting || isLastStep}
+          aria-disabled={isCompleting || isLastStep}
+          className={`gap-2 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 `}
         >
           <span className="inline-block">Next</span>
           <ArrowRight className="h-4 w-4 ml-1" />
