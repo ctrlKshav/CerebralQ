@@ -1,9 +1,9 @@
-import { MBTIResult } from "@/types/profileTypes";
+import { HEXACOResult, MBTIResult } from "@/types/profileTypes";
 import { CheckCircle, Calendar, MoreHorizontal } from "lucide-react";
 import SectionHeader from "./shared/SectionHeader";
 
 interface HEXACOAssessmentProps {
-  result: MBTIResult; // Using MBTI type temporarily until we create a proper HEXACO type
+  result: HEXACOResult; // Using MBTI type temporarily until we create a proper HEXACO type
 }
 
 export default function HEXACOAssessment({ result }: HEXACOAssessmentProps) {

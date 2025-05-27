@@ -108,6 +108,13 @@ export type OCEANResult = {
   updatedAt: string;
 };
 
+export type HEXACOResult = {
+  type: string;
+  title: string;
+  description: string;
+  updatedAt: string;
+};
+
 export type TestHistoryEntry = {
   id: string;
   testType: string;
@@ -155,6 +162,7 @@ export type ProfileData = {
   mbtiResult: MBTIResult;
   discResult: DISCResult;
   oceanResult: OCEANResult;
+  hexacoResult: HEXACOResult;
   testHistory: TestHistoryEntry[];
   insights: {
     strengths: InsightStrength;

@@ -33,7 +33,7 @@ export default function Profile() {
         <MBTIAssessment result={profileData.mbtiResult} />
         <DISCAssessment result={profileData.discResult} />
         <OCEANAssessment result={profileData.oceanResult} />
-        <HEXACOAssessment result={profileData.mbtiResult} />
+        <HEXACOAssessment result={profileData.hexacoResult} />
         <InsightsSection insights={profileData.insights} />
         <TestHistory history={profileData.testHistory} />
         <RecommendedTests tests={profileData.recommendedTests} />

@@ -132,6 +132,12 @@ export const profileData: ProfileData = {
     ],
     updatedAt: 'April 18, 2023',
   },
+  hexacoResult: {
+    type: 'ACHEX',
+    title: 'The Analyst',
+    description: 'Your HEXACO profile indicates you are reserved (low Extraversion), detail-oriented (high Conscientiousness), intellectually open (high Openness), empathetic (high Agreeableness), and emotionally stable (low Neuroticism).',
+    updatedAt: 'April 18, 2023',
+  },
   testHistory: [
     {
       id: '1',
