@@ -9,11 +9,12 @@ interface OCEANAssessmentProps {
 
 export default function OCEANAssessment({ result }: OCEANAssessmentProps) {
   return (
-    <Card className="overflow-hidden">
+    <section className="bg-background rounded-xl shadow-md p-8">
       <SectionHeader
         title="OCEAN Assessment"
         description="Personality Assessment"
         updatedAt={result.updatedAt}
+        calendar={true}
       />  
 
       <CardContent className="p-6">
@@ -307,6 +308,6 @@ export default function OCEANAssessment({ result }: OCEANAssessmentProps) {
           </div>
         </div>
       </CardContent>
-    </Card>
+    </section>
   );
 }

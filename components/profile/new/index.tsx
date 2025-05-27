@@ -13,7 +13,7 @@ import BadgeDisplay from "./BadgeDisplay";
 
 export default function Profile() {
   return (
-    <div className="w-full  mx-auto px-6 sm:px-24">
+    <div className="w-full mx-auto px-6 sm:px-24 pb-16">
       <ProfileHeader
         user={profileData.user}
         proficiencyLevel={profileData.proficiencyLevel}

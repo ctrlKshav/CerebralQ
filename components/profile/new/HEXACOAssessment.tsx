@@ -33,6 +33,7 @@ export default function HEXACOAssessment({ result }: HEXACOAssessmentProps) {
         title="HEXACO Assessment"
         description="Six-factor Personality Structure"
         updatedAt={result.updatedAt}
+        calendar={true}
       />
 
       {/* Main content */}

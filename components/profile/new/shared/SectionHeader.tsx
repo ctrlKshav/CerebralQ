@@ -6,10 +6,12 @@ export default function SectionHeader({
   title,
   description,
   updatedAt,
+  calendar = false,
 }: {
   title: string;
   description: string;
-  updatedAt: string;
+  updatedAt?: string;
+  calendar?: boolean;
 }) {
   return (
     <div className="flex items-center pb-6 mb-8 border-b border-gray-200 dark:border-gray-700">
@@ -19,10 +21,12 @@ export default function SectionHeader({
         <p className="text-muted-foreground mt-1">{description}</p>
       </div>
       <div className="ml-auto flex items-center space-x-4">
-        <div className="flex items-center text-muted-foreground">
-          <Calendar className="h-4 w-4 mr-2" />
-          <span className="text-sm">{updatedAt}</span>
-        </div>
+        {calendar && (
+          <div className="flex items-center text-muted-foreground">
+            <Calendar className="h-4 w-4 mr-2" />
+            <span className="text-sm">{updatedAt}</span>
+          </div>
+        )}
       </div>
     </div>
   );

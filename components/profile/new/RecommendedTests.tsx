@@ -1,8 +1,6 @@
-import { Card } from "@/components/ui/card";
 import { Brain, Heart, Lightbulb, ArrowRight } from "lucide-react";
 import { RecommendedTest } from "@/types/profileTypes";
-import { Button } from "@/components/ui/button";
-
+import SectionHeader from "./shared/SectionHeader";
 interface RecommendedTestsProps {
   tests: RecommendedTest[];
 }
@@ -22,14 +20,12 @@ export default function RecommendedTests({ tests }: RecommendedTestsProps) {
   };
 
   return (
-    <Card className="card-spacious pb-6">
-      <div className="flex items-center mb-4 border-b border-gray-200 dark:border-gray-700 pb-4">
-        <div className="flex-shrink-0 w-1 h-8 bg-gray-400 rounded-full mr-3"></div>
-        <div>
-          <h2 className="text-xl font-medium">Discover More Tests</h2>
-        </div>
-      </div>
-      
+    <section className="bg-background rounded-xl shadow-md p-8">
+      <SectionHeader
+        title="Recommended Tests"
+        description="Discover more tests to enhance your understanding of yourself and others"
+        calendar={false}
+      />
       <div className="space-y-3 mb-4">
         {tests.slice(0, 2).map((test) => (
           <div 
@@ -52,14 +48,7 @@ export default function RecommendedTests({ tests }: RecommendedTestsProps) {
         ))}
       </div>
       
-      <div className="px-4">
-        <Button 
-          variant="outline" 
-          className="w-full rounded-lg py-2 h-auto text-sm font-normal text-gray-700 dark:text-gray-300"
-        >
-          View All Tests
-        </Button>
-      </div>
-    </Card>
+      
+    </section>
   );
 }

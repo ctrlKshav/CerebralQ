@@ -40,11 +40,12 @@ export default function DISCAssessment({ result }: DISCAssessmentProps) {
   ];
 
   return (
-    <Card className="card-spacious">
+    <section className="bg-background rounded-xl shadow-md p-8">
       <SectionHeader
         updatedAt={result.updatedAt}
         title="DISC Assessment"
         description="Behavioral Assessment"
+        calendar={true}
       />
 
       {/* Main content */}
@@ -222,6 +223,6 @@ export default function DISCAssessment({ result }: DISCAssessmentProps) {
           </div>
         </div>
       </div>
-    </Card>
+    </section>
   );
 }
