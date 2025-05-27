@@ -6,7 +6,7 @@ export function CTA() {
   const { title, description, button } = ctaData;
 
   return (
-    <section className="py-12 sm:py-24 px-6 sm:container">
+    <section className="py-12 sm:py-24 px-6 sm:px-24">
       <div className="text-center space-y-8">
         <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold">{title}</h2>
 

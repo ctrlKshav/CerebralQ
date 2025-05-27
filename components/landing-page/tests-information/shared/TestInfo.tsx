@@ -44,7 +44,7 @@ export function TestInfo({
 }: TestInfoProps) {
   return (
     <section
-      className={`${urlID === "mbti" ? "pt-0" : "pt-24"} pb-24 px-6 sm:container`}
+      className={`py-24 px-6 sm:px-24 `}
     >
       <SectionHeader
         icon={icon}

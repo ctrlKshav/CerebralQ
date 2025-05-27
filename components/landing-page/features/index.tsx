@@ -6,7 +6,7 @@ import { ChartBar } from "lucide-react";
 
 export function Features() {
   return (
-    <section className="py-12 sm:py-24 px-6 sm:container ">
+    <section className="py-12 sm:py-24 px-6 sm:px-24 ">
       <SectionHeader
         icon={<ChartBar className="h-5 w-5 text-primary" />}
         label="Premium Features"

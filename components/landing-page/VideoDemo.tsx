@@ -8,7 +8,7 @@ export function VideoDemo() {
   const { label, title, description, video } = videoDemoData;
 
   return (
-    <section className="py-12 sm:py-24 px-6 sm:container" id="video-demo">
+    <section className="py-12 sm:py-24 px-6 sm:px-24" id="video-demo">
       <SectionHeader
         icon={<Film className="h-5 w-5 text-primary" />}
         label={label}

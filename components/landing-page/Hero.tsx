@@ -8,7 +8,7 @@ export default function HeroSection() {
 
   return (
     <main className="min-h-screen w-full mt-24">
-      <section className="px-6 py-2 sm:container">
+      <section className="px-6 py-2">
         <div className="mx-auto flex flex-col items-center text-center max-w-4xl gap-10">
           {announcement && (
             <Link
