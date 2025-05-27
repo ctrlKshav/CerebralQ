@@ -137,6 +137,38 @@ export const profileData: ProfileData = {
     title: 'The Analyst',
     description: 'Your HEXACO profile indicates you are reserved (low Extraversion), detail-oriented (high Conscientiousness), intellectually open (high Openness), empathetic (high Agreeableness), and emotionally stable (low Neuroticism).',
     updatedAt: 'April 18, 2023',
+    hexacoTraits: {
+      'H': {
+        name: 'Honesty-Humility',
+        description: 'Honesty-Humility',
+        score: 85,
+      },
+      'E': {
+        name: 'Emotionality',
+        description: 'Emotionality',
+        score: 70,
+      },
+      'X': {
+        name: 'eXtraversion',
+        description: 'eXtraversion',
+        score: 60,
+      },
+      'A': {
+        name: 'Agreeableness',
+        description: 'Agreeableness',
+        score: 55,
+      },
+      'C': {
+        name: 'Conscientiousness',
+        description: 'Conscientiousness',
+        score: 45,
+      },
+      'O': {
+        name: 'Openness',
+        description: 'Openness',
+        score: 40,
+      },
+    },
   },
   testHistory: [
     {

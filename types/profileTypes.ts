@@ -108,11 +108,20 @@ export type OCEANResult = {
   updatedAt: string;
 };
 
+export type HexacoTrait = {
+  name: string;
+  description: string;
+  score: number;
+};
+
 export type HEXACOResult = {
   type: string;
   title: string;
   description: string;
   updatedAt: string;
+  hexacoTraits: {
+    [key: string]: HexacoTrait;
+  };
 };
 
 export type TestHistoryEntry = {

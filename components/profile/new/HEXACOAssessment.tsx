@@ -3,50 +3,10 @@ import { CheckCircle, Calendar, MoreHorizontal } from "lucide-react";
 import SectionHeader from "./shared/SectionHeader";
 
 interface HEXACOAssessmentProps {
-  result: HEXACOResult; // Using MBTI type temporarily until we create a proper HEXACO type
+  result: HEXACOResult;
 }
 
 export default function HEXACOAssessment({ result }: HEXACOAssessmentProps) {
-  // Here we're creating a simulated HEXACO assessment using the MBTI data
-  // In a real implementation, this would use actual HEXACO data
-  const hexacoTraits = [
-    {
-      name: "Honesty-Humility",
-      score: 75,
-      description:
-        "High scorers avoid manipulating others for personal gain, feel little temptation to break rules, are uninterested in wealth and status, and feel no entitlement to elevated social status.",
-    },
-    {
-      name: "Emotionality",
-      score: 60,
-      description:
-        "High scorers experience fear of physical dangers, experience anxiety in response to life's stresses, feel a need for emotional support from others, and feel empathy and attachment to others.",
-    },
-    {
-      name: "Extraversion",
-      score: 40,
-      description:
-        "High scorers feel positively about themselves, feel confident when leading or addressing groups, enjoy social gatherings and interactions, and experience positive feelings of enthusiasm and energy.",
-    },
-    {
-      name: "Agreeableness",
-      score: 85,
-      description:
-        "High scorers forgive the wrongs they suffered, are lenient in judging others, are willing to compromise and cooperate with others, and can easily control their temper.",
-    },
-    {
-      name: "Conscientiousness",
-      score: 90,
-      description:
-        "High scorers organize their time and physical surroundings, work in a disciplined way toward goals, strive for accuracy and perfection in tasks, and deliberate carefully when making decisions.",
-    },
-    {
-      name: "Openness to Experience",
-      score: 70,
-      description:
-        "High scorers become absorbed in the beauty of art and nature, are inquisitive about various domains of knowledge, use their imagination freely, and take an interest in unusual ideas or people.",
-    },
-  ];
 
   const getBarColor = (traitName: string) => {
     switch (traitName) {
@@ -99,7 +59,7 @@ export default function HEXACOAssessment({ result }: HEXACOAssessmentProps) {
           </h3>
 
           <div className="space-y-8">
-            {hexacoTraits.map((trait, index) => (
+            {Object.values(result.hexacoTraits).map((trait, index) => (
               <div key={index} className="space-y-2">
                 <div className="flex justify-between items-center">
                   <span className="font-medium">{trait.name}</span>
