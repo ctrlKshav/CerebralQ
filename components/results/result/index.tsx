@@ -13,19 +13,20 @@ import LoadingSkeleton from "@/components/LoadingSkeleton";
 interface ResultCertificateProps {
   userData: User | null;
   resultData: ResultData | null;
-  historyPage: boolean,
+  historyPage: boolean;
 }
 
-export default function ResultCertificate({userData, resultData, historyPage = false}: ResultCertificateProps) {
-  const {
-    personalityType,
-    personalityDescription,
-    completionDate,
-  } = resultData || sampleResultData;
+export default function ResultCertificate({
+  userData,
+  resultData,
+  historyPage = false,
+}: ResultCertificateProps) {
+  const { personalityType, personalityDescription, completionDate } =
+    resultData || sampleResultData;
 
   return (
     <div className="min-h-screen bg-background">
-      <main className="md:mt-14 lg:mt-4 mx-auto transition-all duration-300 space-y-8 p-4">
+      <main className="mt-4 mx-auto transition-all duration-300 space-y-8 p-4">
         <HeroSection
           personalityType={personalityType}
           personalityDescription={personalityDescription}
