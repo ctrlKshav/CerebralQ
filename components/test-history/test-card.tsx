@@ -16,17 +16,18 @@ interface TestCardProps {
   onViewDetailedReport: (testHistoryID: string) => void;
 }
 
-export default function TestCard({ result, onViewDetailedReport }: TestCardProps) {
+export default function TestCard({
+  result,
+  onViewDetailedReport,
+}: TestCardProps) {
   const dateObj = new Date(result.takenAt ?? Date.now()).toLocaleDateString();
   // Get badge color classes based on personality type
   const getBadgeClasses = (type: string, index: number) => {
     switch (type) {
-      
       default:
         return "bg-gray-100/30 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300 border-gray-200 dark:border-gray-700/20";
     }
   };
-
 
   return (
     <Card className="group relative overflow-hidden border-0 bg-background/50 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 ease-out w-full min-h-[350px] hover:scale-[1.01] dark:border-white/5 border-black/10 shadow-lg">
@@ -45,8 +46,8 @@ export default function TestCard({ result, onViewDetailedReport }: TestCardProps
 
       <CardHeader className="relative z-10 pb-6 pt-12">
         <div className="flex flex-col gap-6">
-          <div className="flex items-end justify-between">
-            <div className="space-y-2">
+          <div className="flex flex-col xs:flex-row items-center xs:items-end xs:justify-between gap-4">
+            <div className="space-y-2 text-center xs:text-left">
               {/* Personality Type */}
               <div
                 className={`text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${result.color}`}
@@ -63,7 +64,7 @@ export default function TestCard({ result, onViewDetailedReport }: TestCardProps
             {/* Date Badge */}
             <Badge
               variant="outline"
-              className="text-sm text-muted-foreground flex items-center gap-2 bg-background/80 backdrop-blur-sm px-4 py-2 shadow-md border dark:border-white/10 border-black/10 whitespace-nowrap"
+              className="text-xs sm:text-sm text-muted-foreground flex items-center gap-2 bg-background/80 backdrop-blur-sm px-4 py-2 shadow-md border dark:border-white/10 border-black/10 whitespace-nowrap"
             >
               <Calendar className="h-4 w-4" />
               {dateObj}
