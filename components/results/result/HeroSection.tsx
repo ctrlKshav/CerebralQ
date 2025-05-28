@@ -150,9 +150,7 @@ const HeroSection = ({
                     ? "Save & Share"
                     : "Share Results"}
               </Button>
-              <Link
-                href={`${historyPage ? "/account/report/mbti" : "/report/mbti"}`}
-              >
+              <Link href={`${historyPage ? "/account/report" : "/report"}`}>
                 <Button variant="outline">View Detailed Report</Button>
               </Link>
             </div>
