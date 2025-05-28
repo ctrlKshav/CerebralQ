@@ -77,7 +77,7 @@ const HeroSection = ({
       if (!username) {
         router.push(
           "/sign-up?info=" +
-          encodeURIComponent("You need an account to share your profile.")
+            encodeURIComponent("You need an account to share your profile.")
         );
       }
     } catch (error) {
@@ -90,11 +90,11 @@ const HeroSection = ({
   return (
     <section
       id={id}
-      className="bg-background flex flex-col justify-center items-center py-20 px-4 overflow-hidden relative"
+      className="flex flex-col justify-center items-center py-20 px-4 sm:px-24 overflow-hidden"
     >
-      <div className="max-w-6xl mx-auto text-center md:text-left">
-        <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center  ">
-          <div className="space-y-6 max-w-lg animate-fade-in">
+      <div className="mx-auto text-center lg:text-left">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 justify-center items-center  ">
+          <div className="space-y-6  animate-fade-in">
             <Badge className="bg-primary text-primary-foreground py-1.5 px-4 rounded-full">
               Completed on {completionDate}
             </Badge>
@@ -103,8 +103,9 @@ const HeroSection = ({
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground">
                 Hey{" "}
                 <span
-                  className={`${firstname ? "text-primary decoration-2" : "decoration-1"
-                    }`}
+                  className={`${
+                    firstname ? "text-primary decoration-2" : "decoration-1"
+                  }`}
                 >
                   {firstname || "there"}!
                 </span>{" "}
@@ -114,7 +115,7 @@ const HeroSection = ({
                   {personalityType}.
                 </span>
                 <br />
-                <span className=" font-semibold">{alias}.</span>
+                <span className="font-semibold">{alias}.</span>
               </h1>
             </div>
 
@@ -135,7 +136,7 @@ const HeroSection = ({
               ? Let's dive into what makes you so incredible!
             </p>
 
-            <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center justify-center md:justify-start">
+            <div className="pt-4 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
               <Button
                 variant="default"
                 size="sm"
@@ -149,22 +150,24 @@ const HeroSection = ({
                     ? "Save & Share"
                     : "Share Results"}
               </Button>
-              <Link href={`${historyPage ? "/account/report/mbti" : "/report/mbti"}`}>
+              <Link
+                href={`${historyPage ? "/account/report/mbti" : "/report/mbti"}`}
+              >
                 <Button variant="outline">View Detailed Report</Button>
               </Link>
             </div>
           </div>
 
           {/* Main personality image */}
-          <div className="justify-self-center mt-4 md:mt-0 md:justify-self-end relative w-fit max-w-full h-fit md:h-full max-h-[80vh] flex items-center justify-center">
+          <div className="w-full h-full max-h-[70vh]">
             <Image
               src={imagePath}
               quality={100}
               alt={`${personalityType} - ${alias} personality type illustration`}
-              width={600}
-              height={600}
+              width={1000}
+              height={1000}
               priority
-              className="w-full h-full object-cover z-10 rounded-md shadow-lg"
+              className="w-full h-full object-cover rounded-xl shadow-xl"
             />
           </div>
         </div>
