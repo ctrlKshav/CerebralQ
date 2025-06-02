@@ -1,6 +1,6 @@
 import { Badge, Layers } from "lucide-react";
 import { TestInfo } from "../shared/TestInfo";
-import Image from "next/image";
+import { HEXACOIllustration } from "./HEXACOIllustration";
 
 export function HEXACOSection() {
   const whatIsContent = (
@@ -43,18 +43,7 @@ export function HEXACOSection() {
       whatIsContent={whatIsContent}
       benefitsTitle="Benefits of HEXACO Assessment"
       benefitsContent={benefitsContent}
-      illustration={
-        <div className="relative w-full max-h-[400px] overflow-hidden border border-border shadow-lg rounded-lg">
-          <Image
-            src="/images/landingPage/HEXACOResultCertificate.png"
-            alt="HEXACO Personality Assessment"
-            width={1549}
-            height={749}
-            className="object-contain h-full w-full"
-            priority
-          />
-        </div>
-      }
+      illustration={<HEXACOIllustration />}
       ctaText="Take HEXACO Assessment"
     />
   );
