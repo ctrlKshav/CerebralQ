@@ -127,77 +127,79 @@ const HeroSection = () => {
                 <p className="text-sm text-primary/70 dark:text-muted-foreground">Personality Assessment</p>
               </div>
               
-              {/* Hexagonal Visualization */}
-              <div className="relative h-64 w-full mb-6">
-                <svg viewBox="0 0 300 260" className="w-full h-full">
-                  {/* Hexagon background */}
+              {/* Hexagonal Visualization - Compact Version */}
+              <div className="relative h-48 w-full mb-4">
+                <svg viewBox="0 0 200 200" className="w-full h-full">
+                  {/* Outer hexagon */}
                   <polygon 
-                    points="150,10 280,75 280,185 150,250 20,185 20,75" 
+                    points="100,20 180,60 180,140 100,180 20,140 20,60" 
                     fill="none" 
                     stroke="currentColor" 
                     strokeOpacity="0.2" 
                     strokeWidth="1"
                   />
                   
-                  {/* Inner hexagons for scale */}
+                  {/* Grid lines */}
                   <polygon 
-                    points="150,50 240,95 240,165 150,210 60,165 60,95" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeOpacity="0.15" 
-                    strokeWidth="1"
-                  />
-                  
-                  <polygon 
-                    points="150,90 200,115 200,145 150,170 100,145 100,115" 
+                    points="100,50 160,80 160,120 100,150 40,120 40,80" 
                     fill="none" 
                     stroke="currentColor" 
                     strokeOpacity="0.1" 
                     strokeWidth="1"
+                    strokeDasharray="4,2"
                   />
                   
-                  {/* Axes */}
-                  <line x1="150" y1="10" x2="150" y2="250" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
-                  <line x1="20" y1="75" x2="280" y2="185" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
-                  <line x1="20" y1="185" x2="280" y2="75" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
+                  {/* Center lines */}
+                  <line x1="100" y1="20" x2="100" y2="180" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
+                  <line x1="20" y1="60" x2="180" y2="140" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
+                  <line x1="20" y1="140" x2="180" y2="60" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
                   
                   {/* Trait labels */}
-                  <text x="150" y="5" textAnchor="middle" fill="currentColor" fontSize="12">H</text>
-                  <text x="290" y="75" textAnchor="start" fill="currentColor" fontSize="12">E</text>
-                  <text x="290" y="185" textAnchor="start" fill="currentColor" fontSize="12">X</text>
-                  <text x="150" y="260" textAnchor="middle" fill="currentColor" fontSize="12">A</text>
-                  <text x="10" y="185" textAnchor="end" fill="currentColor" fontSize="12">C</text>
-                  <text x="10" y="75" textAnchor="end" fill="currentColor" fontSize="12">O</text>
+                  <text x="100" y="15" textAnchor="middle" fill="currentColor" fontSize="10" fontWeight="600">H</text>
+                  <text x="185" y="60" textAnchor="start" fill="currentColor" fontSize="10" fontWeight="600">E</text>
+                  <text x="185" y="140" textAnchor="start" fill="currentColor" fontSize="10" fontWeight="600">X</text>
+                  <text x="100" y="195" textAnchor="middle" fill="currentColor" fontSize="10" fontWeight="600">A</text>
+                  <text x="15" y="140" textAnchor="end" fill="currentColor" fontSize="10" fontWeight="600">C</text>
+                  <text x="15" y="60" textAnchor="end" fill="currentColor" fontSize="10" fontWeight="600">O</text>
                   
-                  {/* Data polygon - animated via framer-motion in real implementation */}
+                  {/* Data area */}
                   <motion.polygon 
-                    points="150,40 230,90 250,170 150,220 70,160 50,90" 
-                    fill="rgba(99, 102, 241, 0.2)" 
+                    points="100,40 160,70 140,130 100,160 60,130 40,70" 
+                    fill="rgba(99, 102, 241, 0.15)" 
                     stroke="rgb(99, 102, 241)" 
-                    strokeWidth="2"
+                    strokeWidth="1.5"
+                    strokeLinejoin="round"
                     initial={{ opacity: 0, scale: 0.8, transformOrigin: "center" }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: 1 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
                   />
                   
                   {/* Data points */}
                   {[
-                    [150, 40], // H
-                    [230, 90], // E
-                    [250, 170], // X
-                    [150, 220], // A
-                    [70, 160], // C
-                    [50, 90]  // O
+                    [100, 40],  // H
+                    [160, 70],  // E
+                    [140, 130], // X
+                    [100, 160], // A
+                    [60, 130],  // C
+                    [40, 70]    // O
                   ].map((point, i) => (
                     <motion.circle 
                       key={i}
                       cx={point[0]} 
                       cy={point[1]} 
-                      r="4" 
-                      fill="rgb(99, 102, 241)"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.5, delay: 1.2 + (i * 0.1) }}
+                      r="3" 
+                      fill="white"
+                      stroke="rgb(99, 102, 241)"
+                      strokeWidth="1.5"
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ 
+                        duration: 0.4, 
+                        delay: 0.5 + (i * 0.1),
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 10
+                      }}
                     />
                   ))}
                 </svg>
