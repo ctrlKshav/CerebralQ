@@ -1,4 +1,4 @@
-import { Trait } from "@/types/tests/test-info/ocean";
+import { Trait } from "@/types/tests/ocean/test-info";
 
 export const traits: Trait[] = [
   {
