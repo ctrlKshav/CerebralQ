@@ -1,0 +1,37 @@
+"use client";
+import React from "react";
+import { testDetails } from "@/data/test-info/disc/test-overview";
+import SectionContainer from "../shared/SectionContainer";
+import SectionHeader from "../shared/SectionHeader";
+import CitationCard from "../shared/CitationCard";
+
+const AcademicCitationsSection = () => {
+  const { citations } = testDetails;
+
+  return (
+    <SectionContainer id="research">
+      <SectionHeader
+        badge="Research"
+        title="Academic Foundation"
+        description="The DISC assessment is backed by decades of research and practical application in organizational psychology and human behavior."
+      />
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {citations.map((citation, index) => (
+          <CitationCard
+            key={index}
+            title={citation.title}
+            authors={citation.authors}
+            journal={citation.journal}
+            year={citation.year}
+            doi={citation.doi}
+            description={citation.description}
+            delay={0.1 * index}
+          />
+        ))}
+      </div>
+    </SectionContainer>
+  );
+};
+
+export default AcademicCitationsSection;
