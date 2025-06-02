@@ -8,7 +8,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default function DISCTestInformation() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:bg-gradient-to-b dark:from-gray-950 dark:to-background">
+    <main>
       <TooltipProvider>
         <HeroSection />
         <TestOverviewSection />

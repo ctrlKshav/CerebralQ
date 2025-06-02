@@ -10,14 +10,16 @@ import ComparisonSection from "./ComparisonSection";
 
 const HexacoTestInformation = () => {
   return (
-    <TooltipProvider>
-      <HeroSection />
-      <TestOverviewSection />
-      <HEXACOTraitsSection />
-      <TestVariantsSection />
-      <AcademicCitationsSection />
-      <ComparisonSection />
-    </TooltipProvider>
+    <main>
+      <TooltipProvider>
+        <HeroSection />
+        <TestOverviewSection />
+        <HEXACOTraitsSection />
+        <TestVariantsSection />
+        <AcademicCitationsSection />
+        <ComparisonSection />
+      </TooltipProvider>
+    </main>
   );
 };
 
