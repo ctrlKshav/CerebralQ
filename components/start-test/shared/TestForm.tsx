@@ -1,8 +1,9 @@
-import { motion, AnimatePresence } from "framer-motion";
+﻿import { motion, AnimatePresence } from "framer-motion";
 import { QuestionCard } from "./QuestionCard";
-import { FormNavigation } from "@/components/start-test/shared/form-navigation";
+import { FormNavigation } from "./form-navigation/index";
 import { TestQuestion, TestSections } from "@/types/tests/testQuestions";
-import { OceanResponse } from "@/schema/ocean";
+import { MBTIResponse } from "@/schema/mbti";
+import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
 
 interface TestFormProps {
@@ -22,8 +23,9 @@ export function TestForm({
   onPrev,
   isCompleting = false,
 }: TestFormProps) {
-  const { watch } = useFormContext();
-  const answers = watch("answers", {}) as OceanResponse["answers"];
+  const { watch, getValues } = useFormContext<MBTIResponse>();
+  const answers = watch("answers", {}) as MBTIResponse["answers"];
+
   const sectionQuestions = questions.filter(
     (q) => q.section === currentSectionId
   );
@@ -41,10 +43,26 @@ export function TestForm({
     (q) => answers[q.id]?.selectedScore
   );
 
+  useEffect(() => {
+    // Find the first unanswered question in the current section
+    const unanswered = sectionQuestions.find(
+      (question) => !getValues().answers[question.id]?.selectedScore
+    );
+    if (unanswered) {
+      // Find the corresponding question card in the DOM
+      const card = document.querySelector(
+        `.question-card[data-question-id='${unanswered.id}']`
+      );
+      if (card) {
+        card.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [sectionQuestions]);
+
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
       <div className="min-h-screen relative">
-        <div className="p-8 pb-32">
+        <div className="p-0 xs:p-8 pb-32">
           <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center ">
             <AnimatePresence mode="wait">
               <motion.div
@@ -52,11 +70,15 @@ export function TestForm({
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
                 className="w-full"
               >
                 {sectionQuestions.map((question) => (
-                  <QuestionCard key={question.id} question={question} />
+                  <QuestionCard
+                    key={question.id}
+                    question={question}
+                    currentSectionId={currentSectionId}
+                  />
                 ))}
               </motion.div>
             </AnimatePresence>
@@ -64,15 +86,15 @@ export function TestForm({
         </div>
         {/* Fixed Bottom Navigation */}
         <div className="fixed bottom-0 left-0 right-0 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-md">
-          <div className="max-w-3xl mx-auto px-8 py-6">
+          <div className="max-w-3xl mx-auto px-4 xs:px-8 pt-6 pb-4">
             <FormNavigation
               onNext={onNext}
               onPrev={onPrev}
               isFirstStep={currentSectionId === 1}
               isLastStep={currentSectionId === Object.keys(sections).length}
               currentSectionId={currentSectionId}
-              totalSections={Object.keys(sections).length}
               currentSectionQuestionsLength={sectionQuestions.length}
+              totalSections={Object.keys(sections).length}
               currentQuestionCount={currentQuestionCount}
               totalQuestions={totalQuestions}
               isCompleting={isCompleting}
