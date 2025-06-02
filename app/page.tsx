@@ -9,7 +9,8 @@ import { CTA } from "@/components/landing-page/CTA";
 import { MBTISection } from "@/components/landing-page/tests-information/mbti/MBTIInfo";
 import { OCEANSection } from "@/components/landing-page/tests-information/ocean/OCEANInfo";
 import { Features } from "@/components/landing-page/features";
-
+import { DISCSection } from "@/components/landing-page/tests-information/disc/DISCInfo";
+import { HEXACOSection } from "@/components/landing-page/tests-information/hexaco/HEXACOInfo";
 export default function Home() {
   const userDataContext = useUserDataContext();
 
@@ -26,6 +27,8 @@ export default function Home() {
       <HeroSection />
       <MBTISection />
       <OCEANSection />
+      <DISCSection />
+      <HEXACOSection />
       <Features />
       <VideoDemo />
       <Team />
