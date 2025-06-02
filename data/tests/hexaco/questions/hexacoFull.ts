@@ -65,6 +65,7 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Sincerity",
+    dominantSide: "right",
   },
   {
     id: "30",
@@ -72,6 +73,7 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Sincerity",
+    dominantSide: "left",
   },
   {
     id: "54",
@@ -79,6 +81,7 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Sincerity",
+    dominantSide: "right",
   },
   {
     id: "12",
@@ -86,6 +89,7 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Fairness",
+    dominantSide: "left",
   },
   {
     id: "36",
@@ -93,6 +97,7 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Fairness",
+    dominantSide: "right",
   },
   {
     id: "60",
@@ -100,6 +105,7 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Fairness",
+    dominantSide: "left",
   },
   {
     id: "18",
@@ -107,6 +113,7 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Greed-Avoidance",
+    dominantSide: "right",
   },
   {
     id: "42",
@@ -114,6 +121,7 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Greed-Avoidance",
+    dominantSide: "left",
   },
   {
     id: "24",
@@ -121,6 +129,7 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Modesty",
+    dominantSide: "left",
   },
   {
     id: "48",
@@ -128,14 +137,97 @@ const questions: TestQuestion[] = [
     dimension: "Honesty-Humility",
     section: 1,
     facet: "Modesty",
+    dominantSide: "left",
   },
 
-  // Emotionality (continues for all 60 questions)
-  // ... [See full implementation below]
-];
+  // Emotionality
+  {
+    id: "5",
+    text: "I would feel afraid if I had to travel in bad weather conditions.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Fearfulness",
+    dominantSide: "right",
+  },
+  {
+    id: "29",
+    text: "When it comes to physical danger, I am very fearful.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Fearfulness",
+    dominantSide: "right",
+  },
+  {
+    id: "53",
+    text: "Even in an emergency I wouldn't feel like panicking.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Fearfulness",
+    dominantSide: "left",
+  },
+  {
+    id: "11",
+    text: "I sometimes can't help worrying about little things.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Anxiety",
+    dominantSide: "right",
+  },
+  {
+    id: "35",
+    text: "I worry a lot less than most people do.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Anxiety",
+    dominantSide: "left",
+  },
+  {
+    id: "17",
+    text: "When I suffer from a painful experience, I need someone to make me feel comfortable.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Dependence",
+    dominantSide: "right",
+  },
+  {
+    id: "41",
+    text: "I can handle difficult situations without needing emotional support from anyone else.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Dependence",
+    dominantSide: "left",
+  },
+  {
+    id: "23",
+    text: "I feel like crying when I see other people crying.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Sentimentality",
+    dominantSide: "right",
+  },
+  {
+    id: "47",
+    text: "I feel strong emotions when someone close to me is going away for a long time.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Sentimentality",
+    dominantSide: "right",
+  },
+  {
+    id: "59",
+    text: "I remain unemotional even in situations where most people get very sentimental.",
+    dimension: "Emotionality",
+    section: 2,
+    facet: "Sentimentality",
+    dominantSide: "left",
+  },
 
-// Complete the array with all 60 questions following the same pattern
-// Full implementation would include all questions from the document
+  // Continue for all other dimensions...
+  // Extraversion (10 questions)
+  // Agreeableness (10 questions)
+  // Conscientiousness (10 questions)
+  // Openness to Experience (10 questions)
+];
 
 export const hexacoTestQuestionsData: TestQuestionsData = {
   id: "hexaco",
