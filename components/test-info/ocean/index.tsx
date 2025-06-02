@@ -7,9 +7,9 @@ import TestVariantsSection from "@/components/test-info/ocean/TestVariantsSectio
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default function OceanTestInformation() {
-  
+
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:bg-gradient-to-b dark:from-gray-950 dark:to-background">
+    <main>
       <TooltipProvider>
         <HeroSection />
         <TestOverviewSection />
