@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Clock, ClipboardList, InfoIcon } from "lucide-react";
 import Link from "next/link";
 import AnimatedCard from "./AnimatedCard";
-import { TestVariant } from "@/types/tests/test-info/ocean/test-variants";
+import { TestVariant } from "@/types/tests/ocean/test-info/test-variants";
 import { HybridTooltip, HybridTooltipTrigger, HybridTooltipContent } from "@/components/ui/tooltip-hybrid";
 
 type TestVariantCardProps = TestVariant & {
