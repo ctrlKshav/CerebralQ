@@ -1,6 +1,6 @@
 import { Badge, Target } from "lucide-react";
 import { TestInfo } from "../shared/TestInfo";
-import Image from "next/image";
+import { DISCIllustration } from "./DISCIllustration";
 
 export function DISCSection() {
   const whatIsContent = (
@@ -43,18 +43,7 @@ export function DISCSection() {
       whatIsContent={whatIsContent}
       benefitsTitle="Benefits of DISC Assessment"
       benefitsContent={benefitsContent}
-      illustration={
-        <div className="relative w-full max-h-[400px] overflow-hidden border border-border shadow-lg rounded-lg">
-          <Image
-            src="/images/landingPage/DISCResultCertificate.png"
-            alt="DISC Behavioral Assessment"
-            width={1549}
-            height={749}
-            className="object-contain h-full w-full"
-            priority
-          />
-        </div>
-      }
+      illustration={<DISCIllustration />}
       ctaText="Take DISC Assessment"
     />
   );
