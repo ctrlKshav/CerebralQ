@@ -22,6 +22,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
   onQuestionComplete,
 }) => {
   const { control, setValue, watch, getValues } = useFormContext<DISCFormSchemaType>();
+  const interactionOccurred = useRef(false);
 
   const groupAnswerPath = formKeyPrefix as FieldPath<DISCFormSchemaType>; // Path to the whole answer group for this question
   const groupIdentifierPath = `${formKeyPrefix}.groupId` as FieldPath<DISCFormSchemaType>;
@@ -32,7 +33,8 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
   const watchedRankings = watchedAnswerGroup?.rankings;
 
   useEffect(() => {
-    if (watchedRankings) {
+    if (interactionOccurred.current) {
+      if (watchedRankings) {
       const assignedRanks = Object.values(watchedRankings)
         .filter(rank => typeof rank === 'number' && rank >= 1 && rank <= 4) as number[];
       const uniqueAssignedRanks = new Set(assignedRanks);
@@ -40,7 +42,9 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
         onQuestionComplete();
       }
     }
-  }, [watchedRankings, onQuestionComplete, group.id]);
+    interactionOccurred.current = false; // Reset the flag after checking, regardless of completion
+  }
+}, [watchedRankings, onQuestionComplete, group.id]);
 
   const handleRankingChange = (adjectiveText: string, newRank: number | undefined) => {
     // Get the entire answer group for the current question
@@ -65,6 +69,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
     }
     setValue(specificAdjectiveRankingPath, newRank as any, { shouldValidate: true, shouldDirty: true });
     setValue(groupIdentifierPath, group.id as any, { shouldDirty: true });
+    interactionOccurred.current = true; // Signal that an interaction has occurred
   };
 
 
