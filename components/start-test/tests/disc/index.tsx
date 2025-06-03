@@ -52,25 +52,7 @@ const DISCTestForm: React.FC = () => {
     }
   };
 
-  const watchedAnswers = useWatch({ control, name: 'answers' });
 
-  // Effect to check if all questions are answered to enable submit
-  useEffect(() => {
-    if (watchedAnswers) {
-      const allAnswered = discQuestions.every((q: DISCGroup) => {
-        const groupAnswer = watchedAnswers[`group_${q.id}`];
-        return groupAnswer && Object.keys(groupAnswer.rankings).length === 4;
-      });
-      if (allAnswered) {
-        setIsTestCompleted(true);
-      } else {
-        setIsTestCompleted(false);
-      }
-    } else {
-      // If watchedAnswers is undefined (e.g. form not initialized fully yet)
-      setIsTestCompleted(false);
-    }
-  }, [watchedAnswers, totalQuestions]);
 
   if (!discQuestions || discQuestions.length === 0) {
     return <p>No questions available.</p>;
@@ -85,6 +67,7 @@ const DISCTestForm: React.FC = () => {
 
   const onPrev = () => {
     setCurrentQuestionCount(prevIndex => prevIndex - 1);
+
   };
 
 
