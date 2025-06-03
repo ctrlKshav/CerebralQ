@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useFormContext, Controller, FieldPath } from 'react-hook-form';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
 import { DISCGroup } from '@/types/tests/disc/testQuestions';
@@ -14,25 +14,13 @@ interface DISCQuestionCardProps {
   group: DISCGroup;
   formKeyPrefix: `answers.${string}`;
   onQuestionComplete: () => void;
-  isCurrentQuestion: boolean;
 }
 
 const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
   group,
   formKeyPrefix,
   onQuestionComplete,
-  isCurrentQuestion,
 }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (isCurrentQuestion && cardRef.current) {
-      cardRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-      });
-    }
-  }, [isCurrentQuestion]);
   const { control, setValue, watch, getValues } = useFormContext<DISCFormSchemaType>();
 
   const groupAnswerPath = formKeyPrefix as FieldPath<DISCFormSchemaType>; // Path to the whole answer group for this question
@@ -44,7 +32,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
   const watchedRankings = watchedAnswerGroup?.rankings;
 
   useEffect(() => {
-    if (watchedRankings && isCurrentQuestion) {
+    if (watchedRankings) {
       const assignedRanks = Object.values(watchedRankings)
         .filter(rank => typeof rank === 'number' && rank >= 1 && rank <= 4) as number[];
       const uniqueAssignedRanks = new Set(assignedRanks);
@@ -52,7 +40,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
         onQuestionComplete();
       }
     }
-  }, [watchedRankings, onQuestionComplete, group.id, isCurrentQuestion]);
+  }, [watchedRankings, onQuestionComplete, group.id]);
 
   const handleRankingChange = (adjectiveText: string, newRank: number | undefined) => {
     // Get the entire answer group for the current question
@@ -79,12 +67,9 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
     setValue(groupIdentifierPath, group.id as any, { shouldDirty: true });
   };
 
-  if (!isCurrentQuestion) {
-    return null;
-  }
 
   return (
-    <Card ref={cardRef} className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-mt-24`}>
+    <Card className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-mt-24`}>
       <CardHeader className="space-y-3 p-8">
         <div className="flex items-center gap-4">
           <h2 className="text-2xl font-semibold leading-tight">

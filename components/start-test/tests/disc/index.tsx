@@ -8,24 +8,20 @@ import { DISCResponseSchema } from '@/schema/disc';
 import { discGroups as discQuestions } from '@/data/tests/disc/questions/discFull'; // Renaming import
 import { DISCGroup } from '@/types/tests/disc/testQuestions';
 import DISCQuestionCard from './DISCQuestionCard'; // Corrected import path
-import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
 import { Form } from '@/components/ui/form'; // shadcn/ui Form
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import CQLogo from '@/components/CQLogo';
 import MobileTopbar from '../../shared/MobileTopbar';
 import { AnimatePresence, motion } from 'framer-motion';
+import { FormNavigation } from './form-navigation';
 
 // Define schema type at module level
 type DISCFormSchemaType = z.infer<typeof DISCResponseSchema>;
 
 const DISCTestForm: React.FC = () => {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState<number>(0);
-  const [isFormComplete, setIsFormComplete] = useState<boolean>(false);
-
+  const [currentQuestionCount, setCurrentQuestionCount] = useState<number>(1);
+  const [isTestCompleted, setIsTestCompleted] = useState<boolean>(false);
   const totalQuestions = discQuestions.length;
-
 
   const methods = useForm<DISCFormSchemaType>({
     resolver: zodResolver(DISCResponseSchema),
@@ -49,15 +45,12 @@ const DISCTestForm: React.FC = () => {
   };
 
   const handleQuestionComplete = () => {
-    if (currentQuestionIndex < totalQuestions - 1) {
-      setCurrentQuestionIndex(prevIndex => prevIndex + 1);
+    if (currentQuestionCount < totalQuestions - 1) {
+      setCurrentQuestionCount(prevIndex => prevIndex + 1);
     } else {
-      setIsFormComplete(true);
+      setIsTestCompleted(true);
     }
   };
-
-  const progressPercentage = ((currentQuestionIndex + 1) / totalQuestions) * 100;
-
 
   const watchedAnswers = useWatch({ control, name: 'answers' });
 
@@ -69,13 +62,13 @@ const DISCTestForm: React.FC = () => {
         return groupAnswer && Object.keys(groupAnswer.rankings).length === 4;
       });
       if (allAnswered) {
-        setIsFormComplete(true);
+        setIsTestCompleted(true);
       } else {
-        setIsFormComplete(false);
+        setIsTestCompleted(false);
       }
     } else {
       // If watchedAnswers is undefined (e.g. form not initialized fully yet)
-      setIsFormComplete(false);
+      setIsTestCompleted(false);
     }
   }, [watchedAnswers, totalQuestions]);
 
@@ -83,8 +76,17 @@ const DISCTestForm: React.FC = () => {
     return <p>No questions available.</p>;
   }
 
-  const currentGroup = discQuestions[currentQuestionIndex];
-  const currentQuestionText = `Question ${currentQuestionIndex + 1} out of ${totalQuestions}`
+  const currentGroup = discQuestions[currentQuestionCount];
+  const currentQuestionText = `Question ${currentQuestionCount + 1} out of ${totalQuestions}`
+
+  const onNext = () => {
+    setCurrentQuestionCount(prevIndex => prevIndex + 1);
+  };
+
+  const onPrev = () => {
+    setCurrentQuestionCount(prevIndex => prevIndex - 1);
+  };
+
 
   return (
 
@@ -120,11 +122,23 @@ const DISCTestForm: React.FC = () => {
                             group={currentGroup}
                             formKeyPrefix={`answers.group_${currentGroup.id}` as const}
                             onQuestionComplete={handleQuestionComplete}
-                            isCurrentQuestion={true} // Since only the current card is rendered here, this is true
                           />
                         </motion.div>
                       )}
                     </AnimatePresence>
+                  </div>
+                </div>
+
+                {/* Fixed Bottom Navigation */}
+                <div className="fixed bottom-0 left-0 right-0 border-t bg-white/30 dark:bg-gray-800/50 backdrop-blur-md">
+                  <div className="max-w-3xl mx-auto px-4 xs:px-8 pt-6 pb-4">
+                    <FormNavigation
+                      onNext={onNext}
+                      onPrev={onPrev}
+                      currentQuestionCount={currentQuestionCount}
+                      totalQuestions={totalQuestions}
+                      isTestCompleted={isTestCompleted}
+                    />
                   </div>
                 </div>
 

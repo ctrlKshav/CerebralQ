@@ -20,42 +20,42 @@ export const discGroups: DISCGroup[] = [
       { text: 'Supportive', type: 'Steady' }
     ]
   },
-  // {
-  //   id: 3,
-  //   adjectives: [
-  //     { text: 'Competitive', type: 'Dominant' },
-  //     { text: 'Reliable', type: 'Steady' },
-  //     { text: 'Outgoing', type: 'Influential' },
-  //     { text: 'Detail-oriented', type: 'Conscientious' }
-  //   ]
-  // },
-  // {
-  //   id: 4,
-  //   adjectives: [
-  //     { text: 'Independent', type: 'Dominant' },
-  //     { text: 'Precise', type: 'Conscientious' },
-  //     { text: 'Calm', type: 'Steady' },
-  //     { text: 'Persuasive', type: 'Influential' }
-  //   ]
-  // },
-  // {
-  //   id: 5,
-  //   adjectives: [
-  //     { text: 'Loyal', type: 'Steady' },
-  //     { text: 'Sociable', type: 'Influential' },
-  //     { text: 'Organized', type: 'Conscientious' },
-  //     { text: 'Driven', type: 'Dominant' }
-  //   ]
-  // },
-  // {
-  //   id: 6,
-  //   adjectives: [
-  //     { text: 'Bold', type: 'Dominant' },
-  //     { text: 'Inspiring', type: 'Influential' },
-  //     { text: 'Understanding', type: 'Steady' },
-  //     { text: 'Systematic', type: 'Conscientious' }
-  //   ]
-  // },
+  {
+    id: 3,
+    adjectives: [
+      { text: 'Competitive', type: 'Dominant' },
+      { text: 'Reliable', type: 'Steady' },
+      { text: 'Outgoing', type: 'Influential' },
+      { text: 'Detail-oriented', type: 'Conscientious' }
+    ]
+  },
+  {
+    id: 4,
+    adjectives: [
+      { text: 'Independent', type: 'Dominant' },
+      { text: 'Precise', type: 'Conscientious' },
+      { text: 'Calm', type: 'Steady' },
+      { text: 'Persuasive', type: 'Influential' }
+    ]
+  },
+  {
+    id: 5,
+    adjectives: [
+      { text: 'Loyal', type: 'Steady' },
+      { text: 'Sociable', type: 'Influential' },
+      { text: 'Organized', type: 'Conscientious' },
+      { text: 'Driven', type: 'Dominant' }
+    ]
+  },
+  {
+    id: 6,
+    adjectives: [
+      { text: 'Bold', type: 'Dominant' },
+      { text: 'Inspiring', type: 'Influential' },
+      { text: 'Understanding', type: 'Steady' },
+      { text: 'Systematic', type: 'Conscientious' }
+    ]
+  },
   // {
   //   id: 7,
   //   adjectives: [
