@@ -52,7 +52,7 @@ export function FormNavigation({
 
             <motion.div
                 layout
-                className="sticky bottom-0 z-20 pt-2"
+                className="sticky bottom-0 z-20 "
                 transition={{ duration: 0.3, ease: "easeOut" }}
             >
                 <div className="flex flex-col gap-1">
@@ -65,25 +65,23 @@ export function FormNavigation({
 
                 <div>
                     <AnimatePresence mode="wait">
-                        {isTestCompleted && (
-                            <motion.div
-                                key="nav-buttons"
-                                layout
-                                initial={{ opacity: 0, height: 0 }}
-                                animate={{ opacity: 1, height: "auto" }}
-                                exit={{ opacity: 0, height: 0 }}
-                                transition={{ duration: 0.3, ease: "easeOut" }}
-                                className="mt-4"
-                            >
-                                <NavigationButtons
-                                    isFirstStep={currentQuestionCount === 1}
-                                    isLastStep={currentQuestionCount === totalQuestions}
-                                    isCompleting={false}
-                                    onPrev={onPrev}
-                                    onNext={onNext}
-                                />
-                            </motion.div>
-                        )}
+                        <motion.div
+                            key="nav-buttons"
+                            layout
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            className="mt-2"
+                        >
+                            <NavigationButtons
+                                isFirstStep={currentQuestionCount === 1}
+                                isLastStep={currentQuestionCount === totalQuestions}
+                                isCompleting={false}
+                                onPrev={onPrev}
+                                onNext={onNext}
+                            />
+                        </motion.div>
                     </AnimatePresence>
                 </div>
             </motion.div>
