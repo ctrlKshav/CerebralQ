@@ -44,7 +44,7 @@ const DISCTestForm: React.FC = () => {
   };
 
   const handleQuestionComplete = () => {
-    if (currentQuestionCount < totalQuestions - 1) {
+    if (currentQuestionCount < totalQuestions) {
       setCurrentQuestionCount(prevIndex => prevIndex + 1);
     } 
   };
