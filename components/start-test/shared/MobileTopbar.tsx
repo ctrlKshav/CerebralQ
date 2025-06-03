@@ -7,7 +7,7 @@ export default function MobileTopbar({
   currentStepText,
   testName
 }: {
-  currentStepText: string;
+  currentStepText?: string;
   testName: string;
 }) {
 

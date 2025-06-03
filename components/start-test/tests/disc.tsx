@@ -94,7 +94,6 @@ const DISCTestForm: React.FC = () => {
         <CQLogo className="w-28 h-28" />
       </Link>
       <MobileTopbar
-        currentStepText={"Hi"}
         testName={"DISC"}
       />
       <FormProvider {...methods}>
