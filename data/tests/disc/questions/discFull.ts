@@ -1,4 +1,4 @@
-﻿import { DISCGroup, DISCTypeDescription } from '@/types/tests/disc/testQuestions';
+import { DISCGroup, DISCTypeDescription } from '@/types/tests/disc/testQuestions';
 
 // DISC Assessment Questions Data
 export const discGroups: DISCGroup[] = [
