@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState, useEffect } from "react";
 import { DISCResponseSchema, type DISCResponse } from "@/schema/disc";
 import { discGroups } from "@/data/tests/disc/questions/discFull";
-import { saveProgress, loadProgress } from "@/lib/mbtiStorage";
+import { saveProgress, loadProgress } from "@/lib/discStorage";
 import { calculateDISCScores } from "@/lib/calculateTestScores/calculateDisc";
 
 import { DISCQuestionCard } from "@/components/start-test/shared/DISCQuestionCard";
@@ -47,9 +47,7 @@ export default function DISCTest() {
   useEffect(() => {
     const savedData = loadProgress();
     if (savedData) {
-      // Filter out currentQuestionIndex if it exists in savedData before resetting
-      const { currentQuestionIndex, ...answersOnly } = savedData;
-      methods.reset(answersOnly);
+      methods.reset(savedData);
     }
   }, [methods]);
 
