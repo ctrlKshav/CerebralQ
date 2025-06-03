@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { useForm, FormProvider, useWatch } from 'react-hook-form';
+import React, { useState } from 'react';
+import { useForm, FormProvider } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod'; // Added Zod import
-import { DISCResponseSchema } from '@/schema/disc';
-import { discGroups as discQuestions } from '@/data/tests/disc/questions/discFull'; // Renaming import
-import { DISCGroup } from '@/types/tests/disc/testQuestions';
+import { DISCResponseSchema, DISCResponse } from '@/schema/disc';
+import { discQuestionData } from '@/data/tests/disc/questions/discFull'; // Renaming import
 import DISCQuestionCard from './DISCQuestionCard'; // Corrected import path
 import { Form } from '@/components/ui/form'; // shadcn/ui Form
 import Link from 'next/link';
@@ -15,29 +14,21 @@ import MobileTopbar from '../../shared/MobileTopbar';
 import { AnimatePresence, motion } from 'framer-motion';
 import { FormNavigation } from './form-navigation';
 
-// Define schema type at module level
-type DISCFormSchemaType = z.infer<typeof DISCResponseSchema>;
 
-const DISCTestForm: React.FC = () => {
+const DISCTestForm = () => {
   const [currentQuestionCount, setCurrentQuestionCount] = useState<number>(1);
-  const totalQuestions = discQuestions.length;
+  const totalQuestions = discQuestionData.totalQuestions;
 
-  const methods = useForm<DISCFormSchemaType>({
+  const methods = useForm<DISCResponse>({
     resolver: zodResolver(DISCResponseSchema),
     defaultValues: {
-      answers: discQuestions.reduce((acc: DISCFormSchemaType['answers'], group: DISCGroup) => {
-        acc[`group_${group.id}`] = {
-          groupId: group.id,
-          rankings: {},
-        };
-        return acc;
-      }, {} as DISCFormSchemaType['answers']),
+      // id: discQuestions.id,
+      answers: {},
+      // takenAt: new Date().toISOString(), // set default createdAt
     },
   });
 
-  const { handleSubmit, formState: { errors, isValid, isSubmitting }, control } = methods; // Removed watch, added control for useWatch
-
-  const onSubmit = (data: DISCFormSchemaType) => {
+  const onSubmit = (data: DISCResponse) => {
     console.log('Form Submitted:', data);
     // TODO: Handle actual submission (e.g., API call)
     alert('Test Complete! Check console for data.');
@@ -46,16 +37,15 @@ const DISCTestForm: React.FC = () => {
   const handleQuestionComplete = () => {
     if (currentQuestionCount < totalQuestions) {
       setCurrentQuestionCount(prevIndex => prevIndex + 1);
-    } 
+    }
   };
 
 
-
-  if (!discQuestions || discQuestions.length === 0) {
+  if (!discQuestionData || discQuestionData.questions.length === 0) {
     return <p>No questions available.</p>;
   }
 
-  const currentGroup = discQuestions[currentQuestionCount - 1];
+  const currentGroup = discQuestionData.questions[currentQuestionCount - 1];
   const currentQuestionText = `Question ${currentQuestionCount} out of ${totalQuestions}`
 
   const onNext = () => {
@@ -81,7 +71,7 @@ const DISCTestForm: React.FC = () => {
       />
       <FormProvider {...methods}>
         <Form {...methods}> {/* shadcn/ui Form wrapper */}
-          <form onSubmit={handleSubmit(onSubmit)} className="flex">
+          <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
 
 
             <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">

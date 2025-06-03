@@ -3,7 +3,7 @@ import { useFormContext, Controller, FieldPath } from 'react-hook-form';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { FormControl, FormItem, FormLabel } from '@/components/ui/form';
-import { DISCGroup } from '@/types/tests/disc/testQuestions';
+import { DISCQuestionGroup } from '@/types/tests/disc/testQuestions';
 import { DISCResponseSchema } from '@/schema/disc';
 import { z } from 'zod';
 
@@ -11,7 +11,7 @@ type DISCFormSchemaType = z.infer<typeof DISCResponseSchema>;
 type AnswerGroup = DISCFormSchemaType['answers'][string]; // This is { groupId: number; rankings: Record<string, number> }
 
 interface DISCQuestionCardProps {
-  group: DISCGroup;
+  group: DISCQuestionGroup;
   formKeyPrefix: `answers.${string}`;
   onQuestionComplete: () => void;
 }

@@ -2,9 +2,9 @@
   DISCResponse,
   DISCScores,
   DISCResult,
-  DISCType,
-} from "@/types/tests/disc/testQuestions";
-import { discGroups } from "@/data/tests/disc/questions/discFull";
+} from "@/types/tests/disc/results";
+import { DISCType } from "@/types/tests/disc/testQuestions";
+import { discQuestionData } from "@/data/tests/disc/questions/discFull";
 
 /**
  * Calculate DISC scores from user responses
@@ -21,15 +21,15 @@ export function calculateDISCScores(responses: DISCResponse[]): DISCResult {
   };
 
   // Validate responses
-  if (responses.length !== discGroups.length) {
+  if (responses.length !== discQuestionData.totalQuestions) {
     throw new Error(
-      `Expected ${discGroups.length} responses, received ${responses.length}`
+      `Expected ${discQuestionData.totalQuestions} responses, received ${responses.length}`
     );
   }
 
   // Calculate scores for each response
   responses.forEach((response) => {
-    const group = discGroups.find((g) => g.id === response.groupId);
+    const group = discQuestionData.questions.find((g) => g.id === response.groupId);
     if (!group) {
       throw new Error(`Invalid group ID: ${response.groupId}`);
     }
@@ -117,7 +117,7 @@ export function validateGroupRankings(
   groupId: number,
   rankings: { [adjective: string]: number }
 ): boolean {
-  const group = discGroups.find((g) => g.id === groupId);
+  const group = discQuestionData.questions.find((g) => g.id === groupId);
   if (!group) return false;
 
   const expectedAdjectives = group.adjectives.map((adj) => adj.text);

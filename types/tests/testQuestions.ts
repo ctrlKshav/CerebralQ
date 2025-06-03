@@ -20,7 +20,7 @@ export interface TestQuestion {
   iconColor?: string;
   options?: Array<{
     value: string;
-    label: string;
+    label: string;  
     description?: string;
   }>;
   dimension: string;
