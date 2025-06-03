@@ -79,6 +79,10 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
     setValue(groupIdentifierPath, group.id as any, { shouldDirty: true });
   };
 
+  if(!isCurrentQuestion){
+    return null;
+  }
+
   return (
     <Card ref={cardRef} className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-mt-24`}>
       <CardHeader className="space-y-3 p-8">
