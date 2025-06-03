@@ -79,28 +79,30 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
     setValue(groupIdentifierPath, group.id as any, { shouldDirty: true });
   };
 
-  if (!isCurrentQuestion) {
-    return null;
-  }
-
   return (
-    <Card ref={cardRef} className={`w-full transition-all duration-500 ease-in-out transform ${isCurrentQuestion ? 'opacity-100 scale-100' : 'opacity-50 scale-95'} scroll-mt-24`}>
-      <CardHeader>
-        <CardTitle>Question {group.id}</CardTitle>
-        <p className="text-sm text-muted-foreground">Rank the following adjectives from 1 (Least Like You) to 4 (Most Like You). Each rank must be used exactly once.</p>
+    <Card ref={cardRef} className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-mt-24`}>
+      <CardHeader className="space-y-3 p-8">
+        <div className="flex items-center gap-4">
+          <h2 className="text-2xl font-semibold leading-tight">
+            Question {group.id}
+          </h2>
+        </div>
+        <p className="text-lg text-gray-600 dark:text-gray-400">
+            Rank the following adjectives from 1 (Least Like You) to 4 (Most Like You). Each rank must be used exactly once.
+          </p>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
           {group.adjectives.map((adjective) => {
             const controllerFieldName = `${formKeyPrefix}.rankings.${adjective.text}` as FieldPath<DISCFormSchemaType>;
             return (
-              <div key={adjective.text} className="p-4 border rounded-md shadow-sm bg-card hover:shadow-md transition-shadow">
+              <div key={adjective.text} className="p-4 border rounded-md shadow-sm  hover:shadow-md transition-shadow">
                 <p className="font-semibold text-lg mb-3 text-card-foreground">{adjective.text}</p>
                 <Controller
                   name={controllerFieldName}
                   control={control}
                   render={({ field }) => {
-                  const watchedRank = watch(`${formKeyPrefix}.rankings.${adjective.text}` as FieldPath<DISCFormSchemaType>) as unknown as number | undefined;
+                    const watchedRank = watch(`${formKeyPrefix}.rankings.${adjective.text}` as FieldPath<DISCFormSchemaType>) as unknown as number | undefined;
                     return (
                       <>
                         <RadioGroup
@@ -119,8 +121,8 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
                                   id={`${formKeyPrefix}-${adjective.text.replace(/\s+/g, '-')}-${rank}`}
                                   className={`h-8 w-8 sm:h-10 sm:w-10 transition-all duration-200 ease-in-out border-2 
                                             ${watchedRank === rank
-                                              ? 'bg-primary text-primary-foreground border-primary ring-2 ring-primary ring-offset-2 ring-offset-background'
-                                              : 'bg-muted hover:bg-muted-foreground/10 border-muted-foreground/30'}`}
+                                      ? 'bg-primary text-primary-foreground border-primary ring-2 ring-primary ring-offset-2 ring-offset-background'
+                                      : 'bg-muted hover:bg-muted-foreground/10 border-muted-foreground/30'}`}
                                 />
                               </FormControl>
                               <FormLabel

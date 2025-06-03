@@ -12,6 +12,10 @@ import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Form } from '@/components/ui/form'; // shadcn/ui Form
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import Link from 'next/link';
+import CQLogo from '@/components/CQLogo';
+import MobileTopbar from '../shared/MobileTopbar';
+import { AnimatePresence, motion } from 'framer-motion';
 
 // Define schema type at module level
 type DISCFormSchemaType = z.infer<typeof DISCResponseSchema>;
@@ -83,49 +87,65 @@ const DISCTestForm: React.FC = () => {
   const formKeyPrefix = `answers.group_${currentGroup.id}` as const;
 
   return (
-    <FormProvider {...methods}>
-      <Form {...methods}> {/* shadcn/ui Form wrapper */}
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8 p-4 md:p-8 max-w-2xl mx-auto">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-2xl font-bold text-center">DISC Assessment</CardTitle>
-              <div className="mt-4">
-                <Progress value={progressPercentage} className="w-full" />
-                <p className="text-sm text-muted-foreground mt-2 text-center">
-                  Question {currentQuestionIndex + 1} of {totalQuestions}
-                </p>
-              </div>
-            </CardHeader>
 
-            <CardContent className="min-h-[400px]">
-              {discQuestions.map((group: DISCGroup, index: number) => (
-                <div key={group.id} style={{ display: index === currentQuestionIndex ? 'block' : 'none' }}>
-                  <DISCQuestionCard
-                    group={group}
-                    formKeyPrefix={`answers.group_${group.id}` as const}
-                    onQuestionComplete={handleQuestionComplete}
-                    isCurrentQuestion={index === currentQuestionIndex}
-                  />
+
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 ">
+      <Link href="/" className="hidden lg:block fixed z-50  left-8  ">
+        <CQLogo className="w-28 h-28" />
+      </Link>
+      <MobileTopbar
+        currentStepText={"Hi"}
+        testName={"DISC"}
+      />
+      <FormProvider {...methods}>
+        <Form {...methods}> {/* shadcn/ui Form wrapper */}
+          <form onSubmit={handleSubmit(onSubmit)} className="flex">
+
+
+            <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
+              <div className=" relative">
+                <div className="p-0 xs:p-8 pb-32">
+                  <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center ">
+                    <AnimatePresence mode="wait">
+                      <motion.div
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="w-full"
+                      >
+                        {discQuestions.map((group: DISCGroup, index: number) => {
+                          return (
+                            <div key={group.id}>
+                              <DISCQuestionCard
+                                group={group}
+                                formKeyPrefix={`answers.group_${group.id}` as const}
+                                onQuestionComplete={handleQuestionComplete}
+                                isCurrentQuestion={index === currentQuestionIndex}
+                              />
+                            </div>
+                          )
+                        })}
+
+                      </motion.div>
+                    </AnimatePresence>
+                  </div>
                 </div>
-              ))}
-            </CardContent>
 
-            <CardFooter className="flex flex-col items-center space-y-4">
-              {isFormComplete && currentQuestionIndex === totalQuestions -1 && (
-                <Button type="submit" disabled={!isValid || isSubmitting} className="w-full md:w-auto">
-                  {isSubmitting ? 'Submitting...' : 'Submit Answers'}
-                </Button>
-              )}
-              {Object.keys(errors).length > 0 && (
-                <p className="text-sm font-medium text-destructive">
-                  Please correct the errors above before submitting.
-                </p>
-              )}
-            </CardFooter>
-          </Card>
-        </form>
-      </Form>
-    </FormProvider>
+              </div>
+            </div>
+
+
+
+
+          </form>
+        </Form>
+      </FormProvider>
+
+    </div>
+
+
+
   );
 };
 

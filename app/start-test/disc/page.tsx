@@ -1,5 +1,4 @@
 "use client";
-import { DISCTestForm } from "@/components/start-test/shared/DISCTestForm";
 import { discGroups } from "@/data/tests/disc/questions/discFull";
 import { DISCResponseSchema } from "@/schema/disc";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -11,7 +10,7 @@ import React from 'react'
 
 export default function TakeTestpage() {
   return (
-    <div>
+    <div className="">
       <DISCTest/>
     </div>
   )
