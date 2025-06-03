@@ -4,30 +4,31 @@ import { TestQuestion } from "@/types/tests/testQuestions";
 import { useFormContext } from "react-hook-form";
 import { useEffect } from "react";
 import Icon from "@/components/Icon";
+import { MBTIResponse } from "@/schema/mbti";
 
 interface QuestionCardProps {
   question: TestQuestion;
+  currentSectionId: number;
 }
 
-export function QuestionCard({ question }: QuestionCardProps) {
-  const {
-    formState: { errors },
-    setValue,
-  } = useFormContext<{ answers: Record<string, any> }>();
+export function QuestionCard({
+  question,
+  currentSectionId,
+}: QuestionCardProps) {
+  const { setValue } = useFormContext<MBTIResponse>();
   const iconClass = question.iconColor || "text-primary";
-  const error = errors.answers?.[question.id];
 
   useEffect(() => {
     setValue(
       `answers.${question.id}.dimension`,
-      question.dimension.toLowerCase()
+      question.dimension as MBTIResponse["answers"][string]["dimension"]
     );
   }, []);
 
   return (
     <Card
-      className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-m-16
-      ${error ? "ring-2 ring-red-500" : ""}`}
+      className={`w-full backdrop-blur-sm bg-white/50 dark:bg-gray-800/50 border-none shadow-lg question-card mb-16 scroll-mt-24`}
+      data-question-id={question.id}
     >
       <CardHeader className="space-y-3 p-8">
         <div className="flex items-center gap-4">
@@ -49,12 +50,10 @@ export function QuestionCard({ question }: QuestionCardProps) {
       </CardHeader>
       <CardContent className="p-8 pt-0">
         {/* Likert scale for score */}
-        <LikertScale name={`answers.${question.id}.selectedScore`} />
-        {error && (
-          <p className="mt-2 text-sm text-red-500">
-            {error.message?.toString()}
-          </p>
-        )}
+        <LikertScale
+          name={`answers.${question.id}.selectedScore`}
+          currentSectionId={currentSectionId}
+        />
       </CardContent>
     </Card>
   );

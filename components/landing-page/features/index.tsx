@@ -13,7 +13,7 @@ export function Features() {
         title="Personality Insights"
         description="Discover the powerful features that make Cerebral Quotient the leading personality assessment platform."
       />
-      <div className="space-y-16 md:space-y-24  overflow-hidden">
+      <div className="space-y-16 md:space-y-24 overflow-hidden">
         {features.map((feature, index) => (
           <FeatureCard
             key={feature.id}

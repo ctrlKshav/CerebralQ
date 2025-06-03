@@ -17,7 +17,7 @@ const ThemeSwitcher = () => {
   };
 
   // Don't render theme switcher on start-test pages
-  if (pathName?.includes("/start-test")) return null;
+  // if (pathName?.includes("/start-test")) return null;
   
   return (
     <div className="fixed bottom-4 right-6 z-50">

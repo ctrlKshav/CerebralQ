@@ -1,5 +1,5 @@
 import { BeakerIcon, ClipboardCheck, FlaskConical, GraduationCap, Brain, Microscope } from "lucide-react";
-import { TestVariant } from "@/types/tests/test-info/ocean/test-variants";
+import { TestVariant } from "@/types/tests/ocean/test-info/test-variants";
 
 export const testVariants: TestVariant[] = [
   {

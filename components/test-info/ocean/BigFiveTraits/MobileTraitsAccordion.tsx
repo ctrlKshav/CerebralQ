@@ -6,7 +6,7 @@
 } from "@/components/ui/accordion";
 import TraitContent from "./TraitContent";
 import TraitIcon from "./TraitIcon";
-import { Trait } from "@/types/tests/test-info/ocean";
+import { Trait } from "@/types/tests/ocean/test-info";
 
 interface MobileTraitsAccordionProps {
   traits: Trait[];

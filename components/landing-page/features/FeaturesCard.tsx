@@ -22,7 +22,7 @@ export default function FeatureCard({
     <div
       id={id}
       className={cn(
-        "grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 items-center ",
+        "grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12 items-center py-8",
         className
       )}
     >
@@ -33,8 +33,8 @@ export default function FeatureCard({
             <Image
               src={feature.imageSrc || "/placeholder.svg"}
               alt={feature.title}
-              width={500}
-              height={500}
+              width={600}
+              height={600}
               className=" transition-transform duration-500 hover:scale-105"
               priority={feature.id === 1}
             />
@@ -48,7 +48,7 @@ export default function FeatureCard({
               alt={feature.title}
               width={600}
               height={600}
-              className=" transition-transform duration-500 hover:scale-105"
+              className="  transition-transform duration-500 hover:scale-105"
             />
           </div>
           <FeatureContent feature={feature} />

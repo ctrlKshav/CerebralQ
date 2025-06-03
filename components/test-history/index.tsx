@@ -4,6 +4,13 @@ import { useState } from "react";
 import EmptyState from "./empty-state";
 import TestCard from "./test-card";
 import { Badge } from "../ui/badge";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "../ui/card";
 import { UserTestHistoryData } from "@/types/userTestHistory";
 import { getPersonalityDescription } from "@/data/tests/mbti/personalityDescription";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";
@@ -101,34 +108,39 @@ export default function TestHistory({
   );
 
   return (
-    <div className="min-h-screen mt-24 bg-gradient-to-b from-background to-background/80 overflow-x-hidden">
+    <div className="min-h-screen mt-24">
       <div className="relative w-full">
         <div className="relative w-full px-6 sm:px-8 pt-12">
-          <div className="flex flex-col gap-12">
-            <div className="space-y-7 flex flex-col items-center text-center">
-              <h1 className="text-6xl md:text-8xl font-bold tracking-tight">
-                <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-500 via-blue-500 to-emerald-500 animate-gradient">
-                  Your MBTI Journey
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl max-w-4xl text-muted-foreground/90 leading-relaxed">
+          <Card className="border-none shadow-none bg-transparent">
+            <CardHeader className="space-y-7 flex flex-col items-center text-center">
+              <CardTitle className="text-6xl md:text-8xl font-bold tracking-tight">
+                <span className="text-primary">Your MBTI Journey</span>
+              </CardTitle>
+              <CardDescription className="text-xl md:text-2xl max-w-4xl text-muted-foreground/90 leading-relaxed">
                 Track your personal growth and discover how your personality
                 evolves over time through the lens of MBTI
-              </p>
-            </div>
-            <div className="self-center sm:self-end relative group">
-              <div className="absolute rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
-              <Badge className="bg-primary/90 dark:bg-primary text-white">
-                <span className="text-sm font-semibold">Latest to Oldest</span>
-              </Badge>
-            </div>
-          </div>
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="flex justify-center lg:justify-end">
+              <div className="relative group">
+                <div className="absolute rounded-xl blur-md opacity-75 group-hover:opacity-100 transition duration-500"></div>
+                <Badge
+                  variant="secondary"
+                  className="bg-primary/90 dark:bg-primary text-white"
+                >
+                  <span className="text-sm font-semibold">
+                    Latest to Oldest
+                  </span>
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
 
       {/* Results Cards */}
-      <div className="w-full px-6 sm:px-8 py-16 bg-gradient-to-b from-background/90 to-background">
-        <div className="space-y-12">
+      <div className="w-full p-6 sm:p-24">
+        <div className="space-y-24">
           {resultsWithStaticData.map((result) => (
             <TestCard
               key={result.id}

@@ -1,5 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { motion } from "framer-motion";
+import { MBTIResponse } from "@/schema/mbti";
+import { saveProgress } from "@/lib/mbtiStorage";
 
 const options = [
   { value: 1, label: "Strongly Disagree" },
@@ -10,36 +12,31 @@ const options = [
 ];
 
 interface LikertScaleProps {
-  name: string;
+  name: `answers.${string}.selectedScore`;
+  currentSectionId: number;
 }
 
-export function LikertScale({ name }: LikertScaleProps) {
-  const { register, watch, clearErrors } = useFormContext();
+export function LikertScale({ name, currentSectionId }: LikertScaleProps) {
+  const { register, watch, setError, clearErrors, getValues } =
+    useFormContext<MBTIResponse>();
   const selectedValue = watch(name);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     clearErrors(name);
     register(name).onChange(e);
-    
-    // Find the current question card container
-    const currentCard = e.currentTarget.closest('.question-card');
-    // Find the next question card
-    const nextCard = currentCard?.nextElementSibling;
-    
-    // If there's a next question, scroll to it
-    if (nextCard) {
-        nextCard.scrollIntoView({ 
-          behavior: 'smooth',
-          block: 'start'
-        });
-    }
+
+    const localStorageData = {
+      ...getValues(),
+      currentSectionId: currentSectionId,
+    };
+    saveProgress(localStorageData);
   };
 
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 lg:grid-cols-5 text-xl py-2">
         {options.map((option) => {
-          const isSelected = selectedValue === option.value;
+          const isSelected = Number(selectedValue) === option.value;
           return (
             <motion.div
               key={option.value}
@@ -59,9 +56,9 @@ export function LikertScale({ name }: LikertScaleProps) {
                 />
                 <span
                   className={`font-semibold ${
-                    isSelected 
-                      ? 'text-purple-600 dark:text-purple-400' 
-                      : 'text-gray-700 dark:text-gray-300'
+                    isSelected
+                      ? "text-purple-600 dark:text-purple-400"
+                      : "text-gray-700 dark:text-gray-300"
                   }`}
                 >
                   {option.label}
