@@ -84,7 +84,7 @@ const DISCTestForm: React.FC = () => {
   }
 
   const currentGroup = discQuestions[currentQuestionIndex];
-  const formKeyPrefix = `answers.group_${currentGroup.id}` as const;
+  const currentQuestionText = `Question ${currentQuestionIndex + 1} out of ${totalQuestions}`
 
   return (
 
@@ -94,7 +94,8 @@ const DISCTestForm: React.FC = () => {
         <CQLogo className="w-28 h-28" />
       </Link>
       <MobileTopbar
-        testName={"DISC"}
+        testName={"Disc Assessment"}
+        currentStepText={currentQuestionText}
       />
       <FormProvider {...methods}>
         <Form {...methods}> {/* shadcn/ui Form wrapper */}
