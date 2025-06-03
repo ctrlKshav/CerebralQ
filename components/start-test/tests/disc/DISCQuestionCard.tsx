@@ -101,7 +101,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
             const controllerFieldName = `${formKeyPrefix}.rankings.${adjective.text}` as FieldPath<DISCFormSchemaType>;
             return (
               <div key={adjective.text} className="p-4 border rounded-md shadow-sm hover:shadow-md transition-shadow flex items-center gap-4 ">
-                <div className="font-semibold text-lg text-card-foreground  w-full">{adjective.text}</div>
+                <div className="font-semibold text-lg sm:text-xl text-card-foreground  w-full">{adjective.text}</div>
                 <Controller
                   name={controllerFieldName}
                   control={control}
@@ -123,7 +123,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
                                 <RadioGroupItem
                                   value={rank.toString()}
                                   id={`${formKeyPrefix}-${adjective.text.replace(/\s+/g, '-')}-${rank}`}
-                                  className={`h-6 w-6 transition-all duration-200 ease-in-out`}
+                                  className={`h-7 w-7 transition-all duration-200 ease-in-out`}
                                 />
                               </FormControl>
                               <FormLabel
