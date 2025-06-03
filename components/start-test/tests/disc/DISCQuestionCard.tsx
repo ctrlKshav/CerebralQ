@@ -100,8 +100,8 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
           {group.adjectives.map((adjective) => {
             const controllerFieldName = `${formKeyPrefix}.rankings.${adjective.text}` as FieldPath<DISCFormSchemaType>;
             return (
-              <div key={adjective.text} className="p-4 border rounded-md shadow-sm  hover:shadow-md transition-shadow">
-                <p className="font-semibold text-lg mb-3 text-card-foreground">{adjective.text}</p>
+              <div key={adjective.text} className="p-4 border rounded-md shadow-sm hover:shadow-md transition-shadow flex items-center gap-4 ">
+                <div className="font-semibold text-lg text-card-foreground  w-full">{adjective.text}</div>
                 <Controller
                   name={controllerFieldName}
                   control={control}
@@ -115,7 +115,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
                             handleRankingChange(adjective.text, isNaN(rank) ? undefined : rank);
                           }}
                           value={watchedRank?.toString() ?? ""}
-                          className="flex justify-around items-center py-2"
+                          className="flex justify-between items-center py-2 w-full"
                         >
                           {[1, 2, 3, 4].map((rank) => (
                             <FormItem key={rank} className="flex flex-col items-center space-y-1.5">
