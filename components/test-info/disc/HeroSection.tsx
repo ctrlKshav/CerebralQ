@@ -14,15 +14,15 @@ import WaveAnimation from "../shared/WaveAnimation";
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
-  
+
   return (
     <section className="relative overflow-hidden pb-24 bg-background">
       <div className="absolute inset-0 gradient-to-br from-primary/80 via-primary to-primary-foreground/90 dark:from-primary/70 dark:via-primary/80 dark:to-primary-foreground/80">
         {/* Using the reusable wave animation component */}
         <WaveAnimation isMobile={isMobile} />
       </div>
-      
-      <motion.div 
+
+      <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24 relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -39,7 +39,7 @@ const HeroSection = () => {
                 DISC Behavioral Assessment
               </span>
             </motion.div>
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 text-primary dark:text-foreground"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ const HeroSection = () => {
             >
               Unlock Your <span className="italic font-extrabold">Behavioral</span> Style
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl md:text-2xl max-w-2xl mb-8 text-primary/90 dark:text-foreground/90"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -56,49 +56,14 @@ const HeroSection = () => {
               Discover how you communicate, lead, and interact with others through this powerful assessment of your natural behavioral tendencies.
             </motion.p>
             <div className="space-y-3">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button 
-                    size="lg"
-                    variant="default"
-                    className="font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.03]"
-                  >
-                    Take the Test Now <ChevronDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-56">
-                  <Link href="/start-test/disc/disc-24">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <div className="flex flex-col">
-                        <span className="font-medium">DISC-24</span>
-                        <span className="text-xs text-muted-foreground">Quick (5-7 min)</span>
-                      </div>
-                    </DropdownMenuItem>
-                  </Link>
-                  <Link href="/start-test/disc/disc-60">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <div className="flex flex-col">
-                        <span className="font-medium">DISC-60</span>
-                        <span className="text-xs text-muted-foreground">Comprehensive (15-20 min)</span>
-                      </div>
-                    </DropdownMenuItem>
-                  </Link>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              
-              <div className="flex items-center mt-4">
-                <Link href="#overview" className="text-primary/80 dark:text-foreground/80 hover:text-primary dark:hover:text-foreground text-sm font-medium flex items-center transition-colors">
-                  Learn more about DISC
-                  <ArrowRight className="ml-1 h-3 w-3" />
-                </Link>
-                <div className="mx-3 h-1 w-1 rounded-full bg-primary/30 dark:bg-foreground/30"></div>
-                <span className="text-primary/60 dark:text-foreground/60 text-sm">
-                  Taken by <span className="font-medium">1.2M+</span> professionals
-                </span>
-              </div>
+              <Button className="group">
+                <Link href="/start-test/disc" >Take the Test Now</Link>
+                <ArrowRight className="ml-1 h-3 w-3 group-hover:ml-2 group-hover:scale-110 transition-all duration-300" />
+              </Button>
+
             </div>
           </div>
-          
+
           {/* Visual representation of the DISC assessment */}
           <motion.div
             className="relative w-full max-w-md"
@@ -118,7 +83,7 @@ const HeroSection = () => {
                 </div>
                 <p className="text-sm text-primary/70 dark:text-muted-foreground">Behavioral Assessment</p>
               </div>
-              
+
               {/* DISC Profile Visualization */}
               <div className="grid grid-cols-2 gap-4 mb-6">
                 {[
@@ -133,8 +98,8 @@ const HeroSection = () => {
                       <span className="text-xs text-primary/70 dark:text-muted-foreground">{trait.value}%</span>
                     </div>
                     <div className="h-2 bg-primary/10 dark:bg-muted rounded-full">
-                      <motion.div 
-                        className={`h-full ${trait.color} rounded-full`} 
+                      <motion.div
+                        className={`h-full ${trait.color} rounded-full`}
                         initial={{ width: 0 }}
                         animate={{ width: `${trait.value}%` }}
                         transition={{ duration: 1, delay: 0.7 + (i * 0.1) }}
@@ -143,7 +108,7 @@ const HeroSection = () => {
                   </div>
                 ))}
               </div>
-              
+
               {/* Primary Style */}
               <div className="bg-primary/5 dark:bg-primary-foreground/5 rounded-lg p-4 mb-6">
                 <h4 className="text-sm font-semibold text-primary dark:text-card-foreground mb-2">Primary Style: Influencer</h4>
@@ -151,7 +116,7 @@ const HeroSection = () => {
                   You're naturally enthusiastic, optimistic, and people-oriented. You excel at motivating others and building relationships.
                 </p>
               </div>
-              
+
               {/* Certificate footer */}
               <div className="pt-4 border-t border-primary/20 dark:border-muted text-center">
                 <div className="text-xs text-primary/60 dark:text-muted-foreground">Completed on May 15, 2025</div>
@@ -160,7 +125,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </motion.div>
-      
+
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
     </section>
   );
