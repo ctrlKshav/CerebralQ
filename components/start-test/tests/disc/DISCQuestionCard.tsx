@@ -85,7 +85,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
           {group.adjectives.map((adjective) => {
             const controllerFieldName = `${formKeyPrefix}.rankings.${adjective.text}` as FieldPath<DISCFormSchemaType>;
             return (
-              <div key={adjective.text} className="px-4 py-2 hover:shadow-lg hover:rounded-lg transition-shadow flex items-center gap-4 ">
+              <div key={adjective.text} className="px-4 py-3 flex items-center gap-4 ">
                 <div className="font-semibold text-lg sm:text-xl text-card-foreground  w-full">{adjective.text}</div>
                 <Controller
                   name={controllerFieldName}

@@ -20,7 +20,6 @@ type DISCFormSchemaType = z.infer<typeof DISCResponseSchema>;
 
 const DISCTestForm: React.FC = () => {
   const [currentQuestionCount, setCurrentQuestionCount] = useState<number>(1);
-  const [isTestCompleted, setIsTestCompleted] = useState<boolean>(false);
   const totalQuestions = discQuestions.length;
 
   const methods = useForm<DISCFormSchemaType>({
@@ -47,9 +46,7 @@ const DISCTestForm: React.FC = () => {
   const handleQuestionComplete = () => {
     if (currentQuestionCount < totalQuestions - 1) {
       setCurrentQuestionCount(prevIndex => prevIndex + 1);
-    } else {
-      setIsTestCompleted(true);
-    }
+    } 
   };
 
 
@@ -120,7 +117,6 @@ const DISCTestForm: React.FC = () => {
                       onPrev={onPrev}
                       currentQuestionCount={currentQuestionCount}
                       totalQuestions={totalQuestions}
-                      isTestCompleted={isTestCompleted}
                     />
                   </div>
                 </div>
