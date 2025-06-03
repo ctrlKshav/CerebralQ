@@ -105,38 +105,30 @@ const DISCTestForm: React.FC = () => {
               <div className=" relative">
                 <div className="p-0 xs:p-8 pb-32">
                   <div className="max-w-5xl mx-auto min-h-[calc(100vh-12rem)] flex items-center ">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="w-full"
-                      >
-                        {discQuestions.map((group: DISCGroup, index: number) => {
-                          return (
-                            <div key={group.id}>
-                              <DISCQuestionCard
-                                group={group}
-                                formKeyPrefix={`answers.group_${group.id}` as const}
-                                onQuestionComplete={handleQuestionComplete}
-                                isCurrentQuestion={index === currentQuestionIndex}
-                              />
-                            </div>
-                          )
-                        })}
-
-                      </motion.div>
+                    <AnimatePresence mode="wait" initial={false}>
+                      {currentGroup && (
+                        <motion.div
+                          key={currentGroup.id} // Key changes with the question, triggering animation
+                          initial={{ opacity: 0, x: 50 }} // Slide in from right
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -50 }}   // Slide out to left
+                          transition={{ duration: 0.35, ease: "easeInOut" }}
+                          className="w-full" // Ensure card takes full width of its container
+                        >
+                          <DISCQuestionCard
+                            group={currentGroup}
+                            formKeyPrefix={`answers.group_${currentGroup.id}` as const}
+                            onQuestionComplete={handleQuestionComplete}
+                            isCurrentQuestion={true} // Since only the current card is rendered here, this is true
+                          />
+                        </motion.div>
+                      )}
                     </AnimatePresence>
                   </div>
                 </div>
 
               </div>
             </div>
-
-
-
-
           </form>
         </Form>
       </FormProvider>
