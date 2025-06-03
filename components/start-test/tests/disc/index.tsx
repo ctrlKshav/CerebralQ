@@ -76,8 +76,8 @@ const DISCTestForm: React.FC = () => {
     return <p>No questions available.</p>;
   }
 
-  const currentGroup = discQuestions[currentQuestionCount];
-  const currentQuestionText = `Question ${currentQuestionCount + 1} out of ${totalQuestions}`
+  const currentGroup = discQuestions[currentQuestionCount - 1];
+  const currentQuestionText = `Question ${currentQuestionCount} out of ${totalQuestions}`
 
   const onNext = () => {
     setCurrentQuestionCount(prevIndex => prevIndex + 1);
