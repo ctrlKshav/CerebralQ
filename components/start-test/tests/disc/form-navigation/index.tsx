@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import { useFormContext } from "react-hook-form";
 import { ProgressBar } from "./ProgressBar";
 import { SectionAndQuestionCounter } from "./SectionAndQuestionCounter";
-import { ErrorMessage } from "./ErrorMessage";
 import { NavigationButtons } from "./NavigationButtons";
 
 interface FormNavigationProps {
@@ -21,22 +20,12 @@ export function FormNavigation({
     totalQuestions,
 }: FormNavigationProps) {
 
-    const {
-        formState: { errors },
-        trigger,
-    } = useFormContext();
-
-    // Only show errors that were triggered by the Next button
-    const currentErrors = Object.keys(errors.answers || {}).length > 0;
-
     const progressPercentage =
         ((currentQuestionCount - 1) / totalQuestions) * 100;
 
 
     return (
         <div className="flex flex-col gap-4">
-            <ErrorMessage message={currentErrors ? "Please answer all questions before proceeding" : undefined} />
-
             <motion.div
                 layout
                 className="sticky bottom-0 z-20 "
