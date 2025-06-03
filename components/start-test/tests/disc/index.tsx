@@ -7,14 +7,14 @@ import { z } from 'zod'; // Added Zod import
 import { DISCResponseSchema } from '@/schema/disc';
 import { discGroups as discQuestions } from '@/data/tests/disc/questions/discFull'; // Renaming import
 import { DISCGroup } from '@/types/tests/disc/testQuestions';
-import DISCQuestionCard from './disc/DISCQuestionCard'; // Corrected import path
+import DISCQuestionCard from './DISCQuestionCard'; // Corrected import path
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Form } from '@/components/ui/form'; // shadcn/ui Form
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import Link from 'next/link';
 import CQLogo from '@/components/CQLogo';
-import MobileTopbar from '../shared/MobileTopbar';
+import MobileTopbar from '../../shared/MobileTopbar';
 import { AnimatePresence, motion } from 'framer-motion';
 
 // Define schema type at module level
