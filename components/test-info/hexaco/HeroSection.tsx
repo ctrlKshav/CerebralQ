@@ -14,15 +14,15 @@ import WaveAnimation from "../shared/WaveAnimation";
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
-  
+
   return (
     <section className="relative overflow-hidden pb-24 bg-background">
       <div className="absolute inset-0 gradient-to-br from-primary/80 via-primary to-primary-foreground/90 dark:from-primary/70 dark:via-primary/80 dark:to-primary-foreground/80">
         {/* Using the reusable wave animation component */}
         <WaveAnimation isMobile={isMobile} />
       </div>
-      
-      <motion.div 
+
+      <motion.div
         className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24 relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -39,7 +39,7 @@ const HeroSection = () => {
                 HEXACO Personality Assessment
               </span>
             </motion.div>
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 text-primary dark:text-foreground"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ const HeroSection = () => {
             >
               Explore the <span className="italic font-extrabold">Six Dimensions</span> of Your Personality
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl md:text-2xl max-w-2xl mb-8 text-primary/90 dark:text-foreground/90"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -56,57 +56,14 @@ const HeroSection = () => {
               Discover your unique personality profile with the scientifically-validated HEXACO model—revealing deeper insights than traditional assessments.
             </motion.p>
             <div className="space-y-3">
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button 
-                    size="lg"
-                    variant="default"
-                    className="font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.03]"
-                  >
-                    Take the Test Now <ChevronDown className="ml-2 h-4 w-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="start" className="w-56">
-                  <Link href="/start-test/hexaco/hexaco-60">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <div className="flex flex-col">
-                        <span className="font-medium">HEXACO-60</span>
-                        <span className="text-xs text-muted-foreground">Standard (10-15 min)</span>
-                      </div>
-                    </DropdownMenuItem>
-                  </Link>
-                  <Link href="/start-test/hexaco/hexaco-100">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <div className="flex flex-col">
-                        <span className="font-medium">HEXACO-100</span>
-                        <span className="text-xs text-muted-foreground">Comprehensive (20-25 min)</span>
-                      </div>
-                    </DropdownMenuItem>
-                  </Link>
-                  <Link href="/start-test/hexaco/hexaco-200">
-                    <DropdownMenuItem className="cursor-pointer">
-                      <div className="flex flex-col">
-                        <span className="font-medium">HEXACO-200</span>
-                        <span className="text-xs text-muted-foreground">Professional (35-45 min)</span>
-                      </div>
-                    </DropdownMenuItem>
-                  </Link>
-                </DropdownMenuContent>
-              </DropdownMenu>
-              
-              <div className="flex items-center mt-4">
-                <Link href="#overview" className="text-primary/80 dark:text-foreground/80 hover:text-primary dark:hover:text-foreground text-sm font-medium flex items-center transition-colors">
-                  Learn more about HEXACO
-                  <ArrowRight className="ml-1 h-3 w-3" />
-                </Link>
-                <div className="mx-3 h-1 w-1 rounded-full bg-primary/30 dark:bg-foreground/30"></div>
-                <span className="text-primary/60 dark:text-foreground/60 text-sm">
-                  Trusted by <span className="font-medium">800K+</span> individuals
-                </span>
-              </div>
+              <Button className="group">
+                <Link href="/start-test/hexaco" >Take the Test Now</Link>
+                <ArrowRight className="ml-1 h-3 w-3 group-hover:ml-2 group-hover:scale-110 transition-all duration-300" />
+              </Button>
+
             </div>
           </div>
-          
+
           {/* Visual representation of the HEXACO assessment */}
           <motion.div
             className="relative w-full max-w-md"
@@ -126,34 +83,34 @@ const HeroSection = () => {
                 </div>
                 <p className="text-sm text-primary/70 dark:text-muted-foreground">Personality Assessment</p>
               </div>
-              
+
               {/* Hexagonal Visualization - Compact Version */}
               <div className="relative h-48 w-full mb-4">
                 <svg viewBox="0 0 200 200" className="w-full h-full">
                   {/* Outer hexagon */}
-                  <polygon 
-                    points="100,20 180,60 180,140 100,180 20,140 20,60" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeOpacity="0.2" 
+                  <polygon
+                    points="100,20 180,60 180,140 100,180 20,140 20,60"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeOpacity="0.2"
                     strokeWidth="1"
                   />
-                  
+
                   {/* Grid lines */}
-                  <polygon 
-                    points="100,50 160,80 160,120 100,150 40,120 40,80" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    strokeOpacity="0.1" 
+                  <polygon
+                    points="100,50 160,80 160,120 100,150 40,120 40,80"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeOpacity="0.1"
                     strokeWidth="1"
                     strokeDasharray="4,2"
                   />
-                  
+
                   {/* Center lines */}
                   <line x1="100" y1="20" x2="100" y2="180" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
                   <line x1="20" y1="60" x2="180" y2="140" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
                   <line x1="20" y1="140" x2="180" y2="60" stroke="currentColor" strokeOpacity="0.1" strokeWidth="1" />
-                  
+
                   {/* Trait labels */}
                   <text x="100" y="15" textAnchor="middle" fill="currentColor" fontSize="10" fontWeight="600">H</text>
                   <text x="185" y="60" textAnchor="start" fill="currentColor" fontSize="10" fontWeight="600">E</text>
@@ -161,19 +118,19 @@ const HeroSection = () => {
                   <text x="100" y="195" textAnchor="middle" fill="currentColor" fontSize="10" fontWeight="600">A</text>
                   <text x="15" y="140" textAnchor="end" fill="currentColor" fontSize="10" fontWeight="600">C</text>
                   <text x="15" y="60" textAnchor="end" fill="currentColor" fontSize="10" fontWeight="600">O</text>
-                  
+
                   {/* Data area */}
-                  <motion.polygon 
-                    points="100,40 160,70 140,130 100,160 60,130 40,70" 
-                    fill="rgba(99, 102, 241, 0.15)" 
-                    stroke="rgb(99, 102, 241)" 
+                  <motion.polygon
+                    points="100,40 160,70 140,130 100,160 60,130 40,70"
+                    fill="rgba(99, 102, 241, 0.15)"
+                    stroke="rgb(99, 102, 241)"
                     strokeWidth="1.5"
                     strokeLinejoin="round"
                     initial={{ opacity: 0, scale: 0.8, transformOrigin: "center" }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
                   />
-                  
+
                   {/* Data points */}
                   {[
                     [100, 40],  // H
@@ -183,18 +140,18 @@ const HeroSection = () => {
                     [60, 130],  // C
                     [40, 70]    // O
                   ].map((point, i) => (
-                    <motion.circle 
+                    <motion.circle
                       key={i}
-                      cx={point[0]} 
-                      cy={point[1]} 
-                      r="3" 
+                      cx={point[0]}
+                      cy={point[1]}
+                      r="3"
                       fill="white"
                       stroke="rgb(99, 102, 241)"
                       strokeWidth="1.5"
                       initial={{ opacity: 0, scale: 0 }}
                       animate={{ opacity: 1, scale: 1 }}
-                      transition={{ 
-                        duration: 0.4, 
+                      transition={{
+                        duration: 0.4,
                         delay: 0.5 + (i * 0.1),
                         type: "spring",
                         stiffness: 200,
@@ -204,7 +161,7 @@ const HeroSection = () => {
                   ))}
                 </svg>
               </div>
-              
+
               {/* Summary */}
               <div className="bg-primary/5 dark:bg-primary-foreground/5 rounded-lg p-4 mb-4">
                 <h4 className="text-sm font-semibold text-primary dark:text-card-foreground mb-2">Profile Summary</h4>
@@ -212,7 +169,7 @@ const HeroSection = () => {
                   Your profile shows high Extraversion and Emotionality with balanced scores across other dimensions, suggesting a socially engaged personality with rich emotional experiences.
                 </p>
               </div>
-              
+
               {/* Certificate footer */}
               <div className="pt-3 border-t border-primary/20 dark:border-muted text-center">
                 <div className="text-xs text-primary/60 dark:text-muted-foreground">Completed on May 28, 2025</div>
@@ -221,7 +178,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </motion.div>
-      
+
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
     </section>
   );
