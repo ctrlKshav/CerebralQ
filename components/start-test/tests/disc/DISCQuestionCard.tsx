@@ -79,7 +79,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
     setValue(groupIdentifierPath, group.id as any, { shouldDirty: true });
   };
 
-  if(!isCurrentQuestion){
+  if (!isCurrentQuestion) {
     return null;
   }
 
@@ -92,8 +92,8 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
           </h2>
         </div>
         <p className="text-lg text-gray-600 dark:text-gray-400">
-            Rank the following adjectives from 1 (Least Like You) to 4 (Most Like You). Each rank must be used exactly once.
-          </p>
+          Rank the following adjectives from 1 (Least Like You) to 4 (Most Like You). Each rank must be used exactly once.
+        </p>
       </CardHeader>
       <CardContent>
         <div className="space-y-6">
@@ -123,15 +123,12 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
                                 <RadioGroupItem
                                   value={rank.toString()}
                                   id={`${formKeyPrefix}-${adjective.text.replace(/\s+/g, '-')}-${rank}`}
-                                  className={`h-8 w-8 sm:h-10 sm:w-10 transition-all duration-200 ease-in-out border-2 
-                                            ${watchedRank === rank
-                                      ? 'bg-primary text-primary-foreground border-primary ring-2 ring-primary ring-offset-2 ring-offset-background'
-                                      : 'bg-muted hover:bg-muted-foreground/10 border-muted-foreground/30'}`}
+                                  className={`h-6 w-6 transition-all duration-200 ease-in-out`}
                                 />
                               </FormControl>
                               <FormLabel
                                 htmlFor={`${formKeyPrefix}-${adjective.text.replace(/\s+/g, '-')}-${rank}`}
-                                className="text-xs sm:text-sm cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
+                                className=" cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
                               >
                                 {rank}
                               </FormLabel>
