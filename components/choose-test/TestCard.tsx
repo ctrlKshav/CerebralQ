@@ -68,7 +68,7 @@ export function TestCard({ test }: TestCardProps) {
       variants={cardVariants}
     >
       <Link href={test.path}>
-        <div className="p-6 md:p-8 cursor-pointer flex flex-col justify-between h-full">
+        <div className="py-6 md:py-8 px-4 md:px-8 cursor-pointer flex flex-col justify-between h-full">
           <div
             className={`absolute top-0 right-0 w-32 h-32 opacity-20 rounded-bl-full ${test.colorClass}`}
           ></div>
@@ -81,7 +81,7 @@ export function TestCard({ test }: TestCardProps) {
             </div>
             <div>
               <h2 className="text-2xl font-semibold mr-2">{test.title}</h2>
-              <div className="flex mt-2 gap-2">
+              <div className="flex flex-wrap mt-2 gap-2">
                 <Badge
                   variant="default"
                   className={`rounded-full px-3 py-1 text-xs font-medium flex items-center gap-1 ${test.colorClass} hover:${test.colorClass} opacity-80 text-white`}
