@@ -53,7 +53,6 @@ export function FormNavigation({
                             <NavigationButtons
                                 isFirstStep={currentQuestionCount === 1}
                                 isLastStep={currentQuestionCount === totalQuestions}
-                                isCompleting={false}
                                 onPrev={onPrev}
                                 onNext={onNext}
                             />
