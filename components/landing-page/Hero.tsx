@@ -7,7 +7,7 @@ export default function HeroSection() {
   const { title, description, cta, announcement } = heroData;
 
   return (
-    <main className="min-h-screen w-full mt-24">
+    <main className="min-h-screen w-full mt-24 ">
       <section className="px-6 py-2">
         <div className="mx-auto flex flex-col items-center text-center max-w-4xl gap-10">
           {announcement && (
@@ -27,7 +27,7 @@ export default function HeroSection() {
               <ArrowRight className="ml-1 sm:h-4 sm:w-4 transition-transform group-hover:translate-x-1" />
             </Link>
           )}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight ">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight  py-4">
             {title.prefix}{" "}
             <span className="relative inline-block">
               <span className="relative z-10 text-primary-foreground">

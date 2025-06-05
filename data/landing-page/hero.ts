@@ -20,9 +20,4 @@ export const heroData: HeroData = {
       href: "#video-demo",
     },
   },
-  announcement: {
-    label: "Just Launched",
-    text: "Big Five Ocean Assessment - The Gold Standard in Psychology",
-    href: "/tests/ocean",
-  },
 };
