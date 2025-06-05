@@ -9,6 +9,8 @@ interface NavigationButtonsProps {
   isLastStep: boolean;
   onPrev: () => void;
   onNext: () => void;
+  showNext: boolean;
+  setShowNext: (value: boolean) => void;
 }
 
 export function NavigationButtons({
@@ -16,6 +18,8 @@ export function NavigationButtons({
   isLastStep,
   onPrev,
   onNext,
+  showNext,
+  setShowNext
 }: NavigationButtonsProps) {
   const handleNext = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -44,8 +48,8 @@ export function NavigationButtons({
         <Button
           type="submit"
           variant={"default"}
-          disabled={isSubmitting || !isLastStep}
-          aria-disabled={isSubmitting || !isLastStep}
+          disabled={isSubmitting || !isLastStep || !showNext}
+          aria-disabled={isSubmitting || !isLastStep || !showNext}
           className="gap-2 hover:scale-105 active:scale-95 transition-transform duration-200"
         >
           {isSubmitting ? "Submitting..." : "Complete"}
@@ -55,8 +59,8 @@ export function NavigationButtons({
           type="button"
           onClick={handleNext}
           variant={"default"}
-          disabled={isSubmitting || isLastStep}
-          aria-disabled={isSubmitting || isLastStep}
+          disabled={isSubmitting || isLastStep || !showNext}
+          aria-disabled={isSubmitting || isLastStep || !showNext}
           className={`gap-2 flex items-center justify-center hover:scale-105 active:scale-95 transition-transform duration-200 `}
         >
           <span className="inline-block">Next</span>

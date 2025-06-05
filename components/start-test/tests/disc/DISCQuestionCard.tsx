@@ -19,12 +19,16 @@ interface DISCQuestionCardProps {
   group: DISCQuestionGroup;
   formKeyPrefix: `answers.${string}`;
   onQuestionComplete: () => void;
+  showNext: boolean;
+  setShowNext: (value: boolean) => void;
 }
 
 const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
   group,
   formKeyPrefix,
   onQuestionComplete,
+  showNext,
+  setShowNext
 }) => {
   const { control, setValue, watch, getValues } =
     useFormContext<DISCFormSchemaType>();
@@ -88,6 +92,20 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
         }
       }
       interactionOccurred.current = false; // Reset the flag after checking, regardless of completion
+    }
+    else {
+      if (watchedRankings) {
+        const assignedRanks = Object.values(watchedRankings).filter(
+          (rank) => typeof rank === "number" && rank >= 1 && rank <= 4
+        ) as number[];
+        const uniqueAssignedRanks = new Set(assignedRanks);
+        if (assignedRanks.length === 4 && uniqueAssignedRanks.size === 4) {
+          setShowNext(true);
+        }
+        else {
+          setShowNext(false);
+        }
+      }
     }
   }, [watchedRankings, onQuestionComplete, group.id]);
 

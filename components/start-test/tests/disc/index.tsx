@@ -1,22 +1,23 @@
 "use client";
 
-import React, { useState } from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod'; // Added Zod import
-import { DISCResponseSchema, DISCResponse } from '@/schema/disc';
-import { discQuestionData } from '@/data/tests/disc/questions/discFull'; // Renaming import
-import DISCQuestionCard from './DISCQuestionCard'; // Corrected import path
-import { Form } from '@/components/ui/form'; // shadcn/ui Form
-import Link from 'next/link';
-import CQLogo from '@/components/CQLogo';
-import MobileTopbar from '../../shared/MobileTopbar';
-import { AnimatePresence, motion } from 'framer-motion';
-import { FormNavigation } from './form-navigation';
-
+import React, { useState } from "react";
+import { useForm, FormProvider } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod"; // Added Zod import
+import { DISCResponseSchema, DISCResponse } from "@/schema/disc";
+import { discQuestionData } from "@/data/tests/disc/questions/discFull"; // Renaming import
+import DISCQuestionCard from "./DISCQuestionCard"; // Corrected import path
+import { Form } from "@/components/ui/form"; // shadcn/ui Form
+import Link from "next/link";
+import CQLogo from "@/components/CQLogo";
+import MobileTopbar from "../../shared/MobileTopbar";
+import { AnimatePresence, motion } from "framer-motion";
+import { FormNavigation } from "./form-navigation";
 
 const DISCTestForm = () => {
   const [currentQuestionCount, setCurrentQuestionCount] = useState<number>(1);
+  const [showNext, setShowNext] = useState<boolean>(false);
+
   const totalQuestions = discQuestionData.totalQuestions;
 
   const methods = useForm<DISCResponse>({
@@ -29,38 +30,33 @@ const DISCTestForm = () => {
   });
 
   const onSubmit = (data: DISCResponse) => {
-    console.log('Form Submitted:', data);
+    console.log("Form Submitted:", data);
     // TODO: Handle actual submission (e.g., API call)
-    alert('Test Complete! Check console for data.');
+    alert("Test Complete! Check console for data.");
   };
 
   const handleQuestionComplete = () => {
     if (currentQuestionCount < totalQuestions) {
-      setCurrentQuestionCount(prevIndex => prevIndex + 1);
+      setCurrentQuestionCount((prevIndex) => prevIndex + 1);
     }
   };
-
 
   if (!discQuestionData || discQuestionData.questions.length === 0) {
     return <p>No questions available.</p>;
   }
 
   const currentGroup = discQuestionData.questions[currentQuestionCount - 1];
-  const currentQuestionText = `Question ${currentQuestionCount} out of ${totalQuestions}`
+  const currentQuestionText = `Question ${currentQuestionCount} out of ${totalQuestions}`;
 
   const onNext = () => {
-    setCurrentQuestionCount(prevIndex => prevIndex + 1);
+    setCurrentQuestionCount((prevIndex) => prevIndex + 1);
   };
 
   const onPrev = () => {
-    setCurrentQuestionCount(prevIndex => prevIndex - 1);
-
+    setCurrentQuestionCount((prevIndex) => prevIndex - 1);
   };
 
-
   return (
-
-
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 ">
       <Link href="/" className="hidden lg:block fixed z-50  left-8  ">
         <CQLogo className="w-28 h-28" />
@@ -70,10 +66,10 @@ const DISCTestForm = () => {
         currentStepText={currentQuestionText}
       />
       <FormProvider {...methods}>
-        <Form {...methods}> {/* shadcn/ui Form wrapper */}
+        <Form {...methods}>
+          {" "}
+          {/* shadcn/ui Form wrapper */}
           <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
-
-
             <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
               <div className=" relative">
                 <div className="p-0 xs:p-8 pb-32">
@@ -84,14 +80,18 @@ const DISCTestForm = () => {
                           key={currentGroup.id} // Key changes with the question, triggering animation
                           initial={{ opacity: 0, x: 50 }} // Slide in from right
                           animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: -50 }}   // Slide out to left
+                          exit={{ opacity: 0, x: -50 }} // Slide out to left
                           transition={{ duration: 0.35, ease: "easeInOut" }}
                           className="w-full" // Ensure card takes full width of its container
                         >
                           <DISCQuestionCard
                             group={currentGroup}
-                            formKeyPrefix={`answers.group_${currentGroup.id}` as const}
+                            formKeyPrefix={
+                              `answers.group_${currentGroup.id}` as const
+                            }
                             onQuestionComplete={handleQuestionComplete}
+                            showNext={showNext}
+                            setShowNext={setShowNext}
                           />
                         </motion.div>
                       )}
@@ -107,20 +107,18 @@ const DISCTestForm = () => {
                       onPrev={onPrev}
                       currentQuestionCount={currentQuestionCount}
                       totalQuestions={totalQuestions}
+                      showNext={showNext}
+                      setShowNext={setShowNext}
+
                     />
                   </div>
                 </div>
-
               </div>
             </div>
           </form>
         </Form>
       </FormProvider>
-
     </div>
-
-
-
   );
 };
 
