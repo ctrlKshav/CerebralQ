@@ -65,16 +65,10 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
           ) {
             const otherAdjectivePath =
               `${formKeyPrefix}.rankings.${adj.text}` as FieldPath<DISCFormSchemaType>;
-            setValue(otherAdjectivePath, undefined as any, {
-              shouldValidate: true,
-              shouldDirty: true,
-            });
+            setValue(otherAdjectivePath, undefined as any);
           }
         }
       }
-      setValue(groupIdentifierPath, group.id as any, {
-        shouldDirty: true,
-      });
       interactionOccurred.current = true;
     }
     field.onChange(rank);
