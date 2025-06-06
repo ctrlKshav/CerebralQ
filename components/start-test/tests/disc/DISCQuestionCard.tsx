@@ -18,7 +18,6 @@ interface DISCQuestionCardProps {
   group: DISCQuestionGroup;
   formKeyPrefix: `answers.${string}`;
   onQuestionComplete: () => void;
-  showNext: boolean;
   setShowNext: (value: boolean) => void;
 }
 
@@ -26,7 +25,6 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
   group,
   formKeyPrefix,
   onQuestionComplete,
-  showNext,
   setShowNext
 }) => {
   const { control, setValue, watch, getValues } =

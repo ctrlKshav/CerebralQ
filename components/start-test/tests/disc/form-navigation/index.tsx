@@ -27,7 +27,6 @@ export function FormNavigation({
     const progressPercentage =
         ((currentQuestionCount - 1) / totalQuestions) * 100;
 
-
     return (
         <div className="flex flex-col gap-4">
             <motion.div

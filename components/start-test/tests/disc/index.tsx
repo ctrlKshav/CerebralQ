@@ -37,6 +37,9 @@ const DISCTestForm = () => {
     if (currentQuestionCount < totalQuestions) {
       setCurrentQuestionCount((prevIndex) => prevIndex + 1);
     }
+    else {
+      setShowNext(true);
+    }
   };
 
   if (!discQuestionData || discQuestionData.questions.length === 0) {
@@ -67,7 +70,7 @@ const DISCTestForm = () => {
         <Form {...methods}>
           {" "}
           {/* shadcn/ui Form wrapper */}
-          <form onSubmit={methods.handleSubmit(onSubmit, (data) => {console.log('Error While Submission', data)})} className="flex">
+          <form onSubmit={methods.handleSubmit(onSubmit, (data) => { console.log('Error While Submission', data) })} className="flex">
             <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
               <div className=" relative">
                 <div className="p-0 xs:p-8 pb-32">
@@ -88,7 +91,6 @@ const DISCTestForm = () => {
                               `answers.group_${currentGroup.id}` as const
                             }
                             onQuestionComplete={handleQuestionComplete}
-                            showNext={showNext}
                             setShowNext={setShowNext}
                           />
                         </motion.div>
