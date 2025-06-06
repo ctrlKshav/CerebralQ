@@ -1,8 +1,8 @@
 "use client";
 import { useRef } from "react";
-import SectionContainer from "./shared/SectionContainer";
-import SectionHeader from "./shared/SectionHeader";
-import TestVariantCard from "./shared/TestVariantCard";
+import SectionContainer from "../shared/SectionContainer";
+import SectionHeader from "../shared/SectionHeader";
+import TestVariantCard from "../shared/TestVariantCard";
 import { testVariants } from "@/data/test-info/ocean/test-variants";
 
 const TestVariantsSection = () => {

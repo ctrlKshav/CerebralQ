@@ -6,9 +6,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import SectionContainer from "./shared/SectionContainer";
-import SectionHeader from "./shared/SectionHeader";
-import AnimatedCard from "./shared/AnimatedCard";
+import SectionContainer from "../shared/SectionContainer";
+import SectionHeader from "../shared/SectionHeader";
+import AnimatedCard from "../shared/AnimatedCard";
 
 const MbtiTestSection = () => {
   // Refs for section

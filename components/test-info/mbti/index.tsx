@@ -14,7 +14,7 @@ import { FeatureBadge } from "../shared/badges/FeatureBadge";
 import { TestOverviewCard } from "@/components/test-info/mbti/TestOverviewCard";
 import { TestDimensionsCard } from "@/components/test-info/mbti/TestDimensionsCard";
 import { TestResultSection } from "@/components/test-info/mbti/TestResultSection";
-import { TestCitationsCard } from "@/components/test-info/shared/CitationsCard";
+import { TestCitationsCard } from "@/components/test-info/mbti/CitationsCard";
 import { MBTI_TEST_ID } from "@/lib/constants";
 import { personalityDescriptions } from "@/data/tests/mbti/personalityDescription";
 import { getOrderedMBTITraitsObject } from "@/lib/utils";

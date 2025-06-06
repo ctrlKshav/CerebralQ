@@ -8,9 +8,9 @@ import {
   BookOpen,
   Award,
 } from "lucide-react";
-import SectionContainer from "./shared/SectionContainer";
-import SectionHeader from "./shared/SectionHeader";
-import CitationCard from "./shared/CitationCard";
+import SectionContainer from "../shared/SectionContainer";
+import SectionHeader from "../shared/SectionHeader";
+import CitationCard from "../shared/CitationCard";
 import { Card, CardContent } from "@/components/ui/card";
 
 const AcademicCitationsSection = () => {

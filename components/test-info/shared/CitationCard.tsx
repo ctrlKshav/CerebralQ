@@ -1,66 +1,50 @@
-"use client";
 import React from "react";
-import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import Link from "next/link";
 
 interface CitationCardProps {
   title: string;
   authors: string;
-  journal: string;
-  year: string;
-  doi?: string;
-  url?: string;
-  description?: string;
-  delay?: number;
+  description: string;
+  icon: React.ReactNode;
+  colorClass?: string;
+  url: string;
 }
 
 const CitationCard: React.FC<CitationCardProps> = ({
+  url,
   title,
   authors,
-  journal,
-  year,
-  doi,
-  url,
   description,
-  delay = 0,
+  icon,
+  colorClass = "bg-primary",
 }) => {
   return (
-    <motion.div
-      className="bg-card rounded-xl shadow-sm border border-muted overflow-hidden"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5, delay }}
-    >
-      <div className="p-6">
-        <h3 className="text-lg font-semibold text-card-foreground mb-2">{title}</h3>
-        <p className="text-muted-foreground text-sm mb-2">{authors}</p>
-        <p className="text-muted-foreground text-sm italic mb-4">
-          {journal}, {year}
-        </p>
-        
-        {description && (
-          <p className="text-card-foreground text-sm mb-4 border-l-2 border-primary/30 pl-3">
-            {description}
-          </p>
-        )}
-        
-        {(doi || url) && (
-          <div className="flex items-center mt-2">
-            <ExternalLink className="w-4 h-4 text-primary mr-2" />
-            <a
-              href={doi ? `https://doi.org/${doi}` : url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary text-sm hover:underline"
+    <Card className="shadow-md overflow-hidden border border-muted transform transition-all duration-300 hover:shadow-lg hover:border-primary/20 hover:-translate-y-1">
+      <CardContent className="p-6">
+        <Link href={url} target="_blank" rel="noopener noreferrer">
+          <div className="flex items-start">
+            <div
+              className={`w-10 h-10 rounded-full ${colorClass} flex items-center justify-center text-white mr-4 mt-1 flex-shrink-0`}
             >
-              {doi ? `DOI: ${doi}` : "View Source"}
-            </a>
+              {icon}
+            </div>
+            <div>
+              <h3 className="text-lg font-bold text-card-foreground mb-1">
+                {title}
+              </h3>
+              <p className="text-primary font-medium mb-3">
+                {authors}
+              </p>
+              <p className="text-muted-foreground">
+                {description}
+              </p>
+            </div>
           </div>
-        )}
-      </div>
-    </motion.div>
+        </Link>
+      </CardContent>
+    </Card>
   );
 };
 
-export default CitationCard;
+export default CitationCard; 

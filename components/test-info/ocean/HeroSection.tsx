@@ -10,7 +10,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import WaveAnimation from "./shared/WaveAnimation";
+import WaveAnimation from "../shared/WaveAnimation";
 
 const HeroSection = () => {
   const isMobile = useIsMobile();

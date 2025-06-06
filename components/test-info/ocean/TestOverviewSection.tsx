@@ -11,9 +11,9 @@ import {
   ShieldCheck,
   Brain,
 } from "lucide-react";
-import SectionContainer from "./shared/SectionContainer";
-import SectionHeader from "./shared/SectionHeader";
-import AnimatedCard from "./shared/AnimatedCard";
+import SectionContainer from "../shared/SectionContainer";
+import SectionHeader from "../shared/SectionHeader";
+import AnimatedCard from "../shared/AnimatedCard";
 
 const TestOverviewSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

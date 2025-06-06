@@ -1,99 +1,102 @@
-"use client";
 import React from "react";
-import { motion } from "framer-motion";
-import { Clock, Award, CheckCircle } from "lucide-react";
-import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { ArrowRight, Clock, ClipboardList, InfoIcon } from "lucide-react";
+import Link from "next/link";
+import AnimatedCard from "./AnimatedCard";
+import { TestVariant } from "@/types/tests/ocean/test-info/test-variants";
+import { HybridTooltip, HybridTooltipTrigger, HybridTooltipContent } from "@/components/ui/tooltip-hybrid";
 
-interface TestVariantCardProps {
-  title: string;
-  subtitle: string;
-  description: string;
-  features: string[];
-  duration: string;
-  questions: number;
-  accuracy: string;
-  testUrl: string;
+type TestVariantCardProps = TestVariant & {
   delay?: number;
-}
+};
 
 const TestVariantCard: React.FC<TestVariantCardProps> = ({
   title,
   subtitle,
+  icon,
+  timeEstimate,
+  questionCount,
   description,
-  features,
-  duration,
-  questions,
-  accuracy,
-  testUrl,
+  additionalInfo,
+  testPath,
+  acronymMeaning,
+  testOrigin,
+  colorScheme,
   delay = 0,
 }) => {
   return (
-    <motion.div
-      className="bg-card rounded-xl shadow-md border border-muted overflow-hidden flex flex-col h-full"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.5, delay }}
+    <AnimatedCard 
+      delay={delay}
+      once={true}
+      className={`relative rounded-xl overflow-hidden shadow-lg border ${colorScheme.border} hover:shadow-xl h-full flex flex-col`}
     >
-      {/* Card Header */}
-      <div className="p-6 border-b border-muted">
-        <h3 className="text-xl font-bold text-card-foreground">{title}</h3>
-        <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
-      </div>
-
-      {/* Card Body */}
-      <div className="p-6 flex-grow">
-        <p className="text-card-foreground mb-6">{description}</p>
-
-        {/* Stats */}
-        <div className="flex flex-wrap gap-4 mb-6">
-          <div className="flex items-center gap-2">
-            <Clock className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">{duration}</span>
+      <div className={`absolute inset-0 ${colorScheme.hover} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+      
+      {/* Decorative elements */}
+      <div className={`absolute -top-10 -right-10 w-20 h-20 ${colorScheme.accent} rotate-12 transform origin-bottom-left`}></div>
+      
+      <div className="relative p-6 flex flex-col flex-1">
+        {/* Icon & Title section */}
+        <div className="text-center mb-5">
+          <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${colorScheme.iconGradient} flex items-center justify-center text-white shadow-md mb-4 mx-auto`}>
+            {icon}
           </div>
-          <div className="flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4 text-primary"
-            >
-              <path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"></path>
-            </svg>
-            <span className="text-sm text-muted-foreground">{questions} Questions</span>
+          <div className="flex items-center justify-center gap-2">
+            <h3 className="text-xl font-bold text-card-foreground mb-1">{title}</h3>
+            <HybridTooltip delayDuration={100}>
+              <HybridTooltipTrigger asChild>
+                <button className={`inline-flex items-center justify-center rounded-full w-5 h-5 ${colorScheme.badge} ${colorScheme.badgeText} :${colorScheme.hover} hover:text-foreground focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors`}>
+                  <InfoIcon className="w-3 h-3" />
+                  <span className="sr-only">Test information</span>
+                </button>
+              </HybridTooltipTrigger>
+              <HybridTooltipContent 
+                side="top" 
+                align="center" 
+                className={`max-w-xs p-4 bg-card border ${colorScheme.badgeBorder} shadow-md text-card-foreground`}
+                sideOffset={5}
+              >
+                <div className="space-y-2">
+                  <p className={`font-medium ${colorScheme.badgeText}`}>{acronymMeaning}</p>
+                  <p className="text-xs text-muted-foreground">{testOrigin}</p>
+                </div>
+              </HybridTooltipContent>
+            </HybridTooltip>
           </div>
-          <div className="flex items-center gap-2">
-            <Award className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">{accuracy}</span>
+          <p className="text-muted-foreground text-sm">{subtitle}</p>
+          
+          {/* Badges */}
+          <div className="flex flex-wrap gap-2 mt-3 justify-center">
+            <Badge variant="outline" className={`${colorScheme.badge} ${colorScheme.badgeText} ${colorScheme.badgeBorder}`}>
+              <Clock className="w-3 h-3 mr-1" /> {timeEstimate}
+            </Badge>
+            <Badge variant="outline" className={`${colorScheme.badge} ${colorScheme.badgeText} ${colorScheme.badgeBorder}`}>
+              <ClipboardList className="w-3 h-3 mr-1" /> {questionCount}
+            </Badge>
           </div>
         </div>
-
-        {/* Features */}
-        <div className="space-y-3">
-          {features.map((feature, i) => (
-            <div key={i} className="flex items-start">
-              <CheckCircle className="w-4 h-4 text-primary mr-2 mt-0.5 flex-shrink-0" />
-              <span className="text-sm text-card-foreground">{feature}</span>
-            </div>
-          ))}
+        
+        {/* Divider */}
+        <div className={`w-16 h-1 ${colorScheme.accent} rounded-full mx-auto mb-5`}></div>
+        
+        {/* Description section */}
+        <div className="relative z-10 text-center flex-1 flex flex-col">
+          <h4 className="text-lg font-medium text-card-foreground mb-3">{subtitle}</h4>
+          <p className="text-muted-foreground mb-4 text-sm">{description}</p>
+          <p className="text-muted-foreground mb-6 text-sm">{additionalInfo}</p>
+          
+          <div className="mt-auto">
+            <Link href={testPath} className="w-full block">
+              <Button variant="outline" className={`w-full bg-transparent ${colorScheme.buttonHover} ${colorScheme.buttonText} hover:text-white dark:hover:text-white ${colorScheme.badgeBorder} ${colorScheme.border} group`}>
+                Start {title} Test <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
-
-      {/* Card Footer */}
-      <div className="p-6 border-t border-muted mt-auto">
-        <Link href={testUrl} className="w-full">
-          <Button className="w-full" variant="default">
-            Take This Test
-          </Button>
-        </Link>
-      </div>
-    </motion.div>
+    </AnimatedCard>
   );
 };
 
-export default TestVariantCard;
+export default TestVariantCard; 
