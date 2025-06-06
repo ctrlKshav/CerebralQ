@@ -126,7 +126,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
             return (
               <div
                 key={adjective.text}
-                className="xs:px-4 py-3 flex items-center gap-4 "
+                className="sm:px-4 py-3 flex items-center gap-4 "
               >
                 <div className="font-semibold text-lg sm:text-xl text-card-foreground  w-full">
                   {adjective.text}
