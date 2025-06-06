@@ -83,57 +83,6 @@ const HEXACOTraitsSection = () => {
           </AnimatedCard>
         ))}
       </div>
-      
-      <div className="mt-16 max-w-4xl mx-auto">
-        <AnimatedCard delay={0.7}>
-          <div className="bg-card rounded-xl shadow-md border border-muted p-6">
-            <h3 className="text-xl font-bold text-card-foreground mb-4">
-              The HEXACO Advantage
-            </h3>
-            <p className="text-card-foreground mb-6">
-              What makes HEXACO unique is the addition of the Honesty-Humility dimension, which captures ethical aspects of personality that other models miss. This provides a more comprehensive understanding of character and integrity.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-3">
-                <h4 className="text-lg font-semibold text-card-foreground">
-                  Facet-Level Insights
-                </h4>
-                <p className="text-muted-foreground">
-                  Each of the six HEXACO dimensions contains multiple facets—specific aspects that provide a more detailed understanding of your personality profile.
-                </p>
-              </div>
-              
-              <div className="space-y-3">
-                <h4 className="text-lg font-semibold text-card-foreground">
-                  Cross-Cultural Validity
-                </h4>
-                <p className="text-muted-foreground">
-                  The HEXACO structure has been confirmed across diverse languages and cultures, suggesting it captures universal aspects of human personality.
-                </p>
-              </div>
-              
-              <div className="space-y-3">
-                <h4 className="text-lg font-semibold text-card-foreground">
-                  Predictive Power
-                </h4>
-                <p className="text-muted-foreground">
-                  HEXACO dimensions, especially Honesty-Humility, show strong predictive validity for important outcomes like ethical behavior, job performance, and relationship quality.
-                </p>
-              </div>
-              
-              <div className="space-y-3">
-                <h4 className="text-lg font-semibold text-card-foreground">
-                  Theoretical Foundation
-                </h4>
-                <p className="text-muted-foreground">
-                  Based on lexical studies of personality-descriptive terms across languages, the HEXACO model has strong empirical and theoretical foundations.
-                </p>
-              </div>
-            </div>
-          </div>
-        </AnimatedCard>
-      </div>
     </SectionContainer>
   );
 };

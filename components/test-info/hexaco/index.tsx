@@ -17,7 +17,7 @@ const HexacoTestInformation = () => {
         <HEXACOTraitsSection />
         <AcademicCitationsSection />
         <ComparisonSection />
-        <RecommendedTestSection /> {/* Added component */}
+        <RecommendedTestSection /> 
       </TooltipProvider>
     </main>
   );
