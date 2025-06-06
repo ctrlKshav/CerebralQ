@@ -3,7 +3,7 @@ import { DISC_TEST_ID } from '@/lib/constants';
 // DISC Assessment Questions Data
 export const discQuestionData: DISCQuestionsData = {
   id: DISC_TEST_ID,
-  totalQuestions: 28,
+  totalQuestions: 6,
   test_name: 'DISC Assessment',
   questions: [
     {

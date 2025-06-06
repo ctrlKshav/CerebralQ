@@ -24,7 +24,7 @@ const DISCTestForm = () => {
     resolver: zodResolver(DISCResponseSchema),
     defaultValues: {
       // id: discQuestions.id,
-      answers: {},
+      answers: {}
       // takenAt: new Date().toISOString(), // set default createdAt
     },
   });

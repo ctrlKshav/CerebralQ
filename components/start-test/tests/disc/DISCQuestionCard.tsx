@@ -29,14 +29,11 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
   showNext,
   setShowNext
 }) => {
-  // console.log('start')
   const { control, setValue, watch, getValues } =
     useFormContext<DISCFormSchemaType>();
   const interactionOccurred = useRef(false);
 
   const groupAnswerPath = formKeyPrefix as FieldPath<DISCFormSchemaType>; // Path to the whole answer group for this question
-  const groupIdentifierPath =
-    `${formKeyPrefix}.groupId` as FieldPath<DISCFormSchemaType>;
 
   // Watch the entire answer group for the current question
   const watchedAnswerGroup = watch(groupAnswerPath) as AnswerGroup | undefined;
@@ -65,7 +62,10 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
           ) {
             const otherAdjectivePath =
               `${formKeyPrefix}.rankings.${adj.text}` as FieldPath<DISCFormSchemaType>;
-            setValue(otherAdjectivePath, undefined as any);
+            setValue(otherAdjectivePath, undefined as any, {
+              shouldDirty: true,
+              shouldTouch: true,
+            });
           }
         }
       }
@@ -135,8 +135,6 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
                   control={control}
                   name={controllerFieldName}
                   render={({ field }: { field: ControllerRenderProps<DISCFormSchemaType, FieldPath<DISCFormSchemaType>> }) => {
-                    // console.log(watchedRankings)
-                    // console.log(field.value)
                     return (
                       <FormItem className="w-full">
                         <FormControl>
@@ -144,7 +142,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
                             onValueChange={(value) =>
                               handleRadioChange(adjective.text, value, field)
                             }
-                            value={field.value?.toString() ?? ""}
+                            value={watchedRankings?.[adjective.text]?.toString() ?? ""}
                             className="flex justify-between items-center w-full"
                           >
                             {[1, 2, 3, 4].map((rank) => (
@@ -169,7 +167,6 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
                             ))}
                           </RadioGroup>
                         </FormControl>
-                        {/* <FormMessage /> */}
                       </FormItem>
                     )
                   }}
