@@ -21,8 +21,10 @@ export function TestForm({
   onNext,
   onPrev,
 }: TestFormProps) {
-  const { watch, getValues } = useFormContext<MBTIResponse>();
+  const { watch } = useFormContext<MBTIResponse>();
   const answers = watch("answers", {}) as MBTIResponse["answers"];
+  console.log('yo')
+  console.log(answers)
 
   const sectionQuestions = questions.filter(
     (q) => q.section === currentSectionId
@@ -42,9 +44,14 @@ export function TestForm({
   );
 
   useEffect(() => {
-    // Find the first unanswered question in the current section
+    //Below code is to scroll to first unanswered question
+
+    //If the answers object is empty, we don't scroll 
+    if (Object.keys(answers).length === 0) {
+      return
+    }
     const unanswered = sectionQuestions.find(
-      (question) => !getValues().answers[question.id]?.selectedScore
+      (question) => !answers[question.id]?.selectedScore
     );
     if (unanswered) {
       // Find the corresponding question card in the DOM
@@ -55,7 +62,7 @@ export function TestForm({
         card.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
-  }, [sectionQuestions]);
+  }, [sectionQuestions, answers]);
 
   return (
     <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
