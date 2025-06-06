@@ -11,7 +11,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import MobileTopbar from "@/components/start-test/shared/MobileTopbar"
 import CQLogo from "../../CQLogo";
-import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabase-operations";
 import { OCEAN_PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import { TestQuestionsData } from "@/types/tests/testQuestions";
@@ -24,11 +23,8 @@ export default function OceanTest({
 }: {
   oceanTestQuestionsData: TestQuestionsData;
 }) {
-  const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
-  const [isCompleting, setIsCompleting] = useState(false);
   const currentTest = oceanTestQuestionsData;
-  const supabase = createClient();
   const [userID, setUserId] = useState<string | null>(null);
 
   const methods = useForm<OceanResponse>({
@@ -74,13 +70,9 @@ export default function OceanTest({
   }, [methods]);
 
   const onSubmit = async (data: OceanResponse) => {
-    // Set completing state to true to show full progress bar
-    setIsCompleting(true);
-
     localStorage.removeItem(OCEAN_PROGRESS_KEY + "_" + currentTest.id);
     console.log(data);
     const oceanResult = calculateOcean(data.answers, currentTest);
-    console.log("hi");
     console.log(oceanResult);
     // Create a single unified test result object
     const testResultData = {
@@ -99,7 +91,6 @@ export default function OceanTest({
     // Store results in local storage
     localStorage.setItem(TEST_RESULTS_KEY, JSON.stringify(testResultData));
     localStorage.setItem(SAVED_RESULTS_KEY, "false");
-    setIsCompleting(false);
     // router.push("/result/ocean");
   };
 
@@ -181,7 +172,6 @@ export default function OceanTest({
             sections={currentTest.sections}
             onNext={handleNext}
             onPrev={handlePrev}
-            isCompleting={isCompleting}
           />
         </form>
       </FormProvider>

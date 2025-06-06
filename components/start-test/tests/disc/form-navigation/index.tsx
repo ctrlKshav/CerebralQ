@@ -12,7 +12,6 @@ interface FormNavigationProps {
     currentQuestionCount: number;
     totalQuestions: number;
     showNext: boolean
-    setShowNext: (value: boolean) => void
 }
 
 export function FormNavigation({
@@ -21,7 +20,6 @@ export function FormNavigation({
     currentQuestionCount,
     totalQuestions,
     showNext,
-    setShowNext
 }: FormNavigationProps) {
 
     const progressPercentage = (currentQuestionCount === 6 && showNext === true) ? 100 : ((currentQuestionCount - 1) / totalQuestions) * 100;
@@ -58,7 +56,6 @@ export function FormNavigation({
                                 onPrev={onPrev}
                                 onNext={onNext}
                                 showNext={showNext}
-                                setShowNext={setShowNext}
                             />
                         </motion.div>
                     </AnimatePresence>

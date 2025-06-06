@@ -162,7 +162,6 @@ export default function HEXACOTest() {
             sections={currentTest.sections}
             onNext={handleNext}
             onPrev={handlePrev}
-            isCompleting={isCompleting}
           />
         </form>
       </FormProvider>
