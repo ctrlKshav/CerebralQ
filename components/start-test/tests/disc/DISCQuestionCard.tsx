@@ -1,13 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import {
   useFormContext,
-  Controller,
   FieldPath,
   ControllerRenderProps,
 } from "react-hook-form";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import { FormControl, FormItem, FormLabel } from "@/components/ui/form";
+import { FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { DISCQuestionGroup } from "@/types/tests/disc/testQuestions";
 import { DISCResponseSchema } from "@/schema/disc";
 import { z } from "zod";
@@ -30,6 +29,7 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
   showNext,
   setShowNext
 }) => {
+  // console.log('start')
   const { control, setValue, watch, getValues } =
     useFormContext<DISCFormSchemaType>();
   const interactionOccurred = useRef(false);
@@ -131,42 +131,47 @@ const DISCQuestionCard: React.FC<DISCQuestionCardProps> = ({
                 <div className="font-semibold text-lg sm:text-xl text-card-foreground  w-full">
                   {adjective.text}
                 </div>
-                <Controller
-                  name={controllerFieldName}
+                <FormField
                   control={control}
-                  render={({ field }) => {
+                  name={controllerFieldName}
+                  render={({ field }: { field: ControllerRenderProps<DISCFormSchemaType, FieldPath<DISCFormSchemaType>> }) => {
+                    // console.log(watchedRankings)
+                    // console.log(field.value)
                     return (
-                      <>
-                        <RadioGroup
-                          onValueChange={(value) =>
-                            handleRadioChange(adjective.text, value, field)
-                          }
-                          value={field.value?.toString() ?? ""}
-                          className="flex justify-between items-center w-full"
-                        >
-                          {[1, 2, 3, 4].map((rank) => (
-                            <FormItem
-                              key={rank}
-                              className="flex flex-col items-center space-y-1.5"
-                            >
-                              <FormControl>
-                                <RadioGroupItem
-                                  value={rank.toString()}
-                                  id={`${formKeyPrefix}-${adjective.text.replace(/\s+/g, "-")}-${rank}`}
-                                  className={`h-7 w-7 transition-all duration-200 ease-in-out`}
-                                />
-                              </FormControl>
-                              <FormLabel
-                                htmlFor={`${formKeyPrefix}-${adjective.text.replace(/\s+/g, "-")}-${rank}`}
-                                className=" cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
+                      <FormItem className="w-full">
+                        <FormControl>
+                          <RadioGroup
+                            onValueChange={(value) =>
+                              handleRadioChange(adjective.text, value, field)
+                            }
+                            value={field.value?.toString() ?? ""}
+                            className="flex justify-between items-center w-full"
+                          >
+                            {[1, 2, 3, 4].map((rank) => (
+                              <FormItem
+                                key={rank}
+                                className="flex flex-col items-center space-y-1.5"
                               >
-                                {rank}
-                              </FormLabel>
-                            </FormItem>
-                          ))}
-                        </RadioGroup>
-                      </>
-                    );
+                                <FormControl>
+                                  <RadioGroupItem
+                                    value={rank.toString()}
+                                    id={`${formKeyPrefix}-${adjective.text.replace(/\s+/g, "-")}-${rank}`}
+                                    className={`h-7 w-7 transition-all duration-200 ease-in-out`}
+                                  />
+                                </FormControl>
+                                <FormLabel
+                                  htmlFor={`${formKeyPrefix}-${adjective.text.replace(/\s+/g, "-")}-${rank}`}
+                                  className=" cursor-pointer text-muted-foreground hover:text-foreground transition-colors"
+                                >
+                                  {rank}
+                                </FormLabel>
+                              </FormItem>
+                            ))}
+                          </RadioGroup>
+                        </FormControl>
+                        {/* <FormMessage /> */}
+                      </FormItem>
+                    )
                   }}
                 />
               </div>
