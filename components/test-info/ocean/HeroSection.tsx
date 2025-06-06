@@ -72,6 +72,7 @@ const HeroSection = () => {
       subHeadline="A scientifically-validated personality assessment based on the Big Five model—revealing your true traits in just 10 minutes."
       ctaConfigs={ctaConfigs}
       visualRepresentation={<OceanVisual />}
+      showWaveAnimation={true}
     />
   );
 };

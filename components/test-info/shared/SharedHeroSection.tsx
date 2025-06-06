@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import WaveAnimation from "./WaveAnimation"; // Assuming WaveAnimation.tsx is in the same shared folder
+import WaveAnimation from "../ocean/WaveAnimation"; // Assuming WaveAnimation.tsx is in the same shared folder
 import React from 'react';
 
 export type CtaItem = {
@@ -39,6 +39,7 @@ interface SharedHeroSectionProps {
   subHeadline: string;
   ctaConfigs: CtaConfig[];
   visualRepresentation: React.ReactNode;
+  showWaveAnimation?: boolean;
 }
 
 const SharedHeroSection = ({
@@ -47,14 +48,17 @@ const SharedHeroSection = ({
   subHeadline,
   ctaConfigs,
   visualRepresentation,
+  showWaveAnimation = false, // Default to false
 }: SharedHeroSectionProps) => {
   const isMobile = useIsMobile();
 
   return (
     <section className="relative overflow-hidden pb-24 bg-background">
-      <div className="absolute inset-0 gradient-to-br from-primary/80 via-primary to-primary-foreground/90 dark:from-primary/70 dark:via-primary/80 dark:to-primary-foreground/80">
-        <WaveAnimation isMobile={isMobile} />
-      </div>
+      {showWaveAnimation && (
+        <div className="absolute inset-0 gradient-to-br from-primary/80 via-primary to-primary-foreground/90 dark:from-primary/70 dark:via-primary/80 dark:to-primary-foreground/80">
+          <WaveAnimation isMobile={isMobile} />
+        </div>
+      )}
 
       <motion.div
         className="mx-auto px-4 xs:px-8 sm:px-12 md:px-16 lg:px-24 py-8 sm:py-12 lg:py-16 relative z-10"
