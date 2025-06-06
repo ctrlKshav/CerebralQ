@@ -24,8 +24,7 @@ export function FormNavigation({
     setShowNext
 }: FormNavigationProps) {
 
-    const progressPercentage =
-        ((currentQuestionCount - 1) / totalQuestions) * 100;
+    const progressPercentage = (currentQuestionCount === 6 && showNext === true) ? 100 : ((currentQuestionCount - 1) / totalQuestions) * 100;
 
     return (
         <div className="flex flex-col gap-4">
