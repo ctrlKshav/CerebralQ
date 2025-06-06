@@ -23,7 +23,7 @@ const HeroSection = () => {
       </div>
 
       <motion.div
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24 relative z-10"
+        className="max-w-7xl mx-auto px-4 xs:px-8 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7 }}

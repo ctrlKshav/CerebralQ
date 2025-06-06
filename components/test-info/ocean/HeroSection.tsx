@@ -14,16 +14,16 @@ import WaveAnimation from "./shared/WaveAnimation";
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
-  
+
   return (
     <section className="relative overflow-hidden pb-24 bg-background">
       <div className="absolute inset-0 gradient-to-br from-primary/80 via-primary to-primary-foreground/90 dark:from-primary/70 dark:via-primary/80 dark:to-primary-foreground/80">
         {/* Using the reusable wave animation component */}
         <WaveAnimation isMobile={isMobile} />
       </div>
-      
-      <motion.div 
-        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-24 relative z-10"
+
+      <motion.div
+        className="max-w-7xl mx-auto px-4 xs:px-8 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 relative z-10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
@@ -39,7 +39,7 @@ const HeroSection = () => {
                 OCEAN / Big Five Personality Test
               </span>
             </motion.div>
-            <motion.h1 
+            <motion.h1
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 text-primary dark:text-foreground"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ const HeroSection = () => {
             >
               Discover Who You <span className="italic font-extrabold">Really</span> Are
             </motion.h1>
-            <motion.p 
+            <motion.p
               className="text-xl md:text-2xl max-w-2xl mb-8 text-primary/90 dark:text-foreground/90"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -58,7 +58,7 @@ const HeroSection = () => {
             <div className="space-y-3">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button 
+                  <Button
                     size="lg"
                     variant="default"
                     className="font-medium shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-[1.03]"
@@ -96,7 +96,7 @@ const HeroSection = () => {
               <p className="text-primary/80 dark:text-foreground/80 text-sm ml-1">Free • No registration required • Choose your test</p>
             </div>
           </div>
-          
+
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -104,7 +104,7 @@ const HeroSection = () => {
             className="mt-12 lg:mt-0"
           >
             <div className="relative w-full max-w-md mx-auto">
-              
+
               {/* Ocean Test Certificate */}
               <div className="relative bg-white dark:bg-card rounded-lg p-6 shadow-xl transform transition-all hover:rotate-3 border border-primary/20 dark:border-muted overflow-hidden">
                 {/* Certificate header */}
@@ -119,7 +119,7 @@ const HeroSection = () => {
                   <h3 className="text-lg font-bold text-primary dark:text-card-foreground">OCEAN Test Results</h3>
                   <p className="text-sm text-primary/70 dark:text-muted-foreground">Personality Assessment</p>
                 </div>
-                
+
                 {/* Certificate content */}
                 <div className="space-y-3">
                   {["Openness", "Conscientiousness", "Extraversion", "Agreeableness", "Neuroticism"].map((trait, i) => (
@@ -127,8 +127,8 @@ const HeroSection = () => {
                       <div className="w-2 h-2 rounded-full bg-primary/70 mr-3"></div>
                       <div className="text-primary dark:text-card-foreground font-medium text-sm">{trait}</div>
                       <div className="ml-auto h-2 bg-primary/10 dark:bg-muted rounded-full w-24 lg:w-32">
-                        <motion.div 
-                          className="h-full bg-primary rounded-full" 
+                        <motion.div
+                          className="h-full bg-primary rounded-full"
                           initial={{ width: 0 }}
                           animate={{ width: `${Math.random() * 100}%` }}
                           transition={{ duration: 1, delay: 0.7 + (i * 0.1) }}
@@ -137,7 +137,7 @@ const HeroSection = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 {/* Certificate footer */}
                 <div className="mt-6 pt-4 border-t border-primary/20 dark:border-muted text-center">
                   <div className="text-xs text-primary/60 dark:text-muted-foreground">Completed on April 8, 2025</div>
@@ -152,34 +152,34 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </motion.div>
-      
+
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
-      
+
       <motion.div
         className="absolute inset-0 z-0 text-primary/10 dark:text-white/10"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.07 }}
         transition={{ duration: 1.5 }}
       >
-        <motion.svg 
+        <motion.svg
           viewBox={isMobile ? "0 0 400 200" : "0 0 1000 1000"}
-          xmlns="http://www.w3.org/2000/svg" 
+          xmlns="http://www.w3.org/2000/svg"
           className="w-full h-full"
         >
           <motion.path
-            d={isMobile 
-              ? "M0,100 Q100,70 200,100 T400,100 L400,200 L0,200 Z" 
+            d={isMobile
+              ? "M0,100 Q100,70 200,100 T400,100 L400,200 L0,200 Z"
               : "M0,500 Q250,400 500,500 T1000,500 L1000,1000 L0,1000 Z"
             }
             fill="currentColor"
             animate={{
               d: isMobile ? [
                 "M0,100 Q100,70 200,100 T400,100 L400,200 L0,200 Z",
-                "M0,100 Q100,130 200,100 T400,100 L400,200 L0,200 Z", 
+                "M0,100 Q100,130 200,100 T400,100 L400,200 L0,200 Z",
                 "M0,100 Q100,70 200,100 T400,100 L400,200 L0,200 Z"
               ] : [
                 "M0,500 Q250,400 500,500 T1000,500 L1000,1000 L0,1000 Z",
-                "M0,500 Q250,600 500,500 T1000,500 L1000,1000 L0,1000 Z", 
+                "M0,500 Q250,600 500,500 T1000,500 L1000,1000 L0,1000 Z",
                 "M0,500 Q250,400 500,500 T1000,500 L1000,1000 L0,1000 Z"
               ]
             }}
