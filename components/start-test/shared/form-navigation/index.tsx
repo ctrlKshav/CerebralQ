@@ -17,7 +17,6 @@ interface FormNavigationProps {
   currentQuestionCount: number;
   currentSectionQuestionsLength: number;
   totalQuestions: number;
-  isCompleting?: boolean;
   isSectionComplete: boolean;
 }
 
@@ -31,7 +30,6 @@ export function FormNavigation({
   totalSections,
   currentQuestionCount,
   totalQuestions,
-  isCompleting = false,
   isSectionComplete,
 }: FormNavigationProps) {
   const currentQuestion =
@@ -83,7 +81,6 @@ export function FormNavigation({
                 <NavigationButtons
                   isFirstStep={isFirstStep}
                   isLastStep={isLastStep}
-                  isCompleting={isCompleting}
                   onPrev={onPrev}
                   onNext={onNext}
                 />

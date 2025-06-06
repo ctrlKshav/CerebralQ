@@ -12,7 +12,6 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import MobileTopbar from "@/components/start-test/shared/MobileTopbar";
 import CQLogo from "../../CQLogo";
-import { createClient } from "@/utils/supabase/client";
 import { getCurrentUser } from "@/lib/supabase-operations";
 import { PROGRESS_KEY, SAVED_RESULTS_KEY } from "@/lib/constants";
 import { MBTIResponseData } from "@/types/tests/mbti/responseData";
@@ -22,9 +21,7 @@ const TEST_RESULTS_KEY = "cerebralq_mbti_results";
 export default function MBTITest() {
   const router = useRouter();
   const [currentSectionId, setCurrentSectionId] = useState(1);
-  const [isCompleting, setIsCompleting] = useState(false);
   const currentTest = mbtiTestQuestionsData;
-  const supabase = createClient();
   const [userID, setUserId] = useState<string | null>(null);
 
   const methods = useForm<MBTIResponse>({
@@ -68,14 +65,13 @@ export default function MBTITest() {
     }
   }, [methods]);
 
-  const onSubmit = async (data: MBTIResponse) => {
+  const onSubmit = (data: MBTIResponse) => {
     // Set completing state to true to show full progress bar
-    setIsCompleting(true);
     localStorage.removeItem(PROGRESS_KEY);
 
     const personalityResult = calculateMBTI(data.answers);
 
-    // Create a single unified test result object
+    // // Create a single unified test result object
     const testResultData: MBTIResponseData = {
       // Database fields
       test_type_id: data.id,
@@ -177,7 +173,6 @@ export default function MBTITest() {
             sections={currentTest.sections}
             onNext={handleNext}
             onPrev={handlePrev}
-            isCompleting={isCompleting}
           />
         </form>
       </FormProvider>

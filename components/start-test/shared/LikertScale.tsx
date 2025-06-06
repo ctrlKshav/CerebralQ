@@ -17,7 +17,7 @@ interface LikertScaleProps {
 }
 
 export function LikertScale({ name, currentSectionId }: LikertScaleProps) {
-  const { register, watch, setError, clearErrors, getValues } =
+  const { register, watch, clearErrors, getValues } =
     useFormContext<MBTIResponse>();
   const selectedValue = watch(name);
 

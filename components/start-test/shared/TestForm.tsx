@@ -12,7 +12,6 @@ interface TestFormProps {
   sections: TestSections;
   onNext: () => void;
   onPrev: () => void;
-  isCompleting?: boolean;
 }
 
 export function TestForm({
@@ -21,7 +20,6 @@ export function TestForm({
   sections,
   onNext,
   onPrev,
-  isCompleting = false,
 }: TestFormProps) {
   const { watch, getValues } = useFormContext<MBTIResponse>();
   const answers = watch("answers", {}) as MBTIResponse["answers"];
@@ -97,7 +95,6 @@ export function TestForm({
               totalSections={Object.keys(sections).length}
               currentQuestionCount={currentQuestionCount}
               totalQuestions={totalQuestions}
-              isCompleting={isCompleting}
               isSectionComplete={isSectionComplete}
             />
           </div>
