@@ -1,6 +1,6 @@
 "use client";
 import { testDetails } from "@/data/test-info/disc/test-overview";
-import SharedAcademicCitationsSection, { ProcessedCitation as SharedProcessedCitation } from "../shared/SharedAcademicCitationsSection";
+import SharedAcademicCitationsSection, { ProcessedCitation as SharedProcessedCitation } from "../shared/sections/SharedAcademicCitationsSection";
 
 // Original interface for DISC citation data from test-overview.ts
 interface DiscCitationData {

@@ -1,6 +1,6 @@
 "use client";
 
-import SharedHeroSection, { type CtaConfig } from "../shared/SharedHeroSection";
+import SharedHeroSection, { type CtaConfig } from "../shared/sections/SharedHeroSection";
 import { motion } from "framer-motion";
 
 const OceanVisual = () => (

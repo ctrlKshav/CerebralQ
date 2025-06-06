@@ -7,9 +7,9 @@ import {
   BookOpen,
   Award,
 } from "lucide-react";
-import SectionContainer from "./SectionContainer";
-import SectionHeader from "./SectionHeader";
-import CitationCard from "./CitationCard";
+import SectionContainer from "../SectionContainer";
+import SectionHeader from "../SectionHeader";
+import CitationCard from "../CitationCard";
 import { Card, CardContent } from "@/components/ui/card";
 
 export interface ProcessedCitation {

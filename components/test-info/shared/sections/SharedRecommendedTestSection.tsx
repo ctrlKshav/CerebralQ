@@ -6,9 +6,9 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import SectionContainer from "./SectionContainer";
-import SectionHeader from "./SectionHeader";
-import AnimatedCard from "./AnimatedCard";
+import SectionContainer from "../SectionContainer";
+import SectionHeader from "../SectionHeader";
+import AnimatedCard from "../AnimatedCard";
 import { allTestData, TestRecommendationEntry } from "@/data/test-info/allTestsData";
 
 interface SharedRecommendedTestSectionProps {

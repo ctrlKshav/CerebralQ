@@ -1,8 +1,8 @@
 "use client";
 import { useRef, ReactNode } from "react";
-import SectionContainer from "./SectionContainer";
-import SectionHeader from "./SectionHeader";
-import AnimatedCard from "./AnimatedCard";
+import SectionContainer from "../SectionContainer";
+import SectionHeader from "../SectionHeader";
+import AnimatedCard from "../AnimatedCard";
 
 export interface TestOverviewBadgeItem {
   icon: ReactNode;

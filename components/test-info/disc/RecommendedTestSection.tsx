@@ -1,5 +1,5 @@
 "use client";
-import SharedRecommendedTestSection from "../shared/SharedRecommendedTestSection";
+import SharedRecommendedTestSection from "../shared/sections/SharedRecommendedTestSection";
 
 const RecommendedTestSection = () => {
   return (

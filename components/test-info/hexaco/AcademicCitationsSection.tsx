@@ -1,6 +1,6 @@
 "use client";
 import { testDetails } from "@/data/test-info/hexaco/test-overview";
-import SharedAcademicCitationsSection, { ProcessedCitation as SharedProcessedCitation } from "../shared/SharedAcademicCitationsSection";
+import SharedAcademicCitationsSection, { ProcessedCitation as SharedProcessedCitation } from "../shared/sections/SharedAcademicCitationsSection";
 
 // Original interface for HEXACO citation data from test-overview.ts
 interface HexacoCitationData {

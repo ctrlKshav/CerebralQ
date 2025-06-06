@@ -6,7 +6,7 @@ import {
   ShieldCheck,
   Hexagon, // Specific to HEXACO
 } from "lucide-react";
-import SharedTestOverviewSection, { TestOverviewBadgeItem } from "../shared/SharedTestOverviewSection";
+import SharedTestOverviewSection, { TestOverviewBadgeItem } from "../shared/sections/SharedTestOverviewSection";
 
 const TestOverviewSection = () => {
   const hexacoBadges: TestOverviewBadgeItem[] = [

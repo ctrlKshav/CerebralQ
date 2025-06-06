@@ -11,7 +11,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import WaveAnimation from "../ocean/WaveAnimation"; // Assuming WaveAnimation.tsx is in the same shared folder
+import WaveAnimation from "../../ocean/WaveAnimation"; // Assuming WaveAnimation.tsx is in the same shared folder
 import React from 'react';
 
 export type CtaItem = {

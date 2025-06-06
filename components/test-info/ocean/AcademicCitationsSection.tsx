@@ -1,6 +1,6 @@
 "use client";
 import { citations as oceanCitations } from "@/data/test-info/ocean/citations";
-import SharedAcademicCitationsSection, { ProcessedCitation } from "../shared/SharedAcademicCitationsSection";
+import SharedAcademicCitationsSection, { ProcessedCitation } from "../shared/sections/SharedAcademicCitationsSection";
 
 const AcademicCitationsSection = () => {
   // Ensure citations match the ProcessedCitation structure, especially the 'url' field.
