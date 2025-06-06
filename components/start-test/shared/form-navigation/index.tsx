@@ -41,7 +41,6 @@ export function FormNavigation({
 
   const {
     formState: { errors },
-    trigger,
   } = useFormContext();
 
   // Only show errors that were triggered by the Next button
@@ -49,19 +48,7 @@ export function FormNavigation({
 
   const progressPercentage =
     ((currentQuestionCount - 1) / totalQuestions) * 100;
-
-  const [showNavButtons, setShowNavButtons] = useState(false);
-  const prevSectionComplete = useRef(false);
-
-  useEffect(() => {
-    if (isSectionComplete && !prevSectionComplete.current) {
-      setShowNavButtons(true);
-    } else if (!isSectionComplete) {
-      setShowNavButtons(false);
-    }
-    prevSectionComplete.current = isSectionComplete;
-  }, [isSectionComplete]);
-
+    
   return (
     <div className="flex flex-col gap-4">
       <ErrorMessage message={currentErrors ? "Please answer all questions before proceeding" : undefined} />
