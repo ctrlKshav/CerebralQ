@@ -6,6 +6,7 @@ import TestOverviewSection from "./TestOverviewSection";
 import HEXACOTraitsSection from "./HEXACOTraitsSection";
 import AcademicCitationsSection from "./AcademicCitationsSection";
 import ComparisonSection from "./ComparisonSection";
+import RecommendedTestSection from "./RecommendedTestSection"; // Added import
 
 const HexacoTestInformation = () => {
   return (
@@ -16,6 +17,7 @@ const HexacoTestInformation = () => {
         <HEXACOTraitsSection />
         <AcademicCitationsSection />
         <ComparisonSection />
+        <RecommendedTestSection /> {/* Added component */}
       </TooltipProvider>
     </main>
   );

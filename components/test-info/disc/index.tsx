@@ -3,6 +3,7 @@ import TestOverviewSection from "@/components/test-info/disc/TestOverviewSection
 import DISCTraitsSection from "@/components/test-info/disc/DISCTraitsSection";
 import AcademicCitationsSection from "@/components/test-info/disc/AcademicCitationsSection";
 import ComparisonSection from "@/components/test-info/disc/ComparisonSection";
+import RecommendedTestSection from "@/components/test-info/disc/RecommendedTestSection"; // Added import
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 export default function DISCTestInformation() {
@@ -14,6 +15,7 @@ export default function DISCTestInformation() {
         <DISCTraitsSection />
         <ComparisonSection />
         <AcademicCitationsSection />
+        <RecommendedTestSection /> {/* Added component */}
       </TooltipProvider>
     </main>
   );

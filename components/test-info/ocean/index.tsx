@@ -2,9 +2,9 @@
 import TestOverviewSection from "@/components/test-info/ocean/TestOverviewSection";
 import AcademicCitationsSection from "@/components/test-info/ocean/AcademicCitationsSection";
 import BigFiveTraitsSection from "@/components/test-info/ocean/BigFiveTraits";
-import MbtiTestSection from "@/components/test-info/ocean/MbtiTestSection";
 import TestVariantsSection from "@/components/test-info/ocean/TestVariantsSection";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import RecommendedTestSection from "./RecommendedTestSection";
 
 export default function OceanTestInformation() {
 
@@ -16,7 +16,7 @@ export default function OceanTestInformation() {
         <BigFiveTraitsSection />
         <TestVariantsSection />
         <AcademicCitationsSection />
-        <MbtiTestSection />
+        <RecommendedTestSection />
       </TooltipProvider>
     </main>
   );
