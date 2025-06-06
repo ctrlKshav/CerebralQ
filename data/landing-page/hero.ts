@@ -7,7 +7,7 @@ export const heroData: HeroData = {
     highlight: "Uncover something cool",
     suffix: "about yourself",
   },
-  description: `Stop guessing who you are. Take scientifically-validated personality assessments like MBTI, Big Five, and DISC to understand your mind, accelerate your career, and build stronger relationships.
+  description: `Stop guessing who you are. Take scientifically-validated personality assessments like MBTI, Big Five, DISC and HEXACO to understand your mind, accelerate your career, and build stronger relationships.
   \n\n\n
   Get actionable insights, not just test scores. Join thousands who've transformed their self-awareness into real success.`,
   cta: {

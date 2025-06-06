@@ -39,7 +39,7 @@ export default function HeroSection() {
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground  max-w-3xl">
             {description.split("\n\n").map((paragraph, index) => (
-              <span key={index}>
+              <span key={index} className={`${index > 0 ? "hidden sm:inline" : "inline"}`}>
                 {paragraph}
                 {index < description.split("\n\n").length - 1 && <br />}
               </span>
