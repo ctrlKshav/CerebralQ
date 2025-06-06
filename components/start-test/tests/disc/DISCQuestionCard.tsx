@@ -12,7 +12,7 @@ import { DISCResponseSchema } from "@/schema/disc";
 import { z } from "zod";
 
 type DISCFormSchemaType = z.infer<typeof DISCResponseSchema>;
-type AnswerGroup = DISCFormSchemaType["answers"][string]; // This is { groupId: number; rankings: Record<string, number> }
+type AnswerGroup = DISCFormSchemaType["answers"][string]; // This is { rankings: Record<string, number> }
 
 interface DISCQuestionCardProps {
   group: DISCQuestionGroup;

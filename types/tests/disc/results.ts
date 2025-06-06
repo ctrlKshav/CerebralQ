@@ -1,8 +1,4 @@
 ﻿import { DISCType } from "./testQuestions";
-export interface DISCResponse {
-    groupId: number;
-    rankings: { [adjective: string]: number }; // adjective text -> rank (1-4)
-}
 
 export interface DISCScores {
     Dominant: number;

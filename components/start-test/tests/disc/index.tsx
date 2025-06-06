@@ -31,8 +31,6 @@ const DISCTestForm = () => {
 
   const onSubmit = (data: DISCResponse) => {
     console.log("Form Submitted:", data);
-    // TODO: Handle actual submission (e.g., API call)
-    alert("Test Complete! Check console for data.");
   };
 
   const handleQuestionComplete = () => {
@@ -69,7 +67,7 @@ const DISCTestForm = () => {
         <Form {...methods}>
           {" "}
           {/* shadcn/ui Form wrapper */}
-          <form onSubmit={methods.handleSubmit(onSubmit)} className="flex">
+          <form onSubmit={methods.handleSubmit(onSubmit, (data) => {console.log('Error While Submission', data)})} className="flex">
             <div className="flex-1 mt-24 lg:mt-4 lg:mb-64">
               <div className=" relative">
                 <div className="p-0 xs:p-8 pb-32">
