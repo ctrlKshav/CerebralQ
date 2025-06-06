@@ -5,7 +5,7 @@ export const DISCResponseSchema = z.object({
     z.string(),
     z.object({
       groupId: z.number(),
-      rankings: z.record(z.string(), z.number().min(1).max(4))
+      rankings: z.record(z.string(), z.number().min(1).max(4).optional())
     })
   )
 });
